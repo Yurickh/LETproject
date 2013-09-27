@@ -44,7 +44,7 @@ class Name:
 		It is responsible for the validation of the value of the password.
 		"""
 		self.__validate(value)
-		self.value = value
+		self.__value = value
 	
 	def __validate(self, value):
 		"""Class validator.
@@ -95,3 +95,27 @@ class Matric:
 
 	def getValue(self):
 		return self.__value
+
+
+class PlainText:
+	"""Class responsible for storing plain texts, that are any kind of text.
+	"""
+	__value = None
+	def __init__(self, value):
+	""" Class contructor.
+	It is responsible for the validation and setting of the value of the plain text.
+	"""
+		self.__validate(value)
+		self.__value = value
+	def __validate(self, value):
+		"""Class validator.
+		It is responsible for validating the plain text. If the length of the text is over 1024, it will raise an exception.
+		"""
+		if len(value) > 1024:
+			raise ValueError(EXCEPTION_006)
+
+	def setValue(self, value):
+		self.__validate(value):
+		self.__value = value
+	def getValue(self):
+		return self.value
