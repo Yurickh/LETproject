@@ -119,3 +119,12 @@ class PlainText:
 		self.__value = value
 	def getValue(self):
 		return self.value
+
+class Campus:
+	"""Class responsible for storing the id of the Campus.
+	"""
+
+	__value = None
+	def __init__(self, value):
+		self.__validate(value)
+		self.__value
