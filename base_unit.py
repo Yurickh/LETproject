@@ -117,14 +117,85 @@ class PlainText:
 	def setValue(self, value):
 		self.__validate(value):
 		self.__value = value
+
 	def getValue(self):
-		return self.value
+		return self.__value
 
 class Campus:
 	"""Class responsible for storing the id of the Campus.
 	"""
-
 	__value = None
+
 	def __init__(self, value):
+	"""Class constructor.
+	It is responsible for the validation and setting of the campus id.
+	"""
 		self.__validate(value)
-		self.__value
+		self.__value = value
+
+	def __validate(self, value):
+	"""Class validator.
+	It is responsible for validating the campus id. If the number of the campus is under 0, it will raise an exception.
+	"""
+		if value < 0:
+			raise ValueError(EXCEPTION_007)
+
+	def setValue(self, value):
+		self.__validate(value)
+		self.__value = value
+
+	def getValue(self):
+		return self.__value
+
+
+class Sex:
+	"""Class responsible for storing the sex of the user.
+	"""
+	__value = None
+
+	def __init__(self, value):
+	"""Class constructor.
+	I is responsible for the validation and setting of the sex.
+	"""
+	def __validate(self, value):
+	"""Class validator.
+	It is responsible for the validating the sex. If the character is different than 'm', 'M', 'f' and 'F', it will raise an exception.
+	"""
+		if value != 'm' and value != 'M' and value != 'f' and value != 'F':
+			raise ValueError(EXCEPTION_008)
+
+	def setValue(self, value):
+		self.__validate(value)
+		self.__value = value
+
+	def getValue(self):
+		return self.__value
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
