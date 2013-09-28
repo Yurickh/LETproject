@@ -31,7 +31,7 @@ class IfBaseType:
 	def delValue(self):
 		del self._value
 
-	_value = abstractproperty(getValue, setValue)
+	_value = abstractproperty(getValue, setValue, delValue)
 
 	@abstractmethod
 	def _validate(self, value): pass
