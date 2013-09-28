@@ -6,11 +6,10 @@ This file is responsible for the implementation of the base types of our program
 
 #IMPLEMENTAR TODOS OS TIPOS BASICOS TOMANDO POR BASE O PASSWORD.
 
-from macros_pt_br import *
-
 from abc import *
-
 import hashlib
+
+from lang.en_us import *
 
 class IfBaseType:
 	""" Interface for any Base Type on the project.
@@ -57,7 +56,7 @@ class Password(IfBaseType):
 		It is responsible for the validation of the password. If the length of the password is under 6, it will raise an exception.
 		"""
 		if(len(value) < 6):
-			raise ValueError(EXCEPTION_000)
+			raise ValueError(EXCEPTION_INV_PW_S)
 
 	def setValue(self, value):
 		"""Overrides the IfBaseType setValue() for the sake of hashing."""
@@ -81,13 +80,13 @@ class Name:
 		It is resonsible for the validation of the name. If the name length is over 32 or is NULL or the name contains non-alphanumerical 				digits, it will raise an exception.
 		"""
 		if len(value) > 32:
-			raise ValueError(EXCEPTION_001)
+			raise ValueError(EXCEPTION_INV_NM_B)
 		else: 
 			if len(value) == 0:
-				raise ValueError(EXCEPTION_002)
+				raise ValueError(EXCEPTION_INV_NM_S)
 			else:
 				if isalnum(value) == False:
-					raise ValueError(EXCEPTION_003)
+					raise ValueError(EXCEPTION_INV_NM_F)
 
 	def setValue(self, value):
 		self._validate(value)
@@ -117,9 +116,9 @@ class Matric:
 
 		"""
 		if value > 999999999:
-			raise ValueError(EXCEPTION_004)
+			raise ValueError(EXCEPTION_INV_MT_B)
 		elif value < 1:
-			raise ValueError(EXCEPTION_005)
+			raise ValueError(EXCEPTION_INV_MT_S)
 		
 	def setValue(self, value):
 		self._validate(value)
@@ -144,7 +143,7 @@ class PlainText:
 		It is responsible for validating the plain text. If the length of the text is over 1024, it will raise an exception.
 		"""
 		if len(value) > 1024:
-			raise ValueError(EXCEPTION_006)
+			raise ValueError(EXCEPTION_INV_PT_B)
 
 	def setValue(self, value):
 		self._validate(value)
@@ -169,8 +168,8 @@ class Campus:
 		"""Class validator.
 		It is responsible for validating the campus id. If the number of the campus is under 0, it will raise an exception.
 		"""
-		if value < 0:
-			raise ValueError(EXCEPTION_007)
+		if value <= 0:
+			raise ValueError(EXCEPTION_INV_CP_S)
 
 	def setValue(self, value):
 		self._validate(value)
@@ -194,7 +193,7 @@ class Sex:
 		It is responsible for the validating the sex. If the character is different than 'm', 'M', 'f' and 'F', it will raise an exception.
 		"""
 		if value != 'm' and value != 'M' and value != 'f' and value != 'F':
-			raise ValueError(EXCEPTION_008)
+			raise ValueError(EXCEPTION_INV_SX_F)
 
 	def setValue(self, value):
 		self._validate(value)
