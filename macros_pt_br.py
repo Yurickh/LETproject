@@ -1,5 +1,5 @@
 # coding: utf-8
-""" File that contains all the macros for a given language. In this case, pt_br.
+""" File that contains all the macros for a given language. In this case, pt_br. """
 
 EXCEPTION_000 = "A senha deve conter no mínimo 6 caracteres"
 EXCEPTION_001 = "O nome deve conter menos de 32 caracteres."

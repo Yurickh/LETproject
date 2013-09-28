@@ -15,7 +15,7 @@ else:
 	else:
 		print pw.getValue()
 
-""" TESTE DA MATRICULA"""
+""" TESTE DA MATRICULA
 matricula = int(raw_input("Matricula: "))
 try:
 	matricula = Matric(matricula)
@@ -29,3 +29,4 @@ else:
 		print exc2
 	else:
 		print matricula.getValue()
+"""
