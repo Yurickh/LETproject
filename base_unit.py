@@ -4,12 +4,10 @@ Base Type container.
 This file is responsible for the implementation of the base types of our program. Each class shall contain a validator that will guarantee that the base type is compatible with the requirements.
 """
 
-#IMPLEMENTAR TODOS OS TIPOS BASICOS TOMANDO POR BASE O PASSWORD.
-
 from abc import *
 import hashlib
 
-from lang.en_us import *
+from lang.pt_br import *
 
 class IfBaseType:
 	""" Interface for any Base Type on the project.
