@@ -242,7 +242,7 @@ class Grades(IfBaseType):
 			raise ValueError(EXCEPTION_INV_GR_B)
 
 class Mail(IfBaseType):
-	"""Class responsible for storing the e-mail of the useur.
+	"""Class responsible for storing the e-mail of the user.
 	"""
 	_value = None
 
@@ -251,15 +251,15 @@ class Mail(IfBaseType):
 		It is responsible for the validation and setting of the e-mail.
 		"""
 		try:
-			self.validate(value)
+			self._validate(value)
 		except ValueError as exc:
 			del self
 			raise exc
-		self.validate(value)
+		self._value = value
 
-		def validate(self, value):
+		def _validate(self, value):
 		"""Class validator.
-		It is responsible for the validating of the Mail. If the value is null, or if it has blank spaces, more than one '@', and less than one '.' after the '@', it will raise an exception.
+		It is responsible for the validation of the Mail. If the value is null, or if it has blank spaces, more than one '@', and less than one '.' after the '@', it will raise an exception.
 		"""
 			if value len(value) == 0:
 				raise ValueError(EXCEPTION_INV_ML_S)
@@ -269,11 +269,52 @@ class Mail(IfBaseType):
 			else:
 				raise ValueError(EXCEPTION_INV_ML_F)
 			elif value.count(' ') > 0:
-				raise ValueErro(EXCEPTION_INV_ML_F)
+				raise ValueError(EXCEPTION_INV_ML_F)
 
+class Id(IfBaseType):
+	"""Class responsible for storing the Id.
+	"""
+	_value = None
 
+	def __init__(self, value):
+	"""Class constructor.
+	It is responsible for the validation and setting of the e-mail.
+	"""	
+	try:
+		self._validate(value)
+	except ValueError as exc:
+		del self
+		raise exc
+	self._value = value
 
+	def _validate(self, value):
+	"""Class validator.
+	It is responsible for the validation of the Id. If the Id number is less than 1, it will raise an exception.
+	"""
+		if value < 1:
+			raise ValueError(EXCEPTION_INV_ID_S)
 
+class Language(IfBaseType):
+	"""Class responsible for storing the suystem language.
+	"""
+	_value = None
+	def __init__(self, value):
+	"""Class constructor.
+	It is responsible for th validation and setting of the language.
+	"""
+	try:
+		self._validate
+	except ValueError as exc:
+		del self
+		raise exc
+	self._value = value
+
+	def _validate(self, value):
+	"""Class validator.
+	It is responsible for the validation of the language. If it is less than 1, it will raise an exception. 
+	"""
+		if value < 1:
+			raise ValueError(EXCEPTION_INV_LG_S)
 
 
 
