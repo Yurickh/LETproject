@@ -180,28 +180,28 @@ class Campus:
 		return self._value
 
 
-class Sex:
+class Sex(IfBaseType):
 	"""Class responsible for storing the sex of the user.
 	"""
 	_value = None
 
 	def __init__(self, value):
 		"""Class constructor.
-		I is responsible for the validation and setting of the sex.
+		It is responsible for the validation and setting of the sex.
 		"""
+		try:
+			self._validate(value)
+		except ValueError as exc:
+			del self
+			raise exc
+		self._value = hashlib.md5(hashlib.sha256(value).hexdigest()).hexdigest()
+
 	def _validate(self, value):
 		"""Class validator.
 		It is responsible for the validating the sex. If the character is different than 'm', 'M', 'f' and 'F', it will raise an exception.
 		"""
 		if value != 'm' and value != 'M' and value != 'f' and value != 'F':
 			raise ValueError(EXCEPTION_INV_SX_F)
-
-	def setValue(self, value):
-		self._validate(value)
-		self._value = value
-
-	def getValue(self):
-		return self._value
 
 
 
