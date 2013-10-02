@@ -269,7 +269,7 @@ class Mail(IfBaseType):
 			else:
 				raise ValueError(EXCEPTION_INV_ML_F)
 			elif value.count(' ') > 0:
-				raise ValueErro(EXCEPTION_INV_ML_F)
+				raise ValueError(EXCEPTION_INV_ML_F)
 
 
 
