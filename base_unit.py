@@ -25,6 +25,7 @@ class IfBaseType:
 		return self._value
 
 	def setValue(self, value):
+		self._validate(value)
 		self._value = value
 
 	def delValue(self):
