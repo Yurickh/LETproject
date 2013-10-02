@@ -271,6 +271,29 @@ class Mail(IfBaseType):
 			elif value.count(' ') > 0:
 				raise ValueError(EXCEPTION_INV_ML_F)
 
+class ExType(IfBaseType):
+	""" Class responsible for storing a given integer that represents the exercise type
+	"""
+	_value = None
+
+	def __init__(self, value):
+		""" Class constructor.
+		It is responsible for the validation and setting of the exercise type
+		"""
+		try:
+			self._validate(value)
+		except ValueError as exc:
+			del self
+			raise exc
+		self._value = value
+
+	def _validate(self, value):
+		"""Class validator.
+		It is responsible for the validation of the exercise type. If the integer is zero or smaller than zero it will raise in an exception
+		"""
+		if(value <= 0):
+			raise ValueError(EXCEPTION_INV_ET_S)
+
 
 
 
