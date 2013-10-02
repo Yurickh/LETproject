@@ -64,7 +64,7 @@ class Password(IfBaseType):
 		self._validate(value)
 		self._value = hashlib.md5(hashlib.sha256(value).hexdigest()).hexdigest()
 
-class Name:
+class Name(IfBaseType):
 	""" Class responsible for storing a given string to be used as a name by the system.
 	"""
 	_value = None
@@ -73,7 +73,11 @@ class Name:
 		""" Class constructor.
 		It is responsible for the validation of the value of the password.
 		"""
-		self._validate(value)
+		try:
+			self._validate(value)
+		except ValueError as exc:
+			del self
+			raise exc
 		self._value = value
 	
 	def _validate(self, value):
@@ -88,16 +92,8 @@ class Name:
 			else:
 				if isalnum(value) == False:
 					raise ValueError(EXCEPTION_INV_NM_F)
-
-	def setValue(self, value):
-		self._validate(value)
-		self._value = value
 	
-	def getValue(self):
-		return self._value
-
-
-class Matric:
+class Matric(IfBaseType):
 	""" Class responsible for storing a given number to be used as a registry by the users of the system
 	"""	
 	_value = None
@@ -107,7 +103,11 @@ class Matric:
 
 			It is responsible for the validation and setting of the value of the matric.
 		"""
-		self._validate(value)
+		try:
+			self._validate(value)
+		except ValueError as exc:
+			del self
+			raise exc
 		self._value = value
 
 	def _validate(self, value):
@@ -121,15 +121,8 @@ class Matric:
 		elif value < 1:
 			raise ValueError(EXCEPTION_INV_MT_S)
 		
-	def setValue(self, value):
-		self._validate(value)
-		self._value = value
 
-	def getValue(self):
-		return self._value
-
-
-class PlainText:
+class PlainText(IfBaseType):
 	"""Class responsible for storing plain texts, that are any kind of text.
 	"""
 	_value = None
@@ -137,8 +130,13 @@ class PlainText:
 		""" Class contructor.
 		It is responsible for the validation and setting of the value of the plain text.
 		"""
-		self._validate(value)
+		try:
+			self._validate(value)
+		except ValueError as exc:
+			del self
+			raise exc
 		self._value = value
+
 	def _validate(self, value):
 		"""Class validator.
 		It is responsible for validating the plain text. If the length of the text is over 1024, it will raise an exception.
@@ -146,14 +144,7 @@ class PlainText:
 		if len(value) > 1024:
 			raise ValueError(EXCEPTION_INV_PT_B)
 
-	def setValue(self, value):
-		self._validate(value)
-		self._value = value
-
-	def getValue(self):
-		return self._value
-
-class Campus:
+class Campus(IfBaseType):
 	"""Class responsible for storing the id of the Campus.
 	"""
 	_value = None
@@ -162,7 +153,11 @@ class Campus:
 		"""Class constructor.
 		It is responsible for the validation and setting of the campus id.
 		"""
-		self._validate(value)
+		try:
+			self._validate(value)
+		except ValueError as exc:
+			del self
+			raise exc
 		self._value = value
 
 	def _validate(self, value):
@@ -171,13 +166,6 @@ class Campus:
 		"""
 		if value <= 0:
 			raise ValueError(EXCEPTION_INV_CP_S)
-
-	def setValue(self, value):
-		self._validate(value)
-		self._value = value
-
-	def getValue(self):
-		return self._value
 
 
 class Sex:
