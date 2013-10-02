@@ -241,6 +241,35 @@ class Grades(IfBaseType):
 		elif(value > 100):
 			raise ValueError(EXCEPTION_INV_GR_B)
 
+class Mail(IfBaseType):
+	"""Class responsible for storing the e-mail of the useur.
+	"""
+	_value = None
+
+	def __init__(self, value):
+		"""Class constructor.
+		It is responsible for the validation and setting of the e-mail.
+		"""
+		try:
+			self.validate(value)
+		except ValueError as exc:
+			del self
+			raise exc
+		self.validate(value)
+
+		def validate(self, value):
+		"""Class validator.
+		It is responsible for the validating of the Mail. If the value is null, or if it has blank spaces, more than one '@', and less than one '.' after the '@', it will raise an exception.
+		"""
+			if value len(value) == 0:
+				raise ValueError(EXCEPTION_INV_ML_S)
+			elif value.count('@') == 1:
+				if value[value.index['@']:].count('.') < 1:
+					raise ValueError(EXCEPTION_INV_ML_F)
+			else:
+				raise ValueError(EXCEPTION_INV_ML_F)
+			elif value.count(' ') > 0:
+				raise ValueErro(EXCEPTION_INV_ML_F)
 
 
 
