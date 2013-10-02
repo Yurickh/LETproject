@@ -228,10 +228,6 @@ class Link(IfBaseType):
 		elif(isalnum(value) == False):
 			raise ValueError(EXCEPTION_INV_LK_F)
 		
-	def setValue(self, value):
-		self._validate(value)
-		self._value = value
-
 class Grades(IfBaseType):
 	""" Class responsible for storing a given integer that represents the grade
 	"""
@@ -249,7 +245,6 @@ class Grades(IfBaseType):
 		self._value = value
 
 	def _validate(self, value):
-testar menor que zero, entre zero e cem, e maior que cem
 		"""Class validator.
 		It is responsible for the validation of the grade. If the integer is smaller than zero, or bigger than one hundred, it will raise an exception.
 		"""
@@ -258,9 +253,6 @@ testar menor que zero, entre zero e cem, e maior que cem
 		elif(value > 100):
 			raise ValueError(EXCEPTION_INV_GR_B)
 		
-	def setValue(self, value):
-		self._validate(value)
-		self._value = value
 
 
 
