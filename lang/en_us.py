@@ -15,9 +15,6 @@ EXCEPTION_INV_GR_S = "The grade must be at least zero."
 EXCEPTION_INV_GR_B = "The grade must be smaller than one hundred."
 EXCEPTION_INV_ML_S = "The mail field can't be empty."
 EXCEPTION_INV_ML_F = "The mail is written in the wrong format."
-<<<<<<< HEAD
 EXCEPTION_INV_ET_S = "The exercise type must be greater than zero"
-=======
 EXCEPTION_INV_ID_S = "The Id has to be greater than zero."
 EXCEPTION_INV_LG_S = "The language has to be grater than zero."
->>>>>>> 0125082960705868474b129cd699ae6b5e3b4679
