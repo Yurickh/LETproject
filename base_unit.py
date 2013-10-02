@@ -203,6 +203,38 @@ class Sex:
 	def getValue(self):
 		return self._value
 
+class Link(IfBaseType):
+	""" Class responsible for storing a given string to be used as a link 
+	"""
+	_value = None
+
+	def __init__(self, value):
+		""" Class constructor.
+		It is responsible for the validation and setting of the value of the link.
+		"""
+		try:
+			self._validate(value)
+		except ValueError as exc:
+			del self
+			raise exc
+		self._value = value
+
+	def _validate(self, value):
+		nao vazia
+		nao espaços
+		nem caracteres acentuados
+		"""Class validator.
+		It is responsible for the validation of the link. If the length of the link is zero, or it has non-alphanumeric chars it will raise an exception.
+		"""
+		if(len(value) == 0):
+			raise ValueError(EXCEPTION_INV_LK_S)
+		elif(isalnum(value) == False):
+			raise ValueError(EXCEPTION_INV_LK_F)
+		
+	def setValue(self, value):
+		self._validate(value)
+		self._value = value
+
 
 
 
