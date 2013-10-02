@@ -220,9 +220,6 @@ class Link(IfBaseType):
 		self._value = value
 
 	def _validate(self, value):
-		nao vazia
-		nao espaços
-		nem caracteres acentuados
 		"""Class validator.
 		It is responsible for the validation of the link. If the length of the link is zero, or it has non-alphanumeric chars it will raise an exception.
 		"""
@@ -230,6 +227,36 @@ class Link(IfBaseType):
 			raise ValueError(EXCEPTION_INV_LK_S)
 		elif(isalnum(value) == False):
 			raise ValueError(EXCEPTION_INV_LK_F)
+		
+	def setValue(self, value):
+		self._validate(value)
+		self._value = value
+
+class Grades(IfBaseType):
+	""" Class responsible for storing a given integer that represents the grade
+	"""
+	_value = None
+
+	def __init__(self, value):
+		""" Class constructor.
+		It is responsible for the validation and setting of the value of the grade.
+		"""
+		try:
+			self._validate(value)
+		except ValueError as exc:
+			del self
+			raise exc
+		self._value = value
+
+	def _validate(self, value):
+testar menor que zero, entre zero e cem, e maior que cem
+		"""Class validator.
+		It is responsible for the validation of the grade. If the integer is smaller than zero, or bigger than one hundred, it will raise an exception.
+		"""
+		if(value < 0):
+			raise ValueError(EXCEPTION_INV_GR_S)
+		elif(value > 100):
+			raise ValueError(EXCEPTION_INV_GR_B)
 		
 	def setValue(self, value):
 		self._validate(value)
