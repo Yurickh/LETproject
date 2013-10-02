@@ -11,4 +11,5 @@ EXCEPTION_INV_CP_S = "The campus ID must be bigger than 0."
 EXCEPTION_INV_SX_F = "Invalid sex character."
 EXCEPTION_INV_LK_S = "The link must contain at least one character"
 EXCEPTION_INV_LK_F = "The link must contain only alphanumeric characters"
-
+EXCEPTION_INV_GR_S = "The grade must be at least zero "
+EXCEPTION_INV_GR_B = "The grade must be smaller than one hundred "
