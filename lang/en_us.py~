@@ -9,5 +9,3 @@ EXCEPTION_INV_MT_S = "The registration number is smaller than the minimum accept
 EXCEPTION_INV_PT_B = "The text must contain 1024 characters or less."
 EXCEPTION_INV_CP_S = "The campus ID must be bigger than 0."
 EXCEPTION_INV_SX_F = "Invalid sex character."
-EXCEPTION_INV_ML_S = "The mail field can't be empty."
-EXCEPTION_INV_ML_F = "The mail is written in the wrong format."
