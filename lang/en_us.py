@@ -18,3 +18,6 @@ EXCEPTION_INV_ML_F = "The mail is written in the wrong format."
 EXCEPTION_INV_ET_S = "The exercise type must be greater than zero"
 EXCEPTION_INV_ID_S = "The Id has to be greater than zero."
 EXCEPTION_INV_LG_S = "The language has to be greater than zero."
+EXCEPTION_TEST_PREFIX = "An Error has been ocurred."
+EXCEPTION_TEST_INV_GET = "An Error has ocurred in the getValue method."
+
