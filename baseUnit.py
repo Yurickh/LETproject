@@ -256,19 +256,17 @@ class Mail(IfBaseType):
 			raise exc
 		self._value = value
 
-		def _validate(self, value):
-			"""Class validator.
-		It is responsible for the validation of the Mail. If the value is null, or if it has blank spaces, more than one '@', and less than one '.' after the '@', it will raise an exception.
-			"""
-			if len(value) == 0:
-				raise ValueError(EXCEPTION_INV_ML_S)
-			elif value.count('@') == 1:
-				if value[value.index['@']:].count('.') < 1:
-					raise ValueError(EXCEPTION_INV_ML_F)
-				else:
-					raise ValueError(EXCEPTION_INV_ML_F)
-			elif value.count(' ') > 0:
+	def _validate(self, value):
+		"""Class validator.
+		It is responsible for the validation of the Mail. If the value is null, or if it has blank spaces, more than one '@', and less 			than one '.' after the '@', it will raise an exception.
+		"""
+		if len(value) == 0:
+			raise ValueError(EXCEPTION_INV_ML_S)
+		elif value.count('@') == 1:
+			if value[value.index('@'):].count('.') < 1:
 				raise ValueError(EXCEPTION_INV_ML_F)
+		else:
+			raise ValueError(EXCEPTION_INV_ML_F)
 
 class ExType(IfBaseType):
 	""" Class responsible for storing a given integer that represents the exercise type

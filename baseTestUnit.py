@@ -116,7 +116,7 @@ def main():
 	print "Testing an email with a blank space."
 	test.test(Mail, "arroba @hotmail.com")
 	print "Testing a null email"
-	test.test(Mail, None)
+	test.test(Mail, "")
 	print "Testing an email with more than one '@'."
 	test.test(Mail, "arroba@@hotmail.com")
 	print "Testing an email with less than one '.'."
@@ -159,4 +159,4 @@ def main():
 	print "Testing '-2' for the class ExType."
 	test.test(ExType, -2)
 	print " "
-
+main()
