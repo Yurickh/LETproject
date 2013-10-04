@@ -7,6 +7,7 @@ This file is responsible for the implementation of the base types of our program
 from abc import *
 import hashlib
 
+
 from lang.pt_br import *
 
 class IfBaseType:
@@ -88,7 +89,7 @@ class Name(IfBaseType):
 			if len(value) == 0:
 				raise ValueError(EXCEPTION_INV_NM_S)
 			else:
-				if isalnum(value) == False:
+				if str.isalnum(value) == False:
 					raise ValueError(EXCEPTION_INV_NM_F)
 	
 class Matric(IfBaseType):
@@ -209,9 +210,9 @@ class Link(IfBaseType):
 		"""Class validator.
 		It is responsible for the validation of the link. If the length of the link is zero, or it has non-alphanumeric chars it will raise an exception.
 		"""
-		if(len(value) == 0):
+		if len(value) == 0:
 			raise ValueError(EXCEPTION_INV_LK_S)
-		elif(isalnum(value) == False):
+		elif str.isalnum(value.replace("/", "")) == False:
 			raise ValueError(EXCEPTION_INV_LK_F)
 
 class Grades(IfBaseType):
@@ -234,9 +235,9 @@ class Grades(IfBaseType):
 		"""Class validator.
 		It is responsible for the validation of the grade. If the integer is smaller than zero, or bigger than one hundred, it will raise an exception.
 		"""
-		if(value < 0):
+		if value < 0:
 			raise ValueError(EXCEPTION_INV_GR_S)
-		elif(value > 100):
+		elif value > 100:
 			raise ValueError(EXCEPTION_INV_GR_B)
 
 class Mail(IfBaseType):
@@ -289,7 +290,7 @@ class ExType(IfBaseType):
 		"""Class validator.
 		It is responsible for the validation of the exercise type. If the integer is zero or smaller than zero it will raise in an exception
 		"""
-		if(value <= 0):
+		if value <= 0:
 			raise ValueError(EXCEPTION_INV_ET_S)
 
 class Id(IfBaseType):

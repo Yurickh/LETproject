@@ -1,19 +1,21 @@
+# coding: utf-8
 from baseUnit import *
 BIG_WORD = "aufnKENFKJAGLANGLIERGBLIAEURGBLIBIBibiubagaiurbgpaurbglaurbgluabwerbuygewranrgabrfgbklfsdagbrablrkjblkbglksfbglsdbfglkdbjgkhslkgjsdlkfhgsldkjfglksjdhfgliutgrurgukrkurg ieur iseu  m gjsenrgsnerglse ikansrnfgakwurengueniusenuseinoiseurngusierngolurseingeiurglnsegbrablrkjblkbglksfbglsdbfglkdbjgkhslkgjsdlkfhgsldkjfglksjdhfgliutgrurgukrkurg ieur iseu  m gjsenrgsnerglse ikansrnfgakwurengueniusenuseinoiseurngusierngolurseingeiurglnsegbrablrkjblkbglksfbglsdbfglkdbjgkhslkgjsdlkfhgsldkjfglksjdhfgliutgrurgukrkurg ieur iseu  m gjsenrgsnerglse ikansrnfgakwurengueniusenuseinoiseurngusierngolurseingeiurglnsegbrablrkjblkbglksfbglsdbfglkdbjgkhslkgjsdlkfhgsldkjfglksjdhfgliutgrurgukrkurg ieur iseu  m gjsenrgsnerglse ikansrnfgakwurengueniusenuseinoiseurngusierngolurseingeiurglnsegbrablrkjblkbglksfbglsdbfglkdbjgkhslkgjsdlkfhgsldkjfglksjdhfgliutgrurgukrkurg ieur iseu  m gjsenrgsnerglse ikansrnfgakwurengueniusenuseinoiseurngusierngolurseingeiurglnsegbrablrkjblkbglksfbglsdbfglkdbjgkhslkgjsdlkfhgsldkjfglksjdhfgliutgrurgukrkurg ieur iseu  m gjsenrgsnerglse ikansrnfgakwurengueniusenuseinoiseurngusierngolurseingeiurglnsegbrablrkjblkbglksfbglsdbfglkdbjgkhslkgjsdlkfhgsldkjfglksjdhfgliutgrurgukrkurg ieur iseu  m gjsenrgsnerglse ikansrnfgakwurengueniusenuseinoiseurngusierngolurseingeiurglnse	"
+
 class Test:
 	__value = None
 
-	def _test(testValue, classtype):
+	def test(self, classtype, testValue):
 
-		print "Testando o" + classtype.__class__.__name__ + ":"
 		try: 
-			__value = classtype(testValue)
-			classtype.setValue(__value)
-			aux = classtype.getValue(__value)
-			if aux != testValue:
+			self.__value = classtype(testValue)
+			self.__value.setValue(testValue)
+			aux = self.__value.getValue()
+			if aux != testValue: 
 				raise ValueError(EXCEPTION_TEST_INV_GET)
 		except ValueError as exc:
-			print EXCEPTION_TEST_PREFIX + exc
+			print EXCEPTION_TEST_PREFIX
+			print exc
 
 def main():
 	test = Test()
@@ -21,70 +23,96 @@ def main():
 #Testing Passsword
 #valid
 	print "Testing 'Oieusouogoku' for the class Password."
-	test._test(Password, "Oieusouogoku")
-	print "Testing '123 a´aed' for the class Password."
-	test._test(Password, "123 a´aed")
+	test.test(Password, "Oieusouogoku")
+	print "Testing '123 aaed' for the class Password."
+	test.test(Password, "123 aaed")
 
 #invalid
 	print "Testing 'None' for the class Password."
-	test._test(Password, "")
+	test.test(Password, "")
 	print"Testing 'abc' for the class Password."
-	test._test(Password, "abc")
+	test.test(Password, "abc")
+	print " "
 
 #testing Name
 #valid
 	print "Testing 'Joao Calmon Anisio Teixeira' for the class Name."
-	test._test(Name, "Joao Calmon Anisio Teixeira")
+	test.test(Name, "Joao Calmon Anisio Teixeira")
 
 #invalid
 	print "Testing 'Joao Calmon Anisio Teixeira Icc Sul Icc Norte' for the class Name."
-	test._test(Name, "Joao Calmon Anisio Teixeira Icc Sul Icc Norte")
-	print "Testing 'Abigail 123 ~´'[{' for the class Name."
-	test._test(Name, "Abigail 123 ~´'[{")
-	print "Testing 'Joao Calmon Anisio Teixeira Icc Sul Icc Norte }}' for the class Name.'
-	test._test(Name, "Joao Calmon Anisio Teixeira Icc Sul Icc Norte }}")
+	test.test(Name, "Joao Calmon Anisio Teixeira Icc Sul Icc Norte")
+	print "Testing 'Abigail 123 [{' for the class Name."
+	test.test(Name, "Abigail 123 [{")
+	print "Testing 'Joao Calmon Anisio Teixeira Icc Sul Icc Norte ]]' for the class Name."
+	test.test(Name, "Joao Calmon Anisio Teixeira Icc Sul Icc Norte ]]")
+	print " "
 
 #testing Matric
 #valid
 	print "Testing '2' for the class Matric."
-	test._test(Matric, 2)
+	test.test(Matric, 2)
 	print "Testing '999999' for the class Matric."
-	test._test(Matric, 999999)
+	test.test(Matric, 999999)
+
 #invalid
 	print "Testing '9999999999999' for the class Matric."
-	test._test(Matric, 9999999999999)
+	test.test(Matric, 9999999999999)
 	print "Testin '0' for the class Matric."
-	test._test(Matric, 0)
+	test.test(Matric, 0)
+	print " "
 
 #testing PlainText
 #valid
 	print "Testing 'Oi? Ele sincronizou com a coisa la. Baixa a master pra ca! Nao, sua master ta aqui.' for the class PlainText."
-	test._test(PlainText, "Oi? Ele sincronizou com a coisa la. Baixa a master pra ca! Nao, sua master ta aqui.")
+	test.test(PlainText, "Oi? Ele sincronizou com a coisa la. Baixa a master pra ca! Nao, sua master ta aqui.")
 
 
 #invalid
 	print "Testing 'BIG_WORD' for the class PlainText."
-	test._test(PlainText, BIG_WORD)
+	test.test(PlainText, BIG_WORD)
+	print " "
 
 #testing Campus
 #valid
 	print "Testing '3' for the class Campus."
-	test._test(Campus, 3)
+	test.test(Campus, 3)
+
 #invalid
 	print "Testing '0' for the class Campus."
-	test._test(Campus, 0)
+	test.test(Campus, 0)
+	print " "
 
-#testing
+#testing Sex
+	for  asc in range(0,127):
+		print "Testing " + str(chr(asc)) + " for the class Sex."
+		test.test(Sex, chr(asc))
+	print " "
+	
+#testing Link
 #valid
-	print "Testing '' for the class 
+	print "Testing 'exercicios/bankai' for the class Link."
+	test.test(Link, "exercicios/bankai")
+
 #invalid
+	print "Testing 'None' for the class Link."
+	test.test(Link, "")
+	print "Testing 'oi eu sou o goku.huehue.br' for the class Link."
+	test.test(Link, "oi eu sou o goku.huehue.br")
+	print "Testing 'Estástríngtêmcarácterêsacentuádos' for the class Link."
+	test.test(Link, "Estástríngtêmcarácterêsacentuádos")
+	print " "
 
+#testing ExType
+#valid
+	print "Testing '' for the class ExType."
+	test.test(ExType, 5)
 
-
-
-
-
-
-
+#invalid
+	print "Testing '0' for the class ExType."
+	test.test(ExType, 0)
+	print "Testing '-2' for the class ExType."
+	test.test(ExType, -2)
+	print " "
 
 main()
