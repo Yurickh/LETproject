@@ -261,7 +261,9 @@ class Mail(IfBaseType):
 		It is responsible for the validation of the Mail. If the value is null, or if it has blank spaces, more than one '@', and less 			than one '.' after the '@', it will raise an exception.
 		"""
 		if len(value) == 0:
-			raise ValueError(EXCEPTION_INV_ML_S)
+			raise ValueError(EXCEPTION_INV_ML_F)
+		elif " " in value:
+			raise ValueError(EXCEPTION_INV_ML_F)
 		elif value.count('@') == 1:
 			if value[value.index('@'):].count('.') < 1:
 				raise ValueError(EXCEPTION_INV_ML_F)
