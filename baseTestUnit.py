@@ -1,5 +1,8 @@
 # coding: utf-8
+
 from baseUnit import *
+
+
 BIG_WORD = "aufnKENFKJAGLANGLIERGBLIAEURGBLIBIBibiubagaiurbgpaurbglaurbgluabwerbuygewranrgabrfgbklfsdagbrablrkjblkbglksfbglsdbfglkdbjgkhslkgjsdlkfhgsldkjfglksjdhfgliutgrurgukrkurg ieur iseu  m gjsenrgsnerglse ikansrnfgakwurengueniusenuseinoiseurngusierngolurseingeiurglnsegbrablrkjblkbglksfbglsdbfglkdbjgkhslkgjsdlkfhgsldkjfglksjdhfgliutgrurgukrkurg ieur iseu  m gjsenrgsnerglse ikansrnfgakwurengueniusenuseinoiseurngusierngolurseingeiurglnsegbrablrkjblkbglksfbglsdbfglkdbjgkhslkgjsdlkfhgsldkjfglksjdhfgliutgrurgukrkurg ieur iseu  m gjsenrgsnerglse ikansrnfgakwurengueniusenuseinoiseurngusierngolurseingeiurglnsegbrablrkjblkbglksfbglsdbfglkdbjgkhslkgjsdlkfhgsldkjfglksjdhfgliutgrurgukrkurg ieur iseu  m gjsenrgsnerglse ikansrnfgakwurengueniusenuseinoiseurngusierngolurseingeiurglnsegbrablrkjblkbglksfbglsdbfglkdbjgkhslkgjsdlkfhgsldkjfglksjdhfgliutgrurgukrkurg ieur iseu  m gjsenrgsnerglse ikansrnfgakwurengueniusenuseinoiseurngusierngolurseingeiurglnsegbrablrkjblkbglksfbglsdbfglkdbjgkhslkgjsdlkfhgsldkjfglksjdhfgliutgrurgukrkurg ieur iseu  m gjsenrgsnerglse ikansrnfgakwurengueniusenuseinoiseurngusierngolurseingeiurglnsegbrablrkjblkbglksfbglsdbfglkdbjgkhslkgjsdlkfhgsldkjfglksjdhfgliutgrurgukrkurg ieur iseu  m gjsenrgsnerglse ikansrnfgakwurengueniusenuseinoiseurngusierngolurseingeiurglnse	"
 
 class Test:
@@ -24,8 +27,9 @@ def main():
 #valid
 	print "Testing 'Oieusouogoku' for the class Password."
 	test.test(Password, "Oieusouogoku")
-	print "Testing '123 aaed' for the class Password."
-	test.test(Password, "123 aaed")
+
+	print "Testing '123 a´aed' for the class Password."
+	test.test(Password, "123 a´aed")
 
 #invalid
 	print "Testing 'None' for the class Password."
@@ -103,6 +107,47 @@ def main():
 	test.test(Link, "Estástríngtêmcarácterêsacentuádos")
 	print " "
 
+
+#testing Mail
+#valid
+	print "Testing a valid email."
+	test.test(Mail, "testando@hotmail.com")
+#invalid
+	print "Testing an email with a blank space."
+	test.test(Mail, "arroba @hotmail.com")
+	print "Testing a null email"
+	test.test(Mail, None)
+	print "Testing an email with more than one '@'."
+	test.test(Mail, "arroba@@hotmail.com")
+	print "Testing an email with less than one '.'."
+	test.test(Mail, "fernando@gmailcom")
+
+#testing grades
+#valid 
+	print "Testing a valid grade."
+	test.test(Grades, "88")
+#invalid
+	print "Testing a grade that is smaller than zero"
+	test.test(Grades, "-45")
+	print "Testing a grade that is bigger than onde hundred."
+	test.test(Grades, "105")
+	
+#testing Id
+#valid
+	print "Testing a valid Id."
+	test.test(Id, "15")
+#invalid
+	print "Testing an Id that is less than 1."
+	test.test(Id, "0")
+
+#testing language
+#valid
+	print "Testing valid language."
+	test.test(Language, "60")
+#invalid
+	print "Testing language with a value less than 1"
+	test.test(Language, "0")
+
 #testing ExType
 #valid
 	print "Testing '' for the class ExType."
@@ -115,4 +160,3 @@ def main():
 	test.test(ExType, -2)
 	print " "
 
-main()
