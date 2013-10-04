@@ -89,7 +89,7 @@ class Name(IfBaseType):
 			if len(value) == 0:
 				raise ValueError(EXCEPTION_INV_NM_S)
 			else:
-				if str.isalnum(value) == False:
+				if str.isalnum(value.replace(" ", "")) == False:
 					raise ValueError(EXCEPTION_INV_NM_F)
 	
 class Matric(IfBaseType):
@@ -262,11 +262,14 @@ class Mail(IfBaseType):
 		"""
 		if len(value) == 0:
 			raise ValueError(EXCEPTION_INV_ML_S)
+		elif str.isalnum(value.replace("@", "").replace(".", "")) == False:
+			raise ValueError(EXCEPTION_INV_ML_F)
 		elif value.count('@') == 1:
 			if value[value.index('@'):].count('.') < 1:
 				raise ValueError(EXCEPTION_INV_ML_F)
 		else:
 			raise ValueError(EXCEPTION_INV_ML_F)
+		
 
 class ExType(IfBaseType):
 	""" Class responsible for storing a given integer that represents the exercise type
@@ -335,20 +338,6 @@ class Language(IfBaseType):
 		"""
 		if value < 1:
 			raise ValueError(EXCEPTION_INV_LG_S)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
