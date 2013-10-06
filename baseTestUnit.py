@@ -110,43 +110,43 @@ def main():
 
 #testing Mail
 #valid
-	print "Testing a valid email."
+	print "Testing 'testando@hotmail.com' for the class Mail."
 	test.test(Mail, "testando@hotmail.com")
 #invalid
-	print "Testing an email with a blank space."
+	print "Testing 'arroba @hotmail.com' for the class Mail."
 	test.test(Mail, "arroba @hotmail.com")
-	print "Testing a null email"
+	print "Testing '' for the clas Mail"
 	test.test(Mail, "")
-	print "Testing an email with more than one '@'."
+	print "Testing 'arroba@@hotmail.com' for the class Mail."
 	test.test(Mail, "arroba@@hotmail.com")
-	print "Testing an email with less than one '.'."
+	print "Testing 'fernando@gmailcom' for the class Mail."
 	test.test(Mail, "fernando@gmailcom")
 
 #testing grades
 #valid 
-	print "Testing a valid grade."
-	test.test(Grades, "88")
+	print "Testing '88' for the class grade."
+	test.test(Grades, 88)
 #invalid
-	print "Testing a grade that is smaller than zero"
-	test.test(Grades, "-45")
-	print "Testing a grade that is bigger than onde hundred."
-	test.test(Grades, "105")
+	print "Testing '-45' for the class Grade"
+	test.test(Grades, -45)
+	print "Testing '105' for the class Grade."
+	test.test(Grades, 105)
 	
 #testing Id
 #valid
-	print "Testing a valid Id."
-	test.test(Id, "15")
+	print "Testing '15' for the class Id."
+	test.test(Id, 15)
 #invalid
-	print "Testing an Id that is less than 1."
-	test.test(Id, "0")
+	print "Testing '0' for the class Id."
+	test.test(Id, 0)
 
 #testing language
 #valid
-	print "Testing valid language."
-	test.test(Language, "60")
+	print "Testing '60' for the class language."
+	test.test(Language, 60)
 #invalid
-	print "Testing language with a value less than 1"
-	test.test(Language, "0")
+	print "Testing '0' for he class language."
+	test.test(Language, 0)
 
 #testing ExType
 #valid
