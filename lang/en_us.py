@@ -1,5 +1,7 @@
 # coding: utf-8
 
+#ATUALIZAR ALGUMAS EXCEPTION_INV_X_F ADICIONADAS NO pt_br POREM NÃO ATUALIZADAS AQUI.
+
 EXCEPTION_INV_PW_S = "The password must be at least 6 characters long."
 EXCEPTION_INV_NM_B = "The name must not have more than 32 characters."
 EXCEPTION_INV_NM_S = "The name field can't be empty."
