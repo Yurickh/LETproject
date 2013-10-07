@@ -115,7 +115,9 @@ class Matric(IfBaseType):
 			It is responsible for checking if the registry number is bigger than the max allowed (999999999) or smaller than 1.
 
 		"""
-		if value > 999999999:
+		if is_number(value) == False:
+			raise ValueError(EXCEPTION_INV_MT_F)			
+		elif value > 999999999:
 			raise ValueError(EXCEPTION_INV_MT_B)
 		elif value < 1:
 			raise ValueError(EXCEPTION_INV_MT_S)
