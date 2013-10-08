@@ -89,7 +89,7 @@ class Name(IfBaseType):
 			if len(value) == 0:
 				raise ValueError(EXCEPTION_INV_NM_S)
 			else:
-				if str.isalnum(value) == False:
+				if str.isalnum(value.replace(" ", "")) == False:
 					raise ValueError(EXCEPTION_INV_NM_F)
 	
 class Matric(IfBaseType):
@@ -115,6 +115,9 @@ class Matric(IfBaseType):
 			It is responsible for checking if the registry number is bigger than the max allowed (999999999) or smaller than 1.
 
 		"""
+		try: int(value)
+		except ValueError: raise ValueError(EXCEPTION_INT_MT_F)
+
 		if value > 999999999:
 			raise ValueError(EXCEPTION_INV_MT_B)
 		elif value < 1:
@@ -163,6 +166,10 @@ class Campus(IfBaseType):
 		"""Class validator.
 		It is responsible for validating the campus id. If the number of the campus is under 0, it will raise an exception.
 		"""
+
+		try: int(value)
+		except ValueError: raise ValueError(EXCEPTION_INV_CP_F)
+
 		if value <= 0:
 			raise ValueError(EXCEPTION_INV_CP_S)
 
@@ -235,6 +242,10 @@ class Grades(IfBaseType):
 		"""Class validator.
 		It is responsible for the validation of the grade. If the integer is smaller than zero, or bigger than one hundred, it will raise an exception.
 		"""
+
+		try: int(value)
+		except ValueError: raise ValueError(EXCEPTION_INV_GR_F)
+
 		if value < 0:
 			raise ValueError(EXCEPTION_INV_GR_S)
 		elif value > 100:
@@ -261,14 +272,15 @@ class Mail(IfBaseType):
 		It is responsible for the validation of the Mail. If the value is null, or if it has blank spaces, more than one '@', and less 			than one '.' after the '@', it will raise an exception.
 		"""
 		if len(value) == 0:
-			raise ValueError(EXCEPTION_INV_ML_F)
-		elif " " in value:
+			raise ValueError(EXCEPTION_INV_ML_S)
+		elif str.isalnum(value.replace("@", "").replace(".", "")) == False:
 			raise ValueError(EXCEPTION_INV_ML_F)
 		elif value.count('@') == 1:
 			if value[value.index('@'):].count('.') < 1:
 				raise ValueError(EXCEPTION_INV_ML_F)
 		else:
 			raise ValueError(EXCEPTION_INV_ML_F)
+		
 
 class ExType(IfBaseType):
 	""" Class responsible for storing a given integer that represents the exercise type
@@ -290,11 +302,15 @@ class ExType(IfBaseType):
 		"""Class validator.
 		It is responsible for the validation of the exercise type. If the integer is zero or smaller than zero it will raise in an exception
 		"""
+
+		try: int(value)
+		except ValueError: raise ValueError(EXCEPTION_INV_ET_F)
+
 		if value <= 0:
 			raise ValueError(EXCEPTION_INV_ET_S)
 
 class Id(IfBaseType):
-	"""Class responsible for storing the Id.
+	"""Class responsible for storing an Id.
 	"""
 	_value = None
 
@@ -335,22 +351,12 @@ class Language(IfBaseType):
 		"""Class validator.
 		It is responsible for the validation of the language. If it is less than 1, it will raise an exception. 
 		"""
+
+		try: int(value)
+		except ValueError: raise ValueError(EXCEPTION_INV_LG_F)
+
 		if value < 1:
-			raise ValueError(EXCEPTION_INV_LG_S)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+			raise ValueError(EXCEPTION_INV_LG_F)
 
 
 
