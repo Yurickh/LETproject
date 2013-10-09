@@ -219,7 +219,7 @@ class Link(IfBaseType):
 		"""
 		if len(value) == 0:
 			raise ValueError(EXCEPTION_INV_LK_S)
-		elif str.isalnum(value.replace("/", "")) == False:
+		elif str.isalnum(value.replace("/", "")) == False and value.replace("/", "") != "":
 			raise ValueError(EXCEPTION_INV_LK_F)
 
 class Grades(IfBaseType):
