@@ -6,7 +6,7 @@ class TestUnit:
 	
 	def test(self, info, classtype):
 		print "------------------------------------------"
-		print "Testing " + str(info) + " into an " + str(classtype)
+		print "Testing " + str(info) + " into a " + str(classtype)
 		print "------------------------------------------"
 
 		classType = globals()[classtype]
