@@ -34,7 +34,3 @@ EXCEPTION_INV_ET_F = "Invalid exercise type."
 EXCEPTION_INV_ID_S = "The Id has to be greater than zero."
 
 EXCEPTION_INV_LG_F = "Invalid language."
-
-EXCEPTION_TEST_PREFIX = "An Error has been ocurred."
-EXCEPTION_TEST_INV_GET = "An Error has ocurred in the getValue method."
-

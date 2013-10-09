@@ -56,8 +56,3 @@ EXCEPTION_INV_ID_S = "O campo Id deve ser maior ou igual a 1."
 
 EXCEPTION_INV_LG_F = "Idioma invalido."
 """ Error message for an inexistent language."""
-
-EXCEPTION_TEST_PREFIX = "Ocorreu um erro:"
-""" Prefix used to compose the error message"""
-EXCEPTION_TEST_INV_GET = "Ocorreu um erro no metodo getValue"
-""" Error message for the getValue error."""

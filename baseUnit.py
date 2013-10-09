@@ -329,6 +329,10 @@ class Id(IfBaseType):
 		"""Class validator.
 		It is responsible for the validation of the Id. If the Id number is less than 1, it will raise an exception.
 		"""
+
+		try: int(value)
+		except ValueError: raise ValueError(EXCEPTION_INV_ID_F)
+
 		if value < 1:
 			raise ValueError(EXCEPTION_INV_ID_S)
 

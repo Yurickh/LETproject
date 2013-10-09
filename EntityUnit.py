@@ -18,14 +18,14 @@ class User:
 
 	@name.setter
 	def name(self, value):
-		if isinstance(value, Name):
+		if type(value) is Name:
 			self._name = value
 		else:
 			raise ValueError(EXCEPTION_INV_USR_NM)
 
 	@password.setter
 	def password(self, password):
-		if isinstance(password, Password):
+		if type(password) is Password:
 			self._password = password
 		else:
 			raise ValueError(EXCEPTION_INV_USR_PW)
@@ -72,7 +72,7 @@ class Professor(User):
 
 	@matric.setter
 	def matric(self, value):
-		if isinstance(value, Matric):
+		if type(value) is Matric:
 			self.__matric = value
 		else:
 			raise ValueError(EXCEPTION_INV_PRF_MT)
@@ -87,7 +87,7 @@ class Professor(User):
 
 	@bios.setter
 	def bios(self, bios):
-		if isinstance(bios, PlainText):
+		if type(bios) is PlainText:
 			self.__bios = bios
 		else:
 			raise ValueError(EXCEPTION_INV_PRF_BS)
@@ -102,7 +102,7 @@ class Professor(User):
 
 	@campus.setter
 	def campus(self, campus):
-		if isinstance(campus, Campus):
+		if type(campus) is Campus:
 			self.__campus = campus
 		else:
 			raise ValueError(EXCEPTION_INV_PRF_CP)
@@ -117,7 +117,7 @@ class Professor(User):
 
 	@courses.setter
 	def courses(self, courses):
-		if type(courses) is list and (isinstance(courses[0], Id) or not courses):
+		if type(courses) is list and (type(courses[0]) is Id or not courses):
 			self.__courses = courses
 		else:
 			raise ValueError(EXCEPTION_INV_PRF_CS)
@@ -132,7 +132,7 @@ class Professor(User):
 
 	@avatar.setter
 	def avatar(self, avatar):
-		if isinstance(avatar, Link):
+		if type(avatar) is Link:
 			self.__avatar = avatar
 		else:
 			raise ValueError(EXCEPTION_INV_PRF_AV)
@@ -147,7 +147,7 @@ class Professor(User):
 
 	@sex.setter
 	def sex(self, sex):
-		if isinstance(sex, Sex):
+		if type(sex) is Sex:
 			self.__sex = sex
 		else:
 			raise ValueError(EXCEPTION_INV_PRF_SX)
@@ -155,3 +155,5 @@ class Professor(User):
 	@sex.deleter
 	def sex(self):
 		del self.__sex
+
+prof = Professor(Name("lolllllll"), Password("Hauschild1"), Matric(120024136), PlainText("abacate"), Campus(2), [Id(1), Id(2)], Link("/"), Sex("M"))
