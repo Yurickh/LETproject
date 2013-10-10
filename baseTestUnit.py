@@ -14,21 +14,21 @@ class TestUnit:
 		try:
 			testing = classType(info);
 			print "No errors ocurred in the object's creation process."
-			testing.setValue(info);
+			testing.value = info;
 			print "No errors ocurred in the object's setValue() execution."
 		except ValueError as exc:
 			print exc
 			return False
 		else:
 			if classtype == "Password":
-				if hashlib.md5(hashlib.sha256(info).hexdigest()).hexdigest() != testing.getValue():
+				if hashlib.md5(hashlib.sha256(info).hexdigest()).hexdigest() != testing.value:
 					print "Error: Invalid getValue() return expression."
 					return False
 				else:
 					print "No error ocurred in the object's getValue() execution."
 					return True
 			else:
-				if info != testing.getValue():
+				if info != testing.value:
 					print "Error: Invalid getValue() return expression."
 					return False
 				else:

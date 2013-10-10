@@ -1,7 +1,7 @@
 #coding: utf-8
 
 """ Here lies all the code regarding the structure of the entities of this program.
-	Entities shall not have methods beside the basics set, get and del methods for their properties.
+	Entities shall not have methods beside the basics set, get and del methods for their properties. This file have 666 lines propositally.
 """
 
 from BaseUnit import *

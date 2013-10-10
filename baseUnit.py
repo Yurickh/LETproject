@@ -20,17 +20,18 @@ class IfBaseType:
 		That means that a derived class can be instantiated if - and only if - it overrides all its abstract property and methods.
 	"""
 
-	def getValue(self):
+	@property
+	def value(self):
 		return self._value
 
-	def setValue(self, value):
-		self._validate(value)
-		self._value = value
+	@value.setter
+	def value(self, aux):
+		self._validate(aux)
+		self._value = aux
 
-	def delValue(self):
+	@value.deleter
+	def value(self):
 		del self._value
-
-	_value = abstractproperty(getValue, setValue, delValue)
 
 	@abstractmethod
 	def _validate(self, value): pass
@@ -58,7 +59,12 @@ class Password(IfBaseType):
 		if(len(value) < 6):
 			raise ValueError(EXCEPTION_INV_PW_S)
 
-	def setValue(self, value):
+	@property
+	def value(self):
+		return self._value
+
+	@value.setter
+	def value(self, value):
 		"""Overrides the IfBaseType setValue() for the sake of hashing."""
 		self._validate(value)
 		self._value = hashlib.md5(hashlib.sha256(value).hexdigest()).hexdigest()

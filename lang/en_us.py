@@ -33,6 +33,7 @@ EXCEPTION_INV_ET_S = "The exercise type must be greater than zero"
 EXCEPTION_INV_ET_F = "Invalid exercise type."
 
 EXCEPTION_INV_ID_S = "The Id has to be greater than zero."
+EXCEPTION_INV_ID_F = "Invalid value for the ID field."
 
 EXCEPTION_INV_LG_F = "Invalid language."
 

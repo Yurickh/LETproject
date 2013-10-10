@@ -54,6 +54,8 @@ EXCEPTION_INV_GR_F = "A nota deve ser um valor numérico."
 
 EXCEPTION_INV_ID_S = "O campo Id deve ser maior ou igual a 1."
 """ Error message for an Id too small."""
+EXCEPTION_INV_ID_F = "Valor inválido para o campo ID."
+""" Error message for an invalid value for Id. """
 
 EXCEPTION_INV_LG_F = "Idioma invalido."
 """ Error message for an inexistent language."""
