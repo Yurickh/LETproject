@@ -497,3 +497,78 @@ class Module:
 	@lessons.deleter
 	def lessons(self):
 		del self.__lessons
+
+class Lesson:
+	""" One of the building blocks behind everything: lessons.
+		They're capable of being about everything you want them do be. Video, audio, slideshow, anything. Just put what you wanna show in the html file and store it as a link. Be happy, then.
+	"""
+
+	def __init__(self, name, thisId, link, exercises):
+		try:
+			self.name = name
+			self.thisId = thisId
+			self.link = link
+			self.exercises = exercises
+		except ValueError as exc:
+			del self
+			raise exc
+
+	@property
+	def name(self):
+		return self.__name
+
+	@name.setter
+	def name(self, name):
+		if type(name) is Name:
+			self.__name = name
+		else:
+			raise ValueError(EXCEPTION_INV_LS_NM)
+
+	@name.deleter
+	def name(self):
+		del self.__name
+
+	@property
+	def thisId(self):
+		return self.__thisId
+
+	@thisId.setter
+	def thisId(self, thisId):
+		if type(thisId) is Id:
+			self.__thisId = thisId
+		else:
+			raise ValueError(EXCEPTION_INV_LS_ID)
+
+	@thisId.deleter
+	def thisId(self):
+		del self.__thisId
+
+	@property
+	def link(self):
+		return self.__link
+
+	@link.setter
+	def link(self, link):
+		if type(link) is Link:
+			self.__link = link
+		else:
+			raise ValueError(EXCEPTION_INV_LS_LK)
+
+	@link.deleter
+	def link(self):
+		del self.__link
+
+	@property
+	def exercises(self):
+		return self.__exercises
+
+	@exercises.setter
+	def exercises(self, exercises):
+		if type(exercises) is list and (type(exercises[0]) is Id or not exercises):
+			self.__exercises = exercises
+		else:
+			raise ValueError(EXCEPTION_INV_LS_ST)
+
+	@exercises.deleter
+	def exercises(self):
+		del self.__exercises
