@@ -363,7 +363,7 @@ class Student(User):
 
 class Courses:
 	""" The master level of organization of the system.
-		A course holds modules, that holds lessons, that holds exercises. They're basically the highest level of abstraction in this system. Usually, one professor will be given an empty course, from wich it'll build the smaller parts of his student's journey.
+		A course holds modules, that holds lessons, that holds exercises. They're basically the highest level of abstraction in this system. Usually, one professor will be given an empty course, from wich he'll build the smaller parts of his student's journey.
 	"""
 
 	def __init__(self, name, thisId, students, modules):
@@ -572,3 +572,95 @@ class Lesson:
 	@exercises.deleter
 	def exercises(self):
 		del self.__exercises
+
+class Exercise:
+	""" The main learning unit of the system. 
+		It is by exercising that humans do learn a new skill. This is a very important class, then. Take care of it.
+	"""
+
+	def __init__(self, thisId, link, extType, format, items):
+		try:
+			self.thisId = thisId
+			self.link = link
+			self.exType = exType
+			self.format = format
+			self.items = items
+		except VaelueError as exc:
+			del self
+			raise exc
+
+
+	@property
+	def thisId(self):
+		return self.__thisId
+
+	@thisId.setter
+	def thisId(self, thisId):
+		if type(thisId) is Id:
+			self.__thisId = thisId
+		else:
+			raise ValueError(EXCEPTION_INV_EX_ID)
+
+	@thisId.deleter
+	def thisId(self):
+		del self.__thisId
+
+	@property
+	def link(self):
+		return self.__link
+
+	@link.setter
+	def link(self, link):
+		if type(link) is Link:
+			self.__link = link
+		else:
+			raise ValueError(EXCEPTION_INV_EX_LK)
+
+	@link.deleter
+	def link(self):
+		del self.__link
+
+	@property
+	def exType(self):
+		return self.__exType
+
+	@exType.setter
+	def exType(self, exType):
+		if type(exType) is ExType:
+			self.__exType = exType
+		else:
+			raise ValueError(EXCEPTION_INV_EX_ET)
+
+	@exType.deleter
+	def exType(self):
+		del self.__exType
+
+	@property
+	def format(self):
+		return self.__format
+
+	@format.setter
+	def format(self, format):
+		if type(format) is Id:
+			self.__format = format
+		else:
+			raise ValueError(EXCEPTION_INV_EX_FT)
+
+	@format.deleter
+	def format(self):
+		del self.__format
+
+	@property
+	def items(self):
+		return self.__items
+
+	@items.setter
+	def items(self, items):
+		if type(items) is list and (type(items[0]) is Id or not items):
+			self.__items = items
+		else:
+			raise ValueError(EXCEPTION_INV_EX_IT)
+
+	@items.deleter
+	def items(self):
+		del self.__items
