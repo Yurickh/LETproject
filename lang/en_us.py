@@ -1,5 +1,6 @@
 # coding: utf-8
 
+#Exceptions for the basic types.
 
 EXCEPTION_INV_PW_S = "The password must be at least 6 characters long."
 
@@ -38,3 +39,24 @@ EXCEPTION_INV_LG_F = "Invalid language."
 EXCEPTION_TEST_PREFIX = "An Error has been ocurred."
 EXCEPTION_TEST_INV_GET = "An Error has ocurred in the getValue method."
 
+#Exceptions for the entitiy types.
+
+EXCEPTION_INV_USR_NM = "Invalid user name."
+EXCEPTION_INV_USR_PW = "Invalid user's password."
+
+EXCEPTION_INV_PRF_MT = "An error has ocurred with the professor's registration number."
+EXCEPTION_INV_PRF_BS = "An error has ocurred with the professor's bios."
+EXCEPTION_INV_PRF_CP = "An error has ocurred with the professor's campus."
+EXCEPTION_INV_PRF_CS = "An error has ocurred with the professor's courses. "
+EXCEPTION_INV_PRF_AV = "An error has ocurred with the professor's avatar."
+EXCEPTION_INV_PRF_SX = "An error has ocurred with the professor's sex."
+
+EXCEPTION_INV_STU_MT = "Invalid student's registrantion number."
+EXCEPTION_INV_STU_BS = "Invalid student's bios."
+EXCEPTION_INV_STU_CP = "Invalid student's campus."
+EXCEPTION_INV_STU_AV = "Invalid student's avatar."
+EXCEPTION_INV_STU_SX = "Invalid student's sex."
+EXCEPTION_INV_STU_ML = "Invalid student's mail."
+EXCEPTION_INV_STU_GR = "Student's grades is in an invalid format."
+EXCEPTION_INV_STU_IN = "Student's interests is in an invalid format."
+EXCEPTION_INV_STU_LN = "The selected language does not exist."
