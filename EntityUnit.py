@@ -4,7 +4,7 @@
 	Entities shall not have methods beside the basics set, get and del methods for their properties.
 """
 
-from baseUnit import *
+from BaseUnit import *
 from abc import *
 from lang.pt_br import *
 
@@ -255,7 +255,7 @@ class Student(User):
 
 	@courses.setter
 	def courses(self, courses):
-		if type(courses[0]) is Id or not courses) and type(courses) is list :
+		if (type(courses[0]) is Id or not courses) and type(courses) is list :
 			self.__courses = courses
 		else:
 			raise ValueError(EXCEPTION_INV_STU_CO)
