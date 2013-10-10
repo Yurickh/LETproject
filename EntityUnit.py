@@ -157,12 +157,12 @@ class Professor(User):
 	def sex(self):
 		del self.__sex
 
-class Courses():
+class Courses:
 
-	def __init__(self, name, courseId, students, modules):
+	def __init__(self, name, thisId, students, modules):
 		try:
 			self.name = name
-			self.courseI = courseId
+			self.thisId = thisId
 			self.students = students
 			self.modules = modules
 		except ValueError as exc:
@@ -180,13 +180,13 @@ class Courses():
 			raise ValueError(EXCEPTION_INV_CRS_NM)
 
 	@property
-	def courseId(self):
-		return self.__courseId
+	def thisId(self):
+		return self.__thisId
 
-	@courseId.setter
-	def courseId(self, courseId):
-		if type(courseId) is Id:
-			self.__courseId = courseId
+	@thisId.setter
+	def thisId(self, thisId):
+		if type(thisId) is Id:
+			self.__thisId = thisId
 		else:
 			raise ValueError(EXCEPTION_INV_CRS_ID)
 
@@ -196,7 +196,7 @@ class Courses():
 
 	@students.setter
 	def students(self, students):
-		if hasattr(students, "index") and type(students[0]) is Id:
+		if type(students) is list and (type(students[0]) is Id or not students):
 			self.__students = students
 		else:
 			raise ValueError(EXCEPTION_INV_CRS_ST)
@@ -207,7 +207,7 @@ class Courses():
 
 	@modules.setter
 	def modules(self, modules):
-		if hasattr(modules, "index") and type(modules[0]) is Id:
+		if type(modules) is list and (type(modules[0]) is Id or not modules):
 			self.__modules = modules
 		else:
 			raise ValueError(EXCEPTION_INV_CRS_MD)
@@ -216,9 +216,9 @@ class Courses():
 	def delName(self):
 		del _name
 
-	@courseId.deleter
-	def delCourseId(self):
-		del _courseId
+	@thisId.deleter
+	def delthisId(self):
+		del _thisId
 
 	@students.deleter
 	def delStudents(self):
@@ -227,3 +227,56 @@ class Courses():
 	@modules.deleter
 	def delModules(self):
 		del _modules
+
+
+class Module:
+	
+	def __init__(self, name, thisId, lectureIdList):
+		try:
+			self.name = name
+			self.thisId = thisId
+			self.lectures = lectureIdList
+		except ValueError as exc:
+			del self
+			raise exc
+
+	@property
+	def name(self):
+		return self.__name
+
+	@name.setter
+	def name(self, name):
+		if type(name) is Name:
+			self.__name = name
+		else:
+			raise ValueError(EXCEPTION_INV_MD_NM)
+
+	@name.deleter
+	def name(self):
+		del self.__name
+
+	@property
+	def thisId(self):
+		return self.__thisId
+
+	@name.setter
+	def thisId(self, thisId):
+		if type(thisId) is Id:
+			self.__thisId = thisId
+		else:
+			raise ValueError(EXCEPTION_INV_MD_ID)
+
+	@name.deleter
+	def thisId(self, thisId):
+		del self.__thisId
+
+	@property
+	def lectures(self):
+		return self.__lectures
+
+	@lectures.setter
+	def lectures(self, lectures):
+		if type(lectures) is list and (type(lectures[0]) is Id or not lectures):
+			self.__lectures = lectures
+		else:
+			raise ValueError(EXCEPTION_INV_MD_LT)
