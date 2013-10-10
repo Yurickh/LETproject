@@ -2,6 +2,7 @@
 
 from baseUnit import *
 from abc import *
+from lang.pt_br import *
 
 class User:
 	__metaclass__ = ABCMeta
@@ -156,4 +157,73 @@ class Professor(User):
 	def sex(self):
 		del self.__sex
 
-prof = Professor(Name("lolllllll"), Password("Hauschild1"), Matric(120024136), PlainText("abacate"), Campus(2), [Id(1), Id(2)], Link("/"), Sex("M"))
+class Courses():
+
+	def __init__(self, name, courseId, students, modules):
+		try:
+			self.name = name
+			self.courseI = courseId
+			self.students = students
+			self.modules = modules
+		except ValueError as exc:
+			del self
+			raise exc
+	@property		
+	def name(self):
+		return self.__name
+
+	@name.setter
+	def name(self, name):
+		if type(name) is Name:
+			self.__name = name
+		else:
+			raise ValueError(EXCEPTION_INV_CRS_NM)
+
+	@property
+	def courseId(self):
+		return self.__courseId
+
+	@courseId.setter
+	def courseId(self, courseId):
+		if type(courseId) is Id:
+			self.__courseId = courseId
+		else:
+			raise ValueError(EXCEPTION_INV_CRS_ID)
+
+	@property
+	def students(self):
+		return self.__students
+
+	@students.setter
+	def students(self, students):
+		if hasattr(students, "index") and type(students[0]) is Id:
+			self.__students = students
+		else:
+			raise ValueError(EXCEPTION_INV_CRS_ST)
+
+	@property
+	def modules(self):
+		return self.__modules		
+
+	@modules.setter
+	def modules(self, modules):
+		if hasattr(modules, "index") and type(modules[0]) is Id:
+			self.__modules = modules
+		else:
+			raise ValueError(EXCEPTION_INV_CRS_MD)
+
+	@name.deleter
+	def delName(self):
+		del _name
+
+	@courseId.deleter
+	def delCourseId(self):
+		del _courseId
+
+	@students.deleter
+	def delStudents(self):
+		del _students
+
+	@modules.deleter
+	def delModules(self):
+		del _modules
