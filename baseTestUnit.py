@@ -1,229 +1,68 @@
-# coding: utf-8
+#coding: utf-8
 
 from baseUnit import *
 
+class TestUnit:
+	
+	def test(self, info, classtype):
+		print "------------------------------------------"
+		print "Testing " + str(info) + " into a " + str(classtype)
+		print "------------------------------------------"
 
-BIG_WORD = "aufnKENFKJAGLANGLIERGBLIAEURGBLIBIBibiubagaiurbgpaurbglaurbgluabwerbuygewranrgabrfgbklfsdagbrablrkjblkbglksfbglsdbfglkdbjgkhslkgjsdlkfhgsldkjfglksjdhfgliutgrurgukrkurg ieur iseu  m gjsenrgsnerglse ikansrnfgakwurengueniusenuseinoiseurngusierngolurseingeiurglnsegbrablrkjblkbglksfbglsdbfglkdbjgkhslkgjsdlkfhgsldkjfglksjdhfgliutgrurgukrkurg ieur iseu  m gjsenrgsnerglse ikansrnfgakwurengueniusenuseinoiseurngusierngolurseingeiurglnsegbrablrkjblkbglksfbglsdbfglkdbjgkhslkgjsdlkfhgsldkjfglksjdhfgliutgrurgukrkurg ieur iseu  m gjsenrgsnerglse ikansrnfgakwurengueniusenuseinoiseurngusierngolurseingeiurglnsegbrablrkjblkbglksfbglsdbfglkdbjgkhslkgjsdlkfhgsldkjfglksjdhfgliutgrurgukrkurg ieur iseu  m gjsenrgsnerglse ikansrnfgakwurengueniusenuseinoiseurngusierngolurseingeiurglnsegbrablrkjblkbglksfbglsdbfglkdbjgkhslkgjsdlkfhgsldkjfglksjdhfgliutgrurgukrkurg ieur iseu  m gjsenrgsnerglse ikansrnfgakwurengueniusenuseinoiseurngusierngolurseingeiurglnsegbrablrkjblkbglksfbglsdbfglkdbjgkhslkgjsdlkfhgsldkjfglksjdhfgliutgrurgukrkurg ieur iseu  m gjsenrgsnerglse ikansrnfgakwurengueniusenuseinoiseurngusierngolurseingeiurglnsegbrablrkjblkbglksfbglsdbfglkdbjgkhslkgjsdlkfhgsldkjfglksjdhfgliutgrurgukrkurg ieur iseu  m gjsenrgsnerglse ikansrnfgakwurengueniusenuseinoiseurngusierngolurseingeiurglnse	"
+		classType = globals()[classtype]
 
-class Test:
-	__value = None
-
-	def test(self, classtype, testValue):
-
-		try: 
-			self.__value = classtype(testValue)
-			self.__value.setValue(testValue)
-			aux = self.__value.getValue()
-			if aux != testValue: 
-				raise ValueError(EXCEPTION_TEST_INV_GET)
+		try:
+			testing = classType(info);
+			print "No errors ocurred in the object's creation process."
+			testing.setValue(info);
+			print "No errors ocurred in the object's setValue() execution."
 		except ValueError as exc:
-			print EXCEPTION_TEST_PREFIX
 			print exc
+			return False
+		else:
+			if classtype == "Password":
+				if hashlib.md5(hashlib.sha256(info).hexdigest()).hexdigest() != testing.getValue():
+					print "Error: Invalid getValue() return expression."
+					return False
+				else:
+					print "No error ocurred in the object's getValue() execution."
+					return True
+			else:
+				if info != testing.getValue():
+					print "Error: Invalid getValue() return expression."
+					return False
+				else:
+					print "No errors ocurred in the object's getValue() execution."
+					return True
+
 
 def main():
-	test = Test()
-	
-#Testing Passsword
-#valid
-	print "-------------------------------------------------"
-	print "'PASSWORD' TESTS"
-	print "Testing 'Oieusouogoku' for the class Password."
-	test.test(Password, "Oieusouogoku")
+	index = {
+		'Password'	:['abcde','Yurick Hauschild_@'], 
+		'Name'		:['Joao Calmon Anisio Teixeira', 'Joao Calmon Anisio Teixeira Icc Sul Icc Norte', 'Andre123', 'Renato(){}`'], 
+		'Matric'	:[2, 999999, 999999999999999, 0, -12345, 'wat'],
+		'PlainText'	:['The quick brown fox jumps over the lazy dog', 'Frase aleatória', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec blandit pretium lorem eu posuere. Duis egestas laoreet orci, at vestibulum mi sodales facilisis. Duis tempor non dui at ornare. In volutpat sed leo in pellentesque. Quisque non malesuada lacus. Ut posuere tristique orci, at sodales erat pretium ut. Pellentesque et ante vitae eros pellentesque iaculis nec sit amet tortor. Phasellus molestie, ipsum varius mollis blandit, ipsum turpis porta augue, ac hendrerit quam sem sit amet leo.In id fermentum felis, sed eleifend tellus. Nunc blandit lacinia mauris vitae porta. Ut vitae egestas nisl, sit amet ultrices risus. Fusce venenatis malesuada ipsum. Cras aliquam ut eros sit amet scelerisque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eleifend venenatis sapien. Curabitur vitae lacinia augue. Vivamus a velit vel tellus tristique dapibus. Sed nisl urna, commodo non eros non, iaculis mollis eros. Maecenas vel risus tellus. Cras ac ligula eu risus bibendum facilisis.Mauris eu dolor lacinia, sodales odio a, vulputate erat. Nam sit amet porta enim. Phasellus rutrum massa eu nisl egestas elementum. Suspendisse vitae pellentesque purus. Sed eu orci augue. Nulla bibendum ipsum in turpis porttitor elementum vel non augue. Nullam sed ligula augue. Sed dictum erat arcu, ut pulvinar dui fermentum gravida. Maecenas in massa et arcu dignissim eleifend. Nam tincidunt lobortis dignissim. Etiam feugiat urna sed orci tristique, a molestie metus pellentesque. Aliquam quis eros a risus blandit tincidunt ut non leo. Fusce viverra erat sed quam fermentum feugiat.Sed tincidunt ut tellus vel laoreet. Proin luctus vel odio id posuere. Pellentesque ut bibendum leo. Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed condimentum nec risus id lobortis. Vestibulum in quam dictum, tempus nisi quis, consectetur neque. Suspendisse dignissim hendrerit scelerisque. Aenean ultrices, tortor eget varius fermentum, est quam tincidunt urna, nec congue purus ipsum in ipsum. Aenean vitae porta magna. Sed pulvinar ac augue quis commodo. Quisque consequat scelerisque diam, porttitor aliquam purus adipiscing ut. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas congue ipsum sit amet odio ultricies ornare.Aenean quis leo vitae leo blandit accumsan. Nam laoreet nibh eget mauris rhoncus aliquam. Vivamus blandit orci vitae urna malesuada viverra. Aenean ultrices aliquet faucibus. Phasellus eleifend nulla tellus, nec ultricies urna fermentum eu. Suspendisse massa diam, dignissim vel aliquet facilisis, rutrum vitae eros. Nulla nec semper ante, vel commodo sapien. Aenean mattis rhoncus nulla. Quisque sed eleifend libero. Curabitur libero tellus, dignissim at cursus non, eleifend vitae lectus. Nunc placerat tellus egestas scelerisque vestibulum. Cras aliquet diam massa, id pellentesque ipsum elementum in. Ut id iaculis dui. Cras elementum est ante, sit amet dignissim nulla eleifend non. Morbi consectetur ultrices tortor, quis bibendum diam dictum eu.Morbi venenatis porta purus, nec gravida elit lacinia et. Sed id tortor placerat mi venenatis aliquam. Fusce id mollis turpis. Donec sagittis justo sed ligula mollis iaculis. Donec ultricies felis nec justo convallis posuere. Phasellus sed est sed purus fringilla iaculis porttitor vitae nisi. Aliquam dui neque, consequat et arcu sit amet, tincidunt consectetur magna. Integer non lorem at mi commodo ultricies. Nam porta dapibus sapien, congue facilisis massa dictum a. Nunc vulputate accumsan tincidunt. Ut mauris dui, commodo quis elementum nec, accumsan vitae diam. Nam et dictum leo.'],
+		'Campus'	:[3, 0, -1, 99999999999999999, 1024],
+		'Sex'		:['q','w','e','r','t','y','u','i','o','p','[',']','\\','a','s','d','f','g','h','j','k','l',';','\'','z','x','c','v','b','n','m',',','.','/','1','2','3','4','5','6','7','8','9','0','-','=','¡','™','£','¢','∞','§','¶','•','ª','º','–','≠','å','ß','∂','ƒ','©','˙','∆','˚','¬','…','æ','Ω','≈','ç','√','∫','˜','µ','≤','≥','÷','“','‘','«','!','@','$','%','^','&','*','(',')','_','+','Q','E','R','T','Y','U','I','O','P','{','}','|','A','S','D','F','G','H','J','K','L',':','\"','Z','X','C','V','B','N','M','<','>','?'],
+		'Link'		:['exercicios/lol', '', 'adress.br', 'André Lima'],
+		'Mail'		:['noreply@elo.org', 'testy @adress.co.uk', '', 'at@@@at.at', 'someone@spotcom'],
+		'Grades'	:[88, -45, 105, 0, 'foo'],
+		'Id'		:[15, 0, -1, 'wabba'],
+		'Language'	:[60, 0, -1, 999, 'pt_br'],
+		'ExType'	:[5, 0, -2, "multipla escolha"]
+		}
 
-	print "Testing '123 a´aed' for the class Password."
-	test.test(Password, "123 a´aed")
+	valid = invalid = 0
 
-#invalid
-	print "Testing 'None' for the class Password."
-	test.test(Password, "")
-	print"Testing 'abc' for the class Password."
-	test.test(Password, "abc")
-	print "-------------------------------------------------"
-	print " "
+	for cls in index:
+		for ans in index[cls]:
+			if TestUnit().test(ans, cls):
+				valid += 1
+			else:
+				invalid += 1
 
-#testing Name
-#valid
-	print "-------------------------------------------------"
-	print "'NAME' TESTS"
-	print "Testing 'Joao Calmon Anisio Teixeira' for the class Name."
-	test.test(Name, "Joao Calmon Anisio Teixeira")
+	print "\nFinished testing."
+	print str(valid) + " valid assertives found."
+	print str(invalid) + " invalid assertives found."
 
-#invalid
-	print "Testing 'Joao Calmon Anisio Teixeira Icc Sul Icc Norte' for the class Name."
-	test.test(Name, "Joao Calmon Anisio Teixeira Icc Sul Icc Norte")
-	print "Testing 'Abigail 123 [{' for the class Name."
-	test.test(Name, "Abigail 123 [{")
-	print "Testing 'Joao Calmon Anisio Teixeira Icc Sul Icc Norte ]]' for the class Name."
-	test.test(Name, "Joao Calmon Anisio Teixeira Icc Sul Icc Norte ]]")
-	print "-------------------------------------------------"
-	print " "
-
-#testing Matric
-#valid
-	print "-------------------------------------------------"
-	print "'MATRIC' TESTS"
-	print "Testing '2' for the class Matric."
-	test.test(Matric, 2)
-	print "Testing '999999' for the class Matric."
-	test.test(Matric, 999999)
-
-#invalid
-	print "Testing '9999999999999' for the class Matric."
-	test.test(Matric, 9999999999999)
-	print "Testin '0' for the class Matric."
-	test.test(Matric, 0)
-	print "-------------------------------------------------"
-	print " "
-
-#testing PlainText
-#valid
-	print "-------------------------------------------------"
-	print "'PLAINTEXT' TESTS"
-	print "Testing 'Oi? Ele sincronizou com a coisa la. Baixa a master pra ca! Nao, sua master ta aqui.' for the class PlainText."
-	test.test(PlainText, "Oi? Ele sincronizou com a coisa la. Baixa a master pra ca! Nao, sua master ta aqui.")
-
-
-#invalid
-	print "Testing 'BIG_WORD' for the class PlainText."
-	test.test(PlainText, BIG_WORD)
-	print "-------------------------------------------------"
-	print " "
-
-#testing Campus
-#valid
-	print "-------------------------------------------------"
-	print "'CAMPUS' TESTS"
-	print "Testing '3' for the class Campus."
-	test.test(Campus, 3)
-
-#invalid
-	print "Testing '0' for the class Campus."
-	test.test(Campus, 0)
-	print "-------------------------------------------------"
-	print " "
-
-#testing Sex
-	print "-------------------------------------------------"
-	print "'SEX' TESTS"
-	for  asc in range(0,127):
-		print "Testing " + str(chr(asc)) + " for the class Sex."
-		test.test(Sex, chr(asc))
-	print "-------------------------------------------------"
-	print " "
-	
-#testing Link
-#valid
-	print "-------------------------------------------------"
-	print "'LINK' TESTS"
-	print "Testing 'exercicios/bankai' for the class Link."
-	test.test(Link, "exercicios/bankai")
-
-#invalid
-	print "Testing 'None' for the class Link."
-	test.test(Link, "")
-	print "Testing 'oi eu sou o goku.huehue.br' for the class Link."
-	test.test(Link, "oi eu sou o goku.huehue.br")
-	print "Testing 'Estástríngtêmcarácterêsacentuádos' for the class Link."
-	test.test(Link, "Estástríngtêmcarácterêsacentuádos")
-	print "-------------------------------------------------"
-	print " "
-
-
-#testing Mail
-#valid
-<<<<<<< HEAD
-	print "-------------------------------------------------"
-	print "'EMAIL' TESTS"
-	print "Testing a valid email."
-=======
-	print "Testing 'testando@hotmail.com' for the class Mail."
->>>>>>> df062008715ddaba618972ae736de433b9d1f280
-	test.test(Mail, "testando@hotmail.com")
-#invalid
-	print "Testing 'arroba @hotmail.com' for the class Mail."
-	test.test(Mail, "arroba @hotmail.com")
-	print "Testing '' for the clas Mail"
-	test.test(Mail, "")
-	print "Testing 'arroba@@hotmail.com' for the class Mail."
-	test.test(Mail, "arroba@@hotmail.com")
-	print "Testing 'fernando@gmailcom' for the class Mail."
-	test.test(Mail, "fernando@gmailcom")
-	print "-------------------------------------------------"
-	print " "
-
-#testing grades
-#valid 
-	print "-------------------------------------------------"
-	print "'GRADES' TESTS"
-	print "Testing a valid grade."
-	test.test(Grades, "88")
-#invalid
-	print "Testing a grade that is smaller than zero"
-	test.test(Grades, "-45")
-	print "Testing a grade that is bigger than onde hundred."
-	test.test(Grades, "105")
-	print "-------------------------------------------------"
-	print " "
-	
-#testing Id
-#valid
-	print "-------------------------------------------------"
-	print "'ID' TESTS"
-	print "Testing a valid Id."
-	test.test(Id, 15)
-#invalid
-	print "Testing an Id that is less than 1."
-	test.test(Id, 0)
-	print "-------------------------------------------------"
-	print " "
-
-#testing language
-#valid
-	print "-------------------------------------------------"
-	print "'LANGUAGE' TESTS"
-	print "Testing valid language."
-	test.test(Language, "60")
-#invalid
-	print "Testing language with a value less than 1"
-	test.test(Language, "0")
-	print "-------------------------------------------------"
-	print " "
-	print "Testing '88' for the class grade."
-	test.test(Grades, 88)
-#invalid
-	print "Testing '-45' for the class Grade"
-	test.test(Grades, -45)
-	print "Testing '105' for the class Grade."
-	test.test(Grades, 105)
-	
-#testing Id
-#valid
-	print "Testing '15' for the class Id."
-	test.test(Id, 15)
-#invalid
-	print "Testing '0' for the class Id."
-	test.test(Id, 0)
-
-#testing language
-#valid
-	print "Testing '60' for the class language."
-	test.test(Language, 60)
-#invalid
-	print "Testing '0' for he class language."
-	test.test(Language, 0)
-
-#testing ExType
-#valid
-	print "-------------------------------------------------"
-	print "'EXTYPES' TESTS"
-	print "Testing '' for the class ExType."
-	test.test(ExType, 5)
-
-#invalid
-	print "Testing '0' for the class ExType."
-	test.test(ExType, 0)
-	print "Testing '-2' for the class ExType."
-	test.test(ExType, -2)
-	print "-------------------------------------------------"
-	print " "
 main()
