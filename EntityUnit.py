@@ -1,14 +1,23 @@
 #coding: utf-8
 
+""" Here lies all the code regarding the structure of the entities of this program.
+	Entities shall not have methods beside the basics set, get and del methods for their properties.
+"""
+
 from baseUnit import *
 from abc import *
 from lang.pt_br import *
 
 class User:
+	""" Interface definition for user-like classes.
+		It includes the 'name' and 'password' concrete properties that are passed to whoever derives from it. Note that a User object cannot be instantiated and in order to instantiate a derived class, it has to override the _User__instantiable abstract property.
+	"""
 	__metaclass__ = ABCMeta
+	""" Specifies that this class is an abstract class. Thus, it shall not be instantiated. """
 
 	__instantiable = abstractproperty()
-\
+	""" Guarantee that a User will never be created. """
+
 	@property
 	def name(self):
 		return self._name
@@ -40,6 +49,9 @@ class User:
 		del self._password
 
 class Adm(User):
+	""" Administrator of the system.
+		The Administrators are the bosses. They control the processes and the flow of things in the program. They're the only ones allowed to create and destroy courses at will, but they cannot change courses already created. They're like merciful gods that won't mess with mere mortal's affairs.
+	"""
 	_User__instantiable = True
 
 	def __init__(self, name, password):
@@ -51,6 +63,9 @@ class Adm(User):
 			raise exc
 
 class Professor(User):
+	""" The representation of the Professor inside the system.
+		The professors may be real professors or monitors. They have the power to build, change and modify courses.
+	"""
 	_User__instantiable = True
 
 	def __init__(self, name, password, matric, bios, campus, courses, avatar, sex):
@@ -97,6 +112,7 @@ class Professor(User):
 	def bios(self):
 		del self.__bios
 
+
 	@property
 	def campus(self):
 		return self.__campus
@@ -111,6 +127,7 @@ class Professor(User):
 	@campus.deleter
 	def campus(self):
 		del self.__campus
+
 
 	@property
 	def courses(self):
@@ -127,6 +144,7 @@ class Professor(User):
 	def courses(self):
 		del self.__courses
 
+
 	@property
 	def avatar(self):
 		return self.__avatar
@@ -141,6 +159,7 @@ class Professor(User):
 	@avatar.deleter
 	def avatar(self):
 		del self.__avatar
+
 
 	@property
 	def sex(self):
@@ -159,6 +178,9 @@ class Professor(User):
 
 
 class Student(User):
+	""" Last, but not least, the Student.
+		The main user of this software. Students are allowed to take courses, answer to exercises and lots of fun stuff.
+	"""
 	_User__instantiable = True
 
 	def __init__(self, name, password, matric, bios, campus, courses, avatar, email, sex, grades, interests, language):
@@ -182,84 +204,103 @@ class Student(User):
 	@property
 	def matric(self):
 		return self.__matric
+
 	@matric.setter
 	def matric(self, matric):
 		if type(matric) is Matric:
 			self.__matric = matric
 		else:
 			raise ValueError(EXCEPTION_INV_STU_MT)
+
 	@matric.deleter
 	def matric(self):
-		del __matric	
+		del __matric
+
 
 	@property	
 	def bios(self):
 		return self.__bios
+
 	@bios.setter
 	def bios(self, bios):
 		if type(bios) is PlainText:
 			self.__bios = bios
 		else:
 			raise ValueError(EXCEPTION_INV_STU_BS)
+
 	@bios.deleter
 	def bios(self):
 		del __bios
 
+
 	@property
 	def campus(self):
 		return self.__campus
+
 	@campus.setter
 	def campus(self, campus):
 		if type(campus) is Campus:
 			self.__campus = campus
 		else:
 			raise ValueError(EXCEPTION_INV_STU_CP)
+
 	@campus.deleter
 	def campus(self):
 		del __campus
 
+
 	@property
 	def courses(self):
 		return self.__courses
+
 	@courses.setter
 	def courses(self, courses):
 		if type(courses[0]) is Id or not courses) and type(courses) is list :
 			self.__courses = courses
 		else:
 			raise ValueError(EXCEPTION_INV_STU_CO)
+
 	@courses.deleter
 	def courses(self):
 		del __courses
 
+
 	@property
 	def avatar(self):
 		return self.__avatar
+
 	@avatar.setter
 	def avatar(self, avatar):
 		if type(avatar) is Link:
 			self.__avatar = avatar
 		else:
 			raise ValueError(EXCEPTION_INV_STU_AV)
+
 	@avatar.deleter
 	def avatar(self):
 		del __avatar
 
+
 	@property
 	def sex(self):
 		return self.__sex
+
 	@sex.setter
 	def sex(self, sex):
 		if type(sex) is Sex:
 			self.__sex = sex
 		else:
 			raise ValueError(EXCEPTION_INV_STU_SX)
+
 	@sex.deleter
 	def sex(self):
 		del __sex
 
+
 	@property
 	def email(self):
-		return self.__email	
+		return self.__email
+
 	@email.setter
 	def email(self, email):
 		if type(email) is Mail:
@@ -271,9 +312,11 @@ class Student(User):
 	def email(self):
 		del __email
 
+
 	@property
 	def grades(self):
 		return self.__grades
+
 	@grades.setter
 	def grades(self, grades):
 		if type(grades) is dict and type(grades.values()[0]) is Grades:
@@ -285,33 +328,43 @@ class Student(User):
 	def grades(self):
 		del __grades
 
+
 	@property
 	def interests(self):
 		return self.__interests
+
 	@interests.setter
 	def interests(self, interests):
 		if type(interests) is PlainText:
 			self.__interests = interests
 		else:
 			raise ValueError(EXCEPTION_INV_STU_IN)
+
 	@interests.deleter
 	def interests(self):
 		del __interests
 
+
 	@property
 	def language(self):
 		return self.__language
+
 	@language.setter
 	def language(self, language):
 		if type(language) is Language:
 			self.__language = language
 		else:
 			raise ValueError(EXCEPTION_INV_STU_LN)
+
 	@language.deleter
 	def language():
 		del __language
 
+
 class Courses:
+	""" The master level of organization of the system.
+		A course holds modules, that holds lessons, that holds exercises. They're basically the highest level of abstraction in this system. Usually, one professor will be given an empty course, from wich it'll build the smaller parts of his student's journey.
+	"""
 
 	def __init__(self, name, thisId, students, modules):
 		try:
@@ -322,6 +375,8 @@ class Courses:
 		except ValueError as exc:
 			del self
 			raise exc
+
+
 	@property		
 	def name(self):
 		return self.__name
@@ -384,12 +439,14 @@ class Courses:
 
 
 class Module:
-	
-	def __init__(self, name, thisId, lectureIdList):
+	""" The intermedium.
+		Modules holds lessons. They're like "levels" of a game. Get one, unlock another. It is fun, admit.
+	"""
+	def __init__(self, name, thisId, lessonIdList):
 		try:
 			self.name = name
 			self.thisId = thisId
-			self.lectures = lectureIdList
+			self.lessons = lessonIdList
 		except ValueError as exc:
 			del self
 			raise exc
@@ -409,6 +466,7 @@ class Module:
 	def name(self):
 		del self.__name
 
+
 	@property
 	def thisId(self):
 		return self.__thisId
@@ -424,13 +482,18 @@ class Module:
 	def thisId(self, thisId):
 		del self.__thisId
 
-	@property
-	def lectures(self):
-		return self.__lectures
 
-	@lectures.setter
-	def lectures(self, lectures):
-		if type(lectures) is list and (type(lectures[0]) is Id or not lectures):
-			self.__lectures = lectures
+	@property
+	def lessons(self):
+		return self.__lessons
+
+	@lessons.setter
+	def lessons(self, lessons):
+		if type(lessons) is list and (type(lessons[0]) is Id or not lessons):
+			self.__lessons = lessons
 		else:
 			raise ValueError(EXCEPTION_INV_MD_LT)
+
+	@lessons.deleter
+	def lessons(self):
+		del self.__lessons
