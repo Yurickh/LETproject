@@ -4,7 +4,7 @@
 	Entities shall not have methods beside the basics set, get and del methods for their properties. This file have 666 lines propositally.
 """
 
-from BaseUnit import *
+from baseUnit import *
 from abc import *
 from lang.pt_br import *
 
