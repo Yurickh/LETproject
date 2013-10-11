@@ -583,7 +583,7 @@ class Exercise:
 			self.thisId = thisId
 			self.link = link
 			self.exType = exType
-			self.format = exFormat
+			self.exFormat = exFormat
 			self.items = items
 		except VaelueError as exc:
 			del self
@@ -641,7 +641,7 @@ class Exercise:
 
 	@exFormat.setter
 	def exFormat(self, exFormat):
-		if type(format) is Id:
+		if type(exFormat) is Id:
 			self.__exFormat = exFormat
 		else:
 			raise ValueError(EXCEPTION_INV_EX_FT)
