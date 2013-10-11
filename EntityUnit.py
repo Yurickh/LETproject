@@ -4,7 +4,7 @@
 	Entities shall not have methods beside the basics set, get and del methods for their properties. This file have 666 lines propositally.
 """
 
-from BaseUnit import *
+from baseUnit import *
 from abc import *
 from lang.pt_br import *
 
@@ -578,12 +578,12 @@ class Exercise:
 		It is by exercising that humans do learn a new skill. This is a very important class, then. Take care of it.
 	"""
 
-	def __init__(self, thisId, link, extType, format, items):
+	def __init__(self, thisId, link, extType, exFormat, items):
 		try:
 			self.thisId = thisId
 			self.link = link
 			self.exType = exType
-			self.format = format
+			self.format = exFormat
 			self.items = items
 		except VaelueError as exc:
 			del self
@@ -636,19 +636,19 @@ class Exercise:
 		del self.__exType
 
 	@property
-	def format(self):
-		return self.__format
+	def exFormat(self):
+		return self.__exFormat
 
-	@format.setter
-	def format(self, format):
+	@exFormat.setter
+	def exFormat(self, exFormat):
 		if type(format) is Id:
-			self.__format = format
+			self.__exFormat = exFormat
 		else:
 			raise ValueError(EXCEPTION_INV_EX_FT)
 
-	@format.deleter
-	def format(self):
-		del self.__format
+	@exFormat.deleter
+	def exFormat(self):
+		del self.__exFormat
 
 	@property
 	def items(self):
