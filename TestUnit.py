@@ -1,7 +1,5 @@
 #coding: utf-8
 
-from EntityUnit import *
-
 class TestUnit:
 	
 	def test(self, className, testValues):
