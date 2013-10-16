@@ -422,20 +422,20 @@ class Courses:
 			raise ValueError(EXCEPTION_INV_CRS_MD)
 
 	@name.deleter
-	def delName(self):
-		del _name
+	def name(self):
+		del __name
 
 	@thisId.deleter
-	def delthisId(self):
-		del _thisId
+	def thisId(self):
+		del __thisId
 
 	@students.deleter
-	def delStudents(self):
-		del _students
+	def students(self):
+		del __students
 
 	@modules.deleter
-	def delModules(self):
-		del _modules
+	def modules(self):
+		del __modules
 
 
 class Module:

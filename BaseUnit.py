@@ -194,7 +194,7 @@ class Sex(IfBaseType):
 		except ValueError as exc:
 			del self
 			raise exc
-		self._value = hashlib.md5(hashlib.sha256(value).hexdigest()).hexdigest()
+		self._value = value
 
 	def _validate(self, value):
 		"""Class validator.
@@ -225,7 +225,7 @@ class Link(IfBaseType):
 		"""
 		if len(value) == 0:
 			raise ValueError(EXCEPTION_INV_LK_S)
-		elif str.isalnum(value.replace("/", "")) == False and value.replace("/", "") != "":
+		elif str.isalnum(value.replace("/", "")) == False and len(value.replace("/", "")) > 0:
 			raise ValueError(EXCEPTION_INV_LK_F)
 
 class Grades(IfBaseType):
