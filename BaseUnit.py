@@ -194,7 +194,7 @@ class Sex(IfBaseType):
 		except ValueError as exc:
 			del self
 			raise exc
-		self._value = hashlib.md5(hashlib.sha256(value).hexdigest()).hexdigest()
+		self._value = value
 
 	def _validate(self, value):
 		"""Class validator.

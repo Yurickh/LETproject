@@ -4,7 +4,7 @@ from TestUnit import *
 
 def main():
 	index = {
-		'Student'	:[{'name': Name('Lauriet Lindsaw taylor'),'password': Password('Eunaomateiokira'),'matric': Matric(502934),'bios': PlainText('Caracas eu sou muito burro, morri no episodio 25'),'campus': Campus(2), 'courses': [Id(2), Id(4)], 'avatar': Link('soumaisfoda/queo/kira'), 'email': Mail('loololo@morte.gg'), 'sex': Sex('M'), 'grades': {'Inteligencia' : Grades(10)}, 'interests': PlainText('Interessado no Death Note'), 'language': Language(2)},
+		'Student'	:[{'name': Name('Lauriet Lindsaw taylor'),'password': Password('Eunaomateiokira'),'matric': Matric(502934),'bios': PlainText('Caracas eu sou muito burro, morri no episodio 25'),'campus': Campus(2), 'courses': [Id(2), Id(4)], 'avatar': Link('soumaisfoda/queo/kira'), 'email': Mail('loololo@morte.gg'), 'sex': Sex('M'), 'grades': {'Inteligencia' : Grades(10)}, 'interests': PlainText('Interessado no Death Note'), 'language': Language(2)}],
 	#		{'name': ,'password': ,'matric': ,'bios': ,'campus': , 'courses': , 'avatar': , 'email': , 'sex': , 'grades': , 'interests': , 'language': },
 	#		{'name': ,'password': ,'matric': ,'bios': ,'campus': , 'courses': , 'avatar': , 'email': , 'sex': , 'grades': , 'interests': , 'language': },
 	#		{'name': ,'password': ,'matric': ,'bios': ,'campus': , 'courses': , 'avatar': , 'email': , 'sex': , 'grades': , 'interests': , 'language': }],
