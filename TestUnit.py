@@ -1,5 +1,7 @@
 #coding: utf-8
 
+from EntityUnit import *
+
 class TestUnit:
 	
 	def test(self, className, testValues):
@@ -19,8 +21,9 @@ class TestUnit:
 			print "No errors ocurred in the object's creation process."
 			for attrStr, value in zip(attrList, testValues):
 				attr = getattr(testing, attrStr)
-				attr.value = value
+				attr.value = value.value
 			print "No errors ocurred in the object's setValue() execution."
+			return True
 		except ValueError as exc:
 			print exc
 			return False
