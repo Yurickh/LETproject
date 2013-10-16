@@ -442,11 +442,11 @@ class Module:
 	""" The intermedium.
 		Modules holds lessons. They're like "levels" of a game. Get one, unlock another. It is fun, admit.
 	"""
-	def __init__(self, name, thisId, lessonIdList):
+	def __init__(self, name, thisId, lessons):
 		try:
 			self.name = name
 			self.thisId = thisId
-			self.lessons = lessonIdList
+			self.lessons = lessons
 		except ValueError as exc:
 			del self
 			raise exc
