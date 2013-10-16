@@ -4,6 +4,10 @@ from TestUnit import *
 
 def main():
 	index = {
+		'Adm'		:[{'name': Name('Yurick Hauschild'), 'password': Password('a793812b')},
+				{'name': Id(2), 'password': Password('a793812b')},
+				{'name': Id(2), 'password': Id(3)},
+				{'name': Name('Andre Lima'), 'password': Id(3)}],
 		'Student'	:[{'name': Name('Lauriet Lindsaw taylor'),'password': Password('Eunaomateiokira'),'matric': Matric(502934),'bios': PlainText('Caracas eu sou muito burro, morri no episodio 25'),'campus': Campus(2), 'courses': [Id(2), Id(4)], 'avatar': Link('soumaisfoda/queo/kira'), 'email': Mail('loololo@morte.gg'), 'sex': Sex('M'), 'grades': {'Inteligencia' : Grades(10)}, 'interests': PlainText('Interessado no Death Note'), 'language': Language(2)},
 				{'name': Name('Lauriet Lindsaw taylor'),'password': Name('Eunaomateiokira'),'matric': Matric(502934),'bios': PlainText('Caracas eu sou muito burro, morri no episodio 25'),'campus': Campus(2), 'courses': [Id(2), Id(4)], 'avatar': Link('soumaisfoda/queo/kira'), 'email': Mail('loololo@morte.gg'), 'sex': Sex('M'), 'grades': {'Inteligencia' : Grades(10)}, 'interests': PlainText('Interessado no Death Note'), 'language': Language(2)},
 				{'name': Password('Lauriet Lindsaw taylor'),'password': Password('Eunaomateiokira'),'matric': Matric(502934),'bios': PlainText('Caracas eu sou muito burro, morri no episodio 25'),'campus': Campus(2), 'courses': [Id(2), Id(4)], 'avatar': Link('soumaisfoda/queo/kira'), 'email': Mail('loololo@morte.gg'), 'sex': Sex('M'), 'grades': {'Inteligencia' : Grades(10)}, 'interests': PlainText('Interessado no Death Note'), 'language': Language(2)},
