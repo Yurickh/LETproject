@@ -10,7 +10,23 @@ def main():
 	#		{'name': ,'password': ,'matric': ,'bios': ,'campus': , 'courses': , 'avatar': , 'email': , 'sex': , 'grades': , 'interests': , 'language': }],
 
 	#	'Courses'	:[[Name("Will Smith"), Id(2), [Id(2), Id(2)], [Id(2), Id(2)]], [Name("Hahaha"), Id(2), [Id(2), Id(2)], [Id(2), Id(2)]], [Name("Ajania"), Id(2), [Id(2), Id(2)], [Id(2), Id(2)]], [Name("hei"), Id(2), [Id(2), Id(2)], [Id(2), Id(2)]]]
-		'Professor'    : [{'name': "Renato", 'password': "123456", 'matric': "120021471", 'bios': "Um samurai aposentado que decidiu estudar para ser um professor de física pelo desejo de ajudar as suas ex-vítimas a passarem no vestibular", 'campus': Campus(2), 'courses': courses(2), 'avatar': "teste/teste2", 'sex': "M"}]
+		'Professor'     : [{'name': Name('Renato'), 'password': Password('123456'), 'matric': Matric(120021471), 'bios': PlainText('Um samurai aposentado que decidiu estudar para ser um professor de física pelo desejo de ajudar as suas ex-vítimas a passarem no vestibular'), 'campus': Campus(2), 'courses': [Id(4), Id(8)], 'avatar': Link('teste/teste2'), 'sex': Sex('M')}, 
+
+				{'name': Password('Renato'), 'password': Password('123456'), 'matric': Matric(120021471), 'bios': PlainText('Um samurai aposentado que decidiu estudar para ser um professor de física pelo desejo de ajudar as suas ex-vítimas a passarem no vestibular'), 'campus': Campus(2), 'courses': [Id(4), Id(8)], 'avatar': Link('teste/teste2'), 'sex': Sex('M')},
+
+				 {'name': Name('Renato'), 'password': Link('123456'), 'matric': Matric(120021471), 'bios': PlainText('Um samurai aposentado que decidiu estudar para ser um professor de física pelo desejo de ajudar as suas ex-vítimas a passarem no vestibular'), 'campus': Campus(2), 'courses': [Id(4), Id(8)], 'avatar': Link('teste/teste2'), 'sex': Sex('M')}, 
+
+				{'name': Name('Renato'), 'password': Password('123456'), 'matric': Campus(120021471), 'bios': PlainText('Um samurai aposentado que decidiu estudar para ser um professor de física pelo desejo de ajudar as suas ex-vítimas a passarem no vestibular'), 'campus': Campus(2), 'courses': [Id(4), Id(8)], 'avatar': Link('teste/teste2'), 'sex': Sex('M')},
+
+				{'name': Name('Renato'), 'password': Password('123456'), 'matric': Matric(120021471), 'bios': Name('Um samurai'), 'campus': Campus(2), 'courses': [Id(4), Id(8)], 'avatar': Link('teste/teste2'), 'sex': Sex('M')},
+
+				{'name': Name('Renato'), 'password': Password('123456'), 'matric': Matric(120021471), 'bios': PlainText('Um samurai aposentado que decidiu estudar para ser um professor de física pelo desejo de ajudar as suas ex-vítimas a passarem no vestibular'), 'campus': [Id(2), Id(7)], 'courses': [Id(4), Id(8)], 'avatar': Link('teste/teste2'), 'sex': Sex('M')},
+
+				{'name': Name('Renato'), 'password': Password('123456'), 'matric': Matric(120021471), 'bios': PlainText('Um samurai aposentado que decidiu estudar para ser um professor de física pelo desejo de ajudar as suas ex-vítimas a passarem no vestibular'), 'campus': Campus(2), 'courses': Campus(2), 'avatar': Link('teste/teste2'), 'sex': Sex('M')},
+
+				{'name': Name('Renato'), 'password': Password('123456'), 'matric': Matric(120021471), 'bios': PlainText('Um samurai aposentado que decidiu estudar para ser um professor de física pelo desejo de ajudar as suas ex-vítimas a passarem no vestibular'), 'campus': Campus(2), 'courses': [Id(4), Id(8)], 'avatar': Name('teste2'), 'sex': Sex('M')},
+
+				{'name': Name('Renato'), 'password': Password('123456'), 'matric': Matric(120021471), 'bios': PlainText('Um samurai aposentado que decidiu estudar para ser um professor de física pelo desejo de ajudar as suas ex-vítimas a passarem no vestibular'), 'campus': Campus(2), 'courses': [Id(4), Id(8)], 'avatar': Link('teste/teste2'), 'sex': Name('M')}]
 	}
 
 	valid = invalid = 0
@@ -22,6 +38,3 @@ def main():
 				invalid += 1
 
 main()
-
-
-[Name("Lauriet Lindsaw Taylor"), Password("Eumateiokirasoqn"), Matric(50135), PlainText("Caracas eu sou muito burro, morri no episodio 25"), Campus(2), [Id(2), Id(2)], Link("soumaisfoda/que/okira"), Mail("lololol@lol.gg"), Sex("m"), {"Inteligencia": Grades(10)}, PlainText("Interessado no Death Note."), Language(2)], [Name("Bugao"), Name("naoimportavaidarerrononome"), Matric(679987), PlainText("nao precisa de teste aqui, ja vai encerrar no nome."), Campus(3), [Id(2), Id(3)], Link("naoadianta/"), Mail("naotenhoemail@nunca.nao"), Sex("M"), {"Mat": Grades(3)}, PlainText("abababaaba"), Language(2)], [Name("Eu"), Password("bankai"), Password("bankai"), PlainText("hue"), Campus(2), [Id(3), Id(3)], Link("diwbwdi/"), Mail("bysbf@yb.uin"), Sex("F"), {"Mat": Grades(3)}, PlainText("jhuibibiy iy i "), Language(7)], [Name("Light"), Password("mateioL"), Matric(6786), PlainText("Eumorri"), Campus(7), [Id(4), Id(4)], Link("odethnote/nao/ta/comigo"), Mail("morrimaisleveicomigo@lol.gg"), Sex("m"), {"Ingenuidade": Grades(10)}, Language("Interessado em voltar a vida."), Language(3)]
