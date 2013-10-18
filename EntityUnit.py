@@ -361,7 +361,7 @@ class Student(User):
 		del __language
 
 
-class Courses:
+class Courses(object):
 	""" The master level of organization of the system.
 		A course holds modules, that holds lessons, that holds exercises. They're basically the highest level of abstraction in this system. Usually, one professor will be given an empty course, from wich he'll build the smaller parts of his student's journey.
 	"""
@@ -438,7 +438,7 @@ class Courses:
 		del __modules
 
 
-class Module:
+class Module(object):
 	""" The intermedium.
 		Modules holds lessons. They're like "levels" of a game. Get one, unlock another. It is fun, admit.
 	"""
@@ -498,7 +498,7 @@ class Module:
 	def lessons(self):
 		del self.__lessons
 
-class Lesson:
+class Lesson(object):
 	""" One of the building blocks behind everything: lessons.
 		They're capable of being about everything you want them do be. Video, audio, slideshow, anything. Just put what you wanna show in the html file and store it as a link. Be happy, then.
 	"""
@@ -573,7 +573,7 @@ class Lesson:
 	def exercises(self):
 		del self.__exercises
 
-class Exercise:
+class Exercise(object):
 	""" The main learning unit of the system. 
 		It is by exercising that humans do learn a new skill. This is a very important class, then. Take care of it.
 	"""
