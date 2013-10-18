@@ -26,11 +26,11 @@ class TestUnit:
 		
 		try:
 			testing = classType(*initArguments)
-			print "No errors ocurred in the object's creation process."
+			print "No errors ocurred in the object's creation process." + str(attrList)
 			for attrStr in attrList:
 				value = testValues[attrStr]
-				if hasattr(value, "value"): print "Testing " + str(attrStr) + " against " + str(value.value)
 				attr = getattr(testing, attrStr)
+				if hasattr(value, "value"): print "Testing " + str(attrStr) + " against " + str(type(value)) + " " + str(value.value)
 				if type(value) is list:
 					for vval, aval in zip(value, attr):
 						aval.value = vval.value
