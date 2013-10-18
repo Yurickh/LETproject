@@ -442,11 +442,11 @@ class Module(object):
 	""" The intermedium.
 		Modules holds lessons. They're like "levels" of a game. Get one, unlock another. It is fun, admit.
 	"""
-	def __init__(self, name, thisId, lessonIdList):
+	def __init__(self, name, thisId, lessons):
 		try:
 			self.name = name
 			self.thisId = thisId
-			self.lessons = lessonIdList
+			self.lessons = lessons
 		except ValueError as exc:
 			del self
 			raise exc
@@ -471,14 +471,14 @@ class Module(object):
 	def thisId(self):
 		return self.__thisId
 
-	@name.setter
+	@thisId.setter
 	def thisId(self, thisId):
 		if type(thisId) is Id:
 			self.__thisId = thisId
 		else:
 			raise ValueError(EXCEPTION_INV_MD_ID)
 
-	@name.deleter
+	@thisId.deleter
 	def thisId(self, thisId):
 		del self.__thisId
 
