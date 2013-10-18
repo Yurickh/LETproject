@@ -31,7 +31,13 @@ def main():
 		'Adm'		:[{'name': Name('Yurick Hauschild'), 'password': Password('a793812b')},
 				{'name': Id(2), 'password': Password('a793812b')},
 				{'name': Id(2), 'password': Id(3)},
-				{'name': Name('Andre Lima'), 'password': Id(3)}],
+				{'name': Name('AndreLima'), 'password': Id(3)}],
+
+		'Exercise'	:[{'thisId': Id(1), 'link': Link('bankai/txt'), 'exType': ExType(9), 'exFormat': Id(2), 'items': [Id(1), Id(2)]},
+				{'thisId': Id(1),'link': Name('bankaitxt'),'exType': ExType(5), 'exFormat': Id(2),'items': [Id(1), Id(2), Id(3), Id(4)]},
+				{'thisId': Id(1),'link': Link('bankai/txt'),'exType': ExType(6), 'exFormat': Campus(2),'items': [Id(1), Id(2), Id(3), Id(4)]},
+				{'thisId': Id(1),'link': Link('bankai/txt'),'exType': Id(7), 'exFormat': Id(2),'items': [Id(1), Id(2), Id(3), Id(4)]},
+				{'thisId': Id(1),'link': Link('bankai/txt'),'exType': ExType(8), 'exFormat': Id(2),'items': [ExType(1), Id(2), Id(3), Id(4)]}],
 
 		'Professor'     : [{'name': Name('Renato'), 'password': Password('123456'), 'matric': Matric(120021471), 'bios': PlainText('Um samurai aposentado que decidiu estudar para ser um professor de física pelo desejo de ajudar as suas ex-vítimas a passarem no vestibular'), 'campus': Campus(2), 'courses': [Id(4), Id(8)], 'avatar': Link('teste/teste2'), 'sex': Sex('M')}, 
 				{'name': Password('Renato'), 'password': Password('123456'), 'matric': Matric(120021471), 'bios': PlainText('Um samurai aposentado que decidiu estudar para ser um professor de física pelo desejo de ajudar as suas ex-vítimas a passarem no vestibular'), 'campus': Campus(2), 'courses': [Id(4), Id(8)], 'avatar': Link('teste/teste2'), 'sex': Sex('M')},
