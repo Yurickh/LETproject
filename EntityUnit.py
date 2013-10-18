@@ -471,14 +471,14 @@ class Module(object):
 	def thisId(self):
 		return self.__thisId
 
-	@name.setter
+	@thisId.setter
 	def thisId(self, thisId):
 		if type(thisId) is Id:
 			self.__thisId = thisId
 		else:
 			raise ValueError(EXCEPTION_INV_MD_ID)
 
-	@name.deleter
+	@thisId.deleter
 	def thisId(self, thisId):
 		del self.__thisId
 
@@ -578,14 +578,14 @@ class Exercise(object):
 		It is by exercising that humans do learn a new skill. This is a very important class, then. Take care of it.
 	"""
 
-	def __init__(self, thisId, link, extType, exFormat, items):
+	def __init__(self, thisId, link, exType, exFormat, items):
 		try:
 			self.thisId = thisId
 			self.link = link
 			self.exType = exType
 			self.exFormat = exFormat
 			self.items = items
-		except VaelueError as exc:
+		except ValueError as exc:
 			del self
 			raise exc
 
