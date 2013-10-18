@@ -48,6 +48,11 @@ def main():
 				{'name': Name('Renato'), 'password': Password('123456'), 'matric': Matric(120021471), 'bios': PlainText('Um samurai aposentado que decidiu estudar para ser um professor de física pelo desejo de ajudar as suas ex-vítimas a passarem no vestibular'), 'campus': Campus(2), 'courses': Campus(2), 'avatar': Link('teste/teste2'), 'sex': Sex('M')},
 				{'name': Name('Renato'), 'password': Password('123456'), 'matric': Matric(120021471), 'bios': PlainText('Um samurai aposentado que decidiu estudar para ser um professor de física pelo desejo de ajudar as suas ex-vítimas a passarem no vestibular'), 'campus': Campus(2), 'courses': [Id(4), Id(8)], 'avatar': Name('teste2'), 'sex': Sex('M')},
 				{'name': Name('Renato'), 'password': Password('123456'), 'matric': Matric(120021471), 'bios': PlainText('Um samurai aposentado que decidiu estudar para ser um professor de física pelo desejo de ajudar as suas ex-vítimas a passarem no vestibular'), 'campus': Campus(2), 'courses': [Id(4), Id(8)], 'avatar': Link('teste/teste2'), 'sex': Name('M')}],
+
+		'Module'     : [{'name': Name('ModuloTeste'), 'thisId': Id(15), 'lessons': [Id(4), Id(7)]},
+				{'name': Password('Modulo Teste'), 'thisId': Id(15), 'lessons': [Id(4), Id(7)]},
+				{'name': Name('Modulo Teste'), 'thisId': Grades(15), 'lessons': [Id(2), Id(8)]},
+				{'name': Name('Modulo Teste'), 'thisId': Id(15), 'lessons': [Grades(2)]}]
 	}
 
 	valid = invalid = 0
