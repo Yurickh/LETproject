@@ -578,14 +578,14 @@ class Exercise(object):
 		It is by exercising that humans do learn a new skill. This is a very important class, then. Take care of it.
 	"""
 
-	def __init__(self, thisId, link, extType, exFormat, items):
+	def __init__(self, thisId, link, exType, exFormat, items):
 		try:
 			self.thisId = thisId
 			self.link = link
 			self.exType = exType
 			self.exFormat = exFormat
 			self.items = items
-		except VaelueError as exc:
+		except ValueError as exc:
 			del self
 			raise exc
 
