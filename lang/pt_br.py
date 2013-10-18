@@ -32,7 +32,7 @@ EXCEPTION_INV_SX_F = "O caractere de sexo deve ser 'M', 'm', 'f' e 'F'."
 
 EXCEPTION_INV_LK_S = "O link deve conter pelo menos um caractere."
 """ Error message for a link that is NULL."""
-EXCEPTION_INV_LK_F = "O link deve conter apenas caracteres alfanúmericos."
+EXCEPTION_INV_LK_F = "O link deve conter apenas caracteres alfanuméricos."
 """ Error message for a link that contains non-alphanumeric chars."""
 
 EXCEPTION_INV_ML_S = "O campo e-mail nao pode ser nulo."
@@ -57,12 +57,12 @@ EXCEPTION_INV_ID_S = "O campo Id deve ser maior ou igual a 1."
 EXCEPTION_INV_ID_F = "Valor inválido para o campo ID."
 """ Error message for an invalid value for Id. """
 
-EXCEPTION_INV_LG_F = "Idioma invalido."
+EXCEPTION_INV_LG_F = "Idioma inválido."
 """ Error message for an inexistent language."""
 
 EXCEPTION_TEST_PREFIX = "Ocorreu um erro:"
 """ Prefix used to compose the error message."""
-EXCEPTION_TEST_INV_GET = "Ocorreu um erro no metodo getValue."
+EXCEPTION_TEST_INV_GET = "Ocorreu um erro no método getValue."
 """ Error message for the getValue error."""
 
 #Exceptions for the entity types.
@@ -112,7 +112,7 @@ EXCEPTION_INV_CRS_ID = "Id do curso inválido."
 """Error message for an invalid course Id."""
 EXCEPTION_INV_CRS_ST = "Aluno(s) do curso inválido(s)."
 """Error message for invalid course students."""
-EXCEPTION_INV_CRS_MD = "Módulo(s) do curso inǘalido(s)."
+EXCEPTION_INV_CRS_MD = "Módulo(s) do curso inválido(s)."
 """Error message for invlid course module."""
 
 EXCEPTION_INV_MD_NM = "Nome de módulo inválido."
@@ -133,7 +133,7 @@ EXCEPTION_INV_LS_ST = "Tipo de exercício da lição inválido."
 
 EXCEPTION_INV_EX_ID = "Id do exercício inválido."
 """Error message for an invalid exercise Id."""
-EXCEPTION_INV_EX_LK = "Link do exercício inváçido."
+EXCEPTION_INV_EX_LK = "Link do exercício inválido."
 """Error message for an invalid exercise link."""
 EXCEPTION_INV_EX_ET = "Tipo do exercício inválido."
 """Error message for an invalid exercise type."""
