@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
-from ELO.views import hello
+
+from kernel.MainUnit import Factory
 
 urlpatterns = patterns('',
-	url(r'^hello/$', hello),
+	url(r'^$', Factory().run()),
 )
