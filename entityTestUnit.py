@@ -24,8 +24,8 @@ def main():
 
 		'Lesson'	:[{'name': Name('Misa Misa'),'thisId': Id(2), 'link': Link('oenfouiwneqw/dq'), 'exercises': [Id(1), Id(3)]},
 				{'name': Name('Misa Misa'),'thisId': Id(2), 'link': Name('oenfouiwneqwdq'), 'exercises': [Id(1), Id(3)]},
-				{'name': Link('MisaMisa'),'thisId': Id(2), 'link': Link('oenfouiwneqwdq'), 'exercises': [Id(1), Id(3)]},
-				{'name': Name('Misa Misa'),'thisId': Id(2), 'link': Link('oenfouiwneqwdq'), 'exercises': [Password('1awddsd'), Id(3)]},
+				{'name': Link('MisaMisa'),'thisId': Id(2), 'link': Link('oenfouiwneqw/dq'), 'exercises': [Id(1), Id(3)]},
+				{'name': Name('Misa Misa'),'thisId': Id(2), 'link': Link('oenfouiwneqw/dq'), 'exercises': [Password('1awkksd'), Id(3)]},
 				{'name': Name('Misa Misa'),'thisId': Campus(2), 'link': Link('oenfouiwneqw/dq'), 'exercises': [Id(1), Id(3)]}],
 
 		'Adm'		:[{'name': Name('Yurick Hauschild'), 'password': Password('a793812b')},
