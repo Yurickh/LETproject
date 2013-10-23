@@ -5,27 +5,26 @@ class IfUiLogin:
 	__metaclass__ = ABCMeta
 
 	@abstractmethod
-	def run(): pass
+	def run(self): pass
 
-class NegUiLogin:
+class IfBusLogin:
 
 	__metaclass__ = ABCMeta
 
 	@abstractmethod
 	def validate(username, password): pass
 
-class UiLogin(IfInterLogin):
+class UiLogin(IfUiLogin):
 	
 	busLogin = None
 	
-	def run():
-		"""1. Criar a página. //django
-		2. Receber dados. // django
-		3. Chamar negócio e validar dados. <--
-			3.1 False:
-				Notificar e retornar a 2. <--
-			3.2 True:
-				Cria sessão e continua. //django"""
+	def run(self):
+		html = "<html><head><title>Login</title></head><body><form><input type='text' /><br /><input type='password'><br /><input type='submit' /></body></html>"
+
+		return html
 
 	def setBus(self, busClass):
 		self.busLogin = busClass
+
+class StubLogin(IfBusLogin):
+	def validate(username, password): pass

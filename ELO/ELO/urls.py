@@ -1,7 +1,6 @@
 from django.conf.urls import patterns, include, url
-
-from kernel.MainUnit import Factory
+from ELO.views import index
 
 urlpatterns = patterns('',
-	url(r'^$', Factory().run()),
-)
+	url(r'^$', index),
+
