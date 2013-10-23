@@ -1,4 +1,6 @@
 from django.http import HttpResponse
 
-def main(request):
-	return HttpResponse();
+from ELO.kernel.MainUnit import Factory
+
+def index(request):
+	return HttpResponse(Factory().run())

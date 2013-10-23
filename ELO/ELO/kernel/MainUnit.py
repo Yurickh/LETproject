@@ -2,7 +2,7 @@ from ..Login.LoginUnit import UiLogin, StubLogin
 
 class Factory(object):
 	
-	def run():
+	def run(self):
 		ilogin = UiLogin()
 		slogin = StubLogin()
 
