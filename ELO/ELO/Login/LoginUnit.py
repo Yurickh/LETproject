@@ -18,10 +18,7 @@ class UiLogin(IfUiLogin):
 	
 	busLogin = None
 	
-	def run(self):
-		html = "<html><head><title>Login</title></head><body><form><input type='text' /><br /><input type='password'><br /><input type='submit' /></body></html>"
-
-		return html
+	def run(self): return {}
 
 	def setBus(self, busClass):
 		self.busLogin = busClass

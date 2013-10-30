@@ -1,0 +1,16 @@
+{% extends "login_base.html" %}
+
+{% block title %}
+	ELO: Login
+{% endblock %}
+
+{% block contents %}
+	<center>
+		<b>Login:</b><br />
+		<form method="post">
+			<input type="text" name="username" /><br />
+			<input type="password" name="password" /><br />
+			<input type="submit" name="login_form" value="Login" /><br />
+		</form>
+	</center>
+{% endblock %}
