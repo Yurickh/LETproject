@@ -95,7 +95,7 @@ class Name(IfBaseType):
 			if len(value) == 0:
 				raise ValueError(EXCEPTION_INV_NM_S)
 			else:
-				if str.isalnum(value.replace(" ", "")) == False:
+				if unicode.isalnum(value.replace(" ", "")) == False:
 					raise ValueError(EXCEPTION_INV_NM_F)
 	
 class Matric(IfBaseType):
@@ -225,7 +225,7 @@ class Link(IfBaseType):
 		"""
 		if len(value) == 0:
 			raise ValueError(EXCEPTION_INV_LK_S)
-		elif str.isalnum(value.replace("/", "")) == False and len(value.replace("/", "")) > 0:
+		elif unicode.isalnum(value.replace("/", "")) == False and len(value.replace("/", "")) > 0:
 			raise ValueError(EXCEPTION_INV_LK_F)
 
 class Grades(IfBaseType):
@@ -279,7 +279,7 @@ class Mail(IfBaseType):
 		"""
 		if len(value) == 0:
 			raise ValueError(EXCEPTION_INV_ML_S)
-		elif str.isalnum(value.replace("@", "").replace(".", "")) == False:
+		elif unicode.isalnum(value.replace("@", "").replace(".", "")) == False:
 			raise ValueError(EXCEPTION_INV_ML_F)
 		elif value.count('@') == 1:
 			if value[value.index('@'):].count('.') < 1:
