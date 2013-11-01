@@ -1,3 +1,5 @@
+#encode: utf-8
+
 from django import forms
 
 from ELO.BaseUnit import Name, Password

@@ -65,7 +65,7 @@ class BusLogin(IfBusLogin):
 
 	def validate(self, username, password):
 		if username != Name(u"Yurick") or password != Password("a793812b"):
-			raise ValueError("Usuário e/ou senha incorreto.")
+			raise ValueError("Usuário e/ou senha incorreto")
 
 	def setPers(self, persClass):
 		self.__persClass = persClass
