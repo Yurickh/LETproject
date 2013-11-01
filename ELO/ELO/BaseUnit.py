@@ -1,3 +1,5 @@
+#encode: utf-8
+
 """@package docstring
 Base Type container.
 
@@ -35,6 +37,14 @@ class IfBaseType:
 
 	@abstractmethod
 	def _validate(self, value): pass
+
+	def __cmp__(self, other):
+		if other.value == self.value:
+			return 0
+		elif other.value > self.value:
+			return 1
+		else:
+			return -1
 
 class Password(IfBaseType):
 	""" Class responsible for storing and hashing a given string to be used as a password by the system.
@@ -84,7 +94,7 @@ class Name(IfBaseType):
 			del self
 			raise exc
 		self._value = value
-	
+
 	def _validate(self, value):
 		"""Class validator.
 		It is responsible for the validation of the name. If the name length is over 32 or is NULL or the name contains non-alphanumerical 				digits, it will raise an exception.

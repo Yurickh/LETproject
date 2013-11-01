@@ -1,3 +1,5 @@
+#encode: utf-8
+
 from Login.LoginUnit import UiLogin, BusLogin, PersLogin
 from Login.forms import LoginForm
 
