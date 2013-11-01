@@ -87,7 +87,7 @@ class Name(IfBaseType):
 	
 	def _validate(self, value):
 		"""Class validator.
-		It is resonsible for the validation of the name. If the name length is over 32 or is NULL or the name contains non-alphanumerical 				digits, it will raise an exception.
+		It is responsible for the validation of the name. If the name length is over 32 or is NULL or the name contains non-alphanumerical 				digits, it will raise an exception.
 		"""
 		if len(value) > 32:
 			raise ValueError(EXCEPTION_INV_NM_B)

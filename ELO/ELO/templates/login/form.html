@@ -5,10 +5,14 @@
 {% endblock %}
 
 {% block contents %}
-	<center><form target="/" method="post">
+		{% if error %}
+			{{ error }}
+		{% endif %}
+
+	<center><form action="/" method="post">
 		<table>
 		{{ form.as_table }}
-		<tr><td><input type="submit" value="Login" /></td></tr>
+		<tr><td><center><input type="submit" value="Login" /></center></td></tr>
 		</table>
 	</form></center>
 {% endblock %}

@@ -4,11 +4,7 @@
 		<title>{% block title %}{% endblock %}</title>
 	</head>
 
-	<body>
-		{% if form.errors %}
-			Error: {{ form.errors|pluralize }}.
-		{% endif %}
-				
+	<body>		
 		{% block contents %}
 		{% endblock %}
 	</body>

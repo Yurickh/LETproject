@@ -48,11 +48,11 @@ class UiLogin(IfUiLogin):
 				if form.is_valid():
 					self.__busLogin.validate(form.cleaned_data['username'], form.cleaned_data['password'])
 				else:
-					raise ValueError("Algo errado aí, cara xD")
+					raise ValueError()
 			except (ValueError, ValidationError) as exc:
-				return render(request, 'login/form.html', {'form': form})
+				return render(request, 'login/form.html', {'form': form, 'error': exc})
 			else:
-				return render(request, '', {'form', LoginForm()})
+				return render(request, 'login/form.html', {'form': LoginForm()})
 		else:
 			return render(request, 'login/form.html', {'form': LoginForm()})
 
@@ -64,8 +64,8 @@ class BusLogin(IfBusLogin):
 	__persLogin = None
 
 	def validate(self, username, password):
-		if username.value != "Yurick" or password.value != "a793812b":
-			raise ValueError("Usuário e/ou senha incorretos")
+		if username != Name(u"Yurick") or password != Password("a793812b"):
+			raise ValueError("Usuário e/ou senha incorreto.")
 
 	def setPers(self, persClass):
 		self.__persClass = persClass
