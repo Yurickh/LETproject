@@ -1,8 +1,8 @@
 #encode: utf-8
 
 from django.conf.urls import patterns, url
-from MainUnit import Factory
+from ELO import MainUnit
 
-urlpatterns = patterns('',
+urlpatterns = patterns('MainUnit',
 	url(r'^$', Factory().runLogin),
 )

@@ -13,7 +13,7 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.sqlite3', 
         'NAME': os.path.join(os.path.dirname(__file__), 'database/elo.db').replace('\\','/'),
         'USER': '',
         'PASSWORD': '',
