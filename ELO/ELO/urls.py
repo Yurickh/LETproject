@@ -2,6 +2,10 @@
 """ This file is responsible for reading the URL of the requests and redirecting the program to the factory that will create an object for the page creation """
 
 from django.conf.urls import patterns, url
+from ELO.MainUnit import Factory
 
-urlpatterns = patterns('ELO.MainUnit', url(r'^$', Factory().runLogin()))
+factory = Factory()
+
+urlpatterns = patterns('', 
+	url(r'^$', factory.runLogin)
 )
