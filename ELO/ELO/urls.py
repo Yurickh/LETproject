@@ -1,6 +1,6 @@
-from django.conf.urls import patterns, include, url
-from ELO.views import index
+#encode: utf-8
+
+from django.conf.urls import patterns, url
 
 urlpatterns = patterns('',
-	url(r'^$', index),
-
+)

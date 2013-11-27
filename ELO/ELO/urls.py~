@@ -1,0 +1,11 @@
+#encode: utf-8
+
+from django.conf.urls import patterns, url
+
+urlpatterns = patterns('',
+<<<<<<< HEAD
+	url(r'^$', index),
+
+=======
+)
+>>>>>>> af1ce457e9a147dbbae126c4c194b00d865aeaed

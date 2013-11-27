@@ -1,0 +1,57 @@
+<html>
+	<head>
+	<style type="text/css">
+		u1.errorlist {
+			margin: 0;
+			padding: 0;
+		}
+		.errorlist li {
+			background-color: blue;
+			background: linear-gradient(to right, red , blue);
+			color: white;
+			display: block;
+			font-size: 15px;
+			font-family: "Times New Roman";
+			padding: 4px 5px;
+			margin: 0;
+			border-style: solid;
+			border-color: red;
+		}
+		.errorlist li:hover {
+			width:300px;
+			font-size: 40px;
+			background: linear-gradient(to left, green , blue);
+			padding: 80px 80px;
+		}
+	</style>
+		<title> Oi, eu sou o Renato, Fale Comigo! </title>
+	</head>
+	<body style="background-image: url(http://www.freefever.com/stock/black-hole-ipad-wallpaper-ipad-wallpaper-retina-display-wallpaper-the-new-ipad-wallpaper-wallpapers-background-patterns-pattern-wallpapers.jpg)">
+		<h1> Oi, eu sou o Renato, Fale Comigo! </h1>
+		{% if form.errors %}
+			<p style="color: red;">
+				Por favor, arrume o erro{{ form.errors|pluralize }} abaixo.
+			</p>
+		{% endif %}
+
+		<form action="", method="post">
+			<div class="field">
+				{{ form.subject.errors }}
+					<label for="id_email">Nome:  </br></label>
+					{{ form.subject }}
+			</div>
+			<div class="field">
+				{{ form.email.errors }}
+					<label for="id_email">Seu email: </br></label>
+					{{ form.email }}
+			</div>
+			<div class="field">
+			    	{{ form.message.errors }}
+			    	<label for="id_message">Mensagem:</br></label>
+			    	{{ form.message }}
+			</div>
+			{% csrf_token %}
+			<input type="submit" value="Enviar!">
+		</form>
+	</body>
+</html>
