@@ -1,3 +1,5 @@
+#encode: utf-8
+
 """@package docstring
 Base Type container.
 
@@ -35,6 +37,14 @@ class IfBaseType:
 
 	@abstractmethod
 	def _validate(self, value): pass
+
+	def __cmp__(self, other):
+		if other.value == self.value:
+			return 0
+		elif other.value > self.value:
+			return 1
+		else:
+			return -1
 
 class Password(IfBaseType):
 	""" Class responsible for storing and hashing a given string to be used as a password by the system.
@@ -84,10 +94,10 @@ class Name(IfBaseType):
 			del self
 			raise exc
 		self._value = value
-	
+
 	def _validate(self, value):
 		"""Class validator.
-		It is resonsible for the validation of the name. If the name length is over 32 or is NULL or the name contains non-alphanumerical 				digits, it will raise an exception.
+		It is responsible for the validation of the name. If the name length is over 32 or is NULL or the name contains non-alphanumerical 				digits, it will raise an exception.
 		"""
 		if len(value) > 32:
 			raise ValueError(EXCEPTION_INV_NM_B)
@@ -95,7 +105,7 @@ class Name(IfBaseType):
 			if len(value) == 0:
 				raise ValueError(EXCEPTION_INV_NM_S)
 			else:
-				if str.isalnum(value.replace(" ", "")) == False:
+				if unicode.isalnum(value.replace(" ", "")) == False:
 					raise ValueError(EXCEPTION_INV_NM_F)
 	
 class Matric(IfBaseType):
@@ -225,7 +235,7 @@ class Link(IfBaseType):
 		"""
 		if len(value) == 0:
 			raise ValueError(EXCEPTION_INV_LK_S)
-		elif str.isalnum(value.replace("/", "")) == False and len(value.replace("/", "")) > 0:
+		elif unicode.isalnum(value.replace("/", "")) == False and len(value.replace("/", "")) > 0:
 			raise ValueError(EXCEPTION_INV_LK_F)
 
 class Grades(IfBaseType):
@@ -279,7 +289,7 @@ class Mail(IfBaseType):
 		"""
 		if len(value) == 0:
 			raise ValueError(EXCEPTION_INV_ML_S)
-		elif str.isalnum(value.replace("@", "").replace(".", "")) == False:
+		elif unicode.isalnum(value.replace("@", "").replace(".", "")) == False:
 			raise ValueError(EXCEPTION_INV_ML_F)
 		elif value.count('@') == 1:
 			if value[value.index('@'):].count('.') < 1:
