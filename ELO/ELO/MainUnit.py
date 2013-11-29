@@ -1,8 +1,10 @@
 from abc import *
-from Login.LoginUnit import IfUiLogin, IfBusLogin, UiLogin, BusLogin
+from Login.LoginUnit import *
 
+from django.core.exceptions import PermissionDenied
+
+#TEMPORARY
 from django.shortcuts import render
-from django.http import Http404
 
 class Factory:
 	__ui = None
@@ -12,11 +14,9 @@ class Factory:
 	def runLogin(self, request):
 		if not self.__ui is IfUiLogin:
 			self.__ui = UiLogin()
-			self.__bus = BusLogin()
 			self.__pers = Pers()
 
-			self.__ui.setBusLogin(self.__bus)
-			self.__bus.setPers(self.__pers)
+			self.__ui = UiLogin(__bus)
 
 		return self.__ui.run(request)
 
@@ -27,9 +27,10 @@ class Factory:
 
 	def runProfile(self, request):
 		if 'USER' in request.session.keys():
+			#TEMPORARY
 			return render(request, "profile.html", {'user': request.session['USER']})
 		else:
-			raise Http404("You cant access this page")
+			raise PermissionDenied("You cant access this page")
 
 class IfPers:
 	__metaclass__ = ABCMeta

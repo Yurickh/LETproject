@@ -6,8 +6,15 @@ class LoginForm(forms.Form):
 	password = forms.CharField(widget = forms.PasswordInput, label = "Password")
 	
 	def clean_username(self):
-		return Name(self.cleaned_data['username'])
+		try:
+			name = Name(self.cleaned_data['username'])
+		except ValueError as exc:
+			raise forms.ValidationError(exc)
+		return name
 
 	def clean_password(self):
-		return Password(self.cleaned_data['password'])
-
+		try:
+			pw = Password(self.cleaned_data['password'])
+		except ValueError as exc:
+			raise forms.ValidationError(exc)
+		return pw
