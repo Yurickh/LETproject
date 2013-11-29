@@ -44,7 +44,7 @@ class UiLogin(IfUiLogin):
 				request.session['USER'] = login_form.cleaned_data['username']
 				return HttpResponseRedirect('/profile')
 		else:
-			if 'user' in request.session.keys():
+			if 'USER' in request.session.keys():
 				return render(request, "profile.html", {'user': request.session['USER']})
 			login_form = LoginForm()
 			return render(request, "loginpage.html", {'form': login_form})
