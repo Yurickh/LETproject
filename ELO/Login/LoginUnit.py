@@ -1,79 +1,67 @@
-#coding: utf-8
+#coding utf-8
 
 from abc import *
-
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
-from django.forms import ValidationError
-
+from ELO.forms import LoginForm
+from django.template import Template, Context
+from django import forms
 from ELO.BaseUnit import Name, Password
-from ELO.EntityUnit import Adm
-from Login.forms import LoginForm
+
+from django.http import HttpResponseRedirect
 
 class IfUiLogin:
-
 	__metaclass__ = ABCMeta
 
 	@abstractmethod
-	def run(self): pass
-
-class IfBusLogin:
-
-	__metaclass__ = ABCMeta
+	def run(self, request): pass
 
 	@abstractmethod
-	def validate(self, user): pass
+	def setBusLogin(self, busLogin): pass
 
-class IfPersLogin:
-
-	__metaclass__ = ABCMeta
-
-	@abstractmethod
-	def getId(self, username=None, password=None): pass
+class IfBusLogin: 
+	__metaclas__ = ABCMeta
 
 	@abstractmethod
-	def getPassword(self, username=None, id=None): pass
+	def validate(self, username, password): pass
 
 	@abstractmethod
-	def getId(self, username=None, password=None): pass
-
+	def setPers(self, pers): pass
+	
 class UiLogin(IfUiLogin):
-	
-	__busLogin = None
-	
+	__bus = None
+
 	def run(self, request):
-		if request.method == 'POST':
-			form = LoginForm(request.POST)
-			try:
-				if form.is_valid():
-					self.__busLogin.validate(form.cleaned_data['username'], form.cleaned_data['password'])
+		if request.method == "POST":
+			login_form = LoginForm(request.POST)
+			try: 
+				if login_form.is_valid():
+					self.__bus.validate(login_form.cleaned_data['username'], login_form.cleaned_data['password'])
 				else:
 					raise ValueError()
-			except (ValueError, ValidationError) as exc:
-				return render(request, 'login/form.html', {'form': form, 'error': exc})
+			except ValueError as exc:
+				return render(request, "loginpage.html", {'form': login_form, 'error': exc})
 			else:
-				return render(request, 'login/form.html', {'form': LoginForm()})
+				request.session['USER'] = login_form.cleaned_data['username']
+				return HttpResponseRedirect('/profile')
 		else:
-			return render(request, 'login/form.html', {'form': LoginForm()})
+			if 'USER' in request.session.keys():
+				return render(request, "profile.html", {'user': request.session['USER']})
+			login_form = LoginForm()
+			return render(request, "loginpage.html", {'form': login_form})
 
-	def setBus(self, busClass):
-		self.__busLogin = busClass
+	def setBusLogin(self, busLogin):
+		self.__bus = busLogin
 
 class BusLogin(IfBusLogin):
 
-	__persLogin = None
+	__pers = None
 
 	def validate(self, username, password):
-		if username != Name(u"Yurick") or password != Password("a793812b"):
-			raise ValueError("Usuário e/ou senha incorreto")
+		try:
+			if username != Name(u"Adm") or password != Password(u"123456"):
+				raise ValueError("Login ou senha incorretos.")
+		except ValueError as exc:
+			raise exc
 
-	def setPers(self, persClass):
-		self.__persClass = persClass
-
-class PersLogin(IfPersLogin):
-
-	def getId(self, username=None, password=None): pass
-
-	def getPassword(self, username=None, id=None): pass
-
-	def getUsername(self, password=None, id=None): pass
+	def setPers(self, pers):
+		self.__pers = pers
