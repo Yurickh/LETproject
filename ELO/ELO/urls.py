@@ -8,5 +8,6 @@ factory = Factory()
 
 urlpatterns = patterns('', 
 	url(r'^$', factory.runLogin),
+	url(r'^profile$', factory.runProfile),
 	url(r'^logout$', factory.runLogout),
 )

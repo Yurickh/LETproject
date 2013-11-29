@@ -1,6 +1,8 @@
 from abc import *
 from Login.LoginUnit import IfUiLogin, IfBusLogin, UiLogin, BusLogin
 
+from django.shortcuts import render
+
 class Factory:
 	__ui = None
 	__bus = None
@@ -19,7 +21,10 @@ class Factory:
 
 	def runLogout(self, request):
 		del request.session['USER']
-		self.runLogin(request)
+		return self.runLogin(request)
+
+	def runProfile(self, request):
+		return render(request, "profile.html", {'user': request.session['USER']})
 
 class IfPers:
 	__metaclass__ = ABCMeta

@@ -7,6 +7,8 @@ from django.template import Template, Context
 from django import forms
 from ELO.BaseUnit import Name, Password
 
+from django.http import HttpResponseRedirect
+
 class IfUiLogin:
 	__metaclass__ = ABCMeta
 
@@ -39,10 +41,10 @@ class UiLogin(IfUiLogin):
 			except ValueError as exc:
 				return render(request, "loginpage.html", {'form': login_form, 'error': exc})
 			else:
-				request.session['USER'] = login_form.cleaned_data['username'].value
-				return render(request, "profile.html", {'user': login_form.cleaned_data['username'].value})
+				request.session['USER'] = login_form.cleaned_data['username']
+				return HttpResponseRedirect('/profile')
 		else:
-			if request.session['USER']:
+			if 'user' in request.session.keys():
 				return render(request, "profile.html", {'user': request.session['USER']})
 			login_form = LoginForm()
 			return render(request, "loginpage.html", {'form': login_form})
