@@ -28,7 +28,28 @@ class IfBusLogin:
 	def setPers(self, pers): pass
 	
 class UiLogin(IfUiLogin):
-	__bus = None
+
+	def __init__(self, bus):
+		try:
+			self.bus = bus
+		except TypeError as exc:
+			del self
+			raise exc
+
+	@property
+	def bus(self):
+		return self.__bus
+
+	@bus.setter
+	def bus(self, value):
+		if isinstance(value, IfBusLogin):
+			self.__bus = value
+		else:
+			raise TypeError("Expected IfBusLogin instance at UiLogin.__bus. Received " + str(type(value)) + " instead.")
+
+	@bus.deleter
+	def bus(self):
+		del self.__bus
 
 	def run(self, request):
 		if request.method == "POST":
@@ -48,9 +69,6 @@ class UiLogin(IfUiLogin):
 				return render(request, "profile.html", {'user': request.session['USER']})
 			login_form = LoginForm()
 			return render(request, "loginpage.html", {'form': login_form})
-
-	def setBusLogin(self, busLogin):
-		self.__bus = busLogin
 
 class BusLogin(IfBusLogin):
 
