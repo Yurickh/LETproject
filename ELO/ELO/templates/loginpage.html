@@ -1,0 +1,14 @@
+<html>
+	<head>
+		<title>ELO Login</title>
+	</head>
+	<body>	
+		{% if error %}
+			{{ error }}
+		{% endif %}
+		<form method="post">
+			{{ form.as_p }}
+			<input type="submit" name="login_form" value="Entrar"/>
+		</form>
+	</body>
+</html>
