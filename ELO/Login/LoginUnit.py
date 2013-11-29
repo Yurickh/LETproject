@@ -3,6 +3,9 @@
 from abc import *
 from django.shortcuts import render
 from ELO.forms import LoginForm
+from django.template import Template, Context
+from django import forms
+from ELO.BaseUnit import Name, Password
 
 class IfUiLogin:
 	__metaclass__ = ABCMeta
@@ -28,14 +31,19 @@ class UiLogin(IfUiLogin):
 	def run(self, request):
 		if request.method == "POST":
 			login_form = LoginForm(request.POST)
-			errors = []
-			if login_form.is_valid():
-				BusLogin.validate(cleaned_data['username'], cleaned_data['password'])
-				return render(request, "loginsuccess.html", {'user': BusLogin})
+			try: 
+				if login_form.is_valid():
+					self.__bus.validate(login_form.cleaned_data['username'], login_form.cleaned_data['password'])
+				else:
+					raise ValueError()
+			except ValueError as exc:
+				return render(request, "loginpage.html", {'form': login_form, 'error': exc})
 			else:
-				errors.append("Dados incorretos")
-				return render(request, "loginpage.html", {'errors': errors, 'form': login_form})
+				request.session['USER'] = login_form.cleaned_data['username'].value
+				return render(request, "profile.html", {'user': login_form.cleaned_data['username'].value})
 		else:
+			if request.session['USER']:
+				return render(request, "profile.html", {'user': request.session['USER']})
 			login_form = LoginForm()
 			return render(request, "loginpage.html", {'form': login_form})
 
@@ -47,9 +55,9 @@ class BusLogin(IfBusLogin):
 	__pers = None
 
 	def validate(self, username, password):
-		try: 
-			self.username != "adm"
-			self.password != "123"
+		try:
+			if username != Name(u"Adm") or password != Password(u"123456"):
+				raise ValueError("Login ou senha incorretos.")
 		except ValueError as exc:
 			raise exc
 

@@ -17,6 +17,10 @@ class Factory:
 
 		return self.__ui.run(request)
 
+	def runLogout(self, request):
+		del request.session['USER']
+		self.runLogin(request)
+
 class IfPers:
 	__metaclass__ = ABCMeta
 

@@ -7,5 +7,6 @@ from ELO.MainUnit import Factory
 factory = Factory()
 
 urlpatterns = patterns('', 
-	url(r'^$', factory.runLogin)
+	url(r'^$', factory.runLogin),
+	url(r'^logout$', factory.runLogout),
 )
