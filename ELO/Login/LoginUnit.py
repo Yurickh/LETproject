@@ -1,5 +1,10 @@
 #coding utf-8
 
+""" This file is responsible for storing all the layers that deal with the Login module.
+	The methods here are created and called by the Factory (MainUnit.py) when necessary.
+	They're responsible for creation, management and deletion of the session object and the validation and login of users.
+"""
+
 from abc import *
 from django.shortcuts import render
 from ELO.forms import LoginForm
@@ -9,26 +14,13 @@ from ELO.BaseUnit import Name, Password
 
 from django.http import HttpResponseRedirect
 
+""" Interface for the User Interface layer of the Login module.
+	It is responsible for loading the right template and process the data inputted in the login form.
+"""
 class IfUiLogin:
 	__metaclass__ = ABCMeta
 
-	@abstractmethod
-	def run(self, request): pass
-
-	@abstractmethod
-	def setBusLogin(self, busLogin): pass
-
-class IfBusLogin: 
-	__metaclas__ = ABCMeta
-
-	@abstractmethod
-	def validate(self, username, password): pass
-
-	@abstractmethod
-	def setPers(self, pers): pass
-	
-class UiLogin(IfUiLogin):
-
+	""" Enforces the existance of the underlaying layer """
 	def __init__(self, bus):
 		try:
 			self.bus = bus
@@ -36,6 +28,7 @@ class UiLogin(IfUiLogin):
 			del self
 			raise exc
 
+	""" Business layer associated to the UI layer. They're linked in the MainUnit module """
 	@property
 	def bus(self):
 		return self.__bus
@@ -50,6 +43,28 @@ class UiLogin(IfUiLogin):
 	@bus.deleter
 	def bus(self):
 		del self.__bus
+
+	""" The main method of any UI class, the run() method allows the Factory to give control over the program to the given module.
+	"""
+	@abstractmethod
+	def run(self, request): pass
+
+""" Interface for the Business layer of the Login module.
+	It is responsible for the validation of the data submitted throught the login form.
+"""
+class IfBusLogin: 
+	__metaclas__ = ABCMeta
+
+	""" The validation method returns nothing, but raises an exception if the validation isn't successful. """
+	@abstractmethod
+	def validate(self, username, password): pass
+
+	""" This method shall be deleted """
+	@abstractmethod
+	def setPers(self, pers): pass
+
+""" User Interface layer for the Login module """
+class UiLogin(IfUiLogin):
 
 	def run(self, request):
 		if request.method == "POST":
@@ -70,6 +85,7 @@ class UiLogin(IfUiLogin):
 			login_form = LoginForm()
 			return render(request, "loginpage.html", {'form': login_form})
 
+""" Business layer for the Login module """
 class BusLogin(IfBusLogin):
 
 	__pers = None
