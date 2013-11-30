@@ -15,10 +15,9 @@ class Factory:
 
 	def runLogin(self, request):
 		if not self.__ui is IfUiLogin:
-			self.__ui = UiLogin()
-			self.__pers = Pers()
+			self.__bus = BusLogin()
 
-			self.__ui = UiLogin(__bus)
+			self.__ui = UiLogin(self.__bus)
 
 		return self.__ui.run(request)
 
