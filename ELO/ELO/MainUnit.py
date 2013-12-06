@@ -6,6 +6,8 @@ from django.core.exceptions import PermissionDenied
 #TEMPORARY
 from django.shortcuts import render
 
+""" The Factory class is responsible for the building and flow control of the whole program.
+	Everything is created by It. It sees everything. It sees you. """
 class Factory:
 	__ui = None
 	__bus = None
@@ -13,10 +15,9 @@ class Factory:
 
 	def runLogin(self, request):
 		if not self.__ui is IfUiLogin:
-			self.__ui = UiLogin()
-			self.__pers = Pers()
+			self.__bus = BusLogin()
 
-			self.__ui = UiLogin(__bus)
+			self.__ui = UiLogin(self.__bus)
 
 		return self.__ui.run(request)
 
@@ -31,8 +32,3 @@ class Factory:
 			return render(request, "profile.html", {'user': request.session['USER']})
 		else:
 			raise PermissionDenied("You cant access this page")
-
-class IfPers:
-	__metaclass__ = ABCMeta
-
-class Pers: pass
