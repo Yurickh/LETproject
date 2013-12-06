@@ -2,6 +2,8 @@
 
 import os.path
 
+import django.conf.global_settings as DEFAULT_SETTINGS
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -70,9 +72,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+	os.path.join(os.path.dirname(__file__), 'static').replace('\\', '/'),
 )
 
 # List of finder classes that know how to find static files in
@@ -94,10 +94,10 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
-    #'django.middleware.common.CommonMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    #'django.middleware.csrf.CsrfViewMiddleware',
-    #'django.contrib.auth.middleware.AuthenticationMiddleware',
+   	'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
     #'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -117,11 +117,11 @@ TEMPLATE_DIRS = (
 
 INSTALLED_APPS = (
     #'django.contrib.auth',
-    #'django.contrib.contenttypes',
-    #'django.contrib.sessions',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
     #'django.contrib.sites',
-    #'django.contrib.messages',
-    #'django.contrib.staticfiles',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -157,3 +157,7 @@ LOGGING = {
         },
     }
 }
+
+TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
+    'ELO.MainUnit.globalContext',
+)

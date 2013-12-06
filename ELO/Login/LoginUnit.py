@@ -1,4 +1,4 @@
-#coding utf-8
+#coding: utf-8
 
 """ This file is responsible for storing all the layers that deal with the Login module.
 	The methods here are created and called by the Factory (MainUnit.py) when necessary.
@@ -7,11 +7,12 @@
 
 from abc import *
 from django.shortcuts import render
-from ELO.forms import LoginForm
+from Login.forms import LoginForm
 from django.template import Template, Context
 from django import forms
-from django.forms import ValidationError
 from ELO.BaseUnit import Name, Password
+
+from Login.models import Student
 
 from django.http import HttpResponseRedirect
 
@@ -82,6 +83,13 @@ class IfBusLogin:
 			del self
 			raise exc
 
+class IfPersLogin:
+
+	__metaclass__ = ABCMeta
+
+	@abstractmethod
+	def select(self, username): pass
+
 """ User Interface layer for the Login module """
 class UiLogin(IfUiLogin):
 
@@ -92,19 +100,32 @@ class UiLogin(IfUiLogin):
 				if login_form.is_valid():
 					self.bus.validate(login_form.cleaned_data['username'], login_form.cleaned_data['password'])
 				else:
-					raise ValidationError("Login ou senha incorretos")
-			except ValidationError as exc:
-				return render(request, "loginpage.html", {'form': login_form, 'error': exc})
+					raise ValueError("Login ou senha incorretos.")
+			except ValueError as exc:
+				return render(request, "Login/form.html", {'form': login_form, 'error': exc})
 			else:
-				request.session['USER'] = login_form.cleaned_data['username']
+				request.session['user'] = login_form.cleaned_data['username']
 				return HttpResponseRedirect('/profile')
 		else:
 			login_form = LoginForm()
-			return render(request, "loginpage.html", {'form': login_form})
+			return render(request, "Login/form.html", {'form': login_form})
 
 """ Business layer for the Login module """
 class BusLogin(IfBusLogin):
 	def validate(self, username, password):
-		if username != Name(u"Adm") or password != Password(u"123456"):
-			raise ValidationError("Login ou senha incorretos.")
+		upass = self.pers.select(username=username)
+		if not upass or upass['password'] != password.value:
+			raise ValueError('Login ou Senha incorretos.')
 
+class PersLogin(IfPersLogin):
+
+	def select(self, username=None):
+		if not username: return False
+
+		try:
+			uid = Student.objects.get(value=username, field='NAME').identity
+			upass = Student.objects.get(identity=uid, field='PASSWORD').value
+			return {'name': username, 'password': upass}
+		except Student.DoesNotExist:
+			return False
+		

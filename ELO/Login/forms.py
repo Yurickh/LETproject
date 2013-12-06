@@ -6,8 +6,8 @@ from ELO.BaseUnit import Name, Password
 """ Form class for the Login Form.
 	It receives a username and a password and passes it to the LoginUnit for validation """
 class LoginForm(forms.Form):
-	username = forms.CharField(max_length = 32)
-	password = forms.CharField(widget = forms.PasswordInput)
+	username = forms.CharField(max_length = 32, label = "Username")
+	password = forms.CharField(widget = forms.PasswordInput, label = "Password")
 	
 	def clean_username(self):
 		try:

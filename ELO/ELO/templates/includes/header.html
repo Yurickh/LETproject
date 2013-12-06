@@ -1,0 +1,25 @@
+<div class="banner">
+	ELO
+</div>
+<div class="mainMenu">
+	{% if user %}
+		<a href="/profile">
+			<div class="field">
+				Profile
+			</div>
+		</a>
+
+		<a href="/logout">
+			<div class="field">
+				Logout
+			</div>
+		</a>
+
+	{% else %}
+		<a href="/">
+			<div class="field">
+				Login
+			</div>
+		</a>
+	{% endif %}
+</div>
