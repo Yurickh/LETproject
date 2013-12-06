@@ -60,9 +60,27 @@ class IfBusLogin:
 	@abstractmethod
 	def validate(self, username, password): pass
 
-	""" This method shall be deleted """
-	@abstractmethod
-	def setPers(self, pers): pass
+	@property
+	def pers(self):
+		return self.__pers
+
+	@pers.setter
+	def pers(self, value):
+		if isinstance(value, IfPersLogin):
+			self.__pers = value
+		else:
+			raise TypeError("Expected IfPersLogin instance at BusLogin.__pers. Received " + str(type(value)) + "instead.")
+
+	@pers.deleter
+	def pers(self):
+		del self.__pers
+
+	def __init__(self, value):
+		try:
+			self.pers = value
+		except TypeError as exc:
+			del self
+			raise exc
 
 """ User Interface layer for the Login module """
 class UiLogin(IfUiLogin):
@@ -86,12 +104,7 @@ class UiLogin(IfUiLogin):
 
 """ Business layer for the Login module """
 class BusLogin(IfBusLogin):
-
-	__pers = None
-
 	def validate(self, username, password):
 		if username != Name(u"Adm") or password != Password(u"123456"):
 			raise ValidationError("Login ou senha incorretos.")
 
-	def setPers(self, pers):
-		self.__pers = pers
