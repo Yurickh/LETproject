@@ -1,4 +1,60 @@
 .banner
 {
 	font-size: 80px;
+	text-align: center;
+	color: #111177;
+}
+.error
+{
+	color: #dd1150;
+}
+
+.field
+{
+	float: left;
+	text-align: center;
+	margin-top: 0.2cm;
+	border: 1px solid black;
+	width: 100px;
+	position:relative;
+}
+
+a.field
+{	
+	text-decoration:none;
+}
+
+.mainMenu
+{
+	position: relative;
+	float: left;
+	width: 50%;
+	left: 25%; 
+}
+
+.content
+{
+	text-align: center;
+	color: #331156;
+	margin-top: 1cm;
+}
+
+body
+{
+	background-color: #ddaa22;
+}
+
+.dados{
+	text-align: left;
+	margin-top: 0.2cm;
+}
+.foot{
+	position: fixed;
+	bottom: 10px;
+	left: 480px;	
+}
+
+.ffield
+{
+	margin-top: 0.2cm;
 }

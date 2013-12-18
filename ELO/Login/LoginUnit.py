@@ -6,16 +6,15 @@
 """
 
 from abc import *
+
 from django.shortcuts import render
-from Login.forms import LoginForm
+from django.http import HttpResponseRedirect
 from django.template import Template, Context
 from django import forms
-from ELO.BaseUnit import Name, Password
 
 from Login.models import Student
-
-from django.http import HttpResponseRedirect
-
+from ELO.BaseUnit import Name, Password
+from Login.forms import LoginForm
 """ Interface for the User Interface layer of the Login module.
 	It is responsible for loading the right template and process the data inputted in the login form.
 """
@@ -66,9 +65,9 @@ class IfBusLogin:
 		return self.__pers
 
 	@pers.setter
-	def pers(self, value):
+	def pers(self, pers):
 		if isinstance(value, IfPersLogin):
-			self.__pers = value
+			self.__pers = pers
 		else:
 			raise TypeError("Expected IfPersLogin instance at BusLogin.__pers. Received " + str(type(value)) + "instead.")
 
@@ -76,6 +75,7 @@ class IfBusLogin:
 	def pers(self):
 		del self.__pers
 
+	""" Enforces the existance of the underlaying layer """
 	def __init__(self, value):
 		try:
 			self.pers = value
@@ -113,9 +113,9 @@ class UiLogin(IfUiLogin):
 """ Business layer for the Login module """
 class BusLogin(IfBusLogin):
 	def validate(self, username, password):
-		upass = self.pers.select(username=username)
+		upass = self.pers.select(username.value)
 		if not upass or upass['password'] != password.value:
-			raise ValueError('Login ou Senha incorretos.')
+			raise ValueError('Login ou senha incorretos.')
 
 class PersLogin(IfPersLogin):
 

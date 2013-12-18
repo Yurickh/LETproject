@@ -11,4 +11,6 @@ urlpatterns = patterns('',
 	url(r'^$', factory.runLogin),
 	url(r'^profile$', factory.runProfile),
 	url(r'^logout$', factory.runLogout),
+	url(r'^course', factory.runCourse),
+	url(r'^administracao', factory.runAdm),
 )
