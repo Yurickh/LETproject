@@ -6,6 +6,8 @@ from Profile.ProfileUnit import *
 from Adm.AdmUnit import *
 from Course.CourseUnit import *
 
+from Login.models import Adm, Professor, Student
+
 from django.core.exceptions import PermissionDenied
 
 #TEMPORARY
@@ -23,13 +25,20 @@ class Factory:
 	__bus = None
 	__pers = None
 
-	def runLogin(self, request):
+	def runLogin(self, request, entity):
 		if not isinstance(self.__ui, IfUiLogin):
 			self.__pers = PersLogin()
 			self.__bus = BusLogin(self.__pers)
 			self.__ui = UiLogin(self.__bus)
 
-		return self.__ui.run(request)
+		if entity == "Adm":
+			database = models.Adm
+		elif entity == "Professor":
+			database = models.Professor
+		elif entity == "Student":
+			database = models.Student
+
+		return self.__ui.run(request, database)
 
 	def runLogout(self, request):
 		if 'user' in request.session.keys():

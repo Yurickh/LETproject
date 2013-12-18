@@ -7,3 +7,19 @@ class Student(models.Model):
 
 	def __unicode__(self):
 		return u'%s : %s = %s' % (str(self.identity), self.field, self.value)
+
+class Adm(models.Model):
+	identity = models.IntegerField()
+	field = models.CharField(max_length=32)
+	value = models.TextField()
+
+	def __unicode__(self):
+		return u'%s : %s = %s' % (str(self.identity), self.field, self.value)
+
+class Professor(models.Model):
+	identity = models.IntegerField()
+	field = models.CharField(max_length=32)
+	value = models.TextField()
+
+	def __unicode__(self):
+		return u'%s : %s = %s' % (str(self.identity), self.field, self.value)

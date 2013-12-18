@@ -12,7 +12,7 @@ from django.http import HttpResponseRedirect
 from django.template import Template, Context
 from django import forms
 
-from Login.models import Student
+from Login.models import Student, Adm, Professor
 from ELO.BaseUnit import Name, Password
 from Login.forms import LoginForm
 """ Interface for the User Interface layer of the Login module.
@@ -93,12 +93,12 @@ class IfPersLogin:
 """ User Interface layer for the Login module """
 class UiLogin(IfUiLogin):
 
-	def run(self, request):
+	def run(self, request, database):
 		if request.method == "POST":
 			login_form = LoginForm(request.POST)
 			try: 
 				if login_form.is_valid():
-					self.bus.validate(login_form.cleaned_data['username'], login_form.cleaned_data['password'])
+					self.bus.validate(login_form.cleaned_data['username'], login_form.cleaned_data['password'], database)
 				else:
 					raise ValueError("Login ou senha incorretos.")
 			except ValueError as exc:
@@ -112,20 +112,20 @@ class UiLogin(IfUiLogin):
 
 """ Business layer for the Login module """
 class BusLogin(IfBusLogin):
-	def validate(self, username, password):
-		upass = self.pers.select(username.value)
+	def validate(self, username, password, database):
+		upass = self.pers.select(username.value, database)
 		if not upass or upass['password'] != password.value:
 			raise ValueError('Login ou senha incorretos.')
 
 class PersLogin(IfPersLogin):
 
-	def select(self, username=None):
+	def select(self, username=None, database):
 		if not username: return False
 
 		try:
-			uid = Student.objects.get(value=username, field='NAME').identity
-			upass = Student.objects.get(identity=uid, field='PASSWORD').value
+			uid = database.objects.get(value=username, field='NAME').identity
+			upass = database.objects.get(identity=uid, field='PASSWORD').value
 			return {'name': username, 'password': upass}
-		except Student.DoesNotExist:
+		except database.DoesNotExist:
 			return False
 		
