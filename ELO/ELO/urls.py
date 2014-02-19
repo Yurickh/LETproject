@@ -13,6 +13,6 @@ urlpatterns = patterns('',
 	url(r'^364fd8cdc3a35a89b7be75bc9d10ebea$', factory.runLogin, {'entity': 'Adm'}),
 	url(r'^profile$', factory.runProfile),
 	url(r'^logout$', factory.runLogout),
-	url(r'^course', factory.runCourse),
-	url(r'^administracao', factory.runAdm),
+	url(r'^course$', factory.runCourse),
+	url(r'^administracao$', factory.runAdm),
 )
