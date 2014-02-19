@@ -119,7 +119,7 @@ class BusLogin(IfBusLogin):
 
 class PersLogin(IfPersLogin):
 
-	def select(self, username=None, database):
+	def select(self, username=None, database=None):
 		if not username: return False
 
 		try:

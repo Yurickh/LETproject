@@ -25,18 +25,20 @@ class Factory:
 	__bus = None
 	__pers = None
 
-	def runLogin(self, request, entity):
+	def runLogin(self, request, entity=None):
 		if not isinstance(self.__ui, IfUiLogin):
 			self.__pers = PersLogin()
 			self.__bus = BusLogin(self.__pers)
 			self.__ui = UiLogin(self.__bus)
 
 		if entity == "Adm":
-			database = models.Adm
+			database = Adm
 		elif entity == "Professor":
-			database = models.Professor
+			database = Professor
 		elif entity == "Student":
-			database = models.Student
+			database = Student
+		else:
+			database = None
 
 		return self.__ui.run(request, database)
 
