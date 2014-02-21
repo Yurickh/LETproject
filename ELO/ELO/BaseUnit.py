@@ -1,10 +1,10 @@
 #encode: utf-8
 
-"""@package docstring
-Base Type container.
-
-This file is responsible for the implementation of the base types of our program. Each class shall contain a validator that will guarantee that the base type is compatible with the requirements.
-"""
+##	@package baseType
+#	Base Type container.
+#
+#	This file is responsible for the implementation of the base types of our program. 
+#	Each class shall contain a validator that will guarantee that the base type is compatible with the requirements.
 
 from abc import *
 import hashlib
@@ -12,10 +12,9 @@ import hashlib
 
 from lang.pt_br import *
 
+## Interface for any Base Type on the project.
+#		Its description implies that all Base Types shall have a _value attribute and a _validate method.
 class IfBaseType:
-	""" Interface for any Base Type on the project.
-		Its description implies that all Base Types shall have a _value attribute and a _validate method.
-	"""
 
 	__metaclass__ = ABCMeta
 	""" Specifies that IfBaseType is an abstract base class (abc). 

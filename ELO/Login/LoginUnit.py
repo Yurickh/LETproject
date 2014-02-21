@@ -121,6 +121,7 @@ class PersLogin(IfPersLogin):
 
 	def select(self, username=None, database=None):
 		if not username: return False
+		if not database: return False
 
 		try:
 			uid = database.objects.get(value=username, field='NAME').identity
