@@ -54,7 +54,7 @@ class Factory:
 				self.__ui = UiProfile(self.__bus)
 			return self.__ui.run(request)
 		else:
-			raise PermissionDenied("You cannot access this page :p")
+			raise PermissionDenied("You cannot access this page.")
 
 
 	def runAdm(self, request):

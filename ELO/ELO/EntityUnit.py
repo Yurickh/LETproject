@@ -1,22 +1,30 @@
 #coding: utf-8
 
-""" Here lies all the code regarding the structure of the entities of this program.
-	Entities shall not have methods beside the basics set, get and del methods for their properties. This file have 666 lines propositally.
-"""
+## Aqui encontra-se todo o código referentes as estruturas das entidades do
+#   programa.
+#	Entidades não posseuem métodos alêm de:'set', 'get' e 'del' para definir, 
+#	acessar e deletar suas propriedades. 
+
 
 from BaseUnit import *
 from abc import *
 from lang.pt_br import *
 
+## Definição das interfaces para classes de usuários.
+#	Inclui-se 'name' e 'password', propriedades concretas que serão
+#	passadas áquelas que delas derivam.
+#	Perceba  que um objeto 'User' nao pode ser instanciado e para que uma 
+#	classe derivada seja instaciada, ela deve sobrepor a propriedade
+#	abstrata _User__instantiable.	
 class User:
-	""" Interface definition for user-like classes.
-		It includes the 'name' and 'password' concrete properties that are passed to whoever derives from it. Note that a User object cannot be instantiated and in order to instantiate a derived class, it has to override the _User__instantiable abstract property.
-	"""
+	
+	
+	## Especifica que uma classe é uma abstrata. Por isso, ela há de ser instanciada.
+	#
 	__metaclass__ = ABCMeta
-	""" Specifies that this class is an abstract class. Thus, it shall not be instantiated. """
 
+	# Garante que um 'User' Jamais será criado. """
 	__instantiable = abstractproperty()
-	""" Guarantee that a User will never be created. """
 
 	@property
 	def name(self):
@@ -48,10 +56,13 @@ class User:
 	def password(self):
 		del self._password
 
+## Administrador do sistema.
+#Eles controlam os processaos e o fluxo dos procedimentos no programa
+#Eles são os unicos com permições para criar e deletar cursos. Entretanto
+#não possuem permição para modificar cursos já criados. Ou seja, não têm 
+#permição para interferir nos desencolvimento dos cursos.
 class Adm(User):
-	""" Administrator of the system.
-		The Administrators are the bosses. They control the processes and the flow of things in the program. They're the only ones allowed to create and destroy courses at will, but they cannot change courses already created. They're like merciful gods that won't mess with mere mortal's affairs.
-	"""
+	
 	_User__instantiable = True
 
 	def __init__(self, name, password):
@@ -62,10 +73,12 @@ class Adm(User):
 			del self
 			raise exc
 
+## Representação do Professor para o sistema.
+#Refere-se tanto a professores de fato, quanto a monitores.
+#Eles tem permição para montar cursos e modificar cursos.
+#Vale ressaltar que o professor NÃO pode criar cursos, apenas monta-los a partir
+#
 class Professor(User):
-	""" The representation of the Professor inside the system.
-		The professors may be real professors or monitors. They have the power to build, change and modify courses.
-	"""
 	_User__instantiable = True
 
 	def __init__(self, name, password, matric, bios, campus, courses, avatar, sex):
@@ -177,10 +190,11 @@ class Professor(User):
 		del self.__sex
 
 
+##Por ultimo, mas não menos importante, o aluno.
+#Principal usuário desse software.
+#Alunos tem permição para atender a cursos e  resolver exercícios.
 class Student(User):
-	""" Last, but not least, the Student.
-		The main user of this software. Students are allowed to take courses, answer to exercises and lots of fun stuff.
-	"""
+	
 	_User__instantiable = True
 
 	def __init__(self, name, password, matric, bios, campus, courses, avatar, email, sex, grades, interests, language):
@@ -361,10 +375,11 @@ class Student(User):
 		del __language
 
 
+## Um curos possui módulos, que por sua vez, contêm lições, e estas possuem
+#exercícios. "Courses" estão em um nivel mais alto do sistema de abstração.
+#Normalmente, a um professor será dado cursos vazios, e a partir destes 
+#ele poderá criar sua dinámica letiva.
 class Courses(object):
-	""" The master level of organization of the system.
-		A course holds modules, that holds lessons, that holds exercises. They're basically the highest level of abstraction in this system. Usually, one professor will be given an empty course, from wich he'll build the smaller parts of his student's journey.
-	"""
 
 	def __init__(self, name, thisId, students, modules):
 		try:
@@ -437,11 +452,11 @@ class Courses(object):
 	def modules(self):
 		del __modules
 
-
+## Módulos contêm lições.
+#São camadas intermediárias de abstração entre cursos e lições.
+#A conclusão de um módulo possibilita o engeço no seguinte. Como níveis em um 
+#jogo. 
 class Module(object):
-	""" The intermedium.
-		Modules holds lessons. They're like "levels" of a game. Get one, unlock another. It is fun, admit.
-	"""
 	def __init__(self, name, thisId, lessons):
 		try:
 			self.name = name
@@ -498,10 +513,11 @@ class Module(object):
 	def lessons(self):
 		del self.__lessons
 
+##Compõe a camada mais baixa de abstração do sistema
+#Lições são amplamente adaptáveis e customisáveis. Podem assumir o fotmato que 
+#o professor desejar. Para isso deve-se lincar o Link do conteúdo a desejado.
+#Lições sempre contêm pelo menos 1 exercício.
 class Lesson(object):
-	""" One of the building blocks behind everything: lessons.
-		They're capable of being about everything you want them do be. Video, audio, slideshow, anything. Just put what you wanna show in the html file and store it as a link. Be happy, then.
-	"""
 
 	def __init__(self, name, thisId, link, exercises):
 		try:
@@ -573,10 +589,10 @@ class Lesson(object):
 	def exercises(self):
 		del self.__exercises
 
+##Unidade básica de apresendisado. 
+#Em cada lição haverão exercicios com o intuito de avaliar o desenpenho do aluno.
+#O rendimento do aluno em tais exercicios regerá a experiência do aluno no curos
 class Exercise(object):
-	""" The main learning unit of the system. 
-		It is by exercising that humans do learn a new skill. This is a very important class, then. Take care of it.
-	"""
 
 	def __init__(self, thisId, link, exType, exFormat, items):
 		try:
