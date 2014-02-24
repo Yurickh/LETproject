@@ -3,4 +3,44 @@ LET PROJECT
 ===========
 
 O LETProject é uma iniciativa do laboratório do LET para o desenvolvimento de uma plataforma de ensino de línguas online.
-Seu principal objetivo é criar uma interface amigável entre alunos e professores de forma a incluir o estudo doméstico de línguas no mundo informatizado.
+Seu principal objetivo é criar uma interface amigável entre alunos e professores de forma a incluir o estudo doméstico de línguas no mundo informatizado
+
+
+
+
+
+Refazer documentação:
+	-> ELO: 10 hrs *
+	-> Login: 10 hrs *
+	-> Profile: 10 hrs
+	-> Doxygen: 10 hrs
+	-> Documento: 15 hrs
+	-> README: 15 hrs
+
+Desenvolver módulos:
+	-> Profile
+		- forms.py: 5 hrs
+		- ProfileUnit.py: 60 hrs
+		- models.py: 5 hrs
+		- templates: 40 hrs
+		- debug: 110 hrs
+
+Estudar:
+	-> Javascript:
+		- AJAX: 60 hrs
+		- jQuery: 60 hrs
+	-> Diego: 30 hrs
+
+misc: 53 hrs
+
+tempo total: 500 hrs
+
+data de início: 21/02/2014
+data de término: 07/07/2014
+
+meta 28/02:
+terminar ELO e README
+progredir 11 hrs no treinamento do diego
+	24/02:
+	Completo: Refazer documentação: ELO
+	Completo: Refazer documentação: Login

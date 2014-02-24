@@ -1,5 +1,5 @@
 Refazer documentação:
-	-> ELO: 10 hrs
+	-> ELO: 10 hrs *
 	-> Login: 10 hrs
 	-> Profile: 10 hrs
 	-> Doxygen: 10 hrs
@@ -25,8 +25,10 @@ misc: 53 hrs
 tempo total: 500 hrs
 
 data de início: 21/02/2014
+data de término: 07/07/2014
 
 meta 28/02:
 terminar ELO e README
 progredir 11 hrs no treinamento do diego
-			 
+	24/02:
+	Completo: Refazer documentação: ELO
