@@ -5,7 +5,6 @@
 #	Entidades não posseuem métodos alêm de:'set', 'get' e 'del' para definir, 
 #	acessar e deletar suas propriedades. 
 
-
 from BaseUnit import *
 from abc import *
 from lang.pt_br import *

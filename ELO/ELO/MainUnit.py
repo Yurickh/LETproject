@@ -18,34 +18,41 @@ def globalContext(request):
 			'user': request.session['user'] if ('user' in request.session.keys()) else False,
 		}
 
-""" The Factory class is responsible for the building and flow control of the whole program.
-	Everything is created by It. It sees everything. It sees you. """
+## Classe factory.
+# Responsável pela construção e controle de fluxo de todo o programa. Tudo é criado a partir dela.
 class Factory:
 	__ui = None
 	__bus = None
 	__pers = None
 
-	def runLogin(self, request, entity):
+	## Classe que executa o módulo de login.
+	# Define as camadas de persistência, negócio de login e apresentação e verifica o tipo de usuário.
+	def runLogin(self, request, entity=None):
 		if not isinstance(self.__ui, IfUiLogin):
 			self.__pers = PersLogin()
 			self.__bus = BusLogin(self.__pers)
 			self.__ui = UiLogin(self.__bus)
 
 		if entity == "Adm":
-			database = models.Adm
+			database = Adm
 		elif entity == "Professor":
-			database = models.Professor
+			database = Professor
 		elif entity == "Student":
-			database = models.Student
+			database = Student
+		else:
+			database = None
 
 		return self.__ui.run(request, database)
 
+	## Classe que executa o logout.
+	# Finaliza a sessão do usuário e redireciona para a página de login.
 	def runLogout(self, request):
 		if 'user' in request.session.keys():
 			del request.session['user']
 		return self.runLogin(request)
 
-
+	## Classe que executa o módulo de Perfil.
+	# Define as camadas de persistência, negócio e apresentação de perfil e proíbe o acesso de usuários não logados no sistema.
 	def runProfile(self, request):
 		if 'user' in request.session.keys():
 			if not isinstance(self.__ui, IfUiProfile):
@@ -56,7 +63,8 @@ class Factory:
 		else:
 			raise PermissionDenied("You cannot access this page.")
 
-
+	## Classe que executa o módulo de Administração.
+	# Define as camadas de persinstência, negócio e apresentação de administração.
 	def runAdm(self, request):
 		if 'user' in request.session.keys():
 			if not self.__ui is IfUiAdm:
@@ -66,7 +74,8 @@ class Factory:
 
 			return self.__ui.run(request)
 
-
+	## Classe que executa o módulo de Curso.
+	# Define as camdas de persistência, negócio e apresentação de curso.
 	def runCourse(self, request):
 		if 'user' in request.session.keys():
 			if not self.__ui is IfUiCourse:

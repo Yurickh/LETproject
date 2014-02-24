@@ -1,6 +1,9 @@
 # coding: utf-8
 
-#Exceptions for the basic types.
+## Os comentários de cada tipo de excessão está no arquivo pt_br.py
+
+## Excessões para tipos básicos.
+
 
 EXCEPTION_INV_PW_S = "The password must be at least 6 characters long."
 
@@ -40,7 +43,7 @@ EXCEPTION_INV_LG_F = "Invalid language."
 EXCEPTION_TEST_PREFIX = "An Error has been ocurred."
 EXCEPTION_TEST_INV_GET = "An Error has ocurred in the getValue method."
 
-#Exceptions for the entitiy types.
+#Excessões para os tipos de entidades.
 
 EXCEPTION_INV_USR_NM = "Invalid user name."
 EXCEPTION_INV_USR_PW = "Invalid user's password."

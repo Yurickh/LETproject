@@ -1,43 +1,47 @@
 #encode: utf-8
 
-"""@package docstring
-Base Type container.
-
-This file is responsible for the implementation of the base types of our program. Each class shall contain a validator that will guarantee that the base type is compatible with the requirements.
-"""
+##	@package BaseUnit
+#	Base Type container.
+#
+#	Este arquivo e responsável pela implementação dos tipos básicos do programa.
+#	Cada classe deve conter o validator, que garante que os tipos básicos são compatíveis com o formato especificado nos requisitos.
 
 from abc import *
 import hashlib
 
-
 from lang.pt_br import *
 
+## Interface para qualquer tipo básico (Base Type) pertencente ao projeto.
+#		Sua descrição implica que todos os tipos básicos devem ter um atributo _value e um método _validate.
 class IfBaseType:
-	""" Interface for any Base Type on the project.
-		Its description implies that all Base Types shall have a _value attribute and a _validate method.
-	"""
 
+	## Especifica que o IfBaseType é uma classe base abstrata (abc). 
+	# Isso significa que uma classe derivada pode ser instanciada se - e somente se - ela der "override" em todos os métodos e
+	# propriedades abstratas.
 	__metaclass__ = ABCMeta
-	""" Specifies that IfBaseType is an abstract base class (abc). 
-		That means that a derived class can be instantiated if - and only if - it overrides all its abstract property and methods.
-	"""
 
+	## Método que retorna o valor de um dado objeto.
 	@property
 	def value(self):
 		return self._value
 
+	## Método que fixa e valida o conteúdo de um objeto.
 	@value.setter
 	def value(self, aux):
 		self._validate(aux)
 		self._value = aux
 
+	## Método que deleta o conteúdo de um objeto.
 	@value.deleter
 	def value(self):
 		del self._value
 
+	## Define que toda classe derivada terá um método _validate.
 	@abstractmethod
 	def _validate(self, value): pass
 
+	## Método que compara o conteúdo de dois objetos.
+	# Retorna '0' se o conteúdo for o mesmo e '1' ou '-1' caso sejam diferentes.
 	def __cmp__(self, other):
 		if other.value == self.value:
 			return 0
@@ -46,15 +50,13 @@ class IfBaseType:
 		else:
 			return -1
 
+## Classe responsável por armazenar e codificar uma string que será usada como o password pelo sistema.
 class Password(IfBaseType):
-	""" Class responsible for storing and hashing a given string to be used as a password by the system.
-	"""
 	_value = None
 
+	## Construtor da classe.
+	# Responsável por validar e definir o valor do password.
 	def __init__(self, value):
-		""" Class constructor.
-		It is responsible for the validation and setting of the value of the password.
-		"""
 		try:
 			self._validate(value)
 		except ValueError as exc:
@@ -62,10 +64,9 @@ class Password(IfBaseType):
 			raise exc
 		self._value = hashlib.md5(hashlib.sha256(value).hexdigest()).hexdigest()
 
+	## Validator da classe.
+	# Responsável pela validação do password. Se o tamanho do password for menor que 6, ele irá lançar uma excessão.
 	def _validate(self, value):
-		"""Class validator.
-		It is responsible for the validation of the password. If the length of the password is under 6, it will raise an exception.
-		"""
 		if(len(value) < 6):
 			raise ValueError(EXCEPTION_INV_PW_S)
 
@@ -73,21 +74,20 @@ class Password(IfBaseType):
 	def value(self):
 		return self._value
 
+	## Dá um 'override' no método setValue() de IfBaseType para fazer o hash.
 	@value.setter
 	def value(self, value):
-		"""Overrides the IfBaseType setValue() for the sake of hashing."""
 		self._validate(value)
 		self._value = hashlib.md5(hashlib.sha256(value).hexdigest()).hexdigest()
 
+## Classe responsável por armazenar uma string dada para ser usada como um nome pelo sistema.
 class Name(IfBaseType):
-	""" Class responsible for storing a given string to be used as a name by the system.
-	"""
+
 	_value = None
-	
+
+	## Construtor da classe.
+	# Responsável pela validação do valor no conteúdo de password.	
 	def __init__(self, value):
-		""" Class constructor.
-		It is responsible for the validation of the value of the password.
-		"""
 		try:
 			self._validate(value)
 		except ValueError as exc:
@@ -95,10 +95,10 @@ class Name(IfBaseType):
 			raise exc
 		self._value = value
 
+	## Validator da classe.
+	# Responsável pela validação do nome. Se o número de caracteres for maior que 32, se for NULL ou se contém caracteres não 
+	# alfanuméricos, irá lançar uma excessão.
 	def _validate(self, value):
-		"""Class validator.
-		It is responsible for the validation of the name. If the name length is over 32 or is NULL or the name contains non-alphanumerical 				digits, it will raise an exception.
-		"""
 		if len(value) > 32:
 			raise ValueError(EXCEPTION_INV_NM_B)
 		else: 
@@ -107,17 +107,15 @@ class Name(IfBaseType):
 			else:
 				if unicode.isalnum(value.replace(" ", "")) == False:
 					raise ValueError(EXCEPTION_INV_NM_F)
-	
+
+## Classe responsável por armazenar um número dado que será usado como um registro dos usuários no sistema.	
 class Matric(IfBaseType):
-	""" Class responsible for storing a given number to be used as a registry by the users of the system
-	"""	
+
 	_value = None
 
+	## Construtor da classe.
+	# Responsavel por validar e definir o valor de matric.
 	def __init__(self, value):
-		""" Class constructor.
-
-			It is responsible for the validation and setting of the value of the matric.
-		"""
 		try:
 			self._validate(value)
 		except ValueError as exc:
@@ -125,12 +123,9 @@ class Matric(IfBaseType):
 			raise exc
 		self._value = value
 
+	## Validator da classe.
+	# Responsável por checar se o número de registro é maior do que o máximo permitido (999999999) ou menor que 1.
 	def _validate(self, value):
-		""" Class validator.
-
-			It is responsible for checking if the registry number is bigger than the max allowed (999999999) or smaller than 1.
-
-		"""
 		try: int(value)
 		except ValueError: raise ValueError(EXCEPTION_INT_MT_F)
 
@@ -139,15 +134,14 @@ class Matric(IfBaseType):
 		elif value < 1:
 			raise ValueError(EXCEPTION_INV_MT_S)
 		
-
+## Classe responsável por armazenar textos simples, que corresponde a qualquer tipo de texto.
 class PlainText(IfBaseType):
-	"""Class responsible for storing plain texts, that are any kind of text.
-	"""
 	_value = None
+
+	## Construtor da classe.
+	# Responsável por validar e definir um valor (conteúdo) de um texto.
 	def __init__(self, value):
-		""" Class contructor.
-		It is responsible for the validation and setting of the value of the plain text.
-		"""
+
 		try:
 			self._validate(value)
 		except ValueError as exc:
@@ -155,22 +149,20 @@ class PlainText(IfBaseType):
 			raise exc
 		self._value = value
 
+	## Validator da classe.
+	# É responsável por validar o texto. Se o comprimento do texto for maior que 1024 caracteres, irá lançar uma excessão.
 	def _validate(self, value):
-		"""Class validator.
-		It is responsible for validating the plain text. If the length of the text is over 1024, it will raise an exception.
-		"""
 		if len(value) > 1024:
 			raise ValueError(EXCEPTION_INV_PT_B)
 
+## Classe responsável por armazenar o id do Campus.
 class Campus(IfBaseType):
-	"""Class responsible for storing the id of the Campus.
-	"""
+
 	_value = None
 
+	## Construtor da classe.
+	# Responsável por validar e definir o id de campus.
 	def __init__(self, value):
-		"""Class constructor.
-		It is responsible for the validation and setting of the campus id.
-		"""
 		try:
 			self._validate(value)
 		except ValueError as exc:
@@ -178,27 +170,22 @@ class Campus(IfBaseType):
 			raise exc
 		self._value = value
 
+	## Validator da classe.
+	# Responsável por validar o id do campus. Se o número do id do campus for menor que '0', ele irá lançar uma excessão.
 	def _validate(self, value):
-		"""Class validator.
-		It is responsible for validating the campus id. If the number of the campus is under 0, it will raise an exception.
-		"""
-
 		try: int(value)
 		except ValueError: raise ValueError(EXCEPTION_INV_CP_F)
 
 		if value <= 0:
 			raise ValueError(EXCEPTION_INV_CP_S)
 
-
+## Classe responsável por armazenar o sexo do usuário.
 class Sex(IfBaseType):
-	"""Class responsible for storing the sex of the user.
-	"""
 	_value = None
-
+	
+	## Construtor da classe.
+	# Responsável por validar e definir o conteúdo em sexo.
 	def __init__(self, value):
-		"""Class constructor.
-		It is responsible for the validation and setting of the sex.
-		"""
 		try:
 			self._validate(value)
 		except ValueError as exc:
@@ -206,22 +193,19 @@ class Sex(IfBaseType):
 			raise exc
 		self._value = value
 
+	## Validato da classe.
+	# Responsável por validar o contúdo em sexo. Se o caractere for diferente de 'm', 'M', 'f' e 'F', irá lançar uma excessão.
 	def _validate(self, value):
-		"""Class validator.
-		It is responsible for the validating the sex. If the character is different than 'm', 'M', 'f' and 'F', it will raise an exception.
-		"""
 		if value != 'm' and value != 'M' and value != 'f' and value != 'F':
 			raise ValueError(EXCEPTION_INV_SX_F)
 
+## Classe responsável por armazenar uma dada string que será usada como um link.
 class Link(IfBaseType):
-	""" Class responsible for storing a given string to be used as a link 
-	"""
 	_value = None
 
+	## Construtor da classe.
+	# Responsável por validar e definir o valor (conteúdo) de um link.
 	def __init__(self, value):
-		""" Class constructor.
-		It is responsible for the validation and setting of the value of the link.
-		"""
 		try:
 			self._validate(value)
 		except ValueError as exc:
@@ -229,24 +213,21 @@ class Link(IfBaseType):
 			raise exc
 		self._value = value
 
+	## Validator da classe.
+	# Responsável por validar um link. Se o comprimento do link for 0, ou se tem caracteres não alfanumérico, irá lançar uma escessão.
 	def _validate(self, value):
-		"""Class validator.
-		It is responsible for the validation of the link. If the length of the link is zero, or it has non-alphanumeric chars it will raise an exception.
-		"""
 		if len(value) == 0:
 			raise ValueError(EXCEPTION_INV_LK_S)
 		elif unicode.isalnum(value.replace("/", "")) == False and len(value.replace("/", "")) > 0:
 			raise ValueError(EXCEPTION_INV_LK_F)
 
+## Classe responsável por armazenar um número inteiro dado que representará uma nota.
 class Grades(IfBaseType):
-	""" Class responsible for storing a given integer that represents the grade
-	"""
 	_value = None
 
+	## Contrutor da classe.
+	# Responsável por validar e fixar um valor (conteúdo) de um objeto do tipo nota.
 	def __init__(self, value):
-		""" Class constructor.
-		It is responsible for the validation and setting of the value of the grade.
-		"""
 		try:
 			self._validate(value)
 		except ValueError as exc:
@@ -254,11 +235,9 @@ class Grades(IfBaseType):
 			raise exc
 		self._value = value
 
+	## Validator da classe.
+	# Responsável por validar uma nota. Se o inteiro é menor que zero, ou maio que 100, irá mandar uma excessão.
 	def _validate(self, value):
-		"""Class validator.
-		It is responsible for the validation of the grade. If the integer is smaller than zero, or bigger than one hundred, it will raise an exception.
-		"""
-
 		try: int(value)
 		except ValueError: raise ValueError(EXCEPTION_INV_GR_F)
 
@@ -267,15 +246,13 @@ class Grades(IfBaseType):
 		elif value > 100:
 			raise ValueError(EXCEPTION_INV_GR_B)
 
+## Classe responsável por armazenar o e-mail do usuário.
 class Mail(IfBaseType):
-	"""Class responsible for storing the e-mail of the user.
-	"""
 	_value = None
 
+	## Construtor da classe.
+	# Responsável por validar e definir um e-mail.
 	def __init__(self, value):
-		"""Class constructor.
-		It is responsible for the validation and setting of the e-mail.
-		"""
 		try:
 			self._validate(value)
 		except ValueError as exc:
@@ -283,10 +260,10 @@ class Mail(IfBaseType):
 			raise exc
 		self._value = value
 
+	## Validator da classe.
+	# Responsável por validar "MaiL". Se o valor do conteúdo for NULL, ou se conter espaços em branco, mais de um '@' e menos de um '.'
+	# depois do '@', irá lançar uma excessão.
 	def _validate(self, value):
-		"""Class validator.
-		It is responsible for the validation of the Mail. If the value is null, or if it has blank spaces, more than one '@', and less 			than one '.' after the '@', it will raise an exception.
-		"""
 		if len(value) == 0:
 			raise ValueError(EXCEPTION_INV_ML_S)
 		elif unicode.isalnum(value.replace("@", "").replace(".", "")) == False:
@@ -297,16 +274,13 @@ class Mail(IfBaseType):
 		else:
 			raise ValueError(EXCEPTION_INV_ML_F)
 		
-
+## Classe responsável por armazenar um dado inteiro que representará um tipo de exercício.
 class ExType(IfBaseType):
-	""" Class responsible for storing a given integer that represents the exercise type
-	"""
 	_value = None
 
+	## Contrutor da classe,.
+	# Responsável por validar e definir os tipos de exercício.
 	def __init__(self, value):
-		""" Class constructor.
-		It is responsible for the validation and setting of the exercise type
-		"""
 		try:
 			self._validate(value)
 		except ValueError as exc:
@@ -314,26 +288,22 @@ class ExType(IfBaseType):
 			raise exc
 		self._value = value
 
+	## Validator da classe.
+	# Responsável por validar o tipo de exercício. Se o inteiro for zero ou menor que zero irá lançar uma excessão.
 	def _validate(self, value):
-		"""Class validator.
-		It is responsible for the validation of the exercise type. If the integer is zero or smaller than zero it will raise in an exception
-		"""
-
 		try: int(value)
 		except ValueError: raise ValueError(EXCEPTION_INV_ET_F)
 
 		if value <= 0:
 			raise ValueError(EXCEPTION_INV_ET_S)
 
+## Classe responsável por armazenar um Id.
 class Id(IfBaseType):
-	"""Class responsible for storing an Id.
-	"""
 	_value = None
 
+	## Construtor da classe.
+	# Responsável por validar e definir um e-mail.
 	def __init__(self, value):
-		"""Class constructor.
-		It is responsible for the validation and setting of the e-mail.
-		"""	
 		try:
 			self._validate(value)
 		except ValueError as exc:
@@ -341,24 +311,22 @@ class Id(IfBaseType):
 			raise exc
 		self._value = value
 
+	## Validator da classe.
+	# Responsável por validar o Id. Se o número de Id for menor que 1, o validator irá lançar uma excessão.
 	def _validate(self, value):
-		"""Class validator.
-		It is responsible for the validation of the Id. If the Id number is less than 1, it will raise an exception.
-		"""
 		try: int(value)
 		except ValueError: raise ValueError(EXCEPTION_INV_ID_F)
 
 		if value < 1:
 			raise ValueError(EXCEPTION_INV_ID_S)
 
+## Classe resonsável por armazenar a linguagem do sistema.
 class Language(IfBaseType):
-	"""Class responsible for storing the suystem language.
-	"""
 	_value = None
+
+	## Construtor da classe.
+	# Responsável por validar e definir a linguagem.
 	def __init__(self, value):
-		"""Class constructor.
-		It is responsible for th validation and setting of the language.
-		"""
 		try:
 			self._validate
 		except ValueError as exc:
@@ -366,15 +334,11 @@ class Language(IfBaseType):
 			raise exc
 		self._value = value
 
+	## Validator da classe.
+	# Responsável pela validação da linguagem. Se for menor que 1, o validator irá lançar uma excessão.
 	def _validate(self, value):
-		"""Class validator.
-		It is responsible for the validation of the language. If it is less than 1, it will raise an exception. 
-		"""
-
 		try: int(value)
 		except ValueError: raise ValueError(EXCEPTION_INV_LG_F)
 
 		if value < 1:
 			raise ValueError(EXCEPTION_INV_LG_F)
-
-
