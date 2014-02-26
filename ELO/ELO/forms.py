@@ -4,8 +4,11 @@ from django import forms
 from ELO.BaseUnit import Name, Password
 from lang.pt_br import *
 
-## Classe de formulário para o formulário de Login.
-# Recebe um username e um password e passa para o LoginUnit para a validacao."""
+## @package Forms 
+#Contêm a classe que irá formatar a classe de login 
+#
+#Classe de formulário para o formulário de Login.
+##Recebe um username e um password e passa para o LoginUnit para a validacao."""
 class LoginForm(forms.Form):
 	username = forms.CharField(max_length = 32)
 	password = forms.CharField(widget = forms.PasswordInput)

@@ -1,0 +1,72 @@
+\hypertarget{classELO_1_1forms_1_1LoginForm}{\section{Referência da Classe E\-L\-O.\-forms.\-Login\-Form}
+\label{de/da2/classELO_1_1forms_1_1LoginForm}\index{E\-L\-O.\-forms.\-Login\-Form@{E\-L\-O.\-forms.\-Login\-Form}}
+}
+
+
+Classe de formulário para o formulário de \hyperlink{namespaceLogin}{Login}.  
+
+
+Diagrama de Hierarquia para E\-L\-O.\-forms.\-Login\-Form\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{de/da2/classELO_1_1forms_1_1LoginForm}
+\end{center}
+\end{figure}
+\subsection*{Métodos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classELO_1_1forms_1_1LoginForm_a1507a6366b1b821a2fa3f242aa606f85}{clean\-\_\-username}
+\begin{DoxyCompactList}\small\item\em Verifica se a formatação do nome está correta. \end{DoxyCompactList}\item 
+def \hyperlink{classELO_1_1forms_1_1LoginForm_a37cda66e10767bd074615d6bd39b1b8c}{clean\-\_\-password}
+\begin{DoxyCompactList}\small\item\em Verifica se a formatação do password está correta. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Atributos Estáticos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+tuple \hyperlink{classELO_1_1forms_1_1LoginForm_aa093b687c878b2b5a6bf52718dac480d}{username} = forms.\-Char\-Field(max\-\_\-length = 32)
+\item 
+tuple \hyperlink{classELO_1_1forms_1_1LoginForm_a3bc2d5d337bbe87a543b48b52315d199}{password} = forms.\-Char\-Field(widget = forms.\-Password\-Input)
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrição Detalhada}
+Classe de formulário para o formulário de \hyperlink{namespaceLogin}{Login}. 
+
+Recebe um username e um password e passa para o Login\-Unit para a validacao.\char`\"{}\char`\"{}" 
+
+\subsection{Métodos}
+\hypertarget{classELO_1_1forms_1_1LoginForm_a37cda66e10767bd074615d6bd39b1b8c}{\index{E\-L\-O\-::forms\-::\-Login\-Form@{E\-L\-O\-::forms\-::\-Login\-Form}!clean\-\_\-password@{clean\-\_\-password}}
+\index{clean\-\_\-password@{clean\-\_\-password}!ELO::forms::LoginForm@{E\-L\-O\-::forms\-::\-Login\-Form}}
+\subsubsection[{clean\-\_\-password}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-forms.\-Login\-Form.\-clean\-\_\-password (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{de/da2/classELO_1_1forms_1_1LoginForm_a37cda66e10767bd074615d6bd39b1b8c}
+
+
+Verifica se a formatação do password está correta. 
+
+Caso esteja, retorna o password, caso contrário, lança uma escessão. \hypertarget{classELO_1_1forms_1_1LoginForm_a1507a6366b1b821a2fa3f242aa606f85}{\index{E\-L\-O\-::forms\-::\-Login\-Form@{E\-L\-O\-::forms\-::\-Login\-Form}!clean\-\_\-username@{clean\-\_\-username}}
+\index{clean\-\_\-username@{clean\-\_\-username}!ELO::forms::LoginForm@{E\-L\-O\-::forms\-::\-Login\-Form}}
+\subsubsection[{clean\-\_\-username}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-forms.\-Login\-Form.\-clean\-\_\-username (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{de/da2/classELO_1_1forms_1_1LoginForm_a1507a6366b1b821a2fa3f242aa606f85}
+
+
+Verifica se a formatação do nome está correta. 
+
+Caso esteja, retorna o nome, caso contrário, lança uma excessão. 
+
+\subsection{Atributos}
+\hypertarget{classELO_1_1forms_1_1LoginForm_a3bc2d5d337bbe87a543b48b52315d199}{\index{E\-L\-O\-::forms\-::\-Login\-Form@{E\-L\-O\-::forms\-::\-Login\-Form}!password@{password}}
+\index{password@{password}!ELO::forms::LoginForm@{E\-L\-O\-::forms\-::\-Login\-Form}}
+\subsubsection[{password}]{\setlength{\rightskip}{0pt plus 5cm}tuple E\-L\-O.\-forms.\-Login\-Form.\-password = forms.\-Char\-Field(widget = forms.\-Password\-Input)\hspace{0.3cm}{\ttfamily [static]}}}\label{de/da2/classELO_1_1forms_1_1LoginForm_a3bc2d5d337bbe87a543b48b52315d199}
+\hypertarget{classELO_1_1forms_1_1LoginForm_aa093b687c878b2b5a6bf52718dac480d}{\index{E\-L\-O\-::forms\-::\-Login\-Form@{E\-L\-O\-::forms\-::\-Login\-Form}!username@{username}}
+\index{username@{username}!ELO::forms::LoginForm@{E\-L\-O\-::forms\-::\-Login\-Form}}
+\subsubsection[{username}]{\setlength{\rightskip}{0pt plus 5cm}tuple E\-L\-O.\-forms.\-Login\-Form.\-username = forms.\-Char\-Field(max\-\_\-length = 32)\hspace{0.3cm}{\ttfamily [static]}}}\label{de/da2/classELO_1_1forms_1_1LoginForm_aa093b687c878b2b5a6bf52718dac480d}
+
+
+A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}
+\item 
+E\-L\-O/\-E\-L\-O/\hyperlink{ELO_2forms_8py}{forms.\-py}\end{DoxyCompactItemize}
