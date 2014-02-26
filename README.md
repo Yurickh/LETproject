@@ -20,8 +20,8 @@ Seu principal objetivo é criar uma interface amigável entre alunos e professor
 ### 2. Dados do projeto
 
 Título do projeto:
-**LETproject (nome temporário)**
-**ELO [Ensino de Línguas Online] (nome temporário)**
+* **LETproject (nome temporário)**
+* **ELO (Ensino de Línguas Online) (nome temporário)**
 
 Orientador:
 **Professor Cláudio Correa e Castro Gonçalves**
