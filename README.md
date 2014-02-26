@@ -27,7 +27,7 @@ Orientador:
 **Professor Cláudio Correa e Castro Gonçalves**
 
 Unidade Acadêmica / Departamento:
-** Instituto de Letras/IL - Departamento de Línguas Estrangeiras e Tradução/LET **
+**Instituto de Letras/IL - Departamento de Línguas Estrangeiras e Tradução/LET**
 
 Alunos Envolvidos:
 * Yurick Hauschild Caetano da Costa 12/0024136
