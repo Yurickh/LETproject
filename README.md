@@ -4,7 +4,7 @@
 
 0. Definição
 0. Documentação
---0. Doxygen (html)
+  0. Doxygen (html)
 0. Instalação e execução
 0. Metas de desenvolvimento
 0. Log de Atividades
@@ -30,26 +30,26 @@ Toda a documentação do projeto pode ser encontrada na pasta doc/.
 ### 4. Metas de desenvolvimento
 
 0. **Refazer documentação**:
---* ELO: 10 hrs *(completo)*
---* Login: 10 hrs *(completo)*
---* Profile: 10 hrs
---* Doxygen: 10 hrs
---* Documento: 15 hrs
---* README: 15 hrs
+  * ELO: 10 hrs *(completo)*
+  * Login: 10 hrs *(completo)*
+  * Profile: 10 hrs
+  * Doxygen: 10 hrs
+  * Documento: 15 hrs
+  * README: 15 hrs
 
 0. **Desenvolver módulos**:
---* Profile
-----* forms.py: 5 hrs
-----* ProfileUnit.py: 60 hrs
-----* models.py: 5 hrs
-----* templates: 40 hrs
-		- debug: 110 hrs
+  * Profile
+    * forms.py: 5 hrs
+    * ProfileUnit.py: 60 hrs
+    * models.py: 5 hrs
+    * templates: 40 hrs
+    * debug: 110 hrs
 
 0. **Estudar**:
---* Javascript:
-----* AJAX: 60 hrs
-----* jQuery: 60 hrs
---* Diego: 30 hrs
+  * Javascript:
+    * AJAX: 60 hrs
+    * jQuery: 60 hrs
+  * Diego: 30 hrs
 
 0. **Misc**: 53 hrs
 *Tempo reservado para feriados, período de adaptação e afins.*
