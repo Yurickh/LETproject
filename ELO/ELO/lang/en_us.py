@@ -1,7 +1,9 @@
 # coding: utf-8
 
-## Os comentários de cada tipo de excessão está no arquivo pt_br.py
-
+## @package Lingua inglês
+#Contem as macros para textos em inglês
+# Os comentários de cada tipo de excessão está no arquivo pt_br.py
+#
 ## Excessões para tipos básicos.
 
 

@@ -1,7 +1,9 @@
 # coding: utf-8
 
-## Excessões para os tipos básicos.
-
+## @package Lingua Português
+#Contem as macros para textos em Português
+# Excessões para os tipos básicos.
+#
 ## Mensagem de erro para um password menor que o especificado.
 EXCEPTION_INV_PW_S = "A senha deve conter no mínimo 6 caracteres."
 

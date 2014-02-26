@@ -1,6 +1,7 @@
 #coding: utf-8
 
-## Este arquivo e responsavel por ler a URL requisitada e redirecionar o programa para a factory que irá criar um objeto para a
+## @package Urls
+# Este arquivo e responsavel por ler a URL requisitada e redirecionar o programa para a factory que irá criar um objeto para a
 # criacao da pagina.
 from django.conf.urls import patterns, url
 from ELO.MainUnit import Factory
