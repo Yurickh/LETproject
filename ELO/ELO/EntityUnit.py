@@ -1,7 +1,10 @@
 #coding: utf-8
 
-## Aqui encontra-se todo o código referentes as estruturas das entidades do
-#   programa.
+## @package EntityUnit
+#	Arquivo contem as entidades do programa
+#
+#	Aqui encontra-se todo o código referentes as estruturas das entidades do
+#   	programa.
 #	Entidades não posseuem métodos alêm de:'set', 'get' e 'del' para definir, 
 #	acessar e deletar suas propriedades. 
 

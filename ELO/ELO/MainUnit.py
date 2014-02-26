@@ -1,5 +1,6 @@
 #coding: utf-8
-
+##@package MainUnit
+#Parte inical responsavel por construir e executar o sistema
 from abc import *
 from Login.LoginUnit import *
 from Profile.ProfileUnit import *
@@ -10,8 +11,7 @@ from Login.models import Adm, Professor, Student
 
 from django.core.exceptions import PermissionDenied
 
-#TEMPORARY
-from django.shortcuts import render
+
 
 def globalContext(request):
 	return {
