@@ -1,7 +1,5 @@
 # LETproject
 
----
-
 ## Index
 
 0. Definição
@@ -10,8 +8,6 @@
 0. Instalação e execução
 0. Metas de desenvolvimento
 0. Log de Atividades
-
----
 
 ## Conteúdo
 
