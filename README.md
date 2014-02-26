@@ -43,7 +43,20 @@ Toda a documentação do projeto pode ser encontrada na pasta doc/.
 > todas as classes e métodos implementados e tem por público alvo
 > principalmente desenvolvedores interessados em contribuir com o projeto.
 
-> Para uma versão específica para usuários, ou seja, pessoas que estão interessadas no funcionamento da ferramenta e não em seus mecanismos, leia o ponto *3. Instalação e execução*
+> Para uma versão específica para usuários, ou seja, pessoas que estão interessadas no funcionamento da ferramenta e não em seus mecanismos, leia o ponto *4. Instalação e execução*
+
+#### 3.i. Doxyfile (html)
+
+ No intuito de simplificar a navegação dentro da documentação do projeto, utilizamos a ferramenta Doxygen, gerando, assim, um arquivo HTML que contém uma interface amigável.
+ Este arquivo está contido em doc/html/ e para acessá-lo basta abrir o arquivo doc/html/index.html com o seu navegador.
+ 
+### 4. Instalação e execução
+
+Para executar o programa, siga as instruções abaixo.
+
+1. Baixe o código fonte do projeto.
+  Para isso, basta clicar no botão "Download ZIP" ao lado deste arquivo, como na imagem abaixo.
+[example1](http://i.imgur.com/kJtzWwf.jpg)
 
 ### 5. Metas de desenvolvimento
 
