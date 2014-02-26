@@ -55,8 +55,8 @@ Toda a documentação do projeto pode ser encontrada na pasta doc/.
 Para executar o programa, siga as instruções abaixo.
 
 1. Baixe o código fonte do projeto.
-  Para isso, basta clicar no botão "Download ZIP" ao lado deste arquivo, como na imagem abaixo.
-[example1](http://i.imgur.com/kJtzWwf.jpg)
+  Para isso, basta clicar no botão "Download ZIP" ao lado deste arquivo, como na imagem abaixo.  
+![example1](http://i.imgur.com/kJtzWwf.jpg)
 
 ### 5. Metas de desenvolvimento
 
