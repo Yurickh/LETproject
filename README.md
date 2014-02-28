@@ -64,9 +64,9 @@ Para executar o programa, siga as instruções abaixo.
   * ELO: 10 hrs *(completo)*
   * Login: 10 hrs *(completo)*
   * Profile: 10 hrs
-  * Doxygen: 10 hrs
+  * Doxygen: 10 hrs *(completo)*
   * Documento: 15 hrs
-  * README: 15 hrs
+  * README: 15 hrs *(completo)*
 
 0. **Desenvolver módulos**:
   * Profile
@@ -99,3 +99,7 @@ Para executar o programa, siga as instruções abaixo.
 > **24/02**:
 > * Refazer documentação: ELO
 > * Refazer documentação: Login
+> * Refazer documentação: Doxygen
+
+> **26/02**
+> * Refazer documentação: README

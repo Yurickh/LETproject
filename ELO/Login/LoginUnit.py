@@ -97,6 +97,8 @@ class IfPersLogin:
 ## Camada de interface de usuário para o módulo de Login.
 class UiLogin(IfUiLogin):
 
+	## Método que inicia o módulo de login. Aqui, ocorre a validação de formulário, autenticação de usuário, e redirecionamento apra a
+	# página de perfil.
 	def run(self, request, database):
 		if request.method == "POST":
 			login_form = LoginForm(request.POST)
@@ -117,6 +119,9 @@ class UiLogin(IfUiLogin):
 
 ## Camada de negócio de usuário para o módulo de Login.
 class BusLogin(IfBusLogin):
+
+	## Método de validação do username e password. Ele recebe da camada de persistência os valores correspondentes ao username e password e 
+	# verifica com o inserido pelo usuário.
 	def validate(self, username, password, database):
 		upass = self.pers.select(username.value, database)
 		if not upass or upass['password'] != password.value:
@@ -125,6 +130,7 @@ class BusLogin(IfBusLogin):
 ## Camada de persistência de usuário para o módulo de Login.
 class PersLogin(IfPersLogin):
 
+	## Método de busca no banco de dados. Recebe o nome de usuário e busca no bando de dados o valor correspondente à senha daquele usuário.
 	def select(self, username=None, database=None):
 		if not username: return False
 		if not database: return False

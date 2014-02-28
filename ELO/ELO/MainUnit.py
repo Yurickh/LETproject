@@ -1,6 +1,7 @@
 #coding: utf-8
 ##@package MainUnit
-#Parte inical responsavel por construir e executar o sistema
+#Parte inicial responsavel por construir e executar o sistema.
+
 from abc import *
 from Login.LoginUnit import *
 from Profile.ProfileUnit import *

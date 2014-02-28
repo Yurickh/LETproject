@@ -1,9 +1,9 @@
 #encode: utf-8
 
-##@package BaseUnit
-#Base Type container.
-#Este arquivo e responsável pela implementação dos tipos básicos do programa.
-#Cada classe deve conter o validator, que garante que os tipos básicos são compatíveis com o formato especificado nos #requisitos.
+## @package BaseUnit
+# Base Type container.
+# Este arquivo e responsável pela implementação dos tipos básicos do programa.
+# Cada classe deve conter o validator, que garante que os tipos básicos são compatíveis com o formato especificado nos #requisitos.
 
 from abc import *
 import hashlib
