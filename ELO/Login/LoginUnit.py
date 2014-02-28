@@ -1,9 +1,8 @@
 #coding: utf-8
 
-""" This file is responsible for storing all the layers that deal with the Login module.
-	The methods here are created and called by the Factory (MainUnit.py) when necessary.
-	They're responsible for creation, management and deletion of the session object and the validation and login of users.
-"""
+## Este arquivo é responsável pelo armazenamento de todas as camadas correspondentes ao módulo de login.
+# Os métodos aqui são criados e chamados pela Factory (MainUnit.py) quando necessários.
+# Eles são responsáveis pela criação, gestão e deleção do objeto de sessão e a validação e login dos usuários.
 
 from abc import *
 
@@ -15,13 +14,13 @@ from django import forms
 from Login.models import Student, Adm, Professor
 from ELO.BaseUnit import Name, Password
 from Login.forms import LoginForm
-""" Interface for the User Interface layer of the Login module.
-	It is responsible for loading the right template and process the data inputted in the login form.
-"""
+
+## Interface para a camada de Apresentação de Usuário do módulo Login.
+# É responsável pelo carregamento do template correto e processa os dados inseridos no formulário de login.
 class IfUiLogin:
+	## Força a criação da camada subjacente
 	__metaclass__ = ABCMeta
 
-	""" Enforces the existance of the underlaying layer """
 	def __init__(self, bus):
 		try:
 			self.bus = bus
@@ -29,8 +28,8 @@ class IfUiLogin:
 			del self
 			raise exc
 
-	""" Business layer associated to the UI layer. They're linked in the MainUnit module """
 	@property
+	## Camada de negócio associada à camada de UI (user interface). Essas camadas estão ligadas pelo módulo de MainUnit.
 	def bus(self):
 		return self.__bus
 
@@ -41,22 +40,23 @@ class IfUiLogin:
 		else:
 			raise TypeError("Expected IfBusLogin instance at UiLogin.__bus. Received " + str(type(value)) + " instead.")
 
+	## Método de deleção do objeto que representa a camada de negócio.
 	@bus.deleter
 	def bus(self):
 		del self.__bus
 
-	""" The main method of any UI class, the run() method allows the Factory to give control over the program to the given module.
-	"""
+	## O método principal de qualquer classe de UI (user interface), o método run() permite a Factory dar o controle do programa a dado 
+	# módulo.
 	@abstractmethod
 	def run(self, request): pass
 
-""" Interface for the Business layer of the Login module.
-	It is responsible for the validation of the data submitted throught the login form.
-"""
+
+## Interface para a camada de negócio do módulo de Login.
+# Responsável pela validação dos dados submetidos através do formulário de login.
 class IfBusLogin: 
 	__metaclas__ = ABCMeta
 
-	""" The validation method returns nothing, but raises an exception if the validation isn't successful. """
+	## Método de validação não retorna nada, mas lança uma excessão se a validação não for bem sucedida.
 	@abstractmethod
 	def validate(self, username, password): pass
 
@@ -71,11 +71,12 @@ class IfBusLogin:
 		else:
 			raise TypeError("Expected IfPersLogin instance at BusLogin.__pers. Received " + str(type(value)) + "instead.")
 
+	## Método de deleção do objeto que representa a camada de persistência.
 	@pers.deleter
 	def pers(self):
 		del self.__pers
 
-	""" Enforces the existance of the underlaying layer """
+	## Força a criação da camada subjacente.
 	def __init__(self, value):
 		try:
 			self.pers = value
@@ -83,6 +84,8 @@ class IfBusLogin:
 			del self
 			raise exc
 
+
+## Interface para a camada de persistência do módulo de Login.
 class IfPersLogin:
 
 	__metaclass__ = ABCMeta
@@ -90,7 +93,8 @@ class IfPersLogin:
 	@abstractmethod
 	def select(self, username): pass
 
-""" User Interface layer for the Login module """
+
+## Camada de interface de usuário para o módulo de Login.
 class UiLogin(IfUiLogin):
 
 	def run(self, request, database):
@@ -110,17 +114,20 @@ class UiLogin(IfUiLogin):
 			login_form = LoginForm()
 			return render(request, "Login/form.html", {'form': login_form})
 
-""" Business layer for the Login module """
+
+## Camada de negócio de usuário para o módulo de Login.
 class BusLogin(IfBusLogin):
 	def validate(self, username, password, database):
 		upass = self.pers.select(username.value, database)
 		if not upass or upass['password'] != password.value:
 			raise ValueError('Login ou senha incorretos.')
 
+## Camada de persistência de usuário para o módulo de Login.
 class PersLogin(IfPersLogin):
 
-	def select(self, username=None, database):
+	def select(self, username=None, database=None):
 		if not username: return False
+		if not database: return False
 
 		try:
 			uid = database.objects.get(value=username, field='NAME').identity
