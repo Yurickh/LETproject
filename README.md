@@ -31,7 +31,7 @@ Unidade Acadêmica / Departamento:
 
 Alunos Envolvidos:
 * Yurick Hauschild Caetano da Costa 12/0024136
-* André Accioly Lima 12/00XXXXX
+* André Accioly Lima 12/0059908
 * Diego Santos da Silva 11/0027892
 
 ### 3. Documentação
@@ -77,9 +77,19 @@ Para executar o programa, siga as instruções abaixo.
 	`$ deactivate`
 
 4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+	`$ python setup.py install`
 
-5. Para instalar django no Linux:
-
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+	`$ pip install Django==1.6.2`
+  * "Manualmente":
+	* Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+		`$ tar xzvf Django-1.6.2.tar.gz`
+		`$ cd Django-1.6.2`
+		`$ sudo python setup.py install`
+  
 
 ### 5. Metas de desenvolvimento
 
