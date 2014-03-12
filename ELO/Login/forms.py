@@ -3,6 +3,10 @@
 from django import forms
 from ELO.BaseUnit import Name, Password
 
+## @package LoginForms
+# Este arquivo define os formulários do módulo de Login no sistema.
+
+
 ## Classe de formulário para o fomulário de Login.
 # Recebe o username e o password e passa para a LoginUnit para ser validado.
 class LoginForm(forms.Form):

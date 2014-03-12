@@ -6,7 +6,6 @@ from lang.pt_br import *
 
 ## @package Forms 
 #Contêm a classe que irá formatar a classe de login 
-#
 #Classe de formulário para o formulário de Login.
 ##Recebe um username e um password e passa para o LoginUnit para a validacao."""
 class LoginForm(forms.Form):
