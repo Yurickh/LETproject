@@ -76,11 +76,7 @@ class IfPersProfile: pass
 class UiProfile(IfUiProfile): 
 
 	def run(self, request):
-		if request.method == "POST":
-			return render(request, "Profile/home.html", {'user': 'Jose'	})
-		else:
-			name = request.session['user']
-			return render(request, "Profile/home.html", {'user': name})
+		return render(request, "Profile/home.html")
 
 
 class BusProfile(IfBusProfile): pass

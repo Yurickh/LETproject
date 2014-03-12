@@ -1,4 +1,4 @@
-#encode: utf-8
+#coding: utf-8
 
 ##@package BaseUnit
 #Base Type container.
