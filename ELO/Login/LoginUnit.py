@@ -110,7 +110,10 @@ class UiLogin(IfUiLogin):
 			except ValueError as exc:
 				return render(request, "Login/form.html", {'form': login_form, 'error': exc})
 			else:
-				request.session['user'] = login_form.cleaned_data['username']
+				request.session['user'] = {
+								'name': login_form.cleaned_data['username'].value,
+								'password': login_form.cleaned_data['password'].value,
+							}
 				return HttpResponseRedirect('/profile')
 		else:
 			login_form = LoginForm()
