@@ -319,7 +319,7 @@ class Id(IfBaseType):
 		if value < 1:
 			raise ValueError(EXCEPTION_INV_ID_S)
 
-## Classe resonsável por armazenar a linguagem do sistema.
+## Classe responsável por armazenar a linguagem do sistema.
 class Language(IfBaseType):
 	_value = None
 
@@ -327,7 +327,7 @@ class Language(IfBaseType):
 	# Responsável por validar e definir a linguagem.
 	def __init__(self, value):
 		try:
-			self._validate
+			self._validate(value)
 		except ValueError as exc:
 			del self
 			raise exc
@@ -341,3 +341,42 @@ class Language(IfBaseType):
 
 		if value < 1:
 			raise ValueError(EXCEPTION_INV_LG_F)
+
+##Classe responsável por armazenar a data de último acesso do sistema.
+class Date(IfBaseType):
+	_value = None
+	
+	## Construtor da classe.
+	# Responsável por validar e definir a data.
+	def __init__(self, day, month, year):
+		try:
+			value['day'] = day
+			value['month'] = month
+			value['year'] = year
+			self._validate(value)
+		except ValueError as exc:
+			del self
+			raise exc
+		self._value = value
+
+	## Validator da classe.
+	# Responsável pela validação da data. Se o dia, mês ou ano estiverem fora do alcance real, um erro será lançado.
+	def _validate(self, value):
+		if year < 2014:
+			raise ValueError(EXCEPTION_INV_DT_Y)
+
+		if month < 1 or month > 12:
+			raise ValueError(EXCEPTION_INV_DT_M)
+
+		if day < 1:
+			raise ValueError(EXCEPTION_INV_DT_D)
+
+		if month == 2:
+			if day > 29:
+				raise ValueError(EXCEPTION_INV_DT_D)
+		elif month <= 7:
+			if day > 30 + (1 if month % 2 else 0):
+				raise ValueError(EXCEPTION_INV_DT_D)
+		else
+			if day > 30 + (0 if month % 2 else 1):
+				raise ValueError(EXCEPTION_INV_DT_D)

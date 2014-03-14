@@ -35,6 +35,10 @@ class User:
 	def password(self):
 		return self._password
 
+	@property
+	def lastLogin(self):
+		return self._lastLogin
+
 	@name.setter
 	def name(self, value):
 		if type(value) is Name:
@@ -49,6 +53,13 @@ class User:
 		else:
 			raise ValueError(EXCEPTION_INV_USR_PW)
 
+	@lastLogin.setter
+	def lastLogin(self, value):
+		if type(value) is Date:
+			self._lastLogin = value
+		else:
+			raise ValueError(EXCEPTION_INV_USR_DT)
+
 	@name.deleter
 	def name(self):
 		del self._name
@@ -56,6 +67,10 @@ class User:
 	@password.deleter
 	def password(self):
 		del self._password
+
+	@lastLogin.deleter
+	def lastLogin(self):
+		del self._lastLogin
 
 ## Administrador do sistema.
 #Eles controlam os processaos e o fluxo dos procedimentos no programa

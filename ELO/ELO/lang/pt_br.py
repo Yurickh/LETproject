@@ -62,6 +62,13 @@ EXCEPTION_INV_ID_F = "Valor inválido para o campo ID."
 ## Mensagem de erro para um idioma inexistente.
 EXCEPTION_INV_LG_F = "Idioma inválido."
 
+## Mensagem de erro para
+EXCEPTION_INV_DT_D = "Dia inválido."
+## Mensagem de erro para
+EXCEPTION_INV_DT_M = "Mês inválido."
+## Mensagem de erro para
+EXCEPTION_INV_DT_Y = "Ano inválido."
+
 ## Prefixo usado para compor mensagens de erro.
 EXCEPTION_TEST_PREFIX = "Ocorreu um erro:"
 ## Mensagem de erro para erro no getValue.
