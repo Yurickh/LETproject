@@ -91,7 +91,7 @@ class IfPersLogin:
 	__metaclass__ = ABCMeta
 
 	@abstractmethod
-	def select(self, username): pass
+	def select(self, username, database): pass
 
 
 ## Camada de interface de usuário para o módulo de Login.
@@ -113,6 +113,7 @@ class UiLogin(IfUiLogin):
 				request.session['user'] = {
 								'name': login_form.cleaned_data['username'].value,
 								'password': login_form.cleaned_data['password'].value,
+								'type': database.__name__,
 							}
 				return HttpResponseRedirect('/profile')
 		else:
