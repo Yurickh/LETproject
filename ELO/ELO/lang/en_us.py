@@ -40,6 +40,10 @@ EXCEPTION_INV_ET_F = "Invalid exercise type."
 EXCEPTION_INV_ID_S = "The Id has to be greater than zero."
 EXCEPTION_INV_ID_F = "Invalid value for the ID field."
 
+EXCEPTION_INV_DT_D = "Invalid day."
+EXCEPTION_INV_DT_M = "Invalid month."
+EXCEPTION_INV_DT_Y = "Invalid year."
+
 EXCEPTION_INV_LG_F = "Invalid language."
 
 EXCEPTION_TEST_PREFIX = "An Error has been ocurred."

@@ -4,15 +4,18 @@ from abc import*
 from django.shortcuts import render
 from django import forms
 
+## @package ProfileUnit
+# Este arquivo é responsável pelo armazenamento de todas as camadas correspondentes ao 
+# módulo de perfil. Os métodos aqui são criados e chamados pela Factory (MainUnit.py) quando necessários. Eles são responsáveis pelo 
+# redirecionamento do usuário para páginas diferentes dependendo do tipo de usuário, edição de dados pessoais, visualização de informações
+# relativas aos cursos.
 
-""" Interface for the User Interface layer of the Profile module.
-	It is responsible for ...
-"""
-
+## Interface para a camada de Apresentação de Usuário do módulo Profile.
+# É responsável pelo carregamento do template correto e processa os dados inseridos nos formulários de Perfil.
 class IfUiProfile:
 	__metaclass__ = ABCMeta
 
-	"""Causes the creation of the layers."""
+	## Força a criação da camada subjacente.
 	def __init__(self, bus):
 		try:
 			self.bus = bus
@@ -35,19 +38,16 @@ class IfUiProfile:
 	def bus(self):
 		del self.__bus
 
-	"""The main method of any UI class, this method allows the Factory to give this module the control of the program.
-	"""
+	## 'Run' é o principal método de qualquer classe de apresentação. Este método permite a Factory dar o controle do programa à este módulo.
 	@abstractmethod
 	def run(self, request): pass
 
 
-""" Interface for the Business layer of the Profile module.
-	It is responsible for...
-"""
+## Interface para a camada de Negócio do módulo de perfil. É responsável por...
 class IfBusProfile:
 	__metaclass__ = ABCMeta
 
-	""" Enforces the existance of the underlaying layer """
+	## Força a criação das camadas subjacentes.
 	def __init__(self, pers):
 		try:
 			self.pers = pers
@@ -73,16 +73,21 @@ class IfBusProfile:
 
 class IfPersProfile: pass
 
-class UiProfile(IfUiProfile): 
+class UiProfileS(IfUiProfile): 
 
 	def run(self, request):
-		if request.method == "POST":
-			return render(request, "Profile/home.html", {'user': 'Jose'	})
-		else:
-			name = request.session['user']
-			return render(request, "Profile/home.html", {'user': name})
+		return render(request, "Profile/home.html")
+
+class BusProfileS(IfBusProfile): pass
+
+class PersProfileS(IfPersProfile): pass
+
+class UiProfileP(IfUiProfile): 
+
+	def run(self, request):
+		return render(request, "Profile/home.html")
 
 
-class BusProfile(IfBusProfile): pass
+class BusProfileP(IfBusProfile): pass
 
-class PersProfile(IfPersProfile): pass
+class PersProfileP(IfPersProfile): pass

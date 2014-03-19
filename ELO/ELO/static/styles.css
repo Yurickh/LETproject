@@ -42,7 +42,6 @@ a.field
 
 body
 {
-	background-color: #ddaa22;
 }
 
 .dados{
@@ -51,8 +50,7 @@ body
 }
 .foot{
 	position: fixed;
-	bottom: 10px;
-	left: 480px;	
+	left: 480px;
 }
 
 .ffield

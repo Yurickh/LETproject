@@ -1,7 +1,7 @@
+#coding: utf-8
 from django.db import models
 
 ## @package LoginModels
-
 # Este arquivo define os modelos de Login no sistema, ou seja, os tipos de usuários que podem fazer login.
 # Define como é formatada a tabela no banco de dados, de forma que cada usuário está armazenado em tabelas triple. Cada elemento da tabela
 # terá um Id, um campo que armazena o nome do campo analisado e um com o valor contido dentro desse campo.

@@ -31,7 +31,7 @@ Unidade Acadêmica / Departamento:
 
 Alunos Envolvidos:
 * Yurick Hauschild Caetano da Costa 12/0024136
-* André Accioly Lima 12/00XXXXX
+* André Accioly Lima 12/0059908
 * Diego Santos da Silva 11/0027892
 
 ### 3. Documentação
@@ -58,13 +58,46 @@ Para executar o programa, siga as instruções abaixo.
   Para isso, basta clicar no botão "Download ZIP" ao lado deste arquivo, como na imagem abaixo.  
 ![example1](http://i.imgur.com/kJtzWwf.jpg)
 
+2. Para instalar o python no Windows:
+
+
+3. Para instalar o python no Linux:
+> OBS: As últimas versões do Ubuntu e Fedora já vêm com o python 2.7 e as últimas versões do RHEL e CentOS já vêm com o python 2.6.
+
+[BAIXE O PYTHON SCRIPT AQUI, E EXECUTE](http://python-distribute.org/distribute_setup.py). Para executar, use no terminal `python distributte_setup.py`
+  * Instale o pip:
+    `$ easy_install pip`
+  * Instale o virtualenv:
+	`$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+	`$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+	`$ source venv/bin/activate`
+  * Para sair do ambiente:
+	`$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+	`$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+	`$ pip install Django==1.6.2`
+  * "Manualmente":
+	* Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+		`$ tar xzvf Django-1.6.2.tar.gz`
+		`$ cd Django-1.6.2`
+		`$ sudo python setup.py install`
+  
+
 ### 5. Metas de desenvolvimento
 
 0. **Refazer documentação**:
   * ELO: 10 hrs *(completo)*
   * Login: 10 hrs *(completo)*
-  * Profile: 10 hrs
-  * Doxygen: 10 hrs
+  * Profile: 10 hrs *(completo)*
+  * Doxygen: 10 hrs *(completo)*
   * Documento: 15 hrs
   * README: 15 hrs
 
@@ -99,3 +132,7 @@ Para executar o programa, siga as instruções abaixo.
 > **24/02**:
 > * Refazer documentação: ELO
 > * Refazer documentação: Login
+> * Refazer documentação: Doxygen
+
+> **26/02**
+> * Refazer documentação: Profile

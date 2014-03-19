@@ -11,9 +11,10 @@ from django.http import HttpResponseRedirect
 from django.template import Template, Context
 from django import forms
 
-from Login.models import Student, Adm, Professor
+from ELO.models import Student, Adm, Professor
 from ELO.BaseUnit import Name, Password
 from Login.forms import LoginForm
+from ELO.lang.pt_br import *
 
 ## Interface para a camada de Apresentação de Usuário do módulo Login.
 # É responsável pelo carregamento do template correto e processa os dados inseridos no formulário de login.
@@ -91,12 +92,14 @@ class IfPersLogin:
 	__metaclass__ = ABCMeta
 
 	@abstractmethod
-	def select(self, username): pass
+	def select(self, username, database): pass
 
 
 ## Camada de interface de usuário para o módulo de Login.
 class UiLogin(IfUiLogin):
 
+	## Método que inicia o módulo de login. Aqui, ocorre a validação de formulário, autenticação de usuário, e redirecionamento apra a
+	# página de perfil.
 	def run(self, request, database):
 		if request.method == "POST":
 			login_form = LoginForm(request.POST)
@@ -106,25 +109,50 @@ class UiLogin(IfUiLogin):
 				else:
 					raise ValueError("Login ou senha incorretos.")
 			except ValueError as exc:
-				return render(request, "Login/form.html", {'form': login_form, 'error': exc})
+				if database.__name__ == "Professor":
+					target = "proflogin"
+				elif database.__name__ == "Adm":
+					target = "364fd8cdc3a35a89b7be75bc9d10ebea"
+				else:
+					target = ""
+
+				return render(request, "Login/form.html", {'form': login_form, 'error': exc, 'target': target})
 			else:
-				request.session['user'] = login_form.cleaned_data['username']
+				request.session['user'] = {
+								'name': login_form.cleaned_data['username'].value,
+								'password': login_form.cleaned_data['password'].value,
+								'type': database.__name__,
+							}
 				return HttpResponseRedirect('/profile')
 		else:
 			login_form = LoginForm()
-			return render(request, "Login/form.html", {'form': login_form})
+
+			if not database:
+				target = ""
+			if database.__name__ == "Professor":
+				target = "proflogin"
+			elif database.__name__ == "Adm":
+				target = "364fd8cdc3a35a89b7be75bc9d10ebea"
+			else:
+				target = ""
+
+			return render(request, "Login/form.html", {'form': login_form, 'target': target})
 
 
 ## Camada de negócio de usuário para o módulo de Login.
 class BusLogin(IfBusLogin):
+
+	## Método de validação do username e password. Ele recebe da camada de persistência os valores correspondentes ao username e password e 
+	# verifica com o inserido pelo usuário.
 	def validate(self, username, password, database):
 		upass = self.pers.select(username.value, database)
 		if not upass or upass['password'] != password.value:
-			raise ValueError('Login ou senha incorretos.')
+			raise ValueError(EXCEPTION_INV_LOG)
 
 ## Camada de persistência de usuário para o módulo de Login.
 class PersLogin(IfPersLogin):
 
+	## Método de busca no banco de dados. Recebe o nome de usuário e busca no bando de dados o valor correspondente à senha daquele usuário.
 	def select(self, username=None, database=None):
 		if not username: return False
 		if not database: return False

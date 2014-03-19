@@ -5,22 +5,13 @@
 {% block title %} ELO Profile {% endblock %}
 
 {% block content %}	
-	Oi {{ user.value }}! Este e seu perfil!
+	Olá {{ user.name }}! Este é seu perfil!
 
 	{% if error %}
 		<div class="error">
 			{{ error }}
 		</div>
 	{% endif %}
-
-
-	<form method='POST'>
-		<div class="ffield">
-			{% csrf_token %}
-			<input type="submit" value="" name="sao"/>
-		</div>
-	</form>
-
 		<div class="dados">
 			Historico
 		</div>
