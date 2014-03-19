@@ -377,6 +377,6 @@ class Date(IfBaseType):
 		elif month <= 7:
 			if day > 30 + (1 if month % 2 else 0):
 				raise ValueError(EXCEPTION_INV_DT_D)
-		else
+		else:
 			if day > 30 + (0 if month % 2 else 1):
 				raise ValueError(EXCEPTION_INV_DT_D)

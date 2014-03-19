@@ -8,7 +8,7 @@ from Profile.ProfileUnit import *
 from Adm.AdmUnit import *
 from Course.CourseUnit import *
 
-from Login.models import Adm, Professor, Student
+from models import Adm, Professor, Student
 
 from django.core.exceptions import PermissionDenied
 
@@ -28,7 +28,7 @@ class Factory:
 
 	## Classe que executa o módulo de login.
 	# Define as camadas de persistência, negócio de login e apresentação e verifica o tipo de usuário.
-	def runLogin(self, request, entity=None):
+	def runLogin(self, request, entity):
 		if not isinstance(self.__ui, IfUiLogin):
 			self.__pers = PersLogin()
 			self.__bus = BusLogin(self.__pers)
@@ -50,21 +50,21 @@ class Factory:
 	def runLogout(self, request):
 		if 'user' in request.session.keys():
 			del request.session['user']
-		return self.runLogin(request)
+		return self.runLogin(request, "Student")
 
 	## Classe que executa o módulo de Perfil.
 	# Define as camadas de persistência, negócio e apresentação de perfil e proíbe o acesso de usuários não logados no sistema.
 	def runProfile(self, request):
 		if 'user' in request.session.keys():
-			if request.session['user'].type == 'Adm':
+			if request.session['user']['type'] == 'Adm':
 				self.runAdm(request)
-			elif request.session['user'].type == 'Professor':
+			elif request.session['user']['type'] == 'Professor':
 				if not isinstance(self.__ui, IfUiProfile):
 					self.__pers = PersProfileP()
 					self.__bus = BusProfileP(self.__pers)
 					self.__ui = UiProfileP(self.__bus)
 				return self.__ui.run(request)
-			elif request.session['user'].type == 'Student':
+			elif request.session['user']['type'] == 'Student':
 				if not isinstance(self.__ui, IfUiProfile):
 					self.__pers = PersProfileS()
 					self.__bus = BusProfileS(self.__pers)
