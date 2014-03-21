@@ -11,9 +11,10 @@ from django.http import HttpResponseRedirect
 from django.template import Template, Context
 from django import forms
 
-from Login.models import Student, Adm, Professor
+from ELO.models import Student, Adm, Professor
 from ELO.BaseUnit import Name, Password
 from Login.forms import LoginForm
+from ELO.lang.pt_br import *
 
 ## Interface para a camada de Apresentação de Usuário do módulo Login.
 # É responsável pelo carregamento do template correto e processa os dados inseridos no formulário de login.
@@ -108,7 +109,14 @@ class UiLogin(IfUiLogin):
 				else:
 					raise ValueError("Login ou senha incorretos.")
 			except ValueError as exc:
-				return render(request, "Login/form.html", {'form': login_form, 'error': exc})
+				if database.__name__ == "Professor":
+					target = "proflogin"
+				elif database.__name__ == "Adm":
+					target = "364fd8cdc3a35a89b7be75bc9d10ebea"
+				else:
+					target = ""
+
+				return render(request, "Login/form.html", {'form': login_form, 'error': exc, 'target': target})
 			else:
 				request.session['user'] = {
 								'name': login_form.cleaned_data['username'].value,
@@ -118,7 +126,17 @@ class UiLogin(IfUiLogin):
 				return HttpResponseRedirect('/profile')
 		else:
 			login_form = LoginForm()
-			return render(request, "Login/form.html", {'form': login_form})
+
+			if not database:
+				target = ""
+			if database.__name__ == "Professor":
+				target = "proflogin"
+			elif database.__name__ == "Adm":
+				target = "364fd8cdc3a35a89b7be75bc9d10ebea"
+			else:
+				target = ""
+
+			return render(request, "Login/form.html", {'form': login_form, 'target': target})
 
 
 ## Camada de negócio de usuário para o módulo de Login.
@@ -129,7 +147,7 @@ class BusLogin(IfBusLogin):
 	def validate(self, username, password, database):
 		upass = self.pers.select(username.value, database)
 		if not upass or upass['password'] != password.value:
-			raise ValueError('Login ou senha incorretos.')
+			raise ValueError(EXCEPTION_INV_LOG)
 
 ## Camada de persistência de usuário para o módulo de Login.
 class PersLogin(IfPersLogin):

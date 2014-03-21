@@ -154,3 +154,8 @@ EXCEPTION_INV_EX_IT = "Itens do exercício inválidos."
 
 ## Mensagem de erro para login inválido.
 EXCEPTION_INV_LOG = "Login ou senha inválidos."
+
+## Mensagem de erro padrão 403
+EXCEPTION_403_STD = "Permissão de acesso negada."
+## Mensagem de erro inesperado 404
+EXCEPTION_404_ERR = "Ocorreu um erro inesperado. Favor tentar novamente."

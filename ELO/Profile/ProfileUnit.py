@@ -71,23 +71,22 @@ class IfBusProfile:
 		del self.__pers
 
 
-class IfPersProfile:
-
-	## Retorna 
-	def select(self, username, database): pass
-
-	def update(self, 
+class IfPersProfile: pass
 
 class UiProfileS(IfUiProfile): 
 
 	def run(self, request):
-		
+		return render(request, "Profile/home.html")
 
 class BusProfileS(IfBusProfile): pass
 
 class PersProfileS(IfPersProfile): pass
 
-class UiProfileP(IfUiProfile): pass
+class UiProfileP(IfUiProfile): 
+
+	def run(self, request):
+		return render(request, "Profile/home.html")
+
 
 class BusProfileP(IfBusProfile): pass
 
