@@ -1,12 +1,16 @@
 #coding: utf-8
 
 from abc import*
+from django.shortcuts import render
 
-""" This file is responsible for storing all the layers that deal with the Administrative module.
-	The methods here are created and called by the Factory (MainUnit.py) when necessary.
-	They're responsible for ...
-"""
+## @package AdmUnit
+#Este arquivo é responsável pelo armazenamento de todas as camadas correspondentes ao módulo de administrador. Os métodos aqui são 
+#criados e chamados pela Factory (MainUnit.py) quando necessários. São responsáveis por cadastrar, deletar e editar alunos e professores 
+#no banco de dados, criar cursos e ver um log sobre os últimos eventos no sistema.
 
+
+## Interface para a camada de apresentação de Usuário do módulo de Administração.
+# É responsável por...
 class IfUiAdm:
 	__metaclass__ = ABCMeta
 	
@@ -35,7 +39,8 @@ class IfUiAdm:
 	@abstractmethod
 	def run(self, request): pass
 
-
+## Interface para a camada de negócio do módulo de perfil.
+# É responsável por...
 class IfBusAdm:
 	__metaclass__ = ABCMeta
 
@@ -61,12 +66,21 @@ class IfBusAdm:
 	def pers(self):
 		del self.__pers
 
-
+## Interface para a camada de persistência do módulo de administração.
+# É responsável por...
 class IfPersAdm:	pass
 
+## Camada de interface de usuário para o módulo de administração.
+class UiAdm(IfUiAdm):
 
-class UiAdm(IfUiAdm):	pass
+	def run(self, request):
+		return render(request, "Adm/home.html")
 
+## Camada de negócio para o módulo de administração.
 class BusAdm(IfBusAdm):	pass
 
-class PersAdm(IfPersAdm):	pass
+## Camada de persistência para o módulo de administração.
+class PersAdm(IfPersAdm): pass
+
+
+
