@@ -18,17 +18,17 @@ import importlib
 
 if 'LANG' in globals():
 	if LANG == 'en_us':
-		importlib.import_module("ELO.lang.en_us")
+		lang = importlib.import_module("ELO.lang.en_us")
 	else:
-		importlib.import_module("ELO.lang.pt_br")
+		lang = importlib.import_module("ELO.lang.pt_br")
 else:
-	importlib.import_module("ELO.lang.pt_br")
+	lang = importlib.import_module("ELO.lang.pt_br")
 
 
 def globalContext(request):
 	return {
 			'user': request.session['user'] if ('user' in request.session.keys()) else False,
-			'DICT': DICT,
+			'DICT': lang.DICT,
 		}
 
 ## Classe factory.
