@@ -16,18 +16,19 @@ from django.http import Http404
 
 import importlib
 
-if LANG:
+if 'LANG' in globals():
 	if LANG == 'en_us':
-		importlib.import_module("ELO.ELO.lang.en_us")
+		importlib.import_module("ELO.lang.en_us")
 	else:
-		importlib.import_module("ELO.ELO.lang.pt_br")
+		importlib.import_module("ELO.lang.pt_br")
 else:
-	importlib.import_module("ELO.ELO.lang.pt_br")
+	importlib.import_module("ELO.lang.pt_br")
 
 
 def globalContext(request):
 	return {
 			'user': request.session['user'] if ('user' in request.session.keys()) else False,
+			'DICT': DICT,
 		}
 
 ## Classe factory.
@@ -82,9 +83,9 @@ class Factory:
 					self.__ui = UiProfileS(self.__bus)
 				return self.__ui.run(request)
 			else:
-				raise Http404("EXCEPTION_404_ERR")
+				raise Http404(DICT["EXCEPTION_404_ERR"])
 		else:
-			raise PermissionDenied("EXCEPTION_403_STD")
+			raise PermissionDenied(DICT["EXCEPTION_403_STD"])
 
 	## Classe que executa o módulo de Administração.
 	# Define as camadas de persinstência, negócio e apresentação de administração.
@@ -98,7 +99,7 @@ class Factory:
 	
 				return self.__ui.run(request)
 		
-		raise PermissionDenied("EXCEPTION_403_STD")
+		raise PermissionDenied(DICT["EXCEPTION_403_STD"])
 
 	## Classe que executa o módulo de Curso.
 	# Define as camdas de persistência, negócio e apresentação de curso.
