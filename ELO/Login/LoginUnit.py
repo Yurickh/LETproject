@@ -147,7 +147,7 @@ class BusLogin(IfBusLogin):
 	def validate(self, username, password, database):
 		upass = self.pers.select(username.value, database)
 		if not upass or upass['password'] != password.value:
-			raise ValueError(EXCEPTION_INV_LOG)
+			raise ValueError(DICT['EXCEPTION_INV_LOG'])
 
 ## Camada de persistência de usuário para o módulo de Login.
 class PersLogin(IfPersLogin):

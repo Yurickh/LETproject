@@ -1,6 +1,9 @@
 #coding: utf-8
 
 from abc import*
+
+from ELO.models import Student
+
 from django.shortcuts import render
 from django import forms
 
@@ -70,17 +73,40 @@ class IfBusProfile:
 	def pers(self):
 		del self.__pers
 
+	@abstractmethod
+	def refreshUser(self, user)
 
-class IfPersProfile: pass
+
+class IfPersProfile:
+	__metaclass__ = ABCMeta
+
+	@abstractmethod
+	def fetch(self, user): pass
 
 class UiProfileS(IfUiProfile): 
 
 	def run(self, request):
-		return render(request, "Profile/home.html")
+		if not 'avatar' in user:
+		self.bus.refreshUser(request.session['user'])
+		return render(request, "Profile/home.html", {'user' : user})
 
-class BusProfileS(IfBusProfile): pass
+class BusProfileS(IfBusProfile):
 
-class PersProfileS(IfPersProfile): pass
+	def refreshUser(self, user):
+		user = dict(user.items() + self.pers.fetch(user['name']))
+
+class PersProfileS(IfPersProfile):
+
+	def fetch(self, username):
+
+		try:
+			uid = Student.objects.get(field='NAME', value=username)['identity']
+
+			fetchset = [
+				('password', Student.objects.get(identity=uid, field='PASSWORD')
+			]
+		except Student.doesNotExist as exc:
+			return []
 
 class UiProfileP(IfUiProfile): 
 
