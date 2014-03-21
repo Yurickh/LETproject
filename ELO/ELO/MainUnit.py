@@ -3,6 +3,7 @@
 #Parte inicial responsavel por construir e executar o sistema.
 
 from abc import *
+
 from Login.LoginUnit import *
 from Profile.ProfileUnit import *
 from Adm.AdmUnit import *
@@ -11,7 +12,17 @@ from Course.CourseUnit import *
 from models import Adm, Professor, Student
 
 from django.core.exceptions import PermissionDenied
+from django.http import Http404
 
+import importlib
+
+if LANG:
+	if LANG == 'en_us':
+		importlib.import_module("ELO.ELO.lang.en_us")
+	else:
+		importlib.import_module("ELO.ELO.lang.pt_br")
+else:
+	importlib.import_module("ELO.ELO.lang.pt_br")
 
 
 def globalContext(request):
@@ -71,20 +82,23 @@ class Factory:
 					self.__ui = UiProfileS(self.__bus)
 				return self.__ui.run(request)
 			else:
-				return 
+				raise Http404("EXCEPTION_404_ERR")
 		else:
-			raise PermissionDenied("You cannot access this page.")
+			raise PermissionDenied("EXCEPTION_403_STD")
 
 	## Classe que executa o módulo de Administração.
 	# Define as camadas de persinstência, negócio e apresentação de administração.
 	def runAdm(self, request):
 		if 'user' in request.session.keys():
-			if not self.__ui is IfUiAdm:
-				self.__pers = PersProfile()
-				self.__bus = BusAdm(self.__pers)
-				self.__ui = UiAdm(self.__bus) 
-
-			return self.__ui.run(request)
+			if request.session['user']['type'] == 'Adm':
+				if not self.__ui is IfUiAdm:
+					self.__pers = PersProfile()
+					self.__bus = BusAdm(self.__pers)
+					self.__ui = UiAdm(self.__bus) 
+	
+				return self.__ui.run(request)
+		
+		raise PermissionDenied("EXCEPTION_403_STD")
 
 	## Classe que executa o módulo de Curso.
 	# Define as camdas de persistência, negócio e apresentação de curso.
