@@ -1,11 +1,11 @@
 /**Arquivo folha de estilos de css*/
 .banner
 {
- 	text-shadow: -1px 0 gray, 0 1px black, 1px 0 gray, 0 -1px white;
+ 	text-shadow: -1px 0 gray, 0 1px gray, 1px 0 gray, 0 -1px gray;
 	position: fixed;
-	font-size: 40px;
+	font-size: 30px;
 	text-align: left;
-	color: #111177;
+	color: white;
 	top: 0px;
 }
 .error
@@ -31,7 +31,7 @@ a.field
 {
 	position: fixed;
 	top: 5px;
-	left: 75px;
+	right: 0px;
 }
 
 .menuTab
