@@ -27,6 +27,11 @@ a.field
 	text-decoration:none;
 }
 
+.field:hover
+{
+	color: #67B6FF;
+}
+
 .mainMenu
 {
 	position: fixed;
