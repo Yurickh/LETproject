@@ -74,7 +74,7 @@ class IfBusProfile:
 		del self.__pers
 
 	@abstractmethod
-	def refreshUser(self, user)
+	def refreshUser(self, user): pass
 
 
 class IfPersProfile:
@@ -87,7 +87,7 @@ class UiProfileS(IfUiProfile):
 
 	def run(self, request):
 		if not 'avatar' in user:
-		self.bus.refreshUser(request.session['user'])
+			self.bus.refreshUser(request.session['user'])
 		return render(request, "Profile/home.html", {'user' : user})
 
 class BusProfileS(IfBusProfile):
@@ -103,7 +103,7 @@ class PersProfileS(IfPersProfile):
 			uid = Student.objects.get(field='NAME', value=username)['identity']
 
 			fetchset = [
-				('password', Student.objects.get(identity=uid, field='PASSWORD')
+				('password', Student.objects.get(identity=uid, field='PASSWORD')),
 			]
 		except Student.doesNotExist as exc:
 			return []

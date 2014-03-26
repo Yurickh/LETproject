@@ -136,3 +136,6 @@ Para executar o programa, siga as instruções abaixo.
 
 > **26/02**
 > * Refazer documentação: Profile
+> **24/03**
+> * Definidas funções de apresentação do Módulo de Administração. (WIP) (JavaScrypt/Ajax)
+> *
