@@ -69,7 +69,7 @@ class Factory:
 	def runProfile(self, request):
 		if 'user' in request.session.keys():
 			if request.session['user']['type'] == 'Adm':
-				self.runAdm(request)
+				return self.runAdm(request)
 			elif request.session['user']['type'] == 'Professor':
 				if not isinstance(self.__ui, IfUiProfile):
 					self.__pers = PersProfileP()
@@ -92,11 +92,10 @@ class Factory:
 	def runAdm(self, request):
 		if 'user' in request.session.keys():
 			if request.session['user']['type'] == 'Adm':
-				if not self.__ui is IfUiAdm:
-					self.__pers = PersProfile()
+				if not isinstance(self.__ui, IfUiAdm):
+					self.__pers = PersAdm()
 					self.__bus = BusAdm(self.__pers)
 					self.__ui = UiAdm(self.__bus) 
-	
 				return self.__ui.run(request)
 		
 		raise PermissionDenied(DICT["EXCEPTION_403_STD"])

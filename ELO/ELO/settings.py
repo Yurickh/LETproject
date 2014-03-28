@@ -129,6 +129,9 @@ INSTALLED_APPS = (
     'Login',
 	'Profile',
 	'ELO',
+	'Adm',
+	'Course',
+	'Building',
 )
 
 # A sample logging configuration. The only tangible logging

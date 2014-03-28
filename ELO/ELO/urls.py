@@ -22,5 +22,6 @@ urlpatterns = patterns('',
 	## URL da pagina de cursos.
 	url(r'^course$', factory.runCourse),
 	## URL da pagina de administracao.
-	url(r'^administracao$', factory.runAdm),
+	url(r'^adm$', factory.runAdm),
+	
 )
