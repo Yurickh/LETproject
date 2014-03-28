@@ -95,6 +95,8 @@ DICT = {
 	'EXCEPTION_INV_PRF_AV' : "Ocorreu um erro no avatar do professor.",
 	## Mensagem de erro para um erro com o sexo do professor.
 	'EXCEPTION_INV_PRF_SX' : "Ocorreu um erro no sexo do professor.",
+	## Mensagem de erro para um e-mail de professor inválido
+	'EXCEPTION_INV_PRF_ML' : "E-mail de professor inválido.",
 
 	## Mensagem de erro para um número de registro de estudante (matric) inválido.
 	'EXCEPTION_INV_STU_MT' : "Matricula de aluno inválida.",
