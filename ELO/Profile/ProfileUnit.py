@@ -86,6 +86,7 @@ class IfPersProfile:
 class UiProfileS(IfUiProfile): 
 
 	def run(self, request):
+		user = request.session['user']
 		if not 'avatar' in user:
 			self.bus.refreshUser(request.session['user'])
 		return render(request, "Profile/home.html", {'user' : user})
@@ -100,13 +101,15 @@ class PersProfileS(IfPersProfile):
 	def fetch(self, username):
 
 		try:
-			uid = Student.objects.get(field='NAME', value=username)['identity']
+			uid = Student.objects.get(field='NAME', value=username).identity
 
 			fetchset = [
-				('password', Student.objects.get(identity=uid, field='PASSWORD')),
+				('password', Student.objects.get(identity=uid, field='PASSWORD').value),
 			]
-		except Student.doesNotExist as exc:
-			return []
+		except Student.DoesNotExist as exc:
+			fetchset = []
+
+		return fetchset
 
 class UiProfileP(IfUiProfile): 
 
