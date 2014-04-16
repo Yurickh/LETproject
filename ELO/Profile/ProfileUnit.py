@@ -98,14 +98,40 @@ class BusProfileS(IfBusProfile):
 
 class PersProfileS(IfPersProfile):
 
+	def __select_field(self, uid, field):
+
+		try:
+			ret = Student.objects.get(identity=uid, field=field).value
+
+		except Student.MultipleObjectsReturned:
+			ret = map(lambda x: x.value, Student.objects.filter(identity=uid, field=field).value)
+
+		except Student.DoesNotExist:
+			ret = None
+
+		return ret
+
 	def fetch(self, username):
 
 		try:
 			uid = Student.objects.get(field='NAME', value=username).identity
 
+			sf = lambda x: self.__select_field(uid, x)
+
 			fetchset = [
-				('password', Student.objects.get(identity=uid, field='PASSWORD').value),
+				('password',	sf('PASSWORD')),
+				('matric',	sf('MATRIC')),
+				('bios',	sf('BIOS')),
+				('campus',	sf('CAMPUS')),
+				('courses',	sf('COURSE')),
+				('avatar',	sf('AVATAR')),
+				('email',	sf('EMAIL')),
+				('sex',		sf('SEX')),
+				('grades',	sf('GRADE')),
+				('interests',	sf('INTEREST')),
+				('language',	sf('LANGUAGE')),
 			]
+		
 		except Student.DoesNotExist as exc:
 			fetchset = []
 
