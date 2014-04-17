@@ -88,13 +88,14 @@ class UiProfileS(IfUiProfile):
 	def run(self, request):
 		user = request.session['user']
 		if not 'avatar' in user:
-			self.bus.refreshUser(request.session['user'])
+			request.session['user'] = self.bus.refreshUser(user)
+			user = request.session['user']
 		return render(request, "Profile/home.html", {'user' : user})
 
 class BusProfileS(IfBusProfile):
 
 	def refreshUser(self, user):
-		user = dict(user.items() + self.pers.fetch(user['name']))
+		return dict(user.items() + self.pers.fetch(user['name']))
 
 class PersProfileS(IfPersProfile):
 
