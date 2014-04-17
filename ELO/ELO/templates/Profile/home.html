@@ -21,5 +21,12 @@
 	</div>
 
 	<div id="bottomer">
+		<div id="p_courses">
+			<ul>
+			{% for course in user.courses %}
+				<li>{{ course }}</li>
+			{% endfor %}
+			</ul>
+		</div>
 	</div>
 {% endblock %}

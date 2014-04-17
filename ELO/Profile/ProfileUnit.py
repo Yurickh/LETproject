@@ -105,7 +105,7 @@ class PersProfileS(IfPersProfile):
 			ret = Student.objects.get(identity=uid, field=field).value
 
 		except Student.MultipleObjectsReturned:
-			ret = map(lambda x: x.value, Student.objects.filter(identity=uid, field=field).value)
+			ret = map(lambda x: x.value, Student.objects.filter(identity=uid, field=field))
 
 		except Student.DoesNotExist:
 			ret = None
