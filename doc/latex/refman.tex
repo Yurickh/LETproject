@@ -1,69 +1,141 @@
-\documentclass{book}
-\usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm]{geometry}
-\usepackage{makeidx}
-\usepackage{natbib}
+\documentclass[twoside]{book}
+
+% Packages required by doxygen
+\usepackage{calc}
+\usepackage{doxygen}
 \usepackage{graphicx}
-\usepackage{multicol}
-\usepackage{float}
-\usepackage{listings}
-\usepackage{color}
-\usepackage{ifthen}
-\usepackage[table]{xcolor}
-\usepackage{textcomp}
-\usepackage{alltt}
-\usepackage{ifpdf}
-\ifpdf
-\usepackage[pdftex,
-            pagebackref=true,
-            colorlinks=true,
-            linkcolor=blue,
-            unicode
-           ]{hyperref}
-\else
-\usepackage[ps2pdf,
-            pagebackref=true,
-            colorlinks=true,
-            linkcolor=blue,
-            unicode
-           ]{hyperref}
-\usepackage{pspicture}
-\fi
 \usepackage[utf8]{inputenc}
+\usepackage{makeidx}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{textcomp}
+\usepackage[table]{xcolor}
+
+% NLS support packages
 \usepackage[brazil]{babel}
+% Font selection
+\usepackage[T1]{fontenc}
 \usepackage{mathptmx}
 \usepackage[scaled=.90]{helvet}
 \usepackage{courier}
-\usepackage{sectsty}
 \usepackage{amssymb}
-\usepackage[titles]{tocloft}
-\usepackage{doxygen}
-\lstset{language=C++,inputencoding=utf8,basicstyle=\footnotesize,breaklines=true,breakatwhitespace=true,tabsize=4,numbers=left }
-\makeindex
-\setcounter{tocdepth}{3}
-\renewcommand{\footrulewidth}{0.4pt}
+\usepackage{sectsty}
 \renewcommand{\familydefault}{\sfdefault}
-\hfuzz=15pt
-\setlength{\emergencystretch}{15pt}
-\hbadness=750
+\allsectionsfont{%
+  \fontseries{bc}\selectfont%
+  \color{darkgray}%
+}
+\renewcommand{\DoxyLabelFont}{%
+  \fontseries{bc}\selectfont%
+  \color{darkgray}%
+}
+
+% Page & text layout
+\usepackage{geometry}
+\geometry{%
+  a4paper,%
+  top=2.5cm,%
+  bottom=2.5cm,%
+  left=2.5cm,%
+  right=2.5cm%
+}
 \tolerance=750
+\hfuzz=15pt
+\hbadness=750
+\setlength{\emergencystretch}{15pt}
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.2cm}
+\makeatletter
+\renewcommand{\paragraph}{%
+  \@startsection{paragraph}{4}{0ex}{-1.0ex}{1.0ex}{%
+    \normalfont\normalsize\bfseries\SS@parafont%
+  }%
+}
+\renewcommand{\subparagraph}{%
+  \@startsection{subparagraph}{5}{0ex}{-1.0ex}{1.0ex}{%
+    \normalfont\normalsize\bfseries\SS@subparafont%
+  }%
+}
+\makeatother
+
+% Headers & footers
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\fancyhead[LE]{\fancyplain{}{\bfseries\thepage}}
+\fancyhead[CE]{\fancyplain{}{}}
+\fancyhead[RE]{\fancyplain{}{\bfseries\leftmark}}
+\fancyhead[LO]{\fancyplain{}{\bfseries\rightmark}}
+\fancyhead[CO]{\fancyplain{}{}}
+\fancyhead[RO]{\fancyplain{}{\bfseries\thepage}}
+\fancyfoot[LE]{\fancyplain{}{}}
+\fancyfoot[CE]{\fancyplain{}{}}
+\fancyfoot[RE]{\fancyplain{}{\bfseries\scriptsize Gerado em Quinta, 17 de Abril de 2014 18\-:10\-:45 para L\-E\-Tproject por Doxygen }}
+\fancyfoot[LO]{\fancyplain{}{\bfseries\scriptsize Gerado em Quinta, 17 de Abril de 2014 18\-:10\-:45 para L\-E\-Tproject por Doxygen }}
+\fancyfoot[CO]{\fancyplain{}{}}
+\fancyfoot[RO]{\fancyplain{}{}}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\chaptermark}[1]{%
+  \markboth{#1}{}%
+}
+\renewcommand{\sectionmark}[1]{%
+  \markright{\thesection\ #1}%
+}
+
+% Indices & bibliography
+\usepackage{natbib}
+\usepackage[titles]{tocloft}
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{5}
+\makeindex
+
+% Hyperlinks (required, but should be loaded last)
+\usepackage{ifpdf}
+\ifpdf
+  \usepackage[pdftex,pagebackref=true]{hyperref}
+\else
+  \usepackage[ps2pdf,pagebackref=true]{hyperref}
+\fi
+\hypersetup{%
+  colorlinks=true,%
+  linkcolor=blue,%
+  citecolor=blue,%
+  unicode%
+}
+
+% Custom commands
+\newcommand{\clearemptydoublepage}{%
+  \newpage{\pagestyle{empty}\cleardoublepage}%
+}
+
+
+%===== C O N T E N T S =====
+
 \begin{document}
-\hypersetup{pageanchor=false,citecolor=blue}
+
+% Titlepage & ToC
+\hypersetup{pageanchor=false}
+\pagenumbering{roman}
 \begin{titlepage}
 \vspace*{7cm}
-\begin{center}
+\begin{center}%
 {\Large L\-E\-Tproject }\\
 \vspace*{1cm}
-{\large Gerado por Doxygen 1.8.3.1}\\
+{\large Gerado por Doxygen 1.8.6}\\
 \vspace*{0.5cm}
-{\small Segunda, 24 de Fevereiro de 2014 18:16:37}\\
+{\small Quinta, 17 de Abril de 2014 18:10:45}\\
 \end{center}
 \end{titlepage}
 \clearemptydoublepage
-\pagenumbering{roman}
 \tableofcontents
 \clearemptydoublepage
 \pagenumbering{arabic}
-\hypersetup{pageanchor=true,citecolor=blue}
+\hypersetup{pageanchor=true}
+
+%--- Begin generated contents ---
+\chapter{L\-E\-Tproject}
+\label{d0/d30/md_README}
+\hypertarget{d0/d30/md_README}{}
+\input{d0/d30/md_README}
 \chapter{Namespaces}
 \input{namespaces}
 \chapter{Índice Hierárquico}
@@ -75,9 +147,8 @@
 \chapter{Namespaces}
 \input{da/d8c/namespaceAdm}
 \input{de/d94/namespaceAdm_1_1AdmUnit}
-\input{da/d60/namespaceAdm_1_1models}
-\input{dd/d46/namespaceAdm_1_1tests}
-\input{d4/d4f/namespaceAdm_1_1views}
+\input{dd/d9d/namespaceAdm_1_1forms}
+\input{db/d72/namespaceAdmUnit}
 \input{de/d8f/namespacebaseTestUnit}
 \input{d6/d57/namespaceBaseUnit}
 \input{d2/d94/namespaceBuilding}
@@ -93,39 +164,50 @@
 \input{da/d09/namespaceELO}
 \input{dc/d21/namespaceELO_1_1BaseUnit}
 \input{d2/d07/namespaceELO_1_1EntityUnit}
-\input{d6/d2a/namespaceELO_1_1forms}
 \input{df/dbd/namespaceELO_1_1lang}
 \input{dd/d09/namespaceELO_1_1lang_1_1en__us}
 \input{d5/d70/namespaceELO_1_1lang_1_1pt__br}
 \input{db/d73/namespaceELO_1_1MainUnit}
+\input{d8/d93/namespaceELO_1_1models}
 \input{df/d5b/namespaceELO_1_1settings}
 \input{dd/de1/namespaceELO_1_1urls}
 \input{d9/d53/namespaceELO_1_1wsgi}
 \input{d4/d43/namespaceentityTestUnit}
+\input{d0/dd3/namespaceEntityUnit}
+\input{d7/dee/namespaceLingua}
 \input{dc/d54/namespaceLogin}
 \input{d4/da4/namespaceLogin_1_1forms}
 \input{d1/dc4/namespaceLogin_1_1LoginUnit}
-\input{d5/db1/namespaceLogin_1_1models}
-\input{da/d7b/namespaceLogin_1_1tests}
-\input{d9/d37/namespaceLogin_1_1views}
+\input{dc/da0/namespaceLoginForms}
 \input{d1/d0f/namespaceLoginModels}
+\input{df/dec/namespaceMainUnit}
 \input{da/df4/namespacemanage}
 \input{d8/dc2/namespaceProfile}
 \input{de/d77/namespaceProfile_1_1forms}
-\input{dc/dfb/namespaceProfile_1_1models}
 \input{d0/d31/namespaceProfile_1_1ProfileUnit}
-\input{de/d83/namespaceProfile_1_1tests}
-\input{de/d92/namespaceProfile_1_1views}
+\input{df/dcb/namespaceProfileForms}
+\input{d7/de0/namespaceProfileUnit}
 \input{d0/de8/namespaceTestUnit}
+\input{d5/d9a/namespaceUrls}
 \chapter{Classes}
 \input{d3/d3a/classELO_1_1EntityUnit_1_1Adm}
-\input{d4/d48/classLogin_1_1models_1_1Adm}
+\input{df/d5e/classELO_1_1models_1_1Adm}
+\input{da/d13/classAdm_1_1forms_1_1AdmDelCourForm}
+\input{dd/d81/classAdm_1_1forms_1_1AdmDelProfForm}
+\input{db/db9/classAdm_1_1forms_1_1AdmDelStuForm}
+\input{df/d14/classAdm_1_1forms_1_1AdmRegCourForm}
+\input{d3/d88/classAdm_1_1forms_1_1AdmRegProfForm}
+\input{d0/d94/classAdm_1_1forms_1_1AdmRegStuForm}
+\input{d5/d6d/classAdm_1_1forms_1_1AdmSrcProfForm}
+\input{d7/d61/classAdm_1_1forms_1_1AdmSrcStuForm}
 \input{de/de0/classAdm_1_1AdmUnit_1_1BusAdm}
 \input{d9/d88/classCourse_1_1CourseUnit_1_1BusCourse}
 \input{d9/d51/classLogin_1_1LoginUnit_1_1BusLogin}
-\input{df/da4/classProfile_1_1ProfileUnit_1_1BusProfile}
+\input{d8/d9c/classProfile_1_1ProfileUnit_1_1BusProfileP}
+\input{d1/d48/classProfile_1_1ProfileUnit_1_1BusProfileS}
 \input{d4/d76/classELO_1_1BaseUnit_1_1Campus}
 \input{d2/dc4/classELO_1_1EntityUnit_1_1Courses}
+\input{d2/d74/classELO_1_1BaseUnit_1_1Date}
 \input{d5/d6a/classELO_1_1EntityUnit_1_1Exercise}
 \input{de/d96/classELO_1_1BaseUnit_1_1ExType}
 \input{d1/dc6/classELO_1_1MainUnit_1_1Factory}
@@ -147,7 +229,6 @@
 \input{d2/d3e/classELO_1_1BaseUnit_1_1Language}
 \input{dc/d13/classELO_1_1EntityUnit_1_1Lesson}
 \input{d9/dbc/classELO_1_1BaseUnit_1_1Link}
-\input{de/da2/classELO_1_1forms_1_1LoginForm}
 \input{d0/db9/classLogin_1_1forms_1_1LoginForm}
 \input{d5/db6/classELO_1_1BaseUnit_1_1Mail}
 \input{d6/db2/classELO_1_1BaseUnit_1_1Matric}
@@ -157,23 +238,23 @@
 \input{dc/d1a/classAdm_1_1AdmUnit_1_1PersAdm}
 \input{d1/d75/classCourse_1_1CourseUnit_1_1PersCourse}
 \input{d5/dfc/classLogin_1_1LoginUnit_1_1PersLogin}
-\input{d7/dec/classProfile_1_1ProfileUnit_1_1PersProfile}
+\input{d9/da2/classProfile_1_1ProfileUnit_1_1PersProfileP}
+\input{d5/d8a/classProfile_1_1ProfileUnit_1_1PersProfileS}
 \input{d4/d2d/classELO_1_1BaseUnit_1_1PlainText}
 \input{d5/df1/classELO_1_1EntityUnit_1_1Professor}
-\input{dd/d57/classLogin_1_1models_1_1Professor}
+\input{d5/d93/classELO_1_1models_1_1Professor}
 \input{dd/d8a/classELO_1_1BaseUnit_1_1Sex}
 \input{d7/d71/classBuilding_1_1tests_1_1SimpleTest}
-\input{d5/d01/classProfile_1_1tests_1_1SimpleTest}
 \input{dc/dd5/classCourse_1_1tests_1_1SimpleTest}
-\input{d6/d5f/classAdm_1_1tests_1_1SimpleTest}
-\input{d9/d70/classLogin_1_1models_1_1Student}
+\input{d0/dc8/classELO_1_1models_1_1Student}
 \input{dd/d1d/classELO_1_1EntityUnit_1_1Student}
 \input{d4/ddb/classTestUnit_1_1TestUnit}
 \input{d2/d4a/classbaseTestUnit_1_1TestUnit}
 \input{d4/dde/classAdm_1_1AdmUnit_1_1UiAdm}
 \input{d1/dbb/classCourse_1_1CourseUnit_1_1UiCourse}
 \input{de/da8/classLogin_1_1LoginUnit_1_1UiLogin}
-\input{d3/d3d/classProfile_1_1ProfileUnit_1_1UiProfile}
+\input{d8/dcc/classProfile_1_1ProfileUnit_1_1UiProfileP}
+\input{dc/dbe/classProfile_1_1ProfileUnit_1_1UiProfileS}
 \input{dd/d09/classELO_1_1EntityUnit_1_1User}
 \chapter{Arquivos}
 \input{d6/d3f/Adm_2____init_____8py}
@@ -184,28 +265,20 @@
 \input{d8/d1f/Login_2____init_____8py}
 \input{de/dcb/Profile_2____init_____8py}
 \input{db/dd3/AdmUnit_8py}
-\input{de/dbf/Adm_2models_8py}
+\input{df/d87/Adm_2forms_8py}
+\input{db/dd7/Login_2forms_8py}
+\input{d7/d13/Profile_2forms_8py}
+\input{d5/dc5/BuildingUnit_8py}
 \input{dd/d1b/Building_2models_8py}
 \input{d1/d2b/Course_2models_8py}
-\input{d2/dc0/Login_2models_8py}
-\input{d1/d64/Profile_2models_8py}
-\input{df/d56/Adm_2tests_8py}
+\input{d1/d1c/ELO_2models_8py}
 \input{d1/d86/Building_2tests_8py}
 \input{da/d7a/Course_2tests_8py}
-\input{d6/d53/Login_2tests_8py}
-\input{d9/d7f/Profile_2tests_8py}
-\input{d7/ddb/Adm_2views_8py}
 \input{dd/d8d/Building_2views_8py}
 \input{d3/d93/Course_2views_8py}
-\input{d1/d61/Login_2views_8py}
-\input{d7/df4/Profile_2views_8py}
-\input{d5/dc5/BuildingUnit_8py}
 \input{de/d1e/CourseUnit_8py}
 \input{d2/d4a/BaseUnit_8py}
 \input{d7/dff/EntityUnit_8py}
-\input{d1/d96/ELO_2forms_8py}
-\input{db/dd7/Login_2forms_8py}
-\input{d7/d13/Profile_2forms_8py}
 \input{d6/d3b/en__us_8py}
 \input{db/d42/pt__br_8py}
 \input{dd/d7f/MainUnit_8py}
@@ -218,6 +291,13 @@
 \input{da/dc7/LoginUnit_8py}
 \input{d8/d54/manage_8py}
 \input{d7/d6d/ProfileUnit_8py}
-\addcontentsline{toc}{part}{Índice}
+\input{da/ddd/README_8md}
+%--- End generated contents ---
+
+% Index
+\newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Índice}
 \printindex
+
 \end{document}

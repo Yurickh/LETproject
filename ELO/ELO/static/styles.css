@@ -1,9 +1,12 @@
 /**Arquivo folha de estilos de css*/
 .banner
 {
-	font-size: 80px;
-	text-align: center;
-	color: #111177;
+ 	text-shadow: -1px 0 gray, 0 1px gray, 1px 0 gray, 0 -1px gray;
+	position: fixed;
+	font-size: 30px;
+	text-align: left;
+	color: white;
+	top: 0px;
 }
 .error
 {
@@ -12,12 +15,11 @@
 
 .field
 {
-	float: left;
+	float: right;
 	text-align: center;
-	margin-top: 0.2cm;
-	border: 1px solid black;
 	width: 100px;
 	position:relative;
+	color: white;
 }
 
 a.field
@@ -25,12 +27,26 @@ a.field
 	text-decoration:none;
 }
 
+.field:hover
+{
+	color: #67B6FF;
+}
+
 .mainMenu
 {
-	position: relative;
-	float: left;
-	width: 50%;
-	left: 25%; 
+	position: fixed;
+	top: 5px;
+	right: 0px;
+}
+
+.menuTab
+{
+	background-color: black;
+	position: fixed;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:30px;
 }
 
 .content
@@ -57,3 +73,12 @@ body
 {
 	margin-top: 0.2cm;
 }
+
+.manipular ul{
+		margin-top:50px;
+}
+
+.manipular li{
+	margin-top:10px;
+}
+

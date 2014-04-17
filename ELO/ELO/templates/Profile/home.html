@@ -1,24 +1,31 @@
-<!-- Template da pagina Home-->
+<!-- Template da pagina de Perfil-->
 
 {% extends "includes/wrapper.html" %}
 
-{% block title %} ELO Profile {% endblock %}
+{% block title %} {{ DICT.ELO_PROFILE }} {% endblock %}
 
 {% block content %}	
-	Olá {{ user.name }}! Este é seu perfil!
-
-	{% if error %}
-		<div class="error">
-			{{ error }}
+	<div id="topper">
+		<div id="p_avatar">
+			<img src="{{ user.avatar }}" />
 		</div>
-	{% endif %}
-		<div class="dados">
-			Historico
+		<div id="p_info">
+			<h1>{{ user.name }}</h1>
+			<ul>
+				<li>{{ user.matric }}</li>
+				<li>{{ user.bios }}</li>
+			</ul>
+			<div id="p_info_edit">Edit</div>
 		</div>
+	</div>
 
-		<a href="/course">
-			<div class="course">
-				Curso
-			</div>
-		</a>
+	<div id="bottomer">
+		<div id="p_courses">
+			<ul>
+			{% for course in user.courses %}
+				<li>{{ course }}</li>
+			{% endfor %}
+			</ul>
+		</div>
+	</div>
 {% endblock %}

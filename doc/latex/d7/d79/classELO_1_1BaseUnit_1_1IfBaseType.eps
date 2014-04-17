@@ -5,7 +5,7 @@
 %%For: 
 %Magnification: 1.00
 %%Orientation: Portrait
-%%BoundingBox: 0 0 500 787.878788
+%%BoundingBox: 0 0 500 848.484848
 %%Pages: 0
 %%BeginSetup
 %%EndSetup
@@ -19,12 +19,12 @@
 /marginwidth 10 def
 /distx 20 def
 /disty 40 def
-/boundaspect 0.634615 def  % aspect ratio of the BoundingBox (width/height)
+/boundaspect 0.589286 def  % aspect ratio of the BoundingBox (width/height)
 /boundx 500 def
 /boundy boundx boundaspect div def
 /xspacing 0 def
 /yspacing 0 def
-/rows 13 def
+/rows 14 def
 /cols 2 def
 /scalefactor 0 def
 /boxfont /Times-Roman findfont fontheight scalefont def
@@ -175,6 +175,7 @@ boxfont setfont
 1 boundaspect scale
 (ELO.BaseUnit.IfBaseType) cw
 (ELO.BaseUnit.Campus) cw
+(ELO.BaseUnit.Date) cw
 (ELO.BaseUnit.ExType) cw
 (ELO.BaseUnit.Grades) cw
 (ELO.BaseUnit.Id) cw
@@ -197,8 +198,9 @@ boundx scalefactor div boundy scalefactor div scale
 
 % ----- classes -----
 
- (ELO.BaseUnit.IfBaseType) 0.000000 12.000000 box
- (ELO.BaseUnit.Campus) 1.000000 11.000000 box
+ (ELO.BaseUnit.IfBaseType) 0.000000 13.000000 box
+ (ELO.BaseUnit.Campus) 1.000000 12.000000 box
+ (ELO.BaseUnit.Date) 1.000000 11.000000 box
  (ELO.BaseUnit.ExType) 1.000000 10.000000 box
  (ELO.BaseUnit.Grades) 1.000000 9.000000 box
  (ELO.BaseUnit.Id) 1.000000 8.000000 box
@@ -214,7 +216,9 @@ boundx scalefactor div boundy scalefactor div scale
 % ----- relations -----
 
 solid
-1 0.000000 11.250000 out
+1 0.000000 12.250000 out
+solid
+0 0.000000 12.500000 hedge
 solid
 0 0.000000 11.500000 hedge
 solid
@@ -240,4 +244,4 @@ solid
 solid
 0 0.000000 0.500000 hedge
 solid
-0.000000 12.000000 0.500000 vedge
+0.000000 13.000000 0.500000 vedge

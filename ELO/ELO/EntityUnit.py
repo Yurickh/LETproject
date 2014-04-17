@@ -107,10 +107,19 @@ class Professor(User):
 			self.courses = courses
 			self.avatar = avatar
 			self.sex = sex
+			self.email = email
 		except ValueError as exc:
 			del self
 			raise exc
-	
+	@property
+	def email(self):
+		return self.__email
+	@email.setter
+	def email(self, value):
+		if type(value) is Mail:
+			self.__email = value 
+		else :
+			raise ValueError(EXCEPTION_INV_PRF_ML)
 	@property
 	def matric(self):
 		return self.__matric
@@ -696,3 +705,5 @@ class Exercise(object):
 	@items.deleter
 	def items(self):
 		del self.__items
+
+#.
