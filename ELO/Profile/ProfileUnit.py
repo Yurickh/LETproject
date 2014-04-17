@@ -46,7 +46,7 @@ class IfUiProfile:
 	def run(self, request): pass
 
 
-## Interface para a camada de Negócio do módulo de perfil. É responsável por...
+## Interface para a camada de Negócio do módulo de perfil. É responsável por 
 class IfBusProfile:
 	__metaclass__ = ABCMeta
 
