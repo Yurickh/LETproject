@@ -109,11 +109,17 @@ class UiProfileS(IfUiProfile):
 			user = request.session['user']
 		return render(request, "Profile/home.html", {'user' : user})
 
+## Camada de negócio para estudantes.
+#	Deve ser capaz de gerar um dicionário contendo uma versão mais nova
+#	dos dados do usuário.
 class BusProfileS(IfBusProfile):
 
 	def refreshUser(self, user):
 		return dict(user.items() + self.pers.fetch(user['name']))
 
+## Camada de persistência para estudantes.
+#	Recupera os dados do estudante logado, retornando-os para a camada
+#	de negócio.
 class PersProfileS(IfPersProfile):
 
 	def __select_field(self, uid, field):

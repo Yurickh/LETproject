@@ -1,5 +1,5 @@
 \hypertarget{namespaceELO_1_1urls}{\section{Refência do Namespace E\-L\-O.\-urls}
-\label{dd/de1/namespaceELO_1_1urls}\index{E\-L\-O.\-urls@{E\-L\-O.\-urls}}
+\label{namespaceELO_1_1urls}\index{E\-L\-O.\-urls@{E\-L\-O.\-urls}}
 }
 \subsection*{Variáveis}
 \begin{DoxyCompactItemize}
@@ -13,10 +13,10 @@ tuple \hyperlink{namespaceELO_1_1urls_a3451f093ed6ab05c006fd0d1cdba836d}{urlpatt
 \subsection{Variáveis}
 \hypertarget{namespaceELO_1_1urls_a85325dfebd736ced5558533f2c4bc29a}{\index{E\-L\-O\-::urls@{E\-L\-O\-::urls}!factory@{factory}}
 \index{factory@{factory}!ELO::urls@{E\-L\-O\-::urls}}
-\subsubsection[{factory}]{\setlength{\rightskip}{0pt plus 5cm}tuple E\-L\-O.\-urls.\-factory = {\bf Factory}()}}\label{dd/de1/namespaceELO_1_1urls_a85325dfebd736ced5558533f2c4bc29a}
+\subsubsection[{factory}]{\setlength{\rightskip}{0pt plus 5cm}tuple E\-L\-O.\-urls.\-factory = {\bf Factory}()}}\label{namespaceELO_1_1urls_a85325dfebd736ced5558533f2c4bc29a}
 \hypertarget{namespaceELO_1_1urls_a3451f093ed6ab05c006fd0d1cdba836d}{\index{E\-L\-O\-::urls@{E\-L\-O\-::urls}!urlpatterns@{urlpatterns}}
 \index{urlpatterns@{urlpatterns}!ELO::urls@{E\-L\-O\-::urls}}
-\subsubsection[{urlpatterns}]{\setlength{\rightskip}{0pt plus 5cm}tuple E\-L\-O.\-urls.\-urlpatterns}}\label{dd/de1/namespaceELO_1_1urls_a3451f093ed6ab05c006fd0d1cdba836d}
+\subsubsection[{urlpatterns}]{\setlength{\rightskip}{0pt plus 5cm}tuple E\-L\-O.\-urls.\-urlpatterns}}\label{namespaceELO_1_1urls_a3451f093ed6ab05c006fd0d1cdba836d}
 {\bfseries Valor Inicial\-:}
 \begin{DoxyCode}
 1 = patterns(\textcolor{stringliteral}{''}, 
@@ -33,6 +33,7 @@ tuple \hyperlink{namespaceELO_1_1urls_a3451f093ed6ab05c006fd0d1cdba836d}{urlpatt
 12     \textcolor{comment}{## URL da pagina de cursos.}
 13     url(\textcolor{stringliteral}{r'^course$'}, factory.runCourse),
 14     \textcolor{comment}{## URL da pagina de administracao.}
-15     url(\textcolor{stringliteral}{r'^administracao$'}, factory.runAdm),
-16 )
+15     url(\textcolor{stringliteral}{r'^adm$'}, factory.runAdm),
+16     
+17 )
 \end{DoxyCode}
