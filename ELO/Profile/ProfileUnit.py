@@ -112,23 +112,26 @@ class UiProfileS(IfUiProfile):
 ## Camada de negócio para estudantes.
 #	Deve ser capaz de gerar um dicionário contendo uma versão mais nova
 #	dos dados do usuário.
-class BusProfileS(IfBusProfile):
+class BusProfile(IfBusProfile):
 
 	def refreshUser(self, user):
-		return dict(user.items() + self.pers.fetch(user['name']))
+		if user['type'] == 'Student':
+			return dict(user.items()+ self.pers.fetch(user['name'], Student))
+		elif user['type'] == 'Professor':
+			return dict(user.items()+ self.pers.fetch(user['name'], Professor))
 
 ## Camada de persistência para estudantes.
 #	Recupera os dados do estudante logado, retornando-os para a camada
 #	de negócio.
-class PersProfileS(IfPersProfile):
+class PersProfile(IfPersProfile):
 
-	def __select_field(self, uid, field):
+	def __select_field(self, uid, field, database):
 
 		try:
-			ret = Student.objects.get(identity=uid, field=field)
+			ret = database.objects.get(identity=uid, field=field)
 			ret = ret.value
 
-		except Student.MultipleObjectsReturned:
+		except database.MultipleObjectsReturned:
 			ret = map(lambda x: x.value, Student.objects.filter(
 					identity=uid, field=field))
 
@@ -137,29 +140,29 @@ class PersProfileS(IfPersProfile):
 
 		return ret
 
-	def fetch(self, username):
+	def fetch(self, username, database):
 
 		try:
-			uid = Student.objects.get(field='NAME', value=username)
+			uid = database.objects.get(field='NAME', value=username)
 			uid = uid.identity
 
-			sf = lambda x: self.__select_field(uid, x)
+			sf = lambda x: self.__select_field(uid, x, database)
 
 			fetchset = [
 				('password',	sf('PASSWORD')),
-				('matric',	sf('MATRIC')),
-				('bios',	sf('BIOS')),
-				('campus',	sf('CAMPUS')),
-				('courses',	sf('COURSE')),
-				('avatar',	sf('AVATAR')),
-				('email',	sf('EMAIL')),
-				('sex',		sf('SEX')),
-				('grades',	sf('GRADE')),
+				('matric',		sf('MATRIC')),
+				('bios',		sf('BIOS')),
+				('campus',		sf('CAMPUS')),
+				('courses',		sf('COURSE')),
+				('avatar',		sf('AVATAR')),
+				('email',		sf('EMAIL')),
+				('sex',			sf('SEX')),
+				('grades',		sf('GRADE')),
 				('interests',	sf('INTEREST')),
 				('language',	sf('LANGUAGE')),
 			]
 		
-		except Student.DoesNotExist as exc:
+		except database.DoesNotExist as exc:
 			fetchset = []
 
 		return fetchset
@@ -168,8 +171,3 @@ class UiProfileP(IfUiProfile):
 
 	def run(self, request):
 		return render(request, "Profile/home.html")
-
-
-class BusProfileP(IfBusProfile): pass
-
-class PersProfileP(IfPersProfile): pass
