@@ -77,7 +77,7 @@ class Factory:
 				return self.runAdm(request)
 			elif request.session['user']['type'] == 'Professor':
 				if not isinstance(self.__ui, IfUiProfile):
-					self.__pers = PersProfileP()
+					self.__pers = PersProfile()
 					self.__bus = BusProfile(self.__pers)
 					self.__ui = UiProfileP(self.__bus)
 				return self.__ui.run(request)

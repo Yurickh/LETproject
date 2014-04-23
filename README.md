@@ -143,3 +143,8 @@ Para executar o programa, siga as instruções abaixo.
 > **17/04**
 > * Finalizado o módulo de Perfil para estudantes, em um primeiro momento. O histórico não foi implementado devido a possibilidade de inutilização do código.
 > * Reescrito o código de Perfil para que obedeça ao padrão de 80 caracteres / linha.
+
+> **23/04**
+> * Reescrito o código da Unidade Main para que obedeça ao padrão de 80
+ caracteres / linha.
+> * Finalizado o módulo de Perfil para professores, implicando que o módulo de perfil foi completamente finalizado.

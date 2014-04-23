@@ -149,19 +149,23 @@ class PersProfile(IfPersProfile):
 			sf = lambda x: self.__select_field(uid, x, database)
 
 			fetchset = [
-				('password',	sf('PASSWORD')),
-				('matric',		sf('MATRIC')),
-				('bios',		sf('BIOS')),
-				('campus',		sf('CAMPUS')),
-				('courses',		sf('COURSE')),
-				('avatar',		sf('AVATAR')),
-				('email',		sf('EMAIL')),
-				('sex',			sf('SEX')),
-				('grades',		sf('GRADE')),
-				('interests',	sf('INTEREST')),
-				('language',	sf('LANGUAGE')),
+					('password',	sf('PASSWORD')),
+					('matric',		sf('MATRIC')),
+					('bios',		sf('BIOS')),
+					('campus',		sf('CAMPUS')),
+					('courses',		sf('COURSE')),
+					('avatar',		sf('AVATAR')),
+					('email',		sf('EMAIL')),
+					('sex',			sf('SEX')),
 			]
-		
+
+			if database is Student:
+				fetchset = fetchset + [		
+					('grades',		sf('GRADE')),
+					('interests',	sf('INTEREST')),
+					('language',	sf('LANGUAGE')),
+				]
+
 		except database.DoesNotExist as exc:
 			fetchset = []
 
