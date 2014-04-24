@@ -3,7 +3,7 @@
 }
 
 
-Classe responsável por armazenar um \hyperlink{classELO_1_1BaseUnit_1_1Id}{Id}.  
+Classe container de \hyperlink{classELO_1_1BaseUnit_1_1Id}{Id}.  
 
 
 Diagrama de Hierarquia para E\-L\-O.\-Base\-Unit.\-Id\-:\begin{figure}[H]
@@ -20,9 +20,9 @@ def \hyperlink{classELO_1_1BaseUnit_1_1Id_adc3e24ef020fb79dda540cdbec85b7a8}{\-\
 
 
 \subsection{Descrição Detalhada}
-Classe responsável por armazenar um \hyperlink{classELO_1_1BaseUnit_1_1Id}{Id}. 
+Classe container de \hyperlink{classELO_1_1BaseUnit_1_1Id}{Id}. 
 
-
+Este tipo básico irá armazenar um inteiro, que identifica univocamente diversas estruturas dentro do sistema. 
 
 \subsection{Construtores \& Destrutores}
 \hypertarget{classELO_1_1BaseUnit_1_1Id_adc3e24ef020fb79dda540cdbec85b7a8}{\index{E\-L\-O\-::\-Base\-Unit\-::\-Id@{E\-L\-O\-::\-Base\-Unit\-::\-Id}!\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}}
@@ -37,7 +37,16 @@ Classe responsável por armazenar um \hyperlink{classELO_1_1BaseUnit_1_1Id}{Id}.
 
 Construtor da classe. 
 
-Responsável por validar e definir um e-\/mail. 
+Responsável por impedir a criação de um tipo básico com conteúdo inválido.
+
+\begin{DoxyItemize}
+\item value Inteiro a ser salvo no tipo básico.\end{DoxyItemize}
+
+\begin{DoxyExceptions}{Exceções}
+{\em Value\-Error} & Será lançada no caso de value não corresponder aos requisitos do sistema. \\
+\hline
+\end{DoxyExceptions}
+
 
 A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}
 \item 

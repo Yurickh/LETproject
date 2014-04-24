@@ -1,6 +1,11 @@
 \hypertarget{ProfileUnit_8py}{\section{Referência do Arquivo E\-L\-O/\-Profile/\-Profile\-Unit.py}
 \label{ProfileUnit_8py}\index{E\-L\-O/\-Profile/\-Profile\-Unit.\-py@{E\-L\-O/\-Profile/\-Profile\-Unit.\-py}}
 }
+
+
+Este arquivo é responsável pelo armazenamento de todas as camadas correspondentes ao módulo de perfil.  
+
+
 \subsection*{Componentes}
 \begin{DoxyCompactItemize}
 \item 
@@ -12,20 +17,18 @@ class \hyperlink{classProfile_1_1ProfileUnit_1_1IfPersProfile}{Profile.\-Profile
 \begin{DoxyCompactList}\small\item\em Interface para a camada de Persistência do módulo de perfil. \end{DoxyCompactList}\item 
 class \hyperlink{classProfile_1_1ProfileUnit_1_1UiProfileS}{Profile.\-Profile\-Unit.\-Ui\-Profile\-S}
 \begin{DoxyCompactList}\small\item\em Camada de apresentação para estudantes. \end{DoxyCompactList}\item 
-class \hyperlink{classProfile_1_1ProfileUnit_1_1BusProfileS}{Profile.\-Profile\-Unit.\-Bus\-Profile\-S}
+class \hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile}{Profile.\-Profile\-Unit.\-Bus\-Profile}
 \begin{DoxyCompactList}\small\item\em Camada de negócio para estudantes. \end{DoxyCompactList}\item 
-class \hyperlink{classProfile_1_1ProfileUnit_1_1PersProfileS}{Profile.\-Profile\-Unit.\-Pers\-Profile\-S}
+class \hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile}{Profile.\-Profile\-Unit.\-Pers\-Profile}
 \begin{DoxyCompactList}\small\item\em Camada de persistência para estudantes. \end{DoxyCompactList}\item 
 class \hyperlink{classProfile_1_1ProfileUnit_1_1UiProfileP}{Profile.\-Profile\-Unit.\-Ui\-Profile\-P}
-\item 
-class \hyperlink{classProfile_1_1ProfileUnit_1_1BusProfileP}{Profile.\-Profile\-Unit.\-Bus\-Profile\-P}
-\item 
-class \hyperlink{classProfile_1_1ProfileUnit_1_1PersProfileP}{Profile.\-Profile\-Unit.\-Pers\-Profile\-P}
 \end{DoxyCompactItemize}
 \subsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{namespaceProfile_1_1ProfileUnit}{Profile.\-Profile\-Unit}
-\item 
-\hyperlink{namespaceProfileUnit}{Profile\-Unit}
-\begin{DoxyCompactList}\small\item\em Este arquivo é responsável pelo armazenamento de todas as camadas correspondentes ao módulo de perfil. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrição Detalhada}
+Este arquivo é responsável pelo armazenamento de todas as camadas correspondentes ao módulo de perfil. Os métodos aqui são criados e chamados pela Factory (\hyperlink{MainUnit_8py}{Main\-Unit.\-py}) quando necessários. Eles são responsáveis pelo redirecionamento do usuário para páginas diferentes dependendo do tipo de usuário, edição de dados pessoais, visualização de informações relativas aos cursos. 

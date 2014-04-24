@@ -2,7 +2,6 @@ var searchData=
 [
   ['basetestunit',['baseTestUnit',['../de/d8f/namespacebaseTestUnit.html',1,'']]],
   ['basetestunit_2epy',['baseTestUnit.py',['../db/d2f/baseTestUnit_8py.html',1,'']]],
-  ['baseunit',['BaseUnit',['../d6/d57/namespaceBaseUnit.html',1,'']]],
   ['baseunit_2epy',['BaseUnit.py',['../d2/d4a/BaseUnit_8py.html',1,'']]],
   ['bios',['bios',['../d5/df1/classELO_1_1EntityUnit_1_1Professor.html#a2e403e0bfc353dcdf9988140d61d5ca7',1,'ELO.EntityUnit.Professor.bios()'],['../dd/d1d/classELO_1_1EntityUnit_1_1Student.html#a148e46f8d5bb2a3dedb9590edbb2471e',1,'ELO.EntityUnit.Student.bios()'],['../d5/df1/classELO_1_1EntityUnit_1_1Professor.html#a2972bd0f21f4ff0ebfb1cada717386ac',1,'ELO.EntityUnit.Professor.bios'],['../d5/df1/classELO_1_1EntityUnit_1_1Professor.html#a2972bd0f21f4ff0ebfb1cada717386ac',1,'ELO.EntityUnit.Professor.bios'],['../d5/df1/classELO_1_1EntityUnit_1_1Professor.html#a2972bd0f21f4ff0ebfb1cada717386ac',1,'ELO.EntityUnit.Professor.bios'],['../dd/d1d/classELO_1_1EntityUnit_1_1Student.html#a7428c9fbf91bc28ee039df54fbf613a3',1,'ELO.EntityUnit.Student.bios'],['../dd/d1d/classELO_1_1EntityUnit_1_1Student.html#a7428c9fbf91bc28ee039df54fbf613a3',1,'ELO.EntityUnit.Student.bios'],['../dd/d1d/classELO_1_1EntityUnit_1_1Student.html#a7428c9fbf91bc28ee039df54fbf613a3',1,'ELO.EntityUnit.Student.bios']]],
   ['building',['Building',['../d2/d94/namespaceBuilding.html',1,'']]],
@@ -12,8 +11,7 @@ var searchData=
   ['busadm',['BusAdm',['../de/de0/classAdm_1_1AdmUnit_1_1BusAdm.html',1,'Adm::AdmUnit']]],
   ['buscourse',['BusCourse',['../d9/d88/classCourse_1_1CourseUnit_1_1BusCourse.html',1,'Course::CourseUnit']]],
   ['buslogin',['BusLogin',['../d9/d51/classLogin_1_1LoginUnit_1_1BusLogin.html',1,'Login::LoginUnit']]],
-  ['busprofilep',['BusProfileP',['../d8/d9c/classProfile_1_1ProfileUnit_1_1BusProfileP.html',1,'Profile::ProfileUnit']]],
-  ['busprofiles',['BusProfileS',['../d1/d48/classProfile_1_1ProfileUnit_1_1BusProfileS.html',1,'Profile::ProfileUnit']]],
+  ['busprofile',['BusProfile',['../df/da4/classProfile_1_1ProfileUnit_1_1BusProfile.html',1,'Profile::ProfileUnit']]],
   ['models',['models',['../d4/de4/namespaceBuilding_1_1models.html',1,'Building']]],
   ['tests',['tests',['../dc/d30/namespaceBuilding_1_1tests.html',1,'Building']]],
   ['views',['views',['../d0/d1b/namespaceBuilding_1_1views.html',1,'Building']]]

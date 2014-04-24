@@ -3,7 +3,7 @@
 }
 
 
-Classe responsável por armazenar a data de último acesso do sistema.  
+Classe container de Data.  
 
 
 Diagrama de Hierarquia para E\-L\-O.\-Base\-Unit.\-Date\-:\begin{figure}[H]
@@ -20,9 +20,9 @@ def \hyperlink{classELO_1_1BaseUnit_1_1Date_a97d924fa5f1b2a1d8afbdbfe17b6a852}{\
 
 
 \subsection{Descrição Detalhada}
-Classe responsável por armazenar a data de último acesso do sistema. 
+Classe container de Data. 
 
-
+Este tipo básico armazena uma data para os mais diversos usos. 
 
 \subsection{Construtores \& Destrutores}
 \hypertarget{classELO_1_1BaseUnit_1_1Date_a97d924fa5f1b2a1d8afbdbfe17b6a852}{\index{E\-L\-O\-::\-Base\-Unit\-::\-Date@{E\-L\-O\-::\-Base\-Unit\-::\-Date}!\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}}
@@ -39,7 +39,20 @@ Classe responsável por armazenar a data de último acesso do sistema.
 
 Construtor da classe. 
 
-Responsável por validar e definir a data. 
+Responsável por impedir a criação de um tipo básico que não atenda aos requisitos do sistema.
+
+\begin{DoxyItemize}
+\item day Dia a ser armazenado.\end{DoxyItemize}
+\begin{DoxyItemize}
+\item month Mês a ser armazenado.\end{DoxyItemize}
+\begin{DoxyItemize}
+\item year Ano a ser armazenado.\end{DoxyItemize}
+
+\begin{DoxyExceptions}{Exceções}
+{\em Value\-Error} & Exceção a ser lançada caso a data seja inválida. \\
+\hline
+\end{DoxyExceptions}
+
 
 A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}
 \item 

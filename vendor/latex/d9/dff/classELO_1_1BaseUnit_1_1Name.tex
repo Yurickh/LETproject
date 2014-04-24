@@ -3,7 +3,7 @@
 }
 
 
-Classe responsável por armazenar uma string dada para ser usada como um nome pelo sistema.  
+Classe container de nomes.  
 
 
 Diagrama de Hierarquia para E\-L\-O.\-Base\-Unit.\-Name\-:\begin{figure}[H]
@@ -20,9 +20,9 @@ def \hyperlink{classELO_1_1BaseUnit_1_1Name_ad73fdab6426635b79b4447ac53c10279}{\
 
 
 \subsection{Descrição Detalhada}
-Classe responsável por armazenar uma string dada para ser usada como um nome pelo sistema. 
+Classe container de nomes. 
 
-
+Responsável por armazenar uma string que servirá para identificação dos usuários do sistema. 
 
 \subsection{Construtores \& Destrutores}
 \hypertarget{classELO_1_1BaseUnit_1_1Name_ad73fdab6426635b79b4447ac53c10279}{\index{E\-L\-O\-::\-Base\-Unit\-::\-Name@{E\-L\-O\-::\-Base\-Unit\-::\-Name}!\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}}
@@ -37,7 +37,11 @@ Classe responsável por armazenar uma string dada para ser usada como um nome pe
 
 Construtor da classe. 
 
-Responsável pela validação do valor no conteúdo de password. 
+Responsável por impedir a criação do tipo básico em caso de falha.
+
+\begin{DoxyItemize}
+\item value String a ser armazenada. \end{DoxyItemize}
+
 
 A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}
 \item 

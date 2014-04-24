@@ -3,7 +3,7 @@
 }
 
 
-Classe responsável por armazenar textos simples, que corresponde a qualquer tipo de texto.  
+Classe container de texto.  
 
 
 Diagrama de Hierarquia para E\-L\-O.\-Base\-Unit.\-Plain\-Text\-:\begin{figure}[H]
@@ -20,9 +20,9 @@ def \hyperlink{classELO_1_1BaseUnit_1_1PlainText_a2cd4f19585b5e8e8279f8052307d03
 
 
 \subsection{Descrição Detalhada}
-Classe responsável por armazenar textos simples, que corresponde a qualquer tipo de texto. 
+Classe container de texto. 
 
-
+Responsável por armazenar texto corrido, como em descrições, biografias, resumos, etc. 
 
 \subsection{Construtores \& Destrutores}
 \hypertarget{classELO_1_1BaseUnit_1_1PlainText_a2cd4f19585b5e8e8279f8052307d031f}{\index{E\-L\-O\-::\-Base\-Unit\-::\-Plain\-Text@{E\-L\-O\-::\-Base\-Unit\-::\-Plain\-Text}!\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}}
@@ -37,7 +37,11 @@ Classe responsável por armazenar textos simples, que corresponde a qualquer tip
 
 Construtor da classe. 
 
-Responsável por validar e definir um valor (conteúdo) de um texto. 
+Responsável por impedir a criação de um tipo básico com conteúdo inválido.
+
+\begin{DoxyItemize}
+\item value String a ser validada e armazenada. \end{DoxyItemize}
+
 
 A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}
 \item 

@@ -3,7 +3,7 @@
 }
 
 
-Classe responsável por armazenar um número inteiro dado que representará uma nota.  
+Classe container de notas.  
 
 
 Diagrama de Hierarquia para E\-L\-O.\-Base\-Unit.\-Grades\-:\begin{figure}[H]
@@ -20,9 +20,9 @@ def \hyperlink{classELO_1_1BaseUnit_1_1Grades_af948e06e9c08a7d99da82eae5f851839}
 
 
 \subsection{Descrição Detalhada}
-Classe responsável por armazenar um número inteiro dado que representará uma nota. 
+Classe container de notas. 
 
-
+Armazena números que representam notas dos alunos nas atividades. 
 
 \subsection{Construtores \& Destrutores}
 \hypertarget{classELO_1_1BaseUnit_1_1Grades_af948e06e9c08a7d99da82eae5f851839}{\index{E\-L\-O\-::\-Base\-Unit\-::\-Grades@{E\-L\-O\-::\-Base\-Unit\-::\-Grades}!\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}}
@@ -37,7 +37,16 @@ Classe responsável por armazenar um número inteiro dado que representará uma 
 
 Contrutor da classe. 
 
-Responsável por validar e fixar um valor (conteúdo) de um objeto do tipo nota. 
+Deve ser capaz de abortar a criação do tipo básico no caso do valor passado ser inválido.
+
+\begin{DoxyItemize}
+\item value Inteiro a ser armazenado.\end{DoxyItemize}
+
+\begin{DoxyExceptions}{Exceções}
+{\em Value\-Error} & Exceção lançada no caso de value não atender as especificações do sistema. \\
+\hline
+\end{DoxyExceptions}
+
 
 A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}
 \item 

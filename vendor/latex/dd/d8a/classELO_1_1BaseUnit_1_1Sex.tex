@@ -3,7 +3,7 @@
 }
 
 
-Classe responsável por armazenar o sexo do usuário.  
+Classe container de sexo.  
 
 
 Diagrama de Hierarquia para E\-L\-O.\-Base\-Unit.\-Sex\-:\begin{figure}[H]
@@ -20,9 +20,9 @@ def \hyperlink{classELO_1_1BaseUnit_1_1Sex_a2a5214adaf2a657f70cd8cf579e420b5}{\-
 
 
 \subsection{Descrição Detalhada}
-Classe responsável por armazenar o sexo do usuário. 
+Classe container de sexo. 
 
-
+Responsável por armazenar um caractere relativo a identificação do sexo do usuário. 
 
 \subsection{Construtores \& Destrutores}
 \hypertarget{classELO_1_1BaseUnit_1_1Sex_a2a5214adaf2a657f70cd8cf579e420b5}{\index{E\-L\-O\-::\-Base\-Unit\-::\-Sex@{E\-L\-O\-::\-Base\-Unit\-::\-Sex}!\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}}
@@ -37,7 +37,16 @@ Classe responsável por armazenar o sexo do usuário.
 
 Construtor da classe. 
 
-Responsável por validar e definir o conteúdo em sexo. 
+Capaz de impedir a criação de um tipo básico com conteúdo inválido.
+
+\begin{DoxyItemize}
+\item value Caractere a ser armazenado no tipo básico.\end{DoxyItemize}
+
+\begin{DoxyExceptions}{Exceções}
+{\em Value\-Error} & Exceção lançada para advertir que value está inválido. \\
+\hline
+\end{DoxyExceptions}
+
 
 A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}
 \item 

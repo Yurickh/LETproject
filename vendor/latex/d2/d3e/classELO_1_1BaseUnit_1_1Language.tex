@@ -3,7 +3,7 @@
 }
 
 
-Classe responsável por armazenar a linguagem do sistema.  
+Classe container de linguagem.  
 
 
 Diagrama de Hierarquia para E\-L\-O.\-Base\-Unit.\-Language\-:\begin{figure}[H]
@@ -20,9 +20,9 @@ def \hyperlink{classELO_1_1BaseUnit_1_1Language_a0b717ad014a17f87cbe20caf5be56fb
 
 
 \subsection{Descrição Detalhada}
-Classe responsável por armazenar a linguagem do sistema. 
+Classe container de linguagem. 
 
-
+Irá armazenar um número que corresponde à língua de preferência do usuário. A relação linguagem-\/id será armazenada numa tabela à parte. 
 
 \subsection{Construtores \& Destrutores}
 \hypertarget{classELO_1_1BaseUnit_1_1Language_a0b717ad014a17f87cbe20caf5be56fb8}{\index{E\-L\-O\-::\-Base\-Unit\-::\-Language@{E\-L\-O\-::\-Base\-Unit\-::\-Language}!\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}}
@@ -37,7 +37,16 @@ Classe responsável por armazenar a linguagem do sistema.
 
 Construtor da classe. 
 
-Responsável por validar e definir a linguagem. 
+Impede a criação de tipos básicos com conteúdo inválido.
+
+\begin{DoxyItemize}
+\item value Inteiro a ser armazenado.\end{DoxyItemize}
+
+\begin{DoxyExceptions}{Exceções}
+{\em Value\-Error} & Exceção a ser lançada no caso de value não corresponder às expectativas. \\
+\hline
+\end{DoxyExceptions}
+
 
 A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}
 \item 

@@ -3,7 +3,7 @@
 }
 
 
-Classe responsável por armazenar o e-\/mail do usuário.  
+Classe container de email.  
 
 
 Diagrama de Hierarquia para E\-L\-O.\-Base\-Unit.\-Mail\-:\begin{figure}[H]
@@ -20,9 +20,9 @@ def \hyperlink{classELO_1_1BaseUnit_1_1Mail_a7b9e31959dacc8c25ecae3e9bc0321aa}{\
 
 
 \subsection{Descrição Detalhada}
-Classe responsável por armazenar o e-\/mail do usuário. 
+Classe container de email. 
 
-
+Este tipo básico irá armazenar emails para contato e identificação dos usuários. 
 
 \subsection{Construtores \& Destrutores}
 \hypertarget{classELO_1_1BaseUnit_1_1Mail_a7b9e31959dacc8c25ecae3e9bc0321aa}{\index{E\-L\-O\-::\-Base\-Unit\-::\-Mail@{E\-L\-O\-::\-Base\-Unit\-::\-Mail}!\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}}
@@ -37,7 +37,16 @@ Classe responsável por armazenar o e-\/mail do usuário.
 
 Construtor da classe. 
 
-Responsável por validar e definir um e-\/mail. 
+Deve impedir a criação do tipo básico caso seu conteúdo não esteja de acordo com as especificações.
+
+\begin{DoxyItemize}
+\item value String a ser armazenada no tipo básico.\end{DoxyItemize}
+
+\begin{DoxyExceptions}{Exceções}
+{\em Value\-Error} & Exceção lançada no caso do valor passado não ser válido. \\
+\hline
+\end{DoxyExceptions}
+
 
 A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}
 \item 

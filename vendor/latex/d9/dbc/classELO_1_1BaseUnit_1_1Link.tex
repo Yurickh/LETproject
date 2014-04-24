@@ -3,7 +3,7 @@
 }
 
 
-Classe responsável por armazenar uma dada string que será usada como um link.  
+Classe container de endereço do sistema.  
 
 
 Diagrama de Hierarquia para E\-L\-O.\-Base\-Unit.\-Link\-:\begin{figure}[H]
@@ -20,9 +20,9 @@ def \hyperlink{classELO_1_1BaseUnit_1_1Link_a0c2308097022f21fc0ded45af15e9172}{\
 
 
 \subsection{Descrição Detalhada}
-Classe responsável por armazenar uma dada string que será usada como um link. 
+Classe container de endereço do sistema. 
 
-
+Capaz de armazenar uma string que representa o endereço de um arquivo na árvore de diretórios do servidor. 
 
 \subsection{Construtores \& Destrutores}
 \hypertarget{classELO_1_1BaseUnit_1_1Link_a0c2308097022f21fc0ded45af15e9172}{\index{E\-L\-O\-::\-Base\-Unit\-::\-Link@{E\-L\-O\-::\-Base\-Unit\-::\-Link}!\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}}
@@ -37,7 +37,16 @@ Classe responsável por armazenar uma dada string que será usada como um link.
 
 Construtor da classe. 
 
-Responsável por validar e definir o valor (conteúdo) de um link. 
+Impede a criação de um tipo básico com conteúdo inválido.
+
+\begin{DoxyItemize}
+\item value String a ser armazenada.\end{DoxyItemize}
+
+\begin{DoxyExceptions}{Exceções}
+{\em Value\-Error} & Exceção lançada no caso da invalidez de value. \\
+\hline
+\end{DoxyExceptions}
+
 
 A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}
 \item 

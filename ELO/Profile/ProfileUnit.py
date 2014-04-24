@@ -7,7 +7,7 @@ from ELO.models import Student
 from django.shortcuts import render
 from django import forms
 
-## @package ProfileUnit
+## @file ProfileUnit.py
 # 	Este arquivo é responsável pelo armazenamento de todas as camadas 
 # correspondentes ao módulo de perfil. 
 #	Os métodos aqui são criados e chamados pela Factory (MainUnit.py)

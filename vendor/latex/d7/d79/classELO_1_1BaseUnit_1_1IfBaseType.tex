@@ -16,19 +16,19 @@ Diagrama de Hierarquia para E\-L\-O.\-Base\-Unit.\-If\-Base\-Type\-:\begin{figur
 \begin{DoxyCompactItemize}
 \item 
 def \hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{value}
-\begin{DoxyCompactList}\small\item\em Método que retorna o valor de um dado objeto. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Método que retorna o valor contido no tipo básico. \end{DoxyCompactList}\item 
 def \hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{value}
-\begin{DoxyCompactList}\small\item\em Método que fixa e valida o conteúdo de um objeto. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Método que fixa e valida o conteúdo do tipo básico. \end{DoxyCompactList}\item 
 def \hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{value}
-\begin{DoxyCompactList}\small\item\em Método que deleta o conteúdo de um objeto. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Método que deleta o conteúdo do tipo básico. \end{DoxyCompactList}\item 
 def \hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a69c338f6f1574bd3524e9d59ebc17a7c}{\-\_\-\-\_\-cmp\-\_\-\-\_\-}
-\begin{DoxyCompactList}\small\item\em Método que compara o conteúdo de dois objetos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Método que compara o conteúdo de dois tipos básicos. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Descrição Detalhada}
 Interface para qualquer tipo básico (Base Type) pertencente ao projeto. 
 
-Sua descrição implica que todos os tipos básicos devem ter um atributo \-\_\-value e um método \-\_\-validate. 
+Sua descrição implica que todos os tipos básicos devem ter um método \-\_\-validate(self, value). 
 
 \subsection{Métodos}
 \hypertarget{classELO_1_1BaseUnit_1_1IfBaseType_a69c338f6f1574bd3524e9d59ebc17a7c}{\index{E\-L\-O\-::\-Base\-Unit\-::\-If\-Base\-Type@{E\-L\-O\-::\-Base\-Unit\-::\-If\-Base\-Type}!\-\_\-\-\_\-cmp\-\_\-\-\_\-@{\-\_\-\-\_\-cmp\-\_\-\-\_\-}}
@@ -41,9 +41,14 @@ Sua descrição implica que todos os tipos básicos devem ter um atributo \-\_\-
 )}}\label{classELO_1_1BaseUnit_1_1IfBaseType_a69c338f6f1574bd3524e9d59ebc17a7c}
 
 
-Método que compara o conteúdo de dois objetos. 
+Método que compara o conteúdo de dois tipos básicos. 
 
-Retorna '0' se o conteúdo for o mesmo e '1' ou '-\/1' caso sejam diferentes. \hypertarget{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{\index{E\-L\-O\-::\-Base\-Unit\-::\-If\-Base\-Type@{E\-L\-O\-::\-Base\-Unit\-::\-If\-Base\-Type}!value@{value}}
+Será chamado toda vez que dois tipos básicos forem comparados através dos operadores $>$, $<$, $>$=, $<$=, == ou !=.
+
+\begin{DoxyReturn}{Retorna}
+Retornos predefinidos do próprio python. 
+\end{DoxyReturn}
+\hypertarget{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{\index{E\-L\-O\-::\-Base\-Unit\-::\-If\-Base\-Type@{E\-L\-O\-::\-Base\-Unit\-::\-If\-Base\-Type}!value@{value}}
 \index{value@{value}!ELO::BaseUnit::IfBaseType@{E\-L\-O\-::\-Base\-Unit\-::\-If\-Base\-Type}}
 \subsubsection[{value}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Base\-Unit.\-If\-Base\-Type.\-value (
 \begin{DoxyParamCaption}
@@ -52,7 +57,7 @@ Retorna '0' se o conteúdo for o mesmo e '1' ou '-\/1' caso sejam diferentes. \h
 )}}\label{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}
 
 
-Método que retorna o valor de um dado objeto. 
+Método que retorna o valor contido no tipo básico. 
 
 \hypertarget{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{\index{E\-L\-O\-::\-Base\-Unit\-::\-If\-Base\-Type@{E\-L\-O\-::\-Base\-Unit\-::\-If\-Base\-Type}!value@{value}}
 \index{value@{value}!ELO::BaseUnit::IfBaseType@{E\-L\-O\-::\-Base\-Unit\-::\-If\-Base\-Type}}
@@ -64,8 +69,10 @@ Método que retorna o valor de um dado objeto.
 )}}\label{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}
 
 
-Método que fixa e valida o conteúdo de um objeto. 
+Método que fixa e valida o conteúdo do tipo básico. 
 
+\begin{DoxyItemize}
+\item aux Recebe o valor que será validado. \end{DoxyItemize}
 \hypertarget{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{\index{E\-L\-O\-::\-Base\-Unit\-::\-If\-Base\-Type@{E\-L\-O\-::\-Base\-Unit\-::\-If\-Base\-Type}!value@{value}}
 \index{value@{value}!ELO::BaseUnit::IfBaseType@{E\-L\-O\-::\-Base\-Unit\-::\-If\-Base\-Type}}
 \subsubsection[{value}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Base\-Unit.\-If\-Base\-Type.\-value (
@@ -75,7 +82,7 @@ Método que fixa e valida o conteúdo de um objeto.
 )}}\label{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}
 
 
-Método que deleta o conteúdo de um objeto. 
+Método que deleta o conteúdo do tipo básico. 
 
 
 

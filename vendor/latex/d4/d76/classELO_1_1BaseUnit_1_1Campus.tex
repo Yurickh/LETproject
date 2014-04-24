@@ -3,7 +3,7 @@
 }
 
 
-Classe responsável por armazenar o id do \hyperlink{classELO_1_1BaseUnit_1_1Campus}{Campus}.  
+Classe container de \hyperlink{classELO_1_1BaseUnit_1_1Campus}{Campus}.  
 
 
 Diagrama de Hierarquia para E\-L\-O.\-Base\-Unit.\-Campus\-:\begin{figure}[H]
@@ -20,9 +20,9 @@ def \hyperlink{classELO_1_1BaseUnit_1_1Campus_abd800984df4eb26836d305682d84dfa9}
 
 
 \subsection{Descrição Detalhada}
-Classe responsável por armazenar o id do \hyperlink{classELO_1_1BaseUnit_1_1Campus}{Campus}. 
+Classe container de \hyperlink{classELO_1_1BaseUnit_1_1Campus}{Campus}. 
 
-
+Irá armazenar um inteiro que identifica univocamente um \hyperlink{classELO_1_1BaseUnit_1_1Campus}{Campus}. A associação Campus-\/\-Id será tratada em uma tabela à parte. 
 
 \subsection{Construtores \& Destrutores}
 \hypertarget{classELO_1_1BaseUnit_1_1Campus_abd800984df4eb26836d305682d84dfa9}{\index{E\-L\-O\-::\-Base\-Unit\-::\-Campus@{E\-L\-O\-::\-Base\-Unit\-::\-Campus}!\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}}
@@ -37,7 +37,11 @@ Classe responsável por armazenar o id do \hyperlink{classELO_1_1BaseUnit_1_1Cam
 
 Construtor da classe. 
 
-Responsável por validar e definir o id de campus. 
+Responsável por impedir a criação de um tipo básico com conteúdo inválido.
+
+\begin{DoxyItemize}
+\item value Inteiro a ser armazenado. \end{DoxyItemize}
+
 
 A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}
 \item 

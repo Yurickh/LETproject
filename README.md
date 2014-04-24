@@ -2,13 +2,13 @@
 
 ## Index
 
-0. Definição
-0. Dados do projeto
-0. Documentação
-  0. Doxygen (html)
-0. Instalação e execução
-0. Metas de desenvolvimento
-0. Log de Atividades
+1. Definição
+2. Dados do projeto
+3. Documentação
+  3.1. Doxygen (html)
+4. Instalação e execução
+5. Metas de desenvolvimento
+6. Log de Atividades
 
 ## Conteúdo
 
@@ -148,3 +148,7 @@ Para executar o programa, siga as instruções abaixo.
 > * Reescrito o código da Unidade Main para que obedeça ao padrão de 80
  caracteres / linha.
 > * Finalizado o módulo de Perfil para professores, implicando que o módulo de perfil foi completamente finalizado.
+
+> **24/04**
+> * Reescrito o código da Unidade de Tipos Básicos para que obedeça ao padrão de 80 caracteres / linha.
+> * Reescrita a documentação da Unidade de Tipos Básicos para o Doxygen.
