@@ -1,8 +1,14 @@
 #coding: utf-8
-##@package MainUnit
-#Parte inicial responsavel por construir e executar o sistema.
+
+## @file MainUnit.py
+#	Arquivo responsável pela devida execução e estruturação do programa.
+#
+#	Aqui reside a Factory, a classe que deve montar a estrutura do resto
+#	do programa, para que ele execute da forma correta, bem como outros
+#	blocos fundamentais para o funcionamento do sistema como um todo.
 
 from abc import *
+from importlib import import_module
 
 from Login.LoginUnit import *
 from Profile.ProfileUnit import *
@@ -14,17 +20,17 @@ from models import Adm, Professor, Student
 from django.core.exceptions import PermissionDenied
 from django.http import Http404
 
-import importlib
-
+## @if Verifica qual a linguagem selecionada para renderizar os templates.
 if 'LANG' in globals():
 	if LANG == 'en_us':
-		lang = importlib.import_module("ELO.lang.en_us")
+		lang = import_module("ELO.lang.en_us")
 	else:
-		lang = importlib.import_module("ELO.lang.pt_br")
+		lang = import_module("ELO.lang.pt_br")
 else:
-	lang = importlib.import_module("ELO.lang.pt_br")
+	lang = import_module("ELO.lang.pt_br")
 
 
+## Insere os objetos user e DICT em todas as renderizações de template.
 def globalContext(request):
 	return {
 			'user': request.session['user'] if ('user' 
@@ -75,17 +81,12 @@ class Factory:
 		if 'user' in request.session.keys():
 			if request.session['user']['type'] == 'Adm':
 				return self.runAdm(request)
-			elif request.session['user']['type'] == 'Professor':
+			elif request.session['user']['type'] == 'Professor' or
+				request.session['user']['type'] == 'Student':
 				if not isinstance(self.__ui, IfUiProfile):
 					self.__pers = PersProfile()
 					self.__bus = BusProfile(self.__pers)
-					self.__ui = UiProfileP(self.__bus)
-				return self.__ui.run(request)
-			elif request.session['user']['type'] == 'Student':
-				if not isinstance(self.__ui, IfUiProfile):
-					self.__pers = PersProfile()
-					self.__bus = BusProfile(self.__pers)
-					self.__ui = UiProfileS(self.__bus)
+					self.__ui = UiProfile(self.__bus)
 				return self.__ui.run(request)
 			else:
 				raise Http404(DICT["EXCEPTION_404_ERR"])
