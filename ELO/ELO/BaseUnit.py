@@ -278,7 +278,8 @@ class Sex(IfBaseType):
     #
     #   @arg        value       Caractere a ser validado.
     #
-    #   @exception  ValueError  Exceção
+    #   @exception  ValueError  Exceção a ser lançada no caso do
+    #                           caractere validado não ser F ou M.
     def _validate(self, value):
         if value.upper() != "M" or value.upper() != "F":
             raise ValueError(EXCEPTION_INV_SX_F)
