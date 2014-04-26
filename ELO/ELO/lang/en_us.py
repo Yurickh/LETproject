@@ -99,4 +99,6 @@ DICT = {
 
 	'USERNAME': 'Username:',
 	'PASSWORD': 'Password:',
+	'ELO_HOME': 'ELO - Home',
+	'ELO_PROFILE': 'ELO - Profile',
 }

@@ -97,10 +97,11 @@ class IfPersProfile:
     @abstractmethod
     def fetch(self, user): pass
 
-## Camada de apresentação para estudantes.
-#   Deve carregar o devido template, contendo os dados básicos do estudante
-#   bem como os cursos matriculados e seu histórico.
-class UiProfile(IfUiProfile): 
+## Camada de apresentação para a página principal do site.
+#   Deve carregar o devido template, contendo os dados básicos do usuário,
+#   como cursos matriculados e histórico para estudantes, e cursos monitorados
+#   para professores.
+class UiHomeProfile(IfUiProfile): 
 
     def run(self, request):
         user = request.session['user']
@@ -109,7 +110,20 @@ class UiProfile(IfUiProfile):
             user = request.session['user']
         return render(request, "Profile/home.html", {'user' : user})
 
-## Camada de negócio para estudantes.
+class UiFullProfile(IfUiProfile):
+
+    def run(self, request):
+        data = [
+                {   'name':    'Nome',
+                    'content': 'Andre'
+                },
+                {   'name':    'Sexo',
+                    'content': 'Dubio'
+                }
+            ]
+        return render(request, "Profile/full.html", {'data' : data})
+
+## Camada de negócio para perfil.
 #   Deve ser capaz de gerar um dicionário contendo uma versão mais nova
 #   dos dados do usuário.
 class BusProfile(IfBusProfile):
@@ -120,8 +134,8 @@ class BusProfile(IfBusProfile):
         elif user['type'] == 'Professor':
             return dict(user.items()+ self.pers.fetch(user['name'], Professor))
 
-## Camada de persistência para estudantes.
-#   Recupera os dados do estudante logado, retornando-os para a camada
+## Camada de persistência de perfil.
+#   Recupera os dados do usuário logado, retornando-os para a camada
 #   de negócio.
 class PersProfile(IfPersProfile):
 

@@ -123,7 +123,7 @@ class UiLogin(IfUiLogin):
 								'password': login_form.cleaned_data['password'].value,
 								'type': database.__name__,
 							}
-				return HttpResponseRedirect('/profile')
+				return HttpResponseRedirect('/')
 		else:
 			login_form = LoginForm()
 

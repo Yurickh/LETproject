@@ -1,26 +1,26 @@
-<!--Bloco cabaçalho das paginas do sistema -->
-
 <div class="menuTab"></div>
 <div class="mainMenu">
+	<a href="/">
+		<div class="field">
 	{% if user %}
-		<a href="/profile">
-			<div class="field">
-				Profile
-			</div>
-		</a>
+		Home
+		</div>
+	</a>
+	<a href="/profile">
+		<div class="field">
+			Profile
+		</div>
+	</a>
 
-		<a href="/logout">
-			<div class="field">
-				Logout
-			</div>
-		</a>
-
+	<a href="/logout">
+		<div class="field">
+			Logout
+		</div>
+	</a>
 	{% else %}
-		<a href="/">
-			<div class="field">
-				Login
-			</div>
-		</a>
+		Login
+		</div>
+	</a>
 	{% endif %}
 </div>
 <div class="banner">

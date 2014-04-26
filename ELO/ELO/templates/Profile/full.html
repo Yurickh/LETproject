@@ -1,0 +1,17 @@
+{% extends "includes/wrapper.html" %}
+
+{% block title %}{{ DICT.ELO_PROFILE }}{% endblock %}
+
+{% block content %}
+	<ul>
+		{% for datum in data %}
+			<li><h4>{{ datum.name }}:</h4> 
+				<div id="cont_{{ datum.name }}">
+					{{ datum.content }}
+				</div>  -
+				<div id="edit_{{ datum.name }}">
+					Edit
+				</div></li>
+		{% endfor %}
+	</ul>
+{% endblock %}

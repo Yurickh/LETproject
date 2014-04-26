@@ -1,8 +1,6 @@
-<!-- Template da pagina de Perfil-->
-
 {% extends "includes/wrapper.html" %}
 
-{% block title %} {{ DICT.ELO_PROFILE }} {% endblock %}
+{% block title %} {{ DICT.ELO_HOME }} {% endblock %}
 
 {% block content %}	
 	<div id="topper">
@@ -15,7 +13,7 @@
 				<li>{{ user.matric }}</li>
 				<li>{{ user.bios }}</li>
 			</ul>
-			<div id="p_info_edit">Edit</div>
+			<div id="p_info_edit"><a href="/profile/">Edit</a></div>
 		</div>
 	</div>
 

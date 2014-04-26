@@ -166,5 +166,6 @@ DICT = {
 
 	'USERNAME' : 'Usuário:',
 	'PASSWORD' : 'Senha:',
+	'ELO_HOME' : 'ELO - Página Inicial',
 	'ELO_PROFILE' : 'ELO - Perfil',
 }
