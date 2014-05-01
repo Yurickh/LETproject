@@ -5,12 +5,20 @@
 {% block content %}
 	<ul>
 		{% for datum in data %}
-			<li><h4>{{ datum.name }}:</h4> 
-				<div id="cont_{{ datum.name }}">
-					{{ datum.content }}
+			<li><h4>{{ datum.field }}:</h4> 
+				<div id="cont_{{ datum.field }}">
+					{% if datum.mult %}
+						{% for instance in datum.value %}
+							{{ instance }}
+						{% endfor %}
+					{% else %}
+						{{ datum.value }}
+					{% endif %}
 				</div>  -
-				<div id="edit_{{ datum.name }}">
+				<div id="edit_{{ datum.field }}">
+				{% if datum.edit %}
 					Edit
+				{% endif %}
 				</div></li>
 		{% endfor %}
 	</ul>

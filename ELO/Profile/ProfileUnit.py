@@ -110,17 +110,47 @@ class UiHomeProfile(IfUiProfile):
             user = request.session['user']
         return render(request, "Profile/home.html", {'user' : user})
 
+## Camada de apresentação para a página de perfil completa.
+#   Deve ser capaz de gerar uma página que disponibilize os dados
+#   do usuário, permitindo que ele edite ou não, alguns campos.
 class UiFullProfile(IfUiProfile):
 
+    ## Lista de campos passíveis de edição por um usuário.
+    __editable = [
+                    'interests',
+                    'name',
+                    'language',
+                    'sex',
+                    'bios',
+                    'avatar'
+                    ]
+    __viewable = [
+                    'email',
+                    'campus',
+                    'matric'
+                    ]
+
+    def __init__(self, bus):
+        self.__viewable += self.__editable
+        try:
+            self.bus = bus
+        except TypeError as exc:
+            del self
+            raise exc
+
     def run(self, request):
-        data = [
-                {   'name':    'Nome',
-                    'content': 'Andre'
-                },
-                {   'name':    'Sexo',
-                    'content': 'Dubio'
-                }
-            ]
+
+        data = []
+        user = request.session['user']
+        request.session['user'] = self.bus.refreshUser(user)
+        user = request.session['user']
+        for field, value in user.items():
+            if field in self.__viewable:
+                data.append({"field": field,
+                            "value": value,
+                            "edit":True if field in self.__editable else False,
+                            "mult":True if isinstance(value, list)  else False
+                            })
         return render(request, "Profile/full.html", {'data' : data})
 
 ## Camada de negócio para perfil.
