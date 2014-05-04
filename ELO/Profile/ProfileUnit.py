@@ -97,6 +97,21 @@ class IfPersProfile:
     @abstractmethod
     def fetch(self, user): pass
 
+## Camada de apresentação para a página de atualização assíncrona de dados.
+#   Deve carregar o devido template, resolver uma form e retornar o resultado
+#   do processamento em forma de uma página html.
+class UiAssyProfile(IfUiProfile):
+
+    def run(self, request):
+        pass
+
+    def run(self, request, field):
+        if request.method == "POST":
+            pass
+        elif:
+            return render(request, "Profile/edit.html", { 'user' : user,
+                                                          'field': field })
+
 ## Camada de apresentação para a página principal do site.
 #   Deve carregar o devido template, contendo os dados básicos do usuário,
 #   como cursos matriculados e histórico para estudantes, e cursos monitorados

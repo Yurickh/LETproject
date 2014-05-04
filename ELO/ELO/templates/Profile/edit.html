@@ -1,0 +1,31 @@
+{% extends assync_wrapper %}
+
+{% block body %}
+	{% ifeq field "avatar" %}
+		<img src="{{ user.avatar }}" /> (botão de upload)
+	{% else %}
+		{% ifeq field "interests" %}
+			{% for interest in user.interests %}
+				{{ intetest }} <button>-</button>
+			{% endfor %}
+			(+)
+		{% else %}
+			{% ifeq field "sex" %}
+				<select>
+					<option value="M" 
+						{% ifeq user.sex "M" %}
+							selected 
+						{% endif %}
+									>M</value>
+					<option value="F"
+						{% ifeq user.sex "F" %}
+							selected
+						{% endif %}
+									>F</value>
+				</select>
+			{% else %}
+				(edição padrão)
+			{% endif %}
+		{% endif %}
+	{% endif %}
+{% endblock %}
