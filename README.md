@@ -152,3 +152,6 @@ Para executar o programa, siga as instruções abaixo.
 > **24/04**
 > * Reescrito o código da Unidade de Tipos Básicos para que obedeça ao padrão de 80 caracteres / linha.
 > * Reescrita a documentação da Unidade de Tipos Básicos para o Doxygen.
+
+> **04/05**
+> Iniciado o desenvolvimento da página de edição de dados do usuário com chamada assíncrona.
