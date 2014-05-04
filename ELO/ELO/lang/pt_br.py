@@ -164,6 +164,7 @@ DICT = {
 	## Mensagem de erro inesperado 404
 	'EXCEPTION_404_ERR' : "Ocorreu um erro inesperado. Favor tentar novamente.",
 
+	'SUBMIT' : 'Atualizar', 
 	'USERNAME' : 'Usuário:',
 	'PASSWORD' : 'Senha:',
 	'ELO_HOME' : 'ELO - Página Inicial',

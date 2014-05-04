@@ -97,6 +97,7 @@ DICT = {
 	'EXCEPTION_403_STD' : "Permission denied.",
 	'EXCEPTION_404_ERR' : "Unexpected error.",
 
+	'SUBMIT' : 'Submit',
 	'USERNAME': 'Username:',
 	'PASSWORD': 'Password:',
 	'ELO_HOME': 'ELO - Home',

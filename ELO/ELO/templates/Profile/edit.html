@@ -1,31 +1,51 @@
 {% extends assync_wrapper %}
 
+{% block head %}
+{% endblock %}
+
 {% block body %}
+	<form>
 	{% ifeq field "avatar" %}
-		<img src="{{ user.avatar }}" /> (botão de upload)
-	{% else %}
-		{% ifeq field "interests" %}
-			{% for interest in user.interests %}
-				{{ intetest }} <button>-</button>
-			{% endfor %}
-			(+)
-		{% else %}
-			{% ifeq field "sex" %}
-				<select>
-					<option value="M" 
-						{% ifeq user.sex "M" %}
-							selected 
-						{% endif %}
-									>M</value>
-					<option value="F"
-						{% ifeq user.sex "F" %}
-							selected
-						{% endif %}
-									>F</value>
-				</select>
-			{% else %}
-				(edição padrão)
-			{% endif %}
-		{% endif %}
-	{% endif %}
+		<img src="{{ user.avatar }}" /><br />
+		<input name="avatar_edit" type="file" />
+	{% else %} {# avatar #}
+	{% ifeq field "interests" %}
+		{# falta resolver como isso vai funcionar #}
+		{% for interest in user.interests %}
+			{{ intetest }} <button>-</button>
+		{% endfor %}
+		(+)
+	{% else %} {# interests #}
+	{% ifeq field "sex" %}
+		<select name="sex_edit">
+			<option value="M" 
+				{% ifeq user.sex "M" %}
+					selected 
+				{% endif %}
+							>M</value>
+			<option value="F"
+				{% ifeq user.sex "F" %}
+					selected
+				{% endif %}
+							>F</value>
+		</select>
+	{% else %} {# sex #}
+	{% ifeq field "bios" %}
+		<textarea name="bios_edit">
+			{{ user.bios }}
+		</textarea>
+	{% else %} {# bios #}
+	{% ifeq field "name" %}
+		<input name="name_edit" type="text" value="{{ user.name }}" />
+	{% else %} {# name #}
+	{% ifeq field "language" %}
+		<input name="lang_edit" type="text" value="{{ user.language }}" />
+	{% endif %} {# language #}
+	{% endif %} {# name #}
+	{% endif %} {# bios #}
+	{% endif %} {# sex #}
+	{% endif %} {# interests #}
+	{% endif %} {# avatar #}
+	<input name="edit_profile" type="submit" value="{{ DICT.SUBMIT }}" />
+	</form>
 {% endblock %}
