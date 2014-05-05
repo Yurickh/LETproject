@@ -108,7 +108,7 @@ class UiAssyProfile(IfUiProfile):
     def run(self, request, field):
         if request.method == "POST":
             pass
-        elif:
+        else:
             return render(request, "Profile/edit.html", { 'user' : user,
                                                           'field': field })
 
