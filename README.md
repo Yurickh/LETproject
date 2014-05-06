@@ -154,4 +154,8 @@ Para executar o programa, siga as instruções abaixo.
 > * Reescrita a documentação da Unidade de Tipos Básicos para o Doxygen.
 
 > **04/05**
-> Iniciado o desenvolvimento da página de edição de dados do usuário com chamada assíncrona.
+> * Iniciado o desenvolvimento da página de edição de dados do usuário com chamada assíncrona.
+
+> **06/05**
+> * Finalizada a parte do desenvolvimento que diz respeito às chamadas assíncronas.
+> * Animações na página de perfil completo implementadas.
