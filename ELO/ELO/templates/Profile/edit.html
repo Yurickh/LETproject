@@ -1,44 +1,44 @@
-{% extends assync_wrapper %}
+{% extends "includes/assync_wrapper.html" %}
 
 {% block head %}
 {% endblock %}
 
 {% block body %}
 	<form>
-	{% ifeq field "avatar" %}
+	{% if field == "avatar" %}
 		<img src="{{ user.avatar }}" /><br />
 		<input name="avatar_edit" type="file" />
 	{% else %} {# avatar #}
-	{% ifeq field "interests" %}
+	{% if field == "interests" %}
 		{# falta resolver como isso vai funcionar #}
 		{% for interest in user.interests %}
 			{{ intetest }} <button>-</button>
 		{% endfor %}
 		(+)
 	{% else %} {# interests #}
-	{% ifeq field "sex" %}
+	{% if field == "sex" %}
 		<select name="sex_edit">
 			<option value="M" 
-				{% ifeq user.sex "M" %}
+				{% if user.sex == "M" %}
 					selected 
 				{% endif %}
 							>M</value>
 			<option value="F"
-				{% ifeq user.sex "F" %}
+				{% if user.sex == "F" %}
 					selected
 				{% endif %}
 							>F</value>
 		</select>
 	{% else %} {# sex #}
-	{% ifeq field "bios" %}
+	{% if field == "bios" %}
 		<textarea name="bios_edit">
 			{{ user.bios }}
 		</textarea>
 	{% else %} {# bios #}
-	{% ifeq field "name" %}
+	{% if field == "name" %}
 		<input name="name_edit" type="text" value="{{ user.name }}" />
 	{% else %} {# name #}
-	{% ifeq field "language" %}
+	{% if field == "language" %}
 		<input name="lang_edit" type="text" value="{{ user.language }}" />
 	{% endif %} {# language #}
 	{% endif %} {# name #}

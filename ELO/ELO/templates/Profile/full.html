@@ -1,12 +1,17 @@
 {% extends "includes/wrapper.html" %}
+{% load staticfiles %}
 
 {% block title %}{{ DICT.ELO_PROFILE }}{% endblock %}
+
+{% block head %}
+	<script src="{% static 'Profile/script.js' %}"></script>
+{% endblock %}
 
 {% block content %}
 	<ul>
 		{% for datum in data %}
 			<li><h4>{{ datum.field }}:</h4> 
-				<div id="cont_{{ datum.field }}">
+				<div class="cont_{{ datum.field }}">
 					{% if datum.mult %}
 						{% for instance in datum.value %}
 							{{ instance }}
@@ -14,12 +19,13 @@
 					{% else %}
 						{{ datum.value }}
 					{% endif %}
-				</div>  -
-				<div id="edit_{{ datum.field }}">
+				</div> 
 				{% if datum.edit %}
+				<div class="edit_{{ datum.field }}">
 					Edit
-				{% endif %}
-				</div></li>
+				</div>
+				<div class="editform_{{ datum.field }}"></div>
+				{% endif %}</li>
 		{% endfor %}
 	</ul>
 {% endblock %}

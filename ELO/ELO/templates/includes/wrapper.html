@@ -6,8 +6,11 @@
 	<head>
 		<meta charset="utf-8" />
 		<title> {% block title %} {% endblock %} </title>
-		<script src="{% static 'jquery-1.11.0.min.js' %}"></script>
-		<link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}" />
+		<script src="{% static 'include/jquery-1.11.0.min.js' %}"></script>
+		<link 	rel="stylesheet" 
+				type="text/css" 
+				href="{% static 'include/styles.css' %}" />
+		{% block head %}{% endblock %}
 	</head>
 
 	<body>

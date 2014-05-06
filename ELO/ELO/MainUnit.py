@@ -113,6 +113,19 @@ class Factory:
 		else:
 			raise PermissionDenied(DICT["EXCEPTION_403_STD"])
 
+	## Class que possibilida a edição de um campo de perfil.
+	#	Sua chamada é assíncrona e deve ser transparente para o usuário.
+	def runProfileEdit(self, request, field):
+		if 'user' in request.session.keys():
+			if not isinstance(self.__ui, UiAssyProfile):
+				self.__pers = PersProfile()
+				self.__bus = BusProfile(self.__pers)
+				self.__ui = UiAssyProfile(self.__bus)
+			return self.__ui.run(request, field)
+		else:
+			raise PermissionDenied(DICT["EXCEPTION_403_STD"])
+		
+
 	## Classe que executa o módulo de Administração.
 	# 	Define as camadas de persinstência, negócio e apresentação de
 	#	administração.

@@ -106,6 +106,7 @@ class UiAssyProfile(IfUiProfile):
         pass
 
     def run(self, request, field):
+        user = request.session['user']
         if request.method == "POST":
             pass
         else:

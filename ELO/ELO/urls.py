@@ -19,11 +19,12 @@ urlpatterns = patterns('',
 		factory.runHome, {'entity': 'Adm'}),
 	## URL da pagina de perfil.
 	url(r'^profile/?$', factory.runProfile, {'acctype': 'Full'}),
+	## URL para mostrar assincronamente a edição de um campo de perfil.
+	url(r'^assync/editfield/(?P<field>\w{3,9})/?$', factory.runProfileEdit),
 	## URL da pagina de logout.
 	url(r'^logout/?$', factory.runLogout),
 	## URL da pagina de cursos.
 	url(r'^course/?$', factory.runCourse),
 	## URL da pagina de administracao.
 	url(r'^adm/?$', factory.runAdm),
-	
 )
