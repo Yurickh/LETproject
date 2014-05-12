@@ -152,3 +152,34 @@ Para executar o programa, siga as instruções abaixo.
 > **24/04**
 > * Reescrito o código da Unidade de Tipos Básicos para que obedeça ao padrão de 80 caracteres / linha.
 > * Reescrita a documentação da Unidade de Tipos Básicos para o Doxygen.
+
+### 7. Comandos úteis (GIT)
+
+7.1. GIT PULL
+	Recupera do repositório virtual o código
+	
+	$ git pull origin master
+	
+7.2. GIT STATUS
+	Mostra o estado atual do repositório
+	
+	$ git status
+	
+7.3. GIT ADD/RM
+	Adiciona comandos para o commit.
+	
+	$ git add arquivo.c
+	Adicionar modificações do arquivo.c para o repositório virtual.
+	
+	$ git rm arquivo.c
+	Deletar o arquivo no repositório virtual.
+	
+7.4. GIT COMMIT
+	Cria o commit com a mensagem adicionada.
+	
+	$ git commit -m "abacates"
+	
+7.5. GIT PUSH
+	Submete o commit para o repositório virtual.
+	
+	$ git push origin master
