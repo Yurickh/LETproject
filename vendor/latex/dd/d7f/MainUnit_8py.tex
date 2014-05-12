@@ -1,6 +1,11 @@
 \hypertarget{MainUnit_8py}{\section{Referência do Arquivo E\-L\-O/\-E\-L\-O/\-Main\-Unit.py}
 \label{MainUnit_8py}\index{E\-L\-O/\-E\-L\-O/\-Main\-Unit.\-py@{E\-L\-O/\-E\-L\-O/\-Main\-Unit.\-py}}
 }
+
+
+Arquivo responsável pela devida execução e estruturação do programa.  
+
+
 \subsection*{Componentes}
 \begin{DoxyCompactItemize}
 \item 
@@ -10,16 +15,18 @@ class \hyperlink{classELO_1_1MainUnit_1_1Factory}{E\-L\-O.\-Main\-Unit.\-Factory
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{namespaceELO_1_1MainUnit}{E\-L\-O.\-Main\-Unit}
-\item 
-\hyperlink{namespaceMainUnit}{Main\-Unit}
-\begin{DoxyCompactList}\small\item\em Parte inicial responsavel por construir e executar o sistema. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 \subsection*{Funções}
 \begin{DoxyCompactItemize}
 \item 
 def \hyperlink{namespaceELO_1_1MainUnit_a021ebb0ec94aea9dca4014a7218ec38d}{E\-L\-O.\-Main\-Unit.\-global\-Context}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Insere os objetos user e D\-I\-C\-T em todas as renderizações de template. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variáveis}
 \begin{DoxyCompactItemize}
 \item 
-tuple \hyperlink{namespaceELO_1_1MainUnit_a7261ae58058821c58db5b6c3e02d830d}{E\-L\-O.\-Main\-Unit.\-lang} = importlib.\-import\-\_\-module(\char`\"{}E\-L\-O.\-lang.\-en\-\_\-us\char`\"{})
+tuple \hyperlink{namespaceELO_1_1MainUnit_a7261ae58058821c58db5b6c3e02d830d}{E\-L\-O.\-Main\-Unit.\-lang} = import\-\_\-module(\char`\"{}E\-L\-O.\-lang.\-en\-\_\-us\char`\"{})
 \end{DoxyCompactItemize}
+
+
+\subsection{Descrição Detalhada}
+Arquivo responsável pela devida execução e estruturação do programa. Aqui reside a Factory, a classe que deve montar a estrutura do resto do programa, para que ele execute da forma correta, bem como outros blocos fundamentais para o funcionamento do sistema como um todo. 

@@ -9,12 +9,16 @@ Classe factory.
 \subsection*{Métodos Públicos}
 \begin{DoxyCompactItemize}
 \item 
+def \hyperlink{classELO_1_1MainUnit_1_1Factory_a766943202ba781821cf749ca0fb133ba}{run\-Home}
+\begin{DoxyCompactList}\small\item\em Classe que redireciona para a devida home. \end{DoxyCompactList}\item 
 def \hyperlink{classELO_1_1MainUnit_1_1Factory_a515d1ff460a335b750e58e0cbddf20ae}{run\-Login}
 \begin{DoxyCompactList}\small\item\em Classe que executa o módulo de login. \end{DoxyCompactList}\item 
 def \hyperlink{classELO_1_1MainUnit_1_1Factory_aa26c51486ba65030399897a6e3b4f4f1}{run\-Logout}
 \begin{DoxyCompactList}\small\item\em Classe que executa o logout. \end{DoxyCompactList}\item 
 def \hyperlink{classELO_1_1MainUnit_1_1Factory_ab20a76f74180fc77c6b8fcd8de7942f1}{run\-Profile}
-\begin{DoxyCompactList}\small\item\em Classe que executa o módulo de Perfil. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Classe que executa a página inicial do módulo de Perfil. \end{DoxyCompactList}\item 
+def \hyperlink{classELO_1_1MainUnit_1_1Factory_acb3772dd3c00357be1985af09c824858}{run\-Profile\-Edit}
+\begin{DoxyCompactList}\small\item\em Class que possibilida a edição de um campo de perfil. \end{DoxyCompactList}\item 
 def \hyperlink{classELO_1_1MainUnit_1_1Factory_a533b402a54bf6f6715824a8687fa7a24}{run\-Adm}
 \begin{DoxyCompactList}\small\item\em Classe que executa o módulo de Administração. \end{DoxyCompactList}\item 
 def \hyperlink{classELO_1_1MainUnit_1_1Factory_a5e360bc5396fd576e0614b9e157b3816}{run\-Course}
@@ -51,7 +55,20 @@ Define as camadas de persinstência, negócio e apresentação de administraçã
 
 Classe que executa o módulo de Curso. 
 
-Define as camdas de persistência, negócio e apresentação de curso. \hypertarget{classELO_1_1MainUnit_1_1Factory_a515d1ff460a335b750e58e0cbddf20ae}{\index{E\-L\-O\-::\-Main\-Unit\-::\-Factory@{E\-L\-O\-::\-Main\-Unit\-::\-Factory}!run\-Login@{run\-Login}}
+Define as camdas de persistência, negócio e apresentação de curso. \hypertarget{classELO_1_1MainUnit_1_1Factory_a766943202ba781821cf749ca0fb133ba}{\index{E\-L\-O\-::\-Main\-Unit\-::\-Factory@{E\-L\-O\-::\-Main\-Unit\-::\-Factory}!run\-Home@{run\-Home}}
+\index{run\-Home@{run\-Home}!ELO::MainUnit::Factory@{E\-L\-O\-::\-Main\-Unit\-::\-Factory}}
+\subsubsection[{run\-Home}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Main\-Unit.\-Factory.\-run\-Home (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{request, }
+\item[{}]{entity}
+\end{DoxyParamCaption}
+)}}\label{classELO_1_1MainUnit_1_1Factory_a766943202ba781821cf749ca0fb133ba}
+
+
+Classe que redireciona para a devida home. 
+
+Caso o usuário já esteja devidamente logado, redireciona para o profile, caso contrário, vai para a página de login. \hypertarget{classELO_1_1MainUnit_1_1Factory_a515d1ff460a335b750e58e0cbddf20ae}{\index{E\-L\-O\-::\-Main\-Unit\-::\-Factory@{E\-L\-O\-::\-Main\-Unit\-::\-Factory}!run\-Login@{run\-Login}}
 \index{run\-Login@{run\-Login}!ELO::MainUnit::Factory@{E\-L\-O\-::\-Main\-Unit\-::\-Factory}}
 \subsubsection[{run\-Login}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Main\-Unit.\-Factory.\-run\-Login (
 \begin{DoxyParamCaption}
@@ -81,14 +98,32 @@ Finaliza a sessão do usuário e redireciona para a página de login. \hypertarg
 \subsubsection[{run\-Profile}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Main\-Unit.\-Factory.\-run\-Profile (
 \begin{DoxyParamCaption}
 \item[{}]{self, }
-\item[{}]{request}
+\item[{}]{request, }
+\item[{}]{acctype}
 \end{DoxyParamCaption}
 )}}\label{classELO_1_1MainUnit_1_1Factory_ab20a76f74180fc77c6b8fcd8de7942f1}
 
 
-Classe que executa o módulo de Perfil. 
+Classe que executa a página inicial do módulo de Perfil. 
 
-Define as camadas de persistência, negócio e apresentação de perfil e proíbe o acesso de usuários não logados no sistema. 
+Define as camadas de persistência, negócio e apresentação de perfil e proíbe o acesso de usuários não logados no sistema.
+
+\begin{DoxyItemize}
+\item acctype Define o tipo de acesso que o usuário está requerindo. \char`\"{}\-Full\char`\"{}\-: Acessa o Perfil completo, com possibilidade de edição. \char`\"{}\-Home\char`\"{}\-: Acessa o Perfil resumido, a home do site em si. \end{DoxyItemize}
+\hypertarget{classELO_1_1MainUnit_1_1Factory_acb3772dd3c00357be1985af09c824858}{\index{E\-L\-O\-::\-Main\-Unit\-::\-Factory@{E\-L\-O\-::\-Main\-Unit\-::\-Factory}!run\-Profile\-Edit@{run\-Profile\-Edit}}
+\index{run\-Profile\-Edit@{run\-Profile\-Edit}!ELO::MainUnit::Factory@{E\-L\-O\-::\-Main\-Unit\-::\-Factory}}
+\subsubsection[{run\-Profile\-Edit}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Main\-Unit.\-Factory.\-run\-Profile\-Edit (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{request, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}}\label{classELO_1_1MainUnit_1_1Factory_acb3772dd3c00357be1985af09c824858}
+
+
+Class que possibilida a edição de um campo de perfil. 
+
+Sua chamada é assíncrona e deve ser transparente para o usuário. 
 
 A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}
 \item 

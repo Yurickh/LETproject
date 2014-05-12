@@ -20,12 +20,17 @@ from models import Adm, Professor, Student
 from django.core.exceptions import PermissionDenied
 from django.http import Http404
 
+available_langs = [
+				"pt_br",
+				"en_us",
+				]
+
 ## @if Verifica qual a linguagem selecionada para renderizar os templates.
 if 'LANG' in globals():
-	if LANG == 'en_us':
-		lang = import_module("ELO.lang.en_us")
-	else:
-		lang = import_module("ELO.lang.pt_br")
+	for foo in avaible_langs:
+		if LANG == foo:
+			lang = import_module("ELO.lang." + foo)
+			break
 else:
 	lang = import_module("ELO.lang.pt_br")
 

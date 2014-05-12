@@ -196,7 +196,7 @@ class PersProfile(IfPersProfile):
                     identity=uid, field=field))
 
         except Student.DoesNotExist:
-            ret = None
+            ret = None 
 
         return ret
 

@@ -22,12 +22,12 @@
 				{% if user.sex == "M" %}
 					selected 
 				{% endif %}
-							>M</value>
+							>M</option>
 			<option value="F"
 				{% if user.sex == "F" %}
 					selected
 				{% endif %}
-							>F</value>
+							>F</option>
 		</select>
 	{% else %} {# sex #}
 	{% if field == "bios" %}
@@ -39,7 +39,18 @@
 		<input name="name_edit" type="text" value="{{ user.name }}" />
 	{% else %} {# name #}
 	{% if field == "language" %}
-		<input name="lang_edit" type="text" value="{{ user.language }}" />
+		<select name="language_edit">
+			<option value="pt-br"
+				{% if user.language == "pt-br" %}
+					selected
+				{% endif %}
+						>pt-br</option>
+			<option value="en-us"
+				{% if user.language == "en-us" %}
+					selected
+				{% endif %}
+						>en-us</option>
+		</select>
 	{% endif %} {# language #}
 	{% endif %} {# name #}
 	{% endif %} {# bios #}
