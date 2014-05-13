@@ -159,3 +159,8 @@ Para executar o programa, siga as instruções abaixo.
 > **06/05**
 > * Finalizada a parte do desenvolvimento que diz respeito às chamadas assíncronas.
 > * Animações na página de perfil completo implementadas.
+
+> **13/05**
+> * Criadas novos formulários para o módulo de perfil.
+> * Adicionado o efeito de dialog para estes formulários.
+> * Corrigidos pequenos erros de implementação em diversos arquivos.
