@@ -32,8 +32,8 @@ class NameForm(forms.Form):
 
 class LanguageForm(forms.Form):
 	newlang		= forms.ChoiceField(widget=forms.RadioSelect, choices = [
-											(DICT['PORTUGUESE'], 'pt_br'),
-											(DICT['ENGLISH'],    'en_us')
+											('pt_br', DICT['PORTUGUESE']),
+											('en_us', DICT['ENGLISH'])
 												])
 
 	def clean_newlang(self):
@@ -45,8 +45,8 @@ class LanguageForm(forms.Form):
 
 class SexForm(forms.Form):
 	newsex		= forms.ChoiceField(widget=forms.RadioSelect, choices = [
-											(DICT['SEX_FEMALE'], 'F'),
-											(DICT['SEX_MALE'],	 'M')
+											('F', DICT['SEX_FEMALE']),
+											('M', DICT['SEX_MALE'])
 												])
 
 	def clean_newsex(self):
@@ -57,7 +57,7 @@ class SexForm(forms.Form):
 		return ns
 
 class BiosForm(forms.Form):
-	newbios		= forms.TextField(widget=forms.TextArea)
+	newbios		= forms.CharField(widget=forms.Textarea)
 
 	def clean_newbios(self):
 		try:

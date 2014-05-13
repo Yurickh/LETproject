@@ -1,9 +1,17 @@
 $(document).ready(function(){
 
+	$(".dialog").dialog({
+		autoOpen: false,
+		hide: "slideUp",
+		modal: true,
+		resizable: false,
+		show: "slideDown",
+		});
+
 	$("div[class^='edit_']").click(function(){
 		field = $(this).attr("class").slice(5);
-		$("div[class^='editform_']").toggle();
-		$(".editform_"+field).load("/assync/editfield/"+field);
-		$(".editform_"+field).toggle();
+		$(".dialog").load("/assync/editfield/"+field);
+		//$(".dialog").dialog("option", "position", {of: this})
+		$(".dialog").dialog("open")
 	});
 });
