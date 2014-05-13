@@ -20,7 +20,8 @@ urlpatterns = patterns('',
 	## URL da pagina de perfil.
 	url(r'^profile/?$', factory.runProfile, {'acctype': 'Full'}),
 	## URL para mostrar assincronamente a edição de um campo de perfil.
-	url(r'^assync/editfield/(?P<field>\w{3,9})/?$', factory.runProfileEdit),
+	url(r'^assync/editfield/(?P<field>\w{3,9})/?$', 
+		factory.runProfile, {'acctype' : 'Full'}),
 	## URL da pagina de logout.
 	url(r'^logout/?$', factory.runLogout),
 	## URL da pagina de cursos.

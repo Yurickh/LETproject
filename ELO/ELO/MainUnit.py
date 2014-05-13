@@ -14,33 +14,19 @@ from Login.LoginUnit import *
 from Profile.ProfileUnit import *
 from Adm.AdmUnit import *
 from Course.CourseUnit import *
+from ELO.lang.index import DICT
 
 from models import Adm, Professor, Student
 
 from django.core.exceptions import PermissionDenied
 from django.http import Http404
 
-available_langs = [
-				"pt_br",
-				"en_us",
-				]
-
-## @if Verifica qual a linguagem selecionada para renderizar os templates.
-if 'LANG' in globals():
-	for foo in avaible_langs:
-		if LANG == foo:
-			lang = import_module("ELO.lang." + foo)
-			break
-else:
-	lang = import_module("ELO.lang.pt_br")
-
-
 ## Insere os objetos user e DICT em todas as renderizações de template.
 def globalContext(request):
 	_sess = request.session
 	return {
 			'user': _sess['user'] if ('user' in _sess.keys()) else False,
-			'DICT': lang.DICT,
+			'DICT': DICT,
 		}
 
 ## Classe factory.
@@ -97,9 +83,10 @@ class Factory:
 	#
 	#	@arg acctype 	Define o tipo de acesso que o usuário está requerindo.
 	#					"Full": Acessa o Perfil completo, com possibilidade de
-	#						edição.
+	#						edição. Caso a chamada seja assíncrona, retorna a
+	#						form de edição do campo específico.
 	#					"Home": Acessa o Perfil resumido, a home do site em si.
-	def runProfile(self, request, acctype):
+	def runProfile(self, request, acctype, field=None):
 		if 'user' in request.session.keys():
 			user_type = request.session['user']['type']
 			if user_type == 'Professor' or user_type == 'Student':
@@ -112,21 +99,13 @@ class Factory:
 					self.__ui = UiHomeProfile(self.__bus)
 				else:
 					raise Http404(DICT["EXCEPTION_404_ERR"])
-				return self.__ui.run(request)
+			
+				if field and acctype == "Full":
+					return self.__ui.run(request, field)
+				else:
+					return self.__ui.run(request)
 			else:
 				raise Http404(DICT["EXCEPTION_404_ERR"])
-		else:
-			raise PermissionDenied(DICT["EXCEPTION_403_STD"])
-
-	## Class que possibilida a edição de um campo de perfil.
-	#	Sua chamada é assíncrona e deve ser transparente para o usuário.
-	def runProfileEdit(self, request, field):
-		if 'user' in request.session.keys():
-			if not isinstance(self.__ui, UiAssyProfile):
-				self.__pers = PersProfile()
-				self.__bus = BusProfile(self.__pers)
-				self.__ui = UiAssyProfile(self.__bus)
-			return self.__ui.run(request, field)
 		else:
 			raise PermissionDenied(DICT["EXCEPTION_403_STD"])
 		
