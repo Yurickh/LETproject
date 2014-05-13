@@ -24,12 +24,16 @@ class NameForm(forms.Form):
 			raise forms.ValidationError(exc.message)
 		return pw
 
-"""class LanguageForm(forms.Form):
-##	newlang		= forms.SELECTFIELD(PT-BR, EN-US)
+class LanguageForm(forms.Form):
+
+	newlang		= forms.ChoiceField(widget=forms.radioSelect, choices = [
+											('Português', 'pt_br'),
+											('Inglês',    'en_us')
+												]
 
 	def clean_newlang(self):
 		newlang = self.cleaned_data['newlang']
 		if newlang in available_langs:
 			return newlang
 		else:
-			raise forms.ValidationError(DICT["EXCEPTION_INV_LG_F"])"""
+			raise forms.ValidationError(DICT["EXCEPTION_INV_LG_F"])
