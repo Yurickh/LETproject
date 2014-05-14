@@ -7,6 +7,7 @@
 ## Excessões para tipos básicos.
 
 DICT = {
+	'lang': 'en_us',
 	'EXCEPTION_INV_PW_S' : "The password must be at least 6 characters long.",
 
 	'EXCEPTION_INV_NM_B' : "The name must not have more than 32 characters.",
@@ -97,6 +98,17 @@ DICT = {
 	'EXCEPTION_403_STD' : "Permission denied.",
 	'EXCEPTION_404_ERR' : "Unexpected error.",
 
+	'ERROR_FORM' : "Form loader failed. Please try again later.",
+
+	'SUBMIT' : 'Submit',
 	'USERNAME': 'Username:',
 	'PASSWORD': 'Password:',
+	'ELO_HOME': 'ELO - Home',
+	'ELO_PROFILE': 'ELO - Profile',
+
+	'ENGLISH': 'English',
+	'PORTUGUESE': 'Portuguese',
+
+	'SEX_MALE': 'Male',
+	'SEX_FEMALE': 'Female',
 }

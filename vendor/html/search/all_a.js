@@ -2,7 +2,6 @@ var searchData=
 [
   ['mail',['Mail',['../d5/db6/classELO_1_1BaseUnit_1_1Mail.html',1,'ELO::BaseUnit']]],
   ['main',['main',['../de/d8f/namespacebaseTestUnit.html#a14bce793f0a27355022607c49179733c',1,'baseTestUnit.main()'],['../d4/d43/namespaceentityTestUnit.html#a0d027a0bc98ec362354c54095fc616e4',1,'entityTestUnit.main()']]],
-  ['mainunit',['MainUnit',['../df/dec/namespaceMainUnit.html',1,'']]],
   ['mainunit_2epy',['MainUnit.py',['../dd/d7f/MainUnit_8py.html',1,'']]],
   ['manage',['manage',['../da/df4/namespacemanage.html',1,'']]],
   ['manage_2epy',['manage.py',['../d8/d54/manage_8py.html',1,'']]],
@@ -12,9 +11,9 @@ var searchData=
   ['media_5froot',['MEDIA_ROOT',['../df/d5b/namespaceELO_1_1settings.html#a1f618eef9196cda0088f532a66ec0648',1,'ELO::settings']]],
   ['media_5furl',['MEDIA_URL',['../df/d5b/namespaceELO_1_1settings.html#acd3e1c3559f7c87f5aad004b76458ddc',1,'ELO::settings']]],
   ['middleware_5fclasses',['MIDDLEWARE_CLASSES',['../df/d5b/namespaceELO_1_1settings.html#a968380d6242dca6cc82acb1d806c703d',1,'ELO::settings']]],
+  ['models_2epy',['models.py',['../d1/d1c/ELO_2models_8py.html',1,'']]],
   ['models_2epy',['models.py',['../dd/d1b/Building_2models_8py.html',1,'']]],
   ['models_2epy',['models.py',['../d1/d2b/Course_2models_8py.html',1,'']]],
-  ['models_2epy',['models.py',['../d1/d1c/ELO_2models_8py.html',1,'']]],
   ['module',['Module',['../db/de8/classELO_1_1EntityUnit_1_1Module.html',1,'ELO::EntityUnit']]],
   ['modules',['modules',['../d2/dc4/classELO_1_1EntityUnit_1_1Courses.html#a14bdc53eeb2a7fde8e926cbab6e5206f',1,'ELO.EntityUnit.Courses.modules()'],['../d2/dc4/classELO_1_1EntityUnit_1_1Courses.html#a5d791876c321c20f5a698273613d0d01',1,'ELO.EntityUnit.Courses.modules'],['../d2/dc4/classELO_1_1EntityUnit_1_1Courses.html#a5d791876c321c20f5a698273613d0d01',1,'ELO.EntityUnit.Courses.modules'],['../d2/dc4/classELO_1_1EntityUnit_1_1Courses.html#a5d791876c321c20f5a698273613d0d01',1,'ELO.EntityUnit.Courses.modules']]]
 ];

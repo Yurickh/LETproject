@@ -6,6 +6,7 @@
 #
 
 DICT = {
+	'lang': 'pt_br',
 	## Mensagem de erro para um password menor que o especificado.
 	'EXCEPTION_INV_PW_S' : "A senha deve conter no mínimo 6 caracteres.",
 
@@ -164,7 +165,19 @@ DICT = {
 	## Mensagem de erro inesperado 404
 	'EXCEPTION_404_ERR' : "Ocorreu um erro inesperado. Favor tentar novamente.",
 
+	## Mensagem de erro de formulário
+	'ERROR_FORM'  : "Ocorreu um problema ao carregar o formulário. Favor tentar novamente mais tarde.",
+
+	'SUBMIT' : 'Atualizar', 
 	'USERNAME' : 'Usuário:',
 	'PASSWORD' : 'Senha:',
+	'ELO_HOME' : 'ELO - Página Inicial',
 	'ELO_PROFILE' : 'ELO - Perfil',
+	'ELO_ADM': 'ELO - Administração',
+
+	'ENGLISH': 'Inglês',
+	'PORTUGUESE': 'Português',
+
+	'SEX_MALE': 'Masculino',
+	'SEX_FEMALE': 'Feminino',
 }

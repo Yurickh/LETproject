@@ -3,9 +3,17 @@
 from abc import*
 
 from ELO.models import Student
+from ELO.lang.index import DICT
+from Profile.forms import (
+    NameForm, 
+    LanguageForm,
+    SexForm,
+    BiosForm)
 
 from django.shortcuts import render
 from django import forms
+
+global DICT
 
 ## @file ProfileUnit.py
 #   Este arquivo é responsável pelo armazenamento de todas as camadas 
@@ -97,10 +105,11 @@ class IfPersProfile:
     @abstractmethod
     def fetch(self, user): pass
 
-## Camada de apresentação para estudantes.
-#   Deve carregar o devido template, contendo os dados básicos do estudante
-#   bem como os cursos matriculados e seu histórico.
-class UiProfile(IfUiProfile): 
+## Camada de apresentação para a página principal do site.
+#   Deve carregar o devido template, contendo os dados básicos do usuário,
+#   como cursos matriculados e histórico para estudantes, e cursos monitorados
+#   para professores.
+class UiHomeProfile(IfUiProfile): 
 
     def run(self, request):
         user = request.session['user']
@@ -109,7 +118,72 @@ class UiProfile(IfUiProfile):
             user = request.session['user']
         return render(request, "Profile/home.html", {'user' : user})
 
-## Camada de negócio para estudantes.
+## Camada de apresentação para a página de perfil completa.
+#   Deve ser capaz de gerar uma página que disponibilize os dados
+#   do usuário, permitindo que ele edite ou não, alguns campos.
+#   Caso a run() seja chamada com um argumento adicional field,
+#   a chamada será considerada assíncrona, assim como no caso do
+#   request.method ser POST.
+class UiFullProfile(IfUiProfile):
+
+    ## Lista de campos passíveis de edição por um usuário.
+    __editable = [
+                    'interests',
+                    'name',
+                    'language',
+                    'sex',
+                    'bios',
+                    'avatar'
+                    ]
+    __viewable = [
+                    'email',
+                    'campus',
+                    'matric'
+                    ]
+
+    def __init__(self, bus):
+        self.__viewable += self.__editable
+        try:
+            self.bus = bus
+        except TypeError as exc:
+            del self
+            raise exc
+
+    def run(self, request, field=None):
+
+        if request.method == "GET":
+            if not field:
+                user = request.session['user']
+                data = []
+                request.session['user'] = self.bus.refreshUser(user)
+                user = request.session['user']
+                for field, value in user.items():
+                    if field in self.__viewable:
+                        data.append({
+                            "field": field,
+                            "value": value,
+                            "edit":True if field in self.__editable else False,
+                            "mult":True if isinstance(value, list)  else False
+                                    })
+                return render(request, "Profile/full.html", {'data' : data})
+            else:
+                if   field == "name":
+                    form = NameForm()
+                elif field == "language":
+                    form = LanguageForm()
+                elif field == "sex":
+                    form = SexForm()
+                elif field == "bios":
+                    form = BiosForm()
+                else:
+                    form = DICT["ERROR_FORM"]
+
+                return render(request, "Profile/edit.html", {'form': form})
+        else:
+            pass
+        
+
+## Camada de negócio para perfil.
 #   Deve ser capaz de gerar um dicionário contendo uma versão mais nova
 #   dos dados do usuário.
 class BusProfile(IfBusProfile):
@@ -120,8 +194,8 @@ class BusProfile(IfBusProfile):
         elif user['type'] == 'Professor':
             return dict(user.items()+ self.pers.fetch(user['name'], Professor))
 
-## Camada de persistência para estudantes.
-#   Recupera os dados do estudante logado, retornando-os para a camada
+## Camada de persistência de perfil.
+#   Recupera os dados do usuário logado, retornando-os para a camada
 #   de negócio.
 class PersProfile(IfPersProfile):
 
@@ -136,7 +210,7 @@ class PersProfile(IfPersProfile):
                     identity=uid, field=field))
 
         except Student.DoesNotExist:
-            ret = None
+            ret = None 
 
         return ret
 

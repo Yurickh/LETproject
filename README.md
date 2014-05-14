@@ -153,6 +153,18 @@ Para executar o programa, siga as instruções abaixo.
 > * Reescrito o código da Unidade de Tipos Básicos para que obedeça ao padrão de 80 caracteres / linha.
 > * Reescrita a documentação da Unidade de Tipos Básicos para o Doxygen.
 
+> **04/05**
+> * Iniciado o desenvolvimento da página de edição de dados do usuário com chamada assíncrona.
+
+> **06/05**
+> * Finalizada a parte do desenvolvimento que diz respeito às chamadas assíncronas.
+> * Animações na página de perfil completo implementadas.
+
+> **13/05**
+> * Criadas novos formulários para o módulo de perfil.
+> * Adicionado o efeito de dialog para estes formulários.
+> * Corrigidos pequenos erros de implementação em diversos arquivos
+
 ### 7. Comandos úteis (GIT)
 
 7.1. GIT PULL
@@ -183,3 +195,5 @@ Para executar o programa, siga as instruções abaixo.
 	Submete o commit para o repositório virtual.
 	
 	$ git push origin master
+=======
+
