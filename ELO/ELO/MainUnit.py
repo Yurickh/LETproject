@@ -81,8 +81,7 @@ class Factory:
 		if 'user' in request.session.keys():
 			if request.session['user']['type'] == 'Adm':
 				return self.runAdm(request)
-			elif request.session['user']['type'] == 'Professor' or
-				request.session['user']['type'] == 'Student':
+			elif request.session['user']['type'] == 'Professor' or request.session['user']['type'] == 'Student':
 				if not isinstance(self.__ui, IfUiProfile):
 					self.__pers = PersProfile()
 					self.__bus = BusProfile(self.__pers)
