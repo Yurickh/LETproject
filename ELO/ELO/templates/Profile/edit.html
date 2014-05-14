@@ -4,5 +4,11 @@
 {% endblock %}
 
 {% block body %}
-	{{ form }}
+	<form action="" method="post">
+		{% for field in form %}
+			{{ field }}<br />
+		{% endfor %}
+		{% csrf_token %}
+		<input type="submit" value="{{ DICT.SUBMIT }}" />
+	</form>
 {% endblock %}

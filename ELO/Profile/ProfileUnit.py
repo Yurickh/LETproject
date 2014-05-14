@@ -151,7 +151,9 @@ class UiFullProfile(IfUiProfile):
 
     def run(self, request, field=None):
 
-        if request.method == "GET":
+        if request.method == "POST":
+            pass
+        else:
             if not field:
                 user = request.session['user']
                 data = []
@@ -179,8 +181,6 @@ class UiFullProfile(IfUiProfile):
                     form = DICT["ERROR_FORM"]
 
                 return render(request, "Profile/edit.html", {'form': form})
-        else:
-            pass
         
 
 ## Camada de negócio para perfil.

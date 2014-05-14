@@ -57,7 +57,7 @@ class SexForm(forms.Form):
 		return ns
 
 class BiosForm(forms.Form):
-	newbios		= forms.CharField(widget=forms.Textarea)
+	newbios		= forms.CharField(widget=forms.Textarea(attrs={'width':250}))
 
 	def clean_newbios(self):
 		try:
