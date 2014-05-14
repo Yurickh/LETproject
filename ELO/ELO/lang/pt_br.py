@@ -165,8 +165,6 @@ DICT = {
 	## Mensagem de erro inesperado 404
 	'EXCEPTION_404_ERR' : "Ocorreu um erro inesperado. Favor tentar novamente.",
 
-	## Mensagem de erro de login
-	'ERROR_LOGIN' : "Login ou senha inválidos",
 	## Mensagem de erro de formulário
 	'ERROR_FORM'  : "Ocorreu um problema ao carregar o formulário. Favor tentar novamente mais tarde.",
 

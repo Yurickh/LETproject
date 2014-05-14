@@ -14,7 +14,8 @@ from django import forms
 from ELO.models import Student, Adm, Professor
 from ELO.BaseUnit import Name, Password
 from Login.forms import LoginForm
-from ELO.lang.pt_br import *
+
+from ELO.lang.index import DICT
 
 ## Interface para a camada de Apresentação de Usuário do módulo Login.
 # É responsável pelo carregamento do template correto e processa os dados inseridos no formulário de login.
@@ -107,7 +108,7 @@ class UiLogin(IfUiLogin):
 				if login_form.is_valid():
 					self.bus.validate(login_form.cleaned_data['username'], login_form.cleaned_data['password'], database)
 				else:
-					raise ValueError("Login ou senha incorretos.")
+					raise ValueError(DICT['EXCEPTION_INV_LOG'])
 			except ValueError as exc:
 				if database.__name__ == "Professor":
 					target = "proflogin"

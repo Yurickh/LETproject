@@ -98,7 +98,6 @@ DICT = {
 	'EXCEPTION_403_STD' : "Permission denied.",
 	'EXCEPTION_404_ERR' : "Unexpected error.",
 
-	'ERROR_LOGIN': "Invalid username or pasword",
 	'ERROR_FORM' : "Form loader failed. Please try again later.",
 
 	'SUBMIT' : 'Submit',
