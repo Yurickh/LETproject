@@ -156,17 +156,16 @@ class UiFullProfile(IfUiProfile):
         else:
             if not field:
                 user = request.session['user']
-                data = []
+                data = {}
                 request.session['user'] = self.bus.refreshUser(user)
                 user = request.session['user']
                 for field, value in user.items():
                     if field in self.__viewable:
-                        data.append({
-                            "field": field,
+                        data[field] = {
                             "value": value,
                             "edit":True if field in self.__editable else False,
                             "mult":True if isinstance(value, list)  else False
-                                    })
+                                    }
                 return render(request, "Profile/full.html", {'data' : data})
             else:
                 if   field == "name":

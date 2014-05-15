@@ -4,8 +4,12 @@
 # 	Arquivo responsável pelo redirecionamento e navegação
 #	entre as páginas do site.
 
+from django.conf.urls.static import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls import patterns, url
+
 from ELO.MainUnit import Factory
+from ELO import settings
 
 factory = Factory()
 
@@ -28,4 +32,6 @@ urlpatterns = patterns('',
 	url(r'^course/?$', factory.runCourse),
 	## URL da pagina de administracao.
 	url(r'^adm/?$', factory.runAdm),
-)
+) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns += staticfiles_urlpatterns()

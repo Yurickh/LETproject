@@ -5,27 +5,14 @@
 
 {% block head %}
 	<script src="{% static 'Profile/script.js' %}"></script>
+	<link 	rel="stylesheet"
+			type="text/css"
+			href="{% static 'Profile/styles.css' %}" />
 {% endblock %}
 
 {% block content %}
-	<ul>
-		{% for datum in data %}
-			<li><h4>{{ datum.field }}:</h4> 
-				<div class="cont_{{ datum.field }}">
-					{% if datum.mult %}
-						{% for instance in datum.value %}
-							{{ instance }}
-						{% endfor %}
-					{% else %}
-						{{ datum.value }}
-					{% endif %}
-				</div> 
-				{% if datum.edit %}
-				<div class="edit_{{ datum.field }}">
-					Edit
-				</div>
-				{% endif %}</li>
-		{% endfor %}
-	</ul>
+	<div id="avatar-placeholder">
+		<img src="{{ MEDIA_URL }}{{ data.avatar.value }}" />
+	</div>
 	<div class="dialog"></div>
 {% endblock %}
