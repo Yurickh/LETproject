@@ -106,9 +106,14 @@ DICT = {
 	'ELO_HOME': 'ELO - Home',
 	'ELO_PROFILE': 'ELO - Profile',
 
+	'LANGUAGE': 'Language',
 	'ENGLISH': 'English',
 	'PORTUGUESE': 'Portuguese',
 
+	'SEX': 'Sex',
 	'SEX_MALE': 'Male',
 	'SEX_FEMALE': 'Female',
+
+	'MATRIC': 'Reg#',
+	'BIOS': 'Bios',
 }

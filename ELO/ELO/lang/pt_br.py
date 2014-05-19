@@ -175,9 +175,14 @@ DICT = {
 	'ELO_PROFILE' : 'ELO - Perfil',
 	'ELO_ADM': 'ELO - Administração',
 
+	'LANGUAGE': 'Linguagem',
 	'ENGLISH': 'Inglês',
 	'PORTUGUESE': 'Português',
 
+	'SEX': 'Sexo',
 	'SEX_MALE': 'Masculino',
 	'SEX_FEMALE': 'Feminino',
+
+	'MATRIC': 'Matrícula',
+	'BIOS' : 'Biografia',
 }

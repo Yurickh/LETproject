@@ -11,8 +11,9 @@
 {% endblock %}
 
 {% block content %}
-	<div id="avatar-placeholder">
-		<img src="{{ MEDIA_URL }}{{ data.avatar.value }}" />
-	</div>
+	&lt; TEMPORARY PROFILE &gt;<br />
+	{% for field, value in data.items %}
+		{{ field }}: {{ value.value }}<br />
+	{% endfor %}
 	<div class="dialog"></div>
 {% endblock %}

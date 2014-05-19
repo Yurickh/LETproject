@@ -8,8 +8,8 @@ $(document).ready(function(){
 		show: "slideDown",
 		});
 
-	$("div[class^='edit_']").click(function(){
-		field = $(this).attr("class").slice(5);
+	$("button[id^='edit_']").click(function(){
+		field = $(this).attr("id").slice(5);
 		$(".dialog").load("/assync/editfield/"+field);
 		//$(".dialog").dialog("option", "position", {of: this})
 		$(".dialog").dialog("open")

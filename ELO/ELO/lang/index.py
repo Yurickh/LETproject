@@ -11,6 +11,7 @@ from importlib import import_module
 available_langs = [
 				"pt_br",
 				"en_us",
+				"it_eu",
 				]
 
 ## Retorna o dicionário correspondente à linguagem selecionada.
@@ -18,6 +19,7 @@ def getDICT(lang):
 	for foo in available_langs:
 		if lang == foo:
 			lang = import_module("ELO.lang." + foo)
+			LANG = foo
 			return lang.DICT
 	else:
 		return None
