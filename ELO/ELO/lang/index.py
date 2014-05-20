@@ -11,7 +11,6 @@ from importlib import import_module
 available_langs = [
 				"pt_br",
 				"en_us",
-				"it_eu",
 				]
 
 ## Retorna o dicionário correspondente à linguagem selecionada.
