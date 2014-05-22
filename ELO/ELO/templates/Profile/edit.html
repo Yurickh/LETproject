@@ -10,6 +10,6 @@
 			{{ field }}<br />
 		{% endfor %}
 		{% csrf_token %}
-		<input type="submit" value="{{ DICT.SUBMIT }}" />
+		<input type="submit"  name="{{ ff }}"value="{{ DICT.SUBMIT }}" />
 	</form>
 {% endblock %}

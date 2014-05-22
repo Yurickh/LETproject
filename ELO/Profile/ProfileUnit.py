@@ -149,23 +149,54 @@ class UiFullProfile(IfUiProfile):
             del self
             raise exc
 
+    ##  Capaz de criar um template-iterable array com os dados de usuario.
+    def __makeData(self, user):
+        data = {}
+        for field, value in user.items():
+            if field in self.__viewable:
+                data[field] = {
+                    "value": value,
+                    "edit":True if field in self.__editable else False,
+                    "mult":True if isinstance(value, list)  else False
+                            }
+
+        return data
+
     def run(self, request, field=None):
 
+        get_user = lambda: request.session['user']
+
+        ## @if Verifica qual o propósito do submit.
+        #   Caso seja POST, a requisição ocorre após a submissão de uma form,
+        #       muito provavelmente da form de edição de campo.
+        #   Caso não seja, a requisição há de ser um GET, para mostrar as
+        #       opções de edição.
+
         if request.method == "POST":
-            pass
+            try:
+                if   "name" in request.POST:
+                    form = NameForm(request.POST)
+                elif "language" in request.POST:
+                elif "sex" in request.POST:
+                elif "bios" in request.POST:
+                else:
+                    raise ValueError(DICT['EXCEPTION_INV_FRM'])
+                
+
+                if form.is_valid():
+                    self.bus.edit(form.cleaned_data['']
+                """ CONTINUAR A PARTIR DAQUI *****
+                    Você estava começando a chamar o método do bus para editar o campo de usuário.
+                    Sempre lembrar de também atualizar o COOKIE!!!
+                """
+            except ValueError as exc:
+                data = self.__makeData(get_user())
+                return render(request, "Profile.full.html", {'data' : data,
+                                                             'error': exc }
         else:
             if not field:
-                user = request.session['user']
-                data = {}
-                request.session['user'] = self.bus.refreshUser(user)
-                user = request.session['user']
-                for field, value in user.items():
-                    if field in self.__viewable:
-                        data[field] = {
-                            "value": value,
-                            "edit":True if field in self.__editable else False,
-                            "mult":True if isinstance(value, list)  else False
-                                    }
+                request.session['user'] = self.bus.refreshUser(get_user())
+                data = self.__makeData(get_user())
                 return render(request, "Profile/full.html", {'data' : data})
             else:
                 if   field == "name":
@@ -179,7 +210,8 @@ class UiFullProfile(IfUiProfile):
                 else:
                     form = DICT["ERROR_FORM"]
 
-                return render(request, "Profile/edit.html", {'form': form})
+                return render(request, "Profile/edit.html", {'form': form,
+                                                             'ff': field })
         
 
 ## Camada de negócio para perfil.
