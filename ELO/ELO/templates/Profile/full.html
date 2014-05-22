@@ -14,6 +14,7 @@
 	&lt; TEMPORARY PROFILE &gt;<br />
 	{% for field, value in data.items %}
 		{{ field }}: {{ value.value }}<br />
+		<button id="edit_{{ field }}">Edit</button><br /><br />
 	{% endfor %}
 	<div class="dialog"></div>
 {% endblock %}
