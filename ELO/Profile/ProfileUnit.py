@@ -185,10 +185,7 @@ class UiFullProfile(IfUiProfile):
 
                 if form.is_valid():
                     self.bus.edit(form.cleaned_data['']
-                """ CONTINUAR A PARTIR DAQUI *****
-                    Você estava começando a chamar o método do bus para editar o campo de usuário.
-                    Sempre lembrar de também atualizar o COOKIE!!!
-                """
+                    
             except ValueError as exc:
                 data = self.__makeData(get_user())
                 return render(request, "Profile.full.html", {'data' : data,
