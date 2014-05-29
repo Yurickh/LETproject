@@ -92,8 +92,13 @@ class IfBusProfile:
     def pers(self):
         del self.__pers
 
+    ## Atualiza os dados de usuário no cookie de sessão.
     @abstractmethod
     def refreshUser(self, user): pass
+
+    ## Edita um dos dados de usuário no cookie E no banco de dados.
+    @abstractmethod
+    def editField(self, field, data): pass
 
 
 ## Interface para a camada de Persistência do módulo de perfil.
@@ -176,16 +181,28 @@ class UiFullProfile(IfUiProfile):
             try:
                 if   "name" in request.POST:
                     form = NameForm(request.POST)
+                    field = "name"
                 elif "language" in request.POST:
+                    form = LanguageForm(request.POST)
+                    field = "language"
                 elif "sex" in request.POST:
+                    form = SexForm(request.POST)
+                    field = "sex"
                 elif "bios" in request.POST:
+                    form = BiosForm(request.POST)
+                    field = "bios"
                 else:
                     raise ValueError(DICT['EXCEPTION_INV_FRM'])
-                
 
-                if form.is_valid():
-                    self.bus.edit(form.cleaned_data['']
-                    
+                if form.isvalid():
+                    ## @if Verifica se a senha colocada corresponde com a atual
+                    if field == "name":
+                        fpw = form.cleaned_data['password'].value
+                        if fpw != self.get_user()['password']:
+                            raise ValueError(DICT['EXCEPTION_INV_PW_F'])
+
+                    self.bus.editField(field, form.cleaned_data['newdata'])
+
             except ValueError as exc:
                 data = self.__makeData(get_user())
                 return render(request, "Profile.full.html", {'data' : data,
@@ -234,10 +251,10 @@ class PersProfile(IfPersProfile):
             ret = ret.value
 
         except database.MultipleObjectsReturned:
-            ret = map(lambda x: x.value, Student.objects.filter(
+            ret = map(lambda x: x.value, database.objects.filter(
                     identity=uid, field=field))
 
-        except Student.DoesNotExist:
+        except database.DoesNotExist:
             ret = None 
 
         return ret

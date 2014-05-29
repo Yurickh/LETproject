@@ -12,13 +12,16 @@ from ELO.BaseUnit import(
 	Sex,
 	PlainText)
 
+## Formulário de edição de nome.
+#	Capaz de modificar o nome do usuário no sistema.
+#	Vale salientar que é com esse nome que o usuário irá logar.
 class NameForm(forms.Form):
-	newname 	= forms.CharField(max_length=32)
+	newdata 	= forms.CharField(max_length=32)
 	password 	= forms.CharField(widget=forms.PasswordInput)
 
-	def clean_newname(self):
+	def clean_newdata(self):
 		try:
-			name = Name(self.cleaned_data['new_name'])
+			name = Name(self.cleaned_data['newdata'])
 		except ValueError as exc:
 			raise forms.ValidationError(exc.message)
 		return name
@@ -30,38 +33,50 @@ class NameForm(forms.Form):
 			raise forms.ValidationError(exc.message)
 		return pw
 
+## Formulário de edição de linguagem.
+#	Capaz de modificar a lingaguem preferida do usuário para o sistema.
+#	É com base nessa linguagem que o sistema irá carregar os diferentes DICTs
+#	do site (o dicionário contendo a nomeação de todas as macros).
 class LanguageForm(forms.Form):
-	newlang		= forms.ChoiceField(widget=forms.RadioSelect, choices = [
+	newdata		= forms.ChoiceField(widget=forms.RadioSelect, choices = [
 											('pt_br', DICT['PORTUGUESE']),
 											('en_us', DICT['ENGLISH'])
 												])
 
-	def clean_newlang(self):
-		newlang = self.cleaned_data['new_lang']
+	def clean_newdata(self):
+		newlang = self.cleaned_data['newdata']
 		if newlang in available_langs:
 			return newlang
 		else:
 			raise forms.ValidationError(DICT["EXCEPTION_INV_LG_F"])
 
+## Formulário de edição de sexo.
+#	Capaz de modificar o sexo exibido do usuário.
+#	Não afeta de forma relevante a navegação ou qualquer outra forma de
+#	interação com o aluno/professor.
 class SexForm(forms.Form):
-	newsex		= forms.ChoiceField(widget=forms.RadioSelect, choices = [
+	newdata		= forms.ChoiceField(widget=forms.RadioSelect, choices = [
 											('F', DICT['SEX_FEMALE']),
 											('M', DICT['SEX_MALE'])
 												])
 
-	def clean_newsex(self):
+	def clean_newdata(self):
 		try:
-			ns = Sex(self.cleaned_data['new_sex'])
+			ns = Sex(self.cleaned_data['newdata'])
 		except ValueError as exc:
 			raise forms.ValidationError(exc.message)
 		return ns
 
+## Formulário de edição de Bios.
+#	Capaz de modificar a biografia exibida do usuário.
+#	Não afeta de forma relevante a navegação ou qualquer outra forma de
+#	interação com o aluno.
 class BiosForm(forms.Form):
-	newbios		= forms.CharField(widget=forms.Textarea(attrs={'width':250}))
+	newdata		= forms.CharField(widget=forms.Textarea(attrs={'width':250}))
 
-	def clean_newbios(self):
+	def clean_newdata(self):
 		try:
-			nb = PlainText(self.cleaned_data['new_bios'])
+			nb = PlainText(self.cleaned_data['newdata'])
 		except ValueError as exc:
 			raise forms.ValidationError(exc.message)
 		return nb

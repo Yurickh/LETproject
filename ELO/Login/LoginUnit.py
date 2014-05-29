@@ -106,7 +106,8 @@ class UiLogin(IfUiLogin):
 			login_form = LoginForm(request.POST)
 			try: 
 				if login_form.is_valid():
-					self.bus.validate(login_form.cleaned_data['username'], login_form.cleaned_data['password'], database)
+					self.bus.validate(login_form.cleaned_data['username'],
+						login_form.cleaned_data['password'], database)
 				else:
 					raise ValueError(DICT['EXCEPTION_INV_LOG'])
 			except ValueError as exc:
