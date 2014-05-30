@@ -26,7 +26,7 @@ Entradas em negrito indicam pastas, entradas normais indicam arquivos isolados.
 
 ### __init__.py
 
-Arquivo requisitado pelo python para reconhecer a pasta como um repositório de arquivos refernciável.
+Arquivo requisitado pelo python para reconhecer a pasta como um repositório de arquivos referenciável.
 Em outras palavras, é um arquivo que só é útil para a linguagem e deve ser ignorado em outras instâncias.
 
 ### BaseUnit.py
@@ -82,3 +82,12 @@ Arquivos CSS e Javascript são armazenados aqui para simplificar a busca por ele
 
 Pasta que contém os templates do sistema.
 Os templates são os arquivos HTML que serão manipulados pelos módulos e corresponderão as páginas vistas pelo usuário do sistema.
+
+### urls.py
+
+Arquivo conhecido como URLConf. Ele é o guia da Factory (ver MainUnit.py), apontando-a para a direção correta, baseando-se na URL que lhe foi passada.
+É o primeiro arquivo a ser chamado, sendo o primeiro divisor de águas no fluxo do programa.
+
+### wsgi.py
+
+Arquivo do Django que configura o Web-Server. Não deve ser modificado por hora.

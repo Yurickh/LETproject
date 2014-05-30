@@ -1,8 +1,10 @@
 #coding: utf-8
 
-## Este arquivo é responsável pelo armazenamento de todas as camadas correspondentes ao módulo de login.
-# Os métodos aqui são criados e chamados pela Factory (MainUnit.py) quando necessários.
-# Eles são responsáveis pela criação, gestão e deleção do objeto de sessão e a validação e login dos usuários.
+## @file Armazenamento de todas as camadas correspondentes ao módulo de login.
+# 	Os métodos aqui são criados e chamados pela Factory (MainUnit.py) quando
+#	necessários.
+# 	Eles são responsáveis pela criação, gestão e deleção do objeto de sessão e 
+#	validação e login dos usuários.
 
 from abc import *
 
@@ -18,7 +20,8 @@ from Login.forms import LoginForm
 from ELO.lang.index import DICT
 
 ## Interface para a camada de Apresentação de Usuário do módulo Login.
-# É responsável pelo carregamento do template correto e processa os dados inseridos no formulário de login.
+# 	É responsável pelo carregamento do template correto e processa os dados
+#	inseridos no formulário de login.
 class IfUiLogin:
 	## Força a criação da camada subjacente
 	__metaclass__ = ABCMeta
@@ -30,8 +33,11 @@ class IfUiLogin:
 			del self
 			raise exc
 
+	## Objeto que representa a camada de negócio, subjacente a de UI.
+	#	Deve ser inicializada no momento da criação de um objeto do tipo
+	#	UiLogin, ou seja, uma camada de UI nunca existirá sem uma camada
+	#	de Bus suportando-a.
 	@property
-	## Camada de negócio associada à camada de UI (user interface). Essas camadas estão ligadas pelo módulo de MainUnit.
 	def bus(self):
 		return self.__bus
 
@@ -40,25 +46,33 @@ class IfUiLogin:
 		if isinstance(value, IfBusLogin):
 			self.__bus = value
 		else:
-			raise TypeError("Expected IfBusLogin instance at UiLogin.__bus. Received " + str(type(value)) + " instead.")
+			raise TypeError("Expected IfBusLogin instance at \
+					UiLogin.__bus. Received " + str(type(value)) + " instead.")
 
 	## Método de deleção do objeto que representa a camada de negócio.
 	@bus.deleter
 	def bus(self):
 		del self.__bus
 
-	## O método principal de qualquer classe de UI (user interface), o método run() permite a Factory dar o controle do programa a dado 
-	# módulo.
+	## O método principal de qualquer classe de UI (user interface), o método
+	#	run() permite à Factory dar o controle do programa ao módulo de Login.
 	@abstractmethod
 	def run(self, request): pass
 
 
 ## Interface para a camada de negócio do módulo de Login.
-# Responsável pela validação dos dados submetidos através do formulário de login.
+#	Responsável pela validação dos dados submetidos através do formulário de
+#	login.
 class IfBusLogin: 
 	__metaclas__ = ABCMeta
 
-	## Método de validação não retorna nada, mas lança uma excessão se a validação não for bem sucedida.
+	## Método de validação.
+	#	Não deve retornar nada, mas lança uma exceção do tipo ValueError no
+	#	caso de uma validação mal-sucedida.
+	#
+	#	@arg username	Nome do usuário a ser validado.
+	#
+	#	@arg password	Senha a ser validada, junto ao username.
 	@abstractmethod
 	def validate(self, username, password): pass
 
@@ -71,7 +85,8 @@ class IfBusLogin:
 		if isinstance(value, IfPersLogin):
 			self.__pers = pers
 		else:
-			raise TypeError("Expected IfPersLogin instance at BusLogin.__pers. Received " + str(type(value)) + "instead.")
+			raise TypeError("Expected IfPersLogin instance at \
+				BusLogin.__pers. Received " + str(type(value)) + "instead.")
 
 	## Método de deleção do objeto que representa a camada de persistência.
 	@pers.deleter
@@ -88,10 +103,13 @@ class IfBusLogin:
 
 
 ## Interface para a camada de persistência do módulo de Login.
+#	Deve ser capaz de capturar os dados necessários do banco de dados.
 class IfPersLogin:
 
 	__metaclass__ = ABCMeta
 
+	## Retorna um dicionário no formato de objeto com os dados do usuário
+	#	requisitado.
 	@abstractmethod
 	def select(self, username, database): pass
 
@@ -99,8 +117,9 @@ class IfPersLogin:
 ## Camada de interface de usuário para o módulo de Login.
 class UiLogin(IfUiLogin):
 
-	## Método que inicia o módulo de login. Aqui, ocorre a validação de formulário, autenticação de usuário, e redirecionamento apra a
-	# página de perfil.
+	## Método que inicia o módulo de login. 
+	#	Aqui, ocorre a validação de formulário, autenticação de usuário, e
+	#	redirecionamento para a página de perfil.
 	def run(self, request, database):
 		if request.method == "POST":
 			login_form = LoginForm(request.POST)
@@ -118,7 +137,8 @@ class UiLogin(IfUiLogin):
 				else:
 					target = ""
 
-				return render(request, "Login/form.html", {'form': login_form, 'error': exc, 'target': target})
+				return render(request, "Login/form.html", {'form': login_form, 
+					'error': exc, 'target': target})
 			else:
 				request.session['user'] = {
 								'name': login_form.cleaned_data['username'].value,
