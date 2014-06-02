@@ -98,11 +98,11 @@ class IfBusProfile:
 
     ## Edita um dos dados de usuário no cookie E no banco de dados.
     @abstractmethod
-    def editField(self, field, data): pass
+    def editField(self, user, field, form): pass
 
 
 ## Interface para a camada de Persistência do módulo de perfil.
-#   É responsável pela recuperação dos dados do usuário logado do banco
+#   É responsável pela manipulação dos dados do usuário logado do banco
 #   de dados.
 class IfPersProfile:
     __metaclass__ = ABCMeta
@@ -195,13 +195,10 @@ class UiFullProfile(IfUiProfile):
                     raise ValueError(DICT['EXCEPTION_INV_FRM'])
 
                 if form.isvalid():
-                    ## @if Verifica se a senha colocada corresponde com a atual
-                    if field == "name":
-                        fpw = form.cleaned_data['password'].value
-                        if fpw != self.get_user()['password']:
-                            raise ValueError(DICT['EXCEPTION_INV_PW_F'])
-
-                    self.bus.editField(field, form.cleaned_data['newdata'])
+                    request.session['user'] = self.bus.editField(
+                                                    self.get_user(), 
+                                                    field, 
+                                                    form)
 
             except ValueError as exc:
                 data = self.__makeData(get_user())
@@ -229,8 +226,8 @@ class UiFullProfile(IfUiProfile):
         
 
 ## Camada de negócio para perfil.
-#   Deve ser capaz de gerar um dicionário contendo uma versão mais nova
-#   dos dados do usuário.
+#   Deve ser capaz de manipular os dados de usuário, seja no sentido de 
+#   atualizá-los ou modificá-los de alguma forma.
 class BusProfile(IfBusProfile):
 
     def refreshUser(self, user):
@@ -238,6 +235,24 @@ class BusProfile(IfBusProfile):
             return dict(user.items()+ self.pers.fetch(user['name'], Student))
         elif user['type'] == 'Professor':
             return dict(user.items()+ self.pers.fetch(user['name'], Professor))
+
+    def editField(self, user, field, form):
+        if field == "name":
+            fpw = form.cleaned_data['password'].value
+            if fpw != user['password']:
+                raise ValueError(DICT['EXCEPTION_INV_PW_F'])
+
+        newdata = form.cleaned_data[field].value
+
+        try:
+            if user['type'] == 'Student':
+                self.pers.update(user['name'], field, newdata, Student)
+            elif user['type'] == 'Professor':
+                self.pers.update(user['name'], field, newdata, Professor)
+        except ValueError as exc:
+            raise ValueError(DICT['EXCEPTION_ERR_DT_U'])
+        else:
+            return newdata
 
 ## Camada de persistência de perfil.
 #   Recupera os dados do usuário logado, retornando-os para a camada
@@ -289,3 +304,19 @@ class PersProfile(IfPersProfile):
             fetchset = []
 
         return fetchset
+
+    def update(self, username, field, newdata, database):
+        
+        try:
+            uid = database.objects.get(field='NAME', value=username)
+            uid = uid.identity
+
+            data = database.objects.get(field=field, identity=uid)
+
+            data.value = newdata
+
+            data.save()
+
+        except ( database.DoesNotExist, 
+                 database.MultipleObjectsReturned ) as exc:
+            raise ValueError(exc)
