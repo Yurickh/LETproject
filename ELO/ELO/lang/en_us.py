@@ -94,6 +94,7 @@ DICT = {
 	'EXCEPTION_INV_EX_IT' : "Invalid exercise items.",
 
 	'EXCEPTION_INV_LOG' : "Incorrect username or password.",
+	'EXCEPTION_INV_FRM' : "Icorrent form data.",
 
 	'EXCEPTION_403_STD' : "Permission denied.",
 	'EXCEPTION_404_ERR' : "Unexpected error.",

@@ -195,21 +195,26 @@ class UiFullProfile(IfUiProfile):
                     raise ValueError(DICT['EXCEPTION_INV_FRM'])
 
                 if form.is_valid():
-                    request.session['user'] = self.bus.editField(
-                                                    get_user(), 
-                                                    field, 
-                                                    form)
+                    request.session['user'][field] = self.bus.editField(
+                                                        get_user(), 
+                                                        field, 
+                                                        form )
 
             except ValueError as exc:
                 data = self.__makeData(get_user())
                 return render(request, "Profile/full.html", {'data' : data,
                                                              'error': exc})
-        else:
+
+            data = self.__makeData(get_user())
+            return render(request, "Profile/full.html", {'data' : data })
+
+        else: # request.method == "GET"
             if not field:
                 request.session['user'] = self.bus.refreshUser(get_user())
                 data = self.__makeData(get_user())
                 return render(request, "Profile/full.html", {'data' : data})
             else:
+                err = False
                 if   field == "name":
                     form = NameForm()
                 elif field == "language":
@@ -220,9 +225,11 @@ class UiFullProfile(IfUiProfile):
                     form = BiosForm()
                 else:
                     form = DICT["ERROR_FORM"]
+                    err = True 
 
                 return render(request, "Profile/edit.html", {'form': form,
-                                                             'ff': field })
+                                                             'ff': field,
+                                                             'err': err })
         
 
 ## Camada de negócio para perfil.
@@ -315,7 +322,12 @@ class PersProfile(IfPersProfile):
             uid = database.objects.get(field='NAME', value=username)
             uid = uid.identity
 
-            data = database.objects.get(field=field, identity=uid)
+            ## Para o caso de COURSEs, GRADEs ou INTERESTs.
+            if field[-1] == 's':
+                if field[-2] == 'e' or field[-2] == 't':
+                    field = field[:-1]
+
+            data = database.objects.get(field=field.upper(), identity=uid)
 
             data.value = newdata
 

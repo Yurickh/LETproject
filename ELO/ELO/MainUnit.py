@@ -91,7 +91,7 @@ class Factory:
 	#					"Home": Acessa o Perfil resumido, a home do site em si.
 	@vary_on_cookie
 	def runProfile(self, request, acctype, field=None):
-		if 'user' in request.session.keys():
+		if 'user' in request.session.keys(): # is user logged?
 			user_type = request.session['user']['type']
 			if user_type == 'Professor' or user_type == 'Student':
 				if not isinstance(self.__ui, IfUiProfile):

@@ -23,14 +23,14 @@ class NameForm(forms.Form):
 		try:
 			name = Name(self.cleaned_data['newdata'])
 		except ValueError as exc:
-			raise forms.ValidationError(exc.message)
+			raise forms.ValidationError(exc)
 		return name
 
 	def clean_password(self):
 		try:
 			pw = Password(self.cleaned_data['password'])
 		except ValueError as exc:
-			raise forms.ValidationError(exc.message)
+			raise forms.ValidationError(exc)
 		return pw
 
 ## Formulário de edição de linguagem.
@@ -64,7 +64,7 @@ class SexForm(forms.Form):
 		try:
 			ns = Sex(self.cleaned_data['newdata'])
 		except ValueError as exc:
-			raise forms.ValidationError(exc.message)
+			raise forms.ValidationError(exc)
 		return ns
 
 ## Formulário de edição de Bios.
@@ -78,5 +78,5 @@ class BiosForm(forms.Form):
 		try:
 			nb = PlainText(self.cleaned_data['newdata'])
 		except ValueError as exc:
-			raise forms.ValidationError(exc.message)
+			raise forms.ValidationError(exc)
 		return nb

@@ -160,6 +160,9 @@ DICT = {
 	## Mensagem de erro para login inválido.
 	'EXCEPTION_INV_LOG' : "Login ou senha inválidos.",
 
+	## Mensagem de erro para dados de form incorretos.
+	'EXCEPTION_INV_FRM' : "Dados incorretos",
+
 	## Mensagem de erro padrão 403
 	'EXCEPTION_403_STD' : "Permissão de acesso negada.",
 	## Mensagem de erro inesperado 404

@@ -5,7 +5,6 @@ $(document).ready(function(){
 		hide: "slideUp",
 		modal: true,
 		resizable: false,
-		show: "slideDown",
 		});
 
 	$("button[id^='edit_']").click(function(){
