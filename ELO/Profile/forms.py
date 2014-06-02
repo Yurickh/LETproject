@@ -6,7 +6,7 @@
 
 from django import forms
 
-from ELO.lang.index import DICT
+from ELO.lang.index import DICT, available_langs
 from ELO.BaseUnit import(
 	Name,
 	Sex,

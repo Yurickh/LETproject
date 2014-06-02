@@ -98,7 +98,7 @@ DICT = {
 	'EXCEPTION_403_STD' : "Permission denied.",
 	'EXCEPTION_404_ERR' : "Unexpected error.",
 
-	'EXCEPTION_DB_ERR_U': "An error ocurred while we were trying to update your data. Please, try again later.",
+	'EXCEPTION_ERR_DB_U': "An error ocurred while we were trying to update your data. Please, try again later.",
 
 	'ERROR_FORM' : "Form loader failed. Please try again later.",
 

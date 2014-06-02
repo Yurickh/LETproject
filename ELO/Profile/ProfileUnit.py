@@ -194,16 +194,16 @@ class UiFullProfile(IfUiProfile):
                 else:
                     raise ValueError(DICT['EXCEPTION_INV_FRM'])
 
-                if form.isvalid():
+                if form.is_valid():
                     request.session['user'] = self.bus.editField(
-                                                    self.get_user(), 
+                                                    get_user(), 
                                                     field, 
                                                     form)
 
             except ValueError as exc:
                 data = self.__makeData(get_user())
-                return render(request, "Profile.full.html", {'data' : data,
-                                                             'error': exc }
+                return render(request, "Profile/full.html", {'data' : data,
+                                                             'error': exc})
         else:
             if not field:
                 request.session['user'] = self.bus.refreshUser(get_user())
@@ -241,8 +241,12 @@ class BusProfile(IfBusProfile):
             fpw = form.cleaned_data['password'].value
             if fpw != user['password']:
                 raise ValueError(DICT['EXCEPTION_INV_PW_F'])
-
-        newdata = form.cleaned_data[field].value
+            else:
+                newdata = form.cleaned_data['newdata'].value
+        elif field == "language":
+            newdata = form.cleaned_data['newdata']
+        else:
+            newdata = form.cleaned_data['newdata'].value
 
         try:
             if user['type'] == 'Student':
@@ -250,7 +254,7 @@ class BusProfile(IfBusProfile):
             elif user['type'] == 'Professor':
                 self.pers.update(user['name'], field, newdata, Professor)
         except ValueError as exc:
-            raise ValueError(DICT['EXCEPTION_ERR_DT_U'])
+            raise ValueError(DICT['EXCEPTION_ERR_DB_U'])
         else:
             return newdata
 

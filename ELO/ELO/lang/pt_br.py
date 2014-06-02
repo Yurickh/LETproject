@@ -166,7 +166,7 @@ DICT = {
 	'EXCEPTION_404_ERR' : "Ocorreu um erro inesperado. Favor tentar novamente.",
 
 	## Mensagem de erro de update em banco de dados
-	'EXCEPTION_DB_ERR_U': "Ocorreu um erro ao salvar seu dado. Favor tentar novamente.",
+	'EXCEPTION_ERR_DB_U': "Ocorreu um erro ao salvar seu dado. Favor tentar novamente.",
 
 	## Mensagem de erro de formulário
 	'ERROR_FORM'  : "Ocorreu um problema ao carregar o formulário. Favor tentar novamente mais tarde.",

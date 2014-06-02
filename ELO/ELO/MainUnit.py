@@ -20,7 +20,7 @@ from models import Adm, Professor, Student
 
 from django.core.exceptions import PermissionDenied
 from django.http import Http404
-from django.views.decorators import vary_on_cookie
+from django.views.decorators.vary import vary_on_cookie
 
 ## Insere os objetos user e DICT em todas as renderizações de template.
 def globalContext(request):
