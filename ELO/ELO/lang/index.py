@@ -13,27 +13,26 @@ available_langs = [
 				"en_us",
 				]
 
+try: NAME
+except NameError: #ifndef LANG
+	NAME = 'pt_br'
+#endif
+
 ## Retorna o dicionário correspondente à linguagem selecionada.
-def getDICT(lang):
+def getDICT(lang=NAME):
 	for foo in available_langs:
 		if lang == foo:
 			lang = import_module("ELO.lang." + foo)
-			LANG = foo
 			return lang.DICT
 	else:
 		return None
 
-try: LANG 
-except NameError: #ifndef LANG
-	LANG = 'pt_br'
-#endif
-
 try: DICT 
 except NameError: #ifndef DICT
-	DICT = getDICT(LANG)
+	DICT = getDICT(NAME)
 else: #else
-	if LANG in available_langs:
-		if DICT.lang != LANG:
-			DICT = getDICT(LANG)
+	if NAME in available_langs:
+		if DICT.lang != NAME:
+			DICT = getDICT(NAME)
 	else:
-		LANG = DICT.lang
+		NAME = DICT.lang

@@ -2,8 +2,9 @@
 
 from abc import*
 
+import ELO.lang.index as lang
+
 from ELO.models import Student
-from ELO.lang.index import DICT
 from Profile.forms import (
     NameForm, 
     LanguageForm,
@@ -12,8 +13,6 @@ from Profile.forms import (
 
 from django.shortcuts import render
 from django import forms
-
-global DICT
 
 ## @file ProfileUnit.py
 #   Este arquivo é responsável pelo armazenamento de todas as camadas 
@@ -192,7 +191,7 @@ class UiFullProfile(IfUiProfile):
                     form = BiosForm(request.POST)
                     field = "bios"
                 else:
-                    raise ValueError(DICT['EXCEPTION_INV_FRM'])
+                    raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
 
                 if form.is_valid():
                     request.session['user'][field] = self.bus.editField(
@@ -209,11 +208,11 @@ class UiFullProfile(IfUiProfile):
             return render(request, "Profile/full.html", {'data' : data })
 
         else: # request.method == "GET"
-            if not field:
+            if not field: # normal call
                 request.session['user'] = self.bus.refreshUser(get_user())
                 data = self.__makeData(get_user())
                 return render(request, "Profile/full.html", {'data' : data})
-            else:
+            else: # ajax call
                 err = False
                 if   field == "name":
                     form = NameForm()
@@ -224,7 +223,7 @@ class UiFullProfile(IfUiProfile):
                 elif field == "bios":
                     form = BiosForm()
                 else:
-                    form = DICT["ERROR_FORM"]
+                    form = lang.DICT["ERROR_FORM"]
                     err = True 
 
                 return render(request, "Profile/edit.html", {'form': form,
@@ -263,6 +262,8 @@ class BusProfile(IfBusProfile):
         except ValueError as exc:
             raise ValueError(DICT['EXCEPTION_ERR_DB_U'])
         else:
+            if field == "language":
+                lang.NAME = newdata
             return newdata
 
 ## Camada de persistência de perfil.
