@@ -7,6 +7,7 @@
 	text-align: left;
 	color: white;
 	top: 0px;
+	padding-left:20px;
 }
 .error
 {
@@ -15,11 +16,12 @@
 
 .field
 {
-	float: right;
-	text-align: center;
-	width: 100px;
-	position:relative;
+	text-align: right;
 	color: white;
+	font-size:17px;
+	float:left;
+	padding-right:20px;
+	padding-top:5px;
 }
 
 a.field
@@ -36,46 +38,81 @@ a.field
 {
 	position: fixed;
 	top: 5px;
-	right: 0px;
+	right: 10px;
+
 }
 
 .menuTab
-{
+{	
+	text-align:left;
 	background-color: black;
-	position: fixed;
+	position:fixed ;
 	top:0px;
-	left:0px;
 	width:100%;
-	height:30px;
+	height:35px;
+	
 }
 
 .content
 {
-	text-align: center;
+	text-align: left;
 	color: #331156;
 	margin-top: 1cm;
+	height:100%;
+	padding:10px;
+	padding-bottom:20px;	
 }
 
 body
 {
+	background:#E3E3E3;
+	margin:0;
+	padding:0;	
+	padding-bottom:30px;
 }
 
 .dados{
-	text-align: left;
+	text-align: right;
 	margin-top: 0.2cm;
 }
-.foot{
-	position: fixed;
-	left: 480px;
+.foot{	
+	color:white;
+	padding-top:10px;
+	padding-bottom:10px;
+	text-align:center;
+	position:absolute;
+   	width:100%;
+   	height:50px;   
+   	background:#000;
+	/*margin-left:auto;
+	margin-right:auto;
+	left:0px;
+	right:0px;
+	bottom:-10px;*/
+}
+
+.footext{
+	color:gray;
+	position:absolute;
+	width:100%;
+	text-align:center;
+	padding-top:30px;
+	text-decoration:none;
+	font-size:15px;
+}
+
+.firstAcess{
+	color:gray;
 }
 
 .ffield
 {
 	margin-top: 0.2cm;
+	margin-bottom:10px;
 }
 
 .manipular ul{
-		margin-top:50px;
+	margin-top:50px;
 }
 
 .manipular li{
