@@ -1,6 +1,6 @@
-<div class="menuTab"></div>
 <div class="mainMenu">
 	
+	{% if user %}
 	<a href="/logout">
 		<div class="field">
 			Logout
@@ -15,17 +15,20 @@
 
 	<a href="/">
 		<div class="field">
-	{% if user %}
 		Home
 		</div>
 	</a>
 
 	{% else %}
+	<a href="/">
+		<div class="field">
 		Login
 		</div>
 	</a>
 	{% endif %}
-</div>
-<div class="banner">
-	ELO
+
+	<div class="banner">
+		ELO
+	</div>
+
 </div>

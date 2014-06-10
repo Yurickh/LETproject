@@ -1,4 +1,16 @@
-/**Arquivo folha de estilos de css*/
+/** Arquivo folha de estilos de css. */
+
+/* ARQUIVO includes/wrapper.html */
+
+body
+{
+	background:#E3E3E3;
+	margin:0;
+	padding:0;	
+	padding-bottom:30px;
+}
+
+/* Ícone do ELO */
 .banner
 {
  	text-shadow: -1px 0 gray, 0 1px gray, 1px 0 gray, 0 -1px gray;
@@ -9,11 +21,19 @@
 	top: 0px;
 	padding-left:20px;
 }
-.error
+
+/* Menu principal */
+.mainMenu
 {
-	color: #dd1150;
+	position: fixed;
+	top:0px;
+	width:100%;
+	height:35px;
+	padding-top: 5px;
+	background-color:black;
 }
 
+/* Botão do menu */
 .field
 {
 	text-align: right;
@@ -34,25 +54,7 @@ a.field
 	color: #67B6FF;
 }
 
-.mainMenu
-{
-	position: fixed;
-	top:5px;
-	right:10px;
-	width:100%;
-}
-
-.menuTab
-{	
-	text-align:left;
-	background-color: black;
-	position:fixed ;
-	top:0px;
-	width:100%;
-	height:35px;
-	
-}
-
+/* Conteúdo do site */
 .content
 {
 	text-align: left;
@@ -60,15 +62,14 @@ a.field
 	margin-top: 1cm;
 	height:100%;
 	padding:10px;
-	padding-bottom:20px;	
+	padding-bottom:-1000px;	
 }
 
-body
+/* FIM-ARQUIVO wrapper */
+
+.error
 {
-	background:#E3E3E3;
-	margin:0;
-	padding:0;	
-	padding-bottom:30px;
+	color: #dd1150;
 }
 
 .dados{
