@@ -75,8 +75,8 @@ body
 	text-align: right;
 	margin-top: 0.2cm;
 }
-.foot{	
-	color:white;
+
+.foot{
 	padding-top:10px;
 	padding-bottom:10px;
 	text-align:center;
@@ -91,14 +91,14 @@ body
 	bottom:-10px;*/
 }
 
-.footext{
-	color:white;
-	position:absolute;
-	width:100%;
-	text-align:center;
-	padding-top:30px;
+.foot a
+{
 	text-decoration:none;
-	font-size:15px;
+}
+
+.footnode
+{
+	color: white;
 }
 
 .firstAcess{
