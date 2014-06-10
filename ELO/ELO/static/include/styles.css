@@ -19,7 +19,7 @@
 	text-align: right;
 	color: white;
 	font-size:17px;
-	float:left;
+	float:right;
 	padding-right:20px;
 	padding-top:5px;
 }
@@ -37,9 +37,9 @@ a.field
 .mainMenu
 {
 	position: fixed;
-	top: 5px;
-	right: 10px;
-
+	top:5px;
+	right:10px;
+	width:100%;
 }
 
 .menuTab
@@ -92,7 +92,7 @@ body
 }
 
 .footext{
-	color:gray;
+	color:white;
 	position:absolute;
 	width:100%;
 	text-align:center;

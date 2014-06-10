@@ -1,22 +1,25 @@
 <div class="menuTab"></div>
 <div class="mainMenu">
-	<a href="/">
+	
+	<a href="/logout">
 		<div class="field">
-	{% if user %}
-		Home
+			Logout
 		</div>
 	</a>
+
 	<a href="/profile">
 		<div class="field">
 			Acessado como: {{ user.name }}
 		</div>
 	</a>
 
-	<a href="/logout">
+	<a href="/">
 		<div class="field">
-			Logout
+	{% if user %}
+		Home
 		</div>
 	</a>
+
 	{% else %}
 		Login
 		</div>
