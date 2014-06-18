@@ -191,4 +191,10 @@ DICT = {
 
 	'MATRIC': 'Matrícula',
 	'BIOS' : 'Biografia',
+
+	'HOME' : 'Principal',
+	'LOGIN' : 'Entrar',
+	'LOGOUT' : 'Sair',
+	'PROFILE' : 'Perfil',
+	'ELO' : 'ELO',
 }

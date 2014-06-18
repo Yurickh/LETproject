@@ -3,28 +3,28 @@
 	<a href="/">
 		<div class="field">
 	{% if user %}
-		Home
+		{{ DICT.HOME }}
 		</div>
 	</a>
 	<a href="/profile">
 		<div class="field">
-			Profile
+			{{ DICT.PROFILE }}
 		</div>
 	</a>
 
 	<a href="/logout">
 		<div class="field">
-			Logout
+			{{ DICT.LOGOUT }}
 		</div>
 	</a>
 	{% else %}
-		Login
+		{{ DICT.LOGIN }}
 		</div>
 	</a>
 	{% endif %}
 </div>
 <a href="/">
 	<div class="banner">
-		ELO
+		{{ DICT.ELO }}
 	</div>
 </a>

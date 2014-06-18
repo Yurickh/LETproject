@@ -9,7 +9,7 @@
 from abc import *
 import hashlib
 
-from ELO.lang.index import DICT
+from ELO.lang.index import lang
 
 ## Interface para qualquer tipo básico (Base Type) pertencente ao projeto.
 #   Sua descrição implica que todos os tipos básicos devem ter um método
@@ -88,7 +88,7 @@ class Password(IfBaseType):
     #                           caracteres.
     def _validate(self, value):
         if(len(value) < 6):
-            raise ValueError(DICT['EXCEPTION_INV_PW_S'])
+            raise ValueError(lang.DICT['EXCEPTION_INV_PW_S'])
 
     @property
     def value(self):
@@ -136,14 +136,14 @@ class Name(IfBaseType):
     #               caractere não-alfanumérico.
     def _validate(self, value):
         if len(value) > 32:
-            raise ValueError(DICT['EXCEPTION_INV_NM_B'])
+            raise ValueError(lang.DICT['EXCEPTION_INV_NM_B'])
         else: 
             if len(value) == 0:
-                raise ValueError(DICT['EXCEPTION_INV_NM_S'])
+                raise ValueError(lang.DICT['EXCEPTION_INV_NM_S'])
             else:
                 temp = unicode.isalnum(value.replace(" ", ""))
                 if temp == False:
-                    raise ValueError(DICT['EXCEPTION_INV_NM_F'])
+                    raise ValueError(lang.DICT['EXCEPTION_INV_NM_F'])
 
 ## Classe container de matrículas.
 #   Responsável por armazenar um número inteiro que identifica
@@ -176,12 +176,12 @@ class Matric(IfBaseType):
     #                           para a matrícula (1-9 dígitos).
     def _validate(self, value):
         try: int(value)
-        except ValueError: raise ValueError(DICT['EXCEPTION_INT_MT_F'])
+        except ValueError: raise ValueError(lang.DICT['EXCEPTION_INT_MT_F'])
 
         if value > 999999999:
-            raise ValueError(DICT['EXCEPTION_INV_MT_B'])
+            raise ValueError(lang.DICT['EXCEPTION_INV_MT_B'])
         elif value < 1:
-            raise ValueError(DICT['EXCEPTION_INV_MT_S'])
+            raise ValueError(lang.DICT['EXCEPTION_INV_MT_S'])
         
 ## Classe container de texto.
 #   Responsável por armazenar texto corrido, como em descrições,
@@ -212,7 +212,7 @@ class PlainText(IfBaseType):
     #                           value exceder 1024 caracteres.
     def _validate(self, value):
         if len(value) > 1024:
-            raise ValueError(DICT['EXCEPTION_INV_PT_B'])
+            raise ValueError(lang.DICT['EXCEPTION_INV_PT_B'])
 
 ## Classe container de Campus.
 #   Irá armazenar um inteiro que identifica univocamente um Campus.
@@ -244,10 +244,10 @@ class Campus(IfBaseType):
     #                           value ser negativo.
     def _validate(self, value):
         try: int(value)
-        except ValueError: raise ValueError(DICT['EXCEPTION_INV_CP_F'])
+        except ValueError: raise ValueError(lang.DICT['EXCEPTION_INV_CP_F'])
 
         if value <= 0:
-            raise ValueError(DICT['EXCEPTION_INV_CP_S'])
+            raise ValueError(lang.DICT['EXCEPTION_INV_CP_S'])
 
 ## Classe container de sexo.
 #   Responsável por armazenar um caractere relativo a identificação
@@ -282,7 +282,7 @@ class Sex(IfBaseType):
     #                           caractere validado não ser F ou M.
     def _validate(self, value):
         if value.upper() != "M" or value.upper() != "F":
-            raise ValueError(DICT['EXCEPTION_INV_SX_F'])
+            raise ValueError(lang.DICT['EXCEPTION_INV_SX_F'])
 
 ## Classe container de endereço do sistema.
 #   Capaz de armazenar uma string que representa o endereço de um arquivo
@@ -319,9 +319,9 @@ class Link(IfBaseType):
     def _validate(self, value):
         nobar = value.replace("/", "")
         if len(value) == 0:
-            raise ValueError(DICT['EXCEPTION_INV_LK_S'])
+            raise ValueError(lang.DICT['EXCEPTION_INV_LK_S'])
         elif unicode.isalnum(nobar) == False and len(nobar) > 0:
-            raise ValueError(DICT['EXCEPTION_INV_LK_F'])
+            raise ValueError(lang.DICT['EXCEPTION_INV_LK_F'])
 
 ## Classe container de notas.
 #   Armazena números que representam notas dos alunos nas atividades.
@@ -356,12 +356,12 @@ class Grades(IfBaseType):
     #                           do que 100.
     def _validate(self, value):
         try: int(value)
-        except ValueError: raise ValueError(DICT['EXCEPTION_INV_GR_F'])
+        except ValueError: raise ValueError(lang.DICT['EXCEPTION_INV_GR_F'])
 
         if value < 0:
-            raise ValueError(DICT['EXCEPTION_INV_GR_S'])
+            raise ValueError(lang.DICT['EXCEPTION_INV_GR_S'])
         elif value > 100:
-            raise ValueError(DICT['EXCEPTION_INV_GR_B'])
+            raise ValueError(lang.DICT['EXCEPTION_INV_GR_B'])
 
 ## Classe container de email.
 #   Este tipo básico irá armazenar emails para contato e identificação
@@ -402,14 +402,14 @@ class Mail(IfBaseType):
     def _validate(self, value):
         notag = value.replace("@", "").replace(".", "")
         if len(value) == 0:
-            raise ValueError(DICT['EXCEPTION_INV_ML_S'])
+            raise ValueError(lang.DICT['EXCEPTION_INV_ML_S'])
         elif unicode.isalnum(notag) == False:
-            raise ValueError(DICT['EXCEPTION_INV_ML_F'])
+            raise ValueError(lang.DICT['EXCEPTION_INV_ML_F'])
         elif value.count('@') == 1:
             if value[value.index('@'):].count('.') < 1:
-                raise ValueError(DICT['EXCEPTION_INV_ML_F'])
+                raise ValueError(lang.DICT['EXCEPTION_INV_ML_F'])
         else:
-            raise ValueError(DICT['EXCEPTION_INV_ML_F'])
+            raise ValueError(lang.DICT['EXCEPTION_INV_ML_F'])
         
 ## Classe container de tipo de exercício.
 #   Este tipo básico contém um inteiro que representa um tipo de exercício.
@@ -445,10 +445,10 @@ class ExType(IfBaseType):
     #                           ser negativo ou não inteiro.
     def _validate(self, value):
         try: int(value)
-        except ValueError: raise ValueError(DICT['EXCEPTION_INV_ET_F'])
+        except ValueError: raise ValueError(lang.DICT['EXCEPTION_INV_ET_F'])
 
         if value <= 0:
-            raise ValueError(DICT['EXCEPTION_INV_ET_S'])
+            raise ValueError(lang.DICT['EXCEPTION_INV_ET_S'])
 
 ## Classe container de Id.
 #   Este tipo básico irá armazenar um inteiro, que identifica univocamente
@@ -485,10 +485,10 @@ class Id(IfBaseType):
     #                           caso seja, negativo.
     def _validate(self, value):
         try: int(value)
-        except ValueError: raise ValueError(DICT['EXCEPTION_INV_ID_F'])
+        except ValueError: raise ValueError(lang.DICT['EXCEPTION_INV_ID_F'])
 
         if value < 1:
-            raise ValueError(DICT['EXCEPTION_INV_ID_S'])
+            raise ValueError(lang.DICT['EXCEPTION_INV_ID_S'])
 
 ## Classe container de linguagem.
 #   Irá armazenar um número que corresponde à língua de preferência do
@@ -523,10 +523,10 @@ class Language(IfBaseType):
     #                           seja negativo.
     def _validate(self, value):
         try: int(value)
-        except ValueError: raise ValueError(DICT['EXCEPTION_INV_LG_F'])
+        except ValueError: raise ValueError(lang.DICT['EXCEPTION_INV_LG_F'])
 
         if value < 1:
-            raise ValueError(DICT['EXCEPTION_INV_LG_F'])
+            raise ValueError(lang.DICT['EXCEPTION_INV_LG_F'])
 
 ## Classe container de Data.
 #   Este tipo básico armazena uma data para os mais diversos usos.
@@ -574,20 +574,20 @@ class Date(IfBaseType):
         day = value['day']
 
         if year < 2014:
-            raise ValueError(DICT['EXCEPTION_INV_DT_Y'])
+            raise ValueError(lang.DICT['EXCEPTION_INV_DT_Y'])
 
         if month < 1 or month > 12:
-            raise ValueError(DICT['EXCEPTION_INV_DT_M'])
+            raise ValueError(lang.DICT['EXCEPTION_INV_DT_M'])
 
         if day < 1:
-            raise ValueError(DICT['EXCEPTION_INV_DT_D'])
+            raise ValueError(lang.DICT['EXCEPTION_INV_DT_D'])
 
         if month == 2:
             if day > 29:
-                raise ValueError(DICT['EXCEPTION_INV_DT_D'])
+                raise ValueError(lang.DICT['EXCEPTION_INV_DT_D'])
         elif month <= 7:
             if day > 30 + (1 if month % 2 else 0):
-                raise ValueError(DICT['EXCEPTION_INV_DT_D'])
+                raise ValueError(lang.DICT['EXCEPTION_INV_DT_D'])
         else:
             if day > 30 + (0 if month % 2 else 1):
-                raise ValueError(DICT['EXCEPTION_INV_DT_D'])
+                raise ValueError(lang.DICT['EXCEPTION_INV_DT_D'])

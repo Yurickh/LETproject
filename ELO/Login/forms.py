@@ -6,7 +6,7 @@
 from django import forms
 from ELO.BaseUnit import Name, Password
 
-from ELO.lang.index import DICT
+from ELO.lang.index import lang
 
 
 ## Classe de formulário para o fomulário de Login.
@@ -22,7 +22,7 @@ class LoginForm(forms.Form):
 		try:
 			name = Name(self.cleaned_data['username'])
 		except ValueError:
-			raise forms.ValidationError(DICT["EXCEPTION_INV_LOG"])
+			raise forms.ValidationError(lang.DICT["EXCEPTION_INV_LOG"])
 		return name
 
 	## Verifica se a formatação do password está correta.
@@ -31,5 +31,5 @@ class LoginForm(forms.Form):
 		try:
 			pw = Password(self.cleaned_data['password'])
 		except ValueError:
-			raise forms.ValidationError(DICT["EXCEPTION_INV_LOG"])
+			raise forms.ValidationError(lang.DICT["EXCEPTION_INV_LOG"])
 		return pw

@@ -17,7 +17,7 @@ from ELO.models import Student, Adm, Professor
 from ELO.BaseUnit import Name, Password
 from Login.forms import LoginForm
 
-from ELO.lang.index import DICT
+from ELO.lang.index import lang
 
 ## Interface para a camada de Apresentação de Usuário do módulo Login.
 # 	É responsável pelo carregamento do template correto e processa os dados
@@ -128,7 +128,7 @@ class UiLogin(IfUiLogin):
 					self.bus.validate(login_form.cleaned_data['username'],
 						login_form.cleaned_data['password'], database)
 				else:
-					raise ValueError(DICT['EXCEPTION_INV_LOG'])
+					raise ValueError(lang.DICT['EXCEPTION_INV_LOG'])
 			except ValueError as exc:
 				if database.__name__ == "Professor":
 					target = "proflogin"
@@ -169,7 +169,7 @@ class BusLogin(IfBusLogin):
 	def validate(self, username, password, database):
 		upass = self.pers.select(username.value, database)
 		if not upass or upass['password'] != password.value:
-			raise ValueError(DICT['EXCEPTION_INV_LOG'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_LOG'])
 
 ## Camada de persistência de usuário para o módulo de Login.
 class PersLogin(IfPersLogin):
