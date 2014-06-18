@@ -5,21 +5,16 @@ from importlib import import_module
 ## @file Arquivo de atualização e manutenção do sistema de línguas do ELO.
 #	Resources disponíveis:
 #		@var available_langs 	Lista das linguagens disponíveis.
-#		@var LANG 				Linguagem corrente do sistema.
-#		@var DICT				Dicionário de tradução de macros.
+#		@var lang				Classe que retorna o dicionário contendo as
+#									macros utilizadas pelo sistema.
 
 available_langs = [
 				"pt_br",
 				"en_us",
 				]
 
-try: NAME
-except NameError: #ifndef LANG
-	NAME = 'pt_br'
-#endif
-
-## Retorna o dicionário correspondente à linguagem selecionada.
-def getDICT(lang=NAME):
+## Função auxiliar que retorna o dicionário requisitado.
+def getDICT(lang):
 	for foo in available_langs:
 		if lang == foo:
 			lang = import_module("ELO.lang." + foo)
@@ -27,12 +22,14 @@ def getDICT(lang=NAME):
 	else:
 		return None
 
-try: DICT 
-except NameError: #ifndef DICT
-	DICT = getDICT(NAME)
-else: #else
-	if NAME in available_langs:
-		if DICT.lang != NAME:
-			DICT = getDICT(NAME)
-	else:
-		NAME = DICT.lang
+## Classe responsável pela manutenção do objeto DICT.
+#	O objeto DICT é um dicionário de macros desenvolvido com o propósito
+#	de permitir a tradução do site para diferentes línguas.
+class lang:
+	
+	DICT = getDICT('pt_br')
+
+	@staticmethod
+	def changeTo(lang):
+		if lang in available_langs:
+			DICT = getDICT(lang) 

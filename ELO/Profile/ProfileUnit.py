@@ -2,7 +2,7 @@
 
 from abc import*
 
-import ELO.lang.index as lang
+from ELO.lang.index import lang
 
 from ELO.models import Student
 from Profile.forms import (
@@ -95,6 +95,10 @@ class IfBusProfile:
     @abstractmethod
     def refreshUser(self, user): pass
 
+    ## Atualiza a linguagem do sistema.
+    @abstractmethod
+    def refreshLang(self, request): pass
+
     ## Edita um dos dados de usuário no cookie E no banco de dados.
     @abstractmethod
     def editField(self, user, field, form): pass
@@ -170,6 +174,8 @@ class UiFullProfile(IfUiProfile):
 
         get_user = lambda: request.session['user']
 
+        self.bus.refreshLang(request)
+
         ## @if Verifica qual o propósito do submit.
         #   Caso seja POST, a requisição ocorre após a submissão de uma form,
         #       muito provavelmente da form de edição de campo.
@@ -242,11 +248,16 @@ class BusProfile(IfBusProfile):
         elif user['type'] == 'Professor':
             return dict(user.items()+ self.pers.fetch(user['name'], Professor))
 
+    def refreshLang(self, request):
+        l = request.session['user']['language']
+        if l:
+            lang.changeTo(l)
+
     def editField(self, user, field, form):
         if field == "name":
             fpw = form.cleaned_data['password'].value
             if fpw != user['password']:
-                raise ValueError(DICT['EXCEPTION_INV_PW_F'])
+                raise ValueError(lang.DICT['EXCEPTION_INV_PW_F'])
             else:
                 newdata = form.cleaned_data['newdata'].value
         elif field == "language":
@@ -260,11 +271,11 @@ class BusProfile(IfBusProfile):
             elif user['type'] == 'Professor':
                 self.pers.update(user['name'], field, newdata, Professor)
         except ValueError as exc:
-            raise ValueError(DICT['EXCEPTION_ERR_DB_U'])
+            raise ValueError(lang.DICT['EXCEPTION_ERR_DB_U'])
         else:
             if field == "language":
-                lang.NAME = newdata
-            return newdata
+                lang.changeTo(newdata)
+        return newdata
 
 ## Camada de persistência de perfil.
 #   Recupera os dados do usuário logado, retornando-os para a camada

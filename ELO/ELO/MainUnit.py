@@ -14,7 +14,7 @@ from Login.LoginUnit import *
 from Profile.ProfileUnit import *
 from Adm.AdmUnit import *
 from Course.CourseUnit import *
-from ELO.lang.index import DICT
+from ELO.lang.index import lang
 
 from models import Adm, Professor, Student
 
@@ -27,7 +27,7 @@ def globalContext(request):
 	_sess = request.session
 	return {
 			'user': _sess['user'] if ('user' in _sess.keys()) else False,
-			'DICT': DICT,
+			'DICT': lang.DICT,
 		}
 
 ## Classe factory.
@@ -102,16 +102,16 @@ class Factory:
 				elif acctype == "Home":
 					self.__ui = UiHomeProfile(self.__bus)
 				else:
-					raise Http404(DICT["EXCEPTION_404_ERR"])
+					raise Http404(lang.DICT["EXCEPTION_404_ERR"])
 			
 				if field and acctype == "Full":
 					return self.__ui.run(request, field)
 				else:
 					return self.__ui.run(request)
 			else:
-				raise Http404(DICT["EXCEPTION_404_ERR"])
+				raise Http404(lang.DICT["EXCEPTION_404_ERR"])
 		else:
-			raise PermissionDenied(DICT["EXCEPTION_403_STD"])
+			raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])
 		
 
 	## Classe que executa o módulo de Administração.
@@ -127,7 +127,7 @@ class Factory:
 					self.__ui = UiAdm(self.__bus) 
 				return self.__ui.run(request)
 		
-		raise PermissionDenied(DICT["EXCEPTION_403_STD"])
+		raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])
 
 	## Classe que executa o módulo de Curso.
 	# 	Define as camadas de persistência, negócio e apresentação de

@@ -119,4 +119,10 @@ DICT = {
 
 	'MATRIC': 'Reg#',
 	'BIOS': 'Bios',
+
+	'HOME' : 'Home',
+	'LOGIN' : 'Login',
+	'LOGOUT' : 'Logout',
+	'PROFILE' : 'Profile',
+	'ELO' : 'ELO',
 }

@@ -10,7 +10,7 @@
 from BaseUnit import *
 from abc import *
 
-from ELO.lang.index import DICT
+from ELO.lang.index import lang
 
 ## Definição das interfaces para classes de usuários.
 #	Inclui-se 'name' e 'password', propriedades concretas que serão
@@ -45,21 +45,21 @@ class User:
 		if type(value) is Name:
 			self._name = value
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_USR_NM'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_USR_NM'])
 
 	@password.setter
 	def password(self, password):
 		if type(password) is Password:
 			self._password = password
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_USR_PW'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_USR_PW'])
 
 	@lastLogin.setter
 	def lastLogin(self, value):
 		if type(value) is Date:
 			self._lastLogin = value
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_USR_DT'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_USR_DT'])
 
 	@name.deleter
 	def name(self):
@@ -120,7 +120,7 @@ class Professor(User):
 		if type(value) is Mail:
 			self.__email = value 
 		else :
-			raise ValueError(DICT['EXCEPTION_INV_PRF_ML'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_PRF_ML'])
 	@property
 	def matric(self):
 		return self.__matric
@@ -130,7 +130,7 @@ class Professor(User):
 		if type(value) is Matric:
 			self.__matric = value
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_PRF_MT'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_PRF_MT'])
 	@matric.deleter
 	def matric(self):
 		del self.__matric
@@ -145,7 +145,7 @@ class Professor(User):
 		if type(bios) is PlainText:
 			self.__bios = bios
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_PRF_BS'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_PRF_BS'])
 
 	@bios.deleter
 	def bios(self):
@@ -161,7 +161,7 @@ class Professor(User):
 		if type(campus) is Campus:
 			self.__campus = campus
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_PRF_CP'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_PRF_CP'])
 
 	@campus.deleter
 	def campus(self):
@@ -177,7 +177,7 @@ class Professor(User):
 		if type(courses) is list and (type(courses[0]) is Id or not courses):
 			self.__courses = courses
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_PRF_CS'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_PRF_CS'])
 
 	@courses.deleter
 	def courses(self):
@@ -193,7 +193,7 @@ class Professor(User):
 		if type(avatar) is Link:
 			self.__avatar = avatar
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_PRF_AV'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_PRF_AV'])
 
 	@avatar.deleter
 	def avatar(self):
@@ -209,7 +209,7 @@ class Professor(User):
 		if type(sex) is Sex:
 			self.__sex = sex
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_PRF_SX'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_PRF_SX'])
 
 	@sex.deleter
 	def sex(self):
@@ -250,7 +250,7 @@ class Student(User):
 		if type(matric) is Matric:
 			self.__matric = matric
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_STU_MT'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_STU_MT'])
 
 	@matric.deleter
 	def matric(self):
@@ -266,7 +266,7 @@ class Student(User):
 		if type(bios) is PlainText:
 			self.__bios = bios
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_STU_BS'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_STU_BS'])
 
 	@bios.deleter
 	def bios(self):
@@ -282,7 +282,7 @@ class Student(User):
 		if type(campus) is Campus:
 			self.__campus = campus
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_STU_CP'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_STU_CP'])
 
 	@campus.deleter
 	def campus(self):
@@ -298,7 +298,7 @@ class Student(User):
 		if (type(courses[0]) is Id or not courses) and type(courses) is list :
 			self.__courses = courses
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_STU_CO'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_STU_CO'])
 
 	@courses.deleter
 	def courses(self):
@@ -314,7 +314,7 @@ class Student(User):
 		if type(avatar) is Link:
 			self.__avatar = avatar
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_STU_AV'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_STU_AV'])
 
 	@avatar.deleter
 	def avatar(self):
@@ -330,7 +330,7 @@ class Student(User):
 		if type(sex) is Sex:
 			self.__sex = sex
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_STU_SX'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_STU_SX'])
 
 	@sex.deleter
 	def sex(self):
@@ -346,7 +346,7 @@ class Student(User):
 		if type(email) is Mail:
 			self.__email = email
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_STU_ML'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_STU_ML'])
 
 	@email.deleter
 	def email(self):
@@ -362,7 +362,7 @@ class Student(User):
 		if type(grades) is dict and type(grades.values()[0]) is Grades:
 			self.__grades = grades
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_STU_GR'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_STU_GR'])
 
 	@grades.deleter
 	def grades(self):
@@ -378,7 +378,7 @@ class Student(User):
 		if type(interests) is PlainText:
 			self.__interests = interests
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_STU_IN'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_STU_IN'])
 
 	@interests.deleter
 	def interests(self):
@@ -394,7 +394,7 @@ class Student(User):
 		if type(language) is Language:
 			self.__language = language
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_STU_LN'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_STU_LN'])
 
 	@language.deleter
 	def language():
@@ -427,7 +427,7 @@ class Courses(object):
 		if type(name) is Name:
 			self.__name = name
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_CRS_NM'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_CRS_NM'])
 
 	@property
 	def thisId(self):
@@ -438,7 +438,7 @@ class Courses(object):
 		if type(thisId) is Id:
 			self.__thisId = thisId
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_CRS_ID'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_CRS_ID'])
 
 	@property
 	def students(self):
@@ -449,7 +449,7 @@ class Courses(object):
 		if type(students) is list and (type(students[0]) is Id or not students):
 			self.__students = students
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_CRS_ST'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_CRS_ST'])
 
 	@property
 	def modules(self):
@@ -460,7 +460,7 @@ class Courses(object):
 		if type(modules) is list and (type(modules[0]) is Id or not modules):
 			self.__modules = modules
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_CRS_MD'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_CRS_MD'])
 
 	@name.deleter
 	def name(self):
@@ -501,7 +501,7 @@ class Module(object):
 		if type(name) is Name:
 			self.__name = name
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_MD_NM'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_MD_NM'])
 
 	@name.deleter
 	def name(self):
@@ -517,7 +517,7 @@ class Module(object):
 		if type(thisId) is Id:
 			self.__thisId = thisId
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_MD_ID'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_MD_ID'])
 
 	@thisId.deleter
 	def thisId(self, thisId):
@@ -533,7 +533,7 @@ class Module(object):
 		if type(lessons) is list and (type(lessons[0]) is Id or not lessons):
 			self.__lessons = lessons
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_MD_LT'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_MD_LT'])
 
 	@lessons.deleter
 	def lessons(self):
@@ -564,7 +564,7 @@ class Lesson(object):
 		if type(name) is Name:
 			self.__name = name
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_LS_NM'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_LS_NM'])
 
 	@name.deleter
 	def name(self):
@@ -579,7 +579,7 @@ class Lesson(object):
 		if type(thisId) is Id:
 			self.__thisId = thisId
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_LS_ID'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_LS_ID'])
 
 	@thisId.deleter
 	def thisId(self):
@@ -594,7 +594,7 @@ class Lesson(object):
 		if type(link) is Link:
 			self.__link = link
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_LS_LK'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_LS_LK'])
 
 	@link.deleter
 	def link(self):
@@ -609,7 +609,7 @@ class Lesson(object):
 		if type(exercises) is list and (type(exercises[0]) is Id or not exercises):
 			self.__exercises = exercises
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_LS_ST'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_LS_ST'])
 
 	@exercises.deleter
 	def exercises(self):
@@ -641,7 +641,7 @@ class Exercise(object):
 		if type(thisId) is Id:
 			self.__thisId = thisId
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_EX_ID'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_EX_ID'])
 
 	@thisId.deleter
 	def thisId(self):
@@ -656,7 +656,7 @@ class Exercise(object):
 		if type(link) is Link:
 			self.__link = link
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_EX_LK'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_EX_LK'])
 
 	@link.deleter
 	def link(self):
@@ -671,7 +671,7 @@ class Exercise(object):
 		if type(exType) is ExType:
 			self.__exType = exType
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_EX_ET'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_EX_ET'])
 
 	@exType.deleter
 	def exType(self):
@@ -686,7 +686,7 @@ class Exercise(object):
 		if type(exFormat) is Id:
 			self.__exFormat = exFormat
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_EX_FT'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_EX_FT'])
 
 	@exFormat.deleter
 	def exFormat(self):
@@ -701,7 +701,7 @@ class Exercise(object):
 		if type(items) is list and (type(items[0]) is Id or not items):
 			self.__items = items
 		else:
-			raise ValueError(DICT['EXCEPTION_INV_EX_IT'])
+			raise ValueError(lang.DICT['EXCEPTION_INV_EX_IT'])
 
 	@items.deleter
 	def items(self):
