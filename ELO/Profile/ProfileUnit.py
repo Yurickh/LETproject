@@ -93,11 +93,11 @@ class IfBusProfile:
 
     ## Atualiza os dados de usuário no cookie de sessão.
     @abstractmethod
-    def refreshUser(self, user): pass
+    def refreshUser(self, request): pass
 
     ## Edita um dos dados de usuário no cookie E no banco de dados.
     @abstractmethod
-    def editField(self, user, field, form): pass
+    def editField(self, request, field, form): pass
 
 
 ## Interface para a camada de Persistência do módulo de perfil.
@@ -118,7 +118,7 @@ class UiHomeProfile(IfUiProfile):
     def run(self, request):
         user = request.session['user']
         if not 'matric' in user:
-            request.session['user'] = self.bus.refreshUser(user)
+            request.session['user'] = self.bus.refreshUser(request)
             user = request.session['user']
         return render(request, "Profile/home.html", {'user' : user})
 
@@ -195,7 +195,7 @@ class UiFullProfile(IfUiProfile):
 
                 if form.is_valid():
                     request.session['user'][field] = self.bus.editField(
-                                                        get_user(), 
+                                                        request.session, 
                                                         field, 
                                                         form )
 
@@ -209,7 +209,7 @@ class UiFullProfile(IfUiProfile):
 
         else: # request.method == "GET"
             if not field: # normal call
-                request.session['user'] = self.bus.refreshUser(get_user())
+                request.session['user'] = self.bus.refreshUser(request)
                 data = self.__makeData(get_user())
                 return render(request, "Profile/full.html", {'data' : data})
             else: # ajax call
@@ -236,13 +236,18 @@ class UiFullProfile(IfUiProfile):
 #   atualizá-los ou modificá-los de alguma forma.
 class BusProfile(IfBusProfile):
 
-    def refreshUser(self, user):
+    def refreshUser(self, request):
+        user = request.session['user']
         if user['type'] == 'Student':
+            fs = self.pers.fetch(user['name'], Student)
+            fd = dict(fs)
+            request.session['django_language'] = fd['language']
             return dict(user.items()+ self.pers.fetch(user['name'], Student))
         elif user['type'] == 'Professor':
             return dict(user.items()+ self.pers.fetch(user['name'], Professor))
 
-    def editField(self, user, field, form):
+    def editField(self, request, field, form):
+        user = request.session['user']
         if field == "name":
             fpw = form.cleaned_data['password'].value
             if fpw != user['password']:
@@ -263,7 +268,7 @@ class BusProfile(IfBusProfile):
             raise ValueError(lang.DICT['EXCEPTION_ERR_DB_U'])
         else:
             if field == "language":
-                
+                request.session['django_language'] = newdata
         return newdata
 
 ## Camada de persistência de perfil.
