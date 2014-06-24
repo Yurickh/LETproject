@@ -1,0 +1,391 @@
+#coding: utf-8
+
+## @file Arquivo de tradução para inglês americano.
+# Copyright (C) 2014 (or maybe not)
+# This file is distributed under the same license as some another package.
+# Yurick Hauschild <yurick.hauschild@gmail.com>, 2014.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1\n"
+"Report-Msgid-Bugs-To: Yurick Hauschild\n"
+"POT-Creation-Date: 2014-06-24 19:02-0300\n"
+"PO-Revision-Date: 2014-06-24 19:05-0300\n"
+"Last-Translator: Yurick Hauschild <yurick.hauschild@gmail.com>\n"
+"Language-Team: LETproj <https://github.com/LETproj>\n"
+"Language: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#################################################### EXCEÇÕES ##########
+
+############################################# BaseType ##
+
+#: locale/index.py:13
+msgid "A senha deve conter no mínimo 6 caracteres."
+msgstr "The password must be at least 6 characters long."
+
+#: locale/index.py:16
+msgid "O nome deve conter menos de 32 caracteres."
+msgstr "The name must not have more than 32 characters."
+
+#: locale/index.py:18
+msgid "O nome deve conter algum caractere."
+msgstr "The name field can't be empty."
+
+#: locale/index.py:20
+msgid "O nome deve conter apenas caracteres alfanuméricos."
+msgstr "The name must have only alphanumeric characters."
+
+#: locale/index.py:23
+msgid "O número de matrícula ultrapassou o tamanho máximo permitido."
+msgstr "The registration number must be smaller."
+
+#: locale/index.py:25
+msgid "O número de matrícula digitado é menor do que o mínimo permitido."
+msgstr "The registration number is smaller than the minimum acceptable."
+
+#: locale/index.py:27
+msgid "Valor inválido para matrícula."
+msgstr "Invalid value for the registration number."
+
+#: locale/index.py:30
+msgid "O texto deve conter no máximo 1024 caracteres."
+msgstr "The text must contain 1024 characters or less."
+
+#: locale/index.py:33
+msgid "O número do campus deve ser maior do que 0."
+msgstr "The campus ID must be bigger than 0."
+
+#: locale/index.py:35
+msgid "Valor inválido para o Campus."
+msgstr "Invalid value for the campus ID."
+
+#: locale/index.py:38
+msgid "O caractere de sexo deve ser 'M', 'm', 'f' e 'F'."
+msgstr "The sex character must be 'M', 'm', 'F' or 'f'."
+
+#: locale/index.py:41
+msgid "O link deve conter pelo menos um caractere."
+msgstr "The link must contain at least one character."
+
+#: locale/index.py:43
+msgid "O link deve conter apenas caracteres alfanuméricos."
+msgstr "The link must contain only alphanumeric characters."
+
+#: locale/index.py:46
+msgid "O campo e-mail nao pode ser nulo."
+msgstr "The mail field can't be empty."
+
+#: locale/index.py:48
+msgid ""
+"O campo e-mail esta escrito no formato incorreto (Mais de um '@', algum "
+"espaço ou nenhum ponto)."
+msgstr "The mail is written in the wrong format."
+
+#: locale/index.py:51
+msgid "O id do tipo de exercício deve ser maior que zero."
+msgstr "The exercise type must be greater than zero."
+
+#: locale/index.py:53
+msgid "Tipo de exercício inválido."
+msgstr "Invalid exercise type."
+
+#: locale/index.py:56
+msgid "A nota deve ser maior ou igual a zero."
+msgstr "The grade must be at least zero."
+
+#: locale/index.py:58
+msgid "A nota deve ser menor do que cem."
+msgstr "The grade must be smaller than one hundred."
+
+#: locale/index.py:60
+msgid "A nota deve ser um valor numérico."
+msgstr "The grade must be a numerical value."
+
+#: locale/index.py:63
+msgid "O campo Id deve ser maior ou igual a 1."
+msgstr "The Id has to be greater than zero."
+
+#: locale/index.py:65
+msgid "Valor inválido para o campo ID."
+msgstr "Invalid value for the ID field."
+
+#: locale/index.py:68
+msgid "Idioma inválido."
+msgstr "Invalid language."
+
+#: locale/index.py:71
+msgid "Dia inválido."
+msgstr "Invalid day."
+
+#: locale/index.py:73
+msgid "Mês inválido."
+msgstr "Invalid month."
+
+#: locale/index.py:75
+msgid "Ano inválido."
+msgstr "Invalid year."
+
+############################################# TestUnit ##
+
+#: locale/index.py:78
+msgid "Ocorreu um erro:"
+msgstr "An Error has been ocurred."
+
+#: locale/index.py:80
+msgid "Ocorreu um erro no método getValue."
+msgstr "An Error has ocurred in the getValue method."
+
+############################################# EntityUnit ##
+
+#: locale/index.py:85
+msgid "Nome de usuário inválido."
+msgstr "Invalid user name."
+
+#: locale/index.py:87
+msgid "Senha de usuário inválida."
+msgstr "Invalid user password."
+
+#: locale/index.py:90
+msgid "Ocorreu um erro na matrícula do professor."
+msgstr "An error has ocurred with the professor registration number."
+
+#: locale/index.py:92
+msgid "Ocorreu um erro na biografia do professor."
+msgstr "An error has ocurred with the professor bios."
+
+#: locale/index.py:94
+msgid "Ocorreu um erro no campus do professor."
+msgstr "An error has ocurred with the professor campus."
+
+#: locale/index.py:96
+msgid "Ocorreu um erro nos cursos do professor."
+msgstr "An error has ocurred with the professor courses."
+
+#: locale/index.py:98
+msgid "Ocorreu um erro no avatar do professor."
+msgstr "An error has ocurred with the professor avatar."
+
+#: locale/index.py:100
+msgid "Ocorreu um erro no sexo do professor."
+msgstr "An error has ocurred with the professor sex."
+
+#: locale/index.py:102
+msgid "E-mail de professor inválido."
+msgstr "Invalid professor mail."
+
+#: locale/index.py:105
+msgid "Matricula de aluno inválida."
+msgstr "Invalid student registrantion number."
+
+#: locale/index.py:107
+msgid "Biografia de aluno inválida."
+msgstr "Invalid student bios."
+
+#: locale/index.py:109
+msgid "Campus de aluno inválido."
+msgstr "Invalid student campus."
+
+#: locale/index.py:111
+msgid "Campo curso de aluno inválido."
+msgstr "Invalid student course."
+
+#: locale/index.py:113
+msgid "Avatar de aluno inválido."
+msgstr "Invalid student avatar."
+
+#: locale/index.py:115
+msgid "Sexo de aluno inválido."
+msgstr "Invalid student sex."
+
+#: locale/index.py:117
+msgid "E-mail de aluno inválido."
+msgstr "Invalid student mail."
+
+#: locale/index.py:119
+msgid "Formato de notas do aluno inválidas."
+msgstr "tudent grades is in an invalid format."
+
+#: locale/index.py:121
+msgid "Interesses do aluno em formato inválido."
+msgstr "Student interests is in an invalid format."
+
+#: locale/index.py:123
+msgid "O idioma selecionado não existe."
+msgstr "The selected language does not exist."
+
+#: locale/index.py:126
+msgid "Nome do curso inválido."
+msgstr "Invalid course name."
+
+#: locale/index.py:128
+msgid "Id do curso inválido."
+msgstr "Invalid course Id."
+
+#: locale/index.py:130
+msgid "Aluno(s) do curso inválido(s)."
+msgstr "Invalid course students."
+
+#: locale/index.py:132
+msgid "Módulo(s) do curso inválido(s)."
+msgstr "Invalid course modules."
+
+#: locale/index.py:135
+msgid "Nome de módulo inválido."
+msgstr "Invalid module name."
+
+#: locale/index.py:137
+msgid "Id do módulo inválido."
+msgstr "Invalid module Id."
+
+#: locale/index.py:139
+msgid "Tipo de lição inválido."
+msgstr "Invalid module lesson type."
+
+#: locale/index.py:142
+msgid "Nome da lição inválido."
+msgstr "Invalid lesson name."
+
+#: locale/index.py:144
+msgid "Id da lição inválido."
+msgstr "Invalid lesson Id."
+
+#: locale/index.py:146
+msgid "Link da lição inválido."
+msgstr "Invalid lesson link."
+
+#: locale/index.py:148
+msgid "Tipo de exercício da lição inválido."
+msgstr "Invalid lesson exercises."
+
+#: locale/index.py:151
+msgid "Id do exercício inválido."
+msgstr "Invalid exercise Id."
+
+#: locale/index.py:153
+msgid "Link do exercício inválido."
+msgstr "Invalid exercise link."
+
+#: locale/index.py:155
+msgid "Tipo do exercício inválido."
+msgstr "Invalid exercise type."
+
+#: locale/index.py:157
+msgid "Formato do exercicio inválido."
+msgstr "Invalid exercise format."
+
+#: locale/index.py:159
+msgid "Itens do exercício inválidos."
+msgstr "Invalid exercise items."
+
+################################################ MENSAGENS ####
+
+############################################# LoginUnit ##
+
+#: locale/index.py:163
+msgid "Login ou senha inválidos."
+msgstr "Incorrect username or password."
+
+#: locale/index.py:166
+msgid "Dados incorretos"
+msgstr "Incorrect form data."
+
+############################################# ERROS GERAIS ##
+
+#: locale/index.py:169
+msgid "Permissão de acesso negada."
+msgstr "Permission denied."
+
+#: locale/index.py:171
+msgid "Ocorreu um erro inesperado. Favor tentar novamente."
+msgstr "Unexpected error. Please, try again."
+
+#: locale/index.py:174
+msgid "Ocorreu um erro ao salvar seu dado. Favor tentar novamente."
+msgstr "An error ocurred while we were trying to update your data. Please, try again later."
+
+#: locale/index.py:177
+msgid "Ocorreu um problema ao carregar o formulário. Favor tentar novamente mais "
+"tarde."
+msgstr "Form loader failed. Please try again later."
+
+############################################# INTERFACE ##
+
+#: locale/index.py:179
+msgid "Atualizar"
+msgstr "Submit"
+
+#: locale/index.py:180
+msgid "Usuário"
+msgstr "User"
+
+#: locale/index.py:181
+msgid "Senha"
+msgstr "Password"
+
+#: locale/index.py:182
+msgid "ELO - Página Inicial"
+msgstr "ELO - Home"
+
+#: locale/index.py:183
+msgid "ELO - Perfil"
+msgstr "ELO - Profile"
+
+#: locale/index.py:184
+msgid "ELO - Administração"
+msgstr "ELO - Adm"
+
+#: locale/index.py:186
+msgid "Linguagem"
+msgstr "Language"
+
+#: locale/index.py:187
+msgid "Inglês"
+msgstr "English"
+
+#: locale/index.py:188
+msgid "Português"
+msgstr "Portuguese"
+
+#: locale/index.py:190
+msgid "Sexo"
+msgstr "Sex"
+
+#: locale/index.py:191
+msgid "Masculino"
+msgstr "Male"
+
+#: locale/index.py:192
+msgid "Feminino"
+msgstr "Female"
+
+#: locale/index.py:194
+msgid "Matrícula"
+msgstr "Reg. Number"
+
+#: locale/index.py:195
+msgid "Biografia"
+msgstr "Bios"
+
+#: locale/index.py:197
+msgid "Principal"
+msgstr "Main page"
+
+#: locale/index.py:198
+msgid "Entrar"
+msgstr "Login"
+
+#: locale/index.py:199
+msgid "Sair"
+msgstr "Logout"
+
+#: locale/index.py:200
+msgid "Perfil"
+msgstr "Profile"
+
+#: locale/index.py:201
+msgid "ELO"
+msgstr "ELO"
