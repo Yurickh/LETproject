@@ -14,7 +14,8 @@ from Login.LoginUnit import *
 from Profile.ProfileUnit import *
 from Adm.AdmUnit import *
 from Course.CourseUnit import *
-from ELO.lang.index import lang
+
+import ELO.locale.index as lang
 
 from models import Adm, Professor, Student
 

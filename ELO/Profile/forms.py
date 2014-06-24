@@ -6,7 +6,7 @@
 
 from django import forms
 
-from ELO.lang.index import lang, available_langs
+import ELO.locale.index as lang
 from ELO.BaseUnit import(
 	Name,
 	Sex,
@@ -46,7 +46,7 @@ class LanguageForm(forms.Form):
 
 	def clean_newdata(self):
 		newlang = self.cleaned_data['newdata']
-		if newlang in available_langs:
+		if newlang in lang.available_langs:
 			return newlang
 		else:
 			raise forms.ValidationError(lang.DICT["EXCEPTION_INV_LG_F"])

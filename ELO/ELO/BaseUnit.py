@@ -9,7 +9,7 @@
 from abc import *
 import hashlib
 
-from ELO.lang.index import lang
+import ELO.locale.index as lang
 
 ## Interface para qualquer tipo básico (Base Type) pertencente ao projeto.
 #   Sua descrição implica que todos os tipos básicos devem ter um método

@@ -37,6 +37,7 @@ a.field
 	position: fixed;
 	top: 5px;
 	right: 0px;
+	width:100%;
 }
 
 .menuTab

@@ -6,7 +6,7 @@
 from django import forms
 from ELO.BaseUnit import Name, Password
 
-from ELO.lang.index import lang
+import ELO.locale.index as lang
 
 
 ## Classe de formulário para o fomulário de Login.
