@@ -1,6 +1,4 @@
-#coding: utf-8
-
-## @file Arquivo de tradução para inglês americano.
+﻿# # @file Arquivo de tradução para inglês americano.
 # Copyright (C) 2014 (or maybe not)
 # This file is distributed under the same license as some another package.
 # Yurick Hauschild <yurick.hauschild@gmail.com>, 2014.
@@ -9,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"Report-Msgid-Bugs-To: Yurick Hauschild\n"
-"POT-Creation-Date: 2014-06-24 19:02-0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-25 02:46-0300\n"
 "PO-Revision-Date: 2014-06-24 19:05-0300\n"
 "Last-Translator: Yurick Hauschild <yurick.hauschild@gmail.com>\n"
 "Language-Team: LETproj <https://github.com/LETproj>\n"
@@ -19,10 +17,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#################################################### EXCEÇÕES ##########
-
-############################################# BaseType ##
-
+# ################################################### EXCEÇÕES ##########
+# ############################################ BaseType ##
 #: locale/index.py:13
 msgid "A senha deve conter no mínimo 6 caracteres."
 msgstr "The password must be at least 6 characters long."
@@ -129,8 +125,7 @@ msgstr "Invalid month."
 msgid "Ano inválido."
 msgstr "Invalid year."
 
-############################################# TestUnit ##
-
+# ############################################ TestUnit ##
 #: locale/index.py:78
 msgid "Ocorreu um erro:"
 msgstr "An Error has been ocurred."
@@ -139,8 +134,7 @@ msgstr "An Error has been ocurred."
 msgid "Ocorreu um erro no método getValue."
 msgstr "An Error has ocurred in the getValue method."
 
-############################################# EntityUnit ##
-
+# ############################################ EntityUnit ##
 #: locale/index.py:85
 msgid "Nome de usuário inválido."
 msgstr "Invalid user name."
@@ -281,10 +275,8 @@ msgstr "Invalid exercise format."
 msgid "Itens do exercício inválidos."
 msgstr "Invalid exercise items."
 
-################################################ MENSAGENS ####
-
-############################################# LoginUnit ##
-
+# ############################################### MENSAGENS ####
+# ############################################ LoginUnit ##
 #: locale/index.py:163
 msgid "Login ou senha inválidos."
 msgstr "Incorrect username or password."
@@ -293,8 +285,7 @@ msgstr "Incorrect username or password."
 msgid "Dados incorretos"
 msgstr "Incorrect form data."
 
-############################################# ERROS GERAIS ##
-
+# ############################################ ERROS GERAIS ##
 #: locale/index.py:169
 msgid "Permissão de acesso negada."
 msgstr "Permission denied."
@@ -305,25 +296,29 @@ msgstr "Unexpected error. Please, try again."
 
 #: locale/index.py:174
 msgid "Ocorreu um erro ao salvar seu dado. Favor tentar novamente."
-msgstr "An error ocurred while we were trying to update your data. Please, try again later."
+msgstr ""
+"An error ocurred while we were trying to update your data. Please, try again "
+"later."
 
 #: locale/index.py:177
-msgid "Ocorreu um problema ao carregar o formulário. Favor tentar novamente mais "
+msgid ""
+"Ocorreu um problema ao carregar o formulário. Favor tentar novamente mais "
 "tarde."
 msgstr "Form loader failed. Please try again later."
 
-############################################# INTERFACE ##
-
+# ############################################ INTERFACE ##
 #: locale/index.py:179
 msgid "Atualizar"
 msgstr "Submit"
 
 #: locale/index.py:180
-msgid "Usuário"
+#, fuzzy
+msgid "Usuário:"
 msgstr "User"
 
 #: locale/index.py:181
-msgid "Senha"
+#, fuzzy
+msgid "Senha:"
 msgstr "Password"
 
 #: locale/index.py:182
