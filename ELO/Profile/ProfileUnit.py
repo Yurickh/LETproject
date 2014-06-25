@@ -12,6 +12,7 @@ from Profile.forms import (
     BiosForm)
 
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
 from django import forms
 
 ## @file ProfileUnit.py
@@ -175,10 +176,6 @@ class UiFullProfile(IfUiProfile):
         #       muito provavelmente da form de edição de campo.
         #   Caso não seja, a requisição há de ser um GET, para mostrar as
         #       opções de edição.
-
-        print request.LANGUAGE_CODE
-        #print request.session['django_language']
-
         if request.method == "POST":
 
             try:
@@ -198,14 +195,13 @@ class UiFullProfile(IfUiProfile):
                     raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
 
                 if form.is_valid():
-                    print request.session['django_language']
                     request.session['user'][field] = self.bus.editField(
                                                         request, 
                                                         field, 
                                                         form )
-                    print request.session['django_language']
                 else:
-                    raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
+                    raise ValueError(lang.DICT['EXCEPTION_INV_FRM'] + 
+                                        ":" + form.errors)
 
             except ValueError as exc:
                 data = self.__makeData(get_user())
@@ -213,7 +209,7 @@ class UiFullProfile(IfUiProfile):
                                                              'error': exc})
 
             data = self.__makeData(get_user())
-            return render(request, "Profile/full.html", {'data' : data })
+            return HttpResponseRedirect('/profile')
 
         else: # request.method == "GET"
             if not field: # normal call
