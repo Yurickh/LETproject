@@ -73,8 +73,20 @@ class IfBusLogin:
 	#	@arg username	Nome do usuário a ser validado.
 	#
 	#	@arg password	Senha a ser validada, junto ao username.
+	#
+	#	@arg database	Classe do modelo a ser utilizado.
 	@abstractmethod
-	def validate(self, username, password): pass
+	def validate(self, username, password, database): pass
+
+
+	## Método de recuperação de linguagem de sistema.
+	#	Retorna uma string com o código da linguagem preferida pelo usuário.
+	#
+	#	@arg username	Nome do usuário a ser verificado.
+	#
+	#	@arg database	Classe do modelo a ser utilizado.
+	@abstractmethod
+	def getLang(self, username, database): pass
 
 	@property
 	def pers(self):
@@ -140,9 +152,12 @@ class UiLogin(IfUiLogin):
 				return render(request, "Login/form.html", {'form': login_form, 
 					'error': exc, 'target': target})
 			else:
+				cd = login_form.cleaned_data
+				l = self.bus.getLang(cd['username'], database)
 				request.session['user'] = {
-								'name': login_form.cleaned_data['username'].value,
-								'password': login_form.cleaned_data['password'].value,
+								'name': cd['username'].value,
+								'password': cd['password'].value,
+								'language': l ,
 								'type': database.__name__,
 							}
 				return HttpResponseRedirect('/')
@@ -164,17 +179,18 @@ class UiLogin(IfUiLogin):
 ## Camada de negócio de usuário para o módulo de Login.
 class BusLogin(IfBusLogin):
 
-	## Método de validação do username e password. Ele recebe da camada de persistência os valores correspondentes ao username e password e 
-	# verifica com o inserido pelo usuário.
 	def validate(self, username, password, database):
 		upass = self.pers.select(username.value, database)
 		if not upass or upass['password'] != password.value:
 			raise ValueError(lang.DICT['EXCEPTION_INV_LOG'])
 
+	def getLang(self, username, database):
+		ulang = self.pers.select(username.value, database)
+		return ulang['language']
+
 ## Camada de persistência de usuário para o módulo de Login.
 class PersLogin(IfPersLogin):
 
-	## Método de busca no banco de dados. Recebe o nome de usuário e busca no bando de dados o valor correspondente à senha daquele usuário.
 	def select(self, username=None, database=None):
 		if not username: return False
 		if not database: return False
@@ -182,7 +198,12 @@ class PersLogin(IfPersLogin):
 		try:
 			uid = database.objects.get(value=username, field='NAME').identity
 			upass = database.objects.get(identity=uid, field='PASSWORD').value
-			return {'name': username, 'password': upass}
 		except database.DoesNotExist:
 			return False
-		
+
+		try:
+			ulang = database.objects.get(identity=uid, field='LANGUAGE').value
+		except database.DoesNotExist:
+			pass
+
+		return {'name': username, 'password': upass, 'language': ulang}

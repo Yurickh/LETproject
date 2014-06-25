@@ -97,6 +97,11 @@ class IfBusProfile:
     def refreshUser(self, request): pass
 
     ## Edita um dos dados de usuário no cookie E no banco de dados.
+    #   Retorna o valor editado.
+    #
+    #   @arg field      Nome do campo que deve ser editado.
+    #
+    #   @arg form       Objeto form que contém os dados.
     @abstractmethod
     def editField(self, request, field, form): pass
 
@@ -107,8 +112,30 @@ class IfBusProfile:
 class IfPersProfile:
     __metaclass__ = ABCMeta
 
+    ##  Função que recupera todos os dados do usuário.
+    #       Percorre o banco de dados e recupera todos os dados do usuário
+    #       requisitado.
+    #
+    #   @arg    username    Nome do usuário a ser pesquisado.
+    #
+    #   @arg    database    Objeto modelo sobre o qual a consulta será
+    #                       realizada.
     @abstractmethod
-    def fetch(self, user): pass
+    def fetch(self, username, database): pass
+
+    ##  Método que atualiza os dados de um usuário fornecido.
+    #       No caso de campos multivalorados, adiciona uma nova entrada.
+    #       Caso contrário, substitui a entrada anterior.
+    #
+    #   @arg    username    Nome do usuário sobre o qual a consulta será
+    #                       realizada.
+    #   @arg    field       Campo a ser atualizado.
+    #
+    #   @arg    newdata     Dado a ser atualizado.
+    #
+    #   @arg    database    Objeto de modelo que será utilizado.
+    @abstractmethod
+    def update(self, username, field, newdata, database): pass
 
 ## Camada de apresentação para a página principal do site.
 #   Deve carregar o devido template, contendo os dados básicos do usuário,
@@ -118,9 +145,12 @@ class UiHomeProfile(IfUiProfile):
 
     def run(self, request):
         user = request.session['user']
+        print request.session['user']
+        print request.LANGUAGE_CODE
         if not 'matric' in user:
             request.session['user'] = self.bus.refreshUser(request)
             user = request.session['user']
+        request.session['django-language'] = user['language']
         return render(request, "Profile/home.html", {'user' : user})
 
 ## Camada de apresentação para a página de perfil completa.
@@ -336,11 +366,13 @@ class PersProfile(IfPersProfile):
             if field[-1] == 's':
                 if field[-2] == 'e' or field[-2] == 't':
                     field = field[:-1]
+        
+                    data = database(identity=uid, field=field, value=newdata)
+                    data.save()
+                    return
 
             data = database.objects.get(field=field.upper(), identity=uid)
-
             data.value = newdata
-
             data.save()
 
         except ( database.DoesNotExist, 
