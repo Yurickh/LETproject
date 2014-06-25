@@ -192,7 +192,8 @@ class UiFullProfile(IfUiProfile):
                 data[field] = {
                     "value": value,
                     "edit":True if field in self.__editable else False,
-                    "mult":True if isinstance(value, list)  else False
+                    "mult":True if isinstance(value, list)  else False,
+                    "fname": lang.DICT[field.upper()],
                             }
 
         return data
@@ -249,13 +250,14 @@ class UiFullProfile(IfUiProfile):
             else: # ajax call
                 err = False
                 if   field == "name":
-                    form = NameForm()
+                    form = NameForm(initial={'newdata':get_user()['name']})
                 elif field == "language":
-                    form = LanguageForm()
+                    form = LanguageForm(initial={
+                            'newdata':get_user()['language']})
                 elif field == "sex":
-                    form = SexForm()
+                    form = SexForm(initial={'newdata':get_user()['sex']})
                 elif field == "bios":
-                    form = BiosForm()
+                    form = BiosForm(initial={'newdata':get_user()['bios']})
                 else:
                     form = lang.DICT["ERROR_FORM"]
                     err = True 

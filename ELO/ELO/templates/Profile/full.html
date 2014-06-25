@@ -16,7 +16,9 @@
 	{% for field, value in data.items %}
 		{{ field }}: {{ value.value }}<br />
 		{% if value.edit %}
-			<button id="edit_{{ field }}">Edit</button><br /><br />
+			<button id="edit_{{ field }}"
+					title="{{ value.fname }}"
+					>Edit</button><br /><br />
 		{% endif %}
 	{% endfor %}
 	<div class="dialog"></div>

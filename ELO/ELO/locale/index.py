@@ -193,6 +193,11 @@ DICT = {
 
 	'MATRIC': _(u'Matrícula'),
 	'BIOS' : _(u'Biografia'),
+	'INTERESTS': _(u'Interesses'),
+	'NAME': _(u'Nome'),
+	'EMAIL': _(u'Email'),
+	'AVATAR': _(u'Avatar'),
+	'CAMPUS': _(u'Campus'),
 
 	'HOME' : _(u'Principal'),
 	'LOGIN' : _(u'Entrar'),

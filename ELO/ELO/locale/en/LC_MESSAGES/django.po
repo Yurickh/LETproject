@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-25 08:25-0300\n"
+"POT-Creation-Date: 2014-06-25 12:10-0300\n"
 "PO-Revision-Date: 2014-06-24 19:05-0300\n"
 "Last-Translator: Yurick Hauschild <yurick.hauschild@gmail.com>\n"
 "Language-Team: LETproj <https://github.com/LETproj>\n"
@@ -365,22 +365,42 @@ msgstr "Reg. Number"
 msgid "Biografia"
 msgstr "Bios"
 
+#: locale/index.py:196
+msgid "Interesses"
+msgstr "Interests"
+
 #: locale/index.py:197
+msgid "Nome"
+msgstr "Name"
+
+#: locale/index.py:198
+msgid "Email"
+msgstr "Email"
+
+#: locale/index.py:199
+msgid "Avatar"
+msgstr "Avatar"
+
+#: locale/index.py:200
+msgid "Campus"
+msgstr "Campus"
+
+#: locale/index.py:202
 msgid "Principal"
 msgstr "Main page"
 
-#: locale/index.py:198
+#: locale/index.py:203
 msgid "Entrar"
 msgstr "Login"
 
-#: locale/index.py:199
+#: locale/index.py:204
 msgid "Sair"
 msgstr "Logout"
 
-#: locale/index.py:200
+#: locale/index.py:205
 msgid "Perfil"
 msgstr "Profile"
 
-#: locale/index.py:201
+#: locale/index.py:206
 msgid "ELO"
 msgstr "ELO"
