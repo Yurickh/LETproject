@@ -11,6 +11,7 @@
 {% endblock %}
 
 {% block content %}
+	{{ error }}
 	&lt; TEMPORARY PROFILE &gt;<br />
 	{% for field, value in data.items %}
 		{{ field }}: {{ value.value }}<br />

@@ -40,8 +40,8 @@ class NameForm(forms.Form):
 #	do site (o dicionário contendo a nomeação de todas as macros).
 class LanguageForm(forms.Form):
 	newdata		= forms.ChoiceField(widget=forms.RadioSelect, choices = [
-											('pt_br', lang.DICT['PORTUGUESE']),
-											('en_us', lang.DICT['ENGLISH'])
+											('pt-br', lang.DICT['PORTUGUESE']),
+											('en', lang.DICT['ENGLISH'])
 												])
 
 	def clean_newdata(self):
@@ -49,7 +49,10 @@ class LanguageForm(forms.Form):
 		if newlang in lang.available_langs:
 			return newlang
 		else:
-			raise forms.ValidationError(lang.DICT["EXCEPTION_INV_LG_F"])
+			if newlang[:newlang.index('-')] in lang.available_langs:
+				return newlang
+			else:
+				raise forms.ValidationError(lang.DICT["EXCEPTION_INV_LG_F"])
 
 ## Formulário de edição de sexo.
 #	Capaz de modificar o sexo exibido do usuário.

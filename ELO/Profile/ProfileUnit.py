@@ -4,7 +4,7 @@ from abc import*
 
 import ELO.locale.index as lang
 
-from ELO.models import Student
+from ELO.models import Student, Professor
 from Profile.forms import (
     NameForm, 
     LanguageForm,
@@ -176,7 +176,11 @@ class UiFullProfile(IfUiProfile):
         #   Caso não seja, a requisição há de ser um GET, para mostrar as
         #       opções de edição.
 
+        print request.LANGUAGE_CODE
+        #print request.session['django_language']
+
         if request.method == "POST":
+
             try:
                 if   "name" in request.POST:
                     form = NameForm(request.POST)
@@ -194,10 +198,14 @@ class UiFullProfile(IfUiProfile):
                     raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
 
                 if form.is_valid():
+                    print request.session['django_language']
                     request.session['user'][field] = self.bus.editField(
-                                                        request.session, 
+                                                        request, 
                                                         field, 
                                                         form )
+                    print request.session['django_language']
+                else:
+                    raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
 
             except ValueError as exc:
                 data = self.__makeData(get_user())
