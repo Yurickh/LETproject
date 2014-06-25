@@ -281,7 +281,7 @@ class Sex(IfBaseType):
     #   @exception  ValueError  Exceção a ser lançada no caso do
     #                           caractere validado não ser F ou M.
     def _validate(self, value):
-        if not (value.upper() == u"M" or value.upper() == u"F"):
+        if value.upper() == u"M" or value.upper() == u"F":
             raise ValueError(lang.DICT['EXCEPTION_INV_SX_F'])
 
 ## Classe container de endereço do sistema.

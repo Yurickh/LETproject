@@ -312,12 +312,10 @@ msgid "Atualizar"
 msgstr "Submit"
 
 #: locale/index.py:180
-#, fuzzy
 msgid "Usuário:"
 msgstr "User"
 
 #: locale/index.py:181
-#, fuzzy
 msgid "Senha:"
 msgstr "Password"
 
