@@ -161,6 +161,6 @@ Para executar o programa, siga as instruções abaixo.
 > * Animações na página de perfil completo implementadas.
 
 > **13/05**
-> * Criadas novos formulários para o módulo de perfil.
+> * Criados novos formulários para o módulo de perfil.
 > * Adicionado o efeito de dialog para estes formulários.
 > * Corrigidos pequenos erros de implementação em diversos arquivos.

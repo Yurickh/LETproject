@@ -1,30 +1,34 @@
-<div class="menuTab"></div>
 <div class="mainMenu">
-	<a href="/">
-		<div class="field">
+	
 	{% if user %}
-		{{ DICT.HOME }}
-		</div>
-	</a>
-	<a href="/profile">
-		<div class="field">
-			{{ DICT.PROFILE }}
-		</div>
-	</a>
-
 	<a href="/logout">
 		<div class="field">
 			{{ DICT.LOGOUT }}
 		</div>
 	</a>
+
+	<a href="/profile">
+		<div class="field">
+			{{ user.name }}
+		</div>
+	</a>
+
+	<a href="/">
+		<div class="field">
+		{{ DICT.HOME }}
+		</div>
+	</a>
+
 	{% else %}
+	<a href="/">
+		<div class="field">
 		{{ DICT.LOGIN }}
 		</div>
 	</a>
 	{% endif %}
-</div>
-<a href="/">
+
 	<div class="banner">
-		{{ DICT.ELO }}
+		ELO
 	</div>
-</a>
+
+</div>
