@@ -1,5 +1,13 @@
 #coding: utf-8
 
+## @file ProfileUnit.py
+#   Este arquivo é responsável pelo armazenamento de todas as camadas 
+# correspondentes ao módulo de perfil. 
+#   Os métodos aqui são criados e chamados pela Factory (MainUnit.py)
+# quando necessários. Eles são responsáveis pelo redirecionamento do usuário
+# para páginas diferentes dependendo do tipo de usuário, edição de dados 
+# pessoais, visualização de informações relativas aos cursos.
+
 from abc import*
 
 import ELO.locale.index as lang
@@ -13,15 +21,8 @@ from Profile.forms import (
 
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
+from django.utils import translation
 from django import forms
-
-## @file ProfileUnit.py
-#   Este arquivo é responsável pelo armazenamento de todas as camadas 
-# correspondentes ao módulo de perfil. 
-#   Os métodos aqui são criados e chamados pela Factory (MainUnit.py)
-# quando necessários. Eles são responsáveis pelo redirecionamento do usuário
-# para páginas diferentes dependendo do tipo de usuário, edição de dados 
-# pessoais, visualização de informações relativas aos cursos.
 
 ## Interface para a camada de Apresentação de Usuário do módulo Profile.
 #   É responsável pelo carregamento do template correto e processa os 
@@ -150,7 +151,7 @@ class UiHomeProfile(IfUiProfile):
         if not 'matric' in user:
             request.session['user'] = self.bus.refreshUser(request)
             user = request.session['user']
-        request.session['django-language'] = user['language']
+        translation.activate(request.session['user']['language'])
         return render(request, "Profile/home.html", {'user' : user})
 
 ## Camada de apresentação para a página de perfil completa.
