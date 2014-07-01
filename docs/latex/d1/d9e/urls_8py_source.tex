@@ -1,0 +1,43 @@
+\hypertarget{urls_8py}{\subsection{urls.\-py}
+\label{urls_8py}\index{E\-L\-O/\-E\-L\-O/urls.\-py@{E\-L\-O/\-E\-L\-O/urls.\-py}}
+}
+
+\begin{DoxyCode}
+\hypertarget{urls_8py_source_l00001}{}\hyperlink{namespaceELO_1_1urls}{00001} \textcolor{comment}{#coding: utf-8}
+00002 
+00003 \textcolor{comment}{## @file urls.py}
+00004 \textcolor{comment}{#   Arquivo responsável pelo redirecionamento e navegação}
+00005 \textcolor{comment}{#   entre as páginas do site.}
+00006 
+00007 \textcolor{keyword}{from} django.conf.urls.static \textcolor{keyword}{import} static
+00008 \textcolor{keyword}{from} django.contrib.staticfiles.urls \textcolor{keyword}{import} staticfiles\_urlpatterns
+00009 \textcolor{keyword}{from} django.conf.urls \textcolor{keyword}{import} patterns, url
+00010 
+00011 \textcolor{keyword}{from} \hyperlink{namespaceELO_1_1MainUnit}{ELO.MainUnit} \textcolor{keyword}{import} Factory
+00012 \textcolor{keyword}{from} ELO \textcolor{keyword}{import} settings
+00013 
+\hypertarget{urls_8py_source_l00014}{}\hyperlink{namespaceELO_1_1urls_a85325dfebd736ced5558533f2c4bc29a}{00014} factory = \hyperlink{classELO_1_1MainUnit_1_1Factory}{Factory}()
+00015 
+\hypertarget{urls_8py_source_l00016}{}\hyperlink{namespaceELO_1_1urls_a3451f093ed6ab05c006fd0d1cdba836d}{00016} urlpatterns = patterns(\textcolor{stringliteral}{''}, 
+00017     \textcolor{comment}{## URL da home page, ou seja, a pagina de login do aluno.}
+00018     url(\textcolor{stringliteral}{r'^$'}, factory.runHome, \{\textcolor{stringliteral}{'entity'}: \textcolor{stringliteral}{'Student'}\}),
+00019     \textcolor{comment}{## URL para o login do professor.}
+00020     url(\textcolor{stringliteral}{r'^proflogin/?$'}, factory.runHome, \{\textcolor{stringliteral}{'entity'}: \textcolor{stringliteral}{'Professor'}\}),
+00021     \textcolor{comment}{## URL para o login do administrador.}
+00022     url(\textcolor{stringliteral}{r'^364fd8cdc3a35a89b7be75bc9d10ebea/?$'}, 
+00023         factory.runHome, \{\textcolor{stringliteral}{'entity'}: \textcolor{stringliteral}{'Adm'}\}),
+00024     \textcolor{comment}{## URL da pagina de perfil.}
+00025     url(\textcolor{stringliteral}{r'^profile/?$'}, factory.runProfile, \{\textcolor{stringliteral}{'acctype'}: \textcolor{stringliteral}{'Full'}\}),
+00026     \textcolor{comment}{## URL para mostrar assincronamente a edição de um campo de perfil.}
+00027     url(\textcolor{stringliteral}{r'^assync/editfield/(?P<field>\(\backslash\)w\{3,9\})/?$'}, 
+00028         factory.runProfile, \{\textcolor{stringliteral}{'acctype'} : \textcolor{stringliteral}{'Full'}\}),
+00029     \textcolor{comment}{## URL da pagina de logout.}
+00030     url(\textcolor{stringliteral}{r'^logout/?$'}, factory.runLogout),
+00031     \textcolor{comment}{## URL da pagina de cursos.}
+00032     url(\textcolor{stringliteral}{r'^course/?$'}, factory.runCourse),
+00033     \textcolor{comment}{## URL da pagina de administracao.}
+00034     url(\textcolor{stringliteral}{r'^adm/?$'}, factory.runAdm),
+00035 ) + static(settings.MEDIA\_URL, document\_root=settings.MEDIA\_ROOT)
+00036 
+00037 urlpatterns += staticfiles\_urlpatterns()
+\end{DoxyCode}

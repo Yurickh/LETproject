@@ -1,4 +1,4 @@
-\hypertarget{classELO_1_1BaseUnit_1_1Sex}{\section{Referência da Classe E\-L\-O.\-Base\-Unit.\-Sex}
+\hypertarget{classELO_1_1BaseUnit_1_1Sex}{\subsection{Referência da Classe E\-L\-O.\-Base\-Unit.\-Sex}
 \label{classELO_1_1BaseUnit_1_1Sex}\index{E\-L\-O.\-Base\-Unit.\-Sex@{E\-L\-O.\-Base\-Unit.\-Sex}}
 }
 
@@ -12,31 +12,29 @@ Diagrama de Hierarquia para E\-L\-O.\-Base\-Unit.\-Sex\-:\begin{figure}[H]
 \includegraphics[height=2.000000cm]{dd/d8a/classELO_1_1BaseUnit_1_1Sex}
 \end{center}
 \end{figure}
-\subsection*{Métodos Públicos}
+\subsubsection*{Métodos Públicos}
 \begin{DoxyCompactItemize}
 \item 
 def \hyperlink{classELO_1_1BaseUnit_1_1Sex_a2a5214adaf2a657f70cd8cf579e420b5}{\-\_\-\-\_\-init\-\_\-\-\_\-}
 \begin{DoxyCompactList}\small\item\em Construtor da classe. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\subsection{Descrição Detalhada}
-Classe container de sexo. 
-
+\subsubsection{Descrição Detalhada}
 Responsável por armazenar um caractere relativo a identificação do sexo do usuário. 
 
-\subsection{Construtores \& Destrutores}
+Definição na linha \hyperlink{BaseUnit_8py_source_l00255}{255} do arquivo \hyperlink{BaseUnit_8py_source}{Base\-Unit.\-py}.
+
+
+
+\subsubsection{Construtores \& Destrutores}
 \hypertarget{classELO_1_1BaseUnit_1_1Sex_a2a5214adaf2a657f70cd8cf579e420b5}{\index{E\-L\-O\-::\-Base\-Unit\-::\-Sex@{E\-L\-O\-::\-Base\-Unit\-::\-Sex}!\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}}
 \index{\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}!ELO::BaseUnit::Sex@{E\-L\-O\-::\-Base\-Unit\-::\-Sex}}
-\subsubsection[{\-\_\-\-\_\-init\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Base\-Unit.\-Sex.\-\_\-\-\_\-init\-\_\-\-\_\- (
+\paragraph[{\-\_\-\-\_\-init\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Base\-Unit.\-Sex.\-\_\-\-\_\-init\-\_\-\-\_\- (
 \begin{DoxyParamCaption}
 \item[{}]{self, }
 \item[{}]{value}
 \end{DoxyParamCaption}
 )}}\label{classELO_1_1BaseUnit_1_1Sex_a2a5214adaf2a657f70cd8cf579e420b5}
-
-
-Construtor da classe. 
-
 Capaz de impedir a criação de um tipo básico com conteúdo inválido.
 
 \begin{DoxyItemize}
@@ -46,6 +44,26 @@ Capaz de impedir a criação de um tipo básico com conteúdo inválido.
 {\em Value\-Error} & Exceção lançada para advertir que value está inválido. \\
 \hline
 \end{DoxyExceptions}
+
+
+Definição na linha \hyperlink{BaseUnit_8py_source_l00267}{267} do arquivo \hyperlink{BaseUnit_8py_source}{Base\-Unit.\-py}.
+
+
+
+Referências \hyperlink{BaseUnit_8py_source_l00044}{E\-L\-O.\-Base\-Unit.\-If\-Base\-Type.\-\_\-validate()} e \hyperlink{BaseUnit_8py_source_l00035}{E\-L\-O.\-Base\-Unit.\-If\-Base\-Type.\-\_\-value}.
+
+
+\begin{DoxyCode}
+\hypertarget{classELO_1_1BaseUnit_1_1Sex_l00267}{}\hyperlink{classELO_1_1BaseUnit_1_1Sex_a2a5214adaf2a657f70cd8cf579e420b5}{00267} 
+00268     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Sex_a2a5214adaf2a657f70cd8cf579e420b5}{\_\_init\_\_}(self, value):
+00269         \textcolor{keywordflow}{try}:
+00270             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(value)
+00271         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00272             del self
+00273             \textcolor{keywordflow}{raise} exc
+00274         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value} = value
+
+\end{DoxyCode}
 
 
 A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}

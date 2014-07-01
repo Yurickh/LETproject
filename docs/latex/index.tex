@@ -1,0 +1,96 @@
+\subsubsection*{Conteúdo}
+
+\subsubsection*{Index}
+
+
+\begin{DoxyEnumerate}
+\item Definição
+\item Dados do projeto
+\item Documentação 3.\-1. Doxygen (html)
+\item Instalação e execução
+\item Metas de desenvolvimento
+\item Log de Atividades
+\end{DoxyEnumerate}
+
+\subsubsection*{Conteúdo}
+
+\paragraph*{1. Definição}
+
+O L\-E\-Tproject é uma iniciativa do laboratório do L\-E\-T para o desenvolvimento de uma plataforma de ensino de línguas online. Seu principal objetivo é criar uma interface amigável entre alunos e professores de forma a incluir o estudo doméstico de línguas no mundo informatizado.
+
+\paragraph*{2. Dados do projeto}
+
+Título do projeto\-:
+\begin{DoxyItemize}
+\item {\bfseries L\-E\-Tproject (nome temporário)}
+\item {\bfseries \hyperlink{namespaceELO}{E\-L\-O} (Ensino de Línguas Online) (nome temporário)}
+\end{DoxyItemize}
+
+Orientador\-: {\bfseries Professor Cláudio Correa e Castro Gonçalves}
+
+Unidade Acadêmica / Departamento\-: {\bfseries Instituto de Letras/\-I\-L -\/ Departamento de Línguas Estrangeiras e Tradução/\-L\-E\-T}
+
+Alunos Envolvidos\-:
+\begin{DoxyItemize}
+\item Yurick Hauschild Caetano da Costa 12/0024136
+\item André Accioly Lima 12/0059908
+\item Diego Santos da Silva 11/0027892
+\end{DoxyItemize}
+
+\paragraph*{3. Documentação}
+
+Toda a documentação do projeto pode ser encontrada na pasta doc/.
+
+\begin{quotation}
+{\bfseries A\-T\-E\-NÇÃ\-O}\-: A documentação acima referenciada inclui explanações das funções de todas as classes e métodos implementados e tem por público alvo principalmente desenvolvedores interessados em contribuir com o projeto.
+
+\end{quotation}
+
+
+\begin{quotation}
+Para uma versão específica para usuários, ou seja, pessoas que estão interessadas no funcionamento da ferramenta e não em seus mecanismos, leia o ponto {\itshape 4. Instalação e execução}
+
+\end{quotation}
+
+
+\subparagraph*{3.\-i. Doxyfile (html)}
+
+No intuito de simplificar a navegação dentro da documentação do projeto, utilizamos a ferramenta Doxygen, gerando, assim, um arquivo H\-T\-M\-L que contém uma interface amigável. Este arquivo está contido em doc/html/ e para acessá-\/lo basta abrir o arquivo doc/html/index.\-html com o seu navegador.
+
+\paragraph*{4. Instalação e execução}
+
+Para executar o programa, siga as instruções abaixo.
+
+
+\begin{DoxyEnumerate}
+\item Baixe o código fonte do projeto. Para isso, basta clicar no botão \char`\"{}\-Download Z\-I\-P\char`\"{} ao lado deste arquivo, como na imagem abaixo. 
+\item Para instalar o python no Windows\-:
+\item Para instalar o python no Linux\-: \begin{quotation}
+O\-B\-S\-: As últimas versões do Ubuntu e Fedora já vêm com o python 2.\-7 e as últimas versões do R\-H\-E\-L e Cent\-O\-S já vêm com o python 2.\-6.
+
+\end{quotation}
+
+\end{DoxyEnumerate}
+
+\href{http://python-distribute.org/distribute_setup.py}{\tt B\-A\-I\-X\-E O P\-Y\-T\-H\-O\-N S\-C\-R\-I\-P\-T A\-Q\-U\-I, E E\-X\-E\-C\-U\-T\-E}. Para executar, use no terminal {\ttfamily python distributte\-\_\-setup.\-py}
+\begin{DoxyItemize}
+\item Instale o pip\-: {\ttfamily \$ easy\-\_\-install pip}
+\item Instale o virtualenv\-: {\ttfamily \$ pip install virtualenv}
+\item Selecione o diretório para a instalação do python e execute o virtualenv. {\ttfamily \$ virtualenv -\/-\/distributte venv}
+\item Para executar o ambiente, rode\-: {\ttfamily \$ source venv/bin/activate}
+\item Para sair do ambiente\-: {\ttfamily \$ deactivate}
+\end{DoxyItemize}
+
+Para instalar django no Windows\-:
+\begin{DoxyItemize}
+\item Baixe \href{https://www.djangoproject.com/download/1.6.2/tarball/}{\tt Download Django-\/1.\-6.\-2.\-tar.\-gz}. Então extraia o arquivo, inicie o D\-O\-S shell com permissão de administrador e execute o comando no diretório cujo nome inicie com \char`\"{}\-Django-\/\char`\"{}\-: {\ttfamily \$ python setup.\-py install}
+\end{DoxyItemize}
+
+Para instalar django no Ubuntu\-:
+\begin{DoxyItemize}
+\item Pelo pip\-: {\ttfamily \$ pip install Django==1.\-6.\-2}
+\item \char`\"{}\-Manualmente\char`\"{}\-:
+\begin{DoxyItemize}
+\item Baixe \href{https://www.djangoproject.com/download/1.6.2/tarball/}{\tt Download Django-\/1.\-6.\-2.\-tar.\-gz}. Então\-: {\ttfamily \$ tar xzvf Django-\/1.\-6.\-2.\-tar.\-gz} {\ttfamily \$ cd Django-\/1.\-6.\-2} {\ttfamily \$ sudo python setup.\-py install} 
+\end{DoxyItemize}
+\end{DoxyItemize}

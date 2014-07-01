@@ -8,6 +8,13 @@
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../search/search.js"></script>
 <script type="text/javascript">
@@ -37,7 +44,6 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="../../index.html"><span>Página&#160;Principal</span></a></li>
-      <li><a href="../../pages.html"><span>Páginas&#160;relacionadas</span></a></li>
       <li><a href="../../namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="../../annotated.html"><span>Classes</span></a></li>
       <li><a href="../../files.html"><span>Arquivos</span></a></li>
@@ -62,17 +68,31 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="../../annotated.html"><span>Lista&#160;de&#160;Componentes</span></a></li>
-      <li><a href="../../classes.html"><span>Índice&#160;dos&#160;Componentes</span></a></li>
       <li><a href="../../hierarchy.html"><span>Hierarquia&#160;de&#160;Classes</span></a></li>
       <li><a href="../../functions.html"><span>Componentes&#160;Membros</span></a></li>
     </ul>
   </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('d1/dc6/classELO_1_1MainUnit_1_1Factory.html','../../');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variáveis</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variáveis</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -81,11 +101,6 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="../../da/d09/namespaceELO.html">ELO</a></li><li class="navelem"><a class="el" href="../../db/d73/namespaceELO_1_1MainUnit.html">MainUnit</a></li><li class="navelem"><a class="el" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html">Factory</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Métodos Públicos</a> &#124;
@@ -112,9 +127,6 @@ Métodos Públicos</h2></td></tr>
 <tr class="memitem:ab20a76f74180fc77c6b8fcd8de7942f1"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#ab20a76f74180fc77c6b8fcd8de7942f1">runProfile</a></td></tr>
 <tr class="memdesc:ab20a76f74180fc77c6b8fcd8de7942f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Classe que executa a página inicial do módulo de Perfil.  <a href="#ab20a76f74180fc77c6b8fcd8de7942f1">Mais...</a><br/></td></tr>
 <tr class="separator:ab20a76f74180fc77c6b8fcd8de7942f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb3772dd3c00357be1985af09c824858"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#acb3772dd3c00357be1985af09c824858">runProfileEdit</a></td></tr>
-<tr class="memdesc:acb3772dd3c00357be1985af09c824858"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class que possibilida a edição de um campo de perfil.  <a href="#acb3772dd3c00357be1985af09c824858">Mais...</a><br/></td></tr>
-<tr class="separator:acb3772dd3c00357be1985af09c824858"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a533b402a54bf6f6715824a8687fa7a24"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a533b402a54bf6f6715824a8687fa7a24">runAdm</a></td></tr>
 <tr class="memdesc:a533b402a54bf6f6715824a8687fa7a24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Classe que executa o módulo de Administração.  <a href="#a533b402a54bf6f6715824a8687fa7a24">Mais...</a><br/></td></tr>
 <tr class="separator:a533b402a54bf6f6715824a8687fa7a24"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -123,8 +135,9 @@ Métodos Públicos</h2></td></tr>
 <tr class="separator:a5e360bc5396fd576e0614b9e157b3816"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descrição Detalhada</h2>
-<div class="textblock"><p>Classe factory. </p>
-<p>Responsável pela construção e controle de fluxo de todo o programa. Tudo é criado a partir dela. </p>
+<div class="textblock"><p>Responsável pela construção e controle de fluxo de todo o programa. Tudo é criado a partir dela. </p>
+
+<p>Definição na linha <a class="el" href="../../dd/d7f/MainUnit_8py_source.html#l00036">36</a> do arquivo <a class="el" href="../../dd/d7f/MainUnit_8py_source.html">MainUnit.py</a>.</p>
 </div><h2 class="groupheader">Métodos</h2>
 <a class="anchor" id="a533b402a54bf6f6715824a8687fa7a24"></a>
 <div class="memitem">
@@ -149,10 +162,33 @@ Métodos Públicos</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Classe que executa o módulo de Administração. </p>
 <p>Define as camadas de persinstência, negócio e apresentação de administração. </p>
 
+<p>Definição na linha <a class="el" href="../../dd/d7f/MainUnit_8py_source.html#l00121">121</a> do arquivo <a class="el" href="../../dd/d7f/MainUnit_8py_source.html">MainUnit.py</a>.</p>
+
+<p>Referências <a class="el" href="../../de/d1e/CourseUnit_8py_source.html#l00025">Course.CourseUnit.IfUiCourse.__bus</a>, <a class="el" href="../../db/dd3/AdmUnit_8py_source.html#l00031">Adm.AdmUnit.IfUiAdm.__bus</a>, <a class="el" href="../../dd/d7f/MainUnit_8py_source.html#l00038">ELO.MainUnit.Factory.__bus</a>, <a class="el" href="../../dd/d7f/MainUnit_8py_source.html#l00039">ELO.MainUnit.Factory.__pers</a>, <a class="el" href="../../de/d1e/CourseUnit_8py_source.html#l00051">Course.CourseUnit.IfBusCourse.__pers</a>, <a class="el" href="../../db/dd3/AdmUnit_8py_source.html#l00061">Adm.AdmUnit.IfBusAdm.__pers</a> e <a class="el" href="../../dd/d7f/MainUnit_8py_source.html#l00037">ELO.MainUnit.Factory.__ui</a>.</p>
+
+<p>Referenciado por <a class="el" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a766943202ba781821cf749ca0fb133ba">ELO.MainUnit.Factory.runHome()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a533b402a54bf6f6715824a8687fa7a24">  121</a></span>&#160;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keyword">def </span><a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a533b402a54bf6f6715824a8687fa7a24">runAdm</a>(self, request):</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keywordflow">if</span> <span class="stringliteral">&#39;user&#39;</span> <span class="keywordflow">in</span> request.session.keys():</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <span class="keywordflow">if</span> request.session[<span class="stringliteral">&#39;user&#39;</span>][<span class="stringliteral">&#39;type&#39;</span>] == <span class="stringliteral">&#39;Adm&#39;</span>:</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                <span class="keywordflow">if</span> <span class="keywordflow">not</span> isinstance(self.<a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a189a44a11e1a66ba69663eb2c598dd7c">__ui</a>, IfUiAdm):</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                    self.<a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a68f6640ad3b515e1b8cd48d1554c0779">__pers</a> = <a class="code" href="../../dc/d1a/classAdm_1_1AdmUnit_1_1PersAdm.html">PersAdm</a>()</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                    self.<a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a6a0b7b93046e095779ba54e0a8a4d02c">__bus</a> = <a class="code" href="../../de/de0/classAdm_1_1AdmUnit_1_1BusAdm.html">BusAdm</a>(self.<a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a68f6640ad3b515e1b8cd48d1554c0779">__pers</a>)</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                    self.<a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a189a44a11e1a66ba69663eb2c598dd7c">__ui</a> = <a class="code" href="../../d4/dde/classAdm_1_1AdmUnit_1_1UiAdm.html">UiAdm</a>(self.<a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a6a0b7b93046e095779ba54e0a8a4d02c">__bus</a>) </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                <span class="keywordflow">return</span> self.__ui.run(request)</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="keywordflow">raise</span> PermissionDenied(lang.DICT[<span class="stringliteral">&quot;EXCEPTION_403_STD&quot;</span>])</div>
+</div>
+<div class="ttc" id="classAdm_1_1AdmUnit_1_1PersAdm_html"><div class="ttname"><a href="../../dc/d1a/classAdm_1_1AdmUnit_1_1PersAdm.html">Adm.AdmUnit.PersAdm</a></div><div class="ttdoc">Camada de persistência para o módulo de administração. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd3/AdmUnit_8py_source.html#l00083">AdmUnit.py:83</a></div></div>
+<div class="ttc" id="classELO_1_1MainUnit_1_1Factory_html_a68f6640ad3b515e1b8cd48d1554c0779"><div class="ttname"><a href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a68f6640ad3b515e1b8cd48d1554c0779">ELO.MainUnit.Factory.__pers</a></div><div class="ttdeci">__pers</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/MainUnit_8py_source.html#l00039">MainUnit.py:39</a></div></div>
+<div class="ttc" id="classELO_1_1MainUnit_1_1Factory_html_a533b402a54bf6f6715824a8687fa7a24"><div class="ttname"><a href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a533b402a54bf6f6715824a8687fa7a24">ELO.MainUnit.Factory.runAdm</a></div><div class="ttdeci">def runAdm</div><div class="ttdoc">Classe que executa o módulo de Administração. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/MainUnit_8py_source.html#l00121">MainUnit.py:121</a></div></div>
+<div class="ttc" id="classAdm_1_1AdmUnit_1_1UiAdm_html"><div class="ttname"><a href="../../d4/dde/classAdm_1_1AdmUnit_1_1UiAdm.html">Adm.AdmUnit.UiAdm</a></div><div class="ttdoc">Camada de interface de usuário para o módulo de administração. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd3/AdmUnit_8py_source.html#l00074">AdmUnit.py:74</a></div></div>
+<div class="ttc" id="classELO_1_1MainUnit_1_1Factory_html_a6a0b7b93046e095779ba54e0a8a4d02c"><div class="ttname"><a href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a6a0b7b93046e095779ba54e0a8a4d02c">ELO.MainUnit.Factory.__bus</a></div><div class="ttdeci">__bus</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/MainUnit_8py_source.html#l00038">MainUnit.py:38</a></div></div>
+<div class="ttc" id="classELO_1_1MainUnit_1_1Factory_html_a189a44a11e1a66ba69663eb2c598dd7c"><div class="ttname"><a href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a189a44a11e1a66ba69663eb2c598dd7c">ELO.MainUnit.Factory.__ui</a></div><div class="ttdeci">__ui</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/MainUnit_8py_source.html#l00037">MainUnit.py:37</a></div></div>
+<div class="ttc" id="classAdm_1_1AdmUnit_1_1BusAdm_html"><div class="ttname"><a href="../../de/de0/classAdm_1_1AdmUnit_1_1BusAdm.html">Adm.AdmUnit.BusAdm</a></div><div class="ttdoc">Camada de negócio para o módulo de administração. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd3/AdmUnit_8py_source.html#l00080">AdmUnit.py:80</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a5e360bc5396fd576e0614b9e157b3816"></a>
@@ -178,10 +214,29 @@ Métodos Públicos</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Define as camadas de persistência, negócio e apresentação de curso. </p>
 
-<p>Classe que executa o módulo de Curso. </p>
-<p>Define as camdas de persistência, negócio e apresentação de curso. </p>
+<p>Definição na linha <a class="el" href="../../dd/d7f/MainUnit_8py_source.html#l00136">136</a> do arquivo <a class="el" href="../../dd/d7f/MainUnit_8py_source.html">MainUnit.py</a>.</p>
 
+<p>Referências <a class="el" href="../../de/d1e/CourseUnit_8py_source.html#l00025">Course.CourseUnit.IfUiCourse.__bus</a>, <a class="el" href="../../db/dd3/AdmUnit_8py_source.html#l00031">Adm.AdmUnit.IfUiAdm.__bus</a>, <a class="el" href="../../dd/d7f/MainUnit_8py_source.html#l00038">ELO.MainUnit.Factory.__bus</a>, <a class="el" href="../../dd/d7f/MainUnit_8py_source.html#l00139">ELO.MainUnit.Factory.__per</a>, <a class="el" href="../../dd/d7f/MainUnit_8py_source.html#l00039">ELO.MainUnit.Factory.__pers</a>, <a class="el" href="../../de/d1e/CourseUnit_8py_source.html#l00051">Course.CourseUnit.IfBusCourse.__pers</a>, <a class="el" href="../../db/dd3/AdmUnit_8py_source.html#l00061">Adm.AdmUnit.IfBusAdm.__pers</a> e <a class="el" href="../../dd/d7f/MainUnit_8py_source.html#l00037">ELO.MainUnit.Factory.__ui</a>.</p>
+<div class="fragment"><div class="line"><a name="l00136"></a><span class="lineno"><a class="line" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a5e360bc5396fd576e0614b9e157b3816">  136</a></span>&#160;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="keyword">def </span><a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a5e360bc5396fd576e0614b9e157b3816">runCourse</a>(self, request):</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="keywordflow">if</span> <span class="stringliteral">&#39;user&#39;</span> <span class="keywordflow">in</span> request.session.keys():</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            <span class="keywordflow">if</span> <span class="keywordflow">not</span> self.<a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a189a44a11e1a66ba69663eb2c598dd7c">__ui</a> <span class="keywordflow">is</span> IfUiCourse:</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                self.<a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a68d9e3ac6990b31d2d6a4fd68cf66d30">__per</a> = <a class="code" href="../../dc/d1a/classAdm_1_1AdmUnit_1_1PersAdm.html">PersAdm</a>()</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                self.<a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a6a0b7b93046e095779ba54e0a8a4d02c">__bus</a> = <a class="code" href="../../de/de0/classAdm_1_1AdmUnit_1_1BusAdm.html">BusAdm</a>(self.<a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a68f6640ad3b515e1b8cd48d1554c0779">__pers</a>)</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                self.<a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a189a44a11e1a66ba69663eb2c598dd7c">__ui</a> = <a class="code" href="../../d4/dde/classAdm_1_1AdmUnit_1_1UiAdm.html">UiAdm</a>(self.<a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a6a0b7b93046e095779ba54e0a8a4d02c">__bus</a>)</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            <span class="keywordflow">return</span> self.__ui.run(request)</div>
+<div class="ttc" id="classAdm_1_1AdmUnit_1_1PersAdm_html"><div class="ttname"><a href="../../dc/d1a/classAdm_1_1AdmUnit_1_1PersAdm.html">Adm.AdmUnit.PersAdm</a></div><div class="ttdoc">Camada de persistência para o módulo de administração. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd3/AdmUnit_8py_source.html#l00083">AdmUnit.py:83</a></div></div>
+<div class="ttc" id="classELO_1_1MainUnit_1_1Factory_html_a5e360bc5396fd576e0614b9e157b3816"><div class="ttname"><a href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a5e360bc5396fd576e0614b9e157b3816">ELO.MainUnit.Factory.runCourse</a></div><div class="ttdeci">def runCourse</div><div class="ttdoc">Classe que executa o módulo de Curso. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/MainUnit_8py_source.html#l00136">MainUnit.py:136</a></div></div>
+<div class="ttc" id="classELO_1_1MainUnit_1_1Factory_html_a68f6640ad3b515e1b8cd48d1554c0779"><div class="ttname"><a href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a68f6640ad3b515e1b8cd48d1554c0779">ELO.MainUnit.Factory.__pers</a></div><div class="ttdeci">__pers</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/MainUnit_8py_source.html#l00039">MainUnit.py:39</a></div></div>
+<div class="ttc" id="classELO_1_1MainUnit_1_1Factory_html_a68d9e3ac6990b31d2d6a4fd68cf66d30"><div class="ttname"><a href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a68d9e3ac6990b31d2d6a4fd68cf66d30">ELO.MainUnit.Factory.__per</a></div><div class="ttdeci">__per</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/MainUnit_8py_source.html#l00139">MainUnit.py:139</a></div></div>
+<div class="ttc" id="classAdm_1_1AdmUnit_1_1UiAdm_html"><div class="ttname"><a href="../../d4/dde/classAdm_1_1AdmUnit_1_1UiAdm.html">Adm.AdmUnit.UiAdm</a></div><div class="ttdoc">Camada de interface de usuário para o módulo de administração. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd3/AdmUnit_8py_source.html#l00074">AdmUnit.py:74</a></div></div>
+<div class="ttc" id="classELO_1_1MainUnit_1_1Factory_html_a6a0b7b93046e095779ba54e0a8a4d02c"><div class="ttname"><a href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a6a0b7b93046e095779ba54e0a8a4d02c">ELO.MainUnit.Factory.__bus</a></div><div class="ttdeci">__bus</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/MainUnit_8py_source.html#l00038">MainUnit.py:38</a></div></div>
+<div class="ttc" id="classELO_1_1MainUnit_1_1Factory_html_a189a44a11e1a66ba69663eb2c598dd7c"><div class="ttname"><a href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a189a44a11e1a66ba69663eb2c598dd7c">ELO.MainUnit.Factory.__ui</a></div><div class="ttdeci">__ui</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/MainUnit_8py_source.html#l00037">MainUnit.py:37</a></div></div>
+<div class="ttc" id="classAdm_1_1AdmUnit_1_1BusAdm_html"><div class="ttname"><a href="../../de/de0/classAdm_1_1AdmUnit_1_1BusAdm.html">Adm.AdmUnit.BusAdm</a></div><div class="ttdoc">Camada de negócio para o módulo de administração. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd3/AdmUnit_8py_source.html#l00080">AdmUnit.py:80</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a766943202ba781821cf749ca0fb133ba"></a>
@@ -213,10 +268,26 @@ Métodos Públicos</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Classe que redireciona para a devida home. </p>
 <p>Caso o usuário já esteja devidamente logado, redireciona para o profile, caso contrário, vai para a página de login. </p>
 
+<p>Definição na linha <a class="el" href="../../dd/d7f/MainUnit_8py_source.html#l00045">45</a> do arquivo <a class="el" href="../../dd/d7f/MainUnit_8py_source.html">MainUnit.py</a>.</p>
+
+<p>Referências <a class="el" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a533b402a54bf6f6715824a8687fa7a24">ELO.MainUnit.Factory.runAdm()</a>, <a class="el" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a515d1ff460a335b750e58e0cbddf20ae">ELO.MainUnit.Factory.runLogin()</a> e <a class="el" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#ab20a76f74180fc77c6b8fcd8de7942f1">ELO.MainUnit.Factory.runProfile()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a766943202ba781821cf749ca0fb133ba">   45</a></span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">def </span><a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a766943202ba781821cf749ca0fb133ba">runHome</a>(self, request, entity):</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordflow">if</span> <span class="stringliteral">&#39;user&#39;</span> <span class="keywordflow">in</span> request.session.keys():</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keywordflow">if</span> request.session[<span class="stringliteral">&#39;user&#39;</span>][<span class="stringliteral">&#39;type&#39;</span>] == <span class="stringliteral">&quot;Adm&quot;</span>:</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                <span class="keywordflow">return</span> self.<a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a533b402a54bf6f6715824a8687fa7a24">runAdm</a>(request)</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                <span class="keywordflow">return</span> self.<a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#ab20a76f74180fc77c6b8fcd8de7942f1">runProfile</a>(request, acctype=<span class="stringliteral">&#39;Home&#39;</span>)</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordflow">return</span> self.<a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a515d1ff460a335b750e58e0cbddf20ae">runLogin</a>(request, entity)</div>
+</div>
+<div class="ttc" id="classELO_1_1MainUnit_1_1Factory_html_a515d1ff460a335b750e58e0cbddf20ae"><div class="ttname"><a href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a515d1ff460a335b750e58e0cbddf20ae">ELO.MainUnit.Factory.runLogin</a></div><div class="ttdeci">def runLogin</div><div class="ttdoc">Classe que executa o módulo de login. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/MainUnit_8py_source.html#l00058">MainUnit.py:58</a></div></div>
+<div class="ttc" id="classELO_1_1MainUnit_1_1Factory_html_ab20a76f74180fc77c6b8fcd8de7942f1"><div class="ttname"><a href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#ab20a76f74180fc77c6b8fcd8de7942f1">ELO.MainUnit.Factory.runProfile</a></div><div class="ttdeci">def runProfile</div><div class="ttdoc">Classe que executa a página inicial do módulo de Perfil. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/MainUnit_8py_source.html#l00093">MainUnit.py:93</a></div></div>
+<div class="ttc" id="classELO_1_1MainUnit_1_1Factory_html_a533b402a54bf6f6715824a8687fa7a24"><div class="ttname"><a href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a533b402a54bf6f6715824a8687fa7a24">ELO.MainUnit.Factory.runAdm</a></div><div class="ttdeci">def runAdm</div><div class="ttdoc">Classe que executa o módulo de Administração. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/MainUnit_8py_source.html#l00121">MainUnit.py:121</a></div></div>
+<div class="ttc" id="classELO_1_1MainUnit_1_1Factory_html_a766943202ba781821cf749ca0fb133ba"><div class="ttname"><a href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a766943202ba781821cf749ca0fb133ba">ELO.MainUnit.Factory.runHome</a></div><div class="ttdeci">def runHome</div><div class="ttdoc">Classe que redireciona para a devida home. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/MainUnit_8py_source.html#l00045">MainUnit.py:45</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a515d1ff460a335b750e58e0cbddf20ae"></a>
@@ -248,10 +319,39 @@ Métodos Públicos</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Classe que executa o módulo de login. </p>
 <p>Define as camadas de persistência, negócio de login e apresentação e verifica o tipo de usuário. </p>
 
+<p>Definição na linha <a class="el" href="../../dd/d7f/MainUnit_8py_source.html#l00058">58</a> do arquivo <a class="el" href="../../dd/d7f/MainUnit_8py_source.html">MainUnit.py</a>.</p>
+
+<p>Referências <a class="el" href="../../de/d1e/CourseUnit_8py_source.html#l00025">Course.CourseUnit.IfUiCourse.__bus</a>, <a class="el" href="../../db/dd3/AdmUnit_8py_source.html#l00031">Adm.AdmUnit.IfUiAdm.__bus</a>, <a class="el" href="../../dd/d7f/MainUnit_8py_source.html#l00038">ELO.MainUnit.Factory.__bus</a>, <a class="el" href="../../dd/d7f/MainUnit_8py_source.html#l00039">ELO.MainUnit.Factory.__pers</a>, <a class="el" href="../../de/d1e/CourseUnit_8py_source.html#l00051">Course.CourseUnit.IfBusCourse.__pers</a>, <a class="el" href="../../db/dd3/AdmUnit_8py_source.html#l00061">Adm.AdmUnit.IfBusAdm.__pers</a> e <a class="el" href="../../dd/d7f/MainUnit_8py_source.html#l00037">ELO.MainUnit.Factory.__ui</a>.</p>
+
+<p>Referenciado por <a class="el" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a766943202ba781821cf749ca0fb133ba">ELO.MainUnit.Factory.runHome()</a> e <a class="el" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#aa26c51486ba65030399897a6e3b4f4f1">ELO.MainUnit.Factory.runLogout()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a515d1ff460a335b750e58e0cbddf20ae">   58</a></span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">def </span><a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a515d1ff460a335b750e58e0cbddf20ae">runLogin</a>(self, request, entity):</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">if</span> <span class="keywordflow">not</span> isinstance(self.<a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a189a44a11e1a66ba69663eb2c598dd7c">__ui</a>, IfUiLogin):</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            self.<a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a68f6640ad3b515e1b8cd48d1554c0779">__pers</a> = <a class="code" href="../../d5/dfc/classLogin_1_1LoginUnit_1_1PersLogin.html">PersLogin</a>()</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            self.<a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a6a0b7b93046e095779ba54e0a8a4d02c">__bus</a> = <a class="code" href="../../d9/d51/classLogin_1_1LoginUnit_1_1BusLogin.html">BusLogin</a>(self.<a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a68f6640ad3b515e1b8cd48d1554c0779">__pers</a>)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            self.<a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a189a44a11e1a66ba69663eb2c598dd7c">__ui</a> = <a class="code" href="../../de/da8/classLogin_1_1LoginUnit_1_1UiLogin.html">UiLogin</a>(self.<a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a6a0b7b93046e095779ba54e0a8a4d02c">__bus</a>)</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">if</span> entity == <span class="stringliteral">&quot;Adm&quot;</span>:</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            database = Adm</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">elif</span> entity == <span class="stringliteral">&quot;Professor&quot;</span>:</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            database = Professor</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">elif</span> entity == <span class="stringliteral">&quot;Student&quot;</span>:</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            database = Student</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            database = <span class="keywordtype">None</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">return</span> self.__ui.run(request, database)</div>
+</div>
+<div class="ttc" id="classLogin_1_1LoginUnit_1_1UiLogin_html"><div class="ttname"><a href="../../de/da8/classLogin_1_1LoginUnit_1_1UiLogin.html">Login.LoginUnit.UiLogin</a></div><div class="ttdoc">Camada de interface de usuário para o módulo de Login. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/dc7/LoginUnit_8py_source.html#l00130">LoginUnit.py:130</a></div></div>
+<div class="ttc" id="classLogin_1_1LoginUnit_1_1BusLogin_html"><div class="ttname"><a href="../../d9/d51/classLogin_1_1LoginUnit_1_1BusLogin.html">Login.LoginUnit.BusLogin</a></div><div class="ttdoc">Camada de negócio de usuário para o módulo de Login. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/dc7/LoginUnit_8py_source.html#l00180">LoginUnit.py:180</a></div></div>
+<div class="ttc" id="classELO_1_1MainUnit_1_1Factory_html_a515d1ff460a335b750e58e0cbddf20ae"><div class="ttname"><a href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a515d1ff460a335b750e58e0cbddf20ae">ELO.MainUnit.Factory.runLogin</a></div><div class="ttdeci">def runLogin</div><div class="ttdoc">Classe que executa o módulo de login. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/MainUnit_8py_source.html#l00058">MainUnit.py:58</a></div></div>
+<div class="ttc" id="classELO_1_1MainUnit_1_1Factory_html_a68f6640ad3b515e1b8cd48d1554c0779"><div class="ttname"><a href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a68f6640ad3b515e1b8cd48d1554c0779">ELO.MainUnit.Factory.__pers</a></div><div class="ttdeci">__pers</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/MainUnit_8py_source.html#l00039">MainUnit.py:39</a></div></div>
+<div class="ttc" id="classLogin_1_1LoginUnit_1_1PersLogin_html"><div class="ttname"><a href="../../d5/dfc/classLogin_1_1LoginUnit_1_1PersLogin.html">Login.LoginUnit.PersLogin</a></div><div class="ttdoc">Camada de persistência de usuário para o módulo de Login. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/dc7/LoginUnit_8py_source.html#l00192">LoginUnit.py:192</a></div></div>
+<div class="ttc" id="classELO_1_1MainUnit_1_1Factory_html_a6a0b7b93046e095779ba54e0a8a4d02c"><div class="ttname"><a href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a6a0b7b93046e095779ba54e0a8a4d02c">ELO.MainUnit.Factory.__bus</a></div><div class="ttdeci">__bus</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/MainUnit_8py_source.html#l00038">MainUnit.py:38</a></div></div>
+<div class="ttc" id="classELO_1_1MainUnit_1_1Factory_html_a189a44a11e1a66ba69663eb2c598dd7c"><div class="ttname"><a href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a189a44a11e1a66ba69663eb2c598dd7c">ELO.MainUnit.Factory.__ui</a></div><div class="ttdeci">__ui</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/MainUnit_8py_source.html#l00037">MainUnit.py:37</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="aa26c51486ba65030399897a6e3b4f4f1"></a>
@@ -277,10 +377,20 @@ Métodos Públicos</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Classe que executa o logout. </p>
 <p>Finaliza a sessão do usuário e redireciona para a página de login. </p>
 
+<p>Definição na linha <a class="el" href="../../dd/d7f/MainUnit_8py_source.html#l00078">78</a> do arquivo <a class="el" href="../../dd/d7f/MainUnit_8py_source.html">MainUnit.py</a>.</p>
+
+<p>Referências <a class="el" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a515d1ff460a335b750e58e0cbddf20ae">ELO.MainUnit.Factory.runLogin()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#aa26c51486ba65030399897a6e3b4f4f1">   78</a></span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">def </span><a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#aa26c51486ba65030399897a6e3b4f4f1">runLogout</a>(self, request):</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">if</span> <span class="stringliteral">&#39;user&#39;</span> <span class="keywordflow">in</span> request.session.keys():</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            del request.session[<span class="stringliteral">&#39;user&#39;</span>]</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">return</span> self.<a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a515d1ff460a335b750e58e0cbddf20ae">runLogin</a>(request, <span class="stringliteral">&quot;Student&quot;</span>)</div>
+</div>
+<div class="ttc" id="classELO_1_1MainUnit_1_1Factory_html_a515d1ff460a335b750e58e0cbddf20ae"><div class="ttname"><a href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a515d1ff460a335b750e58e0cbddf20ae">ELO.MainUnit.Factory.runLogin</a></div><div class="ttdeci">def runLogin</div><div class="ttdoc">Classe que executa o módulo de login. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/MainUnit_8py_source.html#l00058">MainUnit.py:58</a></div></div>
+<div class="ttc" id="classELO_1_1MainUnit_1_1Factory_html_aa26c51486ba65030399897a6e3b4f4f1"><div class="ttname"><a href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#aa26c51486ba65030399897a6e3b4f4f1">ELO.MainUnit.Factory.runLogout</a></div><div class="ttdeci">def runLogout</div><div class="ttdoc">Classe que executa o logout. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/MainUnit_8py_source.html#l00078">MainUnit.py:78</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="ab20a76f74180fc77c6b8fcd8de7942f1"></a>
@@ -303,7 +413,13 @@ Métodos Públicos</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>acctype</em>&#160;</td>
+          <td class="paramname"><em>acctype</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>field</em> = <code>None</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -312,59 +428,65 @@ Métodos Públicos</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Classe que executa a página inicial do módulo de Perfil. </p>
 <p>Define as camadas de persistência, negócio e apresentação de perfil e proíbe o acesso de usuários não logados no sistema.</p>
 <ul>
-<li>acctype Define o tipo de acesso que o usuário está requerindo. "Full": Acessa o Perfil completo, com possibilidade de edição. "Home": Acessa o Perfil resumido, a home do site em si. </li>
+<li>acctype Define o tipo de acesso que o usuário está requerindo. "Full": Acessa o Perfil completo, com possibilidade de edição. Caso a chamada seja assíncrona, retorna a form de edição do campo específico. "Home": Acessa o Perfil resumido, a home do site em si. </li>
 </ul>
 
-</div>
-</div>
-<a class="anchor" id="acb3772dd3c00357be1985af09c824858"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">def ELO.MainUnit.Factory.runProfileEdit </td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>self</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>request</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>field</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>Definição na linha <a class="el" href="../../dd/d7f/MainUnit_8py_source.html#l00093">93</a> do arquivo <a class="el" href="../../dd/d7f/MainUnit_8py_source.html">MainUnit.py</a>.</p>
 
-<p>Class que possibilida a edição de um campo de perfil. </p>
-<p>Sua chamada é assíncrona e deve ser transparente para o usuário. </p>
+<p>Referências <a class="el" href="../../de/d1e/CourseUnit_8py_source.html#l00025">Course.CourseUnit.IfUiCourse.__bus</a>, <a class="el" href="../../db/dd3/AdmUnit_8py_source.html#l00031">Adm.AdmUnit.IfUiAdm.__bus</a>, <a class="el" href="../../dd/d7f/MainUnit_8py_source.html#l00038">ELO.MainUnit.Factory.__bus</a>, <a class="el" href="../../dd/d7f/MainUnit_8py_source.html#l00039">ELO.MainUnit.Factory.__pers</a>, <a class="el" href="../../de/d1e/CourseUnit_8py_source.html#l00051">Course.CourseUnit.IfBusCourse.__pers</a>, <a class="el" href="../../db/dd3/AdmUnit_8py_source.html#l00061">Adm.AdmUnit.IfBusAdm.__pers</a> e <a class="el" href="../../dd/d7f/MainUnit_8py_source.html#l00037">ELO.MainUnit.Factory.__ui</a>.</p>
 
+<p>Referenciado por <a class="el" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a766943202ba781821cf749ca0fb133ba">ELO.MainUnit.Factory.runHome()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#ab20a76f74180fc77c6b8fcd8de7942f1">   93</a></span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keyword">def </span><a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#ab20a76f74180fc77c6b8fcd8de7942f1">runProfile</a>(self, request, acctype, field=None):</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordflow">if</span> <span class="stringliteral">&#39;user&#39;</span> <span class="keywordflow">in</span> request.session.keys(): <span class="comment"># is user logged?</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            user_type = request.session[<span class="stringliteral">&#39;user&#39;</span>][<span class="stringliteral">&#39;type&#39;</span>]</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keywordflow">if</span> user_type == <span class="stringliteral">&#39;Professor&#39;</span> <span class="keywordflow">or</span> user_type == <span class="stringliteral">&#39;Student&#39;</span>:</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                <span class="keywordflow">if</span> <span class="keywordflow">not</span> isinstance(self.<a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a189a44a11e1a66ba69663eb2c598dd7c">__ui</a>, IfUiProfile):</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                    self.<a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a68f6640ad3b515e1b8cd48d1554c0779">__pers</a> = <a class="code" href="../../d7/dec/classProfile_1_1ProfileUnit_1_1PersProfile.html">PersProfile</a>()</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                    self.<a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a6a0b7b93046e095779ba54e0a8a4d02c">__bus</a> = <a class="code" href="../../df/da4/classProfile_1_1ProfileUnit_1_1BusProfile.html">BusProfile</a>(self.<a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a68f6640ad3b515e1b8cd48d1554c0779">__pers</a>)</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                <span class="keywordflow">if</span> acctype == <span class="stringliteral">&quot;Full&quot;</span>:</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                    self.<a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a189a44a11e1a66ba69663eb2c598dd7c">__ui</a> = <a class="code" href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html">UiFullProfile</a>(self.<a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a6a0b7b93046e095779ba54e0a8a4d02c">__bus</a>)</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                <span class="keywordflow">elif</span> acctype == <span class="stringliteral">&quot;Home&quot;</span>:</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                    self.<a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a189a44a11e1a66ba69663eb2c598dd7c">__ui</a> = <a class="code" href="../../db/dcf/classProfile_1_1ProfileUnit_1_1UiHomeProfile.html">UiHomeProfile</a>(self.<a class="code" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a6a0b7b93046e095779ba54e0a8a4d02c">__bus</a>)</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                    <span class="keywordflow">raise</span> Http404(lang.DICT[<span class="stringliteral">&quot;EXCEPTION_404_ERR&quot;</span>])</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                <span class="keywordflow">if</span> field <span class="keywordflow">and</span> acctype == <span class="stringliteral">&quot;Full&quot;</span>:</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                    <span class="keywordflow">return</span> self.__ui.run(request, field)</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                    <span class="keywordflow">return</span> self.__ui.run(request)</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                <span class="keywordflow">raise</span> Http404(lang.DICT[<span class="stringliteral">&quot;EXCEPTION_404_ERR&quot;</span>])</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            <span class="keywordflow">raise</span> PermissionDenied(lang.DICT[<span class="stringliteral">&quot;EXCEPTION_403_STD&quot;</span>])</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        </div>
+</div>
+<div class="ttc" id="classProfile_1_1ProfileUnit_1_1UiFullProfile_html"><div class="ttname"><a href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html">Profile.ProfileUnit.UiFullProfile</a></div><div class="ttdoc">Camada de apresentação para a página de perfil completa. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6d/ProfileUnit_8py_source.html#l00163">ProfileUnit.py:163</a></div></div>
+<div class="ttc" id="classProfile_1_1ProfileUnit_1_1BusProfile_html"><div class="ttname"><a href="../../df/da4/classProfile_1_1ProfileUnit_1_1BusProfile.html">Profile.ProfileUnit.BusProfile</a></div><div class="ttdoc">Camada de negócio para perfil. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6d/ProfileUnit_8py_source.html#l00274">ProfileUnit.py:274</a></div></div>
+<div class="ttc" id="classELO_1_1MainUnit_1_1Factory_html_ab20a76f74180fc77c6b8fcd8de7942f1"><div class="ttname"><a href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#ab20a76f74180fc77c6b8fcd8de7942f1">ELO.MainUnit.Factory.runProfile</a></div><div class="ttdeci">def runProfile</div><div class="ttdoc">Classe que executa a página inicial do módulo de Perfil. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/MainUnit_8py_source.html#l00093">MainUnit.py:93</a></div></div>
+<div class="ttc" id="classProfile_1_1ProfileUnit_1_1UiHomeProfile_html"><div class="ttname"><a href="../../db/dcf/classProfile_1_1ProfileUnit_1_1UiHomeProfile.html">Profile.ProfileUnit.UiHomeProfile</a></div><div class="ttdoc">Camada de apresentação para a página principal do site. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6d/ProfileUnit_8py_source.html#l00145">ProfileUnit.py:145</a></div></div>
+<div class="ttc" id="classELO_1_1MainUnit_1_1Factory_html_a68f6640ad3b515e1b8cd48d1554c0779"><div class="ttname"><a href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a68f6640ad3b515e1b8cd48d1554c0779">ELO.MainUnit.Factory.__pers</a></div><div class="ttdeci">__pers</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/MainUnit_8py_source.html#l00039">MainUnit.py:39</a></div></div>
+<div class="ttc" id="classELO_1_1MainUnit_1_1Factory_html_a6a0b7b93046e095779ba54e0a8a4d02c"><div class="ttname"><a href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a6a0b7b93046e095779ba54e0a8a4d02c">ELO.MainUnit.Factory.__bus</a></div><div class="ttdeci">__bus</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/MainUnit_8py_source.html#l00038">MainUnit.py:38</a></div></div>
+<div class="ttc" id="classELO_1_1MainUnit_1_1Factory_html_a189a44a11e1a66ba69663eb2c598dd7c"><div class="ttname"><a href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html#a189a44a11e1a66ba69663eb2c598dd7c">ELO.MainUnit.Factory.__ui</a></div><div class="ttdeci">__ui</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/MainUnit_8py_source.html#l00037">MainUnit.py:37</a></div></div>
+<div class="ttc" id="classProfile_1_1ProfileUnit_1_1PersProfile_html"><div class="ttname"><a href="../../d7/dec/classProfile_1_1ProfileUnit_1_1PersProfile.html">Profile.ProfileUnit.PersProfile</a></div><div class="ttdoc">Camada de persistência de perfil. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6d/ProfileUnit_8py_source.html#l00314">ProfileUnit.py:314</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>A documentação para esta classe foi gerada a partir do seguinte arquivo:<ul>
-<li>ELO/ELO/<a class="el" href="../../dd/d7f/MainUnit_8py.html">MainUnit.py</a></li>
+<li>ELO/ELO/<a class="el" href="../../dd/d7f/MainUnit_8py_source.html">MainUnit.py</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Gerado em Terça, 6 de Maio de 2014 20:17:40 para LETproject por &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="../../doxygen.png" alt="doxygen"/>
-</a> 1.8.6
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../da/d09/namespaceELO.html">ELO</a></li><li class="navelem"><a class="el" href="../../db/d73/namespaceELO_1_1MainUnit.html">MainUnit</a></li><li class="navelem"><a class="el" href="../../d1/dc6/classELO_1_1MainUnit_1_1Factory.html">Factory</a></li>
+    <li class="footer">Gerado em Terça, 1 de Julho de 2014 19:10:25 para LETproject por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
 </body>
 </html>

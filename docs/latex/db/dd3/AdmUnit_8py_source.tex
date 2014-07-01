@@ -1,0 +1,96 @@
+\hypertarget{AdmUnit_8py}{\subsection{Adm\-Unit.\-py}
+\label{AdmUnit_8py}\index{E\-L\-O/\-Adm/\-Adm\-Unit.\-py@{E\-L\-O/\-Adm/\-Adm\-Unit.\-py}}
+}
+
+\begin{DoxyCode}
+\hypertarget{AdmUnit_8py_source_l00001}{}\hyperlink{namespaceAdm_1_1AdmUnit}{00001} \textcolor{comment}{#coding: utf-8}
+00002 
+00003 \textcolor{keyword}{from} abc \textcolor{keyword}{import}*
+00004 \textcolor{keyword}{from} django.shortcuts \textcolor{keyword}{import} render
+00005 
+00006 \textcolor{comment}{## @package AdmUnit}
+00007 \textcolor{comment}{#Este arquivo é responsável pelo armazenamento de todas as camadas correspondentes ao módulo de
+       administrador. Os métodos aqui são }
+00008 \textcolor{comment}{#criados e chamados pela Factory (MainUnit.py) quando necessários. São responsáveis por cadastrar, deletar
+       e editar alunos e professores }
+00009 \textcolor{comment}{#no banco de dados, criar cursos e ver um log sobre os últimos eventos no sistema.}
+00010 
+00011 
+00012 \textcolor{comment}{## Interface para a camada de apresentação de Usuário do módulo de Administração.}
+00013 \textcolor{comment}{# É responsável por...}
+\hypertarget{AdmUnit_8py_source_l00014}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm}{00014} \textcolor{keyword}{class }\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm}{IfUiAdm}:
+00015     \_\_metaclass\_\_ = ABCMeta
+00016     
+\hypertarget{AdmUnit_8py_source_l00017}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_ab37924016cd115531c85439dc82f5ea3}{00017}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_ab37924016cd115531c85439dc82f5ea3}{\_\_init\_\_}(self, bus):
+00018         \textcolor{keywordflow}{try}:
+\hypertarget{AdmUnit_8py_source_l00019}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_a604bb1c41014e85eee44db64a79a7fcc}{00019}             self.\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_a604bb1c41014e85eee44db64a79a7fcc}{bus} = bus
+00020         \textcolor{keywordflow}{except} TypeError \textcolor{keyword}{as} exc:
+00021             del self
+00022             \textcolor{keywordflow}{raise} exc
+00023 
+00024     @property
+\hypertarget{AdmUnit_8py_source_l00025}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_a4863c3ebab6e5fac647ab32415153470}{00025}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_a604bb1c41014e85eee44db64a79a7fcc}{bus}(self):
+00026         \textcolor{keywordflow}{return} self.\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_adf49041050fd2ce5fef85b0698f331e5}{\_\_bus}
+00027 
+00028     @bus.setter
+\hypertarget{AdmUnit_8py_source_l00029}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_a4863c3ebab6e5fac647ab32415153470}{00029}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_a604bb1c41014e85eee44db64a79a7fcc}{bus}(self, value):
+00030         \textcolor{keywordflow}{if} isinstance(value, IfBusAdm):
+00031             self.\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_adf49041050fd2ce5fef85b0698f331e5}{\_\_bus} = value
+00032         \textcolor{keywordflow}{else}:
+00033             \textcolor{keywordflow}{raise} TypeError(\textcolor{stringliteral}{"Expected IfBusAdm instance at UiAdm.\_\_bus. Received "} + str(type(value)) + \textcolor{stringliteral}{"
+       instead."})
+00034 
+00035     @bus.deleter
+\hypertarget{AdmUnit_8py_source_l00036}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_a4863c3ebab6e5fac647ab32415153470}{00036}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_a604bb1c41014e85eee44db64a79a7fcc}{bus}(self):
+00037         del self.\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_adf49041050fd2ce5fef85b0698f331e5}{\_\_bus}
+00038 
+00039     @abstractmethod
+\hypertarget{AdmUnit_8py_source_l00040}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_ad2879ed80544aa2a153c7eeed3a09a52}{00040}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_ad2879ed80544aa2a153c7eeed3a09a52}{run}(self, request): \textcolor{keyword}{pass}
+00041 
+00042 \textcolor{comment}{## Interface para a camada de negócio do módulo de perfil.}
+00043 \textcolor{comment}{# É responsável por...}
+\hypertarget{AdmUnit_8py_source_l00044}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm}{00044} \textcolor{keyword}{class }\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm}{IfBusAdm}:
+00045     \_\_metaclass\_\_ = ABCMeta
+00046 
+\hypertarget{AdmUnit_8py_source_l00047}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_abe924f0f983b1fe97ca466907d35c834}{00047}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_abe924f0f983b1fe97ca466907d35c834}{\_\_init\_\_}(self, pers):
+00048         \textcolor{keywordflow}{try}:
+\hypertarget{AdmUnit_8py_source_l00049}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a95ea8f39fbbcddf44822e1614c712bfe}{00049}             self.\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a95ea8f39fbbcddf44822e1614c712bfe}{pers} = pers
+00050         \textcolor{keywordflow}{except} TypeError \textcolor{keyword}{as} exc:
+00051             del self
+00052             \textcolor{keywordflow}{raise} exc
+00053     
+00054     @property
+\hypertarget{AdmUnit_8py_source_l00055}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a31857b146085382c8d778ae90cd46c6f}{00055}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a95ea8f39fbbcddf44822e1614c712bfe}{pers}(self):
+00056         \textcolor{keywordflow}{return} self.\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a52e9179e1047122bc667c1afa377c82c}{\_\_pers}
+00057 
+00058     @pers.setter
+\hypertarget{AdmUnit_8py_source_l00059}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a31857b146085382c8d778ae90cd46c6f}{00059}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a95ea8f39fbbcddf44822e1614c712bfe}{pers}(self, value):
+00060         \textcolor{keywordflow}{if} isinstance(value, IfPersAdm):
+00061             self.\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a52e9179e1047122bc667c1afa377c82c}{\_\_pers} = value
+00062         \textcolor{keywordflow}{else}:
+00063             \textcolor{keywordflow}{raise} TypeError(\textcolor{stringliteral}{"Expected IfPersAdm instance at BusAdm.\_\_pers. Received "} + str(type(value)) + \textcolor{stringliteral}{
+      " instead."})
+00064 
+00065     @pers.deleter   
+\hypertarget{AdmUnit_8py_source_l00066}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a31857b146085382c8d778ae90cd46c6f}{00066}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a95ea8f39fbbcddf44822e1614c712bfe}{pers}(self):
+00067         del self.\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a52e9179e1047122bc667c1afa377c82c}{\_\_pers}
+00068 
+00069 \textcolor{comment}{## Interface para a camada de persistência do módulo de administração.}
+00070 \textcolor{comment}{# É responsável por...}
+\hypertarget{AdmUnit_8py_source_l00071}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfPersAdm}{00071} \textcolor{keyword}{class }\hyperlink{classAdm_1_1AdmUnit_1_1IfPersAdm}{IfPersAdm}:   \textcolor{keyword}{pass}
+00072 
+00073 \textcolor{comment}{## Camada de interface de usuário para o módulo de administração.}
+\hypertarget{AdmUnit_8py_source_l00074}{}\hyperlink{classAdm_1_1AdmUnit_1_1UiAdm}{00074} \textcolor{keyword}{class }\hyperlink{classAdm_1_1AdmUnit_1_1UiAdm}{UiAdm}(\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm}{IfUiAdm}):
+00075 
+\hypertarget{AdmUnit_8py_source_l00076}{}\hyperlink{classAdm_1_1AdmUnit_1_1UiAdm_a88df3b19b48d71b2c0fc0b4557c71416}{00076}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1UiAdm_a88df3b19b48d71b2c0fc0b4557c71416}{run}(self, request):
+00077         \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Adm/home.html"})
+00078 
+00079 \textcolor{comment}{## Camada de negócio para o módulo de administração.}
+\hypertarget{AdmUnit_8py_source_l00080}{}\hyperlink{classAdm_1_1AdmUnit_1_1BusAdm}{00080} \textcolor{keyword}{class }\hyperlink{classAdm_1_1AdmUnit_1_1BusAdm}{BusAdm}(\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm}{IfBusAdm}):   \textcolor{keyword}{pass}
+00081 
+00082 \textcolor{comment}{## Camada de persistência para o módulo de administração.}
+\hypertarget{AdmUnit_8py_source_l00083}{}\hyperlink{classAdm_1_1AdmUnit_1_1PersAdm}{00083} \textcolor{keyword}{class }\hyperlink{classAdm_1_1AdmUnit_1_1PersAdm}{PersAdm}(\hyperlink{classAdm_1_1AdmUnit_1_1IfPersAdm}{IfPersAdm}): \textcolor{keyword}{pass}
+00084 
+00085 
+00086 
+\end{DoxyCode}

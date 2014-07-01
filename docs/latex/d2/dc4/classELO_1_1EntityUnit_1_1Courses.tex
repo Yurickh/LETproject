@@ -1,4 +1,4 @@
-\hypertarget{classELO_1_1EntityUnit_1_1Courses}{\section{Referência da Classe E\-L\-O.\-Entity\-Unit.\-Courses}
+\hypertarget{classELO_1_1EntityUnit_1_1Courses}{\subsection{Referência da Classe E\-L\-O.\-Entity\-Unit.\-Courses}
 \label{classELO_1_1EntityUnit_1_1Courses}\index{E\-L\-O.\-Entity\-Unit.\-Courses@{E\-L\-O.\-Entity\-Unit.\-Courses}}
 }
 
@@ -12,7 +12,7 @@ Diagrama de Hierarquia para E\-L\-O.\-Entity\-Unit.\-Courses\-:\begin{figure}[H]
 \includegraphics[height=2.000000cm]{d2/dc4/classELO_1_1EntityUnit_1_1Courses}
 \end{center}
 \end{figure}
-\subsection*{Métodos Públicos}
+\subsubsection*{Métodos Públicos}
 \begin{DoxyCompactItemize}
 \item 
 def \hyperlink{classELO_1_1EntityUnit_1_1Courses_a8e8a964217e8e2b76c3ebd889ed8ae1e}{\-\_\-\-\_\-init\-\_\-\-\_\-}
@@ -41,7 +41,7 @@ def \hyperlink{classELO_1_1EntityUnit_1_1Courses_ab1a0895decc2986339e0ab148922ad
 \item 
 def \hyperlink{classELO_1_1EntityUnit_1_1Courses_a5d791876c321c20f5a698273613d0d01}{modules}
 \end{DoxyCompactItemize}
-\subsection*{Atributos Públicos}
+\subsubsection*{Atributos Públicos}
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{classELO_1_1EntityUnit_1_1Courses_aeb94f54ad74895834eb7627dd38e1c8e}{name}
@@ -54,15 +54,17 @@ def \hyperlink{classELO_1_1EntityUnit_1_1Courses_a5d791876c321c20f5a698273613d0d
 \end{DoxyCompactItemize}
 
 
-\subsection{Descrição Detalhada}
-Um curos possui módulos, que por sua vez, contêm lições, e estas possuem exercícios. 
-
+\subsubsection{Descrição Detalhada}
 \char`\"{}\-Courses\char`\"{} estão em um nivel mais alto do sistema de abstração. Normalmente, a um professor será dado cursos vazios, e a partir destes ele poderá criar sua dinámica letiva. 
 
-\subsection{Construtores \& Destrutores}
+Definição na linha \hyperlink{EntityUnit_8py_source_l00408}{408} do arquivo \hyperlink{EntityUnit_8py_source}{Entity\-Unit.\-py}.
+
+
+
+\subsubsection{Construtores \& Destrutores}
 \hypertarget{classELO_1_1EntityUnit_1_1Courses_a8e8a964217e8e2b76c3ebd889ed8ae1e}{\index{E\-L\-O\-::\-Entity\-Unit\-::\-Courses@{E\-L\-O\-::\-Entity\-Unit\-::\-Courses}!\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}}
 \index{\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}!ELO::EntityUnit::Courses@{E\-L\-O\-::\-Entity\-Unit\-::\-Courses}}
-\subsubsection[{\-\_\-\-\_\-init\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Entity\-Unit.\-Courses.\-\_\-\-\_\-init\-\_\-\-\_\- (
+\paragraph[{\-\_\-\-\_\-init\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Entity\-Unit.\-Courses.\-\_\-\-\_\-init\-\_\-\-\_\- (
 \begin{DoxyParamCaption}
 \item[{}]{self, }
 \item[{}]{name, }
@@ -73,110 +75,353 @@ Um curos possui módulos, que por sua vez, contêm lições, e estas possuem exe
 )}}\label{classELO_1_1EntityUnit_1_1Courses_a8e8a964217e8e2b76c3ebd889ed8ae1e}
 
 
-\subsection{Métodos}
+Definição na linha \hyperlink{EntityUnit_8py_source_l00410}{410} do arquivo \hyperlink{EntityUnit_8py_source}{Entity\-Unit.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classELO_1_1EntityUnit_1_1Courses_l00410}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a8e8a964217e8e2b76c3ebd889ed8ae1e}{00410} 
+00411     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_a8e8a964217e8e2b76c3ebd889ed8ae1e}{\_\_init\_\_}(self, name, thisId, students, modules):
+\hypertarget{classELO_1_1EntityUnit_1_1Courses_l00412}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_aeb94f54ad74895834eb7627dd38e1c8e}{00412}         \textcolor{keywordflow}{try}:
+\hypertarget{classELO_1_1EntityUnit_1_1Courses_l00413}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a283b817d129a8d15e3bce56b368a169d}{00413}             self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_aeb94f54ad74895834eb7627dd38e1c8e}{name} = name
+\hypertarget{classELO_1_1EntityUnit_1_1Courses_l00414}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_ac8e5e595ec895e03b088764d7506e735}{00414}             self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_a283b817d129a8d15e3bce56b368a169d}{thisId} = thisId
+\hypertarget{classELO_1_1EntityUnit_1_1Courses_l00415}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a14bdc53eeb2a7fde8e926cbab6e5206f}{00415}             self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_ac8e5e595ec895e03b088764d7506e735}{students} = students
+00416             self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_a14bdc53eeb2a7fde8e926cbab6e5206f}{modules} = modules
+00417         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00418             del self
+00419             \textcolor{keywordflow}{raise} exc
+00420 
+
+\end{DoxyCode}
+
+
+\subsubsection{Métodos}
 \hypertarget{classELO_1_1EntityUnit_1_1Courses_a5d791876c321c20f5a698273613d0d01}{\index{E\-L\-O\-::\-Entity\-Unit\-::\-Courses@{E\-L\-O\-::\-Entity\-Unit\-::\-Courses}!modules@{modules}}
 \index{modules@{modules}!ELO::EntityUnit::Courses@{E\-L\-O\-::\-Entity\-Unit\-::\-Courses}}
-\subsubsection[{modules}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Entity\-Unit.\-Courses.\-modules (
+\paragraph[{modules}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Entity\-Unit.\-Courses.\-modules (
 \begin{DoxyParamCaption}
 \item[{}]{self}
 \end{DoxyParamCaption}
 )}}\label{classELO_1_1EntityUnit_1_1Courses_a5d791876c321c20f5a698273613d0d01}
+
+
+Definição na linha \hyperlink{EntityUnit_8py_source_l00455}{455} do arquivo \hyperlink{EntityUnit_8py_source}{Entity\-Unit.\-py}.
+
+
+
+Referências \hyperlink{EntityUnit_8py_source_l00461}{E\-L\-O.\-Entity\-Unit.\-Courses.\-\_\-\-\_\-modules} e \hyperlink{classELO_1_1EntityUnit_1_1Courses_a14bdc53eeb2a7fde8e926cbab6e5206f}{E\-L\-O.\-Entity\-Unit.\-Courses.\-modules}.
+
+
+\begin{DoxyCode}
+\hypertarget{classELO_1_1EntityUnit_1_1Courses_l00455}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a5d791876c321c20f5a698273613d0d01}{00455} 
+00456     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_a14bdc53eeb2a7fde8e926cbab6e5206f}{modules}(self):
+00457         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_a32392ba6dc5a6619263af1d21de1d15d}{\_\_modules}      
+
+\end{DoxyCode}
 \hypertarget{classELO_1_1EntityUnit_1_1Courses_a5d791876c321c20f5a698273613d0d01}{\index{E\-L\-O\-::\-Entity\-Unit\-::\-Courses@{E\-L\-O\-::\-Entity\-Unit\-::\-Courses}!modules@{modules}}
 \index{modules@{modules}!ELO::EntityUnit::Courses@{E\-L\-O\-::\-Entity\-Unit\-::\-Courses}}
-\subsubsection[{modules}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Entity\-Unit.\-Courses.\-modules (
+\paragraph[{modules}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Entity\-Unit.\-Courses.\-modules (
 \begin{DoxyParamCaption}
 \item[{}]{self, }
 \item[{}]{modules}
 \end{DoxyParamCaption}
 )}}\label{classELO_1_1EntityUnit_1_1Courses_a5d791876c321c20f5a698273613d0d01}
+
+
+Definição na linha \hyperlink{EntityUnit_8py_source_l00459}{459} do arquivo \hyperlink{EntityUnit_8py_source}{Entity\-Unit.\-py}.
+
+
+
+Referências \hyperlink{EntityUnit_8py_source_l00461}{E\-L\-O.\-Entity\-Unit.\-Courses.\-\_\-\-\_\-modules} e \hyperlink{classELO_1_1EntityUnit_1_1Courses_a14bdc53eeb2a7fde8e926cbab6e5206f}{E\-L\-O.\-Entity\-Unit.\-Courses.\-modules}.
+
+
+\begin{DoxyCode}
+\hypertarget{classELO_1_1EntityUnit_1_1Courses_l00459}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a5d791876c321c20f5a698273613d0d01}{00459} 
+00460     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_a14bdc53eeb2a7fde8e926cbab6e5206f}{modules}(self, modules):
+00461         \textcolor{keywordflow}{if} type(modules) \textcolor{keywordflow}{is} list \textcolor{keywordflow}{and} (type(modules[0]) \textcolor{keywordflow}{is} Id \textcolor{keywordflow}{or} \textcolor{keywordflow}{not} modules):
+00462             self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_a32392ba6dc5a6619263af1d21de1d15d}{\_\_modules} = modules
+00463         \textcolor{keywordflow}{else}:
+00464             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_CRS\_MD'}])
+
+\end{DoxyCode}
 \hypertarget{classELO_1_1EntityUnit_1_1Courses_a5d791876c321c20f5a698273613d0d01}{\index{E\-L\-O\-::\-Entity\-Unit\-::\-Courses@{E\-L\-O\-::\-Entity\-Unit\-::\-Courses}!modules@{modules}}
 \index{modules@{modules}!ELO::EntityUnit::Courses@{E\-L\-O\-::\-Entity\-Unit\-::\-Courses}}
-\subsubsection[{modules}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Entity\-Unit.\-Courses.\-modules (
+\paragraph[{modules}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Entity\-Unit.\-Courses.\-modules (
 \begin{DoxyParamCaption}
 \item[{}]{self}
 \end{DoxyParamCaption}
 )}}\label{classELO_1_1EntityUnit_1_1Courses_a5d791876c321c20f5a698273613d0d01}
+
+
+Definição na linha \hyperlink{EntityUnit_8py_source_l00478}{478} do arquivo \hyperlink{EntityUnit_8py_source}{Entity\-Unit.\-py}.
+
+
+
+Referências \hyperlink{classELO_1_1EntityUnit_1_1Courses_a14bdc53eeb2a7fde8e926cbab6e5206f}{E\-L\-O.\-Entity\-Unit.\-Courses.\-modules}.
+
+
+\begin{DoxyCode}
+\hypertarget{classELO_1_1EntityUnit_1_1Courses_l00478}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a5d791876c321c20f5a698273613d0d01}{00478} 
+00479     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_a14bdc53eeb2a7fde8e926cbab6e5206f}{modules}(self):
+00480         del \_\_modules
+
+\end{DoxyCode}
 \hypertarget{classELO_1_1EntityUnit_1_1Courses_a7b502c0d94108e3c474e5a0e2842cc1d}{\index{E\-L\-O\-::\-Entity\-Unit\-::\-Courses@{E\-L\-O\-::\-Entity\-Unit\-::\-Courses}!name@{name}}
 \index{name@{name}!ELO::EntityUnit::Courses@{E\-L\-O\-::\-Entity\-Unit\-::\-Courses}}
-\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Entity\-Unit.\-Courses.\-name (
+\paragraph[{name}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Entity\-Unit.\-Courses.\-name (
 \begin{DoxyParamCaption}
 \item[{}]{self}
 \end{DoxyParamCaption}
 )}}\label{classELO_1_1EntityUnit_1_1Courses_a7b502c0d94108e3c474e5a0e2842cc1d}
+
+
+Definição na linha \hyperlink{EntityUnit_8py_source_l00422}{422} do arquivo \hyperlink{EntityUnit_8py_source}{Entity\-Unit.\-py}.
+
+
+
+Referências \hyperlink{EntityUnit_8py_source_l00428}{E\-L\-O.\-Entity\-Unit.\-Courses.\-\_\-\-\_\-name} e \hyperlink{classELO_1_1EntityUnit_1_1Courses_aeb94f54ad74895834eb7627dd38e1c8e}{E\-L\-O.\-Entity\-Unit.\-Courses.\-name}.
+
+
+\begin{DoxyCode}
+\hypertarget{classELO_1_1EntityUnit_1_1Courses_l00422}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a7b502c0d94108e3c474e5a0e2842cc1d}{00422} 
+00423     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_aeb94f54ad74895834eb7627dd38e1c8e}{name}(self):
+00424         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_af420f44e6e282033f364731f9aae1eb2}{\_\_name}
+
+\end{DoxyCode}
 \hypertarget{classELO_1_1EntityUnit_1_1Courses_a7b502c0d94108e3c474e5a0e2842cc1d}{\index{E\-L\-O\-::\-Entity\-Unit\-::\-Courses@{E\-L\-O\-::\-Entity\-Unit\-::\-Courses}!name@{name}}
 \index{name@{name}!ELO::EntityUnit::Courses@{E\-L\-O\-::\-Entity\-Unit\-::\-Courses}}
-\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Entity\-Unit.\-Courses.\-name (
+\paragraph[{name}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Entity\-Unit.\-Courses.\-name (
 \begin{DoxyParamCaption}
 \item[{}]{self, }
 \item[{}]{name}
 \end{DoxyParamCaption}
 )}}\label{classELO_1_1EntityUnit_1_1Courses_a7b502c0d94108e3c474e5a0e2842cc1d}
+
+
+Definição na linha \hyperlink{EntityUnit_8py_source_l00426}{426} do arquivo \hyperlink{EntityUnit_8py_source}{Entity\-Unit.\-py}.
+
+
+
+Referências \hyperlink{EntityUnit_8py_source_l00428}{E\-L\-O.\-Entity\-Unit.\-Courses.\-\_\-\-\_\-name} e \hyperlink{classELO_1_1EntityUnit_1_1Courses_aeb94f54ad74895834eb7627dd38e1c8e}{E\-L\-O.\-Entity\-Unit.\-Courses.\-name}.
+
+
+\begin{DoxyCode}
+\hypertarget{classELO_1_1EntityUnit_1_1Courses_l00426}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a7b502c0d94108e3c474e5a0e2842cc1d}{00426} 
+00427     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_aeb94f54ad74895834eb7627dd38e1c8e}{name}(self, name):
+00428         \textcolor{keywordflow}{if} type(name) \textcolor{keywordflow}{is} Name:
+00429             self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_af420f44e6e282033f364731f9aae1eb2}{\_\_name} = name
+00430         \textcolor{keywordflow}{else}:
+00431             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_CRS\_NM'}])
+
+\end{DoxyCode}
 \hypertarget{classELO_1_1EntityUnit_1_1Courses_a7b502c0d94108e3c474e5a0e2842cc1d}{\index{E\-L\-O\-::\-Entity\-Unit\-::\-Courses@{E\-L\-O\-::\-Entity\-Unit\-::\-Courses}!name@{name}}
 \index{name@{name}!ELO::EntityUnit::Courses@{E\-L\-O\-::\-Entity\-Unit\-::\-Courses}}
-\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Entity\-Unit.\-Courses.\-name (
+\paragraph[{name}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Entity\-Unit.\-Courses.\-name (
 \begin{DoxyParamCaption}
 \item[{}]{self}
 \end{DoxyParamCaption}
 )}}\label{classELO_1_1EntityUnit_1_1Courses_a7b502c0d94108e3c474e5a0e2842cc1d}
+
+
+Definição na linha \hyperlink{EntityUnit_8py_source_l00466}{466} do arquivo \hyperlink{EntityUnit_8py_source}{Entity\-Unit.\-py}.
+
+
+
+Referências \hyperlink{classELO_1_1EntityUnit_1_1Courses_aeb94f54ad74895834eb7627dd38e1c8e}{E\-L\-O.\-Entity\-Unit.\-Courses.\-name}.
+
+
+\begin{DoxyCode}
+\hypertarget{classELO_1_1EntityUnit_1_1Courses_l00466}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a7b502c0d94108e3c474e5a0e2842cc1d}{00466} 
+00467     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_aeb94f54ad74895834eb7627dd38e1c8e}{name}(self):
+00468         del \_\_name
+
+\end{DoxyCode}
 \hypertarget{classELO_1_1EntityUnit_1_1Courses_ab1a0895decc2986339e0ab148922ad61}{\index{E\-L\-O\-::\-Entity\-Unit\-::\-Courses@{E\-L\-O\-::\-Entity\-Unit\-::\-Courses}!students@{students}}
 \index{students@{students}!ELO::EntityUnit::Courses@{E\-L\-O\-::\-Entity\-Unit\-::\-Courses}}
-\subsubsection[{students}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Entity\-Unit.\-Courses.\-students (
+\paragraph[{students}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Entity\-Unit.\-Courses.\-students (
 \begin{DoxyParamCaption}
 \item[{}]{self}
 \end{DoxyParamCaption}
 )}}\label{classELO_1_1EntityUnit_1_1Courses_ab1a0895decc2986339e0ab148922ad61}
+
+
+Definição na linha \hyperlink{EntityUnit_8py_source_l00444}{444} do arquivo \hyperlink{EntityUnit_8py_source}{Entity\-Unit.\-py}.
+
+
+
+Referências \hyperlink{EntityUnit_8py_source_l00450}{E\-L\-O.\-Entity\-Unit.\-Courses.\-\_\-\-\_\-students} e \hyperlink{classELO_1_1EntityUnit_1_1Courses_ac8e5e595ec895e03b088764d7506e735}{E\-L\-O.\-Entity\-Unit.\-Courses.\-students}.
+
+
+\begin{DoxyCode}
+\hypertarget{classELO_1_1EntityUnit_1_1Courses_l00444}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_ab1a0895decc2986339e0ab148922ad61}{00444} 
+00445     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_ac8e5e595ec895e03b088764d7506e735}{students}(self):
+00446         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_a55a9d491608867ed4784a8fd435cf7b6}{\_\_students}
+
+\end{DoxyCode}
 \hypertarget{classELO_1_1EntityUnit_1_1Courses_ab1a0895decc2986339e0ab148922ad61}{\index{E\-L\-O\-::\-Entity\-Unit\-::\-Courses@{E\-L\-O\-::\-Entity\-Unit\-::\-Courses}!students@{students}}
 \index{students@{students}!ELO::EntityUnit::Courses@{E\-L\-O\-::\-Entity\-Unit\-::\-Courses}}
-\subsubsection[{students}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Entity\-Unit.\-Courses.\-students (
+\paragraph[{students}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Entity\-Unit.\-Courses.\-students (
 \begin{DoxyParamCaption}
 \item[{}]{self, }
 \item[{}]{students}
 \end{DoxyParamCaption}
 )}}\label{classELO_1_1EntityUnit_1_1Courses_ab1a0895decc2986339e0ab148922ad61}
+
+
+Definição na linha \hyperlink{EntityUnit_8py_source_l00448}{448} do arquivo \hyperlink{EntityUnit_8py_source}{Entity\-Unit.\-py}.
+
+
+
+Referências \hyperlink{EntityUnit_8py_source_l00450}{E\-L\-O.\-Entity\-Unit.\-Courses.\-\_\-\-\_\-students} e \hyperlink{classELO_1_1EntityUnit_1_1Courses_ac8e5e595ec895e03b088764d7506e735}{E\-L\-O.\-Entity\-Unit.\-Courses.\-students}.
+
+
+\begin{DoxyCode}
+\hypertarget{classELO_1_1EntityUnit_1_1Courses_l00448}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_ab1a0895decc2986339e0ab148922ad61}{00448} 
+00449     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_ac8e5e595ec895e03b088764d7506e735}{students}(self, students):
+00450         \textcolor{keywordflow}{if} type(students) \textcolor{keywordflow}{is} list \textcolor{keywordflow}{and} (type(students[0]) \textcolor{keywordflow}{is} Id \textcolor{keywordflow}{or} \textcolor{keywordflow}{not} students):
+00451             self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_a55a9d491608867ed4784a8fd435cf7b6}{\_\_students} = students
+00452         \textcolor{keywordflow}{else}:
+00453             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_CRS\_ST'}])
+
+\end{DoxyCode}
 \hypertarget{classELO_1_1EntityUnit_1_1Courses_ab1a0895decc2986339e0ab148922ad61}{\index{E\-L\-O\-::\-Entity\-Unit\-::\-Courses@{E\-L\-O\-::\-Entity\-Unit\-::\-Courses}!students@{students}}
 \index{students@{students}!ELO::EntityUnit::Courses@{E\-L\-O\-::\-Entity\-Unit\-::\-Courses}}
-\subsubsection[{students}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Entity\-Unit.\-Courses.\-students (
+\paragraph[{students}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Entity\-Unit.\-Courses.\-students (
 \begin{DoxyParamCaption}
 \item[{}]{self}
 \end{DoxyParamCaption}
 )}}\label{classELO_1_1EntityUnit_1_1Courses_ab1a0895decc2986339e0ab148922ad61}
+
+
+Definição na linha \hyperlink{EntityUnit_8py_source_l00474}{474} do arquivo \hyperlink{EntityUnit_8py_source}{Entity\-Unit.\-py}.
+
+
+
+Referências \hyperlink{classELO_1_1EntityUnit_1_1Courses_ac8e5e595ec895e03b088764d7506e735}{E\-L\-O.\-Entity\-Unit.\-Courses.\-students}.
+
+
+\begin{DoxyCode}
+\hypertarget{classELO_1_1EntityUnit_1_1Courses_l00474}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_ab1a0895decc2986339e0ab148922ad61}{00474} 
+00475     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_ac8e5e595ec895e03b088764d7506e735}{students}(self):
+00476         del \_\_students
+
+\end{DoxyCode}
 \hypertarget{classELO_1_1EntityUnit_1_1Courses_a079f341a80c13005aec8764266f5c2f2}{\index{E\-L\-O\-::\-Entity\-Unit\-::\-Courses@{E\-L\-O\-::\-Entity\-Unit\-::\-Courses}!this\-Id@{this\-Id}}
 \index{this\-Id@{this\-Id}!ELO::EntityUnit::Courses@{E\-L\-O\-::\-Entity\-Unit\-::\-Courses}}
-\subsubsection[{this\-Id}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Entity\-Unit.\-Courses.\-this\-Id (
+\paragraph[{this\-Id}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Entity\-Unit.\-Courses.\-this\-Id (
 \begin{DoxyParamCaption}
 \item[{}]{self}
 \end{DoxyParamCaption}
 )}}\label{classELO_1_1EntityUnit_1_1Courses_a079f341a80c13005aec8764266f5c2f2}
+
+
+Definição na linha \hyperlink{EntityUnit_8py_source_l00433}{433} do arquivo \hyperlink{EntityUnit_8py_source}{Entity\-Unit.\-py}.
+
+
+
+Referências \hyperlink{EntityUnit_8py_source_l00439}{E\-L\-O.\-Entity\-Unit.\-Courses.\-\_\-\-\_\-this\-Id} e \hyperlink{classELO_1_1EntityUnit_1_1Courses_a283b817d129a8d15e3bce56b368a169d}{E\-L\-O.\-Entity\-Unit.\-Courses.\-this\-Id}.
+
+
+\begin{DoxyCode}
+\hypertarget{classELO_1_1EntityUnit_1_1Courses_l00433}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a079f341a80c13005aec8764266f5c2f2}{00433} 
+00434     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_a283b817d129a8d15e3bce56b368a169d}{thisId}(self):
+00435         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_aa1c0f9111efcfbf10c2114221a2dc9d4}{\_\_thisId}
+
+\end{DoxyCode}
 \hypertarget{classELO_1_1EntityUnit_1_1Courses_a079f341a80c13005aec8764266f5c2f2}{\index{E\-L\-O\-::\-Entity\-Unit\-::\-Courses@{E\-L\-O\-::\-Entity\-Unit\-::\-Courses}!this\-Id@{this\-Id}}
 \index{this\-Id@{this\-Id}!ELO::EntityUnit::Courses@{E\-L\-O\-::\-Entity\-Unit\-::\-Courses}}
-\subsubsection[{this\-Id}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Entity\-Unit.\-Courses.\-this\-Id (
+\paragraph[{this\-Id}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Entity\-Unit.\-Courses.\-this\-Id (
 \begin{DoxyParamCaption}
 \item[{}]{self, }
 \item[{}]{this\-Id}
 \end{DoxyParamCaption}
 )}}\label{classELO_1_1EntityUnit_1_1Courses_a079f341a80c13005aec8764266f5c2f2}
+
+
+Definição na linha \hyperlink{EntityUnit_8py_source_l00437}{437} do arquivo \hyperlink{EntityUnit_8py_source}{Entity\-Unit.\-py}.
+
+
+
+Referências \hyperlink{EntityUnit_8py_source_l00439}{E\-L\-O.\-Entity\-Unit.\-Courses.\-\_\-\-\_\-this\-Id} e \hyperlink{classELO_1_1EntityUnit_1_1Courses_a283b817d129a8d15e3bce56b368a169d}{E\-L\-O.\-Entity\-Unit.\-Courses.\-this\-Id}.
+
+
+\begin{DoxyCode}
+\hypertarget{classELO_1_1EntityUnit_1_1Courses_l00437}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a079f341a80c13005aec8764266f5c2f2}{00437} 
+00438     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_a283b817d129a8d15e3bce56b368a169d}{thisId}(self, thisId):
+00439         \textcolor{keywordflow}{if} type(thisId) \textcolor{keywordflow}{is} Id:
+00440             self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_aa1c0f9111efcfbf10c2114221a2dc9d4}{\_\_thisId} = thisId
+00441         \textcolor{keywordflow}{else}:
+00442             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_CRS\_ID'}])
+
+\end{DoxyCode}
 \hypertarget{classELO_1_1EntityUnit_1_1Courses_a079f341a80c13005aec8764266f5c2f2}{\index{E\-L\-O\-::\-Entity\-Unit\-::\-Courses@{E\-L\-O\-::\-Entity\-Unit\-::\-Courses}!this\-Id@{this\-Id}}
 \index{this\-Id@{this\-Id}!ELO::EntityUnit::Courses@{E\-L\-O\-::\-Entity\-Unit\-::\-Courses}}
-\subsubsection[{this\-Id}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Entity\-Unit.\-Courses.\-this\-Id (
+\paragraph[{this\-Id}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Entity\-Unit.\-Courses.\-this\-Id (
 \begin{DoxyParamCaption}
 \item[{}]{self}
 \end{DoxyParamCaption}
 )}}\label{classELO_1_1EntityUnit_1_1Courses_a079f341a80c13005aec8764266f5c2f2}
 
 
-\subsection{Atributos}
+Definição na linha \hyperlink{EntityUnit_8py_source_l00470}{470} do arquivo \hyperlink{EntityUnit_8py_source}{Entity\-Unit.\-py}.
+
+
+
+Referências \hyperlink{classELO_1_1EntityUnit_1_1Courses_a283b817d129a8d15e3bce56b368a169d}{E\-L\-O.\-Entity\-Unit.\-Courses.\-this\-Id}.
+
+
+\begin{DoxyCode}
+\hypertarget{classELO_1_1EntityUnit_1_1Courses_l00470}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a079f341a80c13005aec8764266f5c2f2}{00470} 
+00471     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_a283b817d129a8d15e3bce56b368a169d}{thisId}(self):
+00472         del \_\_thisId
+
+\end{DoxyCode}
+
+
+\subsubsection{Atributos}
 \hypertarget{classELO_1_1EntityUnit_1_1Courses_a14bdc53eeb2a7fde8e926cbab6e5206f}{\index{E\-L\-O\-::\-Entity\-Unit\-::\-Courses@{E\-L\-O\-::\-Entity\-Unit\-::\-Courses}!modules@{modules}}
 \index{modules@{modules}!ELO::EntityUnit::Courses@{E\-L\-O\-::\-Entity\-Unit\-::\-Courses}}
-\subsubsection[{modules}]{\setlength{\rightskip}{0pt plus 5cm}E\-L\-O.\-Entity\-Unit.\-Courses.\-modules}}\label{classELO_1_1EntityUnit_1_1Courses_a14bdc53eeb2a7fde8e926cbab6e5206f}
+\paragraph[{modules}]{\setlength{\rightskip}{0pt plus 5cm}E\-L\-O.\-Entity\-Unit.\-Courses.\-modules}}\label{classELO_1_1EntityUnit_1_1Courses_a14bdc53eeb2a7fde8e926cbab6e5206f}
+
+
+Definição na linha \hyperlink{EntityUnit_8py_source_l00415}{415} do arquivo \hyperlink{EntityUnit_8py_source}{Entity\-Unit.\-py}.
+
+
+
+Referenciado por \hyperlink{classELO_1_1EntityUnit_1_1Courses_a5d791876c321c20f5a698273613d0d01}{E\-L\-O.\-Entity\-Unit.\-Courses.\-modules()}.
+
 \hypertarget{classELO_1_1EntityUnit_1_1Courses_aeb94f54ad74895834eb7627dd38e1c8e}{\index{E\-L\-O\-::\-Entity\-Unit\-::\-Courses@{E\-L\-O\-::\-Entity\-Unit\-::\-Courses}!name@{name}}
 \index{name@{name}!ELO::EntityUnit::Courses@{E\-L\-O\-::\-Entity\-Unit\-::\-Courses}}
-\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}E\-L\-O.\-Entity\-Unit.\-Courses.\-name}}\label{classELO_1_1EntityUnit_1_1Courses_aeb94f54ad74895834eb7627dd38e1c8e}
+\paragraph[{name}]{\setlength{\rightskip}{0pt plus 5cm}E\-L\-O.\-Entity\-Unit.\-Courses.\-name}}\label{classELO_1_1EntityUnit_1_1Courses_aeb94f54ad74895834eb7627dd38e1c8e}
+
+
+Definição na linha \hyperlink{EntityUnit_8py_source_l00412}{412} do arquivo \hyperlink{EntityUnit_8py_source}{Entity\-Unit.\-py}.
+
+
+
+Referenciado por \hyperlink{classELO_1_1EntityUnit_1_1Courses_a7b502c0d94108e3c474e5a0e2842cc1d}{E\-L\-O.\-Entity\-Unit.\-Courses.\-name()}.
+
 \hypertarget{classELO_1_1EntityUnit_1_1Courses_ac8e5e595ec895e03b088764d7506e735}{\index{E\-L\-O\-::\-Entity\-Unit\-::\-Courses@{E\-L\-O\-::\-Entity\-Unit\-::\-Courses}!students@{students}}
 \index{students@{students}!ELO::EntityUnit::Courses@{E\-L\-O\-::\-Entity\-Unit\-::\-Courses}}
-\subsubsection[{students}]{\setlength{\rightskip}{0pt plus 5cm}E\-L\-O.\-Entity\-Unit.\-Courses.\-students}}\label{classELO_1_1EntityUnit_1_1Courses_ac8e5e595ec895e03b088764d7506e735}
+\paragraph[{students}]{\setlength{\rightskip}{0pt plus 5cm}E\-L\-O.\-Entity\-Unit.\-Courses.\-students}}\label{classELO_1_1EntityUnit_1_1Courses_ac8e5e595ec895e03b088764d7506e735}
+
+
+Definição na linha \hyperlink{EntityUnit_8py_source_l00414}{414} do arquivo \hyperlink{EntityUnit_8py_source}{Entity\-Unit.\-py}.
+
+
+
+Referenciado por \hyperlink{classELO_1_1EntityUnit_1_1Courses_ab1a0895decc2986339e0ab148922ad61}{E\-L\-O.\-Entity\-Unit.\-Courses.\-students()}.
+
 \hypertarget{classELO_1_1EntityUnit_1_1Courses_a283b817d129a8d15e3bce56b368a169d}{\index{E\-L\-O\-::\-Entity\-Unit\-::\-Courses@{E\-L\-O\-::\-Entity\-Unit\-::\-Courses}!this\-Id@{this\-Id}}
 \index{this\-Id@{this\-Id}!ELO::EntityUnit::Courses@{E\-L\-O\-::\-Entity\-Unit\-::\-Courses}}
-\subsubsection[{this\-Id}]{\setlength{\rightskip}{0pt plus 5cm}E\-L\-O.\-Entity\-Unit.\-Courses.\-this\-Id}}\label{classELO_1_1EntityUnit_1_1Courses_a283b817d129a8d15e3bce56b368a169d}
+\paragraph[{this\-Id}]{\setlength{\rightskip}{0pt plus 5cm}E\-L\-O.\-Entity\-Unit.\-Courses.\-this\-Id}}\label{classELO_1_1EntityUnit_1_1Courses_a283b817d129a8d15e3bce56b368a169d}
+
+
+Definição na linha \hyperlink{EntityUnit_8py_source_l00413}{413} do arquivo \hyperlink{EntityUnit_8py_source}{Entity\-Unit.\-py}.
+
+
+
+Referenciado por \hyperlink{classELO_1_1EntityUnit_1_1Courses_a079f341a80c13005aec8764266f5c2f2}{E\-L\-O.\-Entity\-Unit.\-Courses.\-this\-Id()}.
+
 
 
 A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}

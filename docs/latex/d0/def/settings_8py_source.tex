@@ -1,0 +1,181 @@
+\hypertarget{settings_8py}{\subsection{settings.\-py}
+\label{settings_8py}\index{E\-L\-O/\-E\-L\-O/settings.\-py@{E\-L\-O/\-E\-L\-O/settings.\-py}}
+}
+
+\begin{DoxyCode}
+\hypertarget{settings_8py_source_l00001}{}\hyperlink{namespaceELO_1_1settings}{00001} \textcolor{comment}{# Django settings for ELO project.}
+00002 
+00003 \textcolor{keyword}{import} os.path
+00004 
+00005 \textcolor{keyword}{import} django.conf.global\_settings \textcolor{keyword}{as} DEFAULT\_SETTINGS
+00006 
+\hypertarget{settings_8py_source_l00007}{}\hyperlink{namespaceELO_1_1settings_a7730264ddd478343e0f282f36d4a5ab4}{00007} filepath = \textcolor{keyword}{lambda} x: os.path.join(os.path.dirname(\_\_file\_\_), x).replace(\textcolor{stringliteral}{'\(\backslash\)\(\backslash\)'},\textcolor{stringliteral}{'/'})
+00008 
+\hypertarget{settings_8py_source_l00009}{}\hyperlink{namespaceELO_1_1settings_a62f457ac29cc6f3e85282c71ce3b4f26}{00009} DEBUG = \textcolor{keyword}{True}
+\hypertarget{settings_8py_source_l00010}{}\hyperlink{namespaceELO_1_1settings_a014930e0bf77feccc65c20212593381e}{00010} TEMPLATE\_DEBUG = DEBUG
+00011 
+\hypertarget{settings_8py_source_l00012}{}\hyperlink{namespaceELO_1_1settings_a051220bd8105ba13b2720df11c1950ba}{00012} ADMINS = (
+00013     (\textcolor{stringliteral}{'Yurick'}, \textcolor{stringliteral}{'yurick.hauschild@gmail.com'}),
+00014 )
+00015 
+\hypertarget{settings_8py_source_l00016}{}\hyperlink{namespaceELO_1_1settings_a43e8826e0b24e337065b4975f3eace4c}{00016} MANAGERS = ADMINS
+00017 
+\hypertarget{settings_8py_source_l00018}{}\hyperlink{namespaceELO_1_1settings_a91ed1425b7f1cf041960832ce5b54b6e}{00018} DATABASES = \{
+00019     \textcolor{stringliteral}{'default'}: \{
+00020         \textcolor{stringliteral}{'ENGINE'}: \textcolor{stringliteral}{'django.db.backends.sqlite3'}, 
+00021         \textcolor{stringliteral}{'NAME'}: \hyperlink{namespaceELO_1_1settings_a7730264ddd478343e0f282f36d4a5ab4}{filepath}(\textcolor{stringliteral}{'database/elo.db'}),
+00022         \textcolor{stringliteral}{'USER'}: \textcolor{stringliteral}{''},
+00023         \textcolor{stringliteral}{'PASSWORD'}: \textcolor{stringliteral}{''},
+00024         \textcolor{stringliteral}{'HOST'}: \textcolor{stringliteral}{''},
+00025         \textcolor{stringliteral}{'PORT'}: \textcolor{stringliteral}{''},
+00026     \}
+00027 \}
+00028 
+00029 \textcolor{comment}{# Hosts/domain names that are valid for this site; required if DEBUG is False}
+00030 \textcolor{comment}{# See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts}
+\hypertarget{settings_8py_source_l00031}{}\hyperlink{namespaceELO_1_1settings_afd72644768367440ae1a89e9fe95cde5}{00031} ALLOWED\_HOSTS = []
+00032 
+00033 \textcolor{comment}{# Local time zone for this installation. Choices can be found here:}
+00034 \textcolor{comment}{# http://en.wikipedia.org/wiki/List\_of\_tz\_zones\_by\_name}
+00035 \textcolor{comment}{# although not all choices may be available on all operating systems.}
+00036 \textcolor{comment}{# In a Windows environment this must be set to your system time zone.}
+\hypertarget{settings_8py_source_l00037}{}\hyperlink{namespaceELO_1_1settings_aafd318ffa70db1890eaf1f8621e19d53}{00037} TIME\_ZONE = \textcolor{stringliteral}{'America/Sao\_Paulo'}
+00038 
+00039 \textcolor{comment}{# Language code for this installation. All choices can be found here:}
+00040 \textcolor{comment}{# http://www.i18nguy.com/unicode/language-identifiers.html}
+\hypertarget{settings_8py_source_l00041}{}\hyperlink{namespaceELO_1_1settings_a388841a63bae5418e55fb741f938d4fb}{00041} LANGUAGE\_CODE = \textcolor{stringliteral}{'pt-br'}
+00042 
+\hypertarget{settings_8py_source_l00043}{}\hyperlink{namespaceELO_1_1settings_a31328123344da3768e97b0ac61c342de}{00043} SITE\_ID = 1
+00044 
+00045 \textcolor{comment}{# If you set this to False, Django will make some optimizations so as not}
+00046 \textcolor{comment}{# to load the internationalization machinery.}
+\hypertarget{settings_8py_source_l00047}{}\hyperlink{namespaceELO_1_1settings_a2d03ced1be44b9d7937bdbc870474ffe}{00047} USE\_I18N = \textcolor{keyword}{True}
+00048 
+00049 \textcolor{comment}{# If you set this to False, Django will not format dates, numbers and}
+00050 \textcolor{comment}{# calendars according to the current locale.}
+\hypertarget{settings_8py_source_l00051}{}\hyperlink{namespaceELO_1_1settings_a863197f2699808509a4c32b38c16eb44}{00051} USE\_L10N = \textcolor{keyword}{True}
+00052 
+00053 \textcolor{comment}{# If you set this to False, Django will not use timezone-aware datetimes.}
+\hypertarget{settings_8py_source_l00054}{}\hyperlink{namespaceELO_1_1settings_a8da4c6fc66af84d08bddc0249a473553}{00054} USE\_TZ = \textcolor{keyword}{True}
+00055 
+\hypertarget{settings_8py_source_l00056}{}\hyperlink{namespaceELO_1_1settings_a977570dd2e9cd8142b3d65c4fa37c172}{00056} LOCALE\_PATHS = (
+00057     \hyperlink{namespaceELO_1_1settings_a7730264ddd478343e0f282f36d4a5ab4}{filepath}(\textcolor{stringliteral}{'locale'})
+00058 )
+00059 
+00060 \textcolor{comment}{# Absolute filesystem path to the directory that will hold user-uploaded files.}
+00061 \textcolor{comment}{# Example: "/var/www/example.com/media/"}
+\hypertarget{settings_8py_source_l00062}{}\hyperlink{namespaceELO_1_1settings_a7f83b56101acea110bb525439aaa69aa}{00062} MEDIA\_ROOT = \hyperlink{namespaceELO_1_1settings_a7730264ddd478343e0f282f36d4a5ab4}{filepath}(\textcolor{stringliteral}{'media'})
+00063 
+00064 \textcolor{comment}{# URL that handles the media served from MEDIA\_ROOT. Make sure to use a}
+00065 \textcolor{comment}{# trailing slash.}
+00066 \textcolor{comment}{# Examples: "http://example.com/media/", "http://media.example.com/"}
+\hypertarget{settings_8py_source_l00067}{}\hyperlink{namespaceELO_1_1settings_acd3e1c3559f7c87f5aad004b76458ddc}{00067} MEDIA\_URL = \textcolor{stringliteral}{'/media/'}
+00068 
+00069 \textcolor{comment}{# Absolute path to the directory static files should be collected to.}
+00070 \textcolor{comment}{# Don't put anything in this directory yourself; store your static files}
+00071 \textcolor{comment}{# in apps' "static/" subdirectories and in STATICFILES\_DIRS.}
+00072 \textcolor{comment}{# Example: "/var/www/example.com/static/"}
+\hypertarget{settings_8py_source_l00073}{}\hyperlink{namespaceELO_1_1settings_ae5539527ada0171fc602c561493398f4}{00073} STATIC\_ROOT = \textcolor{stringliteral}{''}
+00074 
+00075 \textcolor{comment}{# URL prefix for static files.}
+00076 \textcolor{comment}{# Example: "http://example.com/static/", "http://static.example.com/"}
+\hypertarget{settings_8py_source_l00077}{}\hyperlink{namespaceELO_1_1settings_a408323f388e22737eedf90471a3809a4}{00077} STATIC\_URL = \textcolor{stringliteral}{'/static/'}
+00078 
+00079 \textcolor{comment}{# Additional locations of static files}
+\hypertarget{settings_8py_source_l00080}{}\hyperlink{namespaceELO_1_1settings_aa2272e7a822b45c2101e4f5a958e22a6}{00080} STATICFILES\_DIRS = (
+00081     \hyperlink{namespaceELO_1_1settings_a7730264ddd478343e0f282f36d4a5ab4}{filepath}(\textcolor{stringliteral}{'static'}),
+00082 )
+00083 
+00084 \textcolor{comment}{# List of finder classes that know how to find static files in}
+00085 \textcolor{comment}{# various locations.}
+\hypertarget{settings_8py_source_l00086}{}\hyperlink{namespaceELO_1_1settings_a3e4decd51fab7bd5bdbdb12aac13b70a}{00086} STATICFILES\_FINDERS = (
+00087     \textcolor{stringliteral}{'django.contrib.staticfiles.finders.FileSystemFinder'},
+00088     \textcolor{stringliteral}{'django.contrib.staticfiles.finders.AppDirectoriesFinder'},
+00089 \textcolor{comment}{#    'django.contrib.staticfiles.finders.DefaultStorageFinder',}
+00090 )
+00091 
+00092 \textcolor{comment}{# Make this unique, and don't share it with anybody.}
+\hypertarget{settings_8py_source_l00093}{}\hyperlink{namespaceELO_1_1settings_a13a984a190c7599ab7343322ab098d6d}{00093} SECRET\_KEY = \textcolor{stringliteral}{'-kh*#3bk8)6xrvx\_d(^h7*4941(jmg*qu9(mv$a$cmnfvckzq-'}
+00094 
+00095 \textcolor{comment}{# List of callables that know how to import templates from various sources.}
+\hypertarget{settings_8py_source_l00096}{}\hyperlink{namespaceELO_1_1settings_a9c876284f3865d5a15a73bedccfe3bb7}{00096} TEMPLATE\_LOADERS = (
+00097     \textcolor{stringliteral}{'django.template.loaders.filesystem.Loader'},
+00098     \textcolor{stringliteral}{'django.template.loaders.app\_directories.Loader'},
+00099 \textcolor{comment}{#     'django.template.loaders.eggs.Loader',}
+00100 )
+00101 
+\hypertarget{settings_8py_source_l00102}{}\hyperlink{namespaceELO_1_1settings_a968380d6242dca6cc82acb1d806c703d}{00102} MIDDLEWARE\_CLASSES = (
+00103     \textcolor{stringliteral}{'django.contrib.sessions.middleware.SessionMiddleware'},
+00104     \textcolor{stringliteral}{'django.middleware.locale.LocaleMiddleware'},
+00105     \textcolor{stringliteral}{'django.middleware.common.CommonMiddleware'},
+00106     \textcolor{stringliteral}{'django.middleware.csrf.CsrfViewMiddleware'},
+00107     \textcolor{stringliteral}{'django.contrib.auth.middleware.AuthenticationMiddleware'},
+00108     \textcolor{comment}{#'django.contrib.messages.middleware.MessageMiddleware',}
+00109     \textcolor{comment}{# Uncomment the next line for simple clickjacking protection:}
+00110     \textcolor{comment}{#'django.middleware.clickjacking.XFrameOptionsMiddleware',}
+00111 )
+00112 
+\hypertarget{settings_8py_source_l00113}{}\hyperlink{namespaceELO_1_1settings_a9c32eb39b369ab243858f8bd495e698b}{00113} ROOT\_URLCONF = \textcolor{stringliteral}{'ELO.urls'}
+00114 
+00115 \textcolor{comment}{# Python dotted path to the WSGI application used by Django's runserver.}
+\hypertarget{settings_8py_source_l00116}{}\hyperlink{namespaceELO_1_1settings_a065d3c6028b923c4918002832d2527be}{00116} WSGI\_APPLICATION = \textcolor{stringliteral}{'ELO.wsgi.application'}
+00117 
+\hypertarget{settings_8py_source_l00118}{}\hyperlink{namespaceELO_1_1settings_a4e977a41e98923ee4c93b24d22b3d7e2}{00118} TEMPLATE\_DIRS = (
+00119     \hyperlink{namespaceELO_1_1settings_a7730264ddd478343e0f282f36d4a5ab4}{filepath}(\textcolor{stringliteral}{'templates'}),
+00120     \textcolor{comment}{# Put strings here, like "/home/html/django\_templates" or "C:/www/django/templates".}
+00121     \textcolor{comment}{# Always use forward slashes, even on Windows.}
+00122     \textcolor{comment}{# Don't forget to use absolute paths, not relative paths.}
+00123 )
+00124 
+\hypertarget{settings_8py_source_l00125}{}\hyperlink{namespaceELO_1_1settings_a1a4752075da59d93477195bcc3fc4765}{00125} INSTALLED\_APPS = (
+00126     \textcolor{comment}{#'django.contrib.auth',}
+00127     \textcolor{stringliteral}{'django.contrib.contenttypes'},
+00128     \textcolor{stringliteral}{'django.contrib.sessions'},
+00129     \textcolor{comment}{#'django.contrib.sites',}
+00130     \textcolor{stringliteral}{'django.contrib.messages'},
+00131     \textcolor{stringliteral}{'django.contrib.staticfiles'},
+00132     \textcolor{comment}{# Uncomment the next line to enable the admin:}
+00133     \textcolor{comment}{# 'django.contrib.admin',}
+00134     \textcolor{comment}{# Uncomment the next line to enable admin documentation:}
+00135     \textcolor{comment}{# 'django.contrib.admindocs',}
+00136     \textcolor{stringliteral}{'Login'},
+00137     \textcolor{stringliteral}{'Profile'},
+00138     \textcolor{stringliteral}{'ELO'},
+00139     \textcolor{stringliteral}{'Adm'},
+00140     \textcolor{stringliteral}{'Course'},
+00141     \textcolor{stringliteral}{'Building'},
+00142 )
+00143 
+00144 \textcolor{comment}{# A sample logging configuration. The only tangible logging}
+00145 \textcolor{comment}{# performed by this configuration is to send an email to}
+00146 \textcolor{comment}{# the site admins on every HTTP 500 error when DEBUG=False.}
+00147 \textcolor{comment}{# See http://docs.djangoproject.com/en/dev/topics/logging for}
+00148 \textcolor{comment}{# more details on how to customize your logging configuration.}
+\hypertarget{settings_8py_source_l00149}{}\hyperlink{namespaceELO_1_1settings_addc421e02af1569796e2d33b2bc62ff5}{00149} LOGGING = \{
+00150     \textcolor{stringliteral}{'version'}: 1,
+00151     \textcolor{stringliteral}{'disable\_existing\_loggers'}: \textcolor{keyword}{False},
+00152     \textcolor{stringliteral}{'filters'}: \{
+00153         \textcolor{stringliteral}{'require\_debug\_false'}: \{
+00154             \textcolor{stringliteral}{'()'}: \textcolor{stringliteral}{'django.utils.log.RequireDebugFalse'}
+00155         \}
+00156     \},
+00157     \textcolor{stringliteral}{'handlers'}: \{
+00158         \textcolor{stringliteral}{'mail\_admins'}: \{
+00159             \textcolor{stringliteral}{'level'}: \textcolor{stringliteral}{'ERROR'},
+00160             \textcolor{stringliteral}{'filters'}: [\textcolor{stringliteral}{'require\_debug\_false'}],
+00161             \textcolor{stringliteral}{'class'}: \textcolor{stringliteral}{'django.utils.log.AdminEmailHandler'}
+00162         \}
+00163     \},
+00164     \textcolor{stringliteral}{'loggers'}: \{
+00165         \textcolor{stringliteral}{'django.request'}: \{
+00166             \textcolor{stringliteral}{'handlers'}: [\textcolor{stringliteral}{'mail\_admins'}],
+00167             \textcolor{stringliteral}{'level'}: \textcolor{stringliteral}{'ERROR'},
+00168             \textcolor{stringliteral}{'propagate'}: \textcolor{keyword}{True},
+00169         \},
+00170     \}
+00171 \}
+00172 
+\hypertarget{settings_8py_source_l00173}{}\hyperlink{namespaceELO_1_1settings_ad62b51880946e9380913c2f3811311bf}{00173} TEMPLATE\_CONTEXT\_PROCESSORS = DEFAULT\_SETTINGS.TEMPLATE\_CONTEXT\_PROCESSORS + (
+00174     \textcolor{stringliteral}{'ELO.MainUnit.globalContext'},
+00175 )
+\end{DoxyCode}

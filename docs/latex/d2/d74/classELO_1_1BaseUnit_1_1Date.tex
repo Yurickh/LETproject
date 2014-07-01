@@ -1,4 +1,4 @@
-\hypertarget{classELO_1_1BaseUnit_1_1Date}{\section{Referência da Classe E\-L\-O.\-Base\-Unit.\-Date}
+\hypertarget{classELO_1_1BaseUnit_1_1Date}{\subsection{Referência da Classe E\-L\-O.\-Base\-Unit.\-Date}
 \label{classELO_1_1BaseUnit_1_1Date}\index{E\-L\-O.\-Base\-Unit.\-Date@{E\-L\-O.\-Base\-Unit.\-Date}}
 }
 
@@ -12,22 +12,24 @@ Diagrama de Hierarquia para E\-L\-O.\-Base\-Unit.\-Date\-:\begin{figure}[H]
 \includegraphics[height=2.000000cm]{d2/d74/classELO_1_1BaseUnit_1_1Date}
 \end{center}
 \end{figure}
-\subsection*{Métodos Públicos}
+\subsubsection*{Métodos Públicos}
 \begin{DoxyCompactItemize}
 \item 
 def \hyperlink{classELO_1_1BaseUnit_1_1Date_a97d924fa5f1b2a1d8afbdbfe17b6a852}{\-\_\-\-\_\-init\-\_\-\-\_\-}
 \begin{DoxyCompactList}\small\item\em Construtor da classe. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\subsection{Descrição Detalhada}
-Classe container de Data. 
-
+\subsubsection{Descrição Detalhada}
 Este tipo básico armazena uma data para os mais diversos usos. 
 
-\subsection{Construtores \& Destrutores}
+Definição na linha \hyperlink{BaseUnit_8py_source_l00533}{533} do arquivo \hyperlink{BaseUnit_8py_source}{Base\-Unit.\-py}.
+
+
+
+\subsubsection{Construtores \& Destrutores}
 \hypertarget{classELO_1_1BaseUnit_1_1Date_a97d924fa5f1b2a1d8afbdbfe17b6a852}{\index{E\-L\-O\-::\-Base\-Unit\-::\-Date@{E\-L\-O\-::\-Base\-Unit\-::\-Date}!\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}}
 \index{\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}!ELO::BaseUnit::Date@{E\-L\-O\-::\-Base\-Unit\-::\-Date}}
-\subsubsection[{\-\_\-\-\_\-init\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Base\-Unit.\-Date.\-\_\-\-\_\-init\-\_\-\-\_\- (
+\paragraph[{\-\_\-\-\_\-init\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Base\-Unit.\-Date.\-\_\-\-\_\-init\-\_\-\-\_\- (
 \begin{DoxyParamCaption}
 \item[{}]{self, }
 \item[{}]{day, }
@@ -35,10 +37,6 @@ Este tipo básico armazena uma data para os mais diversos usos.
 \item[{}]{year}
 \end{DoxyParamCaption}
 )}}\label{classELO_1_1BaseUnit_1_1Date_a97d924fa5f1b2a1d8afbdbfe17b6a852}
-
-
-Construtor da classe. 
-
 Responsável por impedir a criação de um tipo básico que não atenda aos requisitos do sistema.
 
 \begin{DoxyItemize}
@@ -52,6 +50,29 @@ Responsável por impedir a criação de um tipo básico que não atenda aos requ
 {\em Value\-Error} & Exceção a ser lançada caso a data seja inválida. \\
 \hline
 \end{DoxyExceptions}
+
+
+Definição na linha \hyperlink{BaseUnit_8py_source_l00548}{548} do arquivo \hyperlink{BaseUnit_8py_source}{Base\-Unit.\-py}.
+
+
+
+Referências \hyperlink{BaseUnit_8py_source_l00044}{E\-L\-O.\-Base\-Unit.\-If\-Base\-Type.\-\_\-validate()} e \hyperlink{BaseUnit_8py_source_l00035}{E\-L\-O.\-Base\-Unit.\-If\-Base\-Type.\-\_\-value}.
+
+
+\begin{DoxyCode}
+\hypertarget{classELO_1_1BaseUnit_1_1Date_l00548}{}\hyperlink{classELO_1_1BaseUnit_1_1Date_a97d924fa5f1b2a1d8afbdbfe17b6a852}{00548} 
+00549     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Date_a97d924fa5f1b2a1d8afbdbfe17b6a852}{\_\_init\_\_}(self, day, month, year):
+00550         \textcolor{keywordflow}{try}:
+00551             value[\textcolor{stringliteral}{'day'}] = day
+00552             value[\textcolor{stringliteral}{'month'}] = month
+00553             value[\textcolor{stringliteral}{'year'}] = year
+00554             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(value)
+00555         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00556             del self
+00557             \textcolor{keywordflow}{raise} exc
+00558         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value} = value
+
+\end{DoxyCode}
 
 
 A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}

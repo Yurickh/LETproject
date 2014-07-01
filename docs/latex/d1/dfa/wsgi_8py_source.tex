@@ -1,0 +1,38 @@
+\hypertarget{wsgi_8py}{\subsection{wsgi.\-py}
+\label{wsgi_8py}\index{E\-L\-O/\-E\-L\-O/wsgi.\-py@{E\-L\-O/\-E\-L\-O/wsgi.\-py}}
+}
+
+\begin{DoxyCode}
+\hypertarget{wsgi_8py_source_l00001}{}\hyperlink{namespaceELO_1_1wsgi}{00001} \textcolor{stringliteral}{"""}
+00002 \textcolor{stringliteral}{WSGI config for ELO project.}
+00003 \textcolor{stringliteral}{}
+00004 \textcolor{stringliteral}{This module contains the WSGI application used by Django's development server}
+00005 \textcolor{stringliteral}{and any production WSGI deployments. It should expose a module-level variable}
+00006 \textcolor{stringliteral}{named ``application``. Django's ``runserver`` and ``runfcgi`` commands discover}
+00007 \textcolor{stringliteral}{this application via the ``WSGI\_APPLICATION`` setting.}
+00008 \textcolor{stringliteral}{}
+00009 \textcolor{stringliteral}{Usually you will have the standard Django WSGI application here, but it also}
+00010 \textcolor{stringliteral}{might make sense to replace the whole Django WSGI application with a custom one}
+00011 \textcolor{stringliteral}{that later delegates to the Django one. For example, you could introduce WSGI}
+00012 \textcolor{stringliteral}{middleware here, or combine a Django application with an application of another}
+00013 \textcolor{stringliteral}{framework.}
+00014 \textcolor{stringliteral}{}
+00015 \textcolor{stringliteral}{"""}
+00016 \textcolor{keyword}{import} os
+00017 
+00018 \textcolor{comment}{# We defer to a DJANGO\_SETTINGS\_MODULE already in the environment. This breaks}
+00019 \textcolor{comment}{# if running multiple sites in the same mod\_wsgi process. To fix this, use}
+00020 \textcolor{comment}{# mod\_wsgi daemon mode with each site in its own daemon process, or use}
+00021 \textcolor{comment}{# os.environ["DJANGO\_SETTINGS\_MODULE"] = "ELO.settings"}
+00022 os.environ.setdefault(\textcolor{stringliteral}{"DJANGO\_SETTINGS\_MODULE"}, \textcolor{stringliteral}{"ELO.settings"})
+00023 
+00024 \textcolor{comment}{# This application object is used by any WSGI server configured to use this}
+00025 \textcolor{comment}{# file. This includes Django's development server, if the WSGI\_APPLICATION}
+00026 \textcolor{comment}{# setting points here.}
+00027 \textcolor{keyword}{from} django.core.wsgi \textcolor{keyword}{import} get\_wsgi\_application
+\hypertarget{wsgi_8py_source_l00028}{}\hyperlink{namespaceELO_1_1wsgi_a8951c4ea2920440aeeb73c65ab517a5d}{00028} application = get\_wsgi\_application()
+00029 
+00030 \textcolor{comment}{# Apply WSGI middleware here.}
+00031 \textcolor{comment}{# from helloworld.wsgi import HelloWorldApplication}
+00032 \textcolor{comment}{# application = HelloWorldApplication(application)}
+\end{DoxyCode}

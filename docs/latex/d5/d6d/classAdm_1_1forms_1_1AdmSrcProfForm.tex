@@ -1,4 +1,4 @@
-\hypertarget{classAdm_1_1forms_1_1AdmSrcProfForm}{\section{Referência da Classe Adm.\-forms.\-Adm\-Src\-Prof\-Form}
+\hypertarget{classAdm_1_1forms_1_1AdmSrcProfForm}{\subsection{Referência da Classe Adm.\-forms.\-Adm\-Src\-Prof\-Form}
 \label{classAdm_1_1forms_1_1AdmSrcProfForm}\index{Adm.\-forms.\-Adm\-Src\-Prof\-Form@{Adm.\-forms.\-Adm\-Src\-Prof\-Form}}
 }
 Diagrama de Hierarquia para Adm.\-forms.\-Adm\-Src\-Prof\-Form\-:\begin{figure}[H]
@@ -7,32 +7,60 @@ Diagrama de Hierarquia para Adm.\-forms.\-Adm\-Src\-Prof\-Form\-:\begin{figure}[
 \includegraphics[height=2.000000cm]{d5/d6d/classAdm_1_1forms_1_1AdmSrcProfForm}
 \end{center}
 \end{figure}
-\subsection*{Métodos Públicos}
+\subsubsection*{Métodos Públicos}
 \begin{DoxyCompactItemize}
 \item 
 def \hyperlink{classAdm_1_1forms_1_1AdmSrcProfForm_a637026e6ec06d0c9c02f00394b140eec}{clean\-\_\-prof\-Matric}
 \end{DoxyCompactItemize}
-\subsection*{Atributos Estáticos Públicos}
+\subsubsection*{Atributos Estáticos Públicos}
 \begin{DoxyCompactItemize}
 \item 
 tuple \hyperlink{classAdm_1_1forms_1_1AdmSrcProfForm_a774a36bf303e747a3139b988a4a714b3}{prof\-Matric} = forms.\-Interger\-Field(label = \char`\"{}matricula do Professor\char`\"{}, required = 'True')
 \end{DoxyCompactItemize}
 
 
-\subsection{Métodos}
+\subsubsection{Descrição Detalhada}
+
+
+Definição na linha \hyperlink{Adm_2forms_8py_source_l00219}{219} do arquivo \hyperlink{Adm_2forms_8py_source}{forms.\-py}.
+
+
+
+\subsubsection{Métodos}
 \hypertarget{classAdm_1_1forms_1_1AdmSrcProfForm_a637026e6ec06d0c9c02f00394b140eec}{\index{Adm\-::forms\-::\-Adm\-Src\-Prof\-Form@{Adm\-::forms\-::\-Adm\-Src\-Prof\-Form}!clean\-\_\-prof\-Matric@{clean\-\_\-prof\-Matric}}
 \index{clean\-\_\-prof\-Matric@{clean\-\_\-prof\-Matric}!Adm::forms::AdmSrcProfForm@{Adm\-::forms\-::\-Adm\-Src\-Prof\-Form}}
-\subsubsection[{clean\-\_\-prof\-Matric}]{\setlength{\rightskip}{0pt plus 5cm}def Adm.\-forms.\-Adm\-Src\-Prof\-Form.\-clean\-\_\-prof\-Matric (
+\paragraph[{clean\-\_\-prof\-Matric}]{\setlength{\rightskip}{0pt plus 5cm}def Adm.\-forms.\-Adm\-Src\-Prof\-Form.\-clean\-\_\-prof\-Matric (
 \begin{DoxyParamCaption}
 \item[{}]{self}
 \end{DoxyParamCaption}
 )}}\label{classAdm_1_1forms_1_1AdmSrcProfForm_a637026e6ec06d0c9c02f00394b140eec}
 
 
-\subsection{Atributos}
+Definição na linha \hyperlink{Adm_2forms_8py_source_l00221}{221} do arquivo \hyperlink{Adm_2forms_8py_source}{forms.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classAdm_1_1forms_1_1AdmSrcProfForm_l00221}{}\hyperlink{classAdm_1_1forms_1_1AdmSrcProfForm_a637026e6ec06d0c9c02f00394b140eec}{00221} 
+00222     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmSrcProfForm_a637026e6ec06d0c9c02f00394b140eec}{clean\_profMatric}(self):
+00223         \textcolor{keywordflow}{try}:
+00224             matric = Matric(self.cleaned\_data[\textcolor{stringliteral}{"profMatric"}]
+00225         \textcolor{keywordflow}{except} ValueError:
+00226             \textcolor{keywordflow}{raise} forms.ValidationError(\textcolor{stringliteral}{"Matricula inválida."})
+00227         \textcolor{keywordflow}{return} matric
+00228             
+00229 
+00230 \textcolor{comment}{#.}
+\end{DoxyCode}
+
+
+\subsubsection{Atributos}
 \hypertarget{classAdm_1_1forms_1_1AdmSrcProfForm_a774a36bf303e747a3139b988a4a714b3}{\index{Adm\-::forms\-::\-Adm\-Src\-Prof\-Form@{Adm\-::forms\-::\-Adm\-Src\-Prof\-Form}!prof\-Matric@{prof\-Matric}}
 \index{prof\-Matric@{prof\-Matric}!Adm::forms::AdmSrcProfForm@{Adm\-::forms\-::\-Adm\-Src\-Prof\-Form}}
-\subsubsection[{prof\-Matric}]{\setlength{\rightskip}{0pt plus 5cm}tuple Adm.\-forms.\-Adm\-Src\-Prof\-Form.\-prof\-Matric = forms.\-Interger\-Field(label = \char`\"{}matricula do Professor\char`\"{}, required = 'True')\hspace{0.3cm}{\ttfamily [static]}}}\label{classAdm_1_1forms_1_1AdmSrcProfForm_a774a36bf303e747a3139b988a4a714b3}
+\paragraph[{prof\-Matric}]{\setlength{\rightskip}{0pt plus 5cm}tuple Adm.\-forms.\-Adm\-Src\-Prof\-Form.\-prof\-Matric = forms.\-Interger\-Field(label = \char`\"{}matricula do Professor\char`\"{}, required = 'True')\hspace{0.3cm}{\ttfamily [static]}}}\label{classAdm_1_1forms_1_1AdmSrcProfForm_a774a36bf303e747a3139b988a4a714b3}
+
+
+Definição na linha \hyperlink{Adm_2forms_8py_source_l00220}{220} do arquivo \hyperlink{Adm_2forms_8py_source}{forms.\-py}.
+
 
 
 A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}

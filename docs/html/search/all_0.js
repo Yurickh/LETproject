@@ -6,7 +6,7 @@ var searchData=
   ['_5f_5finit_5f_5f_2epy',['__init__.py',['../d6/d3f/Adm_2____init_____8py.html',1,'']]],
   ['_5f_5finit_5f_5f_2epy',['__init__.py',['../de/dcb/Profile_2____init_____8py.html',1,'']]],
   ['_5f_5finit_5f_5f_2epy',['__init__.py',['../d8/d1f/Login_2____init_____8py.html',1,'']]],
-  ['_5f_5finit_5f_5f_2epy',['__init__.py',['../d8/d1c/ELO_2lang_2____init_____8py.html',1,'']]],
+  ['_5f_5finit_5f_5f_2epy',['__init__.py',['../d2/df7/ELO_2locale_2____init_____8py.html',1,'']]],
   ['_5f_5finit_5f_5f_2epy',['__init__.py',['../d1/da8/ELO_2____init_____8py.html',1,'']]],
   ['_5f_5finit_5f_5f_2epy',['__init__.py',['../d3/d0f/Course_2____init_____8py.html',1,'']]],
   ['_5f_5funicode_5f_5f',['__unicode__',['../d0/dc8/classELO_1_1models_1_1Student.html#a2f51785c1beb3b45269a8678d97ec783',1,'ELO.models.Student.__unicode__()'],['../df/d5e/classELO_1_1models_1_1Adm.html#a3541c3ae12b8d2da3f44ac6be00a23e6',1,'ELO.models.Adm.__unicode__()'],['../d5/d93/classELO_1_1models_1_1Professor.html#aefc9d63d429e19ec3487a7879879f29d',1,'ELO.models.Professor.__unicode__()']]]

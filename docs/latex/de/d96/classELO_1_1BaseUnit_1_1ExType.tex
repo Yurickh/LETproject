@@ -1,4 +1,4 @@
-\hypertarget{classELO_1_1BaseUnit_1_1ExType}{\section{Referência da Classe E\-L\-O.\-Base\-Unit.\-Ex\-Type}
+\hypertarget{classELO_1_1BaseUnit_1_1ExType}{\subsection{Referência da Classe E\-L\-O.\-Base\-Unit.\-Ex\-Type}
 \label{classELO_1_1BaseUnit_1_1ExType}\index{E\-L\-O.\-Base\-Unit.\-Ex\-Type@{E\-L\-O.\-Base\-Unit.\-Ex\-Type}}
 }
 
@@ -12,31 +12,29 @@ Diagrama de Hierarquia para E\-L\-O.\-Base\-Unit.\-Ex\-Type\-:\begin{figure}[H]
 \includegraphics[height=2.000000cm]{de/d96/classELO_1_1BaseUnit_1_1ExType}
 \end{center}
 \end{figure}
-\subsection*{Métodos Públicos}
+\subsubsection*{Métodos Públicos}
 \begin{DoxyCompactItemize}
 \item 
 def \hyperlink{classELO_1_1BaseUnit_1_1ExType_aca9932deaf8fe247d16ce17909d3dfbf}{\-\_\-\-\_\-init\-\_\-\-\_\-}
 \begin{DoxyCompactList}\small\item\em Contrutor da classe,. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\subsection{Descrição Detalhada}
-Classe container de tipo de exercício. 
-
+\subsubsection{Descrição Detalhada}
 Este tipo básico contém um inteiro que representa um tipo de exercício. Cada tipo de exercício funciona de uma forma diferente, e eles são escaláveis. 
 
-\subsection{Construtores \& Destrutores}
+Definição na linha \hyperlink{BaseUnit_8py_source_l00418}{418} do arquivo \hyperlink{BaseUnit_8py_source}{Base\-Unit.\-py}.
+
+
+
+\subsubsection{Construtores \& Destrutores}
 \hypertarget{classELO_1_1BaseUnit_1_1ExType_aca9932deaf8fe247d16ce17909d3dfbf}{\index{E\-L\-O\-::\-Base\-Unit\-::\-Ex\-Type@{E\-L\-O\-::\-Base\-Unit\-::\-Ex\-Type}!\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}}
 \index{\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}!ELO::BaseUnit::ExType@{E\-L\-O\-::\-Base\-Unit\-::\-Ex\-Type}}
-\subsubsection[{\-\_\-\-\_\-init\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Base\-Unit.\-Ex\-Type.\-\_\-\-\_\-init\-\_\-\-\_\- (
+\paragraph[{\-\_\-\-\_\-init\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Base\-Unit.\-Ex\-Type.\-\_\-\-\_\-init\-\_\-\-\_\- (
 \begin{DoxyParamCaption}
 \item[{}]{self, }
 \item[{}]{value}
 \end{DoxyParamCaption}
 )}}\label{classELO_1_1BaseUnit_1_1ExType_aca9932deaf8fe247d16ce17909d3dfbf}
-
-
-Contrutor da classe,. 
-
 Impede a criação do tipo básico para valores de entrada inválidos.
 
 \begin{DoxyItemize}
@@ -46,6 +44,26 @@ Impede a criação do tipo básico para valores de entrada inválidos.
 {\em Value\-Error} & Será lançada no caso do valor de entrada ser inválido. \\
 \hline
 \end{DoxyExceptions}
+
+
+Definição na linha \hyperlink{BaseUnit_8py_source_l00430}{430} do arquivo \hyperlink{BaseUnit_8py_source}{Base\-Unit.\-py}.
+
+
+
+Referências \hyperlink{BaseUnit_8py_source_l00044}{E\-L\-O.\-Base\-Unit.\-If\-Base\-Type.\-\_\-validate()} e \hyperlink{BaseUnit_8py_source_l00035}{E\-L\-O.\-Base\-Unit.\-If\-Base\-Type.\-\_\-value}.
+
+
+\begin{DoxyCode}
+\hypertarget{classELO_1_1BaseUnit_1_1ExType_l00430}{}\hyperlink{classELO_1_1BaseUnit_1_1ExType_aca9932deaf8fe247d16ce17909d3dfbf}{00430} 
+00431     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1ExType_aca9932deaf8fe247d16ce17909d3dfbf}{\_\_init\_\_}(self, value):
+00432         \textcolor{keywordflow}{try}:
+00433             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(value)
+00434         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00435             del self
+00436             \textcolor{keywordflow}{raise} exc
+00437         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value} = value
+
+\end{DoxyCode}
 
 
 A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}

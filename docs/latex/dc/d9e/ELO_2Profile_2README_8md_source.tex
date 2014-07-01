@@ -1,0 +1,43 @@
+\hypertarget{ELO_2Profile_2README_8md_source}{\subsection{E\-L\-O/\-Profile/\-R\-E\-A\-D\-M\-E.md}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{# LETProject.ELO.Profile}
+00002 \textcolor{preprocessor}{}
+00003 \textcolor{preprocessor}{## Função}
+00004 \textcolor{preprocessor}{}
+00005 Pasta que contém o módulo de perfil.
+00006 Responsável pelas páginas onde se encontram os dados \textcolor{keywordflow}{do} usuário, seja ela a Home ou a página de dados 
+      detalhados (referenciada internamente como \textcolor{stringliteral}{'perfil completo'}). Também permite ao usuário editar seus próprios 
+      dados. A uma primeira versão, é inacessível para administradores.
+00007 
+00008 ## Conteúdo
+00009 
+00010 As entradas em negrito indicam pastas, e as normais indicam arquivos isolados.
+00011 
+00012 * \_\_init\_\_.py
+00013 * forms.py
+00014 * ProfileUnit.py
+00015 
+00016 \textcolor{preprocessor}{## \_\_init\_\_.py}
+00017 \textcolor{preprocessor}{}
+00018 Arquivo requisitado pelo python para reconhecer a pasta como um repositório de arquivos referenciável.
+00019 Em outras palavras, é um arquivo que só é útil para a linguagem e deve ser ignorado em outras instâncias.
+00020 
+00021 ## forms.py
+00022 
+00023 Arquivo que contém a definição das classes que modelam os formulários deste módulo.
+00024 Neste caso, ele é responsável por modelar as forms de edição de dados de usuário, possbilitando ao usuário 
+      comum (estudante ou professor) editar seus dados pessoais, como nome e sexo.
+00025 
+00026 ## LoginUnit.py
+00027 
+00028 Arquivo principal \textcolor{keywordflow}{do} módulo.
+00029 Contém as diferentes camadas, bem como suas devidas interfaces e variadas implementações.
+00030 É o arquivo que recebe o controle \textcolor{keywordflow}{do} programa após a chamada da Factory (ver MainUnit.py dentro de 
+      LETProject.ELO.ELO). 
+00031 É responsável por se utilizar das classes formulário (ver forms.py) bem como dos outros recursos do 
+      programa - como o banco de dados e os cookies - para criar a página que será mostrada para o usuário.
+00032 No caso da ProfileUnit, ele será responsável por possibilitar a visualização e edição dos dados pessoais - 
+      sensíveis ou não - ao usuário comum.
+\end{DoxyCode}

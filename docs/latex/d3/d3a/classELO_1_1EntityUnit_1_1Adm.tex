@@ -1,4 +1,4 @@
-\hypertarget{classELO_1_1EntityUnit_1_1Adm}{\section{Referência da Classe E\-L\-O.\-Entity\-Unit.\-Adm}
+\hypertarget{classELO_1_1EntityUnit_1_1Adm}{\subsection{Referência da Classe E\-L\-O.\-Entity\-Unit.\-Adm}
 \label{classELO_1_1EntityUnit_1_1Adm}\index{E\-L\-O.\-Entity\-Unit.\-Adm@{E\-L\-O.\-Entity\-Unit.\-Adm}}
 }
 
@@ -12,12 +12,12 @@ Diagrama de Hierarquia para E\-L\-O.\-Entity\-Unit.\-Adm\-:\begin{figure}[H]
 \includegraphics[height=2.000000cm]{d3/d3a/classELO_1_1EntityUnit_1_1Adm}
 \end{center}
 \end{figure}
-\subsection*{Métodos Públicos}
+\subsubsection*{Métodos Públicos}
 \begin{DoxyCompactItemize}
 \item 
 def \hyperlink{classELO_1_1EntityUnit_1_1Adm_a01e2f40a6af7208831e2b35bf155dc9e}{\-\_\-\-\_\-init\-\_\-\-\_\-}
 \end{DoxyCompactItemize}
-\subsection*{Atributos Públicos}
+\subsubsection*{Atributos Públicos}
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{classELO_1_1EntityUnit_1_1Adm_a12f7aaf17dc6e036186e7757244cd12a}{name}
@@ -26,15 +26,17 @@ def \hyperlink{classELO_1_1EntityUnit_1_1Adm_a01e2f40a6af7208831e2b35bf155dc9e}{
 \end{DoxyCompactItemize}
 
 
-\subsection{Descrição Detalhada}
-Administrador do sistema. 
-
+\subsubsection{Descrição Detalhada}
 Eles controlam os processaos e o fluxo dos procedimentos no programa Eles são os unicos com permições para criar e deletar cursos. Entretanto não possuem permição para modificar cursos já criados. Ou seja, não têm permição para interferir nos desencolvimento dos cursos. 
 
-\subsection{Construtores \& Destrutores}
+Definição na linha \hyperlink{EntityUnit_8py_source_l00081}{81} do arquivo \hyperlink{EntityUnit_8py_source}{Entity\-Unit.\-py}.
+
+
+
+\subsubsection{Construtores \& Destrutores}
 \hypertarget{classELO_1_1EntityUnit_1_1Adm_a01e2f40a6af7208831e2b35bf155dc9e}{\index{E\-L\-O\-::\-Entity\-Unit\-::\-Adm@{E\-L\-O\-::\-Entity\-Unit\-::\-Adm}!\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}}
 \index{\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}!ELO::EntityUnit::Adm@{E\-L\-O\-::\-Entity\-Unit\-::\-Adm}}
-\subsubsection[{\-\_\-\-\_\-init\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Entity\-Unit.\-Adm.\-\_\-\-\_\-init\-\_\-\-\_\- (
+\paragraph[{\-\_\-\-\_\-init\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Entity\-Unit.\-Adm.\-\_\-\-\_\-init\-\_\-\-\_\- (
 \begin{DoxyParamCaption}
 \item[{}]{self, }
 \item[{}]{name, }
@@ -43,13 +45,37 @@ Eles controlam os processaos e o fluxo dos procedimentos no programa Eles são o
 )}}\label{classELO_1_1EntityUnit_1_1Adm_a01e2f40a6af7208831e2b35bf155dc9e}
 
 
-\subsection{Atributos}
+Definição na linha \hyperlink{EntityUnit_8py_source_l00085}{85} do arquivo \hyperlink{EntityUnit_8py_source}{Entity\-Unit.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classELO_1_1EntityUnit_1_1Adm_l00085}{}\hyperlink{classELO_1_1EntityUnit_1_1Adm_a01e2f40a6af7208831e2b35bf155dc9e}{00085} 
+00086     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Adm_a01e2f40a6af7208831e2b35bf155dc9e}{\_\_init\_\_}(self, name, password):
+\hypertarget{classELO_1_1EntityUnit_1_1Adm_l00087}{}\hyperlink{classELO_1_1EntityUnit_1_1Adm_a12f7aaf17dc6e036186e7757244cd12a}{00087}         \textcolor{keywordflow}{try}:
+\hypertarget{classELO_1_1EntityUnit_1_1Adm_l00088}{}\hyperlink{classELO_1_1EntityUnit_1_1Adm_aed97c3f4efa1320ef99b3794b51f8e5e}{00088}             self.\hyperlink{classELO_1_1EntityUnit_1_1Adm_a12f7aaf17dc6e036186e7757244cd12a}{name} = name
+00089             self.\hyperlink{classELO_1_1EntityUnit_1_1Adm_aed97c3f4efa1320ef99b3794b51f8e5e}{password} = password
+00090         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00091             del self
+00092             \textcolor{keywordflow}{raise} exc
+
+\end{DoxyCode}
+
+
+\subsubsection{Atributos}
 \hypertarget{classELO_1_1EntityUnit_1_1Adm_a12f7aaf17dc6e036186e7757244cd12a}{\index{E\-L\-O\-::\-Entity\-Unit\-::\-Adm@{E\-L\-O\-::\-Entity\-Unit\-::\-Adm}!name@{name}}
 \index{name@{name}!ELO::EntityUnit::Adm@{E\-L\-O\-::\-Entity\-Unit\-::\-Adm}}
-\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}E\-L\-O.\-Entity\-Unit.\-Adm.\-name}}\label{classELO_1_1EntityUnit_1_1Adm_a12f7aaf17dc6e036186e7757244cd12a}
+\paragraph[{name}]{\setlength{\rightskip}{0pt plus 5cm}E\-L\-O.\-Entity\-Unit.\-Adm.\-name}}\label{classELO_1_1EntityUnit_1_1Adm_a12f7aaf17dc6e036186e7757244cd12a}
+
+
+Definição na linha \hyperlink{EntityUnit_8py_source_l00087}{87} do arquivo \hyperlink{EntityUnit_8py_source}{Entity\-Unit.\-py}.
+
 \hypertarget{classELO_1_1EntityUnit_1_1Adm_aed97c3f4efa1320ef99b3794b51f8e5e}{\index{E\-L\-O\-::\-Entity\-Unit\-::\-Adm@{E\-L\-O\-::\-Entity\-Unit\-::\-Adm}!password@{password}}
 \index{password@{password}!ELO::EntityUnit::Adm@{E\-L\-O\-::\-Entity\-Unit\-::\-Adm}}
-\subsubsection[{password}]{\setlength{\rightskip}{0pt plus 5cm}E\-L\-O.\-Entity\-Unit.\-Adm.\-password}}\label{classELO_1_1EntityUnit_1_1Adm_aed97c3f4efa1320ef99b3794b51f8e5e}
+\paragraph[{password}]{\setlength{\rightskip}{0pt plus 5cm}E\-L\-O.\-Entity\-Unit.\-Adm.\-password}}\label{classELO_1_1EntityUnit_1_1Adm_aed97c3f4efa1320ef99b3794b51f8e5e}
+
+
+Definição na linha \hyperlink{EntityUnit_8py_source_l00088}{88} do arquivo \hyperlink{EntityUnit_8py_source}{Entity\-Unit.\-py}.
+
 
 
 A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}

@@ -8,7 +8,6 @@
 #	blocos fundamentais para o funcionamento do sistema como um todo.
 
 from abc import *
-from importlib import import_module
 
 from Login.LoginUnit import *
 from Profile.ProfileUnit import *

@@ -8,6 +8,13 @@
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../search/search.js"></script>
 <script type="text/javascript">
@@ -37,7 +44,6 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="../../index.html"><span>Página&#160;Principal</span></a></li>
-      <li><a href="../../pages.html"><span>Páginas&#160;relacionadas</span></a></li>
       <li><a href="../../namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="../../annotated.html"><span>Classes</span></a></li>
       <li><a href="../../files.html"><span>Arquivos</span></a></li>
@@ -62,17 +68,31 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="../../annotated.html"><span>Lista&#160;de&#160;Componentes</span></a></li>
-      <li><a href="../../classes.html"><span>Índice&#160;dos&#160;Componentes</span></a></li>
       <li><a href="../../hierarchy.html"><span>Hierarquia&#160;de&#160;Classes</span></a></li>
       <li><a href="../../functions.html"><span>Componentes&#160;Membros</span></a></li>
     </ul>
   </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('d3/d3a/classELO_1_1EntityUnit_1_1Adm.html','../../');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variáveis</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variáveis</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -81,11 +101,6 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="../../da/d09/namespaceELO.html">ELO</a></li><li class="navelem"><a class="el" href="../../d2/d07/namespaceELO_1_1EntityUnit.html">EntityUnit</a></li><li class="navelem"><a class="el" href="../../d3/d3a/classELO_1_1EntityUnit_1_1Adm.html">Adm</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Métodos Públicos</a> &#124;
@@ -140,8 +155,9 @@ Atributos Públicos</h2></td></tr>
 <tr class="separator:aed97c3f4efa1320ef99b3794b51f8e5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descrição Detalhada</h2>
-<div class="textblock"><p>Administrador do sistema. </p>
-<p>Eles controlam os processaos e o fluxo dos procedimentos no programa Eles são os unicos com permições para criar e deletar cursos. Entretanto não possuem permição para modificar cursos já criados. Ou seja, não têm permição para interferir nos desencolvimento dos cursos. </p>
+<div class="textblock"><p>Eles controlam os processaos e o fluxo dos procedimentos no programa Eles são os unicos com permições para criar e deletar cursos. Entretanto não possuem permição para modificar cursos já criados. Ou seja, não têm permição para interferir nos desencolvimento dos cursos. </p>
+
+<p>Definição na linha <a class="el" href="../../d7/dff/EntityUnit_8py_source.html#l00081">81</a> do arquivo <a class="el" href="../../d7/dff/EntityUnit_8py_source.html">EntityUnit.py</a>.</p>
 </div><h2 class="groupheader">Construtores &amp; Destrutores</h2>
 <a class="anchor" id="a01e2f40a6af7208831e2b35bf155dc9e"></a>
 <div class="memitem">
@@ -173,6 +189,20 @@ Atributos Públicos</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Definição na linha <a class="el" href="../../d7/dff/EntityUnit_8py_source.html#l00085">85</a> do arquivo <a class="el" href="../../d7/dff/EntityUnit_8py_source.html">EntityUnit.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="../../d3/d3a/classELO_1_1EntityUnit_1_1Adm.html#a01e2f40a6af7208831e2b35bf155dc9e">   85</a></span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keyword">def </span><a class="code" href="../../d3/d3a/classELO_1_1EntityUnit_1_1Adm.html#a01e2f40a6af7208831e2b35bf155dc9e">__init__</a>(self, name, password):</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="../../d3/d3a/classELO_1_1EntityUnit_1_1Adm.html#a12f7aaf17dc6e036186e7757244cd12a">   87</a></span>&#160;        <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="../../d3/d3a/classELO_1_1EntityUnit_1_1Adm.html#aed97c3f4efa1320ef99b3794b51f8e5e">   88</a></span>&#160;            self.<a class="code" href="../../d3/d3a/classELO_1_1EntityUnit_1_1Adm.html#a12f7aaf17dc6e036186e7757244cd12a">name</a> = name</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            self.<a class="code" href="../../d3/d3a/classELO_1_1EntityUnit_1_1Adm.html#aed97c3f4efa1320ef99b3794b51f8e5e">password</a> = password</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">except</span> ValueError <span class="keyword">as</span> exc:</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            del self</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="keywordflow">raise</span> exc</div>
+</div>
+<div class="ttc" id="classELO_1_1EntityUnit_1_1Adm_html_a12f7aaf17dc6e036186e7757244cd12a"><div class="ttname"><a href="../../d3/d3a/classELO_1_1EntityUnit_1_1Adm.html#a12f7aaf17dc6e036186e7757244cd12a">ELO.EntityUnit.Adm.name</a></div><div class="ttdeci">name</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dff/EntityUnit_8py_source.html#l00087">EntityUnit.py:87</a></div></div>
+<div class="ttc" id="classELO_1_1EntityUnit_1_1Adm_html_a01e2f40a6af7208831e2b35bf155dc9e"><div class="ttname"><a href="../../d3/d3a/classELO_1_1EntityUnit_1_1Adm.html#a01e2f40a6af7208831e2b35bf155dc9e">ELO.EntityUnit.Adm.__init__</a></div><div class="ttdeci">def __init__</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dff/EntityUnit_8py_source.html#l00085">EntityUnit.py:85</a></div></div>
+<div class="ttc" id="classELO_1_1EntityUnit_1_1Adm_html_aed97c3f4efa1320ef99b3794b51f8e5e"><div class="ttname"><a href="../../d3/d3a/classELO_1_1EntityUnit_1_1Adm.html#aed97c3f4efa1320ef99b3794b51f8e5e">ELO.EntityUnit.Adm.password</a></div><div class="ttdeci">password</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dff/EntityUnit_8py_source.html#l00088">EntityUnit.py:88</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Atributos</h2>
@@ -186,6 +216,8 @@ Atributos Públicos</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Definição na linha <a class="el" href="../../d7/dff/EntityUnit_8py_source.html#l00087">87</a> do arquivo <a class="el" href="../../d7/dff/EntityUnit_8py_source.html">EntityUnit.py</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="aed97c3f4efa1320ef99b3794b51f8e5e"></a>
@@ -198,17 +230,23 @@ Atributos Públicos</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Definição na linha <a class="el" href="../../d7/dff/EntityUnit_8py_source.html#l00088">88</a> do arquivo <a class="el" href="../../d7/dff/EntityUnit_8py_source.html">EntityUnit.py</a>.</p>
+
 </div>
 </div>
 <hr/>A documentação para esta classe foi gerada a partir do seguinte arquivo:<ul>
-<li>ELO/ELO/<a class="el" href="../../d7/dff/EntityUnit_8py.html">EntityUnit.py</a></li>
+<li>ELO/ELO/<a class="el" href="../../d7/dff/EntityUnit_8py_source.html">EntityUnit.py</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Gerado em Terça, 6 de Maio de 2014 20:17:38 para LETproject por &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="../../doxygen.png" alt="doxygen"/>
-</a> 1.8.6
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../da/d09/namespaceELO.html">ELO</a></li><li class="navelem"><a class="el" href="../../d2/d07/namespaceELO_1_1EntityUnit.html">EntityUnit</a></li><li class="navelem"><a class="el" href="../../d3/d3a/classELO_1_1EntityUnit_1_1Adm.html">Adm</a></li>
+    <li class="footer">Gerado em Terça, 1 de Julho de 2014 19:10:23 para LETproject por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
 </body>
 </html>

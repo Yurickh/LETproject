@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>LETproject: Código-Fonte de ELO/ELO/models.py</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">LETproject
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Página&#160;Principal</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namespaces</span></a></li>
+      <li><a href="../../annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Arquivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="../../search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Busca" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Lista&#160;de&#160;Arquivos</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('d1/d1c/ELO_2models_8py_source.html','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variáveis</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">models.py</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d1/d1c/ELO_2models_8py.html">Vá para a documentação deste arquivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="../../d8/d93/namespaceELO_1_1models.html">    1</a></span>&#160;<span class="comment">#coding: utf-8</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">from</span> django.db <span class="keyword">import</span> models</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">## @package LoginModels</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"># Este arquivo define os modelos de Login no sistema, ou seja, os tipos de usuários que podem fazer login.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"># Define como é formatada a tabela no banco de dados, de forma que cada usuário está armazenado em tabelas triple. Cada elemento da tabela</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"># terá um Id, um campo que armazena o nome do campo analisado e um com o valor contido dentro desse campo.</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">## Classe que define o modelo de estudante.</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"># Representa o modelo de um aluno armazenado no banco de dados.</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="../../d0/dc8/classELO_1_1models_1_1Student.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d0/dc8/classELO_1_1models_1_1Student.html">Student</a>(models.Model):</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="../../d0/dc8/classELO_1_1models_1_1Student.html#a20a7789a2b0f5b7d0c98453dcf38bc4e">   12</a></span>&#160;    identity = models.IntegerField()</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="../../d0/dc8/classELO_1_1models_1_1Student.html#a893ec9b2ece5c6b829fce5e5a7c1d576">   13</a></span>&#160;    field = models.CharField(max_length=32)</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="../../d0/dc8/classELO_1_1models_1_1Student.html#a201226779dce6e064cb16bd92ed016e2">   14</a></span>&#160;    value = models.TextField()</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="comment">## Retorna os valores do aluno correspondente ao Id no banco de dados.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="../../d0/dc8/classELO_1_1models_1_1Student.html#a2f51785c1beb3b45269a8678d97ec783">   17</a></span>&#160;    <span class="keyword">def </span><a class="code" href="../../d0/dc8/classELO_1_1models_1_1Student.html#a2f51785c1beb3b45269a8678d97ec783">__unicode__</a>(self):</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">u&#39;%s : %s = %s&#39;</span> % (str(self.<a class="code" href="../../d0/dc8/classELO_1_1models_1_1Student.html#a20a7789a2b0f5b7d0c98453dcf38bc4e">identity</a>), self.<a class="code" href="../../d0/dc8/classELO_1_1models_1_1Student.html#a893ec9b2ece5c6b829fce5e5a7c1d576">field</a>, self.<a class="code" href="../../d0/dc8/classELO_1_1models_1_1Student.html#a201226779dce6e064cb16bd92ed016e2">value</a>)</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">## Classe que define o modelo de administrador.</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"># Representa o modelo de um administrador armazenado no banco de dados.</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="../../df/d5e/classELO_1_1models_1_1Adm.html">   22</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../df/d5e/classELO_1_1models_1_1Adm.html">Adm</a>(models.Model):</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="../../df/d5e/classELO_1_1models_1_1Adm.html#af7e7b797ce5d3396e8a54d8927450d75">   23</a></span>&#160;    identity = models.IntegerField()</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="../../df/d5e/classELO_1_1models_1_1Adm.html#ae1af4ca22491b1cfe9cb0a7acefaa71e">   24</a></span>&#160;    field = models.CharField(max_length=32)</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="../../df/d5e/classELO_1_1models_1_1Adm.html#a98f249c493fbcbcd347297437a098212">   25</a></span>&#160;    value = models.TextField()</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="comment">## Retorna os valores do administrador correspondente ao Id no banco de dados.</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="../../df/d5e/classELO_1_1models_1_1Adm.html#a3541c3ae12b8d2da3f44ac6be00a23e6">   28</a></span>&#160;    <span class="keyword">def </span><a class="code" href="../../df/d5e/classELO_1_1models_1_1Adm.html#a3541c3ae12b8d2da3f44ac6be00a23e6">__unicode__</a>(self):</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">u&#39;%s : %s = %s&#39;</span> % (str(self.<a class="code" href="../../df/d5e/classELO_1_1models_1_1Adm.html#af7e7b797ce5d3396e8a54d8927450d75">identity</a>), self.<a class="code" href="../../df/d5e/classELO_1_1models_1_1Adm.html#ae1af4ca22491b1cfe9cb0a7acefaa71e">field</a>, self.<a class="code" href="../../df/d5e/classELO_1_1models_1_1Adm.html#a98f249c493fbcbcd347297437a098212">value</a>)</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">## Classe que define o modelo de professor.</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment"># Representa o modelo de um professor armazenado no banco de dados.</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="../../d5/d93/classELO_1_1models_1_1Professor.html">   33</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d5/d93/classELO_1_1models_1_1Professor.html">Professor</a>(models.Model):</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="../../d5/d93/classELO_1_1models_1_1Professor.html#a314012619a14c0319c86ba52b6beeb2f">   34</a></span>&#160;    identity = models.IntegerField()</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="../../d5/d93/classELO_1_1models_1_1Professor.html#aaf0638dbb44d27f5acadeed376afafa1">   35</a></span>&#160;    field = models.CharField(max_length=32)</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="../../d5/d93/classELO_1_1models_1_1Professor.html#abfa283169333876d02cf63886ca872e6">   36</a></span>&#160;    value = models.TextField()</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment">## Retorna os valores do professor correspondente ao Id no banco de dados.</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="../../d5/d93/classELO_1_1models_1_1Professor.html#aefc9d63d429e19ec3487a7879879f29d">   39</a></span>&#160;    <span class="keyword">def </span><a class="code" href="../../d5/d93/classELO_1_1models_1_1Professor.html#aefc9d63d429e19ec3487a7879879f29d">__unicode__</a>(self):</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">u&#39;%s : %s = %s&#39;</span> % (str(self.<a class="code" href="../../d5/d93/classELO_1_1models_1_1Professor.html#a314012619a14c0319c86ba52b6beeb2f">identity</a>), self.<a class="code" href="../../d5/d93/classELO_1_1models_1_1Professor.html#aaf0638dbb44d27f5acadeed376afafa1">field</a>, self.<a class="code" href="../../d5/d93/classELO_1_1models_1_1Professor.html#abfa283169333876d02cf63886ca872e6">value</a>)</div>
+<div class="ttc" id="classELO_1_1models_1_1Student_html_a20a7789a2b0f5b7d0c98453dcf38bc4e"><div class="ttname"><a href="../../d0/dc8/classELO_1_1models_1_1Student.html#a20a7789a2b0f5b7d0c98453dcf38bc4e">ELO.models.Student.identity</a></div><div class="ttdeci">tuple identity</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d1c/ELO_2models_8py_source.html#l00012">models.py:12</a></div></div>
+<div class="ttc" id="classELO_1_1models_1_1Student_html_a201226779dce6e064cb16bd92ed016e2"><div class="ttname"><a href="../../d0/dc8/classELO_1_1models_1_1Student.html#a201226779dce6e064cb16bd92ed016e2">ELO.models.Student.value</a></div><div class="ttdeci">tuple value</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d1c/ELO_2models_8py_source.html#l00014">models.py:14</a></div></div>
+<div class="ttc" id="classELO_1_1models_1_1Adm_html_a3541c3ae12b8d2da3f44ac6be00a23e6"><div class="ttname"><a href="../../df/d5e/classELO_1_1models_1_1Adm.html#a3541c3ae12b8d2da3f44ac6be00a23e6">ELO.models.Adm.__unicode__</a></div><div class="ttdeci">def __unicode__</div><div class="ttdoc">Retorna os valores do administrador correspondente ao Id no banco de dados. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d1c/ELO_2models_8py_source.html#l00028">models.py:28</a></div></div>
+<div class="ttc" id="classELO_1_1models_1_1Student_html"><div class="ttname"><a href="../../d0/dc8/classELO_1_1models_1_1Student.html">ELO.models.Student</a></div><div class="ttdoc">Classe que define o modelo de estudante. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d1c/ELO_2models_8py_source.html#l00011">models.py:11</a></div></div>
+<div class="ttc" id="classELO_1_1models_1_1Professor_html_aaf0638dbb44d27f5acadeed376afafa1"><div class="ttname"><a href="../../d5/d93/classELO_1_1models_1_1Professor.html#aaf0638dbb44d27f5acadeed376afafa1">ELO.models.Professor.field</a></div><div class="ttdeci">tuple field</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d1c/ELO_2models_8py_source.html#l00035">models.py:35</a></div></div>
+<div class="ttc" id="classELO_1_1models_1_1Professor_html_aefc9d63d429e19ec3487a7879879f29d"><div class="ttname"><a href="../../d5/d93/classELO_1_1models_1_1Professor.html#aefc9d63d429e19ec3487a7879879f29d">ELO.models.Professor.__unicode__</a></div><div class="ttdeci">def __unicode__</div><div class="ttdoc">Retorna os valores do professor correspondente ao Id no banco de dados. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d1c/ELO_2models_8py_source.html#l00039">models.py:39</a></div></div>
+<div class="ttc" id="classELO_1_1models_1_1Professor_html"><div class="ttname"><a href="../../d5/d93/classELO_1_1models_1_1Professor.html">ELO.models.Professor</a></div><div class="ttdoc">Classe que define o modelo de professor. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d1c/ELO_2models_8py_source.html#l00033">models.py:33</a></div></div>
+<div class="ttc" id="classELO_1_1models_1_1Adm_html_af7e7b797ce5d3396e8a54d8927450d75"><div class="ttname"><a href="../../df/d5e/classELO_1_1models_1_1Adm.html#af7e7b797ce5d3396e8a54d8927450d75">ELO.models.Adm.identity</a></div><div class="ttdeci">tuple identity</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d1c/ELO_2models_8py_source.html#l00023">models.py:23</a></div></div>
+<div class="ttc" id="classELO_1_1models_1_1Adm_html_ae1af4ca22491b1cfe9cb0a7acefaa71e"><div class="ttname"><a href="../../df/d5e/classELO_1_1models_1_1Adm.html#ae1af4ca22491b1cfe9cb0a7acefaa71e">ELO.models.Adm.field</a></div><div class="ttdeci">tuple field</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d1c/ELO_2models_8py_source.html#l00024">models.py:24</a></div></div>
+<div class="ttc" id="classELO_1_1models_1_1Student_html_a893ec9b2ece5c6b829fce5e5a7c1d576"><div class="ttname"><a href="../../d0/dc8/classELO_1_1models_1_1Student.html#a893ec9b2ece5c6b829fce5e5a7c1d576">ELO.models.Student.field</a></div><div class="ttdeci">tuple field</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d1c/ELO_2models_8py_source.html#l00013">models.py:13</a></div></div>
+<div class="ttc" id="classELO_1_1models_1_1Adm_html_a98f249c493fbcbcd347297437a098212"><div class="ttname"><a href="../../df/d5e/classELO_1_1models_1_1Adm.html#a98f249c493fbcbcd347297437a098212">ELO.models.Adm.value</a></div><div class="ttdeci">tuple value</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d1c/ELO_2models_8py_source.html#l00025">models.py:25</a></div></div>
+<div class="ttc" id="classELO_1_1models_1_1Professor_html_a314012619a14c0319c86ba52b6beeb2f"><div class="ttname"><a href="../../d5/d93/classELO_1_1models_1_1Professor.html#a314012619a14c0319c86ba52b6beeb2f">ELO.models.Professor.identity</a></div><div class="ttdeci">tuple identity</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d1c/ELO_2models_8py_source.html#l00034">models.py:34</a></div></div>
+<div class="ttc" id="classELO_1_1models_1_1Professor_html_abfa283169333876d02cf63886ca872e6"><div class="ttname"><a href="../../d5/d93/classELO_1_1models_1_1Professor.html#abfa283169333876d02cf63886ca872e6">ELO.models.Professor.value</a></div><div class="ttdeci">tuple value</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d1c/ELO_2models_8py_source.html#l00036">models.py:36</a></div></div>
+<div class="ttc" id="classELO_1_1models_1_1Adm_html"><div class="ttname"><a href="../../df/d5e/classELO_1_1models_1_1Adm.html">ELO.models.Adm</a></div><div class="ttdoc">Classe que define o modelo de administrador. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d1c/ELO_2models_8py_source.html#l00022">models.py:22</a></div></div>
+<div class="ttc" id="classELO_1_1models_1_1Student_html_a2f51785c1beb3b45269a8678d97ec783"><div class="ttname"><a href="../../d0/dc8/classELO_1_1models_1_1Student.html#a2f51785c1beb3b45269a8678d97ec783">ELO.models.Student.__unicode__</a></div><div class="ttdeci">def __unicode__</div><div class="ttdoc">Retorna os valores do aluno correspondente ao Id no banco de dados. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d1c/ELO_2models_8py_source.html#l00017">models.py:17</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_56c8f39a95ad3669bc9ec7ac8ec99225.html">ELO</a></li><li class="navelem"><a class="el" href="../../dir_d419606626e95ea147f15c612cebbb4c.html">ELO</a></li><li class="navelem"><a class="el" href="../../d1/d1c/ELO_2models_8py.html">models.py</a></li>
+    <li class="footer">Gerado em Terça, 1 de Julho de 2014 19:10:14 para LETproject por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

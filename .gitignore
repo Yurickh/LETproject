@@ -3,4 +3,5 @@
 *.db
 *.DS_Store
 *.mo
+*.bak
 ELO/ELO/database/elo.db

@@ -1,4 +1,4 @@
-\hypertarget{classProfile_1_1ProfileUnit_1_1BusProfile}{\section{Referência da Classe Profile.\-Profile\-Unit.\-Bus\-Profile}
+\hypertarget{classProfile_1_1ProfileUnit_1_1BusProfile}{\subsection{Referência da Classe Profile.\-Profile\-Unit.\-Bus\-Profile}
 \label{classProfile_1_1ProfileUnit_1_1BusProfile}\index{Profile.\-Profile\-Unit.\-Bus\-Profile@{Profile.\-Profile\-Unit.\-Bus\-Profile}}
 }
 
@@ -12,28 +12,93 @@ Diagrama de Hierarquia para Profile.\-Profile\-Unit.\-Bus\-Profile\-:\begin{figu
 \includegraphics[height=2.000000cm]{df/da4/classProfile_1_1ProfileUnit_1_1BusProfile}
 \end{center}
 \end{figure}
-\subsection*{Métodos Públicos}
+\subsubsection*{Métodos Públicos}
 \begin{DoxyCompactItemize}
 \item 
 def \hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile_a87c3d0374f709af7904656938eafd6d3}{refresh\-User}
+\item 
+def \hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile_a5c116d007081ffefcc1c45cd34c88e10}{edit\-Field}
 \end{DoxyCompactItemize}
-\subsection*{Additional Inherited Members}
+\subsubsection*{Additional Inherited Members}
 
 
-\subsection{Descrição Detalhada}
-Camada de negócio para perfil. 
+\subsubsection{Descrição Detalhada}
+Deve ser capaz de manipular os dados de usuário, seja no sentido de atualizá-\/los ou modificá-\/los de alguma forma. 
 
-Deve ser capaz de gerar um dicionário contendo uma versão mais nova dos dados do usuário. 
+Definição na linha \hyperlink{ProfileUnit_8py_source_l00274}{274} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
 
-\subsection{Métodos}
-\hypertarget{classProfile_1_1ProfileUnit_1_1BusProfile_a87c3d0374f709af7904656938eafd6d3}{\index{Profile\-::\-Profile\-Unit\-::\-Bus\-Profile@{Profile\-::\-Profile\-Unit\-::\-Bus\-Profile}!refresh\-User@{refresh\-User}}
-\index{refresh\-User@{refresh\-User}!Profile::ProfileUnit::BusProfile@{Profile\-::\-Profile\-Unit\-::\-Bus\-Profile}}
-\subsubsection[{refresh\-User}]{\setlength{\rightskip}{0pt plus 5cm}def Profile.\-Profile\-Unit.\-Bus\-Profile.\-refresh\-User (
+
+
+\subsubsection{Métodos}
+\hypertarget{classProfile_1_1ProfileUnit_1_1BusProfile_a5c116d007081ffefcc1c45cd34c88e10}{\index{Profile\-::\-Profile\-Unit\-::\-Bus\-Profile@{Profile\-::\-Profile\-Unit\-::\-Bus\-Profile}!edit\-Field@{edit\-Field}}
+\index{edit\-Field@{edit\-Field}!Profile::ProfileUnit::BusProfile@{Profile\-::\-Profile\-Unit\-::\-Bus\-Profile}}
+\paragraph[{edit\-Field}]{\setlength{\rightskip}{0pt plus 5cm}def Profile.\-Profile\-Unit.\-Bus\-Profile.\-edit\-Field (
 \begin{DoxyParamCaption}
 \item[{}]{self, }
-\item[{}]{user}
+\item[{}]{request, }
+\item[{}]{field, }
+\item[{}]{form}
+\end{DoxyParamCaption}
+)}}\label{classProfile_1_1ProfileUnit_1_1BusProfile_a5c116d007081ffefcc1c45cd34c88e10}
+
+
+Definição na linha \hyperlink{ProfileUnit_8py_source_l00286}{286} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classProfile_1_1ProfileUnit_1_1BusProfile_l00286}{}\hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile_a5c116d007081ffefcc1c45cd34c88e10}{00286} 
+00287     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile_a5c116d007081ffefcc1c45cd34c88e10}{editField}(self, request, field, form):
+00288         user = request.session[\textcolor{stringliteral}{'user'}]
+00289         \textcolor{keywordflow}{if} field == \textcolor{stringliteral}{"name"}:
+00290             fpw = form.cleaned\_data[\textcolor{stringliteral}{'password'}].value
+00291             \textcolor{keywordflow}{if} fpw != user[\textcolor{stringliteral}{'password'}]:
+00292                 \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_PW\_F'}])
+00293             \textcolor{keywordflow}{else}:
+00294                 newdata = form.cleaned\_data[\textcolor{stringliteral}{'newdata'}].value
+00295         \textcolor{keywordflow}{elif} field == \textcolor{stringliteral}{"language"}:
+00296             newdata = form.cleaned\_data[\textcolor{stringliteral}{'newdata'}]
+00297         \textcolor{keywordflow}{else}:
+00298             newdata = form.cleaned\_data[\textcolor{stringliteral}{'newdata'}].value
+00299 
+00300         \textcolor{keywordflow}{try}:
+00301             \textcolor{keywordflow}{if} user[\textcolor{stringliteral}{'type'}] == \textcolor{stringliteral}{'Student'}:
+00302                 self.pers.update(user[\textcolor{stringliteral}{'name'}], field, newdata, Student)
+00303             \textcolor{keywordflow}{elif} user[\textcolor{stringliteral}{'type'}] == \textcolor{stringliteral}{'Professor'}:
+00304                 self.pers.update(user[\textcolor{stringliteral}{'name'}], field, newdata, Professor)
+00305         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00306             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_ERR\_DB\_U'}])
+00307         \textcolor{keywordflow}{else}:
+00308             \textcolor{keywordflow}{if} field == \textcolor{stringliteral}{"language"}:
+00309                 request.session[\textcolor{stringliteral}{'django\_language'}] = newdata
+00310         \textcolor{keywordflow}{return} newdata
+
+\end{DoxyCode}
+\hypertarget{classProfile_1_1ProfileUnit_1_1BusProfile_a87c3d0374f709af7904656938eafd6d3}{\index{Profile\-::\-Profile\-Unit\-::\-Bus\-Profile@{Profile\-::\-Profile\-Unit\-::\-Bus\-Profile}!refresh\-User@{refresh\-User}}
+\index{refresh\-User@{refresh\-User}!Profile::ProfileUnit::BusProfile@{Profile\-::\-Profile\-Unit\-::\-Bus\-Profile}}
+\paragraph[{refresh\-User}]{\setlength{\rightskip}{0pt plus 5cm}def Profile.\-Profile\-Unit.\-Bus\-Profile.\-refresh\-User (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{request}
 \end{DoxyParamCaption}
 )}}\label{classProfile_1_1ProfileUnit_1_1BusProfile_a87c3d0374f709af7904656938eafd6d3}
+
+
+Definição na linha \hyperlink{ProfileUnit_8py_source_l00276}{276} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classProfile_1_1ProfileUnit_1_1BusProfile_l00276}{}\hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile_a87c3d0374f709af7904656938eafd6d3}{00276} 
+00277     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile_a87c3d0374f709af7904656938eafd6d3}{refreshUser}(self, request):
+00278         user = request.session[\textcolor{stringliteral}{'user'}]
+00279         \textcolor{keywordflow}{if} user[\textcolor{stringliteral}{'type'}] == \textcolor{stringliteral}{'Student'}:
+00280             fs = self.pers.fetch(user[\textcolor{stringliteral}{'name'}], Student)
+00281             fd = dict(fs)
+00282             request.session[\textcolor{stringliteral}{'django\_language'}] = fd[\textcolor{stringliteral}{'language'}]
+00283             \textcolor{keywordflow}{return} dict(user.items()+ self.pers.fetch(user[\textcolor{stringliteral}{'name'}], Student))
+00284         \textcolor{keywordflow}{elif} user[\textcolor{stringliteral}{'type'}] == \textcolor{stringliteral}{'Professor'}:
+00285             \textcolor{keywordflow}{return} dict(user.items()+ self.pers.fetch(user[\textcolor{stringliteral}{'name'}], Professor))
+
+\end{DoxyCode}
 
 
 A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}

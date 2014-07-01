@@ -8,6 +8,13 @@
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../search/search.js"></script>
 <script type="text/javascript">
@@ -37,7 +44,6 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="../../index.html"><span>Página&#160;Principal</span></a></li>
-      <li><a href="../../pages.html"><span>Páginas&#160;relacionadas</span></a></li>
       <li><a href="../../namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="../../annotated.html"><span>Classes</span></a></li>
       <li><a href="../../files.html"><span>Arquivos</span></a></li>
@@ -62,17 +68,31 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="../../annotated.html"><span>Lista&#160;de&#160;Componentes</span></a></li>
-      <li><a href="../../classes.html"><span>Índice&#160;dos&#160;Componentes</span></a></li>
       <li><a href="../../hierarchy.html"><span>Hierarquia&#160;de&#160;Classes</span></a></li>
       <li><a href="../../functions.html"><span>Componentes&#160;Membros</span></a></li>
     </ul>
   </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html','../../');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variáveis</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variáveis</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -81,11 +101,6 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="../../da/d8c/namespaceAdm.html">Adm</a></li><li class="navelem"><a class="el" href="../../de/d94/namespaceAdm_1_1AdmUnit.html">AdmUnit</a></li><li class="navelem"><a class="el" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html">IfBusAdm</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Métodos Públicos</a> &#124;
@@ -125,8 +140,9 @@ Atributos Públicos</h2></td></tr>
 <tr class="separator:a95ea8f39fbbcddf44822e1614c712bfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descrição Detalhada</h2>
-<div class="textblock"><p>Interface para a camada de negócio do módulo de perfil. </p>
-<p>É responsável por... </p>
+<div class="textblock"><p>É responsável por... </p>
+
+<p>Definição na linha <a class="el" href="../../db/dd3/AdmUnit_8py_source.html#l00044">44</a> do arquivo <a class="el" href="../../db/dd3/AdmUnit_8py_source.html">AdmUnit.py</a>.</p>
 </div><h2 class="groupheader">Construtores &amp; Destrutores</h2>
 <a class="anchor" id="abe924f0f983b1fe97ca466907d35c834"></a>
 <div class="memitem">
@@ -152,6 +168,18 @@ Atributos Públicos</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Definição na linha <a class="el" href="../../db/dd3/AdmUnit_8py_source.html#l00047">47</a> do arquivo <a class="el" href="../../db/dd3/AdmUnit_8py_source.html">AdmUnit.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#abe924f0f983b1fe97ca466907d35c834">   47</a></span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">def </span><a class="code" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#abe924f0f983b1fe97ca466907d35c834">__init__</a>(self, pers):</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a95ea8f39fbbcddf44822e1614c712bfe">   49</a></span>&#160;        <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            self.<a class="code" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a95ea8f39fbbcddf44822e1614c712bfe">pers</a> = pers</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">except</span> TypeError <span class="keyword">as</span> exc:</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            del self</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordflow">raise</span> exc</div>
+   </div>
+<div class="ttc" id="classAdm_1_1AdmUnit_1_1IfBusAdm_html_abe924f0f983b1fe97ca466907d35c834"><div class="ttname"><a href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#abe924f0f983b1fe97ca466907d35c834">Adm.AdmUnit.IfBusAdm.__init__</a></div><div class="ttdeci">def __init__</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd3/AdmUnit_8py_source.html#l00047">AdmUnit.py:47</a></div></div>
+<div class="ttc" id="classAdm_1_1AdmUnit_1_1IfBusAdm_html_a95ea8f39fbbcddf44822e1614c712bfe"><div class="ttname"><a href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a95ea8f39fbbcddf44822e1614c712bfe">Adm.AdmUnit.IfBusAdm.pers</a></div><div class="ttdeci">pers</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd3/AdmUnit_8py_source.html#l00049">AdmUnit.py:49</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Métodos</h2>
@@ -169,6 +197,16 @@ Atributos Públicos</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Definição na linha <a class="el" href="../../db/dd3/AdmUnit_8py_source.html#l00055">55</a> do arquivo <a class="el" href="../../db/dd3/AdmUnit_8py_source.html">AdmUnit.py</a>.</p>
+
+<p>Referências <a class="el" href="../../db/dd3/AdmUnit_8py_source.html#l00061">Adm.AdmUnit.IfBusAdm.__pers</a> e <a class="el" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a95ea8f39fbbcddf44822e1614c712bfe">Adm.AdmUnit.IfBusAdm.pers</a>.</p>
+<div class="fragment"><div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a31857b146085382c8d778ae90cd46c6f">   55</a></span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">def </span><a class="code" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a95ea8f39fbbcddf44822e1614c712bfe">pers</a>(self):</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">return</span> self.<a class="code" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a52e9179e1047122bc667c1afa377c82c">__pers</a></div>
+</div>
+<div class="ttc" id="classAdm_1_1AdmUnit_1_1IfBusAdm_html_a52e9179e1047122bc667c1afa377c82c"><div class="ttname"><a href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a52e9179e1047122bc667c1afa377c82c">Adm.AdmUnit.IfBusAdm.__pers</a></div><div class="ttdeci">__pers</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd3/AdmUnit_8py_source.html#l00061">AdmUnit.py:61</a></div></div>
+<div class="ttc" id="classAdm_1_1AdmUnit_1_1IfBusAdm_html_a95ea8f39fbbcddf44822e1614c712bfe"><div class="ttname"><a href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a95ea8f39fbbcddf44822e1614c712bfe">Adm.AdmUnit.IfBusAdm.pers</a></div><div class="ttdeci">pers</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd3/AdmUnit_8py_source.html#l00049">AdmUnit.py:49</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a31857b146085382c8d778ae90cd46c6f"></a>
@@ -195,6 +233,19 @@ Atributos Públicos</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Definição na linha <a class="el" href="../../db/dd3/AdmUnit_8py_source.html#l00059">59</a> do arquivo <a class="el" href="../../db/dd3/AdmUnit_8py_source.html">AdmUnit.py</a>.</p>
+
+<p>Referências <a class="el" href="../../db/dd3/AdmUnit_8py_source.html#l00061">Adm.AdmUnit.IfBusAdm.__pers</a> e <a class="el" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a95ea8f39fbbcddf44822e1614c712bfe">Adm.AdmUnit.IfBusAdm.pers</a>.</p>
+<div class="fragment"><div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a31857b146085382c8d778ae90cd46c6f">   59</a></span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">def </span><a class="code" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a95ea8f39fbbcddf44822e1614c712bfe">pers</a>(self, value):</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">if</span> isinstance(value, IfPersAdm):</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            self.<a class="code" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a52e9179e1047122bc667c1afa377c82c">__pers</a> = value</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="keywordflow">raise</span> TypeError(<span class="stringliteral">&quot;Expected IfPersAdm instance at BusAdm.__pers. Received &quot;</span> + str(type(value)) + <span class="stringliteral">&quot; instead.&quot;</span>)</div>
+</div>
+<div class="ttc" id="classAdm_1_1AdmUnit_1_1IfBusAdm_html_a52e9179e1047122bc667c1afa377c82c"><div class="ttname"><a href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a52e9179e1047122bc667c1afa377c82c">Adm.AdmUnit.IfBusAdm.__pers</a></div><div class="ttdeci">__pers</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd3/AdmUnit_8py_source.html#l00061">AdmUnit.py:61</a></div></div>
+<div class="ttc" id="classAdm_1_1AdmUnit_1_1IfBusAdm_html_a95ea8f39fbbcddf44822e1614c712bfe"><div class="ttname"><a href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a95ea8f39fbbcddf44822e1614c712bfe">Adm.AdmUnit.IfBusAdm.pers</a></div><div class="ttdeci">pers</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd3/AdmUnit_8py_source.html#l00049">AdmUnit.py:49</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a31857b146085382c8d778ae90cd46c6f"></a>
@@ -211,6 +262,16 @@ Atributos Públicos</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Definição na linha <a class="el" href="../../db/dd3/AdmUnit_8py_source.html#l00066">66</a> do arquivo <a class="el" href="../../db/dd3/AdmUnit_8py_source.html">AdmUnit.py</a>.</p>
+
+<p>Referências <a class="el" href="../../db/dd3/AdmUnit_8py_source.html#l00061">Adm.AdmUnit.IfBusAdm.__pers</a> e <a class="el" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a95ea8f39fbbcddf44822e1614c712bfe">Adm.AdmUnit.IfBusAdm.pers</a>.</p>
+<div class="fragment"><div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a31857b146085382c8d778ae90cd46c6f">   66</a></span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">def </span><a class="code" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a95ea8f39fbbcddf44822e1614c712bfe">pers</a>(self):</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        del self.<a class="code" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a52e9179e1047122bc667c1afa377c82c">__pers</a></div>
+</div>
+<div class="ttc" id="classAdm_1_1AdmUnit_1_1IfBusAdm_html_a52e9179e1047122bc667c1afa377c82c"><div class="ttname"><a href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a52e9179e1047122bc667c1afa377c82c">Adm.AdmUnit.IfBusAdm.__pers</a></div><div class="ttdeci">__pers</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd3/AdmUnit_8py_source.html#l00061">AdmUnit.py:61</a></div></div>
+<div class="ttc" id="classAdm_1_1AdmUnit_1_1IfBusAdm_html_a95ea8f39fbbcddf44822e1614c712bfe"><div class="ttname"><a href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a95ea8f39fbbcddf44822e1614c712bfe">Adm.AdmUnit.IfBusAdm.pers</a></div><div class="ttdeci">pers</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd3/AdmUnit_8py_source.html#l00049">AdmUnit.py:49</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Atributos</h2>
@@ -224,17 +285,25 @@ Atributos Públicos</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Definição na linha <a class="el" href="../../db/dd3/AdmUnit_8py_source.html#l00049">49</a> do arquivo <a class="el" href="../../db/dd3/AdmUnit_8py_source.html">AdmUnit.py</a>.</p>
+
+<p>Referenciado por <a class="el" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a31857b146085382c8d778ae90cd46c6f">Adm.AdmUnit.IfBusAdm.pers()</a>.</p>
+
 </div>
 </div>
 <hr/>A documentação para esta classe foi gerada a partir do seguinte arquivo:<ul>
-<li>ELO/Adm/<a class="el" href="../../db/dd3/AdmUnit_8py.html">AdmUnit.py</a></li>
+<li>ELO/Adm/<a class="el" href="../../db/dd3/AdmUnit_8py_source.html">AdmUnit.py</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Gerado em Terça, 6 de Maio de 2014 20:17:30 para LETproject por &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="../../doxygen.png" alt="doxygen"/>
-</a> 1.8.6
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../da/d8c/namespaceAdm.html">Adm</a></li><li class="navelem"><a class="el" href="../../de/d94/namespaceAdm_1_1AdmUnit.html">AdmUnit</a></li><li class="navelem"><a class="el" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html">IfBusAdm</a></li>
+    <li class="footer">Gerado em Terça, 1 de Julho de 2014 19:10:14 para LETproject por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
 </body>
 </html>

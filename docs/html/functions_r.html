@@ -8,6 +8,13 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
@@ -37,7 +44,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Página&#160;Principal</span></a></li>
-      <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Arquivos</span></a></li>
@@ -62,7 +68,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="annotated.html"><span>Lista&#160;de&#160;Componentes</span></a></li>
-      <li><a href="classes.html"><span>Índice&#160;dos&#160;Componentes</span></a></li>
       <li><a href="hierarchy.html"><span>Hierarquia&#160;de&#160;Classes</span></a></li>
       <li class="current"><a href="functions.html"><span>Componentes&#160;Membros</span></a></li>
     </ul>
@@ -96,12 +101,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
     </ul>
   </div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('functions_r.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variáveis</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variáveis</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -124,7 +143,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
 , <a class="el" href="d9/d56/classLogin_1_1LoginUnit_1_1IfUiLogin.html#ac6250c19afa63158907c6e8b4ff6dbd5">Login.LoginUnit.IfUiLogin</a>
 , <a class="el" href="de/da8/classLogin_1_1LoginUnit_1_1UiLogin.html#a9cd61a78d5ab0d201051ccf5898f86bc">Login.LoginUnit.UiLogin</a>
 , <a class="el" href="dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html#afb22574cb4a2dc58c068437bd7075e5a">Profile.ProfileUnit.IfUiProfile</a>
-, <a class="el" href="d8/d84/classProfile_1_1ProfileUnit_1_1UiAssyProfile.html#af540264c64ed90e43bb29bd1303ecda3">Profile.ProfileUnit.UiAssyProfile</a>
 , <a class="el" href="db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html#a7a7747246b627020a345f7a3eac27778">Profile.ProfileUnit.UiFullProfile</a>
 , <a class="el" href="db/dcf/classProfile_1_1ProfileUnit_1_1UiHomeProfile.html#a5abc7f7c1ca1cb3e070c36a869263e6d">Profile.ProfileUnit.UiHomeProfile</a>
 </li>
@@ -146,16 +164,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
 <li>runProfile()
 : <a class="el" href="d1/dc6/classELO_1_1MainUnit_1_1Factory.html#ab20a76f74180fc77c6b8fcd8de7942f1">ELO.MainUnit.Factory</a>
 </li>
-<li>runProfileEdit()
-: <a class="el" href="d1/dc6/classELO_1_1MainUnit_1_1Factory.html#acb3772dd3c00357be1985af09c824858">ELO.MainUnit.Factory</a>
-</li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Gerado em Terça, 6 de Maio de 2014 20:17:44 para LETproject por &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.6
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Gerado em Terça, 1 de Julho de 2014 19:10:32 para LETproject por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
 </body>
 </html>

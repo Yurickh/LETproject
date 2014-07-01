@@ -8,6 +8,13 @@
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../search/search.js"></script>
 <script type="text/javascript">
@@ -37,7 +44,6 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="../../index.html"><span>Página&#160;Principal</span></a></li>
-      <li><a href="../../pages.html"><span>Páginas&#160;relacionadas</span></a></li>
       <li><a href="../../namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="../../annotated.html"><span>Classes</span></a></li>
       <li><a href="../../files.html"><span>Arquivos</span></a></li>
@@ -62,17 +68,31 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="../../annotated.html"><span>Lista&#160;de&#160;Componentes</span></a></li>
-      <li><a href="../../classes.html"><span>Índice&#160;dos&#160;Componentes</span></a></li>
       <li><a href="../../hierarchy.html"><span>Hierarquia&#160;de&#160;Classes</span></a></li>
       <li><a href="../../functions.html"><span>Componentes&#160;Membros</span></a></li>
     </ul>
   </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('de/de0/classAdm_1_1AdmUnit_1_1BusAdm.html','../../');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variáveis</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variáveis</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -81,11 +101,6 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="../../da/d8c/namespaceAdm.html">Adm</a></li><li class="navelem"><a class="el" href="../../de/d94/namespaceAdm_1_1AdmUnit.html">AdmUnit</a></li><li class="navelem"><a class="el" href="../../de/de0/classAdm_1_1AdmUnit_1_1BusAdm.html">BusAdm</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="../../d0/d02/classAdm_1_1AdmUnit_1_1BusAdm-members.html">Lista de todos os Membros</a>  </div>
@@ -122,16 +137,21 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a95ea8f39fbbcddf44822e1614c712bfe inherit pub_attribs_classAdm_1_1AdmUnit_1_1IfBusAdm"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descrição Detalhada</h2>
-<div class="textblock"><p>Camada de negócio para o módulo de administração. </p>
+<div class="textblock">
+<p>Definição na linha <a class="el" href="../../db/dd3/AdmUnit_8py_source.html#l00080">80</a> do arquivo <a class="el" href="../../db/dd3/AdmUnit_8py_source.html">AdmUnit.py</a>.</p>
 </div><hr/>A documentação para esta classe foi gerada a partir do seguinte arquivo:<ul>
-<li>ELO/Adm/<a class="el" href="../../db/dd3/AdmUnit_8py.html">AdmUnit.py</a></li>
+<li>ELO/Adm/<a class="el" href="../../db/dd3/AdmUnit_8py_source.html">AdmUnit.py</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Gerado em Terça, 6 de Maio de 2014 20:17:31 para LETproject por &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="../../doxygen.png" alt="doxygen"/>
-</a> 1.8.6
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../da/d8c/namespaceAdm.html">Adm</a></li><li class="navelem"><a class="el" href="../../de/d94/namespaceAdm_1_1AdmUnit.html">AdmUnit</a></li><li class="navelem"><a class="el" href="../../de/de0/classAdm_1_1AdmUnit_1_1BusAdm.html">BusAdm</a></li>
+    <li class="footer">Gerado em Terça, 1 de Julho de 2014 19:10:15 para LETproject por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
 </body>
 </html>

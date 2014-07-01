@@ -8,6 +8,13 @@
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../search/search.js"></script>
 <script type="text/javascript">
@@ -37,7 +44,6 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="../../index.html"><span>Página&#160;Principal</span></a></li>
-      <li><a href="../../pages.html"><span>Páginas&#160;relacionadas</span></a></li>
       <li><a href="../../namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="../../annotated.html"><span>Classes</span></a></li>
       <li><a href="../../files.html"><span>Arquivos</span></a></li>
@@ -62,17 +68,31 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="../../annotated.html"><span>Lista&#160;de&#160;Componentes</span></a></li>
-      <li><a href="../../classes.html"><span>Índice&#160;dos&#160;Componentes</span></a></li>
       <li><a href="../../hierarchy.html"><span>Hierarquia&#160;de&#160;Classes</span></a></li>
       <li><a href="../../functions.html"><span>Componentes&#160;Membros</span></a></li>
     </ul>
   </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('d5/d93/classELO_1_1models_1_1Professor.html','../../');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variáveis</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variáveis</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -81,11 +101,6 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="../../da/d09/namespaceELO.html">ELO</a></li><li class="navelem"><a class="el" href="../../d8/d93/namespaceELO_1_1models.html">models</a></li><li class="navelem"><a class="el" href="../../d5/d93/classELO_1_1models_1_1Professor.html">Professor</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Métodos Públicos</a> &#124;
@@ -123,8 +138,9 @@ Atributos Estáticos Públicos</h2></td></tr>
 <tr class="separator:abfa283169333876d02cf63886ca872e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descrição Detalhada</h2>
-<div class="textblock"><p>Classe que define o modelo de professor. </p>
-<p>Representa o modelo de um professor armazenado no banco de dados. </p>
+<div class="textblock"><p>Representa o modelo de um professor armazenado no banco de dados. </p>
+
+<p>Definição na linha <a class="el" href="../../d1/d1c/ELO_2models_8py_source.html#l00033">33</a> do arquivo <a class="el" href="../../d1/d1c/ELO_2models_8py_source.html">models.py</a>.</p>
 </div><h2 class="groupheader">Métodos</h2>
 <a class="anchor" id="aefc9d63d429e19ec3487a7879879f29d"></a>
 <div class="memitem">
@@ -140,8 +156,17 @@ Atributos Estáticos Públicos</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Retorna os valores do professor correspondente ao Id no banco de dados. </p>
+<p>Definição na linha <a class="el" href="../../d1/d1c/ELO_2models_8py_source.html#l00039">39</a> do arquivo <a class="el" href="../../d1/d1c/ELO_2models_8py_source.html">models.py</a>.</p>
 
+<p>Referências <a class="el" href="../../d0/dc8/classELO_1_1models_1_1Student.html#a893ec9b2ece5c6b829fce5e5a7c1d576">ELO.models.Student.field</a>, <a class="el" href="../../df/d5e/classELO_1_1models_1_1Adm.html#ae1af4ca22491b1cfe9cb0a7acefaa71e">ELO.models.Adm.field</a>, <a class="el" href="../../d5/d93/classELO_1_1models_1_1Professor.html#aaf0638dbb44d27f5acadeed376afafa1">ELO.models.Professor.field</a>, <a class="el" href="../../d0/dc8/classELO_1_1models_1_1Student.html#a20a7789a2b0f5b7d0c98453dcf38bc4e">ELO.models.Student.identity</a>, <a class="el" href="../../df/d5e/classELO_1_1models_1_1Adm.html#af7e7b797ce5d3396e8a54d8927450d75">ELO.models.Adm.identity</a>, <a class="el" href="../../d5/d93/classELO_1_1models_1_1Professor.html#a314012619a14c0319c86ba52b6beeb2f">ELO.models.Professor.identity</a>, <a class="el" href="../../d0/dc8/classELO_1_1models_1_1Student.html#a201226779dce6e064cb16bd92ed016e2">ELO.models.Student.value</a>, <a class="el" href="../../df/d5e/classELO_1_1models_1_1Adm.html#a98f249c493fbcbcd347297437a098212">ELO.models.Adm.value</a> e <a class="el" href="../../d5/d93/classELO_1_1models_1_1Professor.html#abfa283169333876d02cf63886ca872e6">ELO.models.Professor.value</a>.</p>
+<div class="fragment"><div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="../../d5/d93/classELO_1_1models_1_1Professor.html#aefc9d63d429e19ec3487a7879879f29d">   39</a></span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">def </span><a class="code" href="../../d5/d93/classELO_1_1models_1_1Professor.html#aefc9d63d429e19ec3487a7879879f29d">__unicode__</a>(self):</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">u&#39;%s : %s = %s&#39;</span> % (str(self.<a class="code" href="../../d5/d93/classELO_1_1models_1_1Professor.html#a314012619a14c0319c86ba52b6beeb2f">identity</a>), self.<a class="code" href="../../d5/d93/classELO_1_1models_1_1Professor.html#aaf0638dbb44d27f5acadeed376afafa1">field</a>, self.<a class="code" href="../../d5/d93/classELO_1_1models_1_1Professor.html#abfa283169333876d02cf63886ca872e6">value</a>)</div>
+<div class="ttc" id="classELO_1_1models_1_1Professor_html_aaf0638dbb44d27f5acadeed376afafa1"><div class="ttname"><a href="../../d5/d93/classELO_1_1models_1_1Professor.html#aaf0638dbb44d27f5acadeed376afafa1">ELO.models.Professor.field</a></div><div class="ttdeci">tuple field</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d1c/ELO_2models_8py_source.html#l00035">models.py:35</a></div></div>
+<div class="ttc" id="classELO_1_1models_1_1Professor_html_aefc9d63d429e19ec3487a7879879f29d"><div class="ttname"><a href="../../d5/d93/classELO_1_1models_1_1Professor.html#aefc9d63d429e19ec3487a7879879f29d">ELO.models.Professor.__unicode__</a></div><div class="ttdeci">def __unicode__</div><div class="ttdoc">Retorna os valores do professor correspondente ao Id no banco de dados. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d1c/ELO_2models_8py_source.html#l00039">models.py:39</a></div></div>
+<div class="ttc" id="classELO_1_1models_1_1Professor_html_a314012619a14c0319c86ba52b6beeb2f"><div class="ttname"><a href="../../d5/d93/classELO_1_1models_1_1Professor.html#a314012619a14c0319c86ba52b6beeb2f">ELO.models.Professor.identity</a></div><div class="ttdeci">tuple identity</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d1c/ELO_2models_8py_source.html#l00034">models.py:34</a></div></div>
+<div class="ttc" id="classELO_1_1models_1_1Professor_html_abfa283169333876d02cf63886ca872e6"><div class="ttname"><a href="../../d5/d93/classELO_1_1models_1_1Professor.html#abfa283169333876d02cf63886ca872e6">ELO.models.Professor.value</a></div><div class="ttdeci">tuple value</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d1c/ELO_2models_8py_source.html#l00036">models.py:36</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Atributos</h2>
@@ -163,6 +188,10 @@ Atributos Estáticos Públicos</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Definição na linha <a class="el" href="../../d1/d1c/ELO_2models_8py_source.html#l00035">35</a> do arquivo <a class="el" href="../../d1/d1c/ELO_2models_8py_source.html">models.py</a>.</p>
+
+<p>Referenciado por <a class="el" href="../../d5/d93/classELO_1_1models_1_1Professor.html#aefc9d63d429e19ec3487a7879879f29d">ELO.models.Professor.__unicode__()</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="a314012619a14c0319c86ba52b6beeb2f"></a>
@@ -182,6 +211,10 @@ Atributos Estáticos Públicos</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Definição na linha <a class="el" href="../../d1/d1c/ELO_2models_8py_source.html#l00034">34</a> do arquivo <a class="el" href="../../d1/d1c/ELO_2models_8py_source.html">models.py</a>.</p>
+
+<p>Referenciado por <a class="el" href="../../d5/d93/classELO_1_1models_1_1Professor.html#aefc9d63d429e19ec3487a7879879f29d">ELO.models.Professor.__unicode__()</a>.</p>
 
 </div>
 </div>
@@ -203,17 +236,25 @@ Atributos Estáticos Públicos</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Definição na linha <a class="el" href="../../d1/d1c/ELO_2models_8py_source.html#l00036">36</a> do arquivo <a class="el" href="../../d1/d1c/ELO_2models_8py_source.html">models.py</a>.</p>
+
+<p>Referenciado por <a class="el" href="../../d7/d79/classELO_1_1BaseUnit_1_1IfBaseType.html#a69c338f6f1574bd3524e9d59ebc17a7c">ELO.BaseUnit.IfBaseType.__cmp__()</a> e <a class="el" href="../../d5/d93/classELO_1_1models_1_1Professor.html#aefc9d63d429e19ec3487a7879879f29d">ELO.models.Professor.__unicode__()</a>.</p>
+
 </div>
 </div>
 <hr/>A documentação para esta classe foi gerada a partir do seguinte arquivo:<ul>
-<li>ELO/ELO/<a class="el" href="../../d1/d1c/ELO_2models_8py.html">models.py</a></li>
+<li>ELO/ELO/<a class="el" href="../../d1/d1c/ELO_2models_8py_source.html">models.py</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Gerado em Terça, 6 de Maio de 2014 20:17:40 para LETproject por &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="../../doxygen.png" alt="doxygen"/>
-</a> 1.8.6
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../da/d09/namespaceELO.html">ELO</a></li><li class="navelem"><a class="el" href="../../d8/d93/namespaceELO_1_1models.html">models</a></li><li class="navelem"><a class="el" href="../../d5/d93/classELO_1_1models_1_1Professor.html">Professor</a></li>
+    <li class="footer">Gerado em Terça, 1 de Julho de 2014 19:10:26 para LETproject por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
 </body>
 </html>

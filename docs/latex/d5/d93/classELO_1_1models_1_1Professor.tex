@@ -1,4 +1,4 @@
-\hypertarget{classELO_1_1models_1_1Professor}{\section{Referência da Classe E\-L\-O.\-models.\-Professor}
+\hypertarget{classELO_1_1models_1_1Professor}{\subsection{Referência da Classe E\-L\-O.\-models.\-Professor}
 \label{classELO_1_1models_1_1Professor}\index{E\-L\-O.\-models.\-Professor@{E\-L\-O.\-models.\-Professor}}
 }
 
@@ -12,12 +12,12 @@ Diagrama de Hierarquia para E\-L\-O.\-models.\-Professor\-:\begin{figure}[H]
 \includegraphics[height=2.000000cm]{d5/d93/classELO_1_1models_1_1Professor}
 \end{center}
 \end{figure}
-\subsection*{Métodos Públicos}
+\subsubsection*{Métodos Públicos}
 \begin{DoxyCompactItemize}
 \item 
 def \hyperlink{classELO_1_1models_1_1Professor_aefc9d63d429e19ec3487a7879879f29d}{\-\_\-\-\_\-unicode\-\_\-\-\_\-}
 \begin{DoxyCompactList}\small\item\em Retorna os valores do professor correspondente ao Id no banco de dados. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Atributos Estáticos Públicos}
+\subsubsection*{Atributos Estáticos Públicos}
 \begin{DoxyCompactItemize}
 \item 
 tuple \hyperlink{classELO_1_1models_1_1Professor_a314012619a14c0319c86ba52b6beeb2f}{identity} = models.\-Integer\-Field()
@@ -28,35 +28,72 @@ tuple \hyperlink{classELO_1_1models_1_1Professor_abfa283169333876d02cf63886ca872
 \end{DoxyCompactItemize}
 
 
-\subsection{Descrição Detalhada}
-Classe que define o modelo de professor. 
-
+\subsubsection{Descrição Detalhada}
 Representa o modelo de um professor armazenado no banco de dados. 
 
-\subsection{Métodos}
+Definição na linha \hyperlink{ELO_2models_8py_source_l00033}{33} do arquivo \hyperlink{ELO_2models_8py_source}{models.\-py}.
+
+
+
+\subsubsection{Métodos}
 \hypertarget{classELO_1_1models_1_1Professor_aefc9d63d429e19ec3487a7879879f29d}{\index{E\-L\-O\-::models\-::\-Professor@{E\-L\-O\-::models\-::\-Professor}!\-\_\-\-\_\-unicode\-\_\-\-\_\-@{\-\_\-\-\_\-unicode\-\_\-\-\_\-}}
 \index{\-\_\-\-\_\-unicode\-\_\-\-\_\-@{\-\_\-\-\_\-unicode\-\_\-\-\_\-}!ELO::models::Professor@{E\-L\-O\-::models\-::\-Professor}}
-\subsubsection[{\-\_\-\-\_\-unicode\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-models.\-Professor.\-\_\-\-\_\-unicode\-\_\-\-\_\- (
+\paragraph[{\-\_\-\-\_\-unicode\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-models.\-Professor.\-\_\-\-\_\-unicode\-\_\-\-\_\- (
 \begin{DoxyParamCaption}
 \item[{}]{self}
 \end{DoxyParamCaption}
 )}}\label{classELO_1_1models_1_1Professor_aefc9d63d429e19ec3487a7879879f29d}
 
 
-Retorna os valores do professor correspondente ao Id no banco de dados. 
+Definição na linha \hyperlink{ELO_2models_8py_source_l00039}{39} do arquivo \hyperlink{ELO_2models_8py_source}{models.\-py}.
 
 
 
-\subsection{Atributos}
+Referências \hyperlink{classELO_1_1models_1_1Student_a893ec9b2ece5c6b829fce5e5a7c1d576}{E\-L\-O.\-models.\-Student.\-field}, \hyperlink{classELO_1_1models_1_1Adm_ae1af4ca22491b1cfe9cb0a7acefaa71e}{E\-L\-O.\-models.\-Adm.\-field}, \hyperlink{classELO_1_1models_1_1Professor_aaf0638dbb44d27f5acadeed376afafa1}{E\-L\-O.\-models.\-Professor.\-field}, \hyperlink{classELO_1_1models_1_1Student_a20a7789a2b0f5b7d0c98453dcf38bc4e}{E\-L\-O.\-models.\-Student.\-identity}, \hyperlink{classELO_1_1models_1_1Adm_af7e7b797ce5d3396e8a54d8927450d75}{E\-L\-O.\-models.\-Adm.\-identity}, \hyperlink{classELO_1_1models_1_1Professor_a314012619a14c0319c86ba52b6beeb2f}{E\-L\-O.\-models.\-Professor.\-identity}, \hyperlink{classELO_1_1models_1_1Student_a201226779dce6e064cb16bd92ed016e2}{E\-L\-O.\-models.\-Student.\-value}, \hyperlink{classELO_1_1models_1_1Adm_a98f249c493fbcbcd347297437a098212}{E\-L\-O.\-models.\-Adm.\-value} e \hyperlink{classELO_1_1models_1_1Professor_abfa283169333876d02cf63886ca872e6}{E\-L\-O.\-models.\-Professor.\-value}.
+
+
+\begin{DoxyCode}
+\hypertarget{classELO_1_1models_1_1Professor_l00039}{}\hyperlink{classELO_1_1models_1_1Professor_aefc9d63d429e19ec3487a7879879f29d}{00039} 
+00040     \textcolor{keyword}{def }\hyperlink{classELO_1_1models_1_1Professor_aefc9d63d429e19ec3487a7879879f29d}{\_\_unicode\_\_}(self):
+00041         \textcolor{keywordflow}{return} \textcolor{stringliteral}{u'%s : %s = %s'} % (str(self.\hyperlink{classELO_1_1models_1_1Professor_a314012619a14c0319c86ba52b6beeb2f}{identity}), self.\hyperlink{classELO_1_1models_1_1Professor_aaf0638dbb44d27f5acadeed376afafa1}{field}, self.
+      \hyperlink{classELO_1_1models_1_1Professor_abfa283169333876d02cf63886ca872e6}{value})
+\end{DoxyCode}
+
+
+\subsubsection{Atributos}
 \hypertarget{classELO_1_1models_1_1Professor_aaf0638dbb44d27f5acadeed376afafa1}{\index{E\-L\-O\-::models\-::\-Professor@{E\-L\-O\-::models\-::\-Professor}!field@{field}}
 \index{field@{field}!ELO::models::Professor@{E\-L\-O\-::models\-::\-Professor}}
-\subsubsection[{field}]{\setlength{\rightskip}{0pt plus 5cm}tuple E\-L\-O.\-models.\-Professor.\-field = models.\-Char\-Field(max\-\_\-length=32)\hspace{0.3cm}{\ttfamily [static]}}}\label{classELO_1_1models_1_1Professor_aaf0638dbb44d27f5acadeed376afafa1}
+\paragraph[{field}]{\setlength{\rightskip}{0pt plus 5cm}tuple E\-L\-O.\-models.\-Professor.\-field = models.\-Char\-Field(max\-\_\-length=32)\hspace{0.3cm}{\ttfamily [static]}}}\label{classELO_1_1models_1_1Professor_aaf0638dbb44d27f5acadeed376afafa1}
+
+
+Definição na linha \hyperlink{ELO_2models_8py_source_l00035}{35} do arquivo \hyperlink{ELO_2models_8py_source}{models.\-py}.
+
+
+
+Referenciado por \hyperlink{classELO_1_1models_1_1Professor_aefc9d63d429e19ec3487a7879879f29d}{E\-L\-O.\-models.\-Professor.\-\_\-\-\_\-unicode\-\_\-\-\_\-()}.
+
 \hypertarget{classELO_1_1models_1_1Professor_a314012619a14c0319c86ba52b6beeb2f}{\index{E\-L\-O\-::models\-::\-Professor@{E\-L\-O\-::models\-::\-Professor}!identity@{identity}}
 \index{identity@{identity}!ELO::models::Professor@{E\-L\-O\-::models\-::\-Professor}}
-\subsubsection[{identity}]{\setlength{\rightskip}{0pt plus 5cm}tuple E\-L\-O.\-models.\-Professor.\-identity = models.\-Integer\-Field()\hspace{0.3cm}{\ttfamily [static]}}}\label{classELO_1_1models_1_1Professor_a314012619a14c0319c86ba52b6beeb2f}
+\paragraph[{identity}]{\setlength{\rightskip}{0pt plus 5cm}tuple E\-L\-O.\-models.\-Professor.\-identity = models.\-Integer\-Field()\hspace{0.3cm}{\ttfamily [static]}}}\label{classELO_1_1models_1_1Professor_a314012619a14c0319c86ba52b6beeb2f}
+
+
+Definição na linha \hyperlink{ELO_2models_8py_source_l00034}{34} do arquivo \hyperlink{ELO_2models_8py_source}{models.\-py}.
+
+
+
+Referenciado por \hyperlink{classELO_1_1models_1_1Professor_aefc9d63d429e19ec3487a7879879f29d}{E\-L\-O.\-models.\-Professor.\-\_\-\-\_\-unicode\-\_\-\-\_\-()}.
+
 \hypertarget{classELO_1_1models_1_1Professor_abfa283169333876d02cf63886ca872e6}{\index{E\-L\-O\-::models\-::\-Professor@{E\-L\-O\-::models\-::\-Professor}!value@{value}}
 \index{value@{value}!ELO::models::Professor@{E\-L\-O\-::models\-::\-Professor}}
-\subsubsection[{value}]{\setlength{\rightskip}{0pt plus 5cm}tuple E\-L\-O.\-models.\-Professor.\-value = models.\-Text\-Field()\hspace{0.3cm}{\ttfamily [static]}}}\label{classELO_1_1models_1_1Professor_abfa283169333876d02cf63886ca872e6}
+\paragraph[{value}]{\setlength{\rightskip}{0pt plus 5cm}tuple E\-L\-O.\-models.\-Professor.\-value = models.\-Text\-Field()\hspace{0.3cm}{\ttfamily [static]}}}\label{classELO_1_1models_1_1Professor_abfa283169333876d02cf63886ca872e6}
+
+
+Definição na linha \hyperlink{ELO_2models_8py_source_l00036}{36} do arquivo \hyperlink{ELO_2models_8py_source}{models.\-py}.
+
+
+
+Referenciado por \hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a69c338f6f1574bd3524e9d59ebc17a7c}{E\-L\-O.\-Base\-Unit.\-If\-Base\-Type.\-\_\-\-\_\-cmp\-\_\-\-\_\-()} e \hyperlink{classELO_1_1models_1_1Professor_aefc9d63d429e19ec3487a7879879f29d}{E\-L\-O.\-models.\-Professor.\-\_\-\-\_\-unicode\-\_\-\-\_\-()}.
+
 
 
 A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}

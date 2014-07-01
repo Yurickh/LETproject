@@ -1,4 +1,4 @@
-\hypertarget{classLogin_1_1LoginUnit_1_1BusLogin}{\section{Referência da Classe Login.\-Login\-Unit.\-Bus\-Login}
+\hypertarget{classLogin_1_1LoginUnit_1_1BusLogin}{\subsection{Referência da Classe Login.\-Login\-Unit.\-Bus\-Login}
 \label{classLogin_1_1LoginUnit_1_1BusLogin}\index{Login.\-Login\-Unit.\-Bus\-Login@{Login.\-Login\-Unit.\-Bus\-Login}}
 }
 
@@ -12,23 +12,48 @@ Diagrama de Hierarquia para Login.\-Login\-Unit.\-Bus\-Login\-:\begin{figure}[H]
 \includegraphics[height=2.000000cm]{d9/d51/classLogin_1_1LoginUnit_1_1BusLogin}
 \end{center}
 \end{figure}
-\subsection*{Métodos Públicos}
+\subsubsection*{Métodos Públicos}
 \begin{DoxyCompactItemize}
 \item 
 def \hyperlink{classLogin_1_1LoginUnit_1_1BusLogin_a2301425767b811697ce559801b955a58}{validate}
-\begin{DoxyCompactList}\small\item\em Método de validação do username e password. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Additional Inherited Members}
+\item 
+def \hyperlink{classLogin_1_1LoginUnit_1_1BusLogin_a23223ddd567bf874e6230efaf4912e98}{get\-Lang}
+\end{DoxyCompactItemize}
+\subsubsection*{Additional Inherited Members}
 
 
-\subsection{Descrição Detalhada}
-Camada de negócio de usuário para o módulo de \hyperlink{namespaceLogin}{Login}. 
+\subsubsection{Descrição Detalhada}
+
+
+Definição na linha \hyperlink{LoginUnit_8py_source_l00180}{180} do arquivo \hyperlink{LoginUnit_8py_source}{Login\-Unit.\-py}.
 
 
 
-\subsection{Métodos}
+\subsubsection{Métodos}
+\hypertarget{classLogin_1_1LoginUnit_1_1BusLogin_a23223ddd567bf874e6230efaf4912e98}{\index{Login\-::\-Login\-Unit\-::\-Bus\-Login@{Login\-::\-Login\-Unit\-::\-Bus\-Login}!get\-Lang@{get\-Lang}}
+\index{get\-Lang@{get\-Lang}!Login::LoginUnit::BusLogin@{Login\-::\-Login\-Unit\-::\-Bus\-Login}}
+\paragraph[{get\-Lang}]{\setlength{\rightskip}{0pt plus 5cm}def Login.\-Login\-Unit.\-Bus\-Login.\-get\-Lang (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{username, }
+\item[{}]{database}
+\end{DoxyParamCaption}
+)}}\label{classLogin_1_1LoginUnit_1_1BusLogin_a23223ddd567bf874e6230efaf4912e98}
+
+
+Definição na linha \hyperlink{LoginUnit_8py_source_l00187}{187} do arquivo \hyperlink{LoginUnit_8py_source}{Login\-Unit.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classLogin_1_1LoginUnit_1_1BusLogin_l00187}{}\hyperlink{classLogin_1_1LoginUnit_1_1BusLogin_a23223ddd567bf874e6230efaf4912e98}{00187} 
+00188     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1BusLogin_a23223ddd567bf874e6230efaf4912e98}{getLang}(self, username, database):
+00189         ulang = self.pers.select(username.value, database)
+00190         \textcolor{keywordflow}{return} ulang[\textcolor{stringliteral}{'language'}]
+
+\end{DoxyCode}
 \hypertarget{classLogin_1_1LoginUnit_1_1BusLogin_a2301425767b811697ce559801b955a58}{\index{Login\-::\-Login\-Unit\-::\-Bus\-Login@{Login\-::\-Login\-Unit\-::\-Bus\-Login}!validate@{validate}}
 \index{validate@{validate}!Login::LoginUnit::BusLogin@{Login\-::\-Login\-Unit\-::\-Bus\-Login}}
-\subsubsection[{validate}]{\setlength{\rightskip}{0pt plus 5cm}def Login.\-Login\-Unit.\-Bus\-Login.\-validate (
+\paragraph[{validate}]{\setlength{\rightskip}{0pt plus 5cm}def Login.\-Login\-Unit.\-Bus\-Login.\-validate (
 \begin{DoxyParamCaption}
 \item[{}]{self, }
 \item[{}]{username, }
@@ -38,9 +63,18 @@ Camada de negócio de usuário para o módulo de \hyperlink{namespaceLogin}{Logi
 )}}\label{classLogin_1_1LoginUnit_1_1BusLogin_a2301425767b811697ce559801b955a58}
 
 
-Método de validação do username e password. 
+Definição na linha \hyperlink{LoginUnit_8py_source_l00182}{182} do arquivo \hyperlink{LoginUnit_8py_source}{Login\-Unit.\-py}.
 
-Ele recebe da camada de persistência os valores correspondentes ao username e password e verifica com o inserido pelo usuário. 
+
+\begin{DoxyCode}
+\hypertarget{classLogin_1_1LoginUnit_1_1BusLogin_l00182}{}\hyperlink{classLogin_1_1LoginUnit_1_1BusLogin_a2301425767b811697ce559801b955a58}{00182} 
+00183     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1BusLogin_a2301425767b811697ce559801b955a58}{validate}(self, username, password, database):
+00184         upass = self.pers.select(username.value, database)
+00185         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} upass \textcolor{keywordflow}{or} upass[\textcolor{stringliteral}{'password'}] != password.value:
+00186             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_LOG'}])
+
+\end{DoxyCode}
+
 
 A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}
 \item 
