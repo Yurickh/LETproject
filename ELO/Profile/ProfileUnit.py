@@ -17,7 +17,8 @@ from Profile.forms import (
     NameForm, 
     LanguageForm,
     SexForm,
-    BiosForm)
+    BiosForm,
+    InterestsForm)
 
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
@@ -223,6 +224,9 @@ class UiFullProfile(IfUiProfile):
                 elif "bios" in request.POST:
                     form = BiosForm(request.POST)
                     field = "bios"
+                elif "interests" in request.POST:
+                    form = InterestsForm(request.POST)
+                    field = "interests"
                 else:
                     raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
 
@@ -259,6 +263,9 @@ class UiFullProfile(IfUiProfile):
                     form = SexForm(initial={'newdata':get_user()['sex']})
                 elif field == "bios":
                     form = BiosForm(initial={'newdata':get_user()['bios']})
+                elif field == "interests":
+                    form = InterestsForm(initial={
+                            'newdata':get_user()['interests']})
                 else:
                     form = lang.DICT["ERROR_FORM"]
                     err = True 

@@ -84,3 +84,16 @@ class BiosForm(forms.Form):
 		except ValueError as exc:
 			raise forms.ValidationError(exc)
 		return nb
+
+## Formulário de edição de interesses.
+#	Capaz de modificar a lista de interesses do jovem usuário.
+#	Talvez venhamos a utilizar isso mais para frente.
+class InterestsForm(forms.Form):
+	newdata		= forms.CharField(widget=forms.Textarea(attrs={'id':'interests'}))
+
+	def clean_newdata(self):
+		try:
+			nb = PlainText(self.cleaned_data['newdata'])
+		except ValueError as exc:
+			raise forms.ValidationError(exc)
+		return nb
