@@ -8,7 +8,7 @@
 	{% if err %}
 		{{ form }}
 	{% else %}
-		<form action="" method="post">
+		<form action="" method="post" id="{{ field }}_form">
 			{% for field in form %}
 				
 				{{ field }}<br />

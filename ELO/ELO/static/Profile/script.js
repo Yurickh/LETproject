@@ -18,24 +18,27 @@ $(document).ready(function(){
 		$(".dialog").dialog("open")
 	});
 
-	//stylizes the interests text
-	/*$("#interests").on("input", function(){
-		$inter = $("#interests");
-		str = $.trim($inter.text());
-		if(str.slice(-1) == ',')
-		{
-			str = str.split(',');
-			strfin = "";
+	$("#interests_form").select2({
+		allowClear: true,
+		tokenSeparator: [",", " "],
+		ajax: {
+				url: "/assync/JSON_interests",
+				dataType: "json",
+				quietMillis: 500,
+				data: function(term, page) {
+					return {
+						q: term,
+						page_limit: 10,
+						page: page
+					};
+				},
+				results: function(data, page) {
+					var more = (page*10) < data.total;
 
-			for (i in str)
-				if(str[i].slice(0, 26) != '<div class="interest_node">'
-					strfin += '<div class="interest_node">' + str[i] + '</div>';
-				else
-					strfin += str[i];
+					return {results:data, more:more};
+				}
+				
+			  }
+	});
 
-			html = $.parseHTML( strfin );
-			$inter.empty();
-			$inter.append(html);
-		}
-	});*/
 });
