@@ -22,6 +22,7 @@ from Profile.forms import (
     InterestsForm,
     AvatarForm)
 
+from django.conf import settings
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.utils import translation
@@ -314,11 +315,12 @@ class BusProfile(IfBusProfile):
         elif field == "language":
             newdata = form.cleaned_data['newdata']
         elif field == "avatar":
-            newdata = form.cleaned_data['newdata']
-            with open(newdata.value, "wb+") as destination:
-                for chunk in request.FILE['newdata'].chunks():
-                    print "UPLOADING FILE"
-                    destination.write(chunk)
+            newdata = form.cleaned_data['newdata'].value
+            addr = settings.MEDIA_ROOT + u"/" + newdata
+            with open(addr, "wb+") as destination:
+                    for chunk in request.FILES['newdata'].chunks():
+                        print "UPLOADING FILE"
+                        destination.write(chunk)
         else:
             newdata = form.cleaned_data['newdata'].value
 

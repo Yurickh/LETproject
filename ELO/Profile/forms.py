@@ -107,13 +107,12 @@ class AvatarForm(forms.Form):
 
 	def clean_newdata(self):
 		i = 0
-		while os.path.isfile(settings.MEDIA_ROOT + u"/" + unicode(i) + u".png"):
-			++i
-
-		print settings.MEDIA_ROOT + u"/" + unicode(i) + u".png"
+		while os.path.isfile(settings.MEDIA_ROOT + u"/avatar/"+ unicode(i) + u".png"):
+			i += 1
+			print "READING DATABASE: " + settings.MEDIA_ROOT + u"/avatar/"+ unicode(i) + u".png"
 
 		try:
-			na = Link(settings.MEDIA_ROOT + u"/" + unicode(i) + u".png")
+			na = Link(u"avatar/" + unicode(i) + u".png")
 		except ValueError as exc:
 			raise forms.ValidationError(exc)
 		return na

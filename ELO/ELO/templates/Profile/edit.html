@@ -17,7 +17,7 @@
 		{{ form }}
 	{% else %}
 		<form action="" method="post" id="{{ ff }}_form" 
-			{% if ff == "avatar" %} enctype="multipart/form-data" {% endif %}>
+			{% if ff == "avatar" %} enctype="multipart/form-data"> <img src="{{ MEDIA_URL }}/{{ user.avatar }}" /{% endif %}>
 			{% for field in form %}
 				
 				{{ field }}<br />
