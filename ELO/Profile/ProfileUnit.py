@@ -269,7 +269,7 @@ class UiFullProfile(IfUiProfile):
                 elif field == "interests":
                     form = InterestsForm(initial={
                             'newdata':get_user()['interests']})
-                    dlist = self.bus.fetchField("INTEREST")
+                    dlist = self.bus.listInterests()
                 else:
                     form = lang.DICT["ERROR_FORM"]
                     err = True 
@@ -320,7 +320,7 @@ class BusProfile(IfBusProfile):
                 request.session['django_language'] = newdata
         return newdata
 
-    def listInterests(self, request):
+    def listInterests(self):
         return self.pers.fetchField("INTEREST")
 
 ## Camada de persistência de perfil.
@@ -376,16 +376,24 @@ class PersProfile(IfPersProfile):
 
     def fetchField(self, field):
 
+        ret = []
+
         try:
-            lstu = Student.objects.filter(field=field)
-            lpro = Professor.objects.filter(field=field)
+            lstu = Student.objects.filter(field=field)   #list of students
+            lpro = Professor.objects.filter(field=field) #list of professors 
 
         except Student.DoesNotExist:
             lstu = []
         except Professor.DoesNotExist:
             lpro = []
 
-        return lstu + lpro
+        for s in lstu:
+            ret.append(s.value)
+
+        for p in lpro:
+            ret.append(p.value)
+
+        return ret
 
     def update(self, username, field, newdata, database):
         

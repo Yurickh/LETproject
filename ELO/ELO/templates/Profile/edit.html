@@ -27,5 +27,5 @@
 		</form>
 	{% endif %}
 
-	<div hidden id="dlist">{{ dlist }}</div>
+	<div hidden="true" id="dlist">{% for d in dlist %}{{ d }}, {% endfor %}</div>
 {% endblock %}
