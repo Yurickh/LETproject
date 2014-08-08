@@ -5,13 +5,17 @@
 #	completa do usuário.
 
 from django import forms
+import os.path
+
+from django.conf import settings
 
 import ELO.locale.index as lang
 from ELO.BaseUnit import(
 	Name,
 	Sex,
 	PlainText,
-	Password)
+	Password,
+	Link)
 
 ## Formulário de edição de nome.
 #	Capaz de modificar o nome do usuário no sistema.
@@ -93,7 +97,23 @@ class InterestsForm(forms.Form):
 
 	def clean_newdata(self):
 		try:
-			nb = PlainText(self.cleaned_data['newdata'])
+			ni = PlainText(self.cleaned_data['newdata'])
 		except ValueError as exc:
 			raise forms.ValidationError(exc)
-		return nb
+		return ni
+
+class AvatarForm(forms.Form):
+	newdata		= forms.FileField()
+
+	def clean_newdata(self):
+		i = 0
+		while os.path.isfile(settings.MEDIA_ROOT + u"/" + unicode(i) + u".png"):
+			++i
+
+		print settings.MEDIA_ROOT + u"/" + unicode(i) + u".png"
+
+		try:
+			na = Link(settings.MEDIA_ROOT + u"/" + unicode(i) + u".png")
+		except ValueError as exc:
+			raise forms.ValidationError(exc)
+		return na

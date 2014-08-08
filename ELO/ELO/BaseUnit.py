@@ -318,9 +318,10 @@ class Link(IfBaseType):
     #                           das barras do sistema.
     def _validate(self, value):
         nobar = value.replace("/", "")
+        nobar = value.replace(".", "")
         if len(value) == 0:
             raise ValueError(lang.DICT['EXCEPTION_INV_LK_S'])
-        elif unicode.isalnum(nobar) == False and len(nobar) > 0:
+        elif unicode.isalnum(nobar) != False or len(nobar) == 0:
             raise ValueError(lang.DICT['EXCEPTION_INV_LK_F'])
 
 ## Classe container de notas.

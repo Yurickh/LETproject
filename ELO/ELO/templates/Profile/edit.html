@@ -16,7 +16,8 @@
 	{% if err %}
 		{{ form }}
 	{% else %}
-		<form action="" method="post" id="{{ ff }}_form">
+		<form action="" method="post" id="{{ ff }}_form" 
+			{% if ff == "avatar" %} enctype="multipart/form-data" {% endif %}>
 			{% for field in form %}
 				
 				{{ field }}<br />

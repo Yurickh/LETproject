@@ -19,7 +19,8 @@ from Profile.forms import (
     LanguageForm,
     SexForm,
     BiosForm,
-    InterestsForm)
+    InterestsForm,
+    AvatarForm)
 
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
@@ -226,6 +227,9 @@ class UiFullProfile(IfUiProfile):
                 elif "interests" in request.POST:
                     form = InterestsForm(request.POST)
                     field = "interests"
+                elif "avatar" in request.POST:
+                    form = AvatarForm(request.POST, request.FILES)
+                    field = "avatar"
                 else:
                     raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
 
@@ -235,8 +239,9 @@ class UiFullProfile(IfUiProfile):
                                                         field, 
                                                         form )
                 else:
-                    raise ValueError(lang.DICT['EXCEPTION_INV_FRM'] + 
-                        ":" + form.errors)
+                    print form.errors
+                    #raise ValueError(lang.DICT['EXCEPTION_INV_FRM'] + 
+                     #   ":" + form.errors)
 
             except ValueError as exc:
                 data = self.__makeData(get_user())
@@ -270,6 +275,9 @@ class UiFullProfile(IfUiProfile):
                     form = InterestsForm(initial={
                             'newdata':get_user()['interests']})
                     dlist = self.bus.listInterests()
+                elif field == "avatar":
+                    form = AvatarForm()
+                    dlist = ""
                 else:
                     form = lang.DICT["ERROR_FORM"]
                     err = True 
@@ -305,6 +313,12 @@ class BusProfile(IfBusProfile):
                 newdata = form.cleaned_data['newdata'].value
         elif field == "language":
             newdata = form.cleaned_data['newdata']
+        elif field == "avatar":
+            newdata = form.cleaned_data['newdata']
+            with open(newdata.value, "wb+") as destination:
+                for chunk in request.FILE['newdata'].chunks():
+                    print "UPLOADING FILE"
+                    destination.write(chunk)
         else:
             newdata = form.cleaned_data['newdata'].value
 
@@ -409,11 +423,9 @@ class PersProfile(IfPersProfile):
             try:
                 data = database.objects.get(field=field.upper(), identity=uid)
                 data.value = newdata
-                data.save()
             except database.DoesNotExist:
                 data = database(identity=uid, field=field.upper(), value=newdata)
-                data.save()
-                return
+            data.save()
 
         except ( database.DoesNotExist, 
                  database.MultipleObjectsReturned ) as exc:
