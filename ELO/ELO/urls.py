@@ -26,9 +26,6 @@ urlpatterns = patterns('',
 	## URL para mostrar assincronamente a edição de um campo de perfil.
 	url(r'^assync/editfield/(?P<field>\w{3,9})/?$', 
 		factory.runProfile, {'acctype' : 'Full'}),
-	## URL para retornar objeto em JSON que contém os interesses cadastrados.
-	url(r'^assync/JSON_interests/?', 
-		factory.runProfile, {'accType': 'interests'}), #CRIAR A PAGINA PARA ISSO!!!!!!!!!
 	## URL da pagina de logout.
 	url(r'^logout/?$', factory.runLogout),
 	## URL da pagina de cursos.

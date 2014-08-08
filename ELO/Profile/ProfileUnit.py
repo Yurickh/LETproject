@@ -9,6 +9,7 @@
 # pessoais, visualização de informações relativas aos cursos.
 
 from abc import*
+import json
 
 import ELO.locale.index as lang
 
@@ -147,8 +148,6 @@ class UiHomeProfile(IfUiProfile):
 
     def run(self, request):
         user = request.session['user']
-        print request.session['user']
-        print request.LANGUAGE_CODE
         if not 'matric' in user:
             request.session['user'] = self.bus.refreshUser(request)
             user = request.session['user']
@@ -242,7 +241,7 @@ class UiFullProfile(IfUiProfile):
             except ValueError as exc:
                 data = self.__makeData(get_user())
                 return render(request, "Profile/full.html", {'data' : data,
-                                                             'error': exc})
+                                                             'error': exc })
 
             data = self.__makeData(get_user())
             return HttpResponseRedirect('/profile')
@@ -256,23 +255,29 @@ class UiFullProfile(IfUiProfile):
                 err = False
                 if   field == "name":
                     form = NameForm(initial={'newdata':get_user()['name']})
+                    dlist = ""
                 elif field == "language":
                     form = LanguageForm(initial={
                             'newdata':get_user()['language']})
+                    dlist = ""
                 elif field == "sex":
                     form = SexForm(initial={'newdata':get_user()['sex']})
+                    dlist = ""
                 elif field == "bios":
                     form = BiosForm(initial={'newdata':get_user()['bios']})
+                    dlist = ""
                 elif field == "interests":
                     form = InterestsForm(initial={
                             'newdata':get_user()['interests']})
+                    dlist = self.bus.fetchField("INTEREST")
                 else:
                     form = lang.DICT["ERROR_FORM"]
                     err = True 
 
                 return render(request, "Profile/edit.html", {'form': form,
                                                              'ff': field,
-                                                             'err': err })
+                                                             'err': err,
+                                                             'dlist': dlist })
         
 
 ## Camada de negócio para perfil.
@@ -314,6 +319,9 @@ class BusProfile(IfBusProfile):
             if field == "language":
                 request.session['django_language'] = newdata
         return newdata
+
+    def listInterests(self, request):
+        return self.pers.fetchField("INTEREST")
 
 ## Camada de persistência de perfil.
 #   Recupera os dados do usuário logado, retornando-os para a camada
@@ -365,6 +373,19 @@ class PersProfile(IfPersProfile):
             fetchset = []
 
         return fetchset
+
+    def fetchField(self, field):
+
+        try:
+            lstu = Student.objects.filter(field=field)
+            lpro = Professor.objects.filter(field=field)
+
+        except Student.DoesNotExist:
+            lstu = []
+        except Professor.DoesNotExist:
+            lpro = []
+
+        return lstu + lpro
 
     def update(self, username, field, newdata, database):
         
