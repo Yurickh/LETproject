@@ -76,7 +76,7 @@ class SexForm(forms.Form):
 #	Não afeta de forma relevante a navegação ou qualquer outra forma de
 #	interação com o aluno.
 class BiosForm(forms.Form):
-	newdata		= forms.CharField(widget=forms.Textarea(attrs={'style':'width:90%;'}))
+	newdata		= forms.CharField(required=False, widget=forms.Textarea(attrs={'style':'width:90%;'}))
 
 	def clean_newdata(self):
 		try:
@@ -89,7 +89,7 @@ class BiosForm(forms.Form):
 #	Capaz de modificar a lista de interesses do jovem usuário.
 #	Talvez venhamos a utilizar isso mais para frente.
 class InterestsForm(forms.Form):
-	newdata		= forms.CharField(widget=forms.HiddenInput(attrs={'style':'width:90%;'}))
+	newdata		= forms.CharField(required=False, widget=forms.HiddenInput(attrs={'style':'width:90%;'}))
 
 	def clean_newdata(self):
 		try:

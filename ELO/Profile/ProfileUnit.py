@@ -236,7 +236,7 @@ class UiFullProfile(IfUiProfile):
                                                         form )
                 else:
                     raise ValueError(lang.DICT['EXCEPTION_INV_FRM'] + 
-                                        ":" + form.errors)
+                        ":" + form.errors)
 
             except ValueError as exc:
                 data = self.__makeData(get_user())
@@ -405,14 +405,15 @@ class PersProfile(IfPersProfile):
             if field[-1] == 's':
                 if field[-2] == 'e' or field[-2] == 't':
                     field = field[:-1]
-        
-                    data = database(identity=uid, field=field, value=newdata)
-                    data.save()
-                    return
-
-            data = database.objects.get(field=field.upper(), identity=uid)
-            data.value = newdata
-            data.save()
+                
+            try:
+                data = database.objects.get(field=field.upper(), identity=uid)
+                data.value = newdata
+                data.save()
+            except database.DoesNotExist:
+                data = database(identity=uid, field=field.upper(), value=newdata)
+                data.save()
+                return
 
         except ( database.DoesNotExist, 
                  database.MultipleObjectsReturned ) as exc:
