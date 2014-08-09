@@ -239,10 +239,10 @@ class UiFullProfile(IfUiProfile):
                                                         request, 
                                                         field, 
                                                         form )
+                    request.session.modified = True
                 else:
-                    print form.errors
-                    #raise ValueError(lang.DICT['EXCEPTION_INV_FRM'] + 
-                     #   ":" + form.errors)
+                    raise ValueError(lang.DICT['EXCEPTION_INV_FRM'] + 
+                        ":" + form.errors)
 
             except ValueError as exc:
                 data = self.__makeData(get_user())
@@ -310,13 +310,11 @@ class BusProfile(IfBusProfile):
             fpw = form.cleaned_data['password'].value
             if fpw != user['password']:
                 raise ValueError(lang.DICT['EXCEPTION_INV_PW_F'])
-            else:
-                newdata = form.cleaned_data['newdata'].value
+            newdata = form.cleaned_data['newdata'].value
         elif field == "language":
             newdata = form.cleaned_data['newdata']
         elif field == "avatar":
-            newdata = form.cleaned_data['newdata'].value
-            addr = settings.MEDIA_ROOT + u"/" + newdata
+            addr = settings.MEDIA_ROOT + u"/" + user['avatar']
             with open(addr, "wb+") as destination:
                     for chunk in request.FILES['newdata'].chunks():
                         print "UPLOADING FILE"
@@ -325,16 +323,19 @@ class BusProfile(IfBusProfile):
             newdata = form.cleaned_data['newdata'].value
 
         try:
-            if user['type'] == 'Student':
+            if user['type'] == 'Student' and field != 'avatar':
                 self.pers.update(user['name'], field, newdata, Student)
-            elif user['type'] == 'Professor':
+            elif user['type'] == 'Professor' and field != 'avatar':
                 self.pers.update(user['name'], field, newdata, Professor)
         except ValueError as exc:
             raise ValueError(lang.DICT['EXCEPTION_ERR_DB_U'])
         else:
             if field == "language":
                 request.session['django_language'] = newdata
-        return newdata
+        if field == 'avatar':
+            return user['avatar']
+        else:
+            return newdata
 
     def listInterests(self):
         return self.pers.fetchField("INTEREST")

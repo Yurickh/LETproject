@@ -29,6 +29,7 @@ class NameForm(forms.Form):
 			name = Name(self.cleaned_data['newdata'])
 		except ValueError as exc:
 			raise forms.ValidationError(exc)
+
 		return name
 
 	def clean_password(self):
@@ -104,15 +105,3 @@ class InterestsForm(forms.Form):
 
 class AvatarForm(forms.Form):
 	newdata		= forms.FileField()
-
-	def clean_newdata(self):
-		i = 0
-		while os.path.isfile(settings.MEDIA_ROOT + u"/avatar/"+ unicode(i) + u".png"):
-			i += 1
-			print "READING DATABASE: " + settings.MEDIA_ROOT + u"/avatar/"+ unicode(i) + u".png"
-
-		try:
-			na = Link(u"avatar/" + unicode(i) + u".png")
-		except ValueError as exc:
-			raise forms.ValidationError(exc)
-		return na

@@ -5,7 +5,7 @@ $(document).ready(function(){
 
 	$("#interests_form #id_newdata").select2({
 		tags: arr,
-		tokenSeparators: [",", " "]
+		tokenSeparators: [","]
 	});
 
 });
