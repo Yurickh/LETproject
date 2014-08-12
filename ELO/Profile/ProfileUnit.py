@@ -301,7 +301,10 @@ class BusProfile(IfBusProfile):
             fd = dict(fs)
             request.session['django_language'] = fd['language']
             return dict(user.items()+ self.pers.fetch(user['name'], Student))
-        elif user['type'] == 'Professor':
+        elif user['type'] == 'Professor':   
+            fs = self.pers.fetch(user['name'], Professor)
+            fd = dict(fs)
+            request.session['django_language'] = fd['language']
             return dict(user.items()+ self.pers.fetch(user['name'], Professor))
 
     def editField(self, request, field, form):
