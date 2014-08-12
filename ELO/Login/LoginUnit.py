@@ -9,6 +9,7 @@
 from abc import *
 
 from django.shortcuts import render
+from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.template import Template, Context
 from django import forms
@@ -195,15 +196,20 @@ class PersLogin(IfPersLogin):
 		if not username: return False
 		if not database: return False
 
+		ulang = None
+
 		try:
 			uid = database.objects.get(value=username, field='NAME').identity
 			upass = database.objects.get(identity=uid, field='PASSWORD').value
 		except database.DoesNotExist:
 			return False
 
-		try:
-			ulang = database.objects.get(identity=uid, field='LANGUAGE').value
-		except database.DoesNotExist:
-			pass
+		if isinstance(database, Student):
+			try:
+				ulang = database.objects.get(identity=uid, field='LANGUAGE').value
+			except database.DoesNotExist:
+				pass
+		else:
+			ulang = settings.LANGUAGE_CODE
 
 		return {'name': username, 'password': upass, 'language': ulang}

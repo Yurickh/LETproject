@@ -29,7 +29,6 @@ class NameForm(forms.Form):
 			name = Name(self.cleaned_data['newdata'])
 		except ValueError as exc:
 			raise forms.ValidationError(exc)
-
 		return name
 
 	def clean_password(self):

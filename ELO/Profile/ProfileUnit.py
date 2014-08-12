@@ -166,13 +166,17 @@ class UiFullProfile(IfUiProfile):
 
     ## Lista de campos passíveis de edição por um usuário.
     __editable = [
-                    'interests',
                     'name',
-                    'language',
                     'sex',
                     'bios',
                     'avatar'
                     ]
+
+    __editable_stu = [
+                    'language',
+                    'interests'
+                    ]
+
     __viewable = [
                     'email',
                     'campus',
@@ -190,11 +194,18 @@ class UiFullProfile(IfUiProfile):
     ##  Capaz de criar um template-iterable array com os dados de usuario.
     def __makeData(self, user):
         data = {}
+
+        if user["type"] == "Student":
+            self.__viewable += self.__editable_stu
+            __ed = self.__editable + self.__editable_stu
+        else:
+            __ed = self.__editable
+
         for field, value in user.items():
             if field in self.__viewable:
                 data[field] = {
                     "value": value,
-                    "edit":True if field in self.__editable else False,
+                    "edit":True if field in __ed else False,
                     "mult":True if isinstance(value, list)  else False,
                     "fname": lang.DICT[field.upper()],
                             }
@@ -255,7 +266,8 @@ class UiFullProfile(IfUiProfile):
         else: # request.method == "GET"
             if not field: # normal call
                 request.session['user'] = self.bus.refreshUser(request)
-                data = self.__makeData(get_user())
+                data = self.__makeData(get_user())        
+                translation.activate(request.session['user']['language'])
                 return render(request, "Profile/full.html", {'data' : data})
             else: # ajax call
                 err = False
@@ -301,10 +313,7 @@ class BusProfile(IfBusProfile):
             fd = dict(fs)
             request.session['django_language'] = fd['language']
             return dict(user.items()+ self.pers.fetch(user['name'], Student))
-        elif user['type'] == 'Professor':   
-            fs = self.pers.fetch(user['name'], Professor)
-            fd = dict(fs)
-            request.session['django_language'] = fd['language']
+        elif user['type'] == 'Professor':
             return dict(user.items()+ self.pers.fetch(user['name'], Professor))
 
     def editField(self, request, field, form):
@@ -318,9 +327,8 @@ class BusProfile(IfBusProfile):
             newdata = form.cleaned_data['newdata']
         elif field == "avatar":
             addr = settings.MEDIA_ROOT + u"/" + user['avatar']
-            with open(addr, "wb+") as destination:
+            with open(addr, "wb") as destination:
                     for chunk in request.FILES['newdata'].chunks():
-                        print "UPLOADING FILE"
                         destination.write(chunk)
         else:
             newdata = form.cleaned_data['newdata'].value
