@@ -9,7 +9,6 @@
 # pessoais, visualização de informações relativas aos cursos.
 
 from abc import*
-import json
 
 import ELO.locale.index as lang
 
