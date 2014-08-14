@@ -272,24 +272,18 @@ class UiFullProfile(IfUiProfile):
                 err = False
                 if   field == "name":
                     form = NameForm(initial={'newdata':get_user()['name']})
-                    dlist = ""
                 elif field == "language":
                     form = LanguageForm(initial={
                             'newdata':get_user()['language']})
-                    dlist = ""
                 elif field == "sex":
                     form = SexForm(initial={'newdata':get_user()['sex']})
-                    dlist = ""
                 elif field == "bios":
                     form = BiosForm(initial={'newdata':get_user()['bios']})
-                    dlist = ""
                 elif field == "interests":
                     form = InterestsForm(initial={
                             'newdata':get_user()['interests']})
-                    dlist = self.bus.listInterests()
                 elif field == "avatar":
                     form = AvatarForm()
-                    dlist = ""
                 else:
                     form = lang.DICT["ERROR_FORM"]
                     err = True 
@@ -297,7 +291,7 @@ class UiFullProfile(IfUiProfile):
                 return render(request, "Profile/edit.html", {'form': form,
                                                              'ff': field,
                                                              'err': err,
-                                                             'dlist': dlist })
+                                                            })
         
 
 ## Camada de negócio para perfil.
@@ -346,9 +340,6 @@ class BusProfile(IfBusProfile):
             return user['avatar']
         else:
             return newdata
-
-    def listInterests(self):
-        return self.pers.fetchField("INTEREST")
 
 ## Camada de persistência de perfil.
 #   Recupera os dados do usuário logado, retornando-os para a camada
