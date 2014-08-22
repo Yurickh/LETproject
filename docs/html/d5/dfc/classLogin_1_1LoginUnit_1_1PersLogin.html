@@ -133,7 +133,7 @@ Métodos Públicos</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descrição Detalhada</h2>
 <div class="textblock">
-<p>Definição na linha <a class="el" href="../../da/dc7/LoginUnit_8py_source.html#l00192">192</a> do arquivo <a class="el" href="../../da/dc7/LoginUnit_8py_source.html">LoginUnit.py</a>.</p>
+<p>Definição na linha <a class="el" href="../../da/dc7/LoginUnit_8py_source.html#l00193">193</a> do arquivo <a class="el" href="../../da/dc7/LoginUnit_8py_source.html">LoginUnit.py</a>.</p>
 </div><h2 class="groupheader">Métodos</h2>
 <a class="anchor" id="a1847dbd744377283add2327d2eb0b99f"></a>
 <div class="memitem">
@@ -165,24 +165,29 @@ Métodos Públicos</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definição na linha <a class="el" href="../../da/dc7/LoginUnit_8py_source.html#l00194">194</a> do arquivo <a class="el" href="../../da/dc7/LoginUnit_8py_source.html">LoginUnit.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00194"></a><span class="lineno"><a class="line" href="../../d5/dfc/classLogin_1_1LoginUnit_1_1PersLogin.html#a1847dbd744377283add2327d2eb0b99f">  194</a></span>&#160;</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keyword">def </span><a class="code" href="../../d5/dfc/classLogin_1_1LoginUnit_1_1PersLogin.html#a1847dbd744377283add2327d2eb0b99f">select</a>(self, username=None, database=None):</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        <span class="keywordflow">if</span> <span class="keywordflow">not</span> username: <span class="keywordflow">return</span> <span class="keyword">False</span></div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <span class="keywordflow">if</span> <span class="keywordflow">not</span> database: <span class="keywordflow">return</span> <span class="keyword">False</span></div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        <span class="keywordflow">try</span>:</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            uid = database.objects.get(value=username, field=<span class="stringliteral">&#39;NAME&#39;</span>).identity</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            upass = database.objects.get(identity=uid, field=<span class="stringliteral">&#39;PASSWORD&#39;</span>).value</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <span class="keywordflow">except</span> database.DoesNotExist:</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">False</span></div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        <span class="keywordflow">try</span>:</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            ulang = database.objects.get(identity=uid, field=<span class="stringliteral">&#39;LANGUAGE&#39;</span>).value</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        <span class="keywordflow">except</span> database.DoesNotExist:</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            <span class="keywordflow">pass</span></div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;</div>
-        <span class="keywordflow">return</span> {<span class="stringliteral">&#39;name&#39;</span>: username, <span class="stringliteral">&#39;password&#39;</span>: upass, <span class="stringliteral">&#39;language&#39;</span>: ulang}<div class="ttc" id="classLogin_1_1LoginUnit_1_1PersLogin_html_a1847dbd744377283add2327d2eb0b99f"><div class="ttname"><a href="../../d5/dfc/classLogin_1_1LoginUnit_1_1PersLogin.html#a1847dbd744377283add2327d2eb0b99f">Login.LoginUnit.PersLogin.select</a></div><div class="ttdeci">def select</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dc7/LoginUnit_8py_source.html#l00194">LoginUnit.py:194</a></div></div>
+<p>Definição na linha <a class="el" href="../../da/dc7/LoginUnit_8py_source.html#l00195">195</a> do arquivo <a class="el" href="../../da/dc7/LoginUnit_8py_source.html">LoginUnit.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00195"></a><span class="lineno"><a class="line" href="../../d5/dfc/classLogin_1_1LoginUnit_1_1PersLogin.html#a1847dbd744377283add2327d2eb0b99f">  195</a></span>&#160;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="keyword">def </span><a class="code" href="../../d5/dfc/classLogin_1_1LoginUnit_1_1PersLogin.html#a1847dbd744377283add2327d2eb0b99f">select</a>(self, username=None, database=None):</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <span class="keywordflow">if</span> <span class="keywordflow">not</span> username: <span class="keywordflow">return</span> <span class="keyword">False</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        <span class="keywordflow">if</span> <span class="keywordflow">not</span> database: <span class="keywordflow">return</span> <span class="keyword">False</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        ulang = <span class="keywordtype">None</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            uid = database.objects.get(value=username, field=<span class="stringliteral">&#39;NAME&#39;</span>).identity</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            upass = database.objects.get(identity=uid, field=<span class="stringliteral">&#39;PASSWORD&#39;</span>).value</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        <span class="keywordflow">except</span> database.DoesNotExist:</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">False</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        <span class="keywordflow">if</span> isinstance(database, Student):</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                ulang = database.objects.get(identity=uid, field=<span class="stringliteral">&#39;LANGUAGE&#39;</span>).value</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            <span class="keywordflow">except</span> database.DoesNotExist:</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                <span class="keywordflow">pass</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            ulang = settings.LANGUAGE_CODE</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;</div>
+        <span class="keywordflow">return</span> {<span class="stringliteral">&#39;name&#39;</span>: username, <span class="stringliteral">&#39;password&#39;</span>: upass, <span class="stringliteral">&#39;language&#39;</span>: ulang}<div class="ttc" id="classLogin_1_1LoginUnit_1_1PersLogin_html_a1847dbd744377283add2327d2eb0b99f"><div class="ttname"><a href="../../d5/dfc/classLogin_1_1LoginUnit_1_1PersLogin.html#a1847dbd744377283add2327d2eb0b99f">Login.LoginUnit.PersLogin.select</a></div><div class="ttdeci">def select</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dc7/LoginUnit_8py_source.html#l00195">LoginUnit.py:195</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -195,7 +200,7 @@ Métodos Públicos</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dc/d54/namespaceLogin.html">Login</a></li><li class="navelem"><a class="el" href="../../d1/dc4/namespaceLogin_1_1LoginUnit.html">LoginUnit</a></li><li class="navelem"><a class="el" href="../../d5/dfc/classLogin_1_1LoginUnit_1_1PersLogin.html">PersLogin</a></li>
-    <li class="footer">Gerado em Terça, 1 de Julho de 2014 19:10:28 para LETproject por
+    <li class="footer">Gerado em Sexta, 22 de Agosto de 2014 17:35:23 para LETproject por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

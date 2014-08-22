@@ -22,368 +22,421 @@
 00017     NameForm, 
 00018     LanguageForm,
 00019     SexForm,
-00020     BiosForm)
-00021 
-00022 \textcolor{keyword}{from} django.shortcuts \textcolor{keyword}{import} render
-00023 \textcolor{keyword}{from} django.http \textcolor{keyword}{import} HttpResponseRedirect
-00024 \textcolor{keyword}{from} django.utils \textcolor{keyword}{import} translation
-00025 \textcolor{keyword}{from} django \textcolor{keyword}{import} forms
-00026 
-00027 \textcolor{comment}{## Interface para a camada de Apresentação de Usuário do módulo Profile.}
-00028 \textcolor{comment}{#   É responsável pelo carregamento do template correto e processa os }
-00029 \textcolor{comment}{#   dados inseridos nos formulários de Perfil.}
-\hypertarget{ProfileUnit_8py_source_l00030}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile}{00030} \textcolor{keyword}{class }\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile}{IfUiProfile}:
-00031     \_\_metaclass\_\_ = ABCMeta
-00032 
-00033     \textcolor{comment}{## Força a criação da camada subjacente.}
-\hypertarget{ProfileUnit_8py_source_l00034}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_a558fbb501ee3dbc4a16d3165479c38bc}{00034}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_a558fbb501ee3dbc4a16d3165479c38bc}{\_\_init\_\_}(self, bus):
-00035         \textcolor{keywordflow}{try}:
-\hypertarget{ProfileUnit_8py_source_l00036}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_a32a87d193e5d14e0ff3125d6bab2c420}{00036}             self.\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_a32a87d193e5d14e0ff3125d6bab2c420}{bus} = bus
-00037         \textcolor{keywordflow}{except} TypeError \textcolor{keyword}{as} exc:
-00038             del self
-00039             \textcolor{keywordflow}{raise} exc
-00040 
-00041     @property
-\hypertarget{ProfileUnit_8py_source_l00042}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_ac3d0a7a780dcf729b9f3cf1fff243a78}{00042}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_a32a87d193e5d14e0ff3125d6bab2c420}{bus}(self):
-00043         \textcolor{keywordflow}{return} self.\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_af2171c776276848c2961f6fa818e0f67}{\_\_bus}
-00044 
-00045     @bus.setter
-\hypertarget{ProfileUnit_8py_source_l00046}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_ac3d0a7a780dcf729b9f3cf1fff243a78}{00046}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_a32a87d193e5d14e0ff3125d6bab2c420}{bus}(self, value):
-00047         \textcolor{keywordflow}{if} isinstance(value, IfBusProfile):
-00048             self.\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_af2171c776276848c2961f6fa818e0f67}{\_\_bus} = value
-00049         \textcolor{keywordflow}{else}:
-00050             \textcolor{keywordflow}{raise} TypeError(\textcolor{stringliteral}{"Expected IfBusProfile instance at \(\backslash\)}
-00051 \textcolor{stringliteral}{                UiProfile.\_\_bus. Received "} + 
-00052                 str(type(value)) + \textcolor{stringliteral}{" instead."})
-00053 
-00054     @bus.deleter
-\hypertarget{ProfileUnit_8py_source_l00055}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_ac3d0a7a780dcf729b9f3cf1fff243a78}{00055}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_a32a87d193e5d14e0ff3125d6bab2c420}{bus}(self):
-00056         del self.\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_af2171c776276848c2961f6fa818e0f67}{\_\_bus}
-00057 
-00058     \textcolor{comment}{## 'Run' é o principal método de qualquer classe de apresentação. }
-00059     \textcolor{comment}{#   Este método permite a Factory dar o controle do programa }
-00060     \textcolor{comment}{#   módulo.}
-00061     @abstractmethod
-\hypertarget{ProfileUnit_8py_source_l00062}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_afb22574cb4a2dc58c068437bd7075e5a}{00062}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_afb22574cb4a2dc58c068437bd7075e5a}{run}(self, request): \textcolor{keyword}{pass}
-00063 
-00064 
-00065 \textcolor{comment}{## Interface para a camada de Negócio do módulo de perfil.}
-00066 \textcolor{comment}{#   É responsável por executar a atualização do Cookie de dados do}
-00067 \textcolor{comment}{#   usuário, bem como a devida recuperação de dados para o sistema.}
-\hypertarget{ProfileUnit_8py_source_l00068}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile}{00068} \textcolor{keyword}{class }\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile}{IfBusProfile}:
-00069     \_\_metaclass\_\_ = ABCMeta
-00070 
-00071     \textcolor{comment}{## Força a criação das camadas subjacentes.}
-\hypertarget{ProfileUnit_8py_source_l00072}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile_a3c02bbff4cb54b40edab64d0f9b86a59}{00072}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile_a3c02bbff4cb54b40edab64d0f9b86a59}{\_\_init\_\_}(self, pers):
-00073         \textcolor{keywordflow}{try}:
-\hypertarget{ProfileUnit_8py_source_l00074}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile_abe265adaf3fd39d6534f9ad4c9ba8abb}{00074}             self.\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile_abe265adaf3fd39d6534f9ad4c9ba8abb}{pers} = pers
-00075         \textcolor{keywordflow}{except} TypeError \textcolor{keyword}{as} exc:
-00076             del self
-00077             \textcolor{keywordflow}{raise} exc
-00078 
-00079     @property
-\hypertarget{ProfileUnit_8py_source_l00080}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile_a996592f4b01e0540f45d042065d5a7f4}{00080}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile_abe265adaf3fd39d6534f9ad4c9ba8abb}{pers}(self):
-00081         \textcolor{keywordflow}{return} self.\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile_ae752633c4645cd118c3c74e03a5fa7b5}{\_\_pers}
-00082     
-00083     @pers.setter
-\hypertarget{ProfileUnit_8py_source_l00084}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile_a996592f4b01e0540f45d042065d5a7f4}{00084}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile_abe265adaf3fd39d6534f9ad4c9ba8abb}{pers}(self, value):
-00085         \textcolor{keywordflow}{if} isinstance(value, IfPersProfile):
-00086             self.\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile_ae752633c4645cd118c3c74e03a5fa7b5}{\_\_pers} = value
-00087         \textcolor{keywordflow}{else}:
-00088             \textcolor{keywordflow}{raise} TypeError(\textcolor{stringliteral}{"Expected IfPersProfile instance at \(\backslash\)}
-00089 \textcolor{stringliteral}{                BusProfile.\_\_pers. Received "} + 
-00090                 str(type(value)) + \textcolor{stringliteral}{"instead."})
-00091 
-00092     @pers.deleter
-\hypertarget{ProfileUnit_8py_source_l00093}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile_a996592f4b01e0540f45d042065d5a7f4}{00093}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile_abe265adaf3fd39d6534f9ad4c9ba8abb}{pers}(self):
-00094         del self.\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile_ae752633c4645cd118c3c74e03a5fa7b5}{\_\_pers}
-00095 
-00096     \textcolor{comment}{## Atualiza os dados de usuário no cookie de sessão.}
-00097     @abstractmethod
-\hypertarget{ProfileUnit_8py_source_l00098}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile_abe42ebac800e9dcd762e9d73b4a5f9b8}{00098}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile_abe42ebac800e9dcd762e9d73b4a5f9b8}{refreshUser}(self, request): \textcolor{keyword}{pass}
-00099 
-00100     \textcolor{comment}{## Edita um dos dados de usuário no cookie E no banco de dados.}
-00101     \textcolor{comment}{#   Retorna o valor editado.}
-00102     \textcolor{comment}{#}
-00103     \textcolor{comment}{#   @arg field      Nome do campo que deve ser editado.}
-00104     \textcolor{comment}{#}
-00105     \textcolor{comment}{#   @arg form       Objeto form que contém os dados.}
-00106     @abstractmethod
-\hypertarget{ProfileUnit_8py_source_l00107}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile_a1e1a9ec32d2c23c734eaf0ceb6bb8419}{00107}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile_a1e1a9ec32d2c23c734eaf0ceb6bb8419}{editField}(self, request, field, form): \textcolor{keyword}{pass}
-00108 
-00109 
-00110 \textcolor{comment}{## Interface para a camada de Persistência do módulo de perfil.}
-00111 \textcolor{comment}{#   É responsável pela manipulação dos dados do usuário logado do banco}
-00112 \textcolor{comment}{#   de dados.}
-\hypertarget{ProfileUnit_8py_source_l00113}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfPersProfile}{00113} \textcolor{keyword}{class }\hyperlink{classProfile_1_1ProfileUnit_1_1IfPersProfile}{IfPersProfile}:
-00114     \_\_metaclass\_\_ = ABCMeta
-00115 
-00116     \textcolor{comment}{##  Função que recupera todos os dados do usuário.}
-00117     \textcolor{comment}{#       Percorre o banco de dados e recupera todos os dados do usuário}
-00118     \textcolor{comment}{#       requisitado.}
-00119     \textcolor{comment}{#}
-00120     \textcolor{comment}{#   @arg    username    Nome do usuário a ser pesquisado.}
-00121     \textcolor{comment}{#}
-00122     \textcolor{comment}{#   @arg    database    Objeto modelo sobre o qual a consulta será}
-00123     \textcolor{comment}{#                       realizada.}
-00124     @abstractmethod
-\hypertarget{ProfileUnit_8py_source_l00125}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfPersProfile_a64821aed51d9e9d64f6da9ee9b20fdeb}{00125}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfPersProfile_a64821aed51d9e9d64f6da9ee9b20fdeb}{fetch}(self, username, database): \textcolor{keyword}{pass}
-00126 
-00127     \textcolor{comment}{##  Método que atualiza os dados de um usuário fornecido.}
-00128     \textcolor{comment}{#       No caso de campos multivalorados, adiciona uma nova entrada.}
-00129     \textcolor{comment}{#       Caso contrário, substitui a entrada anterior.}
-00130     \textcolor{comment}{#}
-00131     \textcolor{comment}{#   @arg    username    Nome do usuário sobre o qual a consulta será}
-00132     \textcolor{comment}{#                       realizada.}
-00133     \textcolor{comment}{#   @arg    field       Campo a ser atualizado.}
-00134     \textcolor{comment}{#}
-00135     \textcolor{comment}{#   @arg    newdata     Dado a ser atualizado.}
-00136     \textcolor{comment}{#}
-00137     \textcolor{comment}{#   @arg    database    Objeto de modelo que será utilizado.}
-00138     @abstractmethod
-\hypertarget{ProfileUnit_8py_source_l00139}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfPersProfile_ae2d65e1ead2780de7b97fab078bb425e}{00139}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfPersProfile_ae2d65e1ead2780de7b97fab078bb425e}{update}(self, username, field, newdata, database): \textcolor{keyword}{pass}
-00140 
-00141 \textcolor{comment}{## Camada de apresentação para a página principal do site.}
-00142 \textcolor{comment}{#   Deve carregar o devido template, contendo os dados básicos do usuário,}
-00143 \textcolor{comment}{#   como cursos matriculados e histórico para estudantes, e cursos monitorados}
-00144 \textcolor{comment}{#   para professores.}
-\hypertarget{ProfileUnit_8py_source_l00145}{}\hyperlink{classProfile_1_1ProfileUnit_1_1UiHomeProfile}{00145} \textcolor{keyword}{class }\hyperlink{classProfile_1_1ProfileUnit_1_1UiHomeProfile}{UiHomeProfile}(\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile}{IfUiProfile}): 
-00146 
-\hypertarget{ProfileUnit_8py_source_l00147}{}\hyperlink{classProfile_1_1ProfileUnit_1_1UiHomeProfile_a5abc7f7c1ca1cb3e070c36a869263e6d}{00147}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1UiHomeProfile_a5abc7f7c1ca1cb3e070c36a869263e6d}{run}(self, request):
-00148         user = request.session[\textcolor{stringliteral}{'user'}]
-00149         \textcolor{keywordflow}{print} request.session[\textcolor{stringliteral}{'user'}]
-00150         \textcolor{keywordflow}{print} request.LANGUAGE\_CODE
-00151         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} \textcolor{stringliteral}{'matric'} \textcolor{keywordflow}{in} user:
-00152             request.session[\textcolor{stringliteral}{'user'}] = self.bus.refreshUser(request)
-00153             user = request.session[\textcolor{stringliteral}{'user'}]
-00154         translation.activate(request.session[\textcolor{stringliteral}{'user'}][\textcolor{stringliteral}{'language'}])
-00155         \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Profile/home.html"}, \{\textcolor{stringliteral}{'user'} : user\})
-00156 
-00157 \textcolor{comment}{## Camada de apresentação para a página de perfil completa.}
-00158 \textcolor{comment}{#   Deve ser capaz de gerar uma página que disponibilize os dados}
-00159 \textcolor{comment}{#   do usuário, permitindo que ele edite ou não, alguns campos.}
-00160 \textcolor{comment}{#   Caso a run() seja chamada com um argumento adicional field,}
-00161 \textcolor{comment}{#   a chamada será considerada assíncrona, assim como no caso do}
-00162 \textcolor{comment}{#   request.method ser POST.}
-\hypertarget{ProfileUnit_8py_source_l00163}{}\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile}{00163} \textcolor{keyword}{class }\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile}{UiFullProfile}(\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile}{IfUiProfile}):
-00164 
-00165     \textcolor{comment}{## Lista de campos passíveis de edição por um usuário.}
-00166     \_\_editable = [
-00167                     \textcolor{stringliteral}{'interests'},
+00020     BiosForm,
+00021     InterestsForm,
+00022     AvatarForm)
+00023 
+00024 \textcolor{keyword}{from} django.conf \textcolor{keyword}{import} settings
+00025 \textcolor{keyword}{from} django.shortcuts \textcolor{keyword}{import} render
+00026 \textcolor{keyword}{from} django.http \textcolor{keyword}{import} HttpResponseRedirect
+00027 \textcolor{keyword}{from} django.utils \textcolor{keyword}{import} translation
+00028 \textcolor{keyword}{from} django \textcolor{keyword}{import} forms
+00029 
+00030 \textcolor{comment}{## Interface para a camada de Apresentação de Usuário do módulo Profile.}
+00031 \textcolor{comment}{#   É responsável pelo carregamento do template correto e processa os }
+00032 \textcolor{comment}{#   dados inseridos nos formulários de Perfil.}
+\hypertarget{ProfileUnit_8py_source_l00033}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile}{00033} \textcolor{keyword}{class }\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile}{IfUiProfile}:
+00034     \_\_metaclass\_\_ = ABCMeta
+00035 
+00036     \textcolor{comment}{## Força a criação da camada subjacente.}
+\hypertarget{ProfileUnit_8py_source_l00037}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_a558fbb501ee3dbc4a16d3165479c38bc}{00037}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_a558fbb501ee3dbc4a16d3165479c38bc}{\_\_init\_\_}(self, bus):
+00038         \textcolor{keywordflow}{try}:
+\hypertarget{ProfileUnit_8py_source_l00039}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_a32a87d193e5d14e0ff3125d6bab2c420}{00039}             self.\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_a32a87d193e5d14e0ff3125d6bab2c420}{bus} = bus
+00040         \textcolor{keywordflow}{except} TypeError \textcolor{keyword}{as} exc:
+00041             del self
+00042             \textcolor{keywordflow}{raise} exc
+00043 
+00044     @property
+\hypertarget{ProfileUnit_8py_source_l00045}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_ac3d0a7a780dcf729b9f3cf1fff243a78}{00045}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_a32a87d193e5d14e0ff3125d6bab2c420}{bus}(self):
+00046         \textcolor{keywordflow}{return} self.\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_af2171c776276848c2961f6fa818e0f67}{\_\_bus}
+00047 
+00048     @bus.setter
+\hypertarget{ProfileUnit_8py_source_l00049}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_ac3d0a7a780dcf729b9f3cf1fff243a78}{00049}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_a32a87d193e5d14e0ff3125d6bab2c420}{bus}(self, value):
+00050         \textcolor{keywordflow}{if} isinstance(value, IfBusProfile):
+00051             self.\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_af2171c776276848c2961f6fa818e0f67}{\_\_bus} = value
+00052         \textcolor{keywordflow}{else}:
+00053             \textcolor{keywordflow}{raise} TypeError(\textcolor{stringliteral}{"Expected IfBusProfile instance at \(\backslash\)}
+00054 \textcolor{stringliteral}{                UiProfile.\_\_bus. Received "} + 
+00055                 str(type(value)) + \textcolor{stringliteral}{" instead."})
+00056 
+00057     @bus.deleter
+\hypertarget{ProfileUnit_8py_source_l00058}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_ac3d0a7a780dcf729b9f3cf1fff243a78}{00058}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_a32a87d193e5d14e0ff3125d6bab2c420}{bus}(self):
+00059         del self.\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_af2171c776276848c2961f6fa818e0f67}{\_\_bus}
+00060 
+00061     \textcolor{comment}{## 'Run' é o principal método de qualquer classe de apresentação. }
+00062     \textcolor{comment}{#   Este método permite a Factory dar o controle do programa }
+00063     \textcolor{comment}{#   módulo.}
+00064     @abstractmethod
+\hypertarget{ProfileUnit_8py_source_l00065}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_afb22574cb4a2dc58c068437bd7075e5a}{00065}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_afb22574cb4a2dc58c068437bd7075e5a}{run}(self, request): \textcolor{keyword}{pass}
+00066 
+00067 
+00068 \textcolor{comment}{## Interface para a camada de Negócio do módulo de perfil.}
+00069 \textcolor{comment}{#   É responsável por executar a atualização do Cookie de dados do}
+00070 \textcolor{comment}{#   usuário, bem como a devida recuperação de dados para o sistema.}
+\hypertarget{ProfileUnit_8py_source_l00071}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile}{00071} \textcolor{keyword}{class }\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile}{IfBusProfile}:
+00072     \_\_metaclass\_\_ = ABCMeta
+00073 
+00074     \textcolor{comment}{## Força a criação das camadas subjacentes.}
+\hypertarget{ProfileUnit_8py_source_l00075}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile_a3c02bbff4cb54b40edab64d0f9b86a59}{00075}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile_a3c02bbff4cb54b40edab64d0f9b86a59}{\_\_init\_\_}(self, pers):
+00076         \textcolor{keywordflow}{try}:
+\hypertarget{ProfileUnit_8py_source_l00077}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile_abe265adaf3fd39d6534f9ad4c9ba8abb}{00077}             self.\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile_abe265adaf3fd39d6534f9ad4c9ba8abb}{pers} = pers
+00078         \textcolor{keywordflow}{except} TypeError \textcolor{keyword}{as} exc:
+00079             del self
+00080             \textcolor{keywordflow}{raise} exc
+00081 
+00082     @property
+\hypertarget{ProfileUnit_8py_source_l00083}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile_a996592f4b01e0540f45d042065d5a7f4}{00083}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile_abe265adaf3fd39d6534f9ad4c9ba8abb}{pers}(self):
+00084         \textcolor{keywordflow}{return} self.\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile_ae752633c4645cd118c3c74e03a5fa7b5}{\_\_pers}
+00085     
+00086     @pers.setter
+\hypertarget{ProfileUnit_8py_source_l00087}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile_a996592f4b01e0540f45d042065d5a7f4}{00087}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile_abe265adaf3fd39d6534f9ad4c9ba8abb}{pers}(self, value):
+00088         \textcolor{keywordflow}{if} isinstance(value, IfPersProfile):
+00089             self.\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile_ae752633c4645cd118c3c74e03a5fa7b5}{\_\_pers} = value
+00090         \textcolor{keywordflow}{else}:
+00091             \textcolor{keywordflow}{raise} TypeError(\textcolor{stringliteral}{"Expected IfPersProfile instance at \(\backslash\)}
+00092 \textcolor{stringliteral}{                BusProfile.\_\_pers. Received "} + 
+00093                 str(type(value)) + \textcolor{stringliteral}{"instead."})
+00094 
+00095     @pers.deleter
+\hypertarget{ProfileUnit_8py_source_l00096}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile_a996592f4b01e0540f45d042065d5a7f4}{00096}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile_abe265adaf3fd39d6534f9ad4c9ba8abb}{pers}(self):
+00097         del self.\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile_ae752633c4645cd118c3c74e03a5fa7b5}{\_\_pers}
+00098 
+00099     \textcolor{comment}{## Atualiza os dados de usuário no cookie de sessão.}
+00100     @abstractmethod
+\hypertarget{ProfileUnit_8py_source_l00101}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile_abe42ebac800e9dcd762e9d73b4a5f9b8}{00101}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile_abe42ebac800e9dcd762e9d73b4a5f9b8}{refreshUser}(self, request): \textcolor{keyword}{pass}
+00102 
+00103     \textcolor{comment}{## Edita um dos dados de usuário no cookie E no banco de dados.}
+00104     \textcolor{comment}{#   Retorna o valor editado.}
+00105     \textcolor{comment}{#}
+00106     \textcolor{comment}{#   @arg field      Nome do campo que deve ser editado.}
+00107     \textcolor{comment}{#}
+00108     \textcolor{comment}{#   @arg form       Objeto form que contém os dados.}
+00109     @abstractmethod
+\hypertarget{ProfileUnit_8py_source_l00110}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile_a1e1a9ec32d2c23c734eaf0ceb6bb8419}{00110}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile_a1e1a9ec32d2c23c734eaf0ceb6bb8419}{editField}(self, request, field, form): \textcolor{keyword}{pass}
+00111 
+00112 
+00113 \textcolor{comment}{## Interface para a camada de Persistência do módulo de perfil.}
+00114 \textcolor{comment}{#   É responsável pela manipulação dos dados do usuário logado do banco}
+00115 \textcolor{comment}{#   de dados.}
+\hypertarget{ProfileUnit_8py_source_l00116}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfPersProfile}{00116} \textcolor{keyword}{class }\hyperlink{classProfile_1_1ProfileUnit_1_1IfPersProfile}{IfPersProfile}:
+00117     \_\_metaclass\_\_ = ABCMeta
+00118 
+00119     \textcolor{comment}{##  Função que recupera todos os dados do usuário.}
+00120     \textcolor{comment}{#       Percorre o banco de dados e recupera todos os dados do usuário}
+00121     \textcolor{comment}{#       requisitado.}
+00122     \textcolor{comment}{#}
+00123     \textcolor{comment}{#   @arg    username    Nome do usuário a ser pesquisado.}
+00124     \textcolor{comment}{#}
+00125     \textcolor{comment}{#   @arg    database    Objeto modelo sobre o qual a consulta será}
+00126     \textcolor{comment}{#                       realizada.}
+00127     @abstractmethod
+\hypertarget{ProfileUnit_8py_source_l00128}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfPersProfile_a64821aed51d9e9d64f6da9ee9b20fdeb}{00128}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfPersProfile_a64821aed51d9e9d64f6da9ee9b20fdeb}{fetch}(self, username, database): \textcolor{keyword}{pass}
+00129 
+00130     \textcolor{comment}{##  Método que atualiza os dados de um usuário fornecido.}
+00131     \textcolor{comment}{#       No caso de campos multivalorados, adiciona uma nova entrada.}
+00132     \textcolor{comment}{#       Caso contrário, substitui a entrada anterior.}
+00133     \textcolor{comment}{#}
+00134     \textcolor{comment}{#   @arg    username    Nome do usuário sobre o qual a consulta será}
+00135     \textcolor{comment}{#                       realizada.}
+00136     \textcolor{comment}{#   @arg    field       Campo a ser atualizado.}
+00137     \textcolor{comment}{#}
+00138     \textcolor{comment}{#   @arg    newdata     Dado a ser atualizado.}
+00139     \textcolor{comment}{#}
+00140     \textcolor{comment}{#   @arg    database    Objeto de modelo que será utilizado.}
+00141     @abstractmethod
+\hypertarget{ProfileUnit_8py_source_l00142}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfPersProfile_ae2d65e1ead2780de7b97fab078bb425e}{00142}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfPersProfile_ae2d65e1ead2780de7b97fab078bb425e}{update}(self, username, field, newdata, database): \textcolor{keyword}{pass}
+00143 
+00144 \textcolor{comment}{## Camada de apresentação para a página principal do site.}
+00145 \textcolor{comment}{#   Deve carregar o devido template, contendo os dados básicos do usuário,}
+00146 \textcolor{comment}{#   como cursos matriculados e histórico para estudantes, e cursos monitorados}
+00147 \textcolor{comment}{#   para professores.}
+\hypertarget{ProfileUnit_8py_source_l00148}{}\hyperlink{classProfile_1_1ProfileUnit_1_1UiHomeProfile}{00148} \textcolor{keyword}{class }\hyperlink{classProfile_1_1ProfileUnit_1_1UiHomeProfile}{UiHomeProfile}(\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile}{IfUiProfile}): 
+00149 
+\hypertarget{ProfileUnit_8py_source_l00150}{}\hyperlink{classProfile_1_1ProfileUnit_1_1UiHomeProfile_a5abc7f7c1ca1cb3e070c36a869263e6d}{00150}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1UiHomeProfile_a5abc7f7c1ca1cb3e070c36a869263e6d}{run}(self, request):
+00151         user = request.session[\textcolor{stringliteral}{'user'}]
+00152         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} \textcolor{stringliteral}{'matric'} \textcolor{keywordflow}{in} user:
+00153             request.session[\textcolor{stringliteral}{'user'}] = self.bus.refreshUser(request)
+00154             user = request.session[\textcolor{stringliteral}{'user'}]
+00155         translation.activate(request.session[\textcolor{stringliteral}{'user'}][\textcolor{stringliteral}{'language'}])
+00156         \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Profile/home.html"}, \{\textcolor{stringliteral}{'user'} : user\})
+00157 
+00158 \textcolor{comment}{## Camada de apresentação para a página de perfil completa.}
+00159 \textcolor{comment}{#   Deve ser capaz de gerar uma página que disponibilize os dados}
+00160 \textcolor{comment}{#   do usuário, permitindo que ele edite ou não, alguns campos.}
+00161 \textcolor{comment}{#   Caso a run() seja chamada com um argumento adicional field,}
+00162 \textcolor{comment}{#   a chamada será considerada assíncrona, assim como no caso do}
+00163 \textcolor{comment}{#   request.method ser POST.}
+\hypertarget{ProfileUnit_8py_source_l00164}{}\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile}{00164} \textcolor{keyword}{class }\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile}{UiFullProfile}(\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile}{IfUiProfile}):
+00165 
+00166     \textcolor{comment}{## Lista de campos passíveis de edição por um usuário.}
+00167     \_\_editable = [
 00168                     \textcolor{stringliteral}{'name'},
-00169                     \textcolor{stringliteral}{'language'},
-00170                     \textcolor{stringliteral}{'sex'},
-00171                     \textcolor{stringliteral}{'bios'},
-00172                     \textcolor{stringliteral}{'avatar'}
-00173                     ]
-00174     \_\_viewable = [
-00175                     \textcolor{stringliteral}{'email'},
-00176                     \textcolor{stringliteral}{'campus'},
-00177                     \textcolor{stringliteral}{'matric'}
-00178                     ]
-00179 
-\hypertarget{ProfileUnit_8py_source_l00180}{}\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_ae9ec0c6554ceb52fd45d48dda2ea4218}{00180}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_ae9ec0c6554ceb52fd45d48dda2ea4218}{\_\_init\_\_}(self, bus):
-00181         self.\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_a92a8fe9852ca9a15af9f0b3b1f7f3475}{\_\_viewable} += self.\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_ad83bd84ca790c9c849a29ff074848bd4}{\_\_editable}
-00182         \textcolor{keywordflow}{try}:
-\hypertarget{ProfileUnit_8py_source_l00183}{}\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_a47049f3f61c7fada93dd84fccd19a2bd}{00183}             self.\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_a32a87d193e5d14e0ff3125d6bab2c420}{bus} = bus
-00184         \textcolor{keywordflow}{except} TypeError \textcolor{keyword}{as} exc:
-00185             del self
-00186             \textcolor{keywordflow}{raise} exc
-00187 
-00188     \textcolor{comment}{##  Capaz de criar um template-iterable array com os dados de usuario.}
-00189     \textcolor{keyword}{def }\_\_makeData(self, user):
-00190         data = \{\}
-00191         \textcolor{keywordflow}{for} field, value \textcolor{keywordflow}{in} user.items():
-00192             \textcolor{keywordflow}{if} field \textcolor{keywordflow}{in} self.\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_a92a8fe9852ca9a15af9f0b3b1f7f3475}{\_\_viewable}:
-00193                 data[field] = \{
-00194                     \textcolor{stringliteral}{"value"}: value,
-00195                     \textcolor{stringliteral}{"edit"}:\textcolor{keyword}{True} \textcolor{keywordflow}{if} field \textcolor{keywordflow}{in} self.\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_ad83bd84ca790c9c849a29ff074848bd4}{\_\_editable} \textcolor{keywordflow}{else} \textcolor{keyword}{False},
-00196                     \textcolor{stringliteral}{"mult"}:\textcolor{keyword}{True} \textcolor{keywordflow}{if} isinstance(value, list)  \textcolor{keywordflow}{else} \textcolor{keyword}{False},
-00197                     \textcolor{stringliteral}{"fname"}: lang.DICT[field.upper()],
-00198                             \}
-00199 
-00200         \textcolor{keywordflow}{return} data
-00201 
-\hypertarget{ProfileUnit_8py_source_l00202}{}\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_a7a7747246b627020a345f7a3eac27778}{00202}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_a7a7747246b627020a345f7a3eac27778}{run}(self, request, field=None):
-00203 
-00204         get\_user = \textcolor{keyword}{lambda}: request.session[\textcolor{stringliteral}{'user'}]
-00205 
-00206         \textcolor{comment}{## @if Verifica qual o propósito do submit.}
-00207         \textcolor{comment}{#   Caso seja POST, a requisição ocorre após a submissão de uma form,}
-00208         \textcolor{comment}{#       muito provavelmente da form de edição de campo.}
-00209         \textcolor{comment}{#   Caso não seja, a requisição há de ser um GET, para mostrar as}
-00210         \textcolor{comment}{#       opções de edição.}
-00211         \textcolor{keywordflow}{if} request.method == \textcolor{stringliteral}{"POST"}:
-00212 
-00213             \textcolor{keywordflow}{try}:
-00214                 \textcolor{keywordflow}{if}   \textcolor{stringliteral}{"name"} \textcolor{keywordflow}{in} request.POST:
-00215                     form = NameForm(request.POST)
-00216                     field = \textcolor{stringliteral}{"name"}
-00217                 \textcolor{keywordflow}{elif} \textcolor{stringliteral}{"language"} \textcolor{keywordflow}{in} request.POST:
-00218                     form = LanguageForm(request.POST)
-00219                     field = \textcolor{stringliteral}{"language"}
-00220                 \textcolor{keywordflow}{elif} \textcolor{stringliteral}{"sex"} \textcolor{keywordflow}{in} request.POST:
-00221                     form = SexForm(request.POST)
-00222                     field = \textcolor{stringliteral}{"sex"}
-00223                 \textcolor{keywordflow}{elif} \textcolor{stringliteral}{"bios"} \textcolor{keywordflow}{in} request.POST:
-00224                     form = BiosForm(request.POST)
-00225                     field = \textcolor{stringliteral}{"bios"}
-00226                 \textcolor{keywordflow}{else}:
-00227                     \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_FRM'}])
-00228 
-00229                 \textcolor{keywordflow}{if} form.is\_valid():
-00230                     request.session[\textcolor{stringliteral}{'user'}][field] = self.bus.editField(
-00231                                                         request, 
-00232                                                         field, 
-00233                                                         form )
-00234                 \textcolor{keywordflow}{else}:
-00235                     \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_FRM'}] + 
-00236                                         \textcolor{stringliteral}{":"} + form.errors)
-00237 
-00238             \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
-00239                 data = self.\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_ae0e9c54df37ab45f0d1c5d894181d10f}{\_\_makeData}(get\_user())
-00240                 \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Profile/full.html"}, \{\textcolor{stringliteral}{'data'} : data,
-00241                                                              \textcolor{stringliteral}{'error'}: exc\})
-00242 
-00243             data = self.\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_ae0e9c54df37ab45f0d1c5d894181d10f}{\_\_makeData}(get\_user())
-00244             \textcolor{keywordflow}{return} HttpResponseRedirect(\textcolor{stringliteral}{'/profile'})
-00245 
-00246         \textcolor{keywordflow}{else}: \textcolor{comment}{# request.method == "GET"}
-00247             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} field: \textcolor{comment}{# normal call}
-00248                 request.session[\textcolor{stringliteral}{'user'}] = self.bus.refreshUser(request)
-00249                 data = self.\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_ae0e9c54df37ab45f0d1c5d894181d10f}{\_\_makeData}(get\_user())
-00250                 \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Profile/full.html"}, \{\textcolor{stringliteral}{'data'} : data\})
-00251             \textcolor{keywordflow}{else}: \textcolor{comment}{# ajax call}
-00252                 err = \textcolor{keyword}{False}
-00253                 \textcolor{keywordflow}{if}   field == \textcolor{stringliteral}{"name"}:
-00254                     form = NameForm(initial=\{\textcolor{stringliteral}{'newdata'}:get\_user()[\textcolor{stringliteral}{'name'}]\})
-00255                 \textcolor{keywordflow}{elif} field == \textcolor{stringliteral}{"language"}:
-00256                     form = LanguageForm(initial=\{
-00257                             \textcolor{stringliteral}{'newdata'}:get\_user()[\textcolor{stringliteral}{'language'}]\})
-00258                 \textcolor{keywordflow}{elif} field == \textcolor{stringliteral}{"sex"}:
-00259                     form = SexForm(initial=\{\textcolor{stringliteral}{'newdata'}:get\_user()[\textcolor{stringliteral}{'sex'}]\})
-00260                 \textcolor{keywordflow}{elif} field == \textcolor{stringliteral}{"bios"}:
-00261                     form = BiosForm(initial=\{\textcolor{stringliteral}{'newdata'}:get\_user()[\textcolor{stringliteral}{'bios'}]\})
-00262                 \textcolor{keywordflow}{else}:
-00263                     form = lang.DICT[\textcolor{stringliteral}{"ERROR\_FORM"}]
-00264                     err = \textcolor{keyword}{True} 
-00265 
-00266                 \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Profile/edit.html"}, \{\textcolor{stringliteral}{'form'}: form,
-00267                                                              \textcolor{stringliteral}{'ff'}: field,
-00268                                                              \textcolor{stringliteral}{'err'}: err \})
-00269         
-00270 
-00271 \textcolor{comment}{## Camada de negócio para perfil.}
-00272 \textcolor{comment}{#   Deve ser capaz de manipular os dados de usuário, seja no sentido de }
-00273 \textcolor{comment}{#   atualizá-los ou modificá-los de alguma forma.}
-\hypertarget{ProfileUnit_8py_source_l00274}{}\hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile}{00274} \textcolor{keyword}{class }\hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile}{BusProfile}(\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile}{IfBusProfile}):
-00275 
-\hypertarget{ProfileUnit_8py_source_l00276}{}\hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile_a87c3d0374f709af7904656938eafd6d3}{00276}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile_a87c3d0374f709af7904656938eafd6d3}{refreshUser}(self, request):
-00277         user = request.session[\textcolor{stringliteral}{'user'}]
-00278         \textcolor{keywordflow}{if} user[\textcolor{stringliteral}{'type'}] == \textcolor{stringliteral}{'Student'}:
-00279             fs = self.pers.fetch(user[\textcolor{stringliteral}{'name'}], Student)
-00280             fd = dict(fs)
-00281             request.session[\textcolor{stringliteral}{'django\_language'}] = fd[\textcolor{stringliteral}{'language'}]
-00282             \textcolor{keywordflow}{return} dict(user.items()+ self.pers.fetch(user[\textcolor{stringliteral}{'name'}], Student))
-00283         \textcolor{keywordflow}{elif} user[\textcolor{stringliteral}{'type'}] == \textcolor{stringliteral}{'Professor'}:
-00284             \textcolor{keywordflow}{return} dict(user.items()+ self.pers.fetch(user[\textcolor{stringliteral}{'name'}], Professor))
-00285 
-\hypertarget{ProfileUnit_8py_source_l00286}{}\hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile_a5c116d007081ffefcc1c45cd34c88e10}{00286}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile_a5c116d007081ffefcc1c45cd34c88e10}{editField}(self, request, field, form):
-00287         user = request.session[\textcolor{stringliteral}{'user'}]
-00288         \textcolor{keywordflow}{if} field == \textcolor{stringliteral}{"name"}:
-00289             fpw = form.cleaned\_data[\textcolor{stringliteral}{'password'}].value
-00290             \textcolor{keywordflow}{if} fpw != user[\textcolor{stringliteral}{'password'}]:
-00291                 \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_PW\_F'}])
-00292             \textcolor{keywordflow}{else}:
-00293                 newdata = form.cleaned\_data[\textcolor{stringliteral}{'newdata'}].value
-00294         \textcolor{keywordflow}{elif} field == \textcolor{stringliteral}{"language"}:
-00295             newdata = form.cleaned\_data[\textcolor{stringliteral}{'newdata'}]
-00296         \textcolor{keywordflow}{else}:
-00297             newdata = form.cleaned\_data[\textcolor{stringliteral}{'newdata'}].value
-00298 
-00299         \textcolor{keywordflow}{try}:
-00300             \textcolor{keywordflow}{if} user[\textcolor{stringliteral}{'type'}] == \textcolor{stringliteral}{'Student'}:
-00301                 self.pers.update(user[\textcolor{stringliteral}{'name'}], field, newdata, Student)
-00302             \textcolor{keywordflow}{elif} user[\textcolor{stringliteral}{'type'}] == \textcolor{stringliteral}{'Professor'}:
-00303                 self.pers.update(user[\textcolor{stringliteral}{'name'}], field, newdata, Professor)
-00304         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
-00305             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_ERR\_DB\_U'}])
-00306         \textcolor{keywordflow}{else}:
-00307             \textcolor{keywordflow}{if} field == \textcolor{stringliteral}{"language"}:
-00308                 request.session[\textcolor{stringliteral}{'django\_language'}] = newdata
-00309         \textcolor{keywordflow}{return} newdata
-00310 
-00311 \textcolor{comment}{## Camada de persistência de perfil.}
-00312 \textcolor{comment}{#   Recupera os dados do usuário logado, retornando-os para a camada}
-00313 \textcolor{comment}{#   de negócio.}
-\hypertarget{ProfileUnit_8py_source_l00314}{}\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile}{00314} \textcolor{keyword}{class }\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile}{PersProfile}(\hyperlink{classProfile_1_1ProfileUnit_1_1IfPersProfile}{IfPersProfile}):
-00315 
-00316     \textcolor{keyword}{def }\_\_select\_field(self, uid, field, database):
-00317 
-00318         \textcolor{keywordflow}{try}:
-00319             ret = database.objects.get(identity=uid, field=field)
-00320             ret = ret.value
-00321 
-00322         \textcolor{keywordflow}{except} database.MultipleObjectsReturned:
-00323             ret = map(\textcolor{keyword}{lambda} x: x.value, database.objects.filter(
-00324                     identity=uid, field=field))
-00325 
-00326         \textcolor{keywordflow}{except} database.DoesNotExist:
-00327             ret = \textcolor{keywordtype}{None} 
+00169                     \textcolor{stringliteral}{'sex'},
+00170                     \textcolor{stringliteral}{'bios'},
+00171                     \textcolor{stringliteral}{'avatar'}
+00172                     ]
+00173 
+00174     \_\_editable\_stu = [
+00175                     \textcolor{stringliteral}{'language'},
+00176                     \textcolor{stringliteral}{'interests'}
+00177                     ]
+00178 
+00179     \_\_viewable = [
+00180                     \textcolor{stringliteral}{'email'},
+00181                     \textcolor{stringliteral}{'campus'},
+00182                     \textcolor{stringliteral}{'matric'}
+00183                     ]
+00184 
+\hypertarget{ProfileUnit_8py_source_l00185}{}\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_ae9ec0c6554ceb52fd45d48dda2ea4218}{00185}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_ae9ec0c6554ceb52fd45d48dda2ea4218}{\_\_init\_\_}(self, bus):
+00186         self.\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_a92a8fe9852ca9a15af9f0b3b1f7f3475}{\_\_viewable} += self.\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_ad83bd84ca790c9c849a29ff074848bd4}{\_\_editable}
+00187         \textcolor{keywordflow}{try}:
+\hypertarget{ProfileUnit_8py_source_l00188}{}\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_a47049f3f61c7fada93dd84fccd19a2bd}{00188}             self.\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_a32a87d193e5d14e0ff3125d6bab2c420}{bus} = bus
+00189         \textcolor{keywordflow}{except} TypeError \textcolor{keyword}{as} exc:
+00190             del self
+00191             \textcolor{keywordflow}{raise} exc
+00192 
+00193     \textcolor{comment}{##  Capaz de criar um template-iterable array com os dados de usuario.}
+00194     \textcolor{keyword}{def }\_\_makeData(self, user):
+00195         data = \{\}
+00196 
+00197         \textcolor{keywordflow}{if} user[\textcolor{stringliteral}{"type"}] == \textcolor{stringliteral}{"Student"}:
+00198             self.\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_a92a8fe9852ca9a15af9f0b3b1f7f3475}{\_\_viewable} += self.\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_ac0498ee9df8afbed7dd944fe293b6c44}{\_\_editable\_stu}
+00199             \_\_ed = self.\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_ad83bd84ca790c9c849a29ff074848bd4}{\_\_editable} + self.\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_ac0498ee9df8afbed7dd944fe293b6c44}{\_\_editable\_stu}
+00200         \textcolor{keywordflow}{else}:
+00201             \_\_ed = self.\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_ad83bd84ca790c9c849a29ff074848bd4}{\_\_editable}
+00202 
+00203         \textcolor{keywordflow}{for} field, value \textcolor{keywordflow}{in} user.items():
+00204             \textcolor{keywordflow}{if} field \textcolor{keywordflow}{in} self.\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_a92a8fe9852ca9a15af9f0b3b1f7f3475}{\_\_viewable}:
+00205                 data[field] = \{
+00206                     \textcolor{stringliteral}{"value"}: value,
+00207                     \textcolor{stringliteral}{"edit"}:\textcolor{keyword}{True} \textcolor{keywordflow}{if} field \textcolor{keywordflow}{in} \_\_ed \textcolor{keywordflow}{else} \textcolor{keyword}{False},
+00208                     \textcolor{stringliteral}{"mult"}:\textcolor{keyword}{True} \textcolor{keywordflow}{if} isinstance(value, list)  \textcolor{keywordflow}{else} \textcolor{keyword}{False},
+00209                     \textcolor{stringliteral}{"fname"}: lang.DICT[field.upper()],
+00210                             \}
+00211 
+00212         \textcolor{keywordflow}{return} data
+00213 
+\hypertarget{ProfileUnit_8py_source_l00214}{}\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_a7a7747246b627020a345f7a3eac27778}{00214}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_a7a7747246b627020a345f7a3eac27778}{run}(self, request, field=None):
+00215 
+00216         get\_user = \textcolor{keyword}{lambda}: request.session[\textcolor{stringliteral}{'user'}]
+00217 
+00218         \textcolor{comment}{## @if Verifica qual o propósito do submit.}
+00219         \textcolor{comment}{#   Caso seja POST, a requisição ocorre após a submissão de uma form,}
+00220         \textcolor{comment}{#       muito provavelmente da form de edição de campo.}
+00221         \textcolor{comment}{#   Caso não seja, a requisição há de ser um GET, para mostrar as}
+00222         \textcolor{comment}{#       opções de edição.}
+00223         \textcolor{keywordflow}{if} request.method == \textcolor{stringliteral}{"POST"}:
+00224 
+00225             \textcolor{keywordflow}{try}:
+00226                 \textcolor{keywordflow}{if}   \textcolor{stringliteral}{"name"} \textcolor{keywordflow}{in} request.POST:
+00227                     form = NameForm(request.POST)
+00228                     field = \textcolor{stringliteral}{"name"}
+00229                 \textcolor{keywordflow}{elif} \textcolor{stringliteral}{"language"} \textcolor{keywordflow}{in} request.POST:
+00230                     form = LanguageForm(request.POST)
+00231                     field = \textcolor{stringliteral}{"language"}
+00232                 \textcolor{keywordflow}{elif} \textcolor{stringliteral}{"sex"} \textcolor{keywordflow}{in} request.POST:
+00233                     form = SexForm(request.POST)
+00234                     field = \textcolor{stringliteral}{"sex"}
+00235                 \textcolor{keywordflow}{elif} \textcolor{stringliteral}{"bios"} \textcolor{keywordflow}{in} request.POST:
+00236                     form = BiosForm(request.POST)
+00237                     field = \textcolor{stringliteral}{"bios"}
+00238                 \textcolor{keywordflow}{elif} \textcolor{stringliteral}{"interests"} \textcolor{keywordflow}{in} request.POST:
+00239                     form = InterestsForm(request.POST)
+00240                     field = \textcolor{stringliteral}{"interests"}
+00241                 \textcolor{keywordflow}{elif} \textcolor{stringliteral}{"avatar"} \textcolor{keywordflow}{in} request.POST:
+00242                     form = AvatarForm(request.POST, request.FILES)
+00243                     field = \textcolor{stringliteral}{"avatar"}
+00244                 \textcolor{keywordflow}{else}:
+00245                     \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_FRM'}])
+00246 
+00247                 \textcolor{keywordflow}{if} form.is\_valid():
+00248                     request.session[\textcolor{stringliteral}{'user'}][field] = self.bus.editField(
+00249                                                         request, 
+00250                                                         field, 
+00251                                                         form )
+00252                     request.session.modified = \textcolor{keyword}{True}
+00253                 \textcolor{keywordflow}{else}:
+00254                     \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_FRM'}] + 
+00255                         \textcolor{stringliteral}{":"} + form.errors)
+00256 
+00257             \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00258                 data = self.\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_ae0e9c54df37ab45f0d1c5d894181d10f}{\_\_makeData}(get\_user())
+00259                 \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Profile/full.html"}, \{\textcolor{stringliteral}{'data'} : data,
+00260                                                              \textcolor{stringliteral}{'error'}: exc \})
+00261 
+00262             data = self.\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_ae0e9c54df37ab45f0d1c5d894181d10f}{\_\_makeData}(get\_user())
+00263             \textcolor{keywordflow}{return} HttpResponseRedirect(\textcolor{stringliteral}{'/profile'})
+00264 
+00265         \textcolor{keywordflow}{else}: \textcolor{comment}{# request.method == "GET"}
+00266             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} field: \textcolor{comment}{# normal call}
+00267                 request.session[\textcolor{stringliteral}{'user'}] = self.bus.refreshUser(request)
+00268                 data = self.\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_ae0e9c54df37ab45f0d1c5d894181d10f}{\_\_makeData}(get\_user())        
+00269                 translation.activate(request.session[\textcolor{stringliteral}{'user'}][\textcolor{stringliteral}{'language'}])
+00270                 \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Profile/full.html"}, \{\textcolor{stringliteral}{'data'} : data\})
+00271             \textcolor{keywordflow}{else}: \textcolor{comment}{# ajax call}
+00272                 err = \textcolor{keyword}{False}
+00273                 \textcolor{keywordflow}{if}   field == \textcolor{stringliteral}{"name"}:
+00274                     form = NameForm(initial=\{\textcolor{stringliteral}{'newdata'}:get\_user()[\textcolor{stringliteral}{'name'}]\})
+00275                 \textcolor{keywordflow}{elif} field == \textcolor{stringliteral}{"language"}:
+00276                     form = LanguageForm(initial=\{
+00277                             \textcolor{stringliteral}{'newdata'}:get\_user()[\textcolor{stringliteral}{'language'}]\})
+00278                 \textcolor{keywordflow}{elif} field == \textcolor{stringliteral}{"sex"}:
+00279                     form = SexForm(initial=\{\textcolor{stringliteral}{'newdata'}:get\_user()[\textcolor{stringliteral}{'sex'}]\})
+00280                 \textcolor{keywordflow}{elif} field == \textcolor{stringliteral}{"bios"}:
+00281                     form = BiosForm(initial=\{\textcolor{stringliteral}{'newdata'}:get\_user()[\textcolor{stringliteral}{'bios'}]\})
+00282                 \textcolor{keywordflow}{elif} field == \textcolor{stringliteral}{"interests"}:
+00283                     form = InterestsForm(initial=\{
+00284                             \textcolor{stringliteral}{'newdata'}:get\_user()[\textcolor{stringliteral}{'interests'}]\})
+00285                 \textcolor{keywordflow}{elif} field == \textcolor{stringliteral}{"avatar"}:
+00286                     form = AvatarForm()
+00287                 \textcolor{keywordflow}{else}:
+00288                     form = lang.DICT[\textcolor{stringliteral}{"ERROR\_FORM"}]
+00289                     err = \textcolor{keyword}{True} 
+00290 
+00291                 \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Profile/edit.html"}, \{\textcolor{stringliteral}{'form'}: form,
+00292                                                              \textcolor{stringliteral}{'ff'}: field,
+00293                                                              \textcolor{stringliteral}{'err'}: err,
+00294                                                             \})
+00295         
+00296 
+00297 \textcolor{comment}{## Camada de negócio para perfil.}
+00298 \textcolor{comment}{#   Deve ser capaz de manipular os dados de usuário, seja no sentido de }
+00299 \textcolor{comment}{#   atualizá-los ou modificá-los de alguma forma.}
+\hypertarget{ProfileUnit_8py_source_l00300}{}\hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile}{00300} \textcolor{keyword}{class }\hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile}{BusProfile}(\hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile}{IfBusProfile}):
+00301 
+\hypertarget{ProfileUnit_8py_source_l00302}{}\hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile_a87c3d0374f709af7904656938eafd6d3}{00302}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile_a87c3d0374f709af7904656938eafd6d3}{refreshUser}(self, request):
+00303         user = request.session[\textcolor{stringliteral}{'user'}]
+00304         \textcolor{keywordflow}{if} user[\textcolor{stringliteral}{'type'}] == \textcolor{stringliteral}{'Student'}:
+00305             fs = self.pers.fetch(user[\textcolor{stringliteral}{'name'}], Student)
+00306             fd = dict(fs)
+00307             request.session[\textcolor{stringliteral}{'django\_language'}] = fd[\textcolor{stringliteral}{'language'}]
+00308             \textcolor{keywordflow}{return} dict(user.items()+ self.pers.fetch(user[\textcolor{stringliteral}{'name'}], Student))
+00309         \textcolor{keywordflow}{elif} user[\textcolor{stringliteral}{'type'}] == \textcolor{stringliteral}{'Professor'}:
+00310             \textcolor{keywordflow}{return} dict(user.items()+ self.pers.fetch(user[\textcolor{stringliteral}{'name'}], Professor))
+00311 
+\hypertarget{ProfileUnit_8py_source_l00312}{}\hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile_a5c116d007081ffefcc1c45cd34c88e10}{00312}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile_a5c116d007081ffefcc1c45cd34c88e10}{editField}(self, request, field, form):
+00313         user = request.session[\textcolor{stringliteral}{'user'}]
+00314         \textcolor{keywordflow}{if} field == \textcolor{stringliteral}{"name"}:
+00315             fpw = form.cleaned\_data[\textcolor{stringliteral}{'password'}].value
+00316             \textcolor{keywordflow}{if} fpw != user[\textcolor{stringliteral}{'password'}]:
+00317                 \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_PW\_F'}])
+00318             newdata = form.cleaned\_data[\textcolor{stringliteral}{'newdata'}].value
+00319         \textcolor{keywordflow}{elif} field == \textcolor{stringliteral}{"language"}:
+00320             newdata = form.cleaned\_data[\textcolor{stringliteral}{'newdata'}]
+00321         \textcolor{keywordflow}{elif} field == \textcolor{stringliteral}{"avatar"}:
+00322             addr = settings.MEDIA\_ROOT + \textcolor{stringliteral}{u"/"} + user[\textcolor{stringliteral}{'avatar'}]
+00323             with open(addr, \textcolor{stringliteral}{"wb"}) \textcolor{keyword}{as} destination:
+00324                     \textcolor{keywordflow}{for} chunk \textcolor{keywordflow}{in} request.FILES[\textcolor{stringliteral}{'newdata'}].chunks():
+00325                         destination.write(chunk)
+00326         \textcolor{keywordflow}{else}:
+00327             newdata = form.cleaned\_data[\textcolor{stringliteral}{'newdata'}].value
 00328 
-00329         \textcolor{keywordflow}{return} ret
-00330 
-\hypertarget{ProfileUnit_8py_source_l00331}{}\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_aca301abc09bc12a7cf0a61437f941a8a}{00331}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_aca301abc09bc12a7cf0a61437f941a8a}{fetch}(self, username, database):
-00332 
-00333         \textcolor{keywordflow}{try}:
-00334             uid = database.objects.get(field=\textcolor{stringliteral}{'NAME'},value=username)
-00335             uid = uid.identity
-00336 
-00337             sf = \textcolor{keyword}{lambda} x: self.\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_a48bc2c04d89772752559fc19dc79f321}{\_\_select\_field}(uid, x, database)
-00338 
-00339             fetchset = [
-00340                     (\textcolor{stringliteral}{'password'},    sf(\textcolor{stringliteral}{'PASSWORD'})),
-00341                     (\textcolor{stringliteral}{'matric'},      sf(\textcolor{stringliteral}{'MATRIC'})),
-00342                     (\textcolor{stringliteral}{'bios'},        sf(\textcolor{stringliteral}{'BIOS'})),
-00343                     (\textcolor{stringliteral}{'campus'},      sf(\textcolor{stringliteral}{'CAMPUS'})),
-00344                     (\textcolor{stringliteral}{'courses'},     sf(\textcolor{stringliteral}{'COURSE'})),
-00345                     (\textcolor{stringliteral}{'avatar'},      sf(\textcolor{stringliteral}{'AVATAR'})),
-00346                     (\textcolor{stringliteral}{'email'},       sf(\textcolor{stringliteral}{'EMAIL'})),
-00347                     (\textcolor{stringliteral}{'sex'},         sf(\textcolor{stringliteral}{'SEX'})),
-00348             ]
-00349 
-00350             \textcolor{keywordflow}{if} database \textcolor{keywordflow}{is} Student:
-00351                 fetchset = fetchset + [     
-00352                     (\textcolor{stringliteral}{'grades'},      sf(\textcolor{stringliteral}{'GRADE'})),
-00353                     (\textcolor{stringliteral}{'interests'},   sf(\textcolor{stringliteral}{'INTEREST'})),
-00354                     (\textcolor{stringliteral}{'language'},    sf(\textcolor{stringliteral}{'LANGUAGE'})),
-00355                 ]
-00356 
-00357         \textcolor{keywordflow}{except} database.DoesNotExist \textcolor{keyword}{as} exc:
-00358             fetchset = []
-00359 
-00360         \textcolor{keywordflow}{return} fetchset
+00329         \textcolor{keywordflow}{try}:
+00330             \textcolor{keywordflow}{if} user[\textcolor{stringliteral}{'type'}] == \textcolor{stringliteral}{'Student'} \textcolor{keywordflow}{and} field != \textcolor{stringliteral}{'avatar'}:
+00331                 self.pers.update(user[\textcolor{stringliteral}{'name'}], field, newdata, Student)
+00332             \textcolor{keywordflow}{elif} user[\textcolor{stringliteral}{'type'}] == \textcolor{stringliteral}{'Professor'} \textcolor{keywordflow}{and} field != \textcolor{stringliteral}{'avatar'}:
+00333                 self.pers.update(user[\textcolor{stringliteral}{'name'}], field, newdata, Professor)
+00334         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00335             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_ERR\_DB\_U'}])
+00336         \textcolor{keywordflow}{else}:
+00337             \textcolor{keywordflow}{if} field == \textcolor{stringliteral}{"language"}:
+00338                 request.session[\textcolor{stringliteral}{'django\_language'}] = newdata
+00339         \textcolor{keywordflow}{if} field == \textcolor{stringliteral}{'avatar'}:
+00340             \textcolor{keywordflow}{return} user[\textcolor{stringliteral}{'avatar'}]
+00341         \textcolor{keywordflow}{else}:
+00342             \textcolor{keywordflow}{return} newdata
+00343 
+00344 \textcolor{comment}{## Camada de persistência de perfil.}
+00345 \textcolor{comment}{#   Recupera os dados do usuário logado, retornando-os para a camada}
+00346 \textcolor{comment}{#   de negócio.}
+\hypertarget{ProfileUnit_8py_source_l00347}{}\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile}{00347} \textcolor{keyword}{class }\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile}{PersProfile}(\hyperlink{classProfile_1_1ProfileUnit_1_1IfPersProfile}{IfPersProfile}):
+00348 
+00349     \textcolor{keyword}{def }\_\_select\_field(self, uid, field, database):
+00350 
+00351         \textcolor{keywordflow}{try}:
+00352             ret = database.objects.get(identity=uid, field=field)
+00353             ret = ret.value
+00354 
+00355         \textcolor{keywordflow}{except} database.MultipleObjectsReturned:
+00356             ret = map(\textcolor{keyword}{lambda} x: x.value, database.objects.filter(
+00357                     identity=uid, field=field))
+00358 
+00359         \textcolor{keywordflow}{except} database.DoesNotExist:
+00360             ret = \textcolor{keywordtype}{None} 
 00361 
-\hypertarget{ProfileUnit_8py_source_l00362}{}\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_af1e4b3cf0eee0a14b5113210503ff665}{00362}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_af1e4b3cf0eee0a14b5113210503ff665}{update}(self, username, field, newdata, database):
-00363         
-00364         \textcolor{keywordflow}{try}:
-00365             uid = database.objects.get(field=\textcolor{stringliteral}{'NAME'}, value=username)
-00366             uid = uid.identity
-00367 
-00368             \textcolor{comment}{## Para o caso de COURSEs, GRADEs ou INTERESTs.}
-00369             \textcolor{keywordflow}{if} field[-1] == \textcolor{stringliteral}{'s'}:
-00370                 \textcolor{keywordflow}{if} field[-2] == \textcolor{stringliteral}{'e'} \textcolor{keywordflow}{or} field[-2] == \textcolor{stringliteral}{'t'}:
-00371                     field = field[:-1]
-00372         
-00373                     data = database(identity=uid, field=field, value=newdata)
-00374                     data.save()
-00375                     \textcolor{keywordflow}{return}
-00376 
-00377             data = database.objects.get(field=field.upper(), identity=uid)
-00378             data.value = newdata
-00379             data.save()
-00380 
-00381         \textcolor{keywordflow}{except} ( database.DoesNotExist, 
-00382                  database.MultipleObjectsReturned ) \textcolor{keyword}{as} exc:
-00383             \textcolor{keywordflow}{raise} ValueError(exc)
+00362         \textcolor{keywordflow}{return} ret
+00363 
+\hypertarget{ProfileUnit_8py_source_l00364}{}\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_aca301abc09bc12a7cf0a61437f941a8a}{00364}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_aca301abc09bc12a7cf0a61437f941a8a}{fetch}(self, username, database):
+00365 
+00366         \textcolor{keywordflow}{try}:
+00367             uid = database.objects.get(field=\textcolor{stringliteral}{'NAME'},value=username)
+00368             uid = uid.identity
+00369 
+00370             sf = \textcolor{keyword}{lambda} x: self.\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_a48bc2c04d89772752559fc19dc79f321}{\_\_select\_field}(uid, x, database)
+00371 
+00372             fetchset = [
+00373                     (\textcolor{stringliteral}{'password'},    sf(\textcolor{stringliteral}{'PASSWORD'})),
+00374                     (\textcolor{stringliteral}{'matric'},      sf(\textcolor{stringliteral}{'MATRIC'})),
+00375                     (\textcolor{stringliteral}{'bios'},        sf(\textcolor{stringliteral}{'BIOS'})),
+00376                     (\textcolor{stringliteral}{'campus'},      sf(\textcolor{stringliteral}{'CAMPUS'})),
+00377                     (\textcolor{stringliteral}{'courses'},     sf(\textcolor{stringliteral}{'COURSE'})),
+00378                     (\textcolor{stringliteral}{'avatar'},      sf(\textcolor{stringliteral}{'AVATAR'})),
+00379                     (\textcolor{stringliteral}{'email'},       sf(\textcolor{stringliteral}{'EMAIL'})),
+00380                     (\textcolor{stringliteral}{'sex'},         sf(\textcolor{stringliteral}{'SEX'})),
+00381             ]
+00382 
+00383             \textcolor{keywordflow}{if} database \textcolor{keywordflow}{is} Student:
+00384                 fetchset = fetchset + [     
+00385                     (\textcolor{stringliteral}{'grades'},      sf(\textcolor{stringliteral}{'GRADE'})),
+00386                     (\textcolor{stringliteral}{'interests'},   sf(\textcolor{stringliteral}{'INTEREST'})),
+00387                     (\textcolor{stringliteral}{'language'},    sf(\textcolor{stringliteral}{'LANGUAGE'})),
+00388                 ]
+00389 
+00390         \textcolor{keywordflow}{except} database.DoesNotExist \textcolor{keyword}{as} exc:
+00391             fetchset = []
+00392 
+00393         \textcolor{keywordflow}{return} fetchset
+00394 
+\hypertarget{ProfileUnit_8py_source_l00395}{}\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_a68ab67bed74c46b72216e256af8f6711}{00395}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_a68ab67bed74c46b72216e256af8f6711}{fetchField}(self, field):
+00396 
+00397         ret = []
+00398 
+00399         \textcolor{keywordflow}{try}:
+00400             lstu = Student.objects.filter(field=field)   \textcolor{comment}{#list of students}
+00401             lpro = Professor.objects.filter(field=field) \textcolor{comment}{#list of professors }
+00402 
+00403         \textcolor{keywordflow}{except} Student.DoesNotExist:
+00404             lstu = []
+00405         \textcolor{keywordflow}{except} Professor.DoesNotExist:
+00406             lpro = []
+00407 
+00408         \textcolor{keywordflow}{for} s \textcolor{keywordflow}{in} lstu:
+00409             ret.append(s.value)
+00410 
+00411         \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} lpro:
+00412             ret.append(p.value)
+00413 
+00414         \textcolor{keywordflow}{return} ret
+00415 
+\hypertarget{ProfileUnit_8py_source_l00416}{}\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_af1e4b3cf0eee0a14b5113210503ff665}{00416}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_af1e4b3cf0eee0a14b5113210503ff665}{update}(self, username, field, newdata, database):
+00417         
+00418         \textcolor{keywordflow}{try}:
+00419             uid = database.objects.get(field=\textcolor{stringliteral}{'NAME'}, value=username)
+00420             uid = uid.identity
+00421 
+00422             \textcolor{comment}{## Para o caso de COURSEs, GRADEs ou INTERESTs.}
+00423             \textcolor{keywordflow}{if} field[-1] == \textcolor{stringliteral}{'s'}:
+00424                 \textcolor{keywordflow}{if} field[-2] == \textcolor{stringliteral}{'e'} \textcolor{keywordflow}{or} field[-2] == \textcolor{stringliteral}{'t'}:
+00425                     field = field[:-1]
+00426                 
+00427             \textcolor{keywordflow}{try}:
+00428                 data = database.objects.get(field=field.upper(), identity=uid)
+00429                 data.value = newdata
+00430             \textcolor{keywordflow}{except} database.DoesNotExist:
+00431                 data = database(identity=uid, field=field.upper(), value=newdata)
+00432             data.save()
+00433 
+00434         \textcolor{keywordflow}{except} ( database.DoesNotExist, 
+00435                  database.MultipleObjectsReturned ) \textcolor{keyword}{as} exc:
+00436             \textcolor{keywordflow}{raise} ValueError(exc)
 \end{DoxyCode}

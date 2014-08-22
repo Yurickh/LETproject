@@ -10,83 +10,103 @@
 00005 \textcolor{comment}{#   completa do usuário.}
 00006 
 00007 \textcolor{keyword}{from} django \textcolor{keyword}{import} forms
-00008 
-00009 \textcolor{keyword}{import} \hyperlink{namespaceELO_1_1locale_1_1index}{ELO.locale.index} \textcolor{keyword}{as} lang
-00010 \textcolor{keyword}{from} \hyperlink{namespaceELO_1_1BaseUnit}{ELO.BaseUnit} import(
-00011     Name,
-00012     Sex,
-00013     PlainText,
-00014     Password)
-00015 
-00016 \textcolor{comment}{## Formulário de edição de nome.}
-00017 \textcolor{comment}{#   Capaz de modificar o nome do usuário no sistema.}
-00018 \textcolor{comment}{#   Vale salientar que é com esse nome que o usuário irá logar.}
-\hypertarget{Profile_2forms_8py_source_l00019}{}\hyperlink{classProfile_1_1forms_1_1NameForm}{00019} \textcolor{keyword}{class }\hyperlink{classProfile_1_1forms_1_1NameForm}{NameForm}(forms.Form):
-\hypertarget{Profile_2forms_8py_source_l00020}{}\hyperlink{classProfile_1_1forms_1_1NameForm_a6ebfb316b263c162dd3895b1da149eda}{00020}     newdata     = forms.CharField(max\_length=32)
-\hypertarget{Profile_2forms_8py_source_l00021}{}\hyperlink{classProfile_1_1forms_1_1NameForm_a5a6959db0132c607a56f9cda75769ecf}{00021}     password    = forms.CharField(widget=forms.PasswordInput)
-00022 
-\hypertarget{Profile_2forms_8py_source_l00023}{}\hyperlink{classProfile_1_1forms_1_1NameForm_a4e324f8cfc90a67d56802f66ce48c4ca}{00023}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1NameForm_a4e324f8cfc90a67d56802f66ce48c4ca}{clean\_newdata}(self):
-00024         \textcolor{keywordflow}{try}:
-00025             name = Name(self.cleaned\_data[\textcolor{stringliteral}{'newdata'}])
-00026         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
-00027             \textcolor{keywordflow}{raise} forms.ValidationError(exc)
-00028         \textcolor{keywordflow}{return} name
-00029 
-\hypertarget{Profile_2forms_8py_source_l00030}{}\hyperlink{classProfile_1_1forms_1_1NameForm_a681fa28036a241632b8688d436f04a49}{00030}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1NameForm_a681fa28036a241632b8688d436f04a49}{clean\_password}(self):
-00031         \textcolor{keywordflow}{try}:
-00032             pw = Password(self.cleaned\_data[\textcolor{stringliteral}{'password'}])
-00033         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
-00034             \textcolor{keywordflow}{raise} forms.ValidationError(exc)
-00035         \textcolor{keywordflow}{return} pw
-00036 
-00037 \textcolor{comment}{## Formulário de edição de linguagem.}
-00038 \textcolor{comment}{#   Capaz de modificar a lingaguem preferida do usuário para o sistema.}
-00039 \textcolor{comment}{#   É com base nessa linguagem que o sistema irá carregar os diferentes DICTs}
-00040 \textcolor{comment}{#   do site (o dicionário contendo a nomeação de todas as macros).}
-\hypertarget{Profile_2forms_8py_source_l00041}{}\hyperlink{classProfile_1_1forms_1_1LanguageForm}{00041} \textcolor{keyword}{class }\hyperlink{classProfile_1_1forms_1_1LanguageForm}{LanguageForm}(forms.Form):
-\hypertarget{Profile_2forms_8py_source_l00042}{}\hyperlink{classProfile_1_1forms_1_1LanguageForm_a327d764765fba9b8d9d82c86ca7e08a6}{00042}     newdata     = forms.ChoiceField(widget=forms.RadioSelect, choices = [
-00043                                             (\textcolor{stringliteral}{'pt-br'}, lang.DICT[\textcolor{stringliteral}{'PORTUGUESE'}]),
-00044                                             (\textcolor{stringliteral}{'en'}, lang.DICT[\textcolor{stringliteral}{'ENGLISH'}])
-00045                                                 ])
-00046 
-\hypertarget{Profile_2forms_8py_source_l00047}{}\hyperlink{classProfile_1_1forms_1_1LanguageForm_ab875693b567fc65f8e96af446a4cf78b}{00047}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1LanguageForm_ab875693b567fc65f8e96af446a4cf78b}{clean\_newdata}(self):
-00048         newlang = self.cleaned\_data[\textcolor{stringliteral}{'newdata'}]
-00049         \textcolor{keywordflow}{if} newlang \textcolor{keywordflow}{in} lang.available\_langs:
-00050             \textcolor{keywordflow}{return} newlang
-00051         \textcolor{keywordflow}{else}:
-00052             \textcolor{keywordflow}{if} newlang[:newlang.index(\textcolor{stringliteral}{'-'})] \textcolor{keywordflow}{in} lang.available\_langs:
-00053                 \textcolor{keywordflow}{return} newlang
-00054             \textcolor{keywordflow}{else}:
-00055                 \textcolor{keywordflow}{raise} forms.ValidationError(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_INV\_LG\_F"}])
-00056 
-00057 \textcolor{comment}{## Formulário de edição de sexo.}
-00058 \textcolor{comment}{#   Capaz de modificar o sexo exibido do usuário.}
-00059 \textcolor{comment}{#   Não afeta de forma relevante a navegação ou qualquer outra forma de}
-00060 \textcolor{comment}{#   interação com o aluno/professor.}
-\hypertarget{Profile_2forms_8py_source_l00061}{}\hyperlink{classProfile_1_1forms_1_1SexForm}{00061} \textcolor{keyword}{class }\hyperlink{classProfile_1_1forms_1_1SexForm}{SexForm}(forms.Form):
-\hypertarget{Profile_2forms_8py_source_l00062}{}\hyperlink{classProfile_1_1forms_1_1SexForm_a0d99412ab99ee46149a50fabb2614845}{00062}     newdata     = forms.ChoiceField(widget=forms.RadioSelect, choices = [
-00063                                             (\textcolor{stringliteral}{'F'}, lang.DICT[\textcolor{stringliteral}{'SEX\_FEMALE'}]),
-00064                                             (\textcolor{stringliteral}{'M'}, lang.DICT[\textcolor{stringliteral}{'SEX\_MALE'}])
-00065                                                 ])
-00066 
-\hypertarget{Profile_2forms_8py_source_l00067}{}\hyperlink{classProfile_1_1forms_1_1SexForm_a23eb3376f64c41fbfa57b1b78ed2a38b}{00067}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1SexForm_a23eb3376f64c41fbfa57b1b78ed2a38b}{clean\_newdata}(self):
-00068         \textcolor{keywordflow}{try}:
-00069             ns = Sex(self.cleaned\_data[\textcolor{stringliteral}{'newdata'}])
-00070         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
-00071             \textcolor{keywordflow}{raise} forms.ValidationError(exc)
-00072         \textcolor{keywordflow}{return} ns
-00073 
-00074 \textcolor{comment}{## Formulário de edição de Bios.}
-00075 \textcolor{comment}{#   Capaz de modificar a biografia exibida do usuário.}
-00076 \textcolor{comment}{#   Não afeta de forma relevante a navegação ou qualquer outra forma de}
-00077 \textcolor{comment}{#   interação com o aluno.}
-\hypertarget{Profile_2forms_8py_source_l00078}{}\hyperlink{classProfile_1_1forms_1_1BiosForm}{00078} \textcolor{keyword}{class }\hyperlink{classProfile_1_1forms_1_1BiosForm}{BiosForm}(forms.Form):
-\hypertarget{Profile_2forms_8py_source_l00079}{}\hyperlink{classProfile_1_1forms_1_1BiosForm_a2862b20c24bac9aa5dc896925a2cb3d6}{00079}     newdata     = forms.CharField(widget=forms.Textarea(attrs=\{\textcolor{stringliteral}{'style'}:\textcolor{stringliteral}{'width:90%;'}\}))
-00080 
-\hypertarget{Profile_2forms_8py_source_l00081}{}\hyperlink{classProfile_1_1forms_1_1BiosForm_a10f21ed8d7cb888f0aa35618087c86af}{00081}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1BiosForm_a10f21ed8d7cb888f0aa35618087c86af}{clean\_newdata}(self):
-00082         \textcolor{keywordflow}{try}:
-00083             nb = PlainText(self.cleaned\_data[\textcolor{stringliteral}{'newdata'}])
-00084         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
-00085             \textcolor{keywordflow}{raise} forms.ValidationError(exc)
-00086         \textcolor{keywordflow}{return} nb
+00008 \textcolor{keyword}{import} os.path
+00009 
+00010 \textcolor{keyword}{from} django.conf \textcolor{keyword}{import} settings
+00011 
+00012 \textcolor{keyword}{import} \hyperlink{namespaceELO_1_1locale_1_1index}{ELO.locale.index} \textcolor{keyword}{as} lang
+00013 \textcolor{keyword}{from} \hyperlink{namespaceELO_1_1BaseUnit}{ELO.BaseUnit} import(
+00014     Name,
+00015     Sex,
+00016     PlainText,
+00017     Password,
+00018     Link)
+00019 
+00020 \textcolor{comment}{## Formulário de edição de nome.}
+00021 \textcolor{comment}{#   Capaz de modificar o nome do usuário no sistema.}
+00022 \textcolor{comment}{#   Vale salientar que é com esse nome que o usuário irá logar.}
+\hypertarget{Profile_2forms_8py_source_l00023}{}\hyperlink{classProfile_1_1forms_1_1NameForm}{00023} \textcolor{keyword}{class }\hyperlink{classProfile_1_1forms_1_1NameForm}{NameForm}(forms.Form):
+\hypertarget{Profile_2forms_8py_source_l00024}{}\hyperlink{classProfile_1_1forms_1_1NameForm_a6ebfb316b263c162dd3895b1da149eda}{00024}     newdata     = forms.CharField(max\_length=32)
+\hypertarget{Profile_2forms_8py_source_l00025}{}\hyperlink{classProfile_1_1forms_1_1NameForm_a5a6959db0132c607a56f9cda75769ecf}{00025}     password    = forms.CharField(widget=forms.PasswordInput)
+00026 
+\hypertarget{Profile_2forms_8py_source_l00027}{}\hyperlink{classProfile_1_1forms_1_1NameForm_a4e324f8cfc90a67d56802f66ce48c4ca}{00027}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1NameForm_a4e324f8cfc90a67d56802f66ce48c4ca}{clean\_newdata}(self):
+00028         \textcolor{keywordflow}{try}:
+00029             name = Name(self.cleaned\_data[\textcolor{stringliteral}{'newdata'}])
+00030         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00031             \textcolor{keywordflow}{raise} forms.ValidationError(exc)
+00032         \textcolor{keywordflow}{return} name
+00033 
+\hypertarget{Profile_2forms_8py_source_l00034}{}\hyperlink{classProfile_1_1forms_1_1NameForm_a681fa28036a241632b8688d436f04a49}{00034}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1NameForm_a681fa28036a241632b8688d436f04a49}{clean\_password}(self):
+00035         \textcolor{keywordflow}{try}:
+00036             pw = Password(self.cleaned\_data[\textcolor{stringliteral}{'password'}])
+00037         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00038             \textcolor{keywordflow}{raise} forms.ValidationError(exc)
+00039         \textcolor{keywordflow}{return} pw
+00040 
+00041 \textcolor{comment}{## Formulário de edição de linguagem.}
+00042 \textcolor{comment}{#   Capaz de modificar a lingaguem preferida do usuário para o sistema.}
+00043 \textcolor{comment}{#   É com base nessa linguagem que o sistema irá carregar os diferentes DICTs}
+00044 \textcolor{comment}{#   do site (o dicionário contendo a nomeação de todas as macros).}
+\hypertarget{Profile_2forms_8py_source_l00045}{}\hyperlink{classProfile_1_1forms_1_1LanguageForm}{00045} \textcolor{keyword}{class }\hyperlink{classProfile_1_1forms_1_1LanguageForm}{LanguageForm}(forms.Form):
+\hypertarget{Profile_2forms_8py_source_l00046}{}\hyperlink{classProfile_1_1forms_1_1LanguageForm_a327d764765fba9b8d9d82c86ca7e08a6}{00046}     newdata     = forms.ChoiceField(widget=forms.RadioSelect, choices = [
+00047                                             (\textcolor{stringliteral}{'pt-br'}, lang.DICT[\textcolor{stringliteral}{'PORTUGUESE'}]),
+00048                                             (\textcolor{stringliteral}{'en'}, lang.DICT[\textcolor{stringliteral}{'ENGLISH'}])
+00049                                                 ])
+00050 
+\hypertarget{Profile_2forms_8py_source_l00051}{}\hyperlink{classProfile_1_1forms_1_1LanguageForm_ab875693b567fc65f8e96af446a4cf78b}{00051}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1LanguageForm_ab875693b567fc65f8e96af446a4cf78b}{clean\_newdata}(self):
+00052         newlang = self.cleaned\_data[\textcolor{stringliteral}{'newdata'}]
+00053         \textcolor{keywordflow}{if} newlang \textcolor{keywordflow}{in} lang.available\_langs:
+00054             \textcolor{keywordflow}{return} newlang
+00055         \textcolor{keywordflow}{else}:
+00056             \textcolor{keywordflow}{if} newlang[:newlang.index(\textcolor{stringliteral}{'-'})] \textcolor{keywordflow}{in} lang.available\_langs:
+00057                 \textcolor{keywordflow}{return} newlang
+00058             \textcolor{keywordflow}{else}:
+00059                 \textcolor{keywordflow}{raise} forms.ValidationError(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_INV\_LG\_F"}])
+00060 
+00061 \textcolor{comment}{## Formulário de edição de sexo.}
+00062 \textcolor{comment}{#   Capaz de modificar o sexo exibido do usuário.}
+00063 \textcolor{comment}{#   Não afeta de forma relevante a navegação ou qualquer outra forma de}
+00064 \textcolor{comment}{#   interação com o aluno/professor.}
+\hypertarget{Profile_2forms_8py_source_l00065}{}\hyperlink{classProfile_1_1forms_1_1SexForm}{00065} \textcolor{keyword}{class }\hyperlink{classProfile_1_1forms_1_1SexForm}{SexForm}(forms.Form):
+\hypertarget{Profile_2forms_8py_source_l00066}{}\hyperlink{classProfile_1_1forms_1_1SexForm_a0d99412ab99ee46149a50fabb2614845}{00066}     newdata     = forms.ChoiceField(widget=forms.RadioSelect, choices = [
+00067                                             (\textcolor{stringliteral}{'F'}, lang.DICT[\textcolor{stringliteral}{'SEX\_FEMALE'}]),
+00068                                             (\textcolor{stringliteral}{'M'}, lang.DICT[\textcolor{stringliteral}{'SEX\_MALE'}])
+00069                                                 ])
+00070 
+\hypertarget{Profile_2forms_8py_source_l00071}{}\hyperlink{classProfile_1_1forms_1_1SexForm_a23eb3376f64c41fbfa57b1b78ed2a38b}{00071}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1SexForm_a23eb3376f64c41fbfa57b1b78ed2a38b}{clean\_newdata}(self):
+00072         \textcolor{keywordflow}{try}:
+00073             ns = Sex(self.cleaned\_data[\textcolor{stringliteral}{'newdata'}])
+00074         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00075             \textcolor{keywordflow}{raise} forms.ValidationError(exc)
+00076         \textcolor{keywordflow}{return} ns
+00077 
+00078 \textcolor{comment}{## Formulário de edição de Bios.}
+00079 \textcolor{comment}{#   Capaz de modificar a biografia exibida do usuário.}
+00080 \textcolor{comment}{#   Não afeta de forma relevante a navegação ou qualquer outra forma de}
+00081 \textcolor{comment}{#   interação com o aluno.}
+\hypertarget{Profile_2forms_8py_source_l00082}{}\hyperlink{classProfile_1_1forms_1_1BiosForm}{00082} \textcolor{keyword}{class }\hyperlink{classProfile_1_1forms_1_1BiosForm}{BiosForm}(forms.Form):
+\hypertarget{Profile_2forms_8py_source_l00083}{}\hyperlink{classProfile_1_1forms_1_1BiosForm_a2862b20c24bac9aa5dc896925a2cb3d6}{00083}     newdata     = forms.CharField(required=\textcolor{keyword}{False}, widget=forms.Textarea(attrs=\{\textcolor{stringliteral}{'style'}:\textcolor{stringliteral}{'width:90%;'}\}))
+00084 
+\hypertarget{Profile_2forms_8py_source_l00085}{}\hyperlink{classProfile_1_1forms_1_1BiosForm_a10f21ed8d7cb888f0aa35618087c86af}{00085}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1BiosForm_a10f21ed8d7cb888f0aa35618087c86af}{clean\_newdata}(self):
+00086         \textcolor{keywordflow}{try}:
+00087             nb = PlainText(self.cleaned\_data[\textcolor{stringliteral}{'newdata'}])
+00088         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00089             \textcolor{keywordflow}{raise} forms.ValidationError(exc)
+00090         \textcolor{keywordflow}{return} nb
+00091 
+00092 \textcolor{comment}{## Formulário de edição de interesses.}
+00093 \textcolor{comment}{#   Capaz de modificar a lista de interesses do jovem usuário.}
+00094 \textcolor{comment}{#   Talvez venhamos a utilizar isso mais para frente.}
+\hypertarget{Profile_2forms_8py_source_l00095}{}\hyperlink{classProfile_1_1forms_1_1InterestsForm}{00095} \textcolor{keyword}{class }\hyperlink{classProfile_1_1forms_1_1InterestsForm}{InterestsForm}(forms.Form):
+\hypertarget{Profile_2forms_8py_source_l00096}{}\hyperlink{classProfile_1_1forms_1_1InterestsForm_ad400f3a7b43e71bd7772fa85e2961ff0}{00096}     newdata     = forms.CharField(required=\textcolor{keyword}{False}, widget=forms.HiddenInput(attrs=\{\textcolor{stringliteral}{'style'}:\textcolor{stringliteral}{'width:90%;'}\}))
+00097 
+\hypertarget{Profile_2forms_8py_source_l00098}{}\hyperlink{classProfile_1_1forms_1_1InterestsForm_a6422167036a926576b18570db4da5117}{00098}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1InterestsForm_a6422167036a926576b18570db4da5117}{clean\_newdata}(self):
+00099         \textcolor{keywordflow}{try}:
+00100             ni = PlainText(self.cleaned\_data[\textcolor{stringliteral}{'newdata'}])
+00101         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00102             \textcolor{keywordflow}{raise} forms.ValidationError(exc)
+00103         \textcolor{keywordflow}{return} ni
+00104 
+\hypertarget{Profile_2forms_8py_source_l00105}{}\hyperlink{classProfile_1_1forms_1_1AvatarForm}{00105} \textcolor{keyword}{class }\hyperlink{classProfile_1_1forms_1_1AvatarForm}{AvatarForm}(forms.Form):
+00106     newdata     = forms.FileField()
 \end{DoxyCode}

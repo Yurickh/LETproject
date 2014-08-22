@@ -135,7 +135,7 @@ Atributos Estáticos Públicos</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Descrição Detalhada</h2>
 <div class="textblock"><p>Capaz de modificar o sexo exibido do usuário. Não afeta de forma relevante a navegação ou qualquer outra forma de interação com o aluno/professor. </p>
 
-<p>Definição na linha <a class="el" href="../../d7/d13/Profile_2forms_8py_source.html#l00061">61</a> do arquivo <a class="el" href="../../d7/d13/Profile_2forms_8py_source.html">forms.py</a>.</p>
+<p>Definição na linha <a class="el" href="../../d7/d13/Profile_2forms_8py_source.html#l00065">65</a> do arquivo <a class="el" href="../../d7/d13/Profile_2forms_8py_source.html">forms.py</a>.</p>
 </div><h2 class="groupheader">Métodos</h2>
 <a class="anchor" id="a23eb3376f64c41fbfa57b1b78ed2a38b"></a>
 <div class="memitem">
@@ -151,16 +151,16 @@ Atributos Estáticos Públicos</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definição na linha <a class="el" href="../../d7/d13/Profile_2forms_8py_source.html#l00067">67</a> do arquivo <a class="el" href="../../d7/d13/Profile_2forms_8py_source.html">forms.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="../../d1/dea/classProfile_1_1forms_1_1SexForm.html#a23eb3376f64c41fbfa57b1b78ed2a38b">   67</a></span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">def </span><a class="code" href="../../d1/dea/classProfile_1_1forms_1_1SexForm.html#a23eb3376f64c41fbfa57b1b78ed2a38b">clean_newdata</a>(self):</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">try</span>:</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            ns = Sex(self.cleaned_data[<span class="stringliteral">&#39;newdata&#39;</span>])</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">except</span> ValueError <span class="keyword">as</span> exc:</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <span class="keywordflow">raise</span> forms.ValidationError(exc)</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">return</span> ns</div>
+<p>Definição na linha <a class="el" href="../../d7/d13/Profile_2forms_8py_source.html#l00071">71</a> do arquivo <a class="el" href="../../d7/d13/Profile_2forms_8py_source.html">forms.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="../../d1/dea/classProfile_1_1forms_1_1SexForm.html#a23eb3376f64c41fbfa57b1b78ed2a38b">   71</a></span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keyword">def </span><a class="code" href="../../d1/dea/classProfile_1_1forms_1_1SexForm.html#a23eb3376f64c41fbfa57b1b78ed2a38b">clean_newdata</a>(self):</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            ns = Sex(self.cleaned_data[<span class="stringliteral">&#39;newdata&#39;</span>])</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">except</span> ValueError <span class="keyword">as</span> exc:</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keywordflow">raise</span> forms.ValidationError(exc)</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">return</span> ns</div>
 </div>
-<div class="ttc" id="classProfile_1_1forms_1_1SexForm_html_a23eb3376f64c41fbfa57b1b78ed2a38b"><div class="ttname"><a href="../../d1/dea/classProfile_1_1forms_1_1SexForm.html#a23eb3376f64c41fbfa57b1b78ed2a38b">Profile.forms.SexForm.clean_newdata</a></div><div class="ttdeci">def clean_newdata</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d13/Profile_2forms_8py_source.html#l00067">forms.py:67</a></div></div>
+<div class="ttc" id="classProfile_1_1forms_1_1SexForm_html_a23eb3376f64c41fbfa57b1b78ed2a38b"><div class="ttname"><a href="../../d1/dea/classProfile_1_1forms_1_1SexForm.html#a23eb3376f64c41fbfa57b1b78ed2a38b">Profile.forms.SexForm.clean_newdata</a></div><div class="ttdeci">def clean_newdata</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d13/Profile_2forms_8py_source.html#l00071">forms.py:71</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -187,7 +187,7 @@ Atributos Estáticos Públicos</h2></td></tr>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;                                            (<span class="stringliteral">&#39;M&#39;</span>, lang.DICT[<span class="stringliteral">&#39;SEX_MALE&#39;</span>])</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;                                                ])</div>
 </div><!-- fragment -->
-<p>Definição na linha <a class="el" href="../../d7/d13/Profile_2forms_8py_source.html#l00062">62</a> do arquivo <a class="el" href="../../d7/d13/Profile_2forms_8py_source.html">forms.py</a>.</p>
+<p>Definição na linha <a class="el" href="../../d7/d13/Profile_2forms_8py_source.html#l00066">66</a> do arquivo <a class="el" href="../../d7/d13/Profile_2forms_8py_source.html">forms.py</a>.</p>
 
 </div>
 </div>
@@ -200,7 +200,7 @@ Atributos Estáticos Públicos</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../d8/dc2/namespaceProfile.html">Profile</a></li><li class="navelem"><a class="el" href="../../de/d77/namespaceProfile_1_1forms.html">forms</a></li><li class="navelem"><a class="el" href="../../d1/dea/classProfile_1_1forms_1_1SexForm.html">SexForm</a></li>
-    <li class="footer">Gerado em Terça, 1 de Julho de 2014 19:10:29 para LETproject por
+    <li class="footer">Gerado em Sexta, 22 de Agosto de 2014 17:35:23 para LETproject por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

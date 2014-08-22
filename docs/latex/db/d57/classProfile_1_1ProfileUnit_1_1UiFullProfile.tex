@@ -29,7 +29,7 @@ def \hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_a7a7747246b627020a34
 \subsubsection{Descrição Detalhada}
 Deve ser capaz de gerar uma página que disponibilize os dados do usuário, permitindo que ele edite ou não, alguns campos. Caso a \hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_a7a7747246b627020a345f7a3eac27778}{run()} seja chamada com um argumento adicional field, a chamada será considerada assíncrona, assim como no caso do request.\-method ser P\-O\-S\-T. 
 
-Definição na linha \hyperlink{ProfileUnit_8py_source_l00163}{163} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
+Definição na linha \hyperlink{ProfileUnit_8py_source_l00164}{164} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
 
 
 
@@ -44,22 +44,22 @@ Definição na linha \hyperlink{ProfileUnit_8py_source_l00163}{163} do arquivo \
 )}}\label{classProfile_1_1ProfileUnit_1_1UiFullProfile_ae9ec0c6554ceb52fd45d48dda2ea4218}
 
 
-Definição na linha \hyperlink{ProfileUnit_8py_source_l00180}{180} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
+Definição na linha \hyperlink{ProfileUnit_8py_source_l00185}{185} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
 
 
 
-Referências \hyperlink{ProfileUnit_8py_source_l00166}{Profile.\-Profile\-Unit.\-Ui\-Full\-Profile.\-\_\-\-\_\-editable} e \hyperlink{ProfileUnit_8py_source_l00174}{Profile.\-Profile\-Unit.\-Ui\-Full\-Profile.\-\_\-\-\_\-viewable}.
+Referências \hyperlink{ProfileUnit_8py_source_l00167}{Profile.\-Profile\-Unit.\-Ui\-Full\-Profile.\-\_\-\-\_\-editable} e \hyperlink{ProfileUnit_8py_source_l00179}{Profile.\-Profile\-Unit.\-Ui\-Full\-Profile.\-\_\-\-\_\-viewable}.
 
 
 \begin{DoxyCode}
-\hypertarget{classProfile_1_1ProfileUnit_1_1UiFullProfile_l00180}{}\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_ae9ec0c6554ceb52fd45d48dda2ea4218}{00180} 
-00181     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_ae9ec0c6554ceb52fd45d48dda2ea4218}{\_\_init\_\_}(self, bus):
-00182         self.\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_a92a8fe9852ca9a15af9f0b3b1f7f3475}{\_\_viewable} += self.\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_ad83bd84ca790c9c849a29ff074848bd4}{\_\_editable}
-\hypertarget{classProfile_1_1ProfileUnit_1_1UiFullProfile_l00183}{}\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_a47049f3f61c7fada93dd84fccd19a2bd}{00183}         \textcolor{keywordflow}{try}:
-00184             self.\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_a32a87d193e5d14e0ff3125d6bab2c420}{bus} = bus
-00185         \textcolor{keywordflow}{except} TypeError \textcolor{keyword}{as} exc:
-00186             del self
-00187             \textcolor{keywordflow}{raise} exc
+\hypertarget{classProfile_1_1ProfileUnit_1_1UiFullProfile_l00185}{}\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_ae9ec0c6554ceb52fd45d48dda2ea4218}{00185} 
+00186     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_ae9ec0c6554ceb52fd45d48dda2ea4218}{\_\_init\_\_}(self, bus):
+00187         self.\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_a92a8fe9852ca9a15af9f0b3b1f7f3475}{\_\_viewable} += self.\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_ad83bd84ca790c9c849a29ff074848bd4}{\_\_editable}
+\hypertarget{classProfile_1_1ProfileUnit_1_1UiFullProfile_l00188}{}\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_a47049f3f61c7fada93dd84fccd19a2bd}{00188}         \textcolor{keywordflow}{try}:
+00189             self.\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_a32a87d193e5d14e0ff3125d6bab2c420}{bus} = bus
+00190         \textcolor{keywordflow}{except} TypeError \textcolor{keyword}{as} exc:
+00191             del self
+00192             \textcolor{keywordflow}{raise} exc
 
 \end{DoxyCode}
 
@@ -76,83 +76,97 @@ Referências \hyperlink{ProfileUnit_8py_source_l00166}{Profile.\-Profile\-Unit.\
 )}}\label{classProfile_1_1ProfileUnit_1_1UiFullProfile_a7a7747246b627020a345f7a3eac27778}
 
 
-Definição na linha \hyperlink{ProfileUnit_8py_source_l00202}{202} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
+Definição na linha \hyperlink{ProfileUnit_8py_source_l00214}{214} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
 
 
 
-Referências \hyperlink{ProfileUnit_8py_source_l00189}{Profile.\-Profile\-Unit.\-Ui\-Full\-Profile.\-\_\-\-\_\-make\-Data()}.
+Referências \hyperlink{ProfileUnit_8py_source_l00194}{Profile.\-Profile\-Unit.\-Ui\-Full\-Profile.\-\_\-\-\_\-make\-Data()}.
 
 
 \begin{DoxyCode}
-\hypertarget{classProfile_1_1ProfileUnit_1_1UiFullProfile_l00202}{}\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_a7a7747246b627020a345f7a3eac27778}{00202} 
-00203     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_a7a7747246b627020a345f7a3eac27778}{run}(self, request, field=None):
-00204 
-00205         get\_user = \textcolor{keyword}{lambda}: request.session[\textcolor{stringliteral}{'user'}]
-00206 
-00207         \textcolor{comment}{## @if Verifica qual o propósito do submit.}
-00208         \textcolor{comment}{#   Caso seja POST, a requisição ocorre após a submissão de uma form,}
-00209         \textcolor{comment}{#       muito provavelmente da form de edição de campo.}
-00210         \textcolor{comment}{#   Caso não seja, a requisição há de ser um GET, para mostrar as}
-00211         \textcolor{comment}{#       opções de edição.}
-00212         \textcolor{keywordflow}{if} request.method == \textcolor{stringliteral}{"POST"}:
-00213 
-00214             \textcolor{keywordflow}{try}:
-00215                 \textcolor{keywordflow}{if}   \textcolor{stringliteral}{"name"} \textcolor{keywordflow}{in} request.POST:
-00216                     form = NameForm(request.POST)
-00217                     field = \textcolor{stringliteral}{"name"}
-00218                 \textcolor{keywordflow}{elif} \textcolor{stringliteral}{"language"} \textcolor{keywordflow}{in} request.POST:
-00219                     form = LanguageForm(request.POST)
-00220                     field = \textcolor{stringliteral}{"language"}
-00221                 \textcolor{keywordflow}{elif} \textcolor{stringliteral}{"sex"} \textcolor{keywordflow}{in} request.POST:
-00222                     form = SexForm(request.POST)
-00223                     field = \textcolor{stringliteral}{"sex"}
-00224                 \textcolor{keywordflow}{elif} \textcolor{stringliteral}{"bios"} \textcolor{keywordflow}{in} request.POST:
-00225                     form = BiosForm(request.POST)
-00226                     field = \textcolor{stringliteral}{"bios"}
-00227                 \textcolor{keywordflow}{else}:
-00228                     \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_FRM'}])
-00229 
-00230                 \textcolor{keywordflow}{if} form.is\_valid():
-00231                     request.session[\textcolor{stringliteral}{'user'}][field] = self.bus.editField(
-00232                                                         request, 
-00233                                                         field, 
-00234                                                         form )
-00235                 \textcolor{keywordflow}{else}:
-00236                     \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_FRM'}] + 
-00237                                         \textcolor{stringliteral}{":"} + form.errors)
-00238 
-00239             \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
-00240                 data = self.\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_ae0e9c54df37ab45f0d1c5d894181d10f}{\_\_makeData}(get\_user())
-00241                 \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Profile/full.html"}, \{\textcolor{stringliteral}{'data'} : data,
-00242                                                              \textcolor{stringliteral}{'error'}: exc\})
-00243 
-00244             data = self.\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_ae0e9c54df37ab45f0d1c5d894181d10f}{\_\_makeData}(get\_user())
-00245             \textcolor{keywordflow}{return} HttpResponseRedirect(\textcolor{stringliteral}{'/profile'})
-00246 
-00247         \textcolor{keywordflow}{else}: \textcolor{comment}{# request.method == "GET"}
-00248             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} field: \textcolor{comment}{# normal call}
-00249                 request.session[\textcolor{stringliteral}{'user'}] = self.bus.refreshUser(request)
-00250                 data = self.\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_ae0e9c54df37ab45f0d1c5d894181d10f}{\_\_makeData}(get\_user())
-00251                 \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Profile/full.html"}, \{\textcolor{stringliteral}{'data'} : data\})
-00252             \textcolor{keywordflow}{else}: \textcolor{comment}{# ajax call}
-00253                 err = \textcolor{keyword}{False}
-00254                 \textcolor{keywordflow}{if}   field == \textcolor{stringliteral}{"name"}:
-00255                     form = NameForm(initial=\{\textcolor{stringliteral}{'newdata'}:get\_user()[\textcolor{stringliteral}{'name'}]\})
-00256                 \textcolor{keywordflow}{elif} field == \textcolor{stringliteral}{"language"}:
-00257                     form = LanguageForm(initial=\{
-00258                             \textcolor{stringliteral}{'newdata'}:get\_user()[\textcolor{stringliteral}{'language'}]\})
-00259                 \textcolor{keywordflow}{elif} field == \textcolor{stringliteral}{"sex"}:
-00260                     form = SexForm(initial=\{\textcolor{stringliteral}{'newdata'}:get\_user()[\textcolor{stringliteral}{'sex'}]\})
-00261                 \textcolor{keywordflow}{elif} field == \textcolor{stringliteral}{"bios"}:
-00262                     form = BiosForm(initial=\{\textcolor{stringliteral}{'newdata'}:get\_user()[\textcolor{stringliteral}{'bios'}]\})
-00263                 \textcolor{keywordflow}{else}:
-00264                     form = lang.DICT[\textcolor{stringliteral}{"ERROR\_FORM"}]
-00265                     err = \textcolor{keyword}{True} 
-00266 
-00267                 \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Profile/edit.html"}, \{\textcolor{stringliteral}{'form'}: form,
-00268                                                              \textcolor{stringliteral}{'ff'}: field,
-00269                                                              \textcolor{stringliteral}{'err'}: err \})
-00270         
+\hypertarget{classProfile_1_1ProfileUnit_1_1UiFullProfile_l00214}{}\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_a7a7747246b627020a345f7a3eac27778}{00214} 
+00215     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_a7a7747246b627020a345f7a3eac27778}{run}(self, request, field=None):
+00216 
+00217         get\_user = \textcolor{keyword}{lambda}: request.session[\textcolor{stringliteral}{'user'}]
+00218 
+00219         \textcolor{comment}{## @if Verifica qual o propósito do submit.}
+00220         \textcolor{comment}{#   Caso seja POST, a requisição ocorre após a submissão de uma form,}
+00221         \textcolor{comment}{#       muito provavelmente da form de edição de campo.}
+00222         \textcolor{comment}{#   Caso não seja, a requisição há de ser um GET, para mostrar as}
+00223         \textcolor{comment}{#       opções de edição.}
+00224         \textcolor{keywordflow}{if} request.method == \textcolor{stringliteral}{"POST"}:
+00225 
+00226             \textcolor{keywordflow}{try}:
+00227                 \textcolor{keywordflow}{if}   \textcolor{stringliteral}{"name"} \textcolor{keywordflow}{in} request.POST:
+00228                     form = NameForm(request.POST)
+00229                     field = \textcolor{stringliteral}{"name"}
+00230                 \textcolor{keywordflow}{elif} \textcolor{stringliteral}{"language"} \textcolor{keywordflow}{in} request.POST:
+00231                     form = LanguageForm(request.POST)
+00232                     field = \textcolor{stringliteral}{"language"}
+00233                 \textcolor{keywordflow}{elif} \textcolor{stringliteral}{"sex"} \textcolor{keywordflow}{in} request.POST:
+00234                     form = SexForm(request.POST)
+00235                     field = \textcolor{stringliteral}{"sex"}
+00236                 \textcolor{keywordflow}{elif} \textcolor{stringliteral}{"bios"} \textcolor{keywordflow}{in} request.POST:
+00237                     form = BiosForm(request.POST)
+00238                     field = \textcolor{stringliteral}{"bios"}
+00239                 \textcolor{keywordflow}{elif} \textcolor{stringliteral}{"interests"} \textcolor{keywordflow}{in} request.POST:
+00240                     form = InterestsForm(request.POST)
+00241                     field = \textcolor{stringliteral}{"interests"}
+00242                 \textcolor{keywordflow}{elif} \textcolor{stringliteral}{"avatar"} \textcolor{keywordflow}{in} request.POST:
+00243                     form = AvatarForm(request.POST, request.FILES)
+00244                     field = \textcolor{stringliteral}{"avatar"}
+00245                 \textcolor{keywordflow}{else}:
+00246                     \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_FRM'}])
+00247 
+00248                 \textcolor{keywordflow}{if} form.is\_valid():
+00249                     request.session[\textcolor{stringliteral}{'user'}][field] = self.bus.editField(
+00250                                                         request, 
+00251                                                         field, 
+00252                                                         form )
+00253                     request.session.modified = \textcolor{keyword}{True}
+00254                 \textcolor{keywordflow}{else}:
+00255                     \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_FRM'}] + 
+00256                         \textcolor{stringliteral}{":"} + form.errors)
+00257 
+00258             \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00259                 data = self.\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_ae0e9c54df37ab45f0d1c5d894181d10f}{\_\_makeData}(get\_user())
+00260                 \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Profile/full.html"}, \{\textcolor{stringliteral}{'data'} : data,
+00261                                                              \textcolor{stringliteral}{'error'}: exc \})
+00262 
+00263             data = self.\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_ae0e9c54df37ab45f0d1c5d894181d10f}{\_\_makeData}(get\_user())
+00264             \textcolor{keywordflow}{return} HttpResponseRedirect(\textcolor{stringliteral}{'/profile'})
+00265 
+00266         \textcolor{keywordflow}{else}: \textcolor{comment}{# request.method == "GET"}
+00267             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} field: \textcolor{comment}{# normal call}
+00268                 request.session[\textcolor{stringliteral}{'user'}] = self.bus.refreshUser(request)
+00269                 data = self.\hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile_ae0e9c54df37ab45f0d1c5d894181d10f}{\_\_makeData}(get\_user())        
+00270                 translation.activate(request.session[\textcolor{stringliteral}{'user'}][\textcolor{stringliteral}{'language'}])
+00271                 \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Profile/full.html"}, \{\textcolor{stringliteral}{'data'} : data\})
+00272             \textcolor{keywordflow}{else}: \textcolor{comment}{# ajax call}
+00273                 err = \textcolor{keyword}{False}
+00274                 \textcolor{keywordflow}{if}   field == \textcolor{stringliteral}{"name"}:
+00275                     form = NameForm(initial=\{\textcolor{stringliteral}{'newdata'}:get\_user()[\textcolor{stringliteral}{'name'}]\})
+00276                 \textcolor{keywordflow}{elif} field == \textcolor{stringliteral}{"language"}:
+00277                     form = LanguageForm(initial=\{
+00278                             \textcolor{stringliteral}{'newdata'}:get\_user()[\textcolor{stringliteral}{'language'}]\})
+00279                 \textcolor{keywordflow}{elif} field == \textcolor{stringliteral}{"sex"}:
+00280                     form = SexForm(initial=\{\textcolor{stringliteral}{'newdata'}:get\_user()[\textcolor{stringliteral}{'sex'}]\})
+00281                 \textcolor{keywordflow}{elif} field == \textcolor{stringliteral}{"bios"}:
+00282                     form = BiosForm(initial=\{\textcolor{stringliteral}{'newdata'}:get\_user()[\textcolor{stringliteral}{'bios'}]\})
+00283                 \textcolor{keywordflow}{elif} field == \textcolor{stringliteral}{"interests"}:
+00284                     form = InterestsForm(initial=\{
+00285                             \textcolor{stringliteral}{'newdata'}:get\_user()[\textcolor{stringliteral}{'interests'}]\})
+00286                 \textcolor{keywordflow}{elif} field == \textcolor{stringliteral}{"avatar"}:
+00287                     form = AvatarForm()
+00288                 \textcolor{keywordflow}{else}:
+00289                     form = lang.DICT[\textcolor{stringliteral}{"ERROR\_FORM"}]
+00290                     err = \textcolor{keyword}{True} 
+00291 
+00292                 \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Profile/edit.html"}, \{\textcolor{stringliteral}{'form'}: form,
+00293                                                              \textcolor{stringliteral}{'ff'}: field,
+00294                                                              \textcolor{stringliteral}{'err'}: err,
+00295                                                             \})
+00296         
 
 \end{DoxyCode}
 
@@ -163,7 +177,7 @@ Referências \hyperlink{ProfileUnit_8py_source_l00189}{Profile.\-Profile\-Unit.\
 \paragraph[{bus}]{\setlength{\rightskip}{0pt plus 5cm}Profile.\-Profile\-Unit.\-Ui\-Full\-Profile.\-bus}}\label{classProfile_1_1ProfileUnit_1_1UiFullProfile_a47049f3f61c7fada93dd84fccd19a2bd}
 
 
-Definição na linha \hyperlink{ProfileUnit_8py_source_l00183}{183} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
+Definição na linha \hyperlink{ProfileUnit_8py_source_l00188}{188} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
 
 
 

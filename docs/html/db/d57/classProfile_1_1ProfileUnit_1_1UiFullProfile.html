@@ -154,7 +154,7 @@ Atributos Públicos</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Descrição Detalhada</h2>
 <div class="textblock"><p>Deve ser capaz de gerar uma página que disponibilize os dados do usuário, permitindo que ele edite ou não, alguns campos. Caso a <a class="el" href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html#a7a7747246b627020a345f7a3eac27778">run()</a> seja chamada com um argumento adicional field, a chamada será considerada assíncrona, assim como no caso do request.method ser POST. </p>
 
-<p>Definição na linha <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html#l00163">163</a> do arquivo <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html">ProfileUnit.py</a>.</p>
+<p>Definição na linha <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html#l00164">164</a> do arquivo <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html">ProfileUnit.py</a>.</p>
 </div><h2 class="groupheader">Construtores &amp; Destrutores</h2>
 <a class="anchor" id="ae9ec0c6554ceb52fd45d48dda2ea4218"></a>
 <div class="memitem">
@@ -180,22 +180,22 @@ Atributos Públicos</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definição na linha <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html#l00180">180</a> do arquivo <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html">ProfileUnit.py</a>.</p>
+<p>Definição na linha <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html#l00185">185</a> do arquivo <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html">ProfileUnit.py</a>.</p>
 
-<p>Referências <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html#l00166">Profile.ProfileUnit.UiFullProfile.__editable</a> e <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html#l00174">Profile.ProfileUnit.UiFullProfile.__viewable</a>.</p>
-<div class="fragment"><div class="line"><a name="l00180"></a><span class="lineno"><a class="line" href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html#ae9ec0c6554ceb52fd45d48dda2ea4218">  180</a></span>&#160;</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keyword">def </span><a class="code" href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html#ae9ec0c6554ceb52fd45d48dda2ea4218">__init__</a>(self, bus):</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        self.<a class="code" href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html#a92a8fe9852ca9a15af9f0b3b1f7f3475">__viewable</a> += self.<a class="code" href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html#ad83bd84ca790c9c849a29ff074848bd4">__editable</a></div>
-<div class="line"><a name="l00183"></a><span class="lineno"><a class="line" href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html#a47049f3f61c7fada93dd84fccd19a2bd">  183</a></span>&#160;        <span class="keywordflow">try</span>:</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            self.<a class="code" href="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html#a32a87d193e5d14e0ff3125d6bab2c420">bus</a> = bus</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        <span class="keywordflow">except</span> TypeError <span class="keyword">as</span> exc:</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            del self</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            <span class="keywordflow">raise</span> exc</div>
+<p>Referências <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html#l00167">Profile.ProfileUnit.UiFullProfile.__editable</a> e <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html#l00179">Profile.ProfileUnit.UiFullProfile.__viewable</a>.</p>
+<div class="fragment"><div class="line"><a name="l00185"></a><span class="lineno"><a class="line" href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html#ae9ec0c6554ceb52fd45d48dda2ea4218">  185</a></span>&#160;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <span class="keyword">def </span><a class="code" href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html#ae9ec0c6554ceb52fd45d48dda2ea4218">__init__</a>(self, bus):</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        self.<a class="code" href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html#a92a8fe9852ca9a15af9f0b3b1f7f3475">__viewable</a> += self.<a class="code" href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html#ad83bd84ca790c9c849a29ff074848bd4">__editable</a></div>
+<div class="line"><a name="l00188"></a><span class="lineno"><a class="line" href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html#a47049f3f61c7fada93dd84fccd19a2bd">  188</a></span>&#160;        <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            self.<a class="code" href="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html#a32a87d193e5d14e0ff3125d6bab2c420">bus</a> = bus</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        <span class="keywordflow">except</span> TypeError <span class="keyword">as</span> exc:</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            del self</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            <span class="keywordflow">raise</span> exc</div>
 </div>
-<div class="ttc" id="classProfile_1_1ProfileUnit_1_1UiFullProfile_html_a92a8fe9852ca9a15af9f0b3b1f7f3475"><div class="ttname"><a href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html#a92a8fe9852ca9a15af9f0b3b1f7f3475">Profile.ProfileUnit.UiFullProfile.__viewable</a></div><div class="ttdeci">list __viewable</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6d/ProfileUnit_8py_source.html#l00174">ProfileUnit.py:174</a></div></div>
-<div class="ttc" id="classProfile_1_1ProfileUnit_1_1UiFullProfile_html_ae9ec0c6554ceb52fd45d48dda2ea4218"><div class="ttname"><a href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html#ae9ec0c6554ceb52fd45d48dda2ea4218">Profile.ProfileUnit.UiFullProfile.__init__</a></div><div class="ttdeci">def __init__</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6d/ProfileUnit_8py_source.html#l00180">ProfileUnit.py:180</a></div></div>
-<div class="ttc" id="classProfile_1_1ProfileUnit_1_1UiFullProfile_html_ad83bd84ca790c9c849a29ff074848bd4"><div class="ttname"><a href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html#ad83bd84ca790c9c849a29ff074848bd4">Profile.ProfileUnit.UiFullProfile.__editable</a></div><div class="ttdeci">list __editable</div><div class="ttdoc">Lista de campos passíveis de edição por um usuário. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6d/ProfileUnit_8py_source.html#l00166">ProfileUnit.py:166</a></div></div>
-<div class="ttc" id="classProfile_1_1ProfileUnit_1_1IfUiProfile_html_a32a87d193e5d14e0ff3125d6bab2c420"><div class="ttname"><a href="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html#a32a87d193e5d14e0ff3125d6bab2c420">Profile.ProfileUnit.IfUiProfile.bus</a></div><div class="ttdeci">bus</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6d/ProfileUnit_8py_source.html#l00036">ProfileUnit.py:36</a></div></div>
+<div class="ttc" id="classProfile_1_1ProfileUnit_1_1UiFullProfile_html_a92a8fe9852ca9a15af9f0b3b1f7f3475"><div class="ttname"><a href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html#a92a8fe9852ca9a15af9f0b3b1f7f3475">Profile.ProfileUnit.UiFullProfile.__viewable</a></div><div class="ttdeci">list __viewable</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6d/ProfileUnit_8py_source.html#l00179">ProfileUnit.py:179</a></div></div>
+<div class="ttc" id="classProfile_1_1ProfileUnit_1_1UiFullProfile_html_ae9ec0c6554ceb52fd45d48dda2ea4218"><div class="ttname"><a href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html#ae9ec0c6554ceb52fd45d48dda2ea4218">Profile.ProfileUnit.UiFullProfile.__init__</a></div><div class="ttdeci">def __init__</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6d/ProfileUnit_8py_source.html#l00185">ProfileUnit.py:185</a></div></div>
+<div class="ttc" id="classProfile_1_1ProfileUnit_1_1UiFullProfile_html_ad83bd84ca790c9c849a29ff074848bd4"><div class="ttname"><a href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html#ad83bd84ca790c9c849a29ff074848bd4">Profile.ProfileUnit.UiFullProfile.__editable</a></div><div class="ttdeci">list __editable</div><div class="ttdoc">Lista de campos passíveis de edição por um usuário. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6d/ProfileUnit_8py_source.html#l00167">ProfileUnit.py:167</a></div></div>
+<div class="ttc" id="classProfile_1_1ProfileUnit_1_1IfUiProfile_html_a32a87d193e5d14e0ff3125d6bab2c420"><div class="ttname"><a href="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html#a32a87d193e5d14e0ff3125d6bab2c420">Profile.ProfileUnit.IfUiProfile.bus</a></div><div class="ttdeci">bus</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6d/ProfileUnit_8py_source.html#l00039">ProfileUnit.py:39</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -230,81 +230,95 @@ Atributos Públicos</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definição na linha <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html#l00202">202</a> do arquivo <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html">ProfileUnit.py</a>.</p>
+<p>Definição na linha <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html#l00214">214</a> do arquivo <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html">ProfileUnit.py</a>.</p>
 
-<p>Referências <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html#l00189">Profile.ProfileUnit.UiFullProfile.__makeData()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00202"></a><span class="lineno"><a class="line" href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html#a7a7747246b627020a345f7a3eac27778">  202</a></span>&#160;</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keyword">def </span><a class="code" href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html#a7a7747246b627020a345f7a3eac27778">run</a>(self, request, field=None):</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        get_user = <span class="keyword">lambda</span>: request.session[<span class="stringliteral">&#39;user&#39;</span>]</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        <span class="comment">## @if Verifica qual o propósito do submit.</span></div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        <span class="comment">#   Caso seja POST, a requisição ocorre após a submissão de uma form,</span></div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        <span class="comment">#       muito provavelmente da form de edição de campo.</span></div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        <span class="comment">#   Caso não seja, a requisição há de ser um GET, para mostrar as</span></div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        <span class="comment">#       opções de edição.</span></div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        <span class="keywordflow">if</span> request.method == <span class="stringliteral">&quot;POST&quot;</span>:</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            <span class="keywordflow">try</span>:</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                <span class="keywordflow">if</span>   <span class="stringliteral">&quot;name&quot;</span> <span class="keywordflow">in</span> request.POST:</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                    form = NameForm(request.POST)</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                    field = <span class="stringliteral">&quot;name&quot;</span></div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                <span class="keywordflow">elif</span> <span class="stringliteral">&quot;language&quot;</span> <span class="keywordflow">in</span> request.POST:</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                    form = LanguageForm(request.POST)</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                    field = <span class="stringliteral">&quot;language&quot;</span></div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                <span class="keywordflow">elif</span> <span class="stringliteral">&quot;sex&quot;</span> <span class="keywordflow">in</span> request.POST:</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                    form = SexForm(request.POST)</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                    field = <span class="stringliteral">&quot;sex&quot;</span></div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                <span class="keywordflow">elif</span> <span class="stringliteral">&quot;bios&quot;</span> <span class="keywordflow">in</span> request.POST:</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                    form = BiosForm(request.POST)</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                    field = <span class="stringliteral">&quot;bios&quot;</span></div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                <span class="keywordflow">else</span>:</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                    <span class="keywordflow">raise</span> ValueError(lang.DICT[<span class="stringliteral">&#39;EXCEPTION_INV_FRM&#39;</span>])</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                <span class="keywordflow">if</span> form.is_valid():</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                    request.session[<span class="stringliteral">&#39;user&#39;</span>][field] = self.bus.editField(</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                                                        request, </div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                                                        field, </div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                                                        form )</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                <span class="keywordflow">else</span>:</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                    <span class="keywordflow">raise</span> ValueError(lang.DICT[<span class="stringliteral">&#39;EXCEPTION_INV_FRM&#39;</span>] + </div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                                        <span class="stringliteral">&quot;:&quot;</span> + form.errors)</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            <span class="keywordflow">except</span> ValueError <span class="keyword">as</span> exc:</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                data = self.<a class="code" href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html#ae0e9c54df37ab45f0d1c5d894181d10f">__makeData</a>(get_user())</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                <span class="keywordflow">return</span> render(request, <span class="stringliteral">&quot;Profile/full.html&quot;</span>, {<span class="stringliteral">&#39;data&#39;</span> : data,</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                                                             <span class="stringliteral">&#39;error&#39;</span>: exc})</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            data = self.<a class="code" href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html#ae0e9c54df37ab45f0d1c5d894181d10f">__makeData</a>(get_user())</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            <span class="keywordflow">return</span> HttpResponseRedirect(<span class="stringliteral">&#39;/profile&#39;</span>)</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        <span class="keywordflow">else</span>: <span class="comment"># request.method == &quot;GET&quot;</span></div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            <span class="keywordflow">if</span> <span class="keywordflow">not</span> field: <span class="comment"># normal call</span></div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                request.session[<span class="stringliteral">&#39;user&#39;</span>] = self.bus.refreshUser(request)</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                data = self.<a class="code" href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html#ae0e9c54df37ab45f0d1c5d894181d10f">__makeData</a>(get_user())</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                <span class="keywordflow">return</span> render(request, <span class="stringliteral">&quot;Profile/full.html&quot;</span>, {<span class="stringliteral">&#39;data&#39;</span> : data})</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            <span class="keywordflow">else</span>: <span class="comment"># ajax call</span></div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                err = <span class="keyword">False</span></div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                <span class="keywordflow">if</span>   field == <span class="stringliteral">&quot;name&quot;</span>:</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                    form = NameForm(initial={<span class="stringliteral">&#39;newdata&#39;</span>:get_user()[<span class="stringliteral">&#39;name&#39;</span>]})</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                <span class="keywordflow">elif</span> field == <span class="stringliteral">&quot;language&quot;</span>:</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                    form = LanguageForm(initial={</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                            <span class="stringliteral">&#39;newdata&#39;</span>:get_user()[<span class="stringliteral">&#39;language&#39;</span>]})</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                <span class="keywordflow">elif</span> field == <span class="stringliteral">&quot;sex&quot;</span>:</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                    form = SexForm(initial={<span class="stringliteral">&#39;newdata&#39;</span>:get_user()[<span class="stringliteral">&#39;sex&#39;</span>]})</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                <span class="keywordflow">elif</span> field == <span class="stringliteral">&quot;bios&quot;</span>:</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                    form = BiosForm(initial={<span class="stringliteral">&#39;newdata&#39;</span>:get_user()[<span class="stringliteral">&#39;bios&#39;</span>]})</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                <span class="keywordflow">else</span>:</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                    form = lang.DICT[<span class="stringliteral">&quot;ERROR_FORM&quot;</span>]</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                    err = <span class="keyword">True</span> </div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                <span class="keywordflow">return</span> render(request, <span class="stringliteral">&quot;Profile/edit.html&quot;</span>, {<span class="stringliteral">&#39;form&#39;</span>: form,</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                                                             <span class="stringliteral">&#39;ff&#39;</span>: field,</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                                                             <span class="stringliteral">&#39;err&#39;</span>: err })</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        </div>
+<p>Referências <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html#l00194">Profile.ProfileUnit.UiFullProfile.__makeData()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00214"></a><span class="lineno"><a class="line" href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html#a7a7747246b627020a345f7a3eac27778">  214</a></span>&#160;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <span class="keyword">def </span><a class="code" href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html#a7a7747246b627020a345f7a3eac27778">run</a>(self, request, field=None):</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        get_user = <span class="keyword">lambda</span>: request.session[<span class="stringliteral">&#39;user&#39;</span>]</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        <span class="comment">## @if Verifica qual o propósito do submit.</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        <span class="comment">#   Caso seja POST, a requisição ocorre após a submissão de uma form,</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        <span class="comment">#       muito provavelmente da form de edição de campo.</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        <span class="comment">#   Caso não seja, a requisição há de ser um GET, para mostrar as</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        <span class="comment">#       opções de edição.</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        <span class="keywordflow">if</span> request.method == <span class="stringliteral">&quot;POST&quot;</span>:</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;            <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                <span class="keywordflow">if</span>   <span class="stringliteral">&quot;name&quot;</span> <span class="keywordflow">in</span> request.POST:</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                    form = NameForm(request.POST)</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                    field = <span class="stringliteral">&quot;name&quot;</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                <span class="keywordflow">elif</span> <span class="stringliteral">&quot;language&quot;</span> <span class="keywordflow">in</span> request.POST:</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                    form = LanguageForm(request.POST)</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                    field = <span class="stringliteral">&quot;language&quot;</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                <span class="keywordflow">elif</span> <span class="stringliteral">&quot;sex&quot;</span> <span class="keywordflow">in</span> request.POST:</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                    form = SexForm(request.POST)</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                    field = <span class="stringliteral">&quot;sex&quot;</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                <span class="keywordflow">elif</span> <span class="stringliteral">&quot;bios&quot;</span> <span class="keywordflow">in</span> request.POST:</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                    form = BiosForm(request.POST)</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                    field = <span class="stringliteral">&quot;bios&quot;</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                <span class="keywordflow">elif</span> <span class="stringliteral">&quot;interests&quot;</span> <span class="keywordflow">in</span> request.POST:</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                    form = InterestsForm(request.POST)</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                    field = <span class="stringliteral">&quot;interests&quot;</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                <span class="keywordflow">elif</span> <span class="stringliteral">&quot;avatar&quot;</span> <span class="keywordflow">in</span> request.POST:</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                    form = AvatarForm(request.POST, request.FILES)</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                    field = <span class="stringliteral">&quot;avatar&quot;</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                    <span class="keywordflow">raise</span> ValueError(lang.DICT[<span class="stringliteral">&#39;EXCEPTION_INV_FRM&#39;</span>])</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                <span class="keywordflow">if</span> form.is_valid():</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                    request.session[<span class="stringliteral">&#39;user&#39;</span>][field] = self.bus.editField(</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                                                        request, </div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                                                        field, </div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                                                        form )</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                    request.session.modified = <span class="keyword">True</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                    <span class="keywordflow">raise</span> ValueError(lang.DICT[<span class="stringliteral">&#39;EXCEPTION_INV_FRM&#39;</span>] + </div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                        <span class="stringliteral">&quot;:&quot;</span> + form.errors)</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            <span class="keywordflow">except</span> ValueError <span class="keyword">as</span> exc:</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                data = self.<a class="code" href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html#ae0e9c54df37ab45f0d1c5d894181d10f">__makeData</a>(get_user())</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                <span class="keywordflow">return</span> render(request, <span class="stringliteral">&quot;Profile/full.html&quot;</span>, {<span class="stringliteral">&#39;data&#39;</span> : data,</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                                                             <span class="stringliteral">&#39;error&#39;</span>: exc })</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            data = self.<a class="code" href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html#ae0e9c54df37ab45f0d1c5d894181d10f">__makeData</a>(get_user())</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            <span class="keywordflow">return</span> HttpResponseRedirect(<span class="stringliteral">&#39;/profile&#39;</span>)</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        <span class="keywordflow">else</span>: <span class="comment"># request.method == &quot;GET&quot;</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            <span class="keywordflow">if</span> <span class="keywordflow">not</span> field: <span class="comment"># normal call</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                request.session[<span class="stringliteral">&#39;user&#39;</span>] = self.bus.refreshUser(request)</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                data = self.<a class="code" href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html#ae0e9c54df37ab45f0d1c5d894181d10f">__makeData</a>(get_user())        </div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                translation.activate(request.session[<span class="stringliteral">&#39;user&#39;</span>][<span class="stringliteral">&#39;language&#39;</span>])</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                <span class="keywordflow">return</span> render(request, <span class="stringliteral">&quot;Profile/full.html&quot;</span>, {<span class="stringliteral">&#39;data&#39;</span> : data})</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            <span class="keywordflow">else</span>: <span class="comment"># ajax call</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                err = <span class="keyword">False</span></div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                <span class="keywordflow">if</span>   field == <span class="stringliteral">&quot;name&quot;</span>:</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                    form = NameForm(initial={<span class="stringliteral">&#39;newdata&#39;</span>:get_user()[<span class="stringliteral">&#39;name&#39;</span>]})</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                <span class="keywordflow">elif</span> field == <span class="stringliteral">&quot;language&quot;</span>:</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                    form = LanguageForm(initial={</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                            <span class="stringliteral">&#39;newdata&#39;</span>:get_user()[<span class="stringliteral">&#39;language&#39;</span>]})</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                <span class="keywordflow">elif</span> field == <span class="stringliteral">&quot;sex&quot;</span>:</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                    form = SexForm(initial={<span class="stringliteral">&#39;newdata&#39;</span>:get_user()[<span class="stringliteral">&#39;sex&#39;</span>]})</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                <span class="keywordflow">elif</span> field == <span class="stringliteral">&quot;bios&quot;</span>:</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                    form = BiosForm(initial={<span class="stringliteral">&#39;newdata&#39;</span>:get_user()[<span class="stringliteral">&#39;bios&#39;</span>]})</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                <span class="keywordflow">elif</span> field == <span class="stringliteral">&quot;interests&quot;</span>:</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                    form = InterestsForm(initial={</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                            <span class="stringliteral">&#39;newdata&#39;</span>:get_user()[<span class="stringliteral">&#39;interests&#39;</span>]})</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                <span class="keywordflow">elif</span> field == <span class="stringliteral">&quot;avatar&quot;</span>:</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                    form = AvatarForm()</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                    form = lang.DICT[<span class="stringliteral">&quot;ERROR_FORM&quot;</span>]</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                    err = <span class="keyword">True</span> </div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                <span class="keywordflow">return</span> render(request, <span class="stringliteral">&quot;Profile/edit.html&quot;</span>, {<span class="stringliteral">&#39;form&#39;</span>: form,</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                                                             <span class="stringliteral">&#39;ff&#39;</span>: field,</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                                                             <span class="stringliteral">&#39;err&#39;</span>: err,</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                                                            })</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        </div>
 </div>
-<div class="ttc" id="classProfile_1_1ProfileUnit_1_1UiFullProfile_html_ae0e9c54df37ab45f0d1c5d894181d10f"><div class="ttname"><a href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html#ae0e9c54df37ab45f0d1c5d894181d10f">Profile.ProfileUnit.UiFullProfile.__makeData</a></div><div class="ttdeci">def __makeData</div><div class="ttdoc">Capaz de criar um template-iterable array com os dados de usuario. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6d/ProfileUnit_8py_source.html#l00189">ProfileUnit.py:189</a></div></div>
-<div class="ttc" id="classProfile_1_1ProfileUnit_1_1UiFullProfile_html_a7a7747246b627020a345f7a3eac27778"><div class="ttname"><a href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html#a7a7747246b627020a345f7a3eac27778">Profile.ProfileUnit.UiFullProfile.run</a></div><div class="ttdeci">def run</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6d/ProfileUnit_8py_source.html#l00202">ProfileUnit.py:202</a></div></div>
+<div class="ttc" id="classProfile_1_1ProfileUnit_1_1UiFullProfile_html_ae0e9c54df37ab45f0d1c5d894181d10f"><div class="ttname"><a href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html#ae0e9c54df37ab45f0d1c5d894181d10f">Profile.ProfileUnit.UiFullProfile.__makeData</a></div><div class="ttdeci">def __makeData</div><div class="ttdoc">Capaz de criar um template-iterable array com os dados de usuario. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6d/ProfileUnit_8py_source.html#l00194">ProfileUnit.py:194</a></div></div>
+<div class="ttc" id="classProfile_1_1ProfileUnit_1_1UiFullProfile_html_a7a7747246b627020a345f7a3eac27778"><div class="ttname"><a href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html#a7a7747246b627020a345f7a3eac27778">Profile.ProfileUnit.UiFullProfile.run</a></div><div class="ttdeci">def run</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6d/ProfileUnit_8py_source.html#l00214">ProfileUnit.py:214</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -319,7 +333,7 @@ Atributos Públicos</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definição na linha <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html#l00183">183</a> do arquivo <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html">ProfileUnit.py</a>.</p>
+<p>Definição na linha <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html#l00188">188</a> do arquivo <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html">ProfileUnit.py</a>.</p>
 
 </div>
 </div>
@@ -332,7 +346,7 @@ Atributos Públicos</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../d8/dc2/namespaceProfile.html">Profile</a></li><li class="navelem"><a class="el" href="../../d0/d31/namespaceProfile_1_1ProfileUnit.html">ProfileUnit</a></li><li class="navelem"><a class="el" href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html">UiFullProfile</a></li>
-    <li class="footer">Gerado em Terça, 1 de Julho de 2014 19:10:31 para LETproject por
+    <li class="footer">Gerado em Sexta, 22 de Agosto de 2014 17:35:23 para LETproject por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -9,5 +9,6 @@ var searchData=
   ['admregprofform',['AdmRegProfForm',['../d3/d88/classAdm_1_1forms_1_1AdmRegProfForm.html',1,'Adm::forms']]],
   ['admregstuform',['AdmRegStuForm',['../d0/d94/classAdm_1_1forms_1_1AdmRegStuForm.html',1,'Adm::forms']]],
   ['admsrcprofform',['AdmSrcProfForm',['../d5/d6d/classAdm_1_1forms_1_1AdmSrcProfForm.html',1,'Adm::forms']]],
-  ['admsrcstuform',['AdmSrcStuForm',['../d7/d61/classAdm_1_1forms_1_1AdmSrcStuForm.html',1,'Adm::forms']]]
+  ['admsrcstuform',['AdmSrcStuForm',['../d7/d61/classAdm_1_1forms_1_1AdmSrcStuForm.html',1,'Adm::forms']]],
+  ['avatarform',['AvatarForm',['../da/da4/classProfile_1_1forms_1_1AvatarForm.html',1,'Profile::forms']]]
 ];

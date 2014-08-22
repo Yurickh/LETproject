@@ -27,7 +27,7 @@ tuple \hyperlink{classProfile_1_1forms_1_1LanguageForm_a327d764765fba9b8d9d82c86
 \subsubsection{Descrição Detalhada}
 Capaz de modificar a lingaguem preferida do usuário para o sistema. É com base nessa linguagem que o sistema irá carregar os diferentes D\-I\-C\-Ts do site (o dicionário contendo a nomeação de todas as macros). 
 
-Definição na linha \hyperlink{Profile_2forms_8py_source_l00041}{41} do arquivo \hyperlink{Profile_2forms_8py_source}{forms.\-py}.
+Definição na linha \hyperlink{Profile_2forms_8py_source_l00045}{45} do arquivo \hyperlink{Profile_2forms_8py_source}{forms.\-py}.
 
 
 
@@ -41,20 +41,20 @@ Definição na linha \hyperlink{Profile_2forms_8py_source_l00041}{41} do arquivo
 )}}\label{classProfile_1_1forms_1_1LanguageForm_ab875693b567fc65f8e96af446a4cf78b}
 
 
-Definição na linha \hyperlink{Profile_2forms_8py_source_l00047}{47} do arquivo \hyperlink{Profile_2forms_8py_source}{forms.\-py}.
+Definição na linha \hyperlink{Profile_2forms_8py_source_l00051}{51} do arquivo \hyperlink{Profile_2forms_8py_source}{forms.\-py}.
 
 
 \begin{DoxyCode}
-\hypertarget{classProfile_1_1forms_1_1LanguageForm_l00047}{}\hyperlink{classProfile_1_1forms_1_1LanguageForm_ab875693b567fc65f8e96af446a4cf78b}{00047} 
-00048     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1LanguageForm_ab875693b567fc65f8e96af446a4cf78b}{clean\_newdata}(self):
-00049         newlang = self.cleaned\_data[\textcolor{stringliteral}{'newdata'}]
-00050         \textcolor{keywordflow}{if} newlang \textcolor{keywordflow}{in} lang.available\_langs:
-00051             \textcolor{keywordflow}{return} newlang
-00052         \textcolor{keywordflow}{else}:
-00053             \textcolor{keywordflow}{if} newlang[:newlang.index(\textcolor{stringliteral}{'-'})] \textcolor{keywordflow}{in} lang.available\_langs:
-00054                 \textcolor{keywordflow}{return} newlang
-00055             \textcolor{keywordflow}{else}:
-00056                 \textcolor{keywordflow}{raise} forms.ValidationError(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_INV\_LG\_F"}])
+\hypertarget{classProfile_1_1forms_1_1LanguageForm_l00051}{}\hyperlink{classProfile_1_1forms_1_1LanguageForm_ab875693b567fc65f8e96af446a4cf78b}{00051} 
+00052     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1LanguageForm_ab875693b567fc65f8e96af446a4cf78b}{clean\_newdata}(self):
+00053         newlang = self.cleaned\_data[\textcolor{stringliteral}{'newdata'}]
+00054         \textcolor{keywordflow}{if} newlang \textcolor{keywordflow}{in} lang.available\_langs:
+00055             \textcolor{keywordflow}{return} newlang
+00056         \textcolor{keywordflow}{else}:
+00057             \textcolor{keywordflow}{if} newlang[:newlang.index(\textcolor{stringliteral}{'-'})] \textcolor{keywordflow}{in} lang.available\_langs:
+00058                 \textcolor{keywordflow}{return} newlang
+00059             \textcolor{keywordflow}{else}:
+00060                 \textcolor{keywordflow}{raise} forms.ValidationError(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_INV\_LG\_F"}])
 
 \end{DoxyCode}
 
@@ -72,7 +72,7 @@ Definição na linha \hyperlink{Profile_2forms_8py_source_l00047}{47} do arquivo
 \end{DoxyCode}
 
 
-Definição na linha \hyperlink{Profile_2forms_8py_source_l00042}{42} do arquivo \hyperlink{Profile_2forms_8py_source}{forms.\-py}.
+Definição na linha \hyperlink{Profile_2forms_8py_source_l00046}{46} do arquivo \hyperlink{Profile_2forms_8py_source}{forms.\-py}.
 
 
 

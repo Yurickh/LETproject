@@ -5,7 +5,9 @@ var dir_d42449496add7f72d5928173ed294508 =
       [ "NameForm", "d6/d33/classProfile_1_1forms_1_1NameForm.html", "d6/d33/classProfile_1_1forms_1_1NameForm" ],
       [ "LanguageForm", "de/d9b/classProfile_1_1forms_1_1LanguageForm.html", "de/d9b/classProfile_1_1forms_1_1LanguageForm" ],
       [ "SexForm", "d1/dea/classProfile_1_1forms_1_1SexForm.html", "d1/dea/classProfile_1_1forms_1_1SexForm" ],
-      [ "BiosForm", "d7/d1e/classProfile_1_1forms_1_1BiosForm.html", "d7/d1e/classProfile_1_1forms_1_1BiosForm" ]
+      [ "BiosForm", "d7/d1e/classProfile_1_1forms_1_1BiosForm.html", "d7/d1e/classProfile_1_1forms_1_1BiosForm" ],
+      [ "InterestsForm", "d4/d5e/classProfile_1_1forms_1_1InterestsForm.html", "d4/d5e/classProfile_1_1forms_1_1InterestsForm" ],
+      [ "AvatarForm", "da/da4/classProfile_1_1forms_1_1AvatarForm.html", null ]
     ] ],
     [ "ProfileUnit.py", "d7/d6d/ProfileUnit_8py.html", [
       [ "IfUiProfile", "dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html", "dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile" ],

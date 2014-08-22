@@ -135,7 +135,7 @@ Atributos Estáticos Públicos</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Descrição Detalhada</h2>
 <div class="textblock"><p>Capaz de modificar a lingaguem preferida do usuário para o sistema. É com base nessa linguagem que o sistema irá carregar os diferentes DICTs do site (o dicionário contendo a nomeação de todas as macros). </p>
 
-<p>Definição na linha <a class="el" href="../../d7/d13/Profile_2forms_8py_source.html#l00041">41</a> do arquivo <a class="el" href="../../d7/d13/Profile_2forms_8py_source.html">forms.py</a>.</p>
+<p>Definição na linha <a class="el" href="../../d7/d13/Profile_2forms_8py_source.html#l00045">45</a> do arquivo <a class="el" href="../../d7/d13/Profile_2forms_8py_source.html">forms.py</a>.</p>
 </div><h2 class="groupheader">Métodos</h2>
 <a class="anchor" id="ab875693b567fc65f8e96af446a4cf78b"></a>
 <div class="memitem">
@@ -151,19 +151,19 @@ Atributos Estáticos Públicos</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definição na linha <a class="el" href="../../d7/d13/Profile_2forms_8py_source.html#l00047">47</a> do arquivo <a class="el" href="../../d7/d13/Profile_2forms_8py_source.html">forms.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="../../de/d9b/classProfile_1_1forms_1_1LanguageForm.html#ab875693b567fc65f8e96af446a4cf78b">   47</a></span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">def </span><a class="code" href="../../de/d9b/classProfile_1_1forms_1_1LanguageForm.html#ab875693b567fc65f8e96af446a4cf78b">clean_newdata</a>(self):</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        newlang = self.cleaned_data[<span class="stringliteral">&#39;newdata&#39;</span>]</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">if</span> newlang <span class="keywordflow">in</span> lang.available_langs:</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keywordflow">return</span> newlang</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordflow">else</span>:</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordflow">if</span> newlang[:newlang.index(<span class="stringliteral">&#39;-&#39;</span>)] <span class="keywordflow">in</span> lang.available_langs:</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                <span class="keywordflow">return</span> newlang</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keywordflow">else</span>:</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                <span class="keywordflow">raise</span> forms.ValidationError(lang.DICT[<span class="stringliteral">&quot;EXCEPTION_INV_LG_F&quot;</span>])</div>
+<p>Definição na linha <a class="el" href="../../d7/d13/Profile_2forms_8py_source.html#l00051">51</a> do arquivo <a class="el" href="../../d7/d13/Profile_2forms_8py_source.html">forms.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="../../de/d9b/classProfile_1_1forms_1_1LanguageForm.html#ab875693b567fc65f8e96af446a4cf78b">   51</a></span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">def </span><a class="code" href="../../de/d9b/classProfile_1_1forms_1_1LanguageForm.html#ab875693b567fc65f8e96af446a4cf78b">clean_newdata</a>(self):</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        newlang = self.cleaned_data[<span class="stringliteral">&#39;newdata&#39;</span>]</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">if</span> newlang <span class="keywordflow">in</span> lang.available_langs:</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keywordflow">return</span> newlang</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordflow">if</span> newlang[:newlang.index(<span class="stringliteral">&#39;-&#39;</span>)] <span class="keywordflow">in</span> lang.available_langs:</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                <span class="keywordflow">return</span> newlang</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                <span class="keywordflow">raise</span> forms.ValidationError(lang.DICT[<span class="stringliteral">&quot;EXCEPTION_INV_LG_F&quot;</span>])</div>
 </div>
-<div class="ttc" id="classProfile_1_1forms_1_1LanguageForm_html_ab875693b567fc65f8e96af446a4cf78b"><div class="ttname"><a href="../../de/d9b/classProfile_1_1forms_1_1LanguageForm.html#ab875693b567fc65f8e96af446a4cf78b">Profile.forms.LanguageForm.clean_newdata</a></div><div class="ttdeci">def clean_newdata</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d13/Profile_2forms_8py_source.html#l00047">forms.py:47</a></div></div>
+<div class="ttc" id="classProfile_1_1forms_1_1LanguageForm_html_ab875693b567fc65f8e96af446a4cf78b"><div class="ttname"><a href="../../de/d9b/classProfile_1_1forms_1_1LanguageForm.html#ab875693b567fc65f8e96af446a4cf78b">Profile.forms.LanguageForm.clean_newdata</a></div><div class="ttdeci">def clean_newdata</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d13/Profile_2forms_8py_source.html#l00051">forms.py:51</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -190,7 +190,7 @@ Atributos Estáticos Públicos</h2></td></tr>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;                                            (<span class="stringliteral">&#39;en&#39;</span>, lang.DICT[<span class="stringliteral">&#39;ENGLISH&#39;</span>])</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;                                                ])</div>
 </div><!-- fragment -->
-<p>Definição na linha <a class="el" href="../../d7/d13/Profile_2forms_8py_source.html#l00042">42</a> do arquivo <a class="el" href="../../d7/d13/Profile_2forms_8py_source.html">forms.py</a>.</p>
+<p>Definição na linha <a class="el" href="../../d7/d13/Profile_2forms_8py_source.html#l00046">46</a> do arquivo <a class="el" href="../../d7/d13/Profile_2forms_8py_source.html">forms.py</a>.</p>
 
 </div>
 </div>
@@ -203,7 +203,7 @@ Atributos Estáticos Públicos</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../d8/dc2/namespaceProfile.html">Profile</a></li><li class="navelem"><a class="el" href="../../de/d77/namespaceProfile_1_1forms.html">forms</a></li><li class="navelem"><a class="el" href="../../de/d9b/classProfile_1_1forms_1_1LanguageForm.html">LanguageForm</a></li>
-    <li class="footer">Gerado em Terça, 1 de Julho de 2014 19:10:29 para LETproject por
+    <li class="footer">Gerado em Sexta, 22 de Agosto de 2014 17:35:23 para LETproject por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -149,7 +149,7 @@ Additional Inherited Members</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Descrição Detalhada</h2>
 <div class="textblock"><p>Deve carregar o devido template, contendo os dados básicos do usuário, como cursos matriculados e histórico para estudantes, e cursos monitorados para professores. </p>
 
-<p>Definição na linha <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html#l00145">145</a> do arquivo <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html">ProfileUnit.py</a>.</p>
+<p>Definição na linha <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html#l00148">148</a> do arquivo <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html">ProfileUnit.py</a>.</p>
 </div><h2 class="groupheader">Métodos</h2>
 <a class="anchor" id="a5abc7f7c1ca1cb3e070c36a869263e6d"></a>
 <div class="memitem">
@@ -175,19 +175,17 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definição na linha <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html#l00147">147</a> do arquivo <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html">ProfileUnit.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="../../db/dcf/classProfile_1_1ProfileUnit_1_1UiHomeProfile.html#a5abc7f7c1ca1cb3e070c36a869263e6d">  147</a></span>&#160;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="keyword">def </span><a class="code" href="../../db/dcf/classProfile_1_1ProfileUnit_1_1UiHomeProfile.html#a5abc7f7c1ca1cb3e070c36a869263e6d">run</a>(self, request):</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        user = request.session[<span class="stringliteral">&#39;user&#39;</span>]</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordflow">print</span> request.session[<span class="stringliteral">&#39;user&#39;</span>]</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <span class="keywordflow">print</span> request.LANGUAGE_CODE</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="keywordflow">if</span> <span class="keywordflow">not</span> <span class="stringliteral">&#39;matric&#39;</span> <span class="keywordflow">in</span> user:</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            request.session[<span class="stringliteral">&#39;user&#39;</span>] = self.bus.refreshUser(request)</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            user = request.session[<span class="stringliteral">&#39;user&#39;</span>]</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        translation.activate(request.session[<span class="stringliteral">&#39;user&#39;</span>][<span class="stringliteral">&#39;language&#39;</span>])</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="keywordflow">return</span> render(request, <span class="stringliteral">&quot;Profile/home.html&quot;</span>, {<span class="stringliteral">&#39;user&#39;</span> : user})</div>
+<p>Definição na linha <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html#l00150">150</a> do arquivo <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html">ProfileUnit.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="../../db/dcf/classProfile_1_1ProfileUnit_1_1UiHomeProfile.html#a5abc7f7c1ca1cb3e070c36a869263e6d">  150</a></span>&#160;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keyword">def </span><a class="code" href="../../db/dcf/classProfile_1_1ProfileUnit_1_1UiHomeProfile.html#a5abc7f7c1ca1cb3e070c36a869263e6d">run</a>(self, request):</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        user = request.session[<span class="stringliteral">&#39;user&#39;</span>]</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keywordflow">if</span> <span class="keywordflow">not</span> <span class="stringliteral">&#39;matric&#39;</span> <span class="keywordflow">in</span> user:</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            request.session[<span class="stringliteral">&#39;user&#39;</span>] = self.bus.refreshUser(request)</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            user = request.session[<span class="stringliteral">&#39;user&#39;</span>]</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        translation.activate(request.session[<span class="stringliteral">&#39;user&#39;</span>][<span class="stringliteral">&#39;language&#39;</span>])</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <span class="keywordflow">return</span> render(request, <span class="stringliteral">&quot;Profile/home.html&quot;</span>, {<span class="stringliteral">&#39;user&#39;</span> : user})</div>
 </div>
-<div class="ttc" id="classProfile_1_1ProfileUnit_1_1UiHomeProfile_html_a5abc7f7c1ca1cb3e070c36a869263e6d"><div class="ttname"><a href="../../db/dcf/classProfile_1_1ProfileUnit_1_1UiHomeProfile.html#a5abc7f7c1ca1cb3e070c36a869263e6d">Profile.ProfileUnit.UiHomeProfile.run</a></div><div class="ttdeci">def run</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6d/ProfileUnit_8py_source.html#l00147">ProfileUnit.py:147</a></div></div>
+<div class="ttc" id="classProfile_1_1ProfileUnit_1_1UiHomeProfile_html_a5abc7f7c1ca1cb3e070c36a869263e6d"><div class="ttname"><a href="../../db/dcf/classProfile_1_1ProfileUnit_1_1UiHomeProfile.html#a5abc7f7c1ca1cb3e070c36a869263e6d">Profile.ProfileUnit.UiHomeProfile.run</a></div><div class="ttdeci">def run</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6d/ProfileUnit_8py_source.html#l00150">ProfileUnit.py:150</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -200,7 +198,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../d8/dc2/namespaceProfile.html">Profile</a></li><li class="navelem"><a class="el" href="../../d0/d31/namespaceProfile_1_1ProfileUnit.html">ProfileUnit</a></li><li class="navelem"><a class="el" href="../../db/dcf/classProfile_1_1ProfileUnit_1_1UiHomeProfile.html">UiHomeProfile</a></li>
-    <li class="footer">Gerado em Terça, 1 de Julho de 2014 19:10:30 para LETproject por
+    <li class="footer">Gerado em Sexta, 22 de Agosto de 2014 17:35:23 para LETproject por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

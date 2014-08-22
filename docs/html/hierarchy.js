@@ -8,7 +8,9 @@ var hierarchy =
       [ "Adm.forms.AdmRegProfForm", "d3/d88/classAdm_1_1forms_1_1AdmRegProfForm.html", null ],
       [ "Adm.forms.AdmRegStuForm", "d0/d94/classAdm_1_1forms_1_1AdmRegStuForm.html", null ],
       [ "Login.forms.LoginForm", "d0/db9/classLogin_1_1forms_1_1LoginForm.html", null ],
+      [ "Profile.forms.AvatarForm", "da/da4/classProfile_1_1forms_1_1AvatarForm.html", null ],
       [ "Profile.forms.BiosForm", "d7/d1e/classProfile_1_1forms_1_1BiosForm.html", null ],
+      [ "Profile.forms.InterestsForm", "d4/d5e/classProfile_1_1forms_1_1InterestsForm.html", null ],
       [ "Profile.forms.LanguageForm", "de/d9b/classProfile_1_1forms_1_1LanguageForm.html", null ],
       [ "Profile.forms.NameForm", "d6/d33/classProfile_1_1forms_1_1NameForm.html", null ],
       [ "Profile.forms.SexForm", "d1/dea/classProfile_1_1forms_1_1SexForm.html", null ]

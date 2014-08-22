@@ -27,8 +27,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d6/d2a/namespaceCourse_1_1models.html",
-"dd/df0/namespaceCourse.html"
+"d5/dfc/classLogin_1_1LoginUnit_1_1PersLogin.html",
+"dd/d8d/Building_2views_8py_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

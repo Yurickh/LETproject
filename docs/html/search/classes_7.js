@@ -13,5 +13,6 @@ var searchData=
   ['ifuiadm',['IfUiAdm',['../d7/d07/classAdm_1_1AdmUnit_1_1IfUiAdm.html',1,'Adm::AdmUnit']]],
   ['ifuicourse',['IfUiCourse',['../d6/d82/classCourse_1_1CourseUnit_1_1IfUiCourse.html',1,'Course::CourseUnit']]],
   ['ifuilogin',['IfUiLogin',['../d9/d56/classLogin_1_1LoginUnit_1_1IfUiLogin.html',1,'Login::LoginUnit']]],
-  ['ifuiprofile',['IfUiProfile',['../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html',1,'Profile::ProfileUnit']]]
+  ['ifuiprofile',['IfUiProfile',['../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html',1,'Profile::ProfileUnit']]],
+  ['interestsform',['InterestsForm',['../d4/d5e/classProfile_1_1forms_1_1InterestsForm.html',1,'Profile::forms']]]
 ];
