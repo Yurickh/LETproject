@@ -3,10 +3,17 @@
 ## @file ProfileUnit.py
 #   Este arquivo é responsável pelo armazenamento de todas as camadas 
 # correspondentes ao módulo de perfil. 
-#   Os métodos aqui são criados e chamados pela Factory (MainUnit.py)
-# quando necessários. Eles são responsáveis pelo redirecionamento do usuário
-# para páginas diferentes dependendo do tipo de usuário, edição de dados 
-# pessoais, visualização de informações relativas aos cursos.
+#   O módulo de perfil é designado a administrar duas das páginas do site
+# final: a página "home" e a página de perfil.
+#   Na página Home, o usuário (Student ou Professor, Adms não possuem perfil)
+# terá acesso a uma versão resumida do seu perfil, bem como um infográfico com
+# o seu desenvolvimento nos cursos em que está cadastrado. É possível, a partir
+# desta página, acessar a página de perfil e a página de curso (vide 
+# CourseUnit.py).
+#   A página de perfil, por sua vez, disponibilizará ao usuário (quase) todas
+# as informações que o sistema guarda sobre ele, e também o possibilitará 
+# editar alguns campos, como "interesses" ou "biografia".
+# É nesta página que o usuário poderá alterar sua senha.
 
 from abc import*
 
@@ -137,9 +144,19 @@ class IfPersProfile:
     #
     #   @arg    newdata     Dado a ser atualizado.
     #
+
     #   @arg    database    Objeto de modelo que será utilizado.
     @abstractmethod
     def update(self, username, field, newdata, database): pass
+
+
+    ## Método que recupera os dados de um campo específico de todos.
+    #       Atualmente, não está sendo utilizado para nada, mas numa versão
+    #       anterior do software, era capaz de recuperar os interesses dos
+    #       usuários para listá-los e agrupá-los.
+    #
+    #   @arg    field       Campo a ser pesquisado.
+    def fetchField(self, field): pass
 
 ## Camada de apresentação para a página principal do site.
 #   Deve carregar o devido template, contendo os dados básicos do usuário,
@@ -166,6 +183,7 @@ class UiFullProfile(IfUiProfile):
     ## Lista de campos passíveis de edição por um usuário.
     __editable = [
                     'name',
+                    'password',
                     'sex',
                     'bios',
                     'avatar'
@@ -226,6 +244,9 @@ class UiFullProfile(IfUiProfile):
                 if   "name" in request.POST:
                     form = NameForm(request.POST)
                     field = "name"
+                if  "password" in request.POST:
+                    form = PasswordForm(request.POST)
+                    field = "password"
                 elif "language" in request.POST:
                     form = LanguageForm(request.POST)
                     field = "language"
@@ -272,6 +293,8 @@ class UiFullProfile(IfUiProfile):
                 err = False
                 if   field == "name":
                     form = NameForm(initial={'newdata':get_user()['name']})
+                elif field == "password":
+                    form = PasswordForm()
                 elif field == "language":
                     form = LanguageForm(initial={
                             'newdata':get_user()['language']})
@@ -316,6 +339,15 @@ class BusProfile(IfBusProfile):
             if fpw != user['password']:
                 raise ValueError(lang.DICT['EXCEPTION_INV_PW_F'])
             newdata = form.cleaned_data['newdata'].value
+        elif field == "password":
+            npw = form.cleaned_data['newdata'].value
+            rpw = form.cleaned_data['rp_newdata'].value
+            opw = form.cleaned_data['old_password'].value
+            if npw != rpw:
+                raise ValueError(lang.DICT['EXCEPTION_INV_PW_R'])
+            if opw != user['password']:
+                raise ValueError(lang.DICt['EXCEPTION_INV_PW_F'])
+            newdata = npw
         elif field == "language":
             newdata = form.cleaned_data['newdata']
         elif field == "avatar":
