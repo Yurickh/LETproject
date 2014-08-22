@@ -22,6 +22,7 @@ import ELO.locale.index as lang
 from ELO.models import Student, Professor
 from Profile.forms import (
     NameForm, 
+    PasswordForm,
     LanguageForm,
     SexForm,
     BiosForm,

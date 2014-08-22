@@ -54,7 +54,7 @@ class PasswordForm(forms.Form):
 			raise forms.ValidationError(exc)
 		return n_pw
 
-	def clean_rp_password(self):
+	def clean_rp_newdata(self):
 		try:
 			r_pw = Password(self.cleaned_data['rp_newdata'])
 		except ValueError as exc:
