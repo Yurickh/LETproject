@@ -1,37 +1,45 @@
 {% extends "includes/wrapper.html" %}
+{% load staticfiles %}
 
-{% block title %} Elo-Administração {% endblock %}
+{% block title %} SALiE Admin {% endblock %}
+
+{% block head %}
+	<script src="{% static 'Adm/script.js' %}"></script>
+	<script src="{% static 'include/select2/select2.min.js' %}"></script>
+
+	<link 	rel="stylesheet"
+			type="text/css"
+			href="{% static 'Adm/styles.css' %}" />
+
+
+{% endblock %}
 
 {% block content %}
 
-<ui><h3>Opções</h3>
-	<li class="admopt"> Aluno  </li>
-	<li class="admopt"> Professor  </li>
-	<li class="admopt"> Curso  </li>
-</ui>
+<h3>MENU</h3>
+	<div id="container">
+		<div id="left" class="p-left">
+			<div style="padding-left:70px"><h2>Aluno</h2></div>
+		  	<button id="edit_{{ field }}"
+					title="{{ value.fname }}" 
+					class="button">Registrar Novo Aluno</button>
+			<button onclick="updateStudent()" class="button">Atualizar dados de Aluno</button>
+			<button onclick="deleteStudent()" class="button">Apagar Registro de Aluno</button>			
+		</div>
+	  	<div id="center">
+	  		<div style="padding-left:70px"><h2>Curso</h2></div>
+		  	<button onclick="registerCourses()" class="button">Registrar Novo Curso</button>
+			<button onclick="updateCourses()" class="button">Atualizar dados de Curso</button>
+			<button onclick="deleteCourses()" class="button">Apagar Registro de Curso</button>
+		</div>
+	  	<div id="right" class="p-right">
+	  		<div style="padding-left:55px"><h2>Professor</h2></div>
+		  	<button onclick="registerProfessor()" class="button">Registrar Novo Professor</button>
+			<button onclick="updateProfessor()" class="button">Atualizar dados de Professor</button>
+			<button onclick="deleteProfessor()" class="button">Apagar Registro de Professor</button>
+		</div>
+	</div>
 
-<div class="admtable">
-	<div id="admoptStudent">
-		<ul>
-			<li onclick="registerStudent()">Registrar Novo Aluno</li>
-			<li oncclik="updateStudent()">Atualizar dados de Aluno</li>
-			<li onclik="deleteStudent()">Apagar Registro de Aluno</li>
-		</ul>
-	</div>
-	<div id="admoptProfessor">
-		<ul>
-			<li onclick="registerProfessor()">Registrar Novo Professor</li>
-			<li oncclik="updateProfessor()">Atualizar dados de Professor</li>
-			<li onclik="deleteProfessor()">Apagar Registro de Professor</li>
-		</ul>
-	</div>
-	<div id="admoptCourses">
-		<ul>
-			<li onclick="registerCourses()">Registrar Novo Curso</li>
-			<li oncclik="updateCourses()">Atualizar dados de Curso</li>
-			<li onclik="deleteCourses()">Apagar Registro de Curso</li>
-		</ul>
-	</div>
-	
-</div>
+	<div class="dialog"></div>
+
 {% endblock %}
