@@ -13,6 +13,13 @@ import ELO.locale.index as lang
 
 from ELO.models import Adm, Student, Professor
 from forms import *
+from Profile.forms import (
+    NameForm, 
+    LanguageForm,
+    SexForm,
+    BiosForm,
+    InterestsForm,
+    AvatarForm)
 
 from django.shortcuts import render
 from django.conf import settings
@@ -62,7 +69,7 @@ class IfUiAdm:
     #   O método run() permite à Factory dar o controle do programa 
     #   ao módulo de Administração.
     @abstractmethod
-    def run(self, request): pass
+    def run(self, request, action=None, model=None): pass
 
 ## Interface para a camada de negócio do módulo de Administração.
 #   É responsável pela validação dos dados submetidos através do 
@@ -170,8 +177,38 @@ class IfPersAdm:
 class UiAdm(IfUiAdm): 
 
     ## O método principal de qualquer classe de UI (User Interface).
-    def run(self, request):
-        return render(request, "Adm/home.html")
+    def run(self, request, action=None, model=None):
+        # Coleta o usuario da sessão atual
+        get_user = lambda: request.session['user']
+
+        ## @if Verifica qual o propósito do submit.
+        #   Caso seja POST, a requisição ocorre após a submissão de uma form,
+        #       podendo ser ela de registro, edição ou deleção.
+        #   Caso não seja e não ocorra a passagem dos campos de ação e modelo,
+        #       a requisição há de ser um GET, para mostrar a página principal de Adm.
+        #   Em último caso será a requisição do Javascript, denominada como AJAX,
+        #       que irá solicitar em tempo de eventos dos dialogs iniciados,
+        #       dados para requisição dos forms adequados e informações
+        #       do usuário procurado para uma possível edição ou deleção.
+
+
+        # Se a requisição for por meio de POST ela coleta o dicionário de fields ligados
+        #   aos novos dados e chama as funções adequadas de edição.
+        if request.method == "POST":
+            return render(request, "Adm/edit.html")
+        # Quando a requisição for de GET então é retornado para a página principal.                                            })
+        else:
+            # Chamada normal de GET.
+            if ((not action) and (not model)):
+                return render(request, "Adm/home.html")
+            # Caso contrário, no caso de requisições do tipo AJAX, 
+            #   irá ser repassado forms adequados ao pedido ou será feito
+            #   buscas de dados do usuário atual.
+            else:
+                return render(request, "Adm/edit.html")
+
+
+
 
 ## Camada de negócio para o módulo de administração.
 #   Deve ser capaz de manipular os dados do sistema,
