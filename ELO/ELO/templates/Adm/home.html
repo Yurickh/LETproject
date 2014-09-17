@@ -20,23 +20,31 @@
 	<div id="container">
 		<div id="left" class="p-left">
 			<div style="padding-left:70px"><h2>Aluno</h2></div>
-		  	<button id="edit_{{ field }}"
-					title="{{ value.fname }}" 
-					class="button">Registrar Novo Aluno</button>
-			<button onclick="updateStudent()" class="button">Atualizar dados de Aluno</button>
-			<button onclick="deleteStudent()" class="button">Apagar Registro de Aluno</button>			
+			  	<button id="reg_Student"
+						class="button">Registrar Novo Aluno</button>
+				<button id="att_Student"
+						title=""
+						class="button">Atualizar dados de Aluno</button>
+				<button id="del_Student"
+						class="button">Apagar Registro de Aluno</button>
 		</div>
 	  	<div id="center">
 	  		<div style="padding-left:70px"><h2>Curso</h2></div>
-		  	<button onclick="registerCourses()" class="button">Registrar Novo Curso</button>
-			<button onclick="updateCourses()" class="button">Atualizar dados de Curso</button>
-			<button onclick="deleteCourses()" class="button">Apagar Registro de Curso</button>
+		  	<button id="reg_Professor"
+					class="button">Registrar Novo Curso</button>
+			<button id="att_Professor"
+					class="button">Atualizar dados de Curso</button>
+			<button id="del_Professor"
+					class="button">Apagar Registro de Curso</button>
 		</div>
 	  	<div id="right" class="p-right">
 	  		<div style="padding-left:55px"><h2>Professor</h2></div>
-		  	<button onclick="registerProfessor()" class="button">Registrar Novo Professor</button>
-			<button onclick="updateProfessor()" class="button">Atualizar dados de Professor</button>
-			<button onclick="deleteProfessor()" class="button">Apagar Registro de Professor</button>
+		  	<button id="reg_Course"
+					class="button">Registrar Novo Professor</button>
+			<button id="att_Course"
+					class="button">Atualizar dados de Professor</button>
+			<button id="del_Course"
+					class="button">Apagar Registro de Professor</button>
 		</div>
 	</div>
 
