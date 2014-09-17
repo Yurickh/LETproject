@@ -1,21 +1,38 @@
 $(document).ready(function(){
 
+	// Caracteristicas do Dialog.
 	$(".dialog").dialog({
 		autoOpen: false,
-		hide: "slideUp",
+		show: {
+			effect: "blind",
+			duration: 1000
+		},
+		hide: {
+			effect: "blind",
+			duration: 1000
+		},
 		modal: true,
 		resizable: false,
-		});
+	});
 
-	$("button[id^='edit_']").click(function(){
-		field = $(this).attr("id").slice(5);
-		fname = $(this).attr("title")
+	// Cria o evento de clicar e abrir os buttons da pagina de adm.
+	$("button").click(function(){
+		// Coleta o modelo sobre o qual a acao sera realizada, sendo eles
+		// estudante, professor ou curso.
+		model = $(this).attr("id").slice(4);
+		// Coleta a acao que ira ser realizada, sendo elas de
+		// registro, edicao ou delecao.
+		text_button = $(this).text();
+		action = text_button.substr(0, text_button.indexOf(' ')).toLowerCase();
 
-		// Gets the title of the dialog from the title of button.
-		$(".dialog").dialog("option", "title", fname);
+		// Transforma o titulo do button como titulo do dialog.
+		$(".dialog").dialog("option", "title", text_button);
 
-		$(".dialog").load("/assync/editfield/"+field);
-		$(".dialog").dialog("open")
+		// Abre o dialog
+		$(".dialog").dialog("open");
+		// Faz uma requisicao AJAX passando a acao e o modelo adequado.
+		$(".dialog").load("/assync/adm-edit/"+action+"/"+model+"/");
+		
 	});
 
 });
