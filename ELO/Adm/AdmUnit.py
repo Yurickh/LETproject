@@ -20,6 +20,13 @@ from Profile.forms import (
     BiosForm,
     InterestsForm,
     AvatarForm)
+from forms import (
+    AdmRegStu_ProfForm,
+    AdmDelStu_ProfForm,
+    confAdm,
+    AdmRegCourForm,
+    AdmSrcCourForm,
+    AdmDelCourForm)
 
 from django.shortcuts import render
 from django.conf import settings
@@ -117,7 +124,7 @@ class IfBusAdm:
     #
     #   @arg form       Objeto form que contém os dados.
     @abstractmethod
-    def editAccounts(self, request, field, form): pass
+    def editAccounts(self, dict_field_value, database): pass
 
     ## Verifica os últimos eventos realizados pelo Administrador.
     #@abstractmethod
@@ -195,7 +202,17 @@ class UiAdm(IfUiAdm):
         # Se a requisição for por meio de POST ela coleta o dicionário de fields ligados
         #   aos novos dados e chama as funções adequadas de edição.
         if request.method == "POST":
-            return render(request, "Adm/edit.html")
+            try:
+                if "registrar" in request.POST:
+                    form = AdmRegStu_ProfForm(request.POST)
+
+                if form.is_valid():
+                    self.bus.editAccounts(request, request.POST, "Student")
+                else:
+                    raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
+
+            except ValueError as exc:
+                return render(request, "Adm/home.html")
         # Quando a requisição for de GET então é retornado para a página principal.                                            })
         else:
             # Chamada normal de GET.
@@ -205,7 +222,26 @@ class UiAdm(IfUiAdm):
             #   irá ser repassado forms adequados ao pedido ou será feito
             #   buscas de dados do usuário atual.
             else:
-                return render(request, "Adm/edit.html")
+                err = False
+                if(action == "registrar"):
+                    form = AdmRegStu_ProfForm()
+                    return render(request, "Adm/edit.html", {'form': form,
+                                                            'action' : action,
+                                                            'err': err,
+                                                            })
+                elif((action == "atualizar") or (action == "apagar")):
+                    form = AdmDelStu_ProfForm()
+                    return render(request, "Adm/edit.html", {'form': form,
+                                                            'action' : action,
+                                                            'err': err,
+                                                            })
+                else:
+                    form = lang.DICT["ERROR_FORM"]
+                    err = True 
+                return render(request, "Adm/edit.html", {'form': form,
+                                                        'action' : action,
+                                                        'err': err,
+                                                        })
 
 
 
@@ -219,7 +255,8 @@ class BusAdm(IfBusAdm):
 
     ## Edita dados de um conta no database.
     #   Podendo ser este de uma conta de Estudante, Professor ou um Curso.
-    def editAccounts(self, request, field, form): pass
+    def editAccounts(self, dict_field_value, database):
+        self.pers.data_in(request, request.POST, "Student")
 
 ## Camada de persistência para o módulo de administração.
 #   Recupera os dados do banco de dados referentes aos alunos
