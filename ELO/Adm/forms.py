@@ -62,7 +62,7 @@ class AdmRegStu_ProfForm(forms.Form):
 
 	def clean_userEmail(self):
 		try:
-			email = Email(self.cleaned_data["userEmail"])
+			email = Mail(self.cleaned_data["userEmail"])
 		except ValueError:
 			raise forms.ValidationError(lang.DICT["EXCEPTION_INV_STU_ML"])
 		return email	
@@ -146,3 +146,4 @@ class AdmDelCourForm(forms.Form):
 		except ValueError:
 			raise forms.ValidationError("Código Inválido")
 		return courMatric#.
+ 
