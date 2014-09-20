@@ -1,0 +1,71 @@
+\hypertarget{classELO_1_1BaseUnit_1_1Mail}{\subsection{Referência da Classe E\-L\-O.\-Base\-Unit.\-Mail}
+\label{classELO_1_1BaseUnit_1_1Mail}\index{E\-L\-O.\-Base\-Unit.\-Mail@{E\-L\-O.\-Base\-Unit.\-Mail}}
+}
+
+
+Classe container de email.  
+
+
+Diagrama de Hierarquia para E\-L\-O.\-Base\-Unit.\-Mail\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d5/db6/classELO_1_1BaseUnit_1_1Mail}
+\end{center}
+\end{figure}
+\subsubsection*{Métodos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classELO_1_1BaseUnit_1_1Mail_a7b9e31959dacc8c25ecae3e9bc0321aa}{\-\_\-\-\_\-init\-\_\-\-\_\-}
+\begin{DoxyCompactList}\small\item\em Construtor da classe. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Descrição Detalhada}
+Este tipo básico irá armazenar emails para contato e identificação dos usuários. 
+
+Definição na linha \hyperlink{BaseUnit_8py_source_l00370}{370} do arquivo \hyperlink{BaseUnit_8py_source}{Base\-Unit.\-py}.
+
+
+
+\subsubsection{Construtores \& Destrutores}
+\hypertarget{classELO_1_1BaseUnit_1_1Mail_a7b9e31959dacc8c25ecae3e9bc0321aa}{\index{E\-L\-O\-::\-Base\-Unit\-::\-Mail@{E\-L\-O\-::\-Base\-Unit\-::\-Mail}!\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}}
+\index{\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}!ELO::BaseUnit::Mail@{E\-L\-O\-::\-Base\-Unit\-::\-Mail}}
+\paragraph[{\-\_\-\-\_\-init\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Base\-Unit.\-Mail.\-\_\-\-\_\-init\-\_\-\-\_\- (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{value}
+\end{DoxyParamCaption}
+)}}\label{classELO_1_1BaseUnit_1_1Mail_a7b9e31959dacc8c25ecae3e9bc0321aa}
+Deve impedir a criação do tipo básico caso seu conteúdo não esteja de acordo com as especificações.
+
+\begin{DoxyItemize}
+\item value String a ser armazenada no tipo básico.\end{DoxyItemize}
+
+\begin{DoxyExceptions}{Exceções}
+{\em Value\-Error} & Exceção lançada no caso do valor passado não ser válido. \\
+\hline
+\end{DoxyExceptions}
+
+
+Definição na linha \hyperlink{BaseUnit_8py_source_l00382}{382} do arquivo \hyperlink{BaseUnit_8py_source}{Base\-Unit.\-py}.
+
+
+
+Referências \hyperlink{BaseUnit_8py_source_l00044}{E\-L\-O.\-Base\-Unit.\-If\-Base\-Type.\-\_\-validate()} e \hyperlink{BaseUnit_8py_source_l00035}{E\-L\-O.\-Base\-Unit.\-If\-Base\-Type.\-\_\-value}.
+
+
+\begin{DoxyCode}
+\hypertarget{classELO_1_1BaseUnit_1_1Mail_l00382}{}\hyperlink{classELO_1_1BaseUnit_1_1Mail_a7b9e31959dacc8c25ecae3e9bc0321aa}{00382} 
+00383     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Mail_a7b9e31959dacc8c25ecae3e9bc0321aa}{\_\_init\_\_}(self, value):
+00384         \textcolor{keywordflow}{try}:
+00385             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(value)
+00386         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00387             del self
+00388             \textcolor{keywordflow}{raise} exc
+00389         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value} = value
+
+\end{DoxyCode}
+
+
+A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}
+\item 
+E\-L\-O/\-E\-L\-O/\hyperlink{BaseUnit_8py}{Base\-Unit.\-py}\end{DoxyCompactItemize}

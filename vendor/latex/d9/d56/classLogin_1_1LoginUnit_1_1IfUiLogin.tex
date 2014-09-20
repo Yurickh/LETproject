@@ -1,0 +1,177 @@
+\hypertarget{classLogin_1_1LoginUnit_1_1IfUiLogin}{\subsection{Referência da Classe Login.\-Login\-Unit.\-If\-Ui\-Login}
+\label{classLogin_1_1LoginUnit_1_1IfUiLogin}\index{Login.\-Login\-Unit.\-If\-Ui\-Login@{Login.\-Login\-Unit.\-If\-Ui\-Login}}
+}
+
+
+Interface para a camada de Apresentação de Usuário do módulo \hyperlink{namespaceLogin}{Login}.  
+
+
+Diagrama de Hierarquia para Login.\-Login\-Unit.\-If\-Ui\-Login\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d9/d56/classLogin_1_1LoginUnit_1_1IfUiLogin}
+\end{center}
+\end{figure}
+\subsubsection*{Métodos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_a2afcef7056181566ac0e801ad8094ece}{\-\_\-\-\_\-init\-\_\-\-\_\-}
+\item 
+def \hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_abab63bd2085f485ca82494db8eb5f520}{bus}
+\begin{DoxyCompactList}\small\item\em Objeto que representa a camada de negócio, subjacente a de U\-I. \end{DoxyCompactList}\item 
+def \hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_abab63bd2085f485ca82494db8eb5f520}{bus}
+\item 
+def \hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_abab63bd2085f485ca82494db8eb5f520}{bus}
+\begin{DoxyCompactList}\small\item\em Método de deleção do objeto que representa a camada de negócio. \end{DoxyCompactList}\item 
+def \hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_ac6250c19afa63158907c6e8b4ff6dbd5}{run}
+\begin{DoxyCompactList}\small\item\em O método principal de qualquer classe de U\-I (user interface), o método \hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_ac6250c19afa63158907c6e8b4ff6dbd5}{run()} permite à Factory dar o controle do programa ao módulo de \hyperlink{namespaceLogin}{Login}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Atributos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_af6823ae4c77d340c2341932d8f338753}{bus}
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Descrição Detalhada}
+É responsável pelo carregamento do template correto e processa os dados inseridos no formulário de login. 
+
+Definição na linha \hyperlink{LoginUnit_8py_source_l00026}{26} do arquivo \hyperlink{LoginUnit_8py_source}{Login\-Unit.\-py}.
+
+
+
+\subsubsection{Construtores \& Destrutores}
+\hypertarget{classLogin_1_1LoginUnit_1_1IfUiLogin_a2afcef7056181566ac0e801ad8094ece}{\index{Login\-::\-Login\-Unit\-::\-If\-Ui\-Login@{Login\-::\-Login\-Unit\-::\-If\-Ui\-Login}!\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}}
+\index{\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}!Login::LoginUnit::IfUiLogin@{Login\-::\-Login\-Unit\-::\-If\-Ui\-Login}}
+\paragraph[{\-\_\-\-\_\-init\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def Login.\-Login\-Unit.\-If\-Ui\-Login.\-\_\-\-\_\-init\-\_\-\-\_\- (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{bus}
+\end{DoxyParamCaption}
+)}}\label{classLogin_1_1LoginUnit_1_1IfUiLogin_a2afcef7056181566ac0e801ad8094ece}
+
+
+Definição na linha \hyperlink{LoginUnit_8py_source_l00030}{30} do arquivo \hyperlink{LoginUnit_8py_source}{Login\-Unit.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classLogin_1_1LoginUnit_1_1IfUiLogin_l00030}{}\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_a2afcef7056181566ac0e801ad8094ece}{00030} 
+00031     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_a2afcef7056181566ac0e801ad8094ece}{\_\_init\_\_}(self, bus):
+\hypertarget{classLogin_1_1LoginUnit_1_1IfUiLogin_l00032}{}\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_af6823ae4c77d340c2341932d8f338753}{00032}         \textcolor{keywordflow}{try}:
+00033             self.\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_af6823ae4c77d340c2341932d8f338753}{bus} = bus
+00034         \textcolor{keywordflow}{except} TypeError \textcolor{keyword}{as} exc:
+00035             del self
+00036             \textcolor{keywordflow}{raise} exc
+
+\end{DoxyCode}
+
+
+\subsubsection{Métodos}
+\hypertarget{classLogin_1_1LoginUnit_1_1IfUiLogin_abab63bd2085f485ca82494db8eb5f520}{\index{Login\-::\-Login\-Unit\-::\-If\-Ui\-Login@{Login\-::\-Login\-Unit\-::\-If\-Ui\-Login}!bus@{bus}}
+\index{bus@{bus}!Login::LoginUnit::IfUiLogin@{Login\-::\-Login\-Unit\-::\-If\-Ui\-Login}}
+\paragraph[{bus}]{\setlength{\rightskip}{0pt plus 5cm}def Login.\-Login\-Unit.\-If\-Ui\-Login.\-bus (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{classLogin_1_1LoginUnit_1_1IfUiLogin_abab63bd2085f485ca82494db8eb5f520}
+Deve ser inicializada no momento da criação de um objeto do tipo \hyperlink{classLogin_1_1LoginUnit_1_1UiLogin}{Ui\-Login}, ou seja, uma camada de U\-I nunca existirá sem uma camada de Bus suportando-\/a. 
+
+Definição na linha \hyperlink{LoginUnit_8py_source_l00042}{42} do arquivo \hyperlink{LoginUnit_8py_source}{Login\-Unit.\-py}.
+
+
+
+Referências \hyperlink{CourseUnit_8py_source_l00025}{Course.\-Course\-Unit.\-If\-Ui\-Course.\-\_\-\-\_\-bus}, \hyperlink{AdmUnit_8py_source_l00031}{Adm.\-Adm\-Unit.\-If\-Ui\-Adm.\-\_\-\-\_\-bus}, \hyperlink{MainUnit_8py_source_l00038}{E\-L\-O.\-Main\-Unit.\-Factory.\-\_\-\-\_\-bus}, \hyperlink{LoginUnit_8py_source_l00048}{Login.\-Login\-Unit.\-If\-Ui\-Login.\-\_\-\-\_\-bus} e \hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_af6823ae4c77d340c2341932d8f338753}{Login.\-Login\-Unit.\-If\-Ui\-Login.\-bus}.
+
+
+\begin{DoxyCode}
+\hypertarget{classLogin_1_1LoginUnit_1_1IfUiLogin_l00042}{}\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_abab63bd2085f485ca82494db8eb5f520}{00042} 
+00043     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_af6823ae4c77d340c2341932d8f338753}{bus}(self):
+00044         \textcolor{keywordflow}{return} self.\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_a550be8bfdf4cbc495bc966484e867af2}{\_\_bus}
+
+\end{DoxyCode}
+\hypertarget{classLogin_1_1LoginUnit_1_1IfUiLogin_abab63bd2085f485ca82494db8eb5f520}{\index{Login\-::\-Login\-Unit\-::\-If\-Ui\-Login@{Login\-::\-Login\-Unit\-::\-If\-Ui\-Login}!bus@{bus}}
+\index{bus@{bus}!Login::LoginUnit::IfUiLogin@{Login\-::\-Login\-Unit\-::\-If\-Ui\-Login}}
+\paragraph[{bus}]{\setlength{\rightskip}{0pt plus 5cm}def Login.\-Login\-Unit.\-If\-Ui\-Login.\-bus (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{value}
+\end{DoxyParamCaption}
+)}}\label{classLogin_1_1LoginUnit_1_1IfUiLogin_abab63bd2085f485ca82494db8eb5f520}
+
+
+Definição na linha \hyperlink{LoginUnit_8py_source_l00046}{46} do arquivo \hyperlink{LoginUnit_8py_source}{Login\-Unit.\-py}.
+
+
+
+Referências \hyperlink{CourseUnit_8py_source_l00025}{Course.\-Course\-Unit.\-If\-Ui\-Course.\-\_\-\-\_\-bus}, \hyperlink{AdmUnit_8py_source_l00031}{Adm.\-Adm\-Unit.\-If\-Ui\-Adm.\-\_\-\-\_\-bus}, \hyperlink{MainUnit_8py_source_l00038}{E\-L\-O.\-Main\-Unit.\-Factory.\-\_\-\-\_\-bus}, \hyperlink{LoginUnit_8py_source_l00048}{Login.\-Login\-Unit.\-If\-Ui\-Login.\-\_\-\-\_\-bus} e \hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_af6823ae4c77d340c2341932d8f338753}{Login.\-Login\-Unit.\-If\-Ui\-Login.\-bus}.
+
+
+\begin{DoxyCode}
+\hypertarget{classLogin_1_1LoginUnit_1_1IfUiLogin_l00046}{}\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_abab63bd2085f485ca82494db8eb5f520}{00046} 
+00047     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_af6823ae4c77d340c2341932d8f338753}{bus}(self, value):
+00048         \textcolor{keywordflow}{if} isinstance(value, IfBusLogin):
+00049             self.\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_a550be8bfdf4cbc495bc966484e867af2}{\_\_bus} = value
+00050         \textcolor{keywordflow}{else}:
+00051             \textcolor{keywordflow}{raise} TypeError(\textcolor{stringliteral}{"Expected IfBusLogin instance at \(\backslash\)}
+00052 \textcolor{stringliteral}{                    UiLogin.\_\_bus. Received "} + str(type(value)) + \textcolor{stringliteral}{" instead."})
+
+\end{DoxyCode}
+\hypertarget{classLogin_1_1LoginUnit_1_1IfUiLogin_abab63bd2085f485ca82494db8eb5f520}{\index{Login\-::\-Login\-Unit\-::\-If\-Ui\-Login@{Login\-::\-Login\-Unit\-::\-If\-Ui\-Login}!bus@{bus}}
+\index{bus@{bus}!Login::LoginUnit::IfUiLogin@{Login\-::\-Login\-Unit\-::\-If\-Ui\-Login}}
+\paragraph[{bus}]{\setlength{\rightskip}{0pt plus 5cm}def Login.\-Login\-Unit.\-If\-Ui\-Login.\-bus (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{classLogin_1_1LoginUnit_1_1IfUiLogin_abab63bd2085f485ca82494db8eb5f520}
+
+
+Definição na linha \hyperlink{LoginUnit_8py_source_l00055}{55} do arquivo \hyperlink{LoginUnit_8py_source}{Login\-Unit.\-py}.
+
+
+
+Referências \hyperlink{CourseUnit_8py_source_l00025}{Course.\-Course\-Unit.\-If\-Ui\-Course.\-\_\-\-\_\-bus}, \hyperlink{AdmUnit_8py_source_l00031}{Adm.\-Adm\-Unit.\-If\-Ui\-Adm.\-\_\-\-\_\-bus}, \hyperlink{MainUnit_8py_source_l00038}{E\-L\-O.\-Main\-Unit.\-Factory.\-\_\-\-\_\-bus}, \hyperlink{LoginUnit_8py_source_l00048}{Login.\-Login\-Unit.\-If\-Ui\-Login.\-\_\-\-\_\-bus} e \hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_af6823ae4c77d340c2341932d8f338753}{Login.\-Login\-Unit.\-If\-Ui\-Login.\-bus}.
+
+
+\begin{DoxyCode}
+\hypertarget{classLogin_1_1LoginUnit_1_1IfUiLogin_l00055}{}\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_abab63bd2085f485ca82494db8eb5f520}{00055} 
+00056     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_af6823ae4c77d340c2341932d8f338753}{bus}(self):
+00057         del self.\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_a550be8bfdf4cbc495bc966484e867af2}{\_\_bus}
+
+\end{DoxyCode}
+\hypertarget{classLogin_1_1LoginUnit_1_1IfUiLogin_ac6250c19afa63158907c6e8b4ff6dbd5}{\index{Login\-::\-Login\-Unit\-::\-If\-Ui\-Login@{Login\-::\-Login\-Unit\-::\-If\-Ui\-Login}!run@{run}}
+\index{run@{run}!Login::LoginUnit::IfUiLogin@{Login\-::\-Login\-Unit\-::\-If\-Ui\-Login}}
+\paragraph[{run}]{\setlength{\rightskip}{0pt plus 5cm}def Login.\-Login\-Unit.\-If\-Ui\-Login.\-run (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{request}
+\end{DoxyParamCaption}
+)}}\label{classLogin_1_1LoginUnit_1_1IfUiLogin_ac6250c19afa63158907c6e8b4ff6dbd5}
+
+
+Definição na linha \hyperlink{LoginUnit_8py_source_l00061}{61} do arquivo \hyperlink{LoginUnit_8py_source}{Login\-Unit.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classLogin_1_1LoginUnit_1_1IfUiLogin_l00061}{}\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_ac6250c19afa63158907c6e8b4ff6dbd5}{00061} 
+00062     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_ac6250c19afa63158907c6e8b4ff6dbd5}{run}(self, request): \textcolor{keyword}{pass}
+00063 
+
+\end{DoxyCode}
+
+
+\subsubsection{Atributos}
+\hypertarget{classLogin_1_1LoginUnit_1_1IfUiLogin_af6823ae4c77d340c2341932d8f338753}{\index{Login\-::\-Login\-Unit\-::\-If\-Ui\-Login@{Login\-::\-Login\-Unit\-::\-If\-Ui\-Login}!bus@{bus}}
+\index{bus@{bus}!Login::LoginUnit::IfUiLogin@{Login\-::\-Login\-Unit\-::\-If\-Ui\-Login}}
+\paragraph[{bus}]{\setlength{\rightskip}{0pt plus 5cm}Login.\-Login\-Unit.\-If\-Ui\-Login.\-bus}}\label{classLogin_1_1LoginUnit_1_1IfUiLogin_af6823ae4c77d340c2341932d8f338753}
+
+
+Definição na linha \hyperlink{LoginUnit_8py_source_l00032}{32} do arquivo \hyperlink{LoginUnit_8py_source}{Login\-Unit.\-py}.
+
+
+
+Referenciado por \hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_abab63bd2085f485ca82494db8eb5f520}{Login.\-Login\-Unit.\-If\-Ui\-Login.\-bus()}.
+
+
+
+A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}
+\item 
+E\-L\-O/\-Login/\hyperlink{LoginUnit_8py}{Login\-Unit.\-py}\end{DoxyCompactItemize}

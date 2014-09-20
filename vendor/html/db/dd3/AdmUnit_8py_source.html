@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>LETproject: Código-Fonte de ELO/Adm/AdmUnit.py</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">LETproject
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Página&#160;Principal</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namespaces</span></a></li>
+      <li><a href="../../annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Arquivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="../../search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Busca" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Lista&#160;de&#160;Arquivos</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('db/dd3/AdmUnit_8py_source.html','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variáveis</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">AdmUnit.py</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../db/dd3/AdmUnit_8py.html">Vá para a documentação deste arquivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="../../de/d94/namespaceAdm_1_1AdmUnit.html">    1</a></span>&#160;<span class="comment">#coding: utf-8</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">from</span> abc <span class="keyword">import</span>*</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">## @package AdmUnit</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">#Este arquivo é responsável pelo armazenamento de todas as camadas correspondentes ao módulo de administrador. Os métodos aqui são </span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">#criados e chamados pela Factory (MainUnit.py) quando necessários. São responsáveis por cadastrar, deletar e editar alunos e professores </span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">#no banco de dados, criar cursos e ver um log sobre os últimos eventos no sistema.</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">## Interface para a camada de apresentação de Usuário do módulo de Administração.</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"># É responsável por...</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="../../d7/d07/classAdm_1_1AdmUnit_1_1IfUiAdm.html">   14</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d7/d07/classAdm_1_1AdmUnit_1_1IfUiAdm.html">IfUiAdm</a>:</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    __metaclass__ = ABCMeta</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="../../d7/d07/classAdm_1_1AdmUnit_1_1IfUiAdm.html#ab37924016cd115531c85439dc82f5ea3">   17</a></span>&#160;    <span class="keyword">def </span><a class="code" href="../../d7/d07/classAdm_1_1AdmUnit_1_1IfUiAdm.html#ab37924016cd115531c85439dc82f5ea3">__init__</a>(self, bus):</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="../../d7/d07/classAdm_1_1AdmUnit_1_1IfUiAdm.html#a604bb1c41014e85eee44db64a79a7fcc">   19</a></span>&#160;            self.<a class="code" href="../../d7/d07/classAdm_1_1AdmUnit_1_1IfUiAdm.html#a604bb1c41014e85eee44db64a79a7fcc">bus</a> = bus</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordflow">except</span> TypeError <span class="keyword">as</span> exc:</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            del self</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <span class="keywordflow">raise</span> exc</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    @property</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="../../d7/d07/classAdm_1_1AdmUnit_1_1IfUiAdm.html#a4863c3ebab6e5fac647ab32415153470">   25</a></span>&#160;    <span class="keyword">def </span><a class="code" href="../../d7/d07/classAdm_1_1AdmUnit_1_1IfUiAdm.html#a604bb1c41014e85eee44db64a79a7fcc">bus</a>(self):</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordflow">return</span> self.<a class="code" href="../../d7/d07/classAdm_1_1AdmUnit_1_1IfUiAdm.html#adf49041050fd2ce5fef85b0698f331e5">__bus</a></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    @bus.setter</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="../../d7/d07/classAdm_1_1AdmUnit_1_1IfUiAdm.html#a4863c3ebab6e5fac647ab32415153470">   29</a></span>&#160;    <span class="keyword">def </span><a class="code" href="../../d7/d07/classAdm_1_1AdmUnit_1_1IfUiAdm.html#a604bb1c41014e85eee44db64a79a7fcc">bus</a>(self, value):</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordflow">if</span> isinstance(value, IfBusAdm):</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            self.<a class="code" href="../../d7/d07/classAdm_1_1AdmUnit_1_1IfUiAdm.html#adf49041050fd2ce5fef85b0698f331e5">__bus</a> = value</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <span class="keywordflow">raise</span> TypeError(<span class="stringliteral">&quot;Expected IfBusAdm instance at UiAdm.__bus. Received &quot;</span> + str(type(value)) + <span class="stringliteral">&quot; instead.&quot;</span>)</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    @bus.deleter</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="../../d7/d07/classAdm_1_1AdmUnit_1_1IfUiAdm.html#a4863c3ebab6e5fac647ab32415153470">   36</a></span>&#160;    <span class="keyword">def </span><a class="code" href="../../d7/d07/classAdm_1_1AdmUnit_1_1IfUiAdm.html#a604bb1c41014e85eee44db64a79a7fcc">bus</a>(self):</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        del self.<a class="code" href="../../d7/d07/classAdm_1_1AdmUnit_1_1IfUiAdm.html#adf49041050fd2ce5fef85b0698f331e5">__bus</a></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    @abstractmethod</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="../../d7/d07/classAdm_1_1AdmUnit_1_1IfUiAdm.html#ad2879ed80544aa2a153c7eeed3a09a52">   40</a></span>&#160;    <span class="keyword">def </span><a class="code" href="../../d7/d07/classAdm_1_1AdmUnit_1_1IfUiAdm.html#ad2879ed80544aa2a153c7eeed3a09a52">run</a>(self, request): <span class="keyword">pass</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">## Interface para a camada de negócio do módulo de perfil.</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment"># É responsável por...</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html">   44</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html">IfBusAdm</a>:</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    __metaclass__ = ABCMeta</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#abe924f0f983b1fe97ca466907d35c834">   47</a></span>&#160;    <span class="keyword">def </span><a class="code" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#abe924f0f983b1fe97ca466907d35c834">__init__</a>(self, pers):</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a95ea8f39fbbcddf44822e1614c712bfe">   49</a></span>&#160;            self.<a class="code" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a95ea8f39fbbcddf44822e1614c712bfe">pers</a> = pers</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">except</span> TypeError <span class="keyword">as</span> exc:</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            del self</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordflow">raise</span> exc</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    @property</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a31857b146085382c8d778ae90cd46c6f">   55</a></span>&#160;    <span class="keyword">def </span><a class="code" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a95ea8f39fbbcddf44822e1614c712bfe">pers</a>(self):</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">return</span> self.<a class="code" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a52e9179e1047122bc667c1afa377c82c">__pers</a></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    @pers.setter</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a31857b146085382c8d778ae90cd46c6f">   59</a></span>&#160;    <span class="keyword">def </span><a class="code" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a95ea8f39fbbcddf44822e1614c712bfe">pers</a>(self, value):</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">if</span> isinstance(value, IfPersAdm):</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            self.<a class="code" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a52e9179e1047122bc667c1afa377c82c">__pers</a> = value</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keywordflow">raise</span> TypeError(<span class="stringliteral">&quot;Expected IfPersAdm instance at BusAdm.__pers. Received &quot;</span> + str(type(value)) + <span class="stringliteral">&quot; instead.&quot;</span>)</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    @pers.deleter   </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a31857b146085382c8d778ae90cd46c6f">   66</a></span>&#160;    <span class="keyword">def </span><a class="code" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a95ea8f39fbbcddf44822e1614c712bfe">pers</a>(self):</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        del self.<a class="code" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a52e9179e1047122bc667c1afa377c82c">__pers</a></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">## Interface para a camada de persistência do módulo de administração.</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment"># É responsável por...</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="../../d0/dce/classAdm_1_1AdmUnit_1_1IfPersAdm.html">   71</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d0/dce/classAdm_1_1AdmUnit_1_1IfPersAdm.html">IfPersAdm</a>:    <span class="keyword">pass</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">## Camada de interface de usuário para o módulo de administração.</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="../../d4/dde/classAdm_1_1AdmUnit_1_1UiAdm.html">   74</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d4/dde/classAdm_1_1AdmUnit_1_1UiAdm.html">UiAdm</a>(<a class="code" href="../../d7/d07/classAdm_1_1AdmUnit_1_1IfUiAdm.html">IfUiAdm</a>):</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="../../d4/dde/classAdm_1_1AdmUnit_1_1UiAdm.html#a88df3b19b48d71b2c0fc0b4557c71416">   76</a></span>&#160;    <span class="keyword">def </span><a class="code" href="../../d4/dde/classAdm_1_1AdmUnit_1_1UiAdm.html#a88df3b19b48d71b2c0fc0b4557c71416">run</a>(self, request):</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">return</span> render(request, <span class="stringliteral">&quot;Adm/home.html&quot;</span>)</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">## Camada de negócio para o módulo de administração.</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="../../de/de0/classAdm_1_1AdmUnit_1_1BusAdm.html">   80</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../de/de0/classAdm_1_1AdmUnit_1_1BusAdm.html">BusAdm</a>(<a class="code" href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html">IfBusAdm</a>): <span class="keyword">pass</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">## Camada de persistência para o módulo de administração.</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="../../dc/d1a/classAdm_1_1AdmUnit_1_1PersAdm.html">   83</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../dc/d1a/classAdm_1_1AdmUnit_1_1PersAdm.html">PersAdm</a>(<a class="code" href="../../d0/dce/classAdm_1_1AdmUnit_1_1IfPersAdm.html">IfPersAdm</a>): <span class="keyword">pass</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="ttc" id="classAdm_1_1AdmUnit_1_1PersAdm_html"><div class="ttname"><a href="../../dc/d1a/classAdm_1_1AdmUnit_1_1PersAdm.html">Adm.AdmUnit.PersAdm</a></div><div class="ttdoc">Camada de persistência para o módulo de administração. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd3/AdmUnit_8py_source.html#l00083">AdmUnit.py:83</a></div></div>
+<div class="ttc" id="classAdm_1_1AdmUnit_1_1IfUiAdm_html_ad2879ed80544aa2a153c7eeed3a09a52"><div class="ttname"><a href="../../d7/d07/classAdm_1_1AdmUnit_1_1IfUiAdm.html#ad2879ed80544aa2a153c7eeed3a09a52">Adm.AdmUnit.IfUiAdm.run</a></div><div class="ttdeci">def run</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd3/AdmUnit_8py_source.html#l00040">AdmUnit.py:40</a></div></div>
+<div class="ttc" id="classAdm_1_1AdmUnit_1_1IfUiAdm_html_a604bb1c41014e85eee44db64a79a7fcc"><div class="ttname"><a href="../../d7/d07/classAdm_1_1AdmUnit_1_1IfUiAdm.html#a604bb1c41014e85eee44db64a79a7fcc">Adm.AdmUnit.IfUiAdm.bus</a></div><div class="ttdeci">bus</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd3/AdmUnit_8py_source.html#l00019">AdmUnit.py:19</a></div></div>
+<div class="ttc" id="classAdm_1_1AdmUnit_1_1IfBusAdm_html_a52e9179e1047122bc667c1afa377c82c"><div class="ttname"><a href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a52e9179e1047122bc667c1afa377c82c">Adm.AdmUnit.IfBusAdm.__pers</a></div><div class="ttdeci">__pers</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd3/AdmUnit_8py_source.html#l00061">AdmUnit.py:61</a></div></div>
+<div class="ttc" id="classAdm_1_1AdmUnit_1_1IfUiAdm_html_adf49041050fd2ce5fef85b0698f331e5"><div class="ttname"><a href="../../d7/d07/classAdm_1_1AdmUnit_1_1IfUiAdm.html#adf49041050fd2ce5fef85b0698f331e5">Adm.AdmUnit.IfUiAdm.__bus</a></div><div class="ttdeci">__bus</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd3/AdmUnit_8py_source.html#l00031">AdmUnit.py:31</a></div></div>
+<div class="ttc" id="classAdm_1_1AdmUnit_1_1IfPersAdm_html"><div class="ttname"><a href="../../d0/dce/classAdm_1_1AdmUnit_1_1IfPersAdm.html">Adm.AdmUnit.IfPersAdm</a></div><div class="ttdoc">Interface para a camada de persistência do módulo de administração. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd3/AdmUnit_8py_source.html#l00071">AdmUnit.py:71</a></div></div>
+<div class="ttc" id="classAdm_1_1AdmUnit_1_1UiAdm_html_a88df3b19b48d71b2c0fc0b4557c71416"><div class="ttname"><a href="../../d4/dde/classAdm_1_1AdmUnit_1_1UiAdm.html#a88df3b19b48d71b2c0fc0b4557c71416">Adm.AdmUnit.UiAdm.run</a></div><div class="ttdeci">def run</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd3/AdmUnit_8py_source.html#l00076">AdmUnit.py:76</a></div></div>
+<div class="ttc" id="classAdm_1_1AdmUnit_1_1IfBusAdm_html_abe924f0f983b1fe97ca466907d35c834"><div class="ttname"><a href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#abe924f0f983b1fe97ca466907d35c834">Adm.AdmUnit.IfBusAdm.__init__</a></div><div class="ttdeci">def __init__</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd3/AdmUnit_8py_source.html#l00047">AdmUnit.py:47</a></div></div>
+<div class="ttc" id="classAdm_1_1AdmUnit_1_1IfBusAdm_html_a95ea8f39fbbcddf44822e1614c712bfe"><div class="ttname"><a href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a95ea8f39fbbcddf44822e1614c712bfe">Adm.AdmUnit.IfBusAdm.pers</a></div><div class="ttdeci">pers</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd3/AdmUnit_8py_source.html#l00049">AdmUnit.py:49</a></div></div>
+<div class="ttc" id="classAdm_1_1AdmUnit_1_1UiAdm_html"><div class="ttname"><a href="../../d4/dde/classAdm_1_1AdmUnit_1_1UiAdm.html">Adm.AdmUnit.UiAdm</a></div><div class="ttdoc">Camada de interface de usuário para o módulo de administração. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd3/AdmUnit_8py_source.html#l00074">AdmUnit.py:74</a></div></div>
+<div class="ttc" id="classAdm_1_1AdmUnit_1_1IfUiAdm_html"><div class="ttname"><a href="../../d7/d07/classAdm_1_1AdmUnit_1_1IfUiAdm.html">Adm.AdmUnit.IfUiAdm</a></div><div class="ttdoc">Interface para a camada de apresentação de Usuário do módulo de Administração. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd3/AdmUnit_8py_source.html#l00014">AdmUnit.py:14</a></div></div>
+<div class="ttc" id="classAdm_1_1AdmUnit_1_1IfUiAdm_html_ab37924016cd115531c85439dc82f5ea3"><div class="ttname"><a href="../../d7/d07/classAdm_1_1AdmUnit_1_1IfUiAdm.html#ab37924016cd115531c85439dc82f5ea3">Adm.AdmUnit.IfUiAdm.__init__</a></div><div class="ttdeci">def __init__</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd3/AdmUnit_8py_source.html#l00017">AdmUnit.py:17</a></div></div>
+<div class="ttc" id="classAdm_1_1AdmUnit_1_1IfBusAdm_html"><div class="ttname"><a href="../../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html">Adm.AdmUnit.IfBusAdm</a></div><div class="ttdoc">Interface para a camada de negócio do módulo de perfil. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd3/AdmUnit_8py_source.html#l00044">AdmUnit.py:44</a></div></div>
+<div class="ttc" id="classAdm_1_1AdmUnit_1_1BusAdm_html"><div class="ttname"><a href="../../de/de0/classAdm_1_1AdmUnit_1_1BusAdm.html">Adm.AdmUnit.BusAdm</a></div><div class="ttdoc">Camada de negócio para o módulo de administração. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd3/AdmUnit_8py_source.html#l00080">AdmUnit.py:80</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_56c8f39a95ad3669bc9ec7ac8ec99225.html">ELO</a></li><li class="navelem"><a class="el" href="../../dir_7179686af388d89ca72e630f89fea0cb.html">Adm</a></li><li class="navelem"><a class="el" href="../../db/dd3/AdmUnit_8py.html">AdmUnit.py</a></li>
+    <li class="footer">Gerado em Sexta, 22 de Agosto de 2014 17:35:22 para LETproject por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -38,6 +38,37 @@ class NameForm(forms.Form):
 			raise forms.ValidationError(exc)
 		return pw
 
+## Formulário de edição de senha.
+#	Capaz de alterar a senha do usuário no sistema.
+#	Será necessária a confirmação com a senha antiga, portanto, não serve para
+#	recuperação de senha.
+class PasswordForm(forms.Form):
+	newdata		= forms.CharField(widget=forms.PasswordInput)
+	rp_newdata	= forms.CharField(widget=forms.PasswordInput)
+	old_password= forms.CharField(widget=forms.PasswordInput)
+
+	def clean_newdata(self):
+		try:
+			n_pw = Password(self.cleaned_data['newdata'])
+		except ValueError as exc:
+			raise forms.ValidationError(exc)
+		return n_pw
+
+	def clean_rp_newdata(self):
+		try:
+			r_pw = Password(self.cleaned_data['rp_newdata'])
+		except ValueError as exc:
+			raise forms.ValidationError(exc)
+		return r_pw
+
+	def clean_old_password(self):
+		try:
+			o_pw = Password(self.cleaned_data['old_password'])
+		except ValueError as exc:
+			raise forms.ValidationError(exc)
+		return o_pw
+	
+
 ## Formulário de edição de linguagem.
 #	Capaz de modificar a lingaguem preferida do usuário para o sistema.
 #	É com base nessa linguagem que o sistema irá carregar os diferentes DICTs

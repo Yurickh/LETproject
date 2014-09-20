@@ -1,0 +1,96 @@
+\hypertarget{classLogin_1_1LoginUnit_1_1UiLogin}{\subsection{Referência da Classe Login.\-Login\-Unit.\-Ui\-Login}
+\label{classLogin_1_1LoginUnit_1_1UiLogin}\index{Login.\-Login\-Unit.\-Ui\-Login@{Login.\-Login\-Unit.\-Ui\-Login}}
+}
+
+
+Camada de interface de usuário para o módulo de \hyperlink{namespaceLogin}{Login}.  
+
+
+Diagrama de Hierarquia para Login.\-Login\-Unit.\-Ui\-Login\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{de/da8/classLogin_1_1LoginUnit_1_1UiLogin}
+\end{center}
+\end{figure}
+\subsubsection*{Métodos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classLogin_1_1LoginUnit_1_1UiLogin_a9cd61a78d5ab0d201051ccf5898f86bc}{run}
+\begin{DoxyCompactList}\small\item\em Método que inicia o módulo de login. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Additional Inherited Members}
+
+
+\subsubsection{Descrição Detalhada}
+
+
+Definição na linha \hyperlink{LoginUnit_8py_source_l00131}{131} do arquivo \hyperlink{LoginUnit_8py_source}{Login\-Unit.\-py}.
+
+
+
+\subsubsection{Métodos}
+\hypertarget{classLogin_1_1LoginUnit_1_1UiLogin_a9cd61a78d5ab0d201051ccf5898f86bc}{\index{Login\-::\-Login\-Unit\-::\-Ui\-Login@{Login\-::\-Login\-Unit\-::\-Ui\-Login}!run@{run}}
+\index{run@{run}!Login::LoginUnit::UiLogin@{Login\-::\-Login\-Unit\-::\-Ui\-Login}}
+\paragraph[{run}]{\setlength{\rightskip}{0pt plus 5cm}def Login.\-Login\-Unit.\-Ui\-Login.\-run (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{request, }
+\item[{}]{database}
+\end{DoxyParamCaption}
+)}}\label{classLogin_1_1LoginUnit_1_1UiLogin_a9cd61a78d5ab0d201051ccf5898f86bc}
+Aqui, ocorre a validação de formulário, autenticação de usuário, e redirecionamento para a página de perfil. 
+
+Definição na linha \hyperlink{LoginUnit_8py_source_l00136}{136} do arquivo \hyperlink{LoginUnit_8py_source}{Login\-Unit.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classLogin_1_1LoginUnit_1_1UiLogin_l00136}{}\hyperlink{classLogin_1_1LoginUnit_1_1UiLogin_a9cd61a78d5ab0d201051ccf5898f86bc}{00136} 
+00137     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1UiLogin_a9cd61a78d5ab0d201051ccf5898f86bc}{run}(self, request, database):
+00138         \textcolor{keywordflow}{if} request.method == \textcolor{stringliteral}{"POST"}:
+00139             login\_form = \hyperlink{classLogin_1_1forms_1_1LoginForm}{LoginForm}(request.POST)
+00140             \textcolor{keywordflow}{try}: 
+00141                 \textcolor{keywordflow}{if} login\_form.is\_valid():
+00142                     self.bus.validate(login\_form.cleaned\_data[\textcolor{stringliteral}{'username'}],
+00143                         login\_form.cleaned\_data[\textcolor{stringliteral}{'password'}], database)
+00144                 \textcolor{keywordflow}{else}:
+00145                     \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_LOG'}])
+00146             \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00147                 \textcolor{keywordflow}{if} database.\_\_name\_\_ == \textcolor{stringliteral}{"Professor"}:
+00148                     target = \textcolor{stringliteral}{"proflogin"}
+00149                 \textcolor{keywordflow}{elif} database.\_\_name\_\_ == \textcolor{stringliteral}{"Adm"}:
+00150                     target = \textcolor{stringliteral}{"364fd8cdc3a35a89b7be75bc9d10ebea"}
+00151                 \textcolor{keywordflow}{else}:
+00152                     target = \textcolor{stringliteral}{""}
+00153 
+00154                 \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Login/form.html"}, \{\textcolor{stringliteral}{'form'}: login\_form, 
+00155                     \textcolor{stringliteral}{'error'}: exc, \textcolor{stringliteral}{'target'}: target\})
+00156             \textcolor{keywordflow}{else}:
+00157                 cd = login\_form.cleaned\_data
+00158                 l = self.bus.getLang(cd[\textcolor{stringliteral}{'username'}], database)
+00159                 request.session[\textcolor{stringliteral}{'user'}] = \{
+00160                                 \textcolor{stringliteral}{'name'}: cd[\textcolor{stringliteral}{'username'}].value,
+00161                                 \textcolor{stringliteral}{'password'}: cd[\textcolor{stringliteral}{'password'}].value,
+00162                                 \textcolor{stringliteral}{'language'}: l ,
+00163                                 \textcolor{stringliteral}{'type'}: database.\_\_name\_\_,
+00164                             \}
+00165                 \textcolor{keywordflow}{return} HttpResponseRedirect(\textcolor{stringliteral}{'/'})
+00166         \textcolor{keywordflow}{else}:
+00167             login\_form = \hyperlink{classLogin_1_1forms_1_1LoginForm}{LoginForm}()
+00168 
+00169             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} database:
+00170                 target = \textcolor{stringliteral}{""}
+00171             \textcolor{keywordflow}{if} database.\_\_name\_\_ == \textcolor{stringliteral}{"Professor"}:
+00172                 target = \textcolor{stringliteral}{"proflogin"}
+00173             \textcolor{keywordflow}{elif} database.\_\_name\_\_ == \textcolor{stringliteral}{"Adm"}:
+00174                 target = \textcolor{stringliteral}{"364fd8cdc3a35a89b7be75bc9d10ebea"}
+00175             \textcolor{keywordflow}{else}:
+00176                 target = \textcolor{stringliteral}{""}
+00177 
+00178             \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Login/form.html"}, \{\textcolor{stringliteral}{'form'}: login\_form, \textcolor{stringliteral}{'target'}: target\})
+00179 
+
+\end{DoxyCode}
+
+
+A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}
+\item 
+E\-L\-O/\-Login/\hyperlink{LoginUnit_8py}{Login\-Unit.\-py}\end{DoxyCompactItemize}

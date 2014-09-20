@@ -1,0 +1,71 @@
+\hypertarget{classProfile_1_1forms_1_1BiosForm}{\subsection{Referência da Classe Profile.\-forms.\-Bios\-Form}
+\label{classProfile_1_1forms_1_1BiosForm}\index{Profile.\-forms.\-Bios\-Form@{Profile.\-forms.\-Bios\-Form}}
+}
+
+
+Formulário de edição de Bios.  
+
+
+Diagrama de Hierarquia para Profile.\-forms.\-Bios\-Form\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d7/d1e/classProfile_1_1forms_1_1BiosForm}
+\end{center}
+\end{figure}
+\subsubsection*{Métodos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classProfile_1_1forms_1_1BiosForm_a10f21ed8d7cb888f0aa35618087c86af}{clean\-\_\-newdata}
+\end{DoxyCompactItemize}
+\subsubsection*{Atributos Estáticos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+tuple \hyperlink{classProfile_1_1forms_1_1BiosForm_a2862b20c24bac9aa5dc896925a2cb3d6}{newdata} = forms.\-Char\-Field(required=False, widget=forms.\-Textarea(attrs=\{'style'\-:'width\-:90\%;'\}))
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Descrição Detalhada}
+Capaz de modificar a biografia exibida do usuário. Não afeta de forma relevante a navegação ou qualquer outra forma de interação com o aluno. 
+
+Definição na linha \hyperlink{Profile_2forms_8py_source_l00082}{82} do arquivo \hyperlink{Profile_2forms_8py_source}{forms.\-py}.
+
+
+
+\subsubsection{Métodos}
+\hypertarget{classProfile_1_1forms_1_1BiosForm_a10f21ed8d7cb888f0aa35618087c86af}{\index{Profile\-::forms\-::\-Bios\-Form@{Profile\-::forms\-::\-Bios\-Form}!clean\-\_\-newdata@{clean\-\_\-newdata}}
+\index{clean\-\_\-newdata@{clean\-\_\-newdata}!Profile::forms::BiosForm@{Profile\-::forms\-::\-Bios\-Form}}
+\paragraph[{clean\-\_\-newdata}]{\setlength{\rightskip}{0pt plus 5cm}def Profile.\-forms.\-Bios\-Form.\-clean\-\_\-newdata (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{classProfile_1_1forms_1_1BiosForm_a10f21ed8d7cb888f0aa35618087c86af}
+
+
+Definição na linha \hyperlink{Profile_2forms_8py_source_l00085}{85} do arquivo \hyperlink{Profile_2forms_8py_source}{forms.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classProfile_1_1forms_1_1BiosForm_l00085}{}\hyperlink{classProfile_1_1forms_1_1BiosForm_a10f21ed8d7cb888f0aa35618087c86af}{00085} 
+00086     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1BiosForm_a10f21ed8d7cb888f0aa35618087c86af}{clean\_newdata}(self):
+00087         \textcolor{keywordflow}{try}:
+00088             nb = PlainText(self.cleaned\_data[\textcolor{stringliteral}{'newdata'}])
+00089         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00090             \textcolor{keywordflow}{raise} forms.ValidationError(exc)
+00091         \textcolor{keywordflow}{return} nb
+
+\end{DoxyCode}
+
+
+\subsubsection{Atributos}
+\hypertarget{classProfile_1_1forms_1_1BiosForm_a2862b20c24bac9aa5dc896925a2cb3d6}{\index{Profile\-::forms\-::\-Bios\-Form@{Profile\-::forms\-::\-Bios\-Form}!newdata@{newdata}}
+\index{newdata@{newdata}!Profile::forms::BiosForm@{Profile\-::forms\-::\-Bios\-Form}}
+\paragraph[{newdata}]{\setlength{\rightskip}{0pt plus 5cm}tuple Profile.\-forms.\-Bios\-Form.\-newdata = forms.\-Char\-Field(required=False, widget=forms.\-Textarea(attrs=\{'style'\-:'width\-:90\%;'\}))\hspace{0.3cm}{\ttfamily [static]}}}\label{classProfile_1_1forms_1_1BiosForm_a2862b20c24bac9aa5dc896925a2cb3d6}
+
+
+Definição na linha \hyperlink{Profile_2forms_8py_source_l00083}{83} do arquivo \hyperlink{Profile_2forms_8py_source}{forms.\-py}.
+
+
+
+A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}
+\item 
+E\-L\-O/\-Profile/\hyperlink{Profile_2forms_8py}{forms.\-py}\end{DoxyCompactItemize}

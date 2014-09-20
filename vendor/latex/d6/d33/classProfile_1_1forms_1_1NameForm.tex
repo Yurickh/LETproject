@@ -1,0 +1,104 @@
+\hypertarget{classProfile_1_1forms_1_1NameForm}{\subsection{Referência da Classe Profile.\-forms.\-Name\-Form}
+\label{classProfile_1_1forms_1_1NameForm}\index{Profile.\-forms.\-Name\-Form@{Profile.\-forms.\-Name\-Form}}
+}
+
+
+Formulário de edição de nome.  
+
+
+Diagrama de Hierarquia para Profile.\-forms.\-Name\-Form\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d6/d33/classProfile_1_1forms_1_1NameForm}
+\end{center}
+\end{figure}
+\subsubsection*{Métodos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classProfile_1_1forms_1_1NameForm_a4e324f8cfc90a67d56802f66ce48c4ca}{clean\-\_\-newdata}
+\item 
+def \hyperlink{classProfile_1_1forms_1_1NameForm_a681fa28036a241632b8688d436f04a49}{clean\-\_\-password}
+\end{DoxyCompactItemize}
+\subsubsection*{Atributos Estáticos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+tuple \hyperlink{classProfile_1_1forms_1_1NameForm_a6ebfb316b263c162dd3895b1da149eda}{newdata} = forms.\-Char\-Field(max\-\_\-length=32)
+\item 
+tuple \hyperlink{classProfile_1_1forms_1_1NameForm_a5a6959db0132c607a56f9cda75769ecf}{password} = forms.\-Char\-Field(widget=forms.\-Password\-Input)
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Descrição Detalhada}
+Capaz de modificar o nome do usuário no sistema. Vale salientar que é com esse nome que o usuário irá logar. 
+
+Definição na linha \hyperlink{Profile_2forms_8py_source_l00023}{23} do arquivo \hyperlink{Profile_2forms_8py_source}{forms.\-py}.
+
+
+
+\subsubsection{Métodos}
+\hypertarget{classProfile_1_1forms_1_1NameForm_a4e324f8cfc90a67d56802f66ce48c4ca}{\index{Profile\-::forms\-::\-Name\-Form@{Profile\-::forms\-::\-Name\-Form}!clean\-\_\-newdata@{clean\-\_\-newdata}}
+\index{clean\-\_\-newdata@{clean\-\_\-newdata}!Profile::forms::NameForm@{Profile\-::forms\-::\-Name\-Form}}
+\paragraph[{clean\-\_\-newdata}]{\setlength{\rightskip}{0pt plus 5cm}def Profile.\-forms.\-Name\-Form.\-clean\-\_\-newdata (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{classProfile_1_1forms_1_1NameForm_a4e324f8cfc90a67d56802f66ce48c4ca}
+
+
+Definição na linha \hyperlink{Profile_2forms_8py_source_l00027}{27} do arquivo \hyperlink{Profile_2forms_8py_source}{forms.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classProfile_1_1forms_1_1NameForm_l00027}{}\hyperlink{classProfile_1_1forms_1_1NameForm_a4e324f8cfc90a67d56802f66ce48c4ca}{00027} 
+00028     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1NameForm_a4e324f8cfc90a67d56802f66ce48c4ca}{clean\_newdata}(self):
+00029         \textcolor{keywordflow}{try}:
+00030             name = Name(self.cleaned\_data[\textcolor{stringliteral}{'newdata'}])
+00031         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00032             \textcolor{keywordflow}{raise} forms.ValidationError(exc)
+00033         \textcolor{keywordflow}{return} name
+
+\end{DoxyCode}
+\hypertarget{classProfile_1_1forms_1_1NameForm_a681fa28036a241632b8688d436f04a49}{\index{Profile\-::forms\-::\-Name\-Form@{Profile\-::forms\-::\-Name\-Form}!clean\-\_\-password@{clean\-\_\-password}}
+\index{clean\-\_\-password@{clean\-\_\-password}!Profile::forms::NameForm@{Profile\-::forms\-::\-Name\-Form}}
+\paragraph[{clean\-\_\-password}]{\setlength{\rightskip}{0pt plus 5cm}def Profile.\-forms.\-Name\-Form.\-clean\-\_\-password (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{classProfile_1_1forms_1_1NameForm_a681fa28036a241632b8688d436f04a49}
+
+
+Definição na linha \hyperlink{Profile_2forms_8py_source_l00034}{34} do arquivo \hyperlink{Profile_2forms_8py_source}{forms.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classProfile_1_1forms_1_1NameForm_l00034}{}\hyperlink{classProfile_1_1forms_1_1NameForm_a681fa28036a241632b8688d436f04a49}{00034} 
+00035     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1NameForm_a681fa28036a241632b8688d436f04a49}{clean\_password}(self):
+00036         \textcolor{keywordflow}{try}:
+00037             pw = Password(self.cleaned\_data[\textcolor{stringliteral}{'password'}])
+00038         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00039             \textcolor{keywordflow}{raise} forms.ValidationError(exc)
+00040         \textcolor{keywordflow}{return} pw
+
+\end{DoxyCode}
+
+
+\subsubsection{Atributos}
+\hypertarget{classProfile_1_1forms_1_1NameForm_a6ebfb316b263c162dd3895b1da149eda}{\index{Profile\-::forms\-::\-Name\-Form@{Profile\-::forms\-::\-Name\-Form}!newdata@{newdata}}
+\index{newdata@{newdata}!Profile::forms::NameForm@{Profile\-::forms\-::\-Name\-Form}}
+\paragraph[{newdata}]{\setlength{\rightskip}{0pt plus 5cm}tuple Profile.\-forms.\-Name\-Form.\-newdata = forms.\-Char\-Field(max\-\_\-length=32)\hspace{0.3cm}{\ttfamily [static]}}}\label{classProfile_1_1forms_1_1NameForm_a6ebfb316b263c162dd3895b1da149eda}
+
+
+Definição na linha \hyperlink{Profile_2forms_8py_source_l00024}{24} do arquivo \hyperlink{Profile_2forms_8py_source}{forms.\-py}.
+
+\hypertarget{classProfile_1_1forms_1_1NameForm_a5a6959db0132c607a56f9cda75769ecf}{\index{Profile\-::forms\-::\-Name\-Form@{Profile\-::forms\-::\-Name\-Form}!password@{password}}
+\index{password@{password}!Profile::forms::NameForm@{Profile\-::forms\-::\-Name\-Form}}
+\paragraph[{password}]{\setlength{\rightskip}{0pt plus 5cm}tuple Profile.\-forms.\-Name\-Form.\-password = forms.\-Char\-Field(widget=forms.\-Password\-Input)\hspace{0.3cm}{\ttfamily [static]}}}\label{classProfile_1_1forms_1_1NameForm_a5a6959db0132c607a56f9cda75769ecf}
+
+
+Definição na linha \hyperlink{Profile_2forms_8py_source_l00025}{25} do arquivo \hyperlink{Profile_2forms_8py_source}{forms.\-py}.
+
+
+
+A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}
+\item 
+E\-L\-O/\-Profile/\hyperlink{Profile_2forms_8py}{forms.\-py}\end{DoxyCompactItemize}

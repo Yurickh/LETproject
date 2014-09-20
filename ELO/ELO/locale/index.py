@@ -11,6 +11,10 @@ available_langs = dict(settings.LANGUAGES).keys()
 DICT = {
 	## Mensagem de erro para um password menor que o especificado.
 	'EXCEPTION_INV_PW_S' : _(u"A senha deve conter no mínimo 6 caracteres."),
+	## Mensagem de erro para um password inválido.
+	'EXCEPTION_INV_PW_F' : _(u"Senha inválida."),
+	## Mensagem de erro para validação de senha repetida.
+	'EXCEPTION_INV_PW_R' : _(u"As senhas inseridas não batem."),
 
 	## Mensagem de erro para um nome maior do que o especificado.
 	'EXCEPTION_INV_NM_B' : _(u"O nome deve conter menos de 32 caracteres."),

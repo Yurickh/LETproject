@@ -1,0 +1,78 @@
+\hypertarget{classProfile_1_1forms_1_1SexForm}{\subsection{Referência da Classe Profile.\-forms.\-Sex\-Form}
+\label{classProfile_1_1forms_1_1SexForm}\index{Profile.\-forms.\-Sex\-Form@{Profile.\-forms.\-Sex\-Form}}
+}
+
+
+Formulário de edição de sexo.  
+
+
+Diagrama de Hierarquia para Profile.\-forms.\-Sex\-Form\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d1/dea/classProfile_1_1forms_1_1SexForm}
+\end{center}
+\end{figure}
+\subsubsection*{Métodos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classProfile_1_1forms_1_1SexForm_a23eb3376f64c41fbfa57b1b78ed2a38b}{clean\-\_\-newdata}
+\end{DoxyCompactItemize}
+\subsubsection*{Atributos Estáticos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+tuple \hyperlink{classProfile_1_1forms_1_1SexForm_a0d99412ab99ee46149a50fabb2614845}{newdata}
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Descrição Detalhada}
+Capaz de modificar o sexo exibido do usuário. Não afeta de forma relevante a navegação ou qualquer outra forma de interação com o aluno/professor. 
+
+Definição na linha \hyperlink{Profile_2forms_8py_source_l00065}{65} do arquivo \hyperlink{Profile_2forms_8py_source}{forms.\-py}.
+
+
+
+\subsubsection{Métodos}
+\hypertarget{classProfile_1_1forms_1_1SexForm_a23eb3376f64c41fbfa57b1b78ed2a38b}{\index{Profile\-::forms\-::\-Sex\-Form@{Profile\-::forms\-::\-Sex\-Form}!clean\-\_\-newdata@{clean\-\_\-newdata}}
+\index{clean\-\_\-newdata@{clean\-\_\-newdata}!Profile::forms::SexForm@{Profile\-::forms\-::\-Sex\-Form}}
+\paragraph[{clean\-\_\-newdata}]{\setlength{\rightskip}{0pt plus 5cm}def Profile.\-forms.\-Sex\-Form.\-clean\-\_\-newdata (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{classProfile_1_1forms_1_1SexForm_a23eb3376f64c41fbfa57b1b78ed2a38b}
+
+
+Definição na linha \hyperlink{Profile_2forms_8py_source_l00071}{71} do arquivo \hyperlink{Profile_2forms_8py_source}{forms.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classProfile_1_1forms_1_1SexForm_l00071}{}\hyperlink{classProfile_1_1forms_1_1SexForm_a23eb3376f64c41fbfa57b1b78ed2a38b}{00071} 
+00072     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1SexForm_a23eb3376f64c41fbfa57b1b78ed2a38b}{clean\_newdata}(self):
+00073         \textcolor{keywordflow}{try}:
+00074             ns = Sex(self.cleaned\_data[\textcolor{stringliteral}{'newdata'}])
+00075         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00076             \textcolor{keywordflow}{raise} forms.ValidationError(exc)
+00077         \textcolor{keywordflow}{return} ns
+
+\end{DoxyCode}
+
+
+\subsubsection{Atributos}
+\hypertarget{classProfile_1_1forms_1_1SexForm_a0d99412ab99ee46149a50fabb2614845}{\index{Profile\-::forms\-::\-Sex\-Form@{Profile\-::forms\-::\-Sex\-Form}!newdata@{newdata}}
+\index{newdata@{newdata}!Profile::forms::SexForm@{Profile\-::forms\-::\-Sex\-Form}}
+\paragraph[{newdata}]{\setlength{\rightskip}{0pt plus 5cm}tuple Profile.\-forms.\-Sex\-Form.\-newdata\hspace{0.3cm}{\ttfamily [static]}}}\label{classProfile_1_1forms_1_1SexForm_a0d99412ab99ee46149a50fabb2614845}
+{\bfseries Valor Inicial\-:}
+\begin{DoxyCode}
+00001 = forms.ChoiceField(widget=forms.RadioSelect, choices = [
+00002                                             (\textcolor{stringliteral}{'F'}, lang.DICT[\textcolor{stringliteral}{'SEX\_FEMALE'}]),
+00003                                             (\textcolor{stringliteral}{'M'}, lang.DICT[\textcolor{stringliteral}{'SEX\_MALE'}])
+00004                                                 ])
+\end{DoxyCode}
+
+
+Definição na linha \hyperlink{Profile_2forms_8py_source_l00066}{66} do arquivo \hyperlink{Profile_2forms_8py_source}{forms.\-py}.
+
+
+
+A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}
+\item 
+E\-L\-O/\-Profile/\hyperlink{Profile_2forms_8py}{forms.\-py}\end{DoxyCompactItemize}
