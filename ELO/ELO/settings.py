@@ -54,7 +54,7 @@ USE_L10N = True
 USE_TZ = True
 
 LOCALE_PATHS = (
-    filepath('locale')
+    filepath('locale'),
 )
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.

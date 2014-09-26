@@ -12,14 +12,6 @@ from abc import *
 import ELO.locale.index as lang
 
 from ELO.models import Adm, Student, Professor
-from forms import *
-from Profile.forms import (
-    NameForm, 
-    LanguageForm,
-    SexForm,
-    BiosForm,
-    InterestsForm,
-    AvatarForm)
 from forms import (
     AdmRegStu_ProfForm,
     AdmDelStu_ProfForm,
@@ -32,6 +24,7 @@ from django.shortcuts import render
 from django.conf import settings
 from django.http import HttpResponseRedirect
 from django import forms
+from django.utils import translation
 
 ## Interface para a camada de apresentação de Usuário do módulo de Administração.
 #   É responsável pelo carregamento do template correto e processa os dados
@@ -124,7 +117,7 @@ class IfBusAdm:
     #
     #   @arg form       Objeto form que contém os dados.
     @abstractmethod
-    def editAccounts(self, dict_field_value, database): pass
+    def editAccounts(self, dict_field_value, action, database, form): pass
 
     ## Verifica os últimos eventos realizados pelo Administrador.
     #@abstractmethod
@@ -185,8 +178,7 @@ class UiAdm(IfUiAdm):
 
     ## O método principal de qualquer classe de UI (User Interface).
     def run(self, request, action=None, model=None):
-        # Coleta o usuario da sessão atual
-        get_user = lambda: request.session['user']
+        translation.activate(request.session['user']['language'])
 
         ## @if Verifica qual o propósito do submit.
         #   Caso seja POST, a requisição ocorre após a submissão de uma form,
@@ -194,54 +186,64 @@ class UiAdm(IfUiAdm):
         #   Caso não seja e não ocorra a passagem dos campos de ação e modelo,
         #       a requisição há de ser um GET, para mostrar a página principal de Adm.
         #   Em último caso será a requisição do Javascript, denominada como AJAX,
-        #       que irá solicitar em tempo de eventos dos dialogs iniciados,
-        #       dados para requisição dos forms adequados e informações
+        #       que irá solicitar em tempo de evento dos dialogs iniciados.
+        #       Será passada informações para requisitar os forms adequados e informações
         #       do usuário procurado para uma possível edição ou deleção.
-
 
         # Se a requisição for por meio de POST ela coleta o dicionário de fields ligados
         #   aos novos dados e chama as funções adequadas de edição.
         if request.method == "POST":
             try:
-                if "registrar" in request.POST:
-                    form = AdmRegStu_ProfForm(request.POST)
+                # Coleta os forms adequados a partir da requisição POST.
+                form = AdmRegStu_ProfForm(request.POST)
 
+                # Se form for adequado então é chamado o método de edição de contas que
+                # irá comunicar-se com o banco de dados depois de uma validação das informações
+                # passadas pelo request.POST.
                 if form.is_valid():
-                    self.bus.editAccounts(request, request.POST, "Student")
+                    self.bus.editAccounts(request.POST, "registrar", Student, form)
+                # Caso contrário irá surgir um erro de que há dados incorretos.
                 else:
                     raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
-
+            # Se houver qualquer problema referente as passagens dos forms e conferência 
+            # da validação dos mesmos então o administrador será passado para a página inicial.
             except ValueError as exc:
                 return render(request, "Adm/home.html")
-        # Quando a requisição for de GET então é retornado para a página principal.                                            })
+
+            # Após a coleta da requisição o administrador será retornado à página inicial de controle.
+            return HttpResponseRedirect('/adm')
+
+        # Quando a requisição for de GET então é retornado para a página principal.                                           
         else:
             # Chamada normal de GET.
-            if ((not action) and (not model)):
+            if not (action or model):
                 return render(request, "Adm/home.html")
             # Caso contrário, no caso de requisições do tipo AJAX, 
             #   irá ser repassado forms adequados ao pedido ou será feito
-            #   buscas de dados do usuário atual.
+            #   buscas de dados do usuário requisitado.
             else:
-                err = False
-                if(action == "registrar"):
+                # Se for solicitado um registro de entidade.
+                if action == "registrar":
+                    # Coleta os forms adequados.
                     form = AdmRegStu_ProfForm()
+                    # Devolve os forms adequados para a página assíncrona de edição.
                     return render(request, "Adm/edit.html", {'form': form,
                                                             'action' : action,
-                                                            'err': err,
                                                             })
-                elif((action == "atualizar") or (action == "apagar")):
+                # Se for solicitado uma atualização ou deleção de entidade.
+                #   Será coletado forms primeiramente de busca da entidade a ser
+                #   editada ou deletada e posteriormente forms para visualização
+                #   dos dados da entidade.
+                elif action == "atualizar" or action == "apagar":
+                    # Coleta os forms adequados.
                     form = AdmDelStu_ProfForm()
+                    # Devolve os forms adequados para a página assíncrona de edição.
                     return render(request, "Adm/edit.html", {'form': form,
                                                             'action' : action,
-                                                            'err': err,
                                                             })
+                # Caso ocorra algum erro relacionado à ação requisitada.
                 else:
                     form = lang.DICT["ERROR_FORM"]
-                    err = True 
-                return render(request, "Adm/edit.html", {'form': form,
-                                                        'action' : action,
-                                                        'err': err,
-                                                        })
 
 
 
@@ -255,12 +257,42 @@ class BusAdm(IfBusAdm):
 
     ## Edita dados de um conta no database.
     #   Podendo ser este de uma conta de Estudante, Professor ou um Curso.
-    def editAccounts(self, dict_field_value, database):
-        self.pers.data_in(request, request.POST, "Student")
+    def editAccounts(self, dict_field_value, action, database, form):
+        
+        # Inicia o dicionário dict_data.
+        #   Será utilizado para informar os campos e dados para registro do usuário.
+        dict_data = {}
+        database_fields = ['NAME', 'SEX', 'PASSWORD', 'MATRIC', 'CAMPUS','EMAIL']
+
+        # Se for uma ação de registro do usuário.
+        if action == "registrar": 
+            # Percorre os campos e valores coletador no request.POST.
+            for field, value in dict_field_value.items():
+                # Transforma os unicodes do dicionário em strings.
+                field = str(field)
+                value = str(value)
+                # Coleta a palavra chave do campo designado.
+                #   Esta é coletada a partir dos campos contidos no dicionário.
+                newField = field[4:].upper()
+
+                # Se o campo encontrado pertence à lista de campos do database que deveriam
+                # pertencer a um usuário, então este é adicionado ao dicionário que será
+                # repassado para inserção no banco de dados posteriormente.
+                if newField in database_fields:
+                    dict_data[newField] = form.cleaned_data[field].value
+
+            # Escolhe uma linguagem padrão para cadastro de um usuário qualquer.
+            dict_data['LANGUAGE'] = 'en'
+
+            # Se for uma entidade estudante então é feito o pedido de inserção no
+            # banco de dados com o determinado modelo.
+            if database.__name__ == "Student":
+                self.pers.data_in(dict_data, database)
+
 
 ## Camada de persistência para o módulo de administração.
-#   Recupera os dados do banco de dados referentes aos alunos
-#   professores e cursos, retornando-os para a camada de negócio.
+#   Insere, atualiza ou deleta dados do banco de dados referentes aos 
+#   alunos professores e cursos.
 class PersAdm(IfPersAdm):
 
     ## Insere os dados do registro de contas no banco de dados.
@@ -279,7 +311,7 @@ class PersAdm(IfPersAdm):
         # Percorre o dicionário ligado aos campos a seu valores.
         for fields in dict_field_value:
             # Insere novos dados: identidade, campo e a novo valor.
-            data = database(identity=newid, field=fields.upper(),
+            data = database(identity=newid, field=fields,
                              value=dict_field_value[fields])
             # Salva os novos dados no database.
             data.save()

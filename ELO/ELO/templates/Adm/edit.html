@@ -15,15 +15,11 @@
 {% endblock %}
 
 {% block body %}
-	{% if err %}
-		{{ form }}
-	{% else %}
-		<form action="" method="post" id="ff_form" >
+	<form action="" method="post" id="ff_form" >
 
-			{{ form }}<br />
+		{{ form }}<br />
 
-			{% csrf_token %}
-			<input type="submit" name="{{ action }}" {% if action == "registrar" %} value="Cadastrar" {% endif %} value="Procurar" /> 
-		</form>
-	{% endif %}
+		{% csrf_token %}
+		<input type="submit" name="{{ action }}" {% if action == "registrar" %} value="{{ DICT.REGISTER }}" {% endif %} value="{{ DICT.SEARCH }}" /> 
+	</form>
 {% endblock %}
