@@ -74,21 +74,37 @@ class User:
 		del self._lastLogin
 
 ## Administrador do sistema.
-#Eles controlam os processaos e o fluxo dos procedimentos no programa
-#Eles são os unicos com permições para criar e deletar cursos. Entretanto
-#não possuem permição para modificar cursos já criados. Ou seja, não têm 
-#permição para interferir nos desencolvimento dos cursos.
+#	Eles controlam os processos e o fluxo dos procedimentos no programa.
+#	Eles são os únicos com permissões para criar e deletar cursos. Entretanto
+#	não possuem permissão para modificar cursos já criados. Ou seja, não têm 
+#	permissão para interferir no desenvolvimento dos cursos.
 class Adm(User):
 	
 	_User__instantiable = True
 
-	def __init__(self, name, password):
+	def __init__(self, name, password, language):
 		try:
 			self.name = name
 			self.password = password
+			self.language = language
 		except ValueError as exc:
 			del self
 			raise exc
+		
+	@property
+	def language(self):
+		return self.__language
+
+	@language.setter
+	def language(self, language):
+		if type(language) is Language:
+			self.__language = language
+		else:
+			raise ValueError(lang.DICT['EXCEPTION_INV_STU_LN'])
+
+	@language.deleter
+	def language():
+		del __language
 
 ## Representação do Professor para o sistema.
 #Refere-se tanto a professores de fato, quanto a monitores.
