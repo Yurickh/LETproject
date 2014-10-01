@@ -26,6 +26,7 @@ from django.http import HttpResponseRedirect
 from django import forms
 from django.utils import translation
 
+
 ## Interface para a camada de apresentação de Usuário do módulo de Administração.
 #   É responsável pelo carregamento do template correto e processa os dados
 #   inseridos no formulário de Administração.
@@ -167,6 +168,18 @@ class IfPersAdm:
     @abstractmethod
     def fetch_del(self, username, database): pass
 
+    ##  Função que recupera todos os dados do usuário.
+    #       Percorre o banco de dados e recupera todos os dados do usuário
+    #       requisitado.
+    #
+    #   @arg    username    Nome do usuário a ser pesquisado.
+    #
+    #   @arg    database    Objeto modelo sobre o qual a consulta será
+    #                       realizada.
+    @abstractmethod
+    def fetch(self, username, database): pass
+
+
 ## Camada de interface do Administrador para o módulo de Administração.
 #   Deve carregar o devido template, contendo campos onde será
 #   permitido a criação, edição e deleção de contas do tipo Estudante,
@@ -179,7 +192,6 @@ class UiAdm(IfUiAdm):
     ## O método principal de qualquer classe de UI (User Interface).
     def run(self, request, action=None, model=None):
         translation.activate(request.session['user']['language'])
-
         ## @if Verifica qual o propósito do submit.
         #   Caso seja POST, a requisição ocorre após a submissão de uma form,
         #       podendo ser ela de registro, edição ou deleção.
@@ -193,24 +205,38 @@ class UiAdm(IfUiAdm):
         # Se a requisição for por meio de POST ela coleta o dicionário de fields ligados
         #   aos novos dados e chama as funções adequadas de edição.
         if request.method == "POST":
-            try:
-                # Coleta os forms adequados a partir da requisição POST.
-                form = AdmRegStu_ProfForm(request.POST)
+            if "registrar" in request.POST:
+                try:
+                    # Coleta os forms adequados a partir da requisição POST.
+                    form = AdmRegStu_ProfForm(request.POST)
 
-                # Se form for adequado então é chamado o método de edição de contas que
-                # irá comunicar-se com o banco de dados depois de uma validação das informações
-                # passadas pelo request.POST.
-                if form.is_valid():
-                    self.bus.editAccounts(request.POST, "registrar", Student, form)
-                # Caso contrário irá surgir um erro de que há dados incorretos.
-                else:
-                    raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
-            # Se houver qualquer problema referente as passagens dos forms e conferência 
-            # da validação dos mesmos então o administrador será passado para a página inicial.
-            except ValueError as exc:
-                return render(request, "Adm/home.html")
+                    # Se form for adequado então é chamado o método de edição de contas que
+                    # irá comunicar-se com o banco de dados depois de uma validação das informações
+                    # passadas pelo request.POST.
+                    print model
+                    print action
+                    if form.is_valid():
+                        self.bus.editAccounts(request.POST, action, Student, form)
+                    # Caso contrário irá surgir um erro de que há dados incorretos.
+                    else:
+                        raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
+                # Se houver qualquer problema referente as passagens dos forms e conferência 
+                # da validação dos mesmos então o administrador será passado para a página inicial.
+                except ValueError as exc:
+                    return render(request, "Adm/home.html")
 
+            elif request.POST['atualizar'] == lang.DICT['SEARCH'] or \
+                request.POST['apagar'] == lang.DICT['SEARCH'] in request.POST:
+                # database.__name__
+
+                d_user = self.bus.editAccounts(request.POST, "atualizar", Student, form = None)
+                data = dict(d_user)
+
+                return render(request, "Adm/info.html", {'data' : data})
+
+            print request.POST
             # Após a coleta da requisição o administrador será retornado à página inicial de controle.
+            
             return HttpResponseRedirect('/adm')
 
         # Quando a requisição for de GET então é retornado para a página principal.                                           
@@ -270,7 +296,6 @@ class BusAdm(IfBusAdm):
             for field, value in dict_field_value.items():
                 # Transforma os unicodes do dicionário em strings.
                 field = str(field)
-                value = str(value)
                 # Coleta a palavra chave do campo designado.
                 #   Esta é coletada a partir dos campos contidos no dicionário.
                 newField = field[4:].upper()
@@ -288,6 +313,11 @@ class BusAdm(IfBusAdm):
             # banco de dados com o determinado modelo.
             if database.__name__ == "Student":
                 self.pers.data_in(dict_data, database)
+
+        elif action == "atualizar":
+            data = self.pers.fetch(dict_field_value['userName'], Student)
+
+            return data
 
 
 ## Camada de persistência para o módulo de administração.
@@ -368,3 +398,52 @@ class PersAdm(IfPersAdm):
         except ( database.DoesNotExist, 
                 database.MultipleObjectsReturned ) as exc:
             raise ValueError(exc)
+
+    def __select_field(self, uid, field, database):
+
+        try:
+            ret = database.objects.get(identity=uid, field=field)
+            ret = ret.value
+
+        except database.MultipleObjectsReturned:
+            ret = map(lambda x: x.value, database.objects.filter(
+                    identity=uid, field=field))
+
+        except database.DoesNotExist:
+            ret = None 
+
+        return ret
+
+    ##  Função que recupera todos os dados do usuário.
+    def fetch(self, username, database):
+
+        try:
+            uid = database.objects.get(field='NAME',value=username)
+            uid = uid.identity
+
+            sf = lambda x: self.__select_field(uid, x, database)
+
+            fetchset = [
+                    ('password',    sf('PASSWORD')),
+                    ('matric',      sf('MATRIC')),
+                    ('bios',        sf('BIOS')),
+                    ('campus',      sf('CAMPUS')),
+                    ('courses',     sf('COURSE')),
+                    ('avatar',      sf('AVATAR')),
+                    ('email',       sf('EMAIL')),
+                    ('sex',         sf('SEX')),
+            ]
+
+            if database is Student:
+                fetchset = fetchset + [     
+                    ('grades',      sf('GRADE')),
+                    ('interests',   sf('INTEREST')),
+                    ('language',    sf('LANGUAGE')),
+                ]
+
+        except database.DoesNotExist as exc:
+            fetchset = []
+
+        return fetchset
+
+

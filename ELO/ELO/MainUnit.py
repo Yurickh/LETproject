@@ -123,14 +123,15 @@ class Factory:
 		if 'user' in request.session.keys():
 			if request.session['user']['type'] == 'Adm':
 				if ((action != None) and (model != None)):
-					return self.__ui.run(request, action, model)
+					return self.__ui.run(request, action)
 				elif not isinstance(self.__ui, IfUiAdm):
+					print "nope"
 					self.__pers = PersAdm()
 					self.__bus = BusAdm(self.__pers)
 					self.__ui = UiAdm(self.__bus) 
 				return self.__ui.run(request)
-		
-		raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])
+		else:
+			raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])
 
 	## Classe que executa o módulo de Curso.
 	# 	Define as camadas de persistência, negócio e apresentação de
