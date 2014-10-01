@@ -3,7 +3,7 @@
 
 {% block head %}
 
-	<script src="{% static 'Adm/script.js' %}">
+	<script src="{% static 'Adm/script2.js' %}">
 	</script>
 	<script src="{% static 'include/select2/select2.min.js' %}">
 	</script>
@@ -20,6 +20,8 @@
 		{{ form }}<br />
 
 		{% csrf_token %}
-		<input type="submit" name="{{ action }}" {% if action == "registrar" %} value="{{ DICT.REGISTER }}" {% endif %} value="{{ DICT.SEARCH }}" /> 
+		<input type="submit" name="{{ action }}" {% if action == "registrar" %} value="{{ DICT.REGISTER }}" {% endif %} value="{{ DICT.SEARCH }}" class="but"/> 
 	</form>
+
+	<div class="dialog"></div>
 {% endblock %}

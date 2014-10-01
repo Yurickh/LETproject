@@ -33,7 +33,8 @@ urlpatterns = patterns('',
 	## URL da pagina de administracao.
 	url(r'^adm/?$', factory.runAdm),
 	url(r'^assync/adm-edit/(?P<action>\w{3,9})/(?P<model>\w{3,9})/?$', 
-	factory.runAdm),
+		factory.runAdm),
+	url(r'^assync/adm-info/?$', factory.runAdm),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()
