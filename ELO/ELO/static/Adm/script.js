@@ -13,6 +13,7 @@ $(document).ready(function(){
 		},
 		modal: true,
 		resizable: false,
+		stack: true,
 	});
 
 	// Cria o evento de clicar e abrir os buttons da pagina de adm.
@@ -30,9 +31,18 @@ $(document).ready(function(){
 
 		// Abre o dialog
 		$(".dialog").dialog("open");
+
 		// Faz uma requisicao AJAX passando a acao e o modelo adequado.
 		$(".dialog").load("/assync/adm-edit/"+action+"/"+model+"/");
 		
 	});
+
+	$("input[type^='submit']").click(function(){
+		alert('Usuário encontrado!');
+		$(".dialog" ).dialog( "option", "stack", false );
+		$(".dialog").dialog("open");
+		$(".dialog").load("/assync/adm-info/");
+		
+	})
 
 });

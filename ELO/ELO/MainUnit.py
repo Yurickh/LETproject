@@ -122,10 +122,11 @@ class Factory:
 		# Checa se usuario ja esta logado
 		if 'user' in request.session.keys():
 			if request.session['user']['type'] == 'Adm':
-				if ((action != None) and (model != None)):
+				if action != None and model != None:
+					return self.__ui.run(request, action)
+				elif action != None:
 					return self.__ui.run(request, action)
 				elif not isinstance(self.__ui, IfUiAdm):
-					print "nope"
 					self.__pers = PersAdm()
 					self.__bus = BusAdm(self.__pers)
 					self.__ui = UiAdm(self.__bus) 

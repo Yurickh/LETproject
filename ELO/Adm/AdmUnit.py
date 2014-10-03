@@ -227,16 +227,15 @@ class UiAdm(IfUiAdm):
 
             elif request.POST['atualizar'] == lang.DICT['SEARCH'] or \
                 request.POST['apagar'] == lang.DICT['SEARCH'] in request.POST:
-                # database.__name__
+                
+                print request.POST
 
                 d_user = self.bus.editAccounts(request.POST, "atualizar", Student, form = None)
                 data = dict(d_user)
 
                 return render(request, "Adm/info.html", {'data' : data})
 
-            print request.POST
             # Após a coleta da requisição o administrador será retornado à página inicial de controle.
-            
             return HttpResponseRedirect('/adm')
 
         # Quando a requisição for de GET então é retornado para a página principal.                                           
