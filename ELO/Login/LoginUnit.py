@@ -12,6 +12,7 @@ from django.shortcuts import render
 from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.template import Template, Context
+from django.utils import translation
 from django import forms
 
 from ELO.models import Student, Adm, Professor
@@ -153,14 +154,21 @@ class UiLogin(IfUiLogin):
 				return render(request, "Login/form.html", {'form': login_form, 
 					'error': exc, 'target': target})
 			else:
+				l = None
 				cd = login_form.cleaned_data
-				l = self.bus.getLang(cd['username'], database)
+				if database.__name__ != "Adm":
+					l = self.bus.getLang(cd['username'], database)
+				else:
+					l = request.LANGUAGE_CODE
 				request.session['user'] = {
 								'name': cd['username'].value,
 								'password': cd['password'].value,
 								'language': l ,
 								'type': database.__name__,
 							}
+				print l
+				translation.activate(l)
+				request.session[translation.LANGUAGE_SESSION_KEY] = l
 				return HttpResponseRedirect('/')
 		else:
 			login_form = LoginForm()

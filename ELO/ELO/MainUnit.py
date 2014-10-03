@@ -21,6 +21,7 @@ from models import Adm, Professor, Student
 from django.core.exceptions import PermissionDenied
 from django.http import Http404
 from django.views.decorators.vary import vary_on_cookie
+from django.utils import translation
 
 ## Insere os objetos user e DICT em todas as renderizações de template.
 def globalContext(request):
@@ -78,6 +79,7 @@ class Factory:
 	def runLogout(self, request):
 		if 'user' in request.session.keys():
 			del request.session['user']
+			del request.session[translation.LANGUAGE_SESSION_KEY]
 		return self.runLogin(request, "Student")
 
 	## Classe que executa a página inicial do módulo de Perfil.
