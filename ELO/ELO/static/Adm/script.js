@@ -14,6 +14,39 @@ $(document).ready(function(){
 		modal: true,
 		resizable: false,
 		stack: true,
+
+	});
+
+	$(".dialog2").dialog({
+		autoOpen: false,
+		show: {
+			effect: "blind",
+			duration: 1000
+		},
+		hide: {
+			effect: "blind",
+			duration: 1000
+		},
+		modal: true,
+		resizable: false,
+		stack: true,
+		
+	});
+
+	$(".dialog3").dialog({
+		autoOpen: false,
+		show: {
+			effect: "blind",
+			duration: 1000
+		},
+		hide: {
+			effect: "blind",
+			duration: 1000
+		},
+		modal: true,
+		resizable: false,
+		stack: true,
+		
 	});
 
 	// Cria o evento de clicar e abrir os buttons da pagina de adm.
@@ -24,7 +57,7 @@ $(document).ready(function(){
 		// Coleta a acao que ira ser realizada, sendo elas de
 		// registro, edicao ou delecao.
 		text_button = $(this).text();
-		action = text_button.substr(0, text_button.indexOf(' ')).toLowerCase();
+		action = text_button.substr(0, text_button.indexOf(' ')).toLowerCase()
 
 		// Transforma o titulo do button como titulo do dialog.
 		$(".dialog").dialog("option", "title", text_button);
@@ -38,11 +71,20 @@ $(document).ready(function(){
 	});
 
 	$("input[type^='submit']").click(function(){
+		$(".dialog").dialog("close");
 		alert('Usuário encontrado!');
-		$(".dialog" ).dialog( "option", "stack", false );
-		$(".dialog").dialog("open");
-		$(".dialog").load("/assync/adm-info/");
-		
-	})
+		$(".dialog2").load("/assync/adm-info/");
+		$(".dialog2").dialog("open");
+	});
 
+	$("button[id^='edit_']").click(function(){
+		field = $(this).attr("id").slice(5);
+		fname = $(this).attr("title")
+
+		// Gets the title of the dialog from the title of button.
+		$(".dialog3").dialog("option", "title", fname);
+
+		$(".dialog3").load("/assync/edit-field/"+field+"/");
+		$(".dialog3").dialog("open");
+	});
 });

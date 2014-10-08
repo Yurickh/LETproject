@@ -124,8 +124,6 @@ class Factory:
 			if request.session['user']['type'] == 'Adm':
 				if action != None and model != None:
 					return self.__ui.run(request, action)
-				elif action != None:
-					return self.__ui.run(request, action)
 				elif not isinstance(self.__ui, IfUiAdm):
 					self.__pers = PersAdm()
 					self.__bus = BusAdm(self.__pers)

@@ -225,8 +225,7 @@ class UiAdm(IfUiAdm):
                 except ValueError as exc:
                     return render(request, "Adm/home.html")
 
-            elif request.POST['atualizar'] == lang.DICT['SEARCH'] or \
-                request.POST['apagar'] == lang.DICT['SEARCH'] in request.POST:
+            elif "atualizar" in request.POST:
                 
                 print request.POST
 
@@ -234,6 +233,42 @@ class UiAdm(IfUiAdm):
                 data = dict(d_user)
 
                 return render(request, "Adm/info.html", {'data' : data})
+            
+            elif "apagar" in request.POST:
+
+                d_user = self.bus.editAccounts(request.POST, "apagar", Student, form = None)
+                data = dict(d_user)
+
+                return render(request, "Adm/info.html", {'data' : data})
+
+            elif "name" in request.POST:
+                form = NameForm(request.POST)
+                field = "name"
+            elif  "password" in request.POST:
+                form = PasswordForm(request.POST)
+                field = "password"
+            elif "language" in request.POST:
+                form = LanguageForm(request.POST)
+                field = "language"
+            elif "sex" in request.POST:
+                form = SexForm(request.POST)
+                field = "sex"
+            elif "bios" in request.POST:
+                form = BiosForm(request.POST)
+                field = "bios"
+            elif "interests" in request.POST:
+                form = InterestsForm(request.POST)
+                field = "interests"
+            elif "avatar" in request.POST:
+                form = AvatarForm(request.POST, request.FILES)
+                field = "avatar"
+            else:
+                raise ValueError(lang.DICT['EXCEPTION_INV_FRM'] + 
+                    ":" + form.errors)
+            if form.is_valid():
+                self.bus.editAccounts(request.POST, field, Student, form)
+                
+                request.session.modified = True                
 
             # Após a coleta da requisição o administrador será retornado à página inicial de controle.
             return HttpResponseRedirect('/adm')
@@ -317,6 +352,40 @@ class BusAdm(IfBusAdm):
             data = self.pers.fetch(dict_field_value['userName'], Student)
 
             return data
+
+        elif action == "apagar":
+            data = self.pers.fetch(dict_field_value['userName'], Student)
+
+            return data
+
+        elif action == "name":
+            fpw = form.cleaned_data['password'].value
+            if fpw != user['password']:
+                raise ValueError(lang.DICT['EXCEPTION_INV_PW_F'])
+            newdata = form.cleaned_data['newdata'].value
+        elif action == "password":
+            npw = form.cleaned_data['newdata'].value
+            rpw = form.cleaned_data['rp_newdata'].value
+            opw = form.cleaned_data['old_password'].value
+            if npw != rpw:
+                raise ValueError(lang.DICT['EXCEPTION_INV_PW_R'])
+            if opw != user['password']:
+                raise ValueError(lang.DICt['EXCEPTION_INV_PW_F'])
+            newdata = npw
+        elif action == "language":
+            newdata = form.cleaned_data['newdata']
+        elif action == "avatar":
+            addr = settings.MEDIA_ROOT + u"/" + user['avatar']
+            with open(addr, "wb") as destination:
+                    for chunk in request.FILES['newdata'].chunks():
+                        destination.write(chunk)
+        else:
+            newdata = form.cleaned_data['newdata'].value
+
+        try:
+            self.pers.update(user['name'], field, newdata, Student)
+        except ValueError as exc:
+            raise ValueError(lang.DICT['EXCEPTION_ERR_DB_U'])
 
 
 ## Camada de persistência para o módulo de administração.

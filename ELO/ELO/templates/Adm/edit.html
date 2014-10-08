@@ -15,13 +15,15 @@
 {% endblock %}
 
 {% block body %}
-	<form action="" method="post" id="ff_form" >
+	<form action="" method="post" >
 
 		{{ form }}<br />
 
 		{% csrf_token %}
+
+		<div class="dialog2"></div>
 		<input type="submit" name="{{ action }}" {% if action == "registrar" %} value="{{ DICT.REGISTER }}" {% endif %} value="{{ DICT.SEARCH }}"/> 
 	</form>
 
-	<div class="dialog"></div>
+	
 {% endblock %}
