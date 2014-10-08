@@ -32,7 +32,6 @@ from Profile.forms import (
 from django.conf import settings
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from django.utils import translation
 from django import forms
 
 ## Interface para a camada de Apresentação de Usuário do módulo Profile.
@@ -170,7 +169,6 @@ class UiHomeProfile(IfUiProfile):
         if not 'matric' in user:
             request.session['user'] = self.bus.refreshUser(request)
             user = request.session['user']
-        translation.activate(request.session['user']['language'])
         return render(request, "Profile/home.html", {'user' : user})
 
 ## Camada de apresentação para a página de perfil completa.

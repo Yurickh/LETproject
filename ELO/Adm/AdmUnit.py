@@ -24,7 +24,6 @@ from django.shortcuts import render
 from django.conf import settings
 from django.http import HttpResponseRedirect
 from django import forms
-from django.utils import translation
 
 
 ## Interface para a camada de apresentação de Usuário do módulo de Administração.
@@ -191,7 +190,6 @@ class UiAdm(IfUiAdm):
 
     ## O método principal de qualquer classe de UI (User Interface).
     def run(self, request, action=None, model=None):
-        translation.activate(request.session['user']['language'])
         ## @if Verifica qual o propósito do submit.
         #   Caso seja POST, a requisição ocorre após a submissão de uma form,
         #       podendo ser ela de registro, edição ou deleção.

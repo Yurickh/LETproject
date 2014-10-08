@@ -3,7 +3,7 @@
 ## @file BaseUnit.py
 #  Implementa os tipos básicos do programa.
 #
-#   Cada classe deve conter o validator, que garante que os tipos básicos
+#   Cada classe deve conter o validador, que garante que os tipos básicos
 #   são compatíveis com o formato especificado nos requisitos.
 
 from abc import *
@@ -11,7 +11,7 @@ import hashlib
 
 import ELO.locale.index as lang
 
-## Interface para qualquer tipo básico (Base Type) pertencente ao projeto.
+## Interface para qualquer tipo básico (BaseType) pertencente ao projeto.
 #   Sua descrição implica que todos os tipos básicos devem ter um método
 #   _validate(self, value).
 class IfBaseType:
@@ -94,8 +94,8 @@ class Password(IfBaseType):
     def value(self):
         return self._value
 
-    ## Decorador específico de password.
-    #   Sobrescreve o decorador definido na interface para que ocorra
+    ## Método setter específico de password.
+    #   Sobrescreve o setter definido na interface para que ocorra
     #   a encriptação de forma correta.
     #
     #   @arg value String a ser validada e encriptada.
@@ -132,8 +132,8 @@ class Name(IfBaseType):
     #   @arg       value    String a ser validada.
     #
     #   @exception ValueError   Exceção lançada no caso da string de
-    #               entrada ser vazia ou conter algum
-    #               caractere não-alfanumérico.
+    #                           entrada ser vazia ou conter algum
+    #                           caractere não-alfanumérico.
     def _validate(self, value):
         if len(value) > 32:
             raise ValueError(lang.DICT['EXCEPTION_INV_NM_B'])
