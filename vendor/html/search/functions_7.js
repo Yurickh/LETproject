@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['interests',['interests',['../dd/d1d/classELO_1_1EntityUnit_1_1Student.html#a166d0213fb60a69c2b8dce7b0afc754d',1,'ELO.EntityUnit.Student.interests'],['../dd/d1d/classELO_1_1EntityUnit_1_1Student.html#a166d0213fb60a69c2b8dce7b0afc754d',1,'ELO.EntityUnit.Student.interests'],['../dd/d1d/classELO_1_1EntityUnit_1_1Student.html#a166d0213fb60a69c2b8dce7b0afc754d',1,'ELO.EntityUnit.Student.interests']]],
-  ['items',['items',['../d5/d6a/classELO_1_1EntityUnit_1_1Exercise.html#a7e95e4287551ac552687fa5d0acb6305',1,'ELO.EntityUnit.Exercise.items'],['../d5/d6a/classELO_1_1EntityUnit_1_1Exercise.html#a7e95e4287551ac552687fa5d0acb6305',1,'ELO.EntityUnit.Exercise.items'],['../d5/d6a/classELO_1_1EntityUnit_1_1Exercise.html#a7e95e4287551ac552687fa5d0acb6305',1,'ELO.EntityUnit.Exercise.items']]]
+  ['getlang',['getLang',['../dc/dd6/classLogin_1_1LoginUnit_1_1IfBusLogin.html#a66e981f9d6fc6251de59568c1de028aa',1,'Login.LoginUnit.IfBusLogin.getLang()'],['../d9/d51/classLogin_1_1LoginUnit_1_1BusLogin.html#a23223ddd567bf874e6230efaf4912e98',1,'Login.LoginUnit.BusLogin.getLang()']]],
+  ['globalcontext',['globalContext',['../db/d73/namespaceELO_1_1MainUnit.html#a021ebb0ec94aea9dca4014a7218ec38d',1,'ELO::MainUnit']]],
+  ['grades',['grades',['../dd/d1d/classELO_1_1EntityUnit_1_1Student.html#a94a418a7120679fe9562583343981046',1,'ELO.EntityUnit.Student.grades'],['../dd/d1d/classELO_1_1EntityUnit_1_1Student.html#a94a418a7120679fe9562583343981046',1,'ELO.EntityUnit.Student.grades'],['../dd/d1d/classELO_1_1EntityUnit_1_1Student.html#a94a418a7120679fe9562583343981046',1,'ELO.EntityUnit.Student.grades']]]
 ];

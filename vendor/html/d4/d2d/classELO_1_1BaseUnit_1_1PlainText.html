@@ -118,7 +118,7 @@ Diagrama de Hierarquia para ELO.BaseUnit.PlainText:</div>
  <div class="center">
   <img src="../../d4/d2d/classELO_1_1BaseUnit_1_1PlainText.png" usemap="#ELO.BaseUnit.PlainText_map" alt=""/>
   <map id="ELO.BaseUnit.PlainText_map" name="ELO.BaseUnit.PlainText_map">
-<area href="../../d7/d79/classELO_1_1BaseUnit_1_1IfBaseType.html" title="Interface para qualquer tipo básico (Base Type) pertencente ao projeto. " alt="ELO.BaseUnit.IfBaseType" shape="rect" coords="0,0,157,24"/>
+<area href="../../d7/d79/classELO_1_1BaseUnit_1_1IfBaseType.html" title="Interface para todos os tipos básicos. " alt="ELO.BaseUnit.IfBaseType" shape="rect" coords="0,0,157,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -142,9 +142,9 @@ Métodos Públicos</h2></td></tr>
 <tr class="separator:a69c338f6f1574bd3524e9d59ebc17a7c inherit pub_methods_classELO_1_1BaseUnit_1_1IfBaseType"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descrição Detalhada</h2>
-<div class="textblock"><p>Responsável por armazenar texto corrido, como em descrições, biografias, resumos, etc. </p>
+<div class="textblock"><p>Responsável por armazenar texto corrido, como em descrições, biografias, resumos etc. </p>
 
-<p>Definição na linha <a class="el" href="../../d2/d4a/BaseUnit_8py_source.html#l00189">189</a> do arquivo <a class="el" href="../../d2/d4a/BaseUnit_8py_source.html">BaseUnit.py</a>.</p>
+<p>Definição na linha <a class="el" href="../../d2/d4a/BaseUnit_8py_source.html#l00204">204</a> do arquivo <a class="el" href="../../d2/d4a/BaseUnit_8py_source.html">BaseUnit.py</a>.</p>
 </div><h2 class="groupheader">Construtores &amp; Destrutores</h2>
 <a class="anchor" id="a2cd4f19585b5e8e8279f8052307d031f"></a>
 <div class="memitem">
@@ -174,22 +174,22 @@ Métodos Públicos</h2></td></tr>
 <li>value String a ser validada e armazenada. </li>
 </ul>
 
-<p>Definição na linha <a class="el" href="../../d2/d4a/BaseUnit_8py_source.html#l00197">197</a> do arquivo <a class="el" href="../../d2/d4a/BaseUnit_8py_source.html">BaseUnit.py</a>.</p>
+<p>Definição na linha <a class="el" href="../../d2/d4a/BaseUnit_8py_source.html#l00212">212</a> do arquivo <a class="el" href="../../d2/d4a/BaseUnit_8py_source.html">BaseUnit.py</a>.</p>
 
-<p>Referências <a class="el" href="../../d2/d4a/BaseUnit_8py_source.html#l00044">ELO.BaseUnit.IfBaseType._validate()</a> e <a class="el" href="../../d2/d4a/BaseUnit_8py_source.html#l00035">ELO.BaseUnit.IfBaseType._value</a>.</p>
-<div class="fragment"><div class="line"><a name="l00197"></a><span class="lineno"><a class="line" href="../../d4/d2d/classELO_1_1BaseUnit_1_1PlainText.html#a2cd4f19585b5e8e8279f8052307d031f">  197</a></span>&#160;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <span class="keyword">def </span><a class="code" href="../../d4/d2d/classELO_1_1BaseUnit_1_1PlainText.html#a2cd4f19585b5e8e8279f8052307d031f">__init__</a>(self, value):</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <span class="keywordflow">try</span>:</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            self.<a class="code" href="../../d7/d79/classELO_1_1BaseUnit_1_1IfBaseType.html#a11c68b128a7069e27c1c2fcb782269ea">_validate</a>(value)</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <span class="keywordflow">except</span> ValueError <span class="keyword">as</span> exc:</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            del self</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            <span class="keywordflow">raise</span> exc</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        self.<a class="code" href="../../d7/d79/classELO_1_1BaseUnit_1_1IfBaseType.html#ad05d9d377fc4b99743c022cc8f6019d7">_value</a> = value</div>
+<p>Referências <a class="el" href="../../d2/d4a/BaseUnit_8py_source.html#l00058">ELO.BaseUnit.IfBaseType._validate()</a> e <a class="el" href="../../d2/d4a/BaseUnit_8py_source.html#l00048">ELO.BaseUnit.IfBaseType._value</a>.</p>
+<div class="fragment"><div class="line"><a name="l00212"></a><span class="lineno"><a class="line" href="../../d4/d2d/classELO_1_1BaseUnit_1_1PlainText.html#a2cd4f19585b5e8e8279f8052307d031f">  212</a></span>&#160;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <span class="keyword">def </span><a class="code" href="../../d4/d2d/classELO_1_1BaseUnit_1_1PlainText.html#a2cd4f19585b5e8e8279f8052307d031f">__init__</a>(self, value):</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            self.<a class="code" href="../../d7/d79/classELO_1_1BaseUnit_1_1IfBaseType.html#a11c68b128a7069e27c1c2fcb782269ea">_validate</a>(value)</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        <span class="keywordflow">except</span> ValueError <span class="keyword">as</span> exc:</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            del self</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            <span class="keywordflow">raise</span> exc</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        self.<a class="code" href="../../d7/d79/classELO_1_1BaseUnit_1_1IfBaseType.html#ad05d9d377fc4b99743c022cc8f6019d7">_value</a> = value</div>
 </div>
-<div class="ttc" id="classELO_1_1BaseUnit_1_1PlainText_html_a2cd4f19585b5e8e8279f8052307d031f"><div class="ttname"><a href="../../d4/d2d/classELO_1_1BaseUnit_1_1PlainText.html#a2cd4f19585b5e8e8279f8052307d031f">ELO.BaseUnit.PlainText.__init__</a></div><div class="ttdeci">def __init__</div><div class="ttdoc">Construtor da classe. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d4a/BaseUnit_8py_source.html#l00197">BaseUnit.py:197</a></div></div>
-<div class="ttc" id="classELO_1_1BaseUnit_1_1IfBaseType_html_a11c68b128a7069e27c1c2fcb782269ea"><div class="ttname"><a href="../../d7/d79/classELO_1_1BaseUnit_1_1IfBaseType.html#a11c68b128a7069e27c1c2fcb782269ea">ELO.BaseUnit.IfBaseType._validate</a></div><div class="ttdeci">def _validate</div><div class="ttdoc">Define que toda classe derivada terá um método _validate. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d4a/BaseUnit_8py_source.html#l00044">BaseUnit.py:44</a></div></div>
-<div class="ttc" id="classELO_1_1BaseUnit_1_1IfBaseType_html_ad05d9d377fc4b99743c022cc8f6019d7"><div class="ttname"><a href="../../d7/d79/classELO_1_1BaseUnit_1_1IfBaseType.html#ad05d9d377fc4b99743c022cc8f6019d7">ELO.BaseUnit.IfBaseType._value</a></div><div class="ttdeci">_value</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d4a/BaseUnit_8py_source.html#l00035">BaseUnit.py:35</a></div></div>
+<div class="ttc" id="classELO_1_1BaseUnit_1_1PlainText_html_a2cd4f19585b5e8e8279f8052307d031f"><div class="ttname"><a href="../../d4/d2d/classELO_1_1BaseUnit_1_1PlainText.html#a2cd4f19585b5e8e8279f8052307d031f">ELO.BaseUnit.PlainText.__init__</a></div><div class="ttdeci">def __init__</div><div class="ttdoc">Construtor da classe. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d4a/BaseUnit_8py_source.html#l00212">BaseUnit.py:212</a></div></div>
+<div class="ttc" id="classELO_1_1BaseUnit_1_1IfBaseType_html_a11c68b128a7069e27c1c2fcb782269ea"><div class="ttname"><a href="../../d7/d79/classELO_1_1BaseUnit_1_1IfBaseType.html#a11c68b128a7069e27c1c2fcb782269ea">ELO.BaseUnit.IfBaseType._validate</a></div><div class="ttdeci">def _validate</div><div class="ttdoc">Define que toda classe derivada terá um método _validate. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d4a/BaseUnit_8py_source.html#l00058">BaseUnit.py:58</a></div></div>
+<div class="ttc" id="classELO_1_1BaseUnit_1_1IfBaseType_html_ad05d9d377fc4b99743c022cc8f6019d7"><div class="ttname"><a href="../../d7/d79/classELO_1_1BaseUnit_1_1IfBaseType.html#ad05d9d377fc4b99743c022cc8f6019d7">ELO.BaseUnit.IfBaseType._value</a></div><div class="ttdeci">_value</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d4a/BaseUnit_8py_source.html#l00048">BaseUnit.py:48</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -202,7 +202,7 @@ Métodos Públicos</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../da/d09/namespaceELO.html">ELO</a></li><li class="navelem"><a class="el" href="../../dc/d21/namespaceELO_1_1BaseUnit.html">BaseUnit</a></li><li class="navelem"><a class="el" href="../../d4/d2d/classELO_1_1BaseUnit_1_1PlainText.html">PlainText</a></li>
-    <li class="footer">Gerado em Sexta, 22 de Agosto de 2014 17:35:23 para LETproject por
+    <li class="footer">Gerado em Quinta, 9 de Outubro de 2014 03:08:54 para LETproject por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

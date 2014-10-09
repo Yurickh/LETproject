@@ -4,49 +4,15 @@
 \subsubsection*{Componentes}
 \begin{DoxyCompactItemize}
 \item 
-class \hyperlink{classAdm_1_1forms_1_1AdmRegStuForm}{Adm\-Reg\-Stu\-Form}
-\begin{DoxyCompactList}\small\item\em package Adm\-Forms Este arquivo define os formulários do módulo de Administração, como os formulários de cadastro de aluno, remoção de aluno, e etc. \end{DoxyCompactList}\item 
-class \hyperlink{classAdm_1_1forms_1_1AdmDelStuForm}{Adm\-Del\-Stu\-Form}
+class \hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm}{Adm\-Reg\-Stu\-\_\-\-Prof\-Form}
+\begin{DoxyCompactList}\small\item\em Classe de forms para o formulário de cadastro de aluno. \end{DoxyCompactList}\item 
+class \hyperlink{classAdm_1_1forms_1_1AdmDelStu__ProfForm}{Adm\-Del\-Stu\-\_\-\-Prof\-Form}
 \item 
-class \hyperlink{classAdm_1_1forms_1_1AdmRegProfForm}{Adm\-Reg\-Prof\-Form}
-\item 
-class \hyperlink{classAdm_1_1forms_1_1AdmDelProfForm}{Adm\-Del\-Prof\-Form}
+class \hyperlink{classAdm_1_1forms_1_1confAdm}{conf\-Adm}
 \item 
 class \hyperlink{classAdm_1_1forms_1_1AdmRegCourForm}{Adm\-Reg\-Cour\-Form}
 \item 
+class \hyperlink{classAdm_1_1forms_1_1AdmSrcCourForm}{Adm\-Src\-Cour\-Form}
+\item 
 class \hyperlink{classAdm_1_1forms_1_1AdmDelCourForm}{Adm\-Del\-Cour\-Form}
-\item 
-class \hyperlink{classAdm_1_1forms_1_1AdmSrcStuForm}{Adm\-Src\-Stu\-Form}
-\item 
-class \hyperlink{classAdm_1_1forms_1_1AdmSrcProfForm}{Adm\-Src\-Prof\-Form}
 \end{DoxyCompactItemize}
-\subsubsection*{Funções}
-\begin{DoxyCompactItemize}
-\item 
-def \hyperlink{namespaceAdm_1_1forms_a24e20fddb6abcb82f01bad3bccb4d44e}{clean\-\_\-adm\-Pass}
-\begin{DoxyCompactList}\small\item\em Verifica se a formatação da senha do administrador está correta. \end{DoxyCompactList}\end{DoxyCompactItemize}
-
-
-\subsubsection{Funções}
-\hypertarget{namespaceAdm_1_1forms_a24e20fddb6abcb82f01bad3bccb4d44e}{\index{Adm\-::forms@{Adm\-::forms}!clean\-\_\-adm\-Pass@{clean\-\_\-adm\-Pass}}
-\index{clean\-\_\-adm\-Pass@{clean\-\_\-adm\-Pass}!Adm::forms@{Adm\-::forms}}
-\paragraph[{clean\-\_\-adm\-Pass}]{\setlength{\rightskip}{0pt plus 5cm}def Adm.\-forms.\-clean\-\_\-adm\-Pass (
-\begin{DoxyParamCaption}
-\item[{}]{self}
-\end{DoxyParamCaption}
-)}}\label{namespaceAdm_1_1forms_a24e20fddb6abcb82f01bad3bccb4d44e}
-Caso esteja, retorna a senha, caso contrário, lança uma excessão. 
-
-Definição na linha \hyperlink{Adm_2forms_8py_source_l00068}{68} do arquivo \hyperlink{Adm_2forms_8py_source}{forms.\-py}.
-
-
-\begin{DoxyCode}
-\hypertarget{namespaceAdm_1_1forms_l00068}{}\hyperlink{namespaceAdm_1_1forms_a24e20fddb6abcb82f01bad3bccb4d44e}{00068} 
-00069     \textcolor{keyword}{def }\hyperlink{namespaceAdm_1_1forms_a24e20fddb6abcb82f01bad3bccb4d44e}{clean\_admPass}(self):
-00070         \textcolor{keywordflow}{try}:
-00071             password = \hyperlink{classELO_1_1BaseUnit_1_1Password}{Password}(self.cleaned\_data[\textcolor{stringliteral}{'admPass'}]
-00072         \textcolor{keywordflow}{except} ValueError:
-00073             \textcolor{keywordflow}{raise} forms.ValidationError(\textcolor{stringliteral}{"Senha inválida."})
-00074         \textcolor{keywordflow}{return} password 
-
-\end{DoxyCode}

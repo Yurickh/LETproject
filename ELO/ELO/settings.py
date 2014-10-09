@@ -173,3 +173,5 @@ LOGGING = {
 TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
     'ELO.MainUnit.globalContext',
 )
+
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'

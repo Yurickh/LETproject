@@ -79,14 +79,14 @@ class AdmRegStu_ProfForm(forms.Form):
 
 
 class AdmDelStu_ProfForm(forms.Form): 
-	userName = forms.CharField(max_length = 32, label = "Nome:", required= "True")
+	username = forms.CharField(max_length = 32, label = "Nome:", required=True)
 	
-	def clean_userMatric(self):
+	def clean_userName(self):
 		try:
-			matric = Matric(self.cleaned_data["userMatric"])
+			name = Name(self.cleaned_data["username"])
 		except ValueError:
 			raise forms.ValidationError("Usário inválido.")
-		return matric
+		return name
 		
 class confAdm(forms.Form):
 	admPass = forms.CharField(widget = forms.PasswordInput, label = "Senha do Adm",required= "True")

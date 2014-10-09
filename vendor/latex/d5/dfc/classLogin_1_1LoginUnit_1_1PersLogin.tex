@@ -22,7 +22,7 @@ def \hyperlink{classLogin_1_1LoginUnit_1_1PersLogin_a1847dbd744377283add2327d2eb
 \subsubsection{Descrição Detalhada}
 
 
-Definição na linha \hyperlink{LoginUnit_8py_source_l00193}{193} do arquivo \hyperlink{LoginUnit_8py_source}{Login\-Unit.\-py}.
+Definição na linha \hyperlink{LoginUnit_8py_source_l00201}{201} do arquivo \hyperlink{LoginUnit_8py_source}{Login\-Unit.\-py}.
 
 
 
@@ -38,31 +38,31 @@ Definição na linha \hyperlink{LoginUnit_8py_source_l00193}{193} do arquivo \hy
 )}}\label{classLogin_1_1LoginUnit_1_1PersLogin_a1847dbd744377283add2327d2eb0b99f}
 
 
-Definição na linha \hyperlink{LoginUnit_8py_source_l00195}{195} do arquivo \hyperlink{LoginUnit_8py_source}{Login\-Unit.\-py}.
+Definição na linha \hyperlink{LoginUnit_8py_source_l00203}{203} do arquivo \hyperlink{LoginUnit_8py_source}{Login\-Unit.\-py}.
 
 
 \begin{DoxyCode}
-\hypertarget{classLogin_1_1LoginUnit_1_1PersLogin_l00195}{}\hyperlink{classLogin_1_1LoginUnit_1_1PersLogin_a1847dbd744377283add2327d2eb0b99f}{00195} 
-00196     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1PersLogin_a1847dbd744377283add2327d2eb0b99f}{select}(self, username=None, database=None):
-00197         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} username: \textcolor{keywordflow}{return} \textcolor{keyword}{False}
-00198         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} database: \textcolor{keywordflow}{return} \textcolor{keyword}{False}
-00199 
-00200         ulang = \textcolor{keywordtype}{None}
-00201 
-00202         \textcolor{keywordflow}{try}:
-00203             uid = database.objects.get(value=username, field=\textcolor{stringliteral}{'NAME'}).identity
-00204             upass = database.objects.get(identity=uid, field=\textcolor{stringliteral}{'PASSWORD'}).value
-00205         \textcolor{keywordflow}{except} database.DoesNotExist:
-00206             \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+\hypertarget{classLogin_1_1LoginUnit_1_1PersLogin_l00203}{}\hyperlink{classLogin_1_1LoginUnit_1_1PersLogin_a1847dbd744377283add2327d2eb0b99f}{00203} 
+00204     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1PersLogin_a1847dbd744377283add2327d2eb0b99f}{select}(self, username=None, database=None):
+00205         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} username: \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+00206         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} database: \textcolor{keywordflow}{return} \textcolor{keyword}{False}
 00207 
-00208         \textcolor{keywordflow}{if} isinstance(database, Student):
-00209             \textcolor{keywordflow}{try}:
-00210                 ulang = database.objects.get(identity=uid, field=\textcolor{stringliteral}{'LANGUAGE'}).value
-00211             \textcolor{keywordflow}{except} database.DoesNotExist:
-00212                 \textcolor{keywordflow}{pass}
-00213         \textcolor{keywordflow}{else}:
-00214             ulang = settings.LANGUAGE\_CODE
+00208         ulang = \textcolor{keywordtype}{None}
+00209 
+00210         \textcolor{keywordflow}{try}:
+00211             uid = database.objects.get(value=username, field=\textcolor{stringliteral}{'NAME'}).identity
+00212             upass = database.objects.get(identity=uid, field=\textcolor{stringliteral}{'PASSWORD'}).value
+00213         \textcolor{keywordflow}{except} database.DoesNotExist:
+00214             \textcolor{keywordflow}{return} \textcolor{keyword}{False}
 00215 
+00216         \textcolor{keywordflow}{if} isinstance(database, Student):
+00217             \textcolor{keywordflow}{try}:
+00218                 ulang = database.objects.get(identity=uid, field=\textcolor{stringliteral}{'LANGUAGE'}).value
+00219             \textcolor{keywordflow}{except} database.DoesNotExist:
+00220                 \textcolor{keywordflow}{pass}
+00221         \textcolor{keywordflow}{else}:
+00222             ulang = settings.LANGUAGE\_CODE
+00223 
         \textcolor{keywordflow}{return} \{\textcolor{stringliteral}{'name'}: username, \textcolor{stringliteral}{'password'}: upass, \textcolor{stringliteral}{'language'}: ulang\}\end{DoxyCode}
 
 

@@ -1,6 +1,7 @@
 {% extends "includes/assync_wrapper.html" %}
 {% load staticfiles %}
 
+<<<<<<< HEAD
 {% block head %}
 
 	<script src="{% static 'Adm/script_info.js' %}"></script>
@@ -11,15 +12,15 @@
 
 {% endblock %}
 
+=======
+>>>>>>> 198179b0ebd94d135f569e5a8565f286444d3203
 {% block body %}
 	{% for field, value in data.items %}
 		{{ field }}: {{ value }}<br />
 			<button id="edit_{{ field }}"
 					title="{{ value }}"
 					>Edit</button><br /><br />
-	{% endfor %}	
-	<div class="dialog2"></div>
-	<div class="dialog3"></div>
+	{% endfor %}
 {% endblock %}
 
 
