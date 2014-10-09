@@ -32,6 +32,7 @@ from Profile.forms import (
 from django.conf import settings
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
+from django.utils import translation
 from django import forms
 
 ## Interface para a camada de Apresentação de Usuário do módulo Profile.
@@ -285,8 +286,10 @@ class UiFullProfile(IfUiProfile):
         else: # request.method == "GET"
             if not field: # normal call
                 request.session['user'] = self.bus.refreshUser(request)
-                data = self.__makeData(get_user())        
-                translation.activate(request.session['user']['language'])
+                data = self.__makeData(get_user())
+                l = request.session['user']['language']
+                translation.activate(l)
+                request.session[translation.LANGUAGE_SESSION_KEY] = l
                 return render(request, "Profile/full.html", {'data' : data})
             else: # ajax call
                 err = False
