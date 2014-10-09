@@ -59,7 +59,7 @@
 \hypertarget{settings_8py_source_l00054}{}\hyperlink{namespaceELO_1_1settings_a8da4c6fc66af84d08bddc0249a473553}{00054} USE\_TZ = \textcolor{keyword}{True}
 00055 
 \hypertarget{settings_8py_source_l00056}{}\hyperlink{namespaceELO_1_1settings_a977570dd2e9cd8142b3d65c4fa37c172}{00056} LOCALE\_PATHS = (
-00057     \hyperlink{namespaceELO_1_1settings_a7730264ddd478343e0f282f36d4a5ab4}{filepath}(\textcolor{stringliteral}{'locale'})
+00057     \hyperlink{namespaceELO_1_1settings_a7730264ddd478343e0f282f36d4a5ab4}{filepath}(\textcolor{stringliteral}{'locale'}),
 00058 )
 00059 
 00060 \textcolor{comment}{# Absolute filesystem path to the directory that will hold user-uploaded files.}
@@ -178,4 +178,6 @@
 \hypertarget{settings_8py_source_l00173}{}\hyperlink{namespaceELO_1_1settings_ad62b51880946e9380913c2f3811311bf}{00173} TEMPLATE\_CONTEXT\_PROCESSORS = DEFAULT\_SETTINGS.TEMPLATE\_CONTEXT\_PROCESSORS + (
 00174     \textcolor{stringliteral}{'ELO.MainUnit.globalContext'},
 00175 )
+00176 
+00177 TEST\_RUNNER = \textcolor{stringliteral}{'django.test.runner.DiscoverRunner'}
 \end{DoxyCode}

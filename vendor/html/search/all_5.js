@@ -1,11 +1,11 @@
 var searchData=
 [
   ['baseunit',['BaseUnit',['../dc/d21/namespaceELO_1_1BaseUnit.html',1,'ELO']]],
+  ['editaccounts',['editAccounts',['../d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a4dd3605edbfe5fdc729fdeceec5ab879',1,'Adm.AdmUnit.IfBusAdm.editAccounts()'],['../de/de0/classAdm_1_1AdmUnit_1_1BusAdm.html#a0650e636805d049ce37fae5b0ac132e0',1,'Adm.AdmUnit.BusAdm.editAccounts()']]],
   ['editfield',['editField',['../dc/d47/classProfile_1_1ProfileUnit_1_1IfBusProfile.html#a1e1a9ec32d2c23c734eaf0ceb6bb8419',1,'Profile.ProfileUnit.IfBusProfile.editField()'],['../df/da4/classProfile_1_1ProfileUnit_1_1BusProfile.html#a5c116d007081ffefcc1c45cd34c88e10',1,'Profile.ProfileUnit.BusProfile.editField()']]],
   ['elo',['ELO',['../da/d09/namespaceELO.html',1,'']]],
   ['email',['email',['../d5/df1/classELO_1_1EntityUnit_1_1Professor.html#a7c6f76f185515050334dc74a030043a7',1,'ELO.EntityUnit.Professor.email()'],['../dd/d1d/classELO_1_1EntityUnit_1_1Student.html#ac072120adf3ee4078fe3ef7f17e61a1f',1,'ELO.EntityUnit.Student.email()'],['../d5/df1/classELO_1_1EntityUnit_1_1Professor.html#ab3f1db18ae629280f0476760411e1633',1,'ELO.EntityUnit.Professor.email'],['../d5/df1/classELO_1_1EntityUnit_1_1Professor.html#ab3f1db18ae629280f0476760411e1633',1,'ELO.EntityUnit.Professor.email'],['../dd/d1d/classELO_1_1EntityUnit_1_1Student.html#a23a5b0c412a8dfb456555d4cf500d5d1',1,'ELO.EntityUnit.Student.email'],['../dd/d1d/classELO_1_1EntityUnit_1_1Student.html#a23a5b0c412a8dfb456555d4cf500d5d1',1,'ELO.EntityUnit.Student.email'],['../dd/d1d/classELO_1_1EntityUnit_1_1Student.html#a23a5b0c412a8dfb456555d4cf500d5d1',1,'ELO.EntityUnit.Student.email']]],
   ['entityunit',['EntityUnit',['../d2/d07/namespaceELO_1_1EntityUnit.html',1,'ELO']]],
-  ['entityunit',['EntityUnit',['../d0/dd3/namespaceEntityUnit.html',1,'']]],
   ['entityunit_2epy',['EntityUnit.py',['../d7/dff/EntityUnit_8py.html',1,'']]],
   ['exercise',['Exercise',['../d5/d6a/classELO_1_1EntityUnit_1_1Exercise.html',1,'ELO::EntityUnit']]],
   ['exercises',['exercises',['../dc/d13/classELO_1_1EntityUnit_1_1Lesson.html#a8d3db8bfbcfd47e9f7eef8f3bdc0ee3f',1,'ELO.EntityUnit.Lesson.exercises()'],['../dc/d13/classELO_1_1EntityUnit_1_1Lesson.html#a49ad3f9952188497a01afdd31db8000c',1,'ELO.EntityUnit.Lesson.exercises'],['../dc/d13/classELO_1_1EntityUnit_1_1Lesson.html#a49ad3f9952188497a01afdd31db8000c',1,'ELO.EntityUnit.Lesson.exercises'],['../dc/d13/classELO_1_1EntityUnit_1_1Lesson.html#a49ad3f9952188497a01afdd31db8000c',1,'ELO.EntityUnit.Lesson.exercises']]],

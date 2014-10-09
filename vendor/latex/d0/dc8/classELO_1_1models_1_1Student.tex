@@ -29,9 +29,21 @@ tuple \hyperlink{classELO_1_1models_1_1Student_a201226779dce6e064cb16bd92ed016e2
 
 
 \subsubsection{Descrição Detalhada}
-Representa o modelo de um aluno armazenado no banco de dados. 
+Colunas já implementadas\-:
 
-Definição na linha \hyperlink{ELO_2models_8py_source_l00011}{11} do arquivo \hyperlink{ELO_2models_8py_source}{models.\-py}.
+N\-A\-M\-E\-: Identifica o nome do estudante.\par
+ P\-A\-S\-S\-W\-O\-R\-D\-: Contém a hash da senha do estudante.\par
+ B\-I\-O\-S\-: Biografia do estudante.\par
+ M\-A\-T\-R\-I\-C\-: Inteiro que representa a matrícula do estudante.\par
+ C\-A\-M\-P\-U\-S\-: Número inteiro que representa a identity de um Campus. (ver modelo Campus)\par
+ A\-V\-A\-T\-A\-R\-: Caminho completo do avatar do usuário.\par
+ E\-M\-A\-I\-L\-: Email utilizado pelo estudante.\par
+ S\-E\-X\-: Caractere que representa o sexo do usuário. Varia entre M/\-F.\par
+ I\-N\-T\-E\-R\-E\-S\-T\-: Lista de strings que representam o interesse do usuário.\par
+ L\-A\-N\-G\-U\-A\-G\-E\-: Código da linguagem preferida do usuário.\par
+ C\-O\-U\-R\-S\-E\-: Lista de inteiros que representam identities de Cursos. (ver modelo \hyperlink{namespaceCourse}{Course}) 
+
+Definição na linha \hyperlink{ELO_2models_8py_source_l00047}{47} do arquivo \hyperlink{ELO_2models_8py_source}{models.\-py}.
 
 
 
@@ -45,7 +57,7 @@ Definição na linha \hyperlink{ELO_2models_8py_source_l00011}{11} do arquivo \h
 )}}\label{classELO_1_1models_1_1Student_a2f51785c1beb3b45269a8678d97ec783}
 
 
-Definição na linha \hyperlink{ELO_2models_8py_source_l00017}{17} do arquivo \hyperlink{ELO_2models_8py_source}{models.\-py}.
+Definição na linha \hyperlink{ELO_2models_8py_source_l00053}{53} do arquivo \hyperlink{ELO_2models_8py_source}{models.\-py}.
 
 
 
@@ -53,9 +65,9 @@ Referências \hyperlink{classELO_1_1models_1_1Student_a893ec9b2ece5c6b829fce5e5a
 
 
 \begin{DoxyCode}
-\hypertarget{classELO_1_1models_1_1Student_l00017}{}\hyperlink{classELO_1_1models_1_1Student_a2f51785c1beb3b45269a8678d97ec783}{00017} 
-00018     \textcolor{keyword}{def }\hyperlink{classELO_1_1models_1_1Student_a2f51785c1beb3b45269a8678d97ec783}{\_\_unicode\_\_}(self):
-00019         \textcolor{keywordflow}{return} \textcolor{stringliteral}{u'%s : %s = %s'} % (str(self.\hyperlink{classELO_1_1models_1_1Student_a20a7789a2b0f5b7d0c98453dcf38bc4e}{identity}), self.\hyperlink{classELO_1_1models_1_1Student_a893ec9b2ece5c6b829fce5e5a7c1d576}{field}, self.
+\hypertarget{classELO_1_1models_1_1Student_l00053}{}\hyperlink{classELO_1_1models_1_1Student_a2f51785c1beb3b45269a8678d97ec783}{00053} 
+00054     \textcolor{keyword}{def }\hyperlink{classELO_1_1models_1_1Student_a2f51785c1beb3b45269a8678d97ec783}{\_\_unicode\_\_}(self):
+00055         \textcolor{keywordflow}{return} \textcolor{stringliteral}{u'%s : %s = %s'} % (str(self.\hyperlink{classELO_1_1models_1_1Student_a20a7789a2b0f5b7d0c98453dcf38bc4e}{identity}), self.\hyperlink{classELO_1_1models_1_1Student_a893ec9b2ece5c6b829fce5e5a7c1d576}{field}, self.
       \hyperlink{classELO_1_1models_1_1Student_a201226779dce6e064cb16bd92ed016e2}{value})
 
 \end{DoxyCode}
@@ -67,7 +79,7 @@ Referências \hyperlink{classELO_1_1models_1_1Student_a893ec9b2ece5c6b829fce5e5a
 \paragraph[{field}]{\setlength{\rightskip}{0pt plus 5cm}tuple E\-L\-O.\-models.\-Student.\-field = models.\-Char\-Field(max\-\_\-length=32)\hspace{0.3cm}{\ttfamily [static]}}}\label{classELO_1_1models_1_1Student_a893ec9b2ece5c6b829fce5e5a7c1d576}
 
 
-Definição na linha \hyperlink{ELO_2models_8py_source_l00013}{13} do arquivo \hyperlink{ELO_2models_8py_source}{models.\-py}.
+Definição na linha \hyperlink{ELO_2models_8py_source_l00049}{49} do arquivo \hyperlink{ELO_2models_8py_source}{models.\-py}.
 
 
 
@@ -78,7 +90,7 @@ Referenciado por \hyperlink{classELO_1_1models_1_1Student_a2f51785c1beb3b45269a8
 \paragraph[{identity}]{\setlength{\rightskip}{0pt plus 5cm}tuple E\-L\-O.\-models.\-Student.\-identity = models.\-Integer\-Field()\hspace{0.3cm}{\ttfamily [static]}}}\label{classELO_1_1models_1_1Student_a20a7789a2b0f5b7d0c98453dcf38bc4e}
 
 
-Definição na linha \hyperlink{ELO_2models_8py_source_l00012}{12} do arquivo \hyperlink{ELO_2models_8py_source}{models.\-py}.
+Definição na linha \hyperlink{ELO_2models_8py_source_l00048}{48} do arquivo \hyperlink{ELO_2models_8py_source}{models.\-py}.
 
 
 
@@ -89,7 +101,7 @@ Referenciado por \hyperlink{classELO_1_1models_1_1Student_a2f51785c1beb3b45269a8
 \paragraph[{value}]{\setlength{\rightskip}{0pt plus 5cm}tuple E\-L\-O.\-models.\-Student.\-value = models.\-Text\-Field()\hspace{0.3cm}{\ttfamily [static]}}}\label{classELO_1_1models_1_1Student_a201226779dce6e064cb16bd92ed016e2}
 
 
-Definição na linha \hyperlink{ELO_2models_8py_source_l00014}{14} do arquivo \hyperlink{ELO_2models_8py_source}{models.\-py}.
+Definição na linha \hyperlink{ELO_2models_8py_source_l00050}{50} do arquivo \hyperlink{ELO_2models_8py_source}{models.\-py}.
 
 
 

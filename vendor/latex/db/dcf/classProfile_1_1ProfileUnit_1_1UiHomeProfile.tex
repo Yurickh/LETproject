@@ -23,7 +23,7 @@ def \hyperlink{classProfile_1_1ProfileUnit_1_1UiHomeProfile_a5abc7f7c1ca1cb3e070
 \subsubsection{Descrição Detalhada}
 Deve carregar o devido template, contendo os dados básicos do usuário, como cursos matriculados e histórico para estudantes, e cursos monitorados para professores. 
 
-Definição na linha \hyperlink{ProfileUnit_8py_source_l00148}{148} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
+Definição na linha \hyperlink{ProfileUnit_8py_source_l00166}{166} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
 
 
 
@@ -38,18 +38,17 @@ Definição na linha \hyperlink{ProfileUnit_8py_source_l00148}{148} do arquivo \
 )}}\label{classProfile_1_1ProfileUnit_1_1UiHomeProfile_a5abc7f7c1ca1cb3e070c36a869263e6d}
 
 
-Definição na linha \hyperlink{ProfileUnit_8py_source_l00150}{150} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
+Definição na linha \hyperlink{ProfileUnit_8py_source_l00168}{168} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
 
 
 \begin{DoxyCode}
-\hypertarget{classProfile_1_1ProfileUnit_1_1UiHomeProfile_l00150}{}\hyperlink{classProfile_1_1ProfileUnit_1_1UiHomeProfile_a5abc7f7c1ca1cb3e070c36a869263e6d}{00150} 
-00151     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1UiHomeProfile_a5abc7f7c1ca1cb3e070c36a869263e6d}{run}(self, request):
-00152         user = request.session[\textcolor{stringliteral}{'user'}]
-00153         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} \textcolor{stringliteral}{'matric'} \textcolor{keywordflow}{in} user:
-00154             request.session[\textcolor{stringliteral}{'user'}] = self.bus.refreshUser(request)
-00155             user = request.session[\textcolor{stringliteral}{'user'}]
-00156         translation.activate(request.session[\textcolor{stringliteral}{'user'}][\textcolor{stringliteral}{'language'}])
-00157         \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Profile/home.html"}, \{\textcolor{stringliteral}{'user'} : user\})
+\hypertarget{classProfile_1_1ProfileUnit_1_1UiHomeProfile_l00168}{}\hyperlink{classProfile_1_1ProfileUnit_1_1UiHomeProfile_a5abc7f7c1ca1cb3e070c36a869263e6d}{00168} 
+00169     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1UiHomeProfile_a5abc7f7c1ca1cb3e070c36a869263e6d}{run}(self, request):
+00170         user = request.session[\textcolor{stringliteral}{'user'}]
+00171         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} \textcolor{stringliteral}{'matric'} \textcolor{keywordflow}{in} user:
+00172             request.session[\textcolor{stringliteral}{'user'}] = self.bus.refreshUser(request)
+00173             user = request.session[\textcolor{stringliteral}{'user'}]
+00174         \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Profile/home.html"}, \{\textcolor{stringliteral}{'user'} : user\})
 
 \end{DoxyCode}
 

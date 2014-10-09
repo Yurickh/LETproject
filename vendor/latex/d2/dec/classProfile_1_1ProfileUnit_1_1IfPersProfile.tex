@@ -18,13 +18,15 @@ Diagrama de Hierarquia para Profile.\-Profile\-Unit.\-If\-Pers\-Profile\-:\begin
 def \hyperlink{classProfile_1_1ProfileUnit_1_1IfPersProfile_a64821aed51d9e9d64f6da9ee9b20fdeb}{fetch}
 \begin{DoxyCompactList}\small\item\em Função que recupera todos os dados do usuário. \end{DoxyCompactList}\item 
 def \hyperlink{classProfile_1_1ProfileUnit_1_1IfPersProfile_ae2d65e1ead2780de7b97fab078bb425e}{update}
-\begin{DoxyCompactList}\small\item\em Método que atualiza os dados de um usuário fornecido. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Método que atualiza os dados de um usuário fornecido. \end{DoxyCompactList}\item 
+def \hyperlink{classProfile_1_1ProfileUnit_1_1IfPersProfile_aaa886f8741f0b2ca562968cf9a688aa7}{fetch\-Field}
+\begin{DoxyCompactList}\small\item\em Método que recupera os dados de um campo específico de todos. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsubsection{Descrição Detalhada}
 É responsável pela manipulação dos dados do usuário logado do banco de dados. 
 
-Definição na linha \hyperlink{ProfileUnit_8py_source_l00116}{116} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
+Definição na linha \hyperlink{ProfileUnit_8py_source_l00124}{124} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
 
 
 
@@ -46,12 +48,34 @@ Percorre o banco de dados e recupera todos os dados do usuário requisitado.
 \item database Objeto modelo sobre o qual a consulta será realizada. \end{DoxyItemize}
 
 
-Definição na linha \hyperlink{ProfileUnit_8py_source_l00128}{128} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
+Definição na linha \hyperlink{ProfileUnit_8py_source_l00136}{136} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
 
 
 \begin{DoxyCode}
-\hypertarget{classProfile_1_1ProfileUnit_1_1IfPersProfile_l00128}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfPersProfile_a64821aed51d9e9d64f6da9ee9b20fdeb}{00128} 
-00129     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfPersProfile_a64821aed51d9e9d64f6da9ee9b20fdeb}{fetch}(self, username, database): \textcolor{keyword}{pass}
+\hypertarget{classProfile_1_1ProfileUnit_1_1IfPersProfile_l00136}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfPersProfile_a64821aed51d9e9d64f6da9ee9b20fdeb}{00136} 
+00137     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfPersProfile_a64821aed51d9e9d64f6da9ee9b20fdeb}{fetch}(self, username, database): \textcolor{keyword}{pass}
+
+\end{DoxyCode}
+\hypertarget{classProfile_1_1ProfileUnit_1_1IfPersProfile_aaa886f8741f0b2ca562968cf9a688aa7}{\index{Profile\-::\-Profile\-Unit\-::\-If\-Pers\-Profile@{Profile\-::\-Profile\-Unit\-::\-If\-Pers\-Profile}!fetch\-Field@{fetch\-Field}}
+\index{fetch\-Field@{fetch\-Field}!Profile::ProfileUnit::IfPersProfile@{Profile\-::\-Profile\-Unit\-::\-If\-Pers\-Profile}}
+\paragraph[{fetch\-Field}]{\setlength{\rightskip}{0pt plus 5cm}def Profile.\-Profile\-Unit.\-If\-Pers\-Profile.\-fetch\-Field (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}}\label{classProfile_1_1ProfileUnit_1_1IfPersProfile_aaa886f8741f0b2ca562968cf9a688aa7}
+Atualmente, não está sendo utilizado para nada, mas numa versão anterior do software, era capaz de recuperar os interesses dos usuários para listá-\/los e agrupá-\/los.
+
+\begin{DoxyItemize}
+\item field Campo a ser pesquisado. \end{DoxyItemize}
+
+
+Definição na linha \hyperlink{ProfileUnit_8py_source_l00160}{160} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classProfile_1_1ProfileUnit_1_1IfPersProfile_l00160}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfPersProfile_aaa886f8741f0b2ca562968cf9a688aa7}{00160} 
+00161     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfPersProfile_aaa886f8741f0b2ca562968cf9a688aa7}{fetchField}(self, field): \textcolor{keyword}{pass}
 
 \end{DoxyCode}
 \hypertarget{classProfile_1_1ProfileUnit_1_1IfPersProfile_ae2d65e1ead2780de7b97fab078bb425e}{\index{Profile\-::\-Profile\-Unit\-::\-If\-Pers\-Profile@{Profile\-::\-Profile\-Unit\-::\-If\-Pers\-Profile}!update@{update}}
@@ -70,17 +94,16 @@ No caso de campos multivalorados, adiciona uma nova entrada. Caso contrário, su
 \begin{DoxyItemize}
 \item username Nome do usuário sobre o qual a consulta será realizada. \item field Campo a ser atualizado.\end{DoxyItemize}
 \begin{DoxyItemize}
-\item newdata Dado a ser atualizado.\end{DoxyItemize}
-\begin{DoxyItemize}
-\item database Objeto de modelo que será utilizado. \end{DoxyItemize}
+\item newdata Dado a ser atualizado. \end{DoxyItemize}
 
 
-Definição na linha \hyperlink{ProfileUnit_8py_source_l00142}{142} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
+Definição na linha \hyperlink{ProfileUnit_8py_source_l00151}{151} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
 
 
 \begin{DoxyCode}
-\hypertarget{classProfile_1_1ProfileUnit_1_1IfPersProfile_l00142}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfPersProfile_ae2d65e1ead2780de7b97fab078bb425e}{00142} 
-00143     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfPersProfile_ae2d65e1ead2780de7b97fab078bb425e}{update}(self, username, field, newdata, database): \textcolor{keyword}{pass}
+\hypertarget{classProfile_1_1ProfileUnit_1_1IfPersProfile_l00151}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfPersProfile_ae2d65e1ead2780de7b97fab078bb425e}{00151} 
+00152     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfPersProfile_ae2d65e1ead2780de7b97fab078bb425e}{update}(self, username, field, newdata, database): \textcolor{keyword}{pass}
+00153 
 
 \end{DoxyCode}
 
