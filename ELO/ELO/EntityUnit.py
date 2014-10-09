@@ -1,11 +1,13 @@
 #coding: utf-8
 
-## @package EntityUnit
-#	Arquivo contem as entidades do programa.
-#	Aqui encontra-se todo o código referentes as estruturas das entidades do
-#   	programa.
-#	Entidades não posseuem métodos alêm de:'set', 'get' e 'del' para definir, 
-#	acessar e deletar suas propriedades. 
+## @file EntityUnit
+#	Arquivo que contém as entidades do sistema.
+#
+#	Entidades são classes compostas puramente por tipos básicos.
+#	Este arquivo provavelmente será deletado numa versão mais avançada
+#	do projeto, já que o desenvolvimento de entidades se mostrou inútil.
+#	Manteremos ela por hora para que sirva de guia no processo de construção
+#	dos modelos do sistema.
 
 from BaseUnit import *
 from abc import *

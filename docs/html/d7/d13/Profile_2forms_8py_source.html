@@ -1,0 +1,274 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>LETproject: Código-Fonte de ELO/Profile/forms.py</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">LETproject
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Página&#160;Principal</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namespaces</span></a></li>
+      <li><a href="../../annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Arquivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="../../search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Busca" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Lista&#160;de&#160;Arquivos</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('d7/d13/Profile_2forms_8py_source.html','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variáveis</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">forms.py</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d7/d13/Profile_2forms_8py.html">Vá para a documentação deste arquivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="../../de/d77/namespaceProfile_1_1forms.html">    1</a></span>&#160;<span class="comment">#coding: utf-8</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">## @file ProfileForms</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">#   Define as classes que gerarão as forms contidas na página de perfil</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">#   completa do usuário.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">from</span> django <span class="keyword">import</span> forms</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">import</span> os.path</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">from</span> django.conf <span class="keyword">import</span> settings</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">import</span> <a class="code" href="../../d7/de8/namespaceELO_1_1locale_1_1index.html">ELO.locale.index</a> <span class="keyword">as</span> lang</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">from</span> <a class="code" href="../../dc/d21/namespaceELO_1_1BaseUnit.html">ELO.BaseUnit</a> import(</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    Name,</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    Sex,</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    PlainText,</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    Password,</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    Link)</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">## Formulário de edição de nome.</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">#   Capaz de modificar o nome do usuário no sistema.</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">#   Vale salientar que é com esse nome que o usuário irá logar.</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="../../d6/d33/classProfile_1_1forms_1_1NameForm.html">   23</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d6/d33/classProfile_1_1forms_1_1NameForm.html">NameForm</a>(forms.Form):</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="../../d6/d33/classProfile_1_1forms_1_1NameForm.html#a6ebfb316b263c162dd3895b1da149eda">   24</a></span>&#160;    newdata     = forms.CharField(max_length=32)</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="../../d6/d33/classProfile_1_1forms_1_1NameForm.html#a5a6959db0132c607a56f9cda75769ecf">   25</a></span>&#160;    password    = forms.CharField(widget=forms.PasswordInput)</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="../../d6/d33/classProfile_1_1forms_1_1NameForm.html#a4e324f8cfc90a67d56802f66ce48c4ca">   27</a></span>&#160;    <span class="keyword">def </span><a class="code" href="../../d6/d33/classProfile_1_1forms_1_1NameForm.html#a4e324f8cfc90a67d56802f66ce48c4ca">clean_newdata</a>(self):</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            name = Name(self.cleaned_data[<span class="stringliteral">&#39;newdata&#39;</span>])</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordflow">except</span> ValueError <span class="keyword">as</span> exc:</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <span class="keywordflow">raise</span> forms.ValidationError(exc)</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordflow">return</span> name</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="../../d6/d33/classProfile_1_1forms_1_1NameForm.html#a681fa28036a241632b8688d436f04a49">   34</a></span>&#160;    <span class="keyword">def </span><a class="code" href="../../d6/d33/classProfile_1_1forms_1_1NameForm.html#a681fa28036a241632b8688d436f04a49">clean_password</a>(self):</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            pw = Password(self.cleaned_data[<span class="stringliteral">&#39;password&#39;</span>])</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordflow">except</span> ValueError <span class="keyword">as</span> exc:</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="keywordflow">raise</span> forms.ValidationError(exc)</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordflow">return</span> pw</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">## Formulário de edição de senha.</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">#   Capaz de alterar a senha do usuário no sistema.</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">#   Será necessária a confirmação com a senha antiga, portanto, não serve para</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">#   recuperação de senha.</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="../../df/dbb/classProfile_1_1forms_1_1PasswordForm.html">   45</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../df/dbb/classProfile_1_1forms_1_1PasswordForm.html">PasswordForm</a>(forms.Form):</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="../../df/dbb/classProfile_1_1forms_1_1PasswordForm.html#a8000a7fa167f74f0cd554f39dd1e3871">   46</a></span>&#160;    newdata     = forms.CharField(widget=forms.PasswordInput)</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="../../df/dbb/classProfile_1_1forms_1_1PasswordForm.html#a7560db05a7e3dfebdd4e95385192b2ad">   47</a></span>&#160;    rp_newdata  = forms.CharField(widget=forms.PasswordInput)</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="../../df/dbb/classProfile_1_1forms_1_1PasswordForm.html#a71438e4977095210067fd7d2f4cf551c">   48</a></span>&#160;    old_password= forms.CharField(widget=forms.PasswordInput)</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="../../df/dbb/classProfile_1_1forms_1_1PasswordForm.html#ac839e515eabe5449bcc3409b4c0fdf94">   50</a></span>&#160;    <span class="keyword">def </span><a class="code" href="../../df/dbb/classProfile_1_1forms_1_1PasswordForm.html#ac839e515eabe5449bcc3409b4c0fdf94">clean_newdata</a>(self):</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            n_pw = Password(self.cleaned_data[<span class="stringliteral">&#39;newdata&#39;</span>])</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordflow">except</span> ValueError <span class="keyword">as</span> exc:</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keywordflow">raise</span> forms.ValidationError(exc)</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">return</span> n_pw</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="../../df/dbb/classProfile_1_1forms_1_1PasswordForm.html#a85fda85a8da4e4b60f55156e57d53c32">   57</a></span>&#160;    <span class="keyword">def </span><a class="code" href="../../df/dbb/classProfile_1_1forms_1_1PasswordForm.html#a85fda85a8da4e4b60f55156e57d53c32">clean_rp_newdata</a>(self):</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            r_pw = Password(self.cleaned_data[<span class="stringliteral">&#39;rp_newdata&#39;</span>])</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">except</span> ValueError <span class="keyword">as</span> exc:</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keywordflow">raise</span> forms.ValidationError(exc)</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">return</span> r_pw</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="../../df/dbb/classProfile_1_1forms_1_1PasswordForm.html#a9c88c8978bb731ff8c73666b2c742695">   64</a></span>&#160;    <span class="keyword">def </span><a class="code" href="../../df/dbb/classProfile_1_1forms_1_1PasswordForm.html#a9c88c8978bb731ff8c73666b2c742695">clean_old_password</a>(self):</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            o_pw = Password(self.cleaned_data[<span class="stringliteral">&#39;old_password&#39;</span>])</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">except</span> ValueError <span class="keyword">as</span> exc:</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keywordflow">raise</span> forms.ValidationError(exc)</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">return</span> o_pw</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">## Formulário de edição de linguagem.</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">#   Capaz de modificar a lingaguem preferida do usuário para o sistema.</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">#   É com base nessa linguagem que o sistema irá carregar os diferentes DICTs</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">#   do site (o dicionário contendo a nomeação de todas as macros).</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="../../de/d9b/classProfile_1_1forms_1_1LanguageForm.html">   76</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../de/d9b/classProfile_1_1forms_1_1LanguageForm.html">LanguageForm</a>(forms.Form):</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="../../de/d9b/classProfile_1_1forms_1_1LanguageForm.html#a327d764765fba9b8d9d82c86ca7e08a6">   77</a></span>&#160;    newdata     = forms.ChoiceField(widget=forms.RadioSelect, choices = [</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                                            (<span class="stringliteral">&#39;pt-br&#39;</span>, lang.DICT[<span class="stringliteral">&#39;PORTUGUESE&#39;</span>]),</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                                            (<span class="stringliteral">&#39;en&#39;</span>, lang.DICT[<span class="stringliteral">&#39;ENGLISH&#39;</span>])</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                                                ])</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="../../de/d9b/classProfile_1_1forms_1_1LanguageForm.html#ab875693b567fc65f8e96af446a4cf78b">   82</a></span>&#160;    <span class="keyword">def </span><a class="code" href="../../de/d9b/classProfile_1_1forms_1_1LanguageForm.html#ab875693b567fc65f8e96af446a4cf78b">clean_newdata</a>(self):</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        newlang = self.cleaned_data[<span class="stringliteral">&#39;newdata&#39;</span>]</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">if</span> newlang <span class="keywordflow">in</span> lang.available_langs:</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keywordflow">return</span> newlang</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="keywordflow">if</span> newlang[:newlang.index(<span class="stringliteral">&#39;-&#39;</span>)] <span class="keywordflow">in</span> lang.available_langs:</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                <span class="keywordflow">return</span> newlang</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                <span class="keywordflow">raise</span> forms.ValidationError(lang.DICT[<span class="stringliteral">&quot;EXCEPTION_INV_LG_F&quot;</span>])</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">## Formulário de edição de sexo.</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">#   Capaz de modificar o sexo exibido do usuário.</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">#   Não afeta de forma relevante a navegação ou qualquer outra forma de</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">#   interação com o aluno/professor.</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="../../d1/dea/classProfile_1_1forms_1_1SexForm.html">   96</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d1/dea/classProfile_1_1forms_1_1SexForm.html">SexForm</a>(forms.Form):</div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="../../d1/dea/classProfile_1_1forms_1_1SexForm.html#a0d99412ab99ee46149a50fabb2614845">   97</a></span>&#160;    newdata     = forms.ChoiceField(widget=forms.RadioSelect, choices = [</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                                            (<span class="stringliteral">&#39;F&#39;</span>, lang.DICT[<span class="stringliteral">&#39;SEX_FEMALE&#39;</span>]),</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                                            (<span class="stringliteral">&#39;M&#39;</span>, lang.DICT[<span class="stringliteral">&#39;SEX_MALE&#39;</span>])</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                                                ])</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="../../d1/dea/classProfile_1_1forms_1_1SexForm.html#a23eb3376f64c41fbfa57b1b78ed2a38b">  102</a></span>&#160;    <span class="keyword">def </span><a class="code" href="../../d1/dea/classProfile_1_1forms_1_1SexForm.html#a23eb3376f64c41fbfa57b1b78ed2a38b">clean_newdata</a>(self):</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            ns = Sex(self.cleaned_data[<span class="stringliteral">&#39;newdata&#39;</span>])</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keywordflow">except</span> ValueError <span class="keyword">as</span> exc:</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keywordflow">raise</span> forms.ValidationError(exc)</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="keywordflow">return</span> ns</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">## Formulário de edição de Bios.</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">#   Capaz de modificar a biografia exibida do usuário.</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">#   Não afeta de forma relevante a navegação ou qualquer outra forma de</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">#   interação com o aluno.</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="../../d7/d1e/classProfile_1_1forms_1_1BiosForm.html">  113</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d7/d1e/classProfile_1_1forms_1_1BiosForm.html">BiosForm</a>(forms.Form):</div>
+<div class="line"><a name="l00114"></a><span class="lineno"><a class="line" href="../../d7/d1e/classProfile_1_1forms_1_1BiosForm.html#a2862b20c24bac9aa5dc896925a2cb3d6">  114</a></span>&#160;    newdata     = forms.CharField(required=<span class="keyword">False</span>, widget=forms.Textarea(attrs={<span class="stringliteral">&#39;style&#39;</span>:<span class="stringliteral">&#39;width:90%;&#39;</span>}))</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="../../d7/d1e/classProfile_1_1forms_1_1BiosForm.html#a10f21ed8d7cb888f0aa35618087c86af">  116</a></span>&#160;    <span class="keyword">def </span><a class="code" href="../../d7/d1e/classProfile_1_1forms_1_1BiosForm.html#a10f21ed8d7cb888f0aa35618087c86af">clean_newdata</a>(self):</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            nb = PlainText(self.cleaned_data[<span class="stringliteral">&#39;newdata&#39;</span>])</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordflow">except</span> ValueError <span class="keyword">as</span> exc:</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <span class="keywordflow">raise</span> forms.ValidationError(exc)</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordflow">return</span> nb</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment">## Formulário de edição de interesses.</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment">#   Capaz de modificar a lista de interesses do jovem usuário.</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment">#   Talvez venhamos a utilizar isso mais para frente.</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="../../d4/d5e/classProfile_1_1forms_1_1InterestsForm.html">  126</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d4/d5e/classProfile_1_1forms_1_1InterestsForm.html">InterestsForm</a>(forms.Form):</div>
+<div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="../../d4/d5e/classProfile_1_1forms_1_1InterestsForm.html#ad400f3a7b43e71bd7772fa85e2961ff0">  127</a></span>&#160;    newdata     = forms.CharField(required=<span class="keyword">False</span>, widget=forms.HiddenInput(attrs={<span class="stringliteral">&#39;style&#39;</span>:<span class="stringliteral">&#39;width:90%;&#39;</span>}))</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno"><a class="line" href="../../d4/d5e/classProfile_1_1forms_1_1InterestsForm.html#a6422167036a926576b18570db4da5117">  129</a></span>&#160;    <span class="keyword">def </span><a class="code" href="../../d4/d5e/classProfile_1_1forms_1_1InterestsForm.html#a6422167036a926576b18570db4da5117">clean_newdata</a>(self):</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            ni = PlainText(self.cleaned_data[<span class="stringliteral">&#39;newdata&#39;</span>])</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keywordflow">except</span> ValueError <span class="keyword">as</span> exc:</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            <span class="keywordflow">raise</span> forms.ValidationError(exc)</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keywordflow">return</span> ni</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
+<div class="line"><a name="l00136"></a><span class="lineno"><a class="line" href="../../da/da4/classProfile_1_1forms_1_1AvatarForm.html">  136</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../da/da4/classProfile_1_1forms_1_1AvatarForm.html">AvatarForm</a>(forms.Form):</div>
+<div class="line"><a name="l00137"></a><span class="lineno"><a class="line" href="../../da/da4/classProfile_1_1forms_1_1AvatarForm.html#af61dac7a51640ffe7d4e51aef53631ce">  137</a></span>&#160;    newdata     = forms.FileField()</div>
+<div class="ttc" id="classProfile_1_1forms_1_1PasswordForm_html_ac839e515eabe5449bcc3409b4c0fdf94"><div class="ttname"><a href="../../df/dbb/classProfile_1_1forms_1_1PasswordForm.html#ac839e515eabe5449bcc3409b4c0fdf94">Profile.forms.PasswordForm.clean_newdata</a></div><div class="ttdeci">def clean_newdata</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d13/Profile_2forms_8py_source.html#l00050">forms.py:50</a></div></div>
+<div class="ttc" id="classProfile_1_1forms_1_1NameForm_html"><div class="ttname"><a href="../../d6/d33/classProfile_1_1forms_1_1NameForm.html">Profile.forms.NameForm</a></div><div class="ttdoc">Formulário de edição de nome. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d13/Profile_2forms_8py_source.html#l00023">forms.py:23</a></div></div>
+<div class="ttc" id="classProfile_1_1forms_1_1SexForm_html"><div class="ttname"><a href="../../d1/dea/classProfile_1_1forms_1_1SexForm.html">Profile.forms.SexForm</a></div><div class="ttdoc">Formulário de edição de sexo. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d13/Profile_2forms_8py_source.html#l00096">forms.py:96</a></div></div>
+<div class="ttc" id="classProfile_1_1forms_1_1LanguageForm_html_ab875693b567fc65f8e96af446a4cf78b"><div class="ttname"><a href="../../de/d9b/classProfile_1_1forms_1_1LanguageForm.html#ab875693b567fc65f8e96af446a4cf78b">Profile.forms.LanguageForm.clean_newdata</a></div><div class="ttdeci">def clean_newdata</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d13/Profile_2forms_8py_source.html#l00082">forms.py:82</a></div></div>
+<div class="ttc" id="classProfile_1_1forms_1_1AvatarForm_html"><div class="ttname"><a href="../../da/da4/classProfile_1_1forms_1_1AvatarForm.html">Profile.forms.AvatarForm</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d13/Profile_2forms_8py_source.html#l00136">forms.py:136</a></div></div>
+<div class="ttc" id="classProfile_1_1forms_1_1BiosForm_html_a10f21ed8d7cb888f0aa35618087c86af"><div class="ttname"><a href="../../d7/d1e/classProfile_1_1forms_1_1BiosForm.html#a10f21ed8d7cb888f0aa35618087c86af">Profile.forms.BiosForm.clean_newdata</a></div><div class="ttdeci">def clean_newdata</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d13/Profile_2forms_8py_source.html#l00116">forms.py:116</a></div></div>
+<div class="ttc" id="classProfile_1_1forms_1_1NameForm_html_a4e324f8cfc90a67d56802f66ce48c4ca"><div class="ttname"><a href="../../d6/d33/classProfile_1_1forms_1_1NameForm.html#a4e324f8cfc90a67d56802f66ce48c4ca">Profile.forms.NameForm.clean_newdata</a></div><div class="ttdeci">def clean_newdata</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d13/Profile_2forms_8py_source.html#l00027">forms.py:27</a></div></div>
+<div class="ttc" id="classProfile_1_1forms_1_1PasswordForm_html_a9c88c8978bb731ff8c73666b2c742695"><div class="ttname"><a href="../../df/dbb/classProfile_1_1forms_1_1PasswordForm.html#a9c88c8978bb731ff8c73666b2c742695">Profile.forms.PasswordForm.clean_old_password</a></div><div class="ttdeci">def clean_old_password</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d13/Profile_2forms_8py_source.html#l00064">forms.py:64</a></div></div>
+<div class="ttc" id="classProfile_1_1forms_1_1BiosForm_html"><div class="ttname"><a href="../../d7/d1e/classProfile_1_1forms_1_1BiosForm.html">Profile.forms.BiosForm</a></div><div class="ttdoc">Formulário de edição de Bios. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d13/Profile_2forms_8py_source.html#l00113">forms.py:113</a></div></div>
+<div class="ttc" id="classProfile_1_1forms_1_1LanguageForm_html"><div class="ttname"><a href="../../de/d9b/classProfile_1_1forms_1_1LanguageForm.html">Profile.forms.LanguageForm</a></div><div class="ttdoc">Formulário de edição de linguagem. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d13/Profile_2forms_8py_source.html#l00076">forms.py:76</a></div></div>
+<div class="ttc" id="classProfile_1_1forms_1_1InterestsForm_html_a6422167036a926576b18570db4da5117"><div class="ttname"><a href="../../d4/d5e/classProfile_1_1forms_1_1InterestsForm.html#a6422167036a926576b18570db4da5117">Profile.forms.InterestsForm.clean_newdata</a></div><div class="ttdeci">def clean_newdata</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d13/Profile_2forms_8py_source.html#l00129">forms.py:129</a></div></div>
+<div class="ttc" id="classProfile_1_1forms_1_1SexForm_html_a23eb3376f64c41fbfa57b1b78ed2a38b"><div class="ttname"><a href="../../d1/dea/classProfile_1_1forms_1_1SexForm.html#a23eb3376f64c41fbfa57b1b78ed2a38b">Profile.forms.SexForm.clean_newdata</a></div><div class="ttdeci">def clean_newdata</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d13/Profile_2forms_8py_source.html#l00102">forms.py:102</a></div></div>
+<div class="ttc" id="classProfile_1_1forms_1_1NameForm_html_a681fa28036a241632b8688d436f04a49"><div class="ttname"><a href="../../d6/d33/classProfile_1_1forms_1_1NameForm.html#a681fa28036a241632b8688d436f04a49">Profile.forms.NameForm.clean_password</a></div><div class="ttdeci">def clean_password</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d13/Profile_2forms_8py_source.html#l00034">forms.py:34</a></div></div>
+<div class="ttc" id="classProfile_1_1forms_1_1PasswordForm_html"><div class="ttname"><a href="../../df/dbb/classProfile_1_1forms_1_1PasswordForm.html">Profile.forms.PasswordForm</a></div><div class="ttdoc">Formulário de edição de senha. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d13/Profile_2forms_8py_source.html#l00045">forms.py:45</a></div></div>
+<div class="ttc" id="namespaceELO_1_1BaseUnit_html"><div class="ttname"><a href="../../dc/d21/namespaceELO_1_1BaseUnit.html">ELO.BaseUnit</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d4a/BaseUnit_8py_source.html#l00001">BaseUnit.py:1</a></div></div>
+<div class="ttc" id="classProfile_1_1forms_1_1InterestsForm_html"><div class="ttname"><a href="../../d4/d5e/classProfile_1_1forms_1_1InterestsForm.html">Profile.forms.InterestsForm</a></div><div class="ttdoc">Formulário de edição de interesses. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d13/Profile_2forms_8py_source.html#l00126">forms.py:126</a></div></div>
+<div class="ttc" id="classProfile_1_1forms_1_1PasswordForm_html_a85fda85a8da4e4b60f55156e57d53c32"><div class="ttname"><a href="../../df/dbb/classProfile_1_1forms_1_1PasswordForm.html#a85fda85a8da4e4b60f55156e57d53c32">Profile.forms.PasswordForm.clean_rp_newdata</a></div><div class="ttdeci">def clean_rp_newdata</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d13/Profile_2forms_8py_source.html#l00057">forms.py:57</a></div></div>
+<div class="ttc" id="namespaceELO_1_1locale_1_1index_html"><div class="ttname"><a href="../../d7/de8/namespaceELO_1_1locale_1_1index.html">ELO.locale.index</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/d7b/index_8py_source.html#l00001">index.py:1</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_56c8f39a95ad3669bc9ec7ac8ec99225.html">ELO</a></li><li class="navelem"><a class="el" href="../../dir_d42449496add7f72d5928173ed294508.html">Profile</a></li><li class="navelem"><a class="el" href="../../d7/d13/Profile_2forms_8py.html">forms.py</a></li>
+    <li class="footer">Gerado em Quinta, 9 de Outubro de 2014 02:51:33 para LETproject por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

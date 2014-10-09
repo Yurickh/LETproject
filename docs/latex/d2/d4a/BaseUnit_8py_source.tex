@@ -1,0 +1,615 @@
+\hypertarget{BaseUnit_8py}{\subsection{Base\-Unit.\-py}
+\label{BaseUnit_8py}\index{E\-L\-O/\-E\-L\-O/\-Base\-Unit.\-py@{E\-L\-O/\-E\-L\-O/\-Base\-Unit.\-py}}
+}
+
+\begin{DoxyCode}
+\hypertarget{BaseUnit_8py_source_l00001}{}\hyperlink{namespaceELO_1_1BaseUnit}{00001} \textcolor{comment}{#coding: utf-8}
+00002 
+00003 \textcolor{comment}{## @file BaseUnit.py}
+00004 \textcolor{comment}{#  Implementa os tipos básicos do programa.}
+00005 \textcolor{comment}{#}
+00006 \textcolor{comment}{#   Os tipos básicos são os blocos formadores do programa. Eles contêm}
+00007 \textcolor{comment}{#   informações atômicas como Nome, Senha ou Matrícula, e devem ser capazes}
+00008 \textcolor{comment}{#   de validá-los no momento de sua criação. Ou seja, caso o valor fornecido}
+00009 \textcolor{comment}{#   não esteja de acordo com as especificações, o tipo básico não é criado}
+00010 \textcolor{comment}{#   e lança uma exceção do tipo ValueError.}
+00011 
+00012 \textcolor{keyword}{from} abc \textcolor{keyword}{import} *
+00013 \textcolor{keyword}{import} hashlib
+00014 
+00015 \textcolor{keyword}{import} \hyperlink{namespaceELO_1_1locale_1_1index}{ELO.locale.index} \textcolor{keyword}{as} lang
+00016 
+00017 \textcolor{comment}{## Interface para todos os tipos básicos.}
+00018 \textcolor{comment}{#}
+00019 \textcolor{comment}{#   Classe abstrata que contém os métodos get, set e del de todos os tipos}
+00020 \textcolor{comment}{#   básicos. Estes métodos são chamados implicitamente através dos processos}
+00021 \textcolor{comment}{#   de requisição de valor, atribuição de valor, e deleção do objeto,}
+00022 \textcolor{comment}{#   respectivamente.}
+00023 \textcolor{comment}{#}
+00024 \textcolor{comment}{#   Possui um único método abstrato, o validador do tipo básico, que varia}
+00025 \textcolor{comment}{#   de tipo para tipo, e deve ser obrigatoriamente implementado, sob a pena}
+00026 \textcolor{comment}{#   do tipo básico não poder ser instanciado.}
+\hypertarget{BaseUnit_8py_source_l00027}{}\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType}{00027} \textcolor{keyword}{class }\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType}{IfBaseType}:
+00028 
+00029     \textcolor{comment}{## Especifica que IfBaseType é uma classe base abstrata (abc). }
+00030     \textcolor{comment}{#   Isso significa que uma classe derivada pode ser instanciada se}
+00031     \textcolor{comment}{#   - e somente se - ela der "override" em todos os métodos e}
+00032     \textcolor{comment}{#   propriedades abstratas.}
+00033     \_\_metaclass\_\_ = ABCMeta
+00034 
+00035     \textcolor{comment}{## Método que retorna o valor contido no tipo básico.}
+00036     \textcolor{comment}{#   Método GET.}
+00037     @property
+\hypertarget{BaseUnit_8py_source_l00038}{}\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{00038}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{value}(self):
+00039         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value}
+00040 
+00041     \textcolor{comment}{## Método que fixa e valida o conteúdo do tipo básico.}
+00042     \textcolor{comment}{#   Método SET.}
+00043     \textcolor{comment}{#}
+00044     \textcolor{comment}{#   @arg aux Recebe o valor que será validado.}
+00045     @value.setter
+\hypertarget{BaseUnit_8py_source_l00046}{}\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{00046}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{value}(self, aux):
+00047         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(aux)
+00048         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value} = aux
+00049 
+00050     \textcolor{comment}{## Método que deleta o conteúdo do tipo básico.}
+00051     \textcolor{comment}{#   Método DEL.}
+00052     @value.deleter
+\hypertarget{BaseUnit_8py_source_l00053}{}\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{00053}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{value}(self):
+00054         del self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value}
+00055 
+00056     \textcolor{comment}{## Define que toda classe derivada terá um método \_validate.}
+00057     @abstractmethod
+00058     \textcolor{keyword}{def }\_validate(self, value): \textcolor{keyword}{pass}
+00059 
+00060     \textcolor{comment}{## Método que compara o conteúdo de dois tipos básicos.}
+00061     \textcolor{comment}{#   Será chamado toda vez que dois tipos básicos forem}
+00062     \textcolor{comment}{#   comparados através dos operadores >, <, >=, <=, == ou !=.}
+00063     \textcolor{comment}{#}
+00064     \textcolor{comment}{#   @return Retornos predefinidos do próprio python.}
+\hypertarget{BaseUnit_8py_source_l00065}{}\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a69c338f6f1574bd3524e9d59ebc17a7c}{00065}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a69c338f6f1574bd3524e9d59ebc17a7c}{\_\_cmp\_\_}(self, other):
+00066         \textcolor{keywordflow}{if} other.value == self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{value}:
+00067             \textcolor{keywordflow}{return} 0
+00068         \textcolor{keywordflow}{elif} other.value > self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{value}:
+00069             \textcolor{keywordflow}{return} 1
+00070         \textcolor{keywordflow}{else}:
+00071             \textcolor{keywordflow}{return} -1
+00072 
+00073 \textcolor{comment}{## Classe container de senhas.}
+00074 \textcolor{comment}{#   Deve ser responsável não somente por armazenar, mas também por}
+00075 \textcolor{comment}{#   encriptar a string recebida.}
+\hypertarget{BaseUnit_8py_source_l00076}{}\hyperlink{classELO_1_1BaseUnit_1_1Password}{00076} \textcolor{keyword}{class }\hyperlink{classELO_1_1BaseUnit_1_1Password}{Password}(\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType}{IfBaseType}):
+00077     \_value = \textcolor{keywordtype}{None}
+00078 
+00079     \textcolor{comment}{## Construtor da classe.}
+00080     \textcolor{comment}{#   Valida e encripta a string recebida.}
+00081     \textcolor{comment}{#}
+00082     \textcolor{comment}{#   @arg        value       String a ser armazenada.}
+00083     \textcolor{comment}{#}
+00084     \textcolor{comment}{#   @exception  ValueError  Exceção lançada no caso do}
+00085     \textcolor{comment}{#                           valor de entrada não passar pelos}
+00086     \textcolor{comment}{#                           critérios do método \_validate().}
+\hypertarget{BaseUnit_8py_source_l00087}{}\hyperlink{classELO_1_1BaseUnit_1_1Password_a01568369a90b21117ba3beb05cbf9dfe}{00087}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Password_a01568369a90b21117ba3beb05cbf9dfe}{\_\_init\_\_}(self, value):
+00088         \textcolor{keywordflow}{try}:
+00089             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(value)
+00090         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00091             del self
+00092             \textcolor{keywordflow}{raise} exc
+00093         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value} = hashlib.sha256(value).hexdigest()
+00094         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value} = hashlib.md5(self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value}).hexdigest()
+00095 
+00096     \textcolor{comment}{## Validator da classe.}
+00097     \textcolor{comment}{#   Verifica se o tamanho da string recebida (value) está correta.}
+00098     \textcolor{comment}{#}
+00099     \textcolor{comment}{#   @arg        value       String a ser validada.}
+00100     \textcolor{comment}{#}
+00101     \textcolor{comment}{#   @exception  ValueError  Lançada no caso do tamanho de}
+00102     \textcolor{comment}{#                           value ser menor do que 6}
+00103     \textcolor{comment}{#                           caracteres.}
+00104     \textcolor{keyword}{def }\_validate(self, value):
+00105         if(len(value) < 6):
+00106             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_PW\_S'}])
+00107 
+00108     @property
+\hypertarget{BaseUnit_8py_source_l00109}{}\hyperlink{classELO_1_1BaseUnit_1_1Password_a42dcd63788a2eed3780c39f368356546}{00109}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Password_a42dcd63788a2eed3780c39f368356546}{value}(self):
+00110         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value}
+00111 
+00112     \textcolor{comment}{## Método setter específico de password.}
+00113     \textcolor{comment}{#   Sobrescreve o setter definido na interface para que ocorra}
+00114     \textcolor{comment}{#   a encriptação de forma correta.}
+00115     \textcolor{comment}{#}
+00116     \textcolor{comment}{#   @arg value String a ser validada e encriptada.}
+00117     @value.setter
+\hypertarget{BaseUnit_8py_source_l00118}{}\hyperlink{classELO_1_1BaseUnit_1_1Password_a42dcd63788a2eed3780c39f368356546}{00118}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Password_a42dcd63788a2eed3780c39f368356546}{value}(self, value):
+00119         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(value)
+00120         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value} = hashlib.sha256(value).hexdigest()
+00121         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value} = hashlib.md5(self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value}).hexdigest()
+00122 
+00123 \textcolor{comment}{## Classe container de nomes.}
+00124 \textcolor{comment}{#   Responsável por armazenar uma string que servirá para identificação}
+00125 \textcolor{comment}{#   dos usuários do sistema.}
+\hypertarget{BaseUnit_8py_source_l00126}{}\hyperlink{classELO_1_1BaseUnit_1_1Name}{00126} \textcolor{keyword}{class }\hyperlink{classELO_1_1BaseUnit_1_1Name}{Name}(\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType}{IfBaseType}):
+00127 
+00128     \_value = \textcolor{keywordtype}{None}
+00129 
+00130     \textcolor{comment}{## Construtor da classe.}
+00131     \textcolor{comment}{#   Responsável por impedir a criação do tipo básico em caso de}
+00132     \textcolor{comment}{#   falha.}
+00133     \textcolor{comment}{#}
+00134     \textcolor{comment}{#   @arg value String a ser armazenada.}
+\hypertarget{BaseUnit_8py_source_l00135}{}\hyperlink{classELO_1_1BaseUnit_1_1Name_ad73fdab6426635b79b4447ac53c10279}{00135}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Name_ad73fdab6426635b79b4447ac53c10279}{\_\_init\_\_}(self, value):
+00136         \textcolor{keywordflow}{try}:
+00137             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(value)
+00138         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00139             del self
+00140             \textcolor{keywordflow}{raise} exc
+00141         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value} = value
+00142 
+00143     \textcolor{comment}{## Validator da classe.}
+00144     \textcolor{comment}{#   Verifica se a string de entrada (value) está de acordo com as}
+00145     \textcolor{comment}{#   especificações.}
+00146     \textcolor{comment}{#}
+00147     \textcolor{comment}{#   @arg       value        String a ser validada.}
+00148     \textcolor{comment}{#}
+00149     \textcolor{comment}{#   @exception ValueError   Exceção lançada no caso da string de}
+00150     \textcolor{comment}{#                           entrada ser vazia ou conter algum}
+00151     \textcolor{comment}{#                           caractere não-alfanumérico.}
+00152     \textcolor{keyword}{def }\_validate(self, value):
+00153         \textcolor{keywordflow}{if} len(value) > 32:
+00154             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_NM\_B'}])
+00155         \textcolor{keywordflow}{else}: 
+00156             \textcolor{keywordflow}{if} len(value) == 0:
+00157                 \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_NM\_S'}])
+00158             \textcolor{keywordflow}{else}:
+00159                 temp = unicode.isalnum(value.replace(\textcolor{stringliteral}{" "}, \textcolor{stringliteral}{""}))
+00160                 \textcolor{keywordflow}{if} temp == \textcolor{keyword}{False}:
+00161                     \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_NM\_F'}])
+00162 
+00163 \textcolor{comment}{## Classe container de matrículas.}
+00164 \textcolor{comment}{#   Responsável por armazenar um número inteiro que identifica}
+00165 \textcolor{comment}{#   univocamente alguns usuários do sistema.}
+\hypertarget{BaseUnit_8py_source_l00166}{}\hyperlink{classELO_1_1BaseUnit_1_1Matric}{00166} \textcolor{keyword}{class }\hyperlink{classELO_1_1BaseUnit_1_1Matric}{Matric}(\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType}{IfBaseType}):
+00167 
+00168     \_value = \textcolor{keywordtype}{None}
+00169 
+00170     \textcolor{comment}{## Construtor da classe.}
+00171     \textcolor{comment}{#   Responsável por impedir a criação de um tipo básico com}
+00172     \textcolor{comment}{#   valor inválido.}
+00173     \textcolor{comment}{#}
+00174     \textcolor{comment}{#   @arg value Número inteiro a ser armazenado no tipo básico.}
+\hypertarget{BaseUnit_8py_source_l00175}{}\hyperlink{classELO_1_1BaseUnit_1_1Matric_a050299f6e8d99a530a4598270b93b8d9}{00175}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Matric_a050299f6e8d99a530a4598270b93b8d9}{\_\_init\_\_}(self, value):
+00176         \textcolor{keywordflow}{try}:
+00177             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(value)
+00178         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00179             del self
+00180             \textcolor{keywordflow}{raise} exc
+00181         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value} = value
+00182 
+00183     \textcolor{comment}{## Validator da classe.}
+00184     \textcolor{comment}{#   Responsável por garantir a coerência da matrícula armazenada}
+00185     \textcolor{comment}{#   com as especificações do sistema.}
+00186     \textcolor{comment}{#}
+00187     \textcolor{comment}{#   @arg       value    Inteiro a ser validado.}
+00188     \textcolor{comment}{#}
+00189     \textcolor{comment}{#   @exception ValueError   Exceção lançada no caso de value}
+00190     \textcolor{comment}{#                           exceder a faixa dinâmica permitida}
+00191     \textcolor{comment}{#                           para a matrícula (1-9 dígitos).}
+00192     \textcolor{keyword}{def }\_validate(self, value):
+00193         \textcolor{keywordflow}{try}: int(value)
+00194         \textcolor{keywordflow}{except} ValueError: \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INT\_MT\_F'}])
+00195 
+00196         \textcolor{keywordflow}{if} value > 999999999:
+00197             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_MT\_B'}])
+00198         \textcolor{keywordflow}{elif} value < 1:
+00199             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_MT\_S'}])
+00200         
+00201 \textcolor{comment}{## Classe container de texto.}
+00202 \textcolor{comment}{#   Responsável por armazenar texto corrido, como em descrições,}
+00203 \textcolor{comment}{#   biografias, resumos etc.}
+\hypertarget{BaseUnit_8py_source_l00204}{}\hyperlink{classELO_1_1BaseUnit_1_1PlainText}{00204} \textcolor{keyword}{class }\hyperlink{classELO_1_1BaseUnit_1_1PlainText}{PlainText}(\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType}{IfBaseType}):
+00205     \_value = \textcolor{keywordtype}{None}
+00206 
+00207     \textcolor{comment}{## Construtor da classe.}
+00208     \textcolor{comment}{#   Responsável por impedir a criação de um tipo básico com}
+00209     \textcolor{comment}{#   conteúdo inválido.}
+00210     \textcolor{comment}{#}
+00211     \textcolor{comment}{#   @arg value String a ser validada e armazenada.}
+\hypertarget{BaseUnit_8py_source_l00212}{}\hyperlink{classELO_1_1BaseUnit_1_1PlainText_a2cd4f19585b5e8e8279f8052307d031f}{00212}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1PlainText_a2cd4f19585b5e8e8279f8052307d031f}{\_\_init\_\_}(self, value):
+00213 
+00214         \textcolor{keywordflow}{try}:
+00215             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(value)
+00216         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00217             del self
+00218             \textcolor{keywordflow}{raise} exc
+00219         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value} = value
+00220 
+00221     \textcolor{comment}{## Validator da classe.}
+00222     \textcolor{comment}{#   Responsável pela devida verificação da validade de value.}
+00223     \textcolor{comment}{#}
+00224     \textcolor{comment}{#   @arg        value       String a ser validada.}
+00225     \textcolor{comment}{#}
+00226     \textcolor{comment}{#   @exception  ValueError  Exceção lançada no caso de}
+00227     \textcolor{comment}{#                           value exceder 1024 caracteres.}
+00228     \textcolor{keyword}{def }\_validate(self, value):
+00229         \textcolor{keywordflow}{if} len(value) > 1024:
+00230             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_PT\_B'}])
+00231 
+00232 \textcolor{comment}{## Classe container de Campus.}
+00233 \textcolor{comment}{#   Irá armazenar um inteiro que identifica univocamente um Campus.}
+00234 \textcolor{comment}{#   A associação Campus-Id será tratada em uma tabela à parte.}
+\hypertarget{BaseUnit_8py_source_l00235}{}\hyperlink{classELO_1_1BaseUnit_1_1Campus}{00235} \textcolor{keyword}{class }\hyperlink{classELO_1_1BaseUnit_1_1Campus}{Campus}(\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType}{IfBaseType}):
+00236 
+00237     \_value = \textcolor{keywordtype}{None}
+00238 
+00239     \textcolor{comment}{## Construtor da classe.}
+00240     \textcolor{comment}{#   Responsável por impedir a criação de um tipo básico com}
+00241     \textcolor{comment}{#   conteúdo inválido.}
+00242     \textcolor{comment}{#}
+00243     \textcolor{comment}{#   @arg value Inteiro a ser armazenado.}
+\hypertarget{BaseUnit_8py_source_l00244}{}\hyperlink{classELO_1_1BaseUnit_1_1Campus_abd800984df4eb26836d305682d84dfa9}{00244}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Campus_abd800984df4eb26836d305682d84dfa9}{\_\_init\_\_}(self, value):
+00245         \textcolor{keywordflow}{try}:
+00246             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(value)
+00247         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00248             del self
+00249             \textcolor{keywordflow}{raise} exc
+00250         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value} = value
+00251 
+00252     \textcolor{comment}{## Validador da classe.}
+00253     \textcolor{comment}{#   Capaz de identificar se o valor de entrada está dentro dos}
+00254     \textcolor{comment}{#   requisitos do sistema.}
+00255     \textcolor{comment}{#}
+00256     \textcolor{comment}{#   @value      value       Inteiro a ser validado.}
+00257     \textcolor{comment}{#}
+00258     \textcolor{comment}{#   @exception  ValueError  Exceção lançada no caso de}
+00259     \textcolor{comment}{#                           value ser negativo.}
+00260     \textcolor{keyword}{def }\_validate(self, value):
+00261         \textcolor{keywordflow}{try}: int(value)
+00262         \textcolor{keywordflow}{except} ValueError: \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_CP\_F'}])
+00263 
+00264         \textcolor{keywordflow}{if} value <= 0:
+00265             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_CP\_S'}])
+00266 
+00267 \textcolor{comment}{## Classe container de sexo.}
+00268 \textcolor{comment}{#   Responsável por armazenar um caractere relativo a identificação}
+00269 \textcolor{comment}{#   do sexo do usuário.}
+\hypertarget{BaseUnit_8py_source_l00270}{}\hyperlink{classELO_1_1BaseUnit_1_1Sex}{00270} \textcolor{keyword}{class }\hyperlink{classELO_1_1BaseUnit_1_1Sex}{Sex}(\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType}{IfBaseType}):
+00271     \_value = \textcolor{keywordtype}{None}
+00272     
+00273     \textcolor{comment}{## Construtor da classe.}
+00274     \textcolor{comment}{#   Capaz de impedir a criação de um tipo básico com conteúdo}
+00275     \textcolor{comment}{#   inválido.}
+00276     \textcolor{comment}{#}
+00277     \textcolor{comment}{#   @arg        value       Caractere a ser armazenado no}
+00278     \textcolor{comment}{#                           tipo básico.}
+00279     \textcolor{comment}{#}
+00280     \textcolor{comment}{#   @exception  ValueError  Exceção lançada para advertir}
+00281     \textcolor{comment}{#                           que value está inválido.}
+\hypertarget{BaseUnit_8py_source_l00282}{}\hyperlink{classELO_1_1BaseUnit_1_1Sex_a2a5214adaf2a657f70cd8cf579e420b5}{00282}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Sex_a2a5214adaf2a657f70cd8cf579e420b5}{\_\_init\_\_}(self, value):
+00283         \textcolor{keywordflow}{try}:
+00284             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(value)
+00285         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00286             del self
+00287             \textcolor{keywordflow}{raise} exc
+00288         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value} = value
+00289 
+00290     \textcolor{comment}{## Validador da classe.}
+00291     \textcolor{comment}{#   Deve ser capaz de lançar uma exceção no caso de value não ser}
+00292     \textcolor{comment}{#   compatível com as especificações do sistema.}
+00293     \textcolor{comment}{#}
+00294     \textcolor{comment}{#   @arg        value       Caractere a ser validado.}
+00295     \textcolor{comment}{#}
+00296     \textcolor{comment}{#   @exception  ValueError  Exceção a ser lançada no caso do}
+00297     \textcolor{comment}{#                           caractere validado não ser F ou M.}
+00298     \textcolor{keyword}{def }\_validate(self, value):
+00299         \textcolor{keywordflow}{if} value.upper() != \textcolor{stringliteral}{u"M"} \textcolor{keywordflow}{and} value.upper() != \textcolor{stringliteral}{u"F"}:
+00300             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_SX\_F'}])
+00301 
+00302 \textcolor{comment}{## Classe container de endereço do sistema.}
+00303 \textcolor{comment}{#   Capaz de armazenar uma string que representa o endereço de um arquivo}
+00304 \textcolor{comment}{#   na árvore de diretórios do servidor.}
+\hypertarget{BaseUnit_8py_source_l00305}{}\hyperlink{classELO_1_1BaseUnit_1_1Link}{00305} \textcolor{keyword}{class }\hyperlink{classELO_1_1BaseUnit_1_1Link}{Link}(\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType}{IfBaseType}):
+00306     \_value = \textcolor{keywordtype}{None}
+00307 
+00308     \textcolor{comment}{## Construtor da classe.}
+00309     \textcolor{comment}{#   Impede a criação de um tipo básico com conteúdo inválido.}
+00310     \textcolor{comment}{#}
+00311     \textcolor{comment}{#   @arg        value       String a ser armazenada.}
+00312     \textcolor{comment}{#}
+00313     \textcolor{comment}{#   @exception  ValueError  Exceção lançada no caso da}
+00314     \textcolor{comment}{#                           invalidez de value.}
+\hypertarget{BaseUnit_8py_source_l00315}{}\hyperlink{classELO_1_1BaseUnit_1_1Link_a0c2308097022f21fc0ded45af15e9172}{00315}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Link_a0c2308097022f21fc0ded45af15e9172}{\_\_init\_\_}(self, value):
+00316         \textcolor{keywordflow}{try}:
+00317             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(value)
+00318         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00319             del self
+00320             \textcolor{keywordflow}{raise} exc
+00321         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value} = value
+00322 
+00323     \textcolor{comment}{## Validador da classe.}
+00324     \textcolor{comment}{#   Verifica se a string de entrada está de acordo com as}
+00325     \textcolor{comment}{#   especificações do sistema.}
+00326     \textcolor{comment}{#}
+00327     \textcolor{comment}{#   @arg        value       Stringa  ser validada.}
+00328     \textcolor{comment}{#   }
+00329     \textcolor{comment}{#   @exception  ValueError  Exceção lançada no caso de}
+00330     \textcolor{comment}{#                           value não ser composto de}
+00331     \textcolor{comment}{#                           caracteres exclusivamente}
+00332     \textcolor{comment}{#                           alfanuméricos, com exceção}
+00333     \textcolor{comment}{#                           das barras do sistema.}
+00334     \textcolor{keyword}{def }\_validate(self, value):
+00335         nobar = value.replace(\textcolor{stringliteral}{"/"}, \textcolor{stringliteral}{""})
+00336         nobar = value.replace(\textcolor{stringliteral}{"."}, \textcolor{stringliteral}{""})
+00337         \textcolor{keywordflow}{if} len(value) == 0:
+00338             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_LK\_S'}])
+00339         \textcolor{keywordflow}{elif} unicode.isalnum(nobar) != \textcolor{keyword}{False} \textcolor{keywordflow}{or} len(nobar) == 0:
+00340             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_LK\_F'}])
+00341 
+00342 \textcolor{comment}{## Classe container de notas.}
+00343 \textcolor{comment}{#   Armazena números que representam notas dos alunos nas atividades.}
+\hypertarget{BaseUnit_8py_source_l00344}{}\hyperlink{classELO_1_1BaseUnit_1_1Grades}{00344} \textcolor{keyword}{class }\hyperlink{classELO_1_1BaseUnit_1_1Grades}{Grades}(\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType}{IfBaseType}):
+00345     \_value = \textcolor{keywordtype}{None}
+00346 
+00347     \textcolor{comment}{## Contrutor da classe.}
+00348     \textcolor{comment}{#   Deve ser capaz de abortar a criação do tipo básico no caso do}
+00349     \textcolor{comment}{#   valor passado ser inválido.}
+00350     \textcolor{comment}{#}
+00351     \textcolor{comment}{#   @arg        value       Inteiro a ser armazenado.}
+00352     \textcolor{comment}{#}
+00353     \textcolor{comment}{#   @exception  ValueError  Exceção lançada no caso de}
+00354     \textcolor{comment}{#                           value não atender as}
+00355     \textcolor{comment}{#                           especificações do sistema.}
+\hypertarget{BaseUnit_8py_source_l00356}{}\hyperlink{classELO_1_1BaseUnit_1_1Grades_af948e06e9c08a7d99da82eae5f851839}{00356}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Grades_af948e06e9c08a7d99da82eae5f851839}{\_\_init\_\_}(self, value):
+00357         \textcolor{keywordflow}{try}:
+00358             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(value)
+00359         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00360             del self
+00361             \textcolor{keywordflow}{raise} exc
+00362         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value} = value
+00363 
+00364     \textcolor{comment}{## Validator da classe.}
+00365     \textcolor{comment}{#   Deve verificar a validade do argumento a ele passado, lançando}
+00366     \textcolor{comment}{#   uma exceção em caso contrário.}
+00367     \textcolor{comment}{#}
+00368     \textcolor{comment}{#   @arg        value       Inteiro a ser validado.}
+00369     \textcolor{comment}{#}
+00370     \textcolor{comment}{#   @exception  ValueError  Exceção lançada no caso de}
+00371     \textcolor{comment}{#                           value ser negativo ou maior}
+00372     \textcolor{comment}{#                           do que 100.}
+00373     \textcolor{keyword}{def }\_validate(self, value):
+00374         \textcolor{keywordflow}{try}: int(value)
+00375         \textcolor{keywordflow}{except} ValueError: \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_GR\_F'}])
+00376 
+00377         \textcolor{keywordflow}{if} value < 0:
+00378             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_GR\_S'}])
+00379         \textcolor{keywordflow}{elif} value > 100:
+00380             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_GR\_B'}])
+00381 
+00382 \textcolor{comment}{## Classe container de email.}
+00383 \textcolor{comment}{#   Este tipo básico irá armazenar emails para contato e identificação}
+00384 \textcolor{comment}{#   dos usuários.}
+\hypertarget{BaseUnit_8py_source_l00385}{}\hyperlink{classELO_1_1BaseUnit_1_1Mail}{00385} \textcolor{keyword}{class }\hyperlink{classELO_1_1BaseUnit_1_1Mail}{Mail}(\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType}{IfBaseType}):
+00386     \_value = \textcolor{keywordtype}{None}
+00387 
+00388     \textcolor{comment}{## Construtor da classe.}
+00389     \textcolor{comment}{#   Deve impedir a criação do tipo básico caso seu conteúdo não}
+00390     \textcolor{comment}{#   esteja de acordo com as especificações.}
+00391     \textcolor{comment}{#}
+00392     \textcolor{comment}{#   @arg        value       String a ser armazenada no}
+00393     \textcolor{comment}{#                           tipo básico.}
+00394     \textcolor{comment}{#}
+00395     \textcolor{comment}{#   @exception  ValueError  Exceção lançada no caso do}
+00396     \textcolor{comment}{#                           valor passado não ser válido.}
+\hypertarget{BaseUnit_8py_source_l00397}{}\hyperlink{classELO_1_1BaseUnit_1_1Mail_a7b9e31959dacc8c25ecae3e9bc0321aa}{00397}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Mail_a7b9e31959dacc8c25ecae3e9bc0321aa}{\_\_init\_\_}(self, value):
+00398         \textcolor{keywordflow}{try}:
+00399             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(value)
+00400         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00401             del self
+00402             \textcolor{keywordflow}{raise} exc
+00403         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value} = value
+00404 
+00405     \textcolor{comment}{## Validator da classe.}
+00406     \textcolor{comment}{#   Verifica a validade do argumento passado, lançando uma exceção}
+00407     \textcolor{comment}{#   no caso de ser negativa.}
+00408     \textcolor{comment}{#}
+00409     \textcolor{comment}{#   @arg        value       String a ser validada.}
+00410     \textcolor{comment}{#}
+00411     \textcolor{comment}{#   @exception  ValueError  Exceção lançada no caso de}
+00412     \textcolor{comment}{#                           value possuir mais de um, ou}
+00413     \textcolor{comment}{#                           nenhum, arroba; no caso de}
+00414     \textcolor{comment}{#                           value possuir caracteres}
+00415     \textcolor{comment}{#                           não-alfa-numéricos ou caso a}
+00416     \textcolor{comment}{#                           contagem de pontos esteja}
+00417     \textcolor{comment}{#                           incorreta.}
+00418     \textcolor{keyword}{def }\_validate(self, value):
+00419         notag = value.replace(\textcolor{stringliteral}{"@"}, \textcolor{stringliteral}{""}).replace(\textcolor{stringliteral}{"."}, \textcolor{stringliteral}{""})
+00420         \textcolor{keywordflow}{if} len(value) == 0:
+00421             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_ML\_S'}])
+00422         \textcolor{keywordflow}{elif} unicode.isalnum(notag) == \textcolor{keyword}{False}:
+00423             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_ML\_F'}])
+00424         \textcolor{keywordflow}{elif} value.count(\textcolor{stringliteral}{'@'}) == 1:
+00425             \textcolor{keywordflow}{if} value[value.index(\textcolor{stringliteral}{'@'}):].count(\textcolor{stringliteral}{'.'}) < 1:
+00426                 \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_ML\_F'}])
+00427         \textcolor{keywordflow}{else}:
+00428             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_ML\_F'}])
+00429         
+00430 \textcolor{comment}{## Classe container de tipo de exercício.}
+00431 \textcolor{comment}{#   Este tipo básico contém um inteiro que representa um tipo de exercício.}
+00432 \textcolor{comment}{#   Cada tipo de exercício funciona de uma forma diferente, e eles são}
+00433 \textcolor{comment}{#   escaláveis.}
+\hypertarget{BaseUnit_8py_source_l00434}{}\hyperlink{classELO_1_1BaseUnit_1_1ExType}{00434} \textcolor{keyword}{class }\hyperlink{classELO_1_1BaseUnit_1_1ExType}{ExType}(\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType}{IfBaseType}):
+00435     \_value = \textcolor{keywordtype}{None}
+00436 
+00437     \textcolor{comment}{## Contrutor da classe,.}
+00438     \textcolor{comment}{#   Impede a criação do tipo básico para valores de entrada}
+00439     \textcolor{comment}{#   inválidos.}
+00440     \textcolor{comment}{#}
+00441     \textcolor{comment}{#   @arg        value       Valor de entrada, que será}
+00442     \textcolor{comment}{#                           armazenado no tipo básico.}
+00443     \textcolor{comment}{#}
+00444     \textcolor{comment}{#   @exception  ValueError  Será lançada no caso do valor}
+00445     \textcolor{comment}{#                           de entrada ser inválido.}
+\hypertarget{BaseUnit_8py_source_l00446}{}\hyperlink{classELO_1_1BaseUnit_1_1ExType_aca9932deaf8fe247d16ce17909d3dfbf}{00446}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1ExType_aca9932deaf8fe247d16ce17909d3dfbf}{\_\_init\_\_}(self, value):
+00447         \textcolor{keywordflow}{try}:
+00448             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(value)
+00449         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00450             del self
+00451             \textcolor{keywordflow}{raise} exc
+00452         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value} = value
+00453 
+00454     \textcolor{comment}{## Validador da classe.}
+00455     \textcolor{comment}{#   Lança uma excessão no caso de value não atender aos requisitos}
+00456     \textcolor{comment}{#   do sistema.}
+00457     \textcolor{comment}{#}
+00458     \textcolor{comment}{#   @arg        value       Inteiro que será testado.}
+00459     \textcolor{comment}{#}
+00460     \textcolor{comment}{#   @exception  ValueError  Será lançado no caso de value}
+00461     \textcolor{comment}{#                           ser negativo ou não inteiro.}
+00462     \textcolor{keyword}{def }\_validate(self, value):
+00463         \textcolor{keywordflow}{try}: int(value)
+00464         \textcolor{keywordflow}{except} ValueError: \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_ET\_F'}])
+00465 
+00466         \textcolor{keywordflow}{if} value <= 0:
+00467             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_ET\_S'}])
+00468 
+00469 \textcolor{comment}{## Classe container de Id.}
+00470 \textcolor{comment}{#   Este tipo básico irá armazenar um inteiro, que identifica univocamente}
+00471 \textcolor{comment}{#   diversas estruturas dentro do sistema.}
+\hypertarget{BaseUnit_8py_source_l00472}{}\hyperlink{classELO_1_1BaseUnit_1_1Id}{00472} \textcolor{keyword}{class }\hyperlink{classELO_1_1BaseUnit_1_1Id}{Id}(\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType}{IfBaseType}):
+00473     \_value = \textcolor{keywordtype}{None}
+00474 
+00475     \textcolor{comment}{## Construtor da classe.}
+00476     \textcolor{comment}{#   Responsável por impedir a criação de um tipo básico com}
+00477     \textcolor{comment}{#   conteúdo inválido.}
+00478     \textcolor{comment}{#}
+00479     \textcolor{comment}{#   @arg        value       Inteiro a ser salvo no tipo}
+00480     \textcolor{comment}{#                           básico.}
+00481     \textcolor{comment}{#}
+00482     \textcolor{comment}{#   @exception  ValueError  Será lançada no caso de value}
+00483     \textcolor{comment}{#                           não corresponder aos requisitos}
+00484     \textcolor{comment}{#                           do sistema.}
+\hypertarget{BaseUnit_8py_source_l00485}{}\hyperlink{classELO_1_1BaseUnit_1_1Id_adc3e24ef020fb79dda540cdbec85b7a8}{00485}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Id_adc3e24ef020fb79dda540cdbec85b7a8}{\_\_init\_\_}(self, value):
+00486         \textcolor{keywordflow}{try}:
+00487             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(value)
+00488         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00489             del self
+00490             \textcolor{keywordflow}{raise} exc
+00491         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value} = value
+00492 
+00493     \textcolor{comment}{## Validador da classe.}
+00494     \textcolor{comment}{#   Lança uma exceção no caso do valor de entrada não bater com os}
+00495     \textcolor{comment}{#   requisitos para um Id.}
+00496     \textcolor{comment}{#}
+00497     \textcolor{comment}{#   @arg        value       Inteiro a ser testado.}
+00498     \textcolor{comment}{#}
+00499     \textcolor{comment}{#   @exception  ValueError  Exceção a ser lançada no caso}
+00500     \textcolor{comment}{#                           de value não ser inteiro ou,}
+00501     \textcolor{comment}{#                           caso seja, negativo.}
+00502     \textcolor{keyword}{def }\_validate(self, value):
+00503         \textcolor{keywordflow}{try}: int(value)
+00504         \textcolor{keywordflow}{except} ValueError: \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_ID\_F'}])
+00505 
+00506         \textcolor{keywordflow}{if} value < 1:
+00507             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_ID\_S'}])
+00508 
+00509 \textcolor{comment}{## Classe container de linguagem.}
+00510 \textcolor{comment}{#   Irá armazenar um número que corresponde à língua de preferência do}
+00511 \textcolor{comment}{#   usuário. A relação linguagem-id será armazenada numa tabela à parte.}
+\hypertarget{BaseUnit_8py_source_l00512}{}\hyperlink{classELO_1_1BaseUnit_1_1Language}{00512} \textcolor{keyword}{class }\hyperlink{classELO_1_1BaseUnit_1_1Language}{Language}(\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType}{IfBaseType}):
+00513     \_value = \textcolor{keywordtype}{None}
+00514 
+00515     \textcolor{comment}{## Construtor da classe.}
+00516     \textcolor{comment}{#   Impede a criação de tipos básicos com conteúdo inválido.}
+00517     \textcolor{comment}{#}
+00518     \textcolor{comment}{#   @arg        value       Inteiro a ser armazenado.}
+00519     \textcolor{comment}{#}
+00520     \textcolor{comment}{#   @exception  ValueError  Exceção a ser lançada no caso}
+00521     \textcolor{comment}{#                           de value não corresponder às}
+00522     \textcolor{comment}{#                           expectativas.}
+\hypertarget{BaseUnit_8py_source_l00523}{}\hyperlink{classELO_1_1BaseUnit_1_1Language_a0b717ad014a17f87cbe20caf5be56fb8}{00523}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Language_a0b717ad014a17f87cbe20caf5be56fb8}{\_\_init\_\_}(self, value):
+00524         \textcolor{keywordflow}{try}:
+00525             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(value)
+00526         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00527             del self
+00528             \textcolor{keywordflow}{raise} exc
+00529         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value} = value
+00530 
+00531     \textcolor{comment}{## Validador da classe.}
+00532     \textcolor{comment}{#   Recebe um inteiro e verifica se ele pode ser utilizado como}
+00533     \textcolor{comment}{#   Linguagem.}
+00534     \textcolor{comment}{#}
+00535     \textcolor{comment}{#   @arg        value       Inteiro a ser analisado.}
+00536     \textcolor{comment}{#}
+00537     \textcolor{comment}{#   @exception  ValueError  Exceção a ser lançada caso}
+00538     \textcolor{comment}{#                           value não seja inteiro ou}
+00539     \textcolor{comment}{#                           seja negativo.}
+00540     \textcolor{keyword}{def }\_validate(self, value):
+00541         \textcolor{keywordflow}{try}: int(value)
+00542         \textcolor{keywordflow}{except} ValueError: \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_LG\_F'}])
+00543 
+00544         \textcolor{keywordflow}{if} value < 1:
+00545             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_LG\_F'}])
+00546 
+00547 \textcolor{comment}{## Classe container de Data.}
+00548 \textcolor{comment}{#   Este tipo básico armazena uma data para os mais diversos usos.}
+\hypertarget{BaseUnit_8py_source_l00549}{}\hyperlink{classELO_1_1BaseUnit_1_1Date}{00549} \textcolor{keyword}{class }\hyperlink{classELO_1_1BaseUnit_1_1Date}{Date}(\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType}{IfBaseType}):
+00550     \_value = \textcolor{keywordtype}{None}
+00551     
+00552     \textcolor{comment}{## Construtor da classe.}
+00553     \textcolor{comment}{#   Responsável por impedir a criação de um tipo básico que não}
+00554     \textcolor{comment}{#   atenda aos requisitos do sistema.}
+00555     \textcolor{comment}{#}
+00556     \textcolor{comment}{#   @arg        day     Dia a ser armazenado.}
+00557     \textcolor{comment}{#}
+00558     \textcolor{comment}{#   @arg        month       Mês a ser armazenado.}
+00559     \textcolor{comment}{#}
+00560     \textcolor{comment}{#   @arg        year        Ano a ser armazenado.}
+00561     \textcolor{comment}{#}
+00562     \textcolor{comment}{#   @exception  ValueError  Exceção a ser lançada caso a}
+00563     \textcolor{comment}{#                           data seja inválida.}
+\hypertarget{BaseUnit_8py_source_l00564}{}\hyperlink{classELO_1_1BaseUnit_1_1Date_a97d924fa5f1b2a1d8afbdbfe17b6a852}{00564}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Date_a97d924fa5f1b2a1d8afbdbfe17b6a852}{\_\_init\_\_}(self, day, month, year):
+00565         \textcolor{keywordflow}{try}:
+00566             value[\textcolor{stringliteral}{'day'}] = day
+00567             value[\textcolor{stringliteral}{'month'}] = month
+00568             value[\textcolor{stringliteral}{'year'}] = year
+00569             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(value)
+00570         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00571             del self
+00572             \textcolor{keywordflow}{raise} exc
+00573         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value} = value
+00574 
+00575     \textcolor{comment}{## Validator da classe.}
+00576     \textcolor{comment}{#   Método que recebe um dicionário e verifica se a data nele}
+00577     \textcolor{comment}{#   contida é válida.}
+00578     \textcolor{comment}{#}
+00579     \textcolor{comment}{#   @arg        value       Dicionário a ser testado. Deve}
+00580     \textcolor{comment}{#                           conter no mínimo três campos:}
+00581     \textcolor{comment}{#                           year, month e day.}
+00582     \textcolor{comment}{#}
+00583     \textcolor{comment}{#   @exception  ValueError  Exceção que será lançada na}
+00584     \textcolor{comment}{#                           eventualidade da data inserida}
+00585     \textcolor{comment}{#                           ser impossível de ocorrer, ou}
+00586     \textcolor{comment}{#                           caso ela seja anterior a 2014.}
+00587     \textcolor{keyword}{def }\_validate(self, value):
+00588         year = value[\textcolor{stringliteral}{'year'}]
+00589         month = value[\textcolor{stringliteral}{'month'}]
+00590         day = value[\textcolor{stringliteral}{'day'}]
+00591 
+00592         \textcolor{keywordflow}{if} year < 2014:
+00593             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_DT\_Y'}])
+00594 
+00595         \textcolor{keywordflow}{if} month < 1 \textcolor{keywordflow}{or} month > 12:
+00596             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_DT\_M'}])
+00597 
+00598         \textcolor{keywordflow}{if} day < 1:
+00599             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_DT\_D'}])
+00600 
+00601         \textcolor{keywordflow}{if} month == 2:
+00602             \textcolor{keywordflow}{if} day > 29:
+00603                 \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_DT\_D'}])
+00604         \textcolor{keywordflow}{elif} month <= 7:
+00605             \textcolor{keywordflow}{if} day > 30 + (1 \textcolor{keywordflow}{if} month % 2 \textcolor{keywordflow}{else} 0):
+00606                 \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_DT\_D'}])
+00607         \textcolor{keywordflow}{else}:
+00608             \textcolor{keywordflow}{if} day > 30 + (0 \textcolor{keywordflow}{if} month % 2 \textcolor{keywordflow}{else} 1):
+00609                 \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_DT\_D'}])
+\end{DoxyCode}

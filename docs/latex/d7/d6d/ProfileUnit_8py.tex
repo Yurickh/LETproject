@@ -1,0 +1,37 @@
+\hypertarget{ProfileUnit_8py}{\subsection{Referência do Arquivo E\-L\-O/\-Profile/\-Profile\-Unit.py}
+\label{ProfileUnit_8py}\index{E\-L\-O/\-Profile/\-Profile\-Unit.\-py@{E\-L\-O/\-Profile/\-Profile\-Unit.\-py}}
+}
+
+
+Este arquivo é responsável pelo armazenamento de todas as camadas correspondentes ao módulo de perfil.  
+
+
+\subsubsection*{Componentes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile}{Profile.\-Profile\-Unit.\-If\-Ui\-Profile}
+\begin{DoxyCompactList}\small\item\em Interface para a camada de Apresentação de Usuário do módulo \hyperlink{namespaceProfile}{Profile}. \end{DoxyCompactList}\item 
+class \hyperlink{classProfile_1_1ProfileUnit_1_1IfBusProfile}{Profile.\-Profile\-Unit.\-If\-Bus\-Profile}
+\begin{DoxyCompactList}\small\item\em Interface para a camada de Negócio do módulo de perfil. \end{DoxyCompactList}\item 
+class \hyperlink{classProfile_1_1ProfileUnit_1_1IfPersProfile}{Profile.\-Profile\-Unit.\-If\-Pers\-Profile}
+\begin{DoxyCompactList}\small\item\em Interface para a camada de Persistência do módulo de perfil. \end{DoxyCompactList}\item 
+class \hyperlink{classProfile_1_1ProfileUnit_1_1UiHomeProfile}{Profile.\-Profile\-Unit.\-Ui\-Home\-Profile}
+\begin{DoxyCompactList}\small\item\em Camada de apresentação para a página principal do site. \end{DoxyCompactList}\item 
+class \hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile}{Profile.\-Profile\-Unit.\-Ui\-Full\-Profile}
+\begin{DoxyCompactList}\small\item\em Camada de apresentação para a página de perfil completa. \end{DoxyCompactList}\item 
+class \hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile}{Profile.\-Profile\-Unit.\-Bus\-Profile}
+\begin{DoxyCompactList}\small\item\em Camada de negócio para perfil. \end{DoxyCompactList}\item 
+class \hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile}{Profile.\-Profile\-Unit.\-Pers\-Profile}
+\begin{DoxyCompactList}\small\item\em Camada de persistência de perfil. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceProfile_1_1ProfileUnit}{Profile.\-Profile\-Unit}
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Descrição Detalhada}
+O módulo de perfil é designado a administrar duas das páginas do site final\-: a página \char`\"{}home\char`\"{} e a página de perfil. Na página Home, o usuário (Student ou Professor, Adms não possuem perfil) terá acesso a uma versão resumida do seu perfil, bem como um infográfico com o seu desenvolvimento nos cursos em que está cadastrado. É possível, a partir desta página, acessar a página de perfil e a página de curso (vide \hyperlink{CourseUnit_8py}{Course\-Unit.\-py}). A página de perfil, por sua vez, disponibilizará ao usuário (quase) todas as informações que o sistema guarda sobre ele, e também o possibilitará editar alguns campos, como \char`\"{}interesses\char`\"{} ou \char`\"{}biografia\char`\"{}. É nesta página que o usuário poderá alterar sua senha. 
+
+Definição no arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
+

@@ -1,0 +1,71 @@
+\hypertarget{classELO_1_1BaseUnit_1_1Id}{\subsection{Referência da Classe E\-L\-O.\-Base\-Unit.\-Id}
+\label{classELO_1_1BaseUnit_1_1Id}\index{E\-L\-O.\-Base\-Unit.\-Id@{E\-L\-O.\-Base\-Unit.\-Id}}
+}
+
+
+Classe container de \hyperlink{classELO_1_1BaseUnit_1_1Id}{Id}.  
+
+
+Diagrama de Hierarquia para E\-L\-O.\-Base\-Unit.\-Id\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d7/dca/classELO_1_1BaseUnit_1_1Id}
+\end{center}
+\end{figure}
+\subsubsection*{Métodos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classELO_1_1BaseUnit_1_1Id_adc3e24ef020fb79dda540cdbec85b7a8}{\-\_\-\-\_\-init\-\_\-\-\_\-}
+\begin{DoxyCompactList}\small\item\em Construtor da classe. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Descrição Detalhada}
+Este tipo básico irá armazenar um inteiro, que identifica univocamente diversas estruturas dentro do sistema. 
+
+Definição na linha \hyperlink{BaseUnit_8py_source_l00472}{472} do arquivo \hyperlink{BaseUnit_8py_source}{Base\-Unit.\-py}.
+
+
+
+\subsubsection{Construtores \& Destrutores}
+\hypertarget{classELO_1_1BaseUnit_1_1Id_adc3e24ef020fb79dda540cdbec85b7a8}{\index{E\-L\-O\-::\-Base\-Unit\-::\-Id@{E\-L\-O\-::\-Base\-Unit\-::\-Id}!\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}}
+\index{\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}!ELO::BaseUnit::Id@{E\-L\-O\-::\-Base\-Unit\-::\-Id}}
+\paragraph[{\-\_\-\-\_\-init\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Base\-Unit.\-Id.\-\_\-\-\_\-init\-\_\-\-\_\- (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{value}
+\end{DoxyParamCaption}
+)}}\label{classELO_1_1BaseUnit_1_1Id_adc3e24ef020fb79dda540cdbec85b7a8}
+Responsável por impedir a criação de um tipo básico com conteúdo inválido.
+
+\begin{DoxyItemize}
+\item value Inteiro a ser salvo no tipo básico.\end{DoxyItemize}
+
+\begin{DoxyExceptions}{Exceções}
+{\em Value\-Error} & Será lançada no caso de value não corresponder aos requisitos do sistema. \\
+\hline
+\end{DoxyExceptions}
+
+
+Definição na linha \hyperlink{BaseUnit_8py_source_l00485}{485} do arquivo \hyperlink{BaseUnit_8py_source}{Base\-Unit.\-py}.
+
+
+
+Referências \hyperlink{BaseUnit_8py_source_l00058}{E\-L\-O.\-Base\-Unit.\-If\-Base\-Type.\-\_\-validate()} e \hyperlink{BaseUnit_8py_source_l00048}{E\-L\-O.\-Base\-Unit.\-If\-Base\-Type.\-\_\-value}.
+
+
+\begin{DoxyCode}
+\hypertarget{classELO_1_1BaseUnit_1_1Id_l00485}{}\hyperlink{classELO_1_1BaseUnit_1_1Id_adc3e24ef020fb79dda540cdbec85b7a8}{00485} 
+00486     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Id_adc3e24ef020fb79dda540cdbec85b7a8}{\_\_init\_\_}(self, value):
+00487         \textcolor{keywordflow}{try}:
+00488             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(value)
+00489         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00490             del self
+00491             \textcolor{keywordflow}{raise} exc
+00492         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value} = value
+
+\end{DoxyCode}
+
+
+A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}
+\item 
+E\-L\-O/\-E\-L\-O/\hyperlink{BaseUnit_8py}{Base\-Unit.\-py}\end{DoxyCompactItemize}

@@ -15,7 +15,7 @@
 # editar alguns campos, como "interesses" ou "biografia".
 # É nesta página que o usuário poderá alterar sua senha.
 
-from abc import*
+from abc import *
 
 import ELO.locale.index as lang
 
