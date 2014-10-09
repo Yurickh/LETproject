@@ -2,18 +2,10 @@
 {% load staticfiles %}
 
 {% block head %}
-<<<<<<< HEAD
 
-	<script src="{% static 'Adm/script_edit.js' %}"></script>
-
-	<link	rel="stylesheet"
-			type="text/css"
-			href="{% static 'include/select2/select2.css' %}" />
-
-=======
 	<script src="{% static 'Adm/script_edit.js' %}">
 	</script>
->>>>>>> 198179b0ebd94d135f569e5a8565f286444d3203
+
 {% endblock %}
 
 {% block body %}
@@ -21,11 +13,7 @@
 
 		{{ form }}<br />
 		{% csrf_token %}
-<<<<<<< HEAD
 
-		<div class="dialog"></div>
-=======
->>>>>>> 198179b0ebd94d135f569e5a8565f286444d3203
 		<input type="submit" name="{{ action }}" {% if action == "registrar" %} value="{{ DICT.REGISTER }}" {% endif %} value="{{ DICT.SEARCH }}"/> 
 	</form>
 

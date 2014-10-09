@@ -127,19 +127,11 @@ class Factory:
 				if not isinstance(self.__ui, IfUiAdm):
 					self.__pers = PersAdm()
 					self.__bus = BusAdm(self.__pers)
-					self.__ui = UiAdm(self.__bus) 
-<<<<<<< HEAD
-				if action != None and model != None:
-					return self.__ui.run(request, action) # falta model
-				else:
-					return self.__ui.run(request)
-=======
-				
+					self.__ui = UiAdm(self.__bus) 				
 				if action != None and model != None:
 					return self.__ui.run(request, action)
 				
 				return self.__ui.run(request)
->>>>>>> 198179b0ebd94d135f569e5a8565f286444d3203
 		raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])
 
 	## Classe que executa o módulo de Curso.

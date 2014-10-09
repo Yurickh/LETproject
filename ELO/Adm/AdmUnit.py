@@ -258,14 +258,9 @@ class UiAdm(IfUiAdm):
                     #   depois de uma validação das informações passadas pelo
                     #   request.POST.
                     if form.is_valid():
-<<<<<<< HEAD
-                        self.bus.editAccounts(request.POST, action, Student, form) # model entra aqui no lugar de student
-                    # Caso contrário irá surgir um erro de que há dados incorretos.
-=======
                         self.bus.editAccounts(request.POST,action, Student, form)
                     # Caso contrário irá surgir um erro de que há dados
                     #   incorretos.
->>>>>>> 198179b0ebd94d135f569e5a8565f286444d3203
                     else:
                         raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
                 # Se houver qualquer problema referente as passagens dos forms 
