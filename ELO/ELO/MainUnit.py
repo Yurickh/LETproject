@@ -133,8 +133,7 @@ class Factory:
 					return self.__ui.run(request, action)
 				
 				return self.__ui.run(request)
-		#raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])
-		raise Http404("oi?")
+		raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])
 
 	## Classe que executa o módulo de Curso.
 	# 	Define as camadas de persistência, negócio e apresentação de
