@@ -1,10 +1,11 @@
 #coding: utf-8
 
 ## TODO:
-#   Passar para inglês os termos internos ao sistema que estão em português.
-#   Ajeitar os nomes das forms (e.g. 214, 234, 240)
+#   Passar para inglês os termos internos ao sistema que estão em português. 
+#       (e.g. 214, 234, 240)
+#   Ajeitar os nomes das forms. (Adm/forms)
 #   Atentar ao padrão de 80 caracteres/linha.
-#   233: verificar validade do request.POST, tal qual if anterior
+#   233: verificar validade do request.POST, tal qual if anterior.
 
 ## @file AdmUnit.py
 #   Este arquivo é responsável pelo armazenamento de todas as camadas 
@@ -211,6 +212,42 @@ class UiAdm(IfUiAdm):
         #       informações do usuário procurado para uma possível edição ou 
         #       deleção.
         if request.method == "POST":
+
+            #--------------------------sugestões do tio Yurick
+            # sugestão de como fazer essa verificação, mas pode fazer do jeito
+            # que preferir
+
+            if 'type' in request.POST and request.POST['type'] == 'info':
+                try:
+                    # pus aqui só para não precisar mudar a assinatura da
+                    # editAccounts, já que 'action' é um campo redudante
+                    action = "atualizar"
+
+                    form = AdmDelStu_ProfForm(request.POST)
+                    if form.is_valid():
+                        # aconselho usar um método diferente
+                        # para recuperação de dados, bem como corrigir
+                        # os argumentos redundantes
+                        d_user = self.bus.editAccounts(request.POST,
+                                                        action,
+                                                        Student,
+                                                        form)
+                        if not d_user:
+                            raise ValueError("TALVEZ ALGUMA MENSAGEM DE ERRO?")
+
+                        d_user = dict(d_user)
+
+                        return render(request, 
+                                      "Adm/info.html", 
+                                      {'data':d_user})
+                    else:
+                        raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
+                except ValueError as exc:
+                    # falta criar algum suporte para mensagem de erro
+                    return HttpResponseRedirect('/')
+
+            #-------------------------
+
             if "registrar" in request.POST:
                 try:
                     # Coleta os forms adequados a partir da requisição POST.
@@ -265,14 +302,14 @@ class UiAdm(IfUiAdm):
                 form = AvatarForm(request.POST, request.FILES)
                 field = "avatar"
             else:
-                raise ValueError(lang.DICT['EXCEPTION_INV_FRM'] + 
-                    ":" + form.errors)
+                #raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
+                return HttpResponseRedirect('/')
             if form.is_valid():
                 self.bus.editAccounts(request.POST, field, Student, form)
                 request.session.modified = True                
 
             # Após a coleta da requisição o administrador será retornado à página inicial de controle.
-            return HttpResponseRedirect('/adm')
+            return HttpResponseRedirect('/')
 
         # Quando a requisição for de GET então é retornado para a página principal.                                           
         else:
@@ -337,12 +374,12 @@ class BusAdm(IfBusAdm):
                 self.pers.data_in(dict_data, database)
 
         elif action == "atualizar":
-            data = self.pers.fetch(dict_field_value['userName'], Student)
+            data = self.pers.fetch(dict_field_value['username'], Student)
 
             return data
 
         elif action == "apagar":
-            data = self.pers.fetch(dict_field_value['userName'], Student)
+            data = self.pers.fetch(dict_field_value['username'], Student)
 
             return data
 

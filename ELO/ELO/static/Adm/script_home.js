@@ -15,8 +15,24 @@ $(document).ready(function(){
 		resizable: false,
 	});
 
+	// Caracteristicas do Dialog.
+	$in_dialog = $(".inner_dialog").dialog({
+		autoOpen: false,
+		show: {
+			effect: "blind",
+			duration: 1000
+		},
+		hide: {
+			effect: "blind",
+			duration: 1000
+		},
+		modal: true,
+		resizable: false,
+	});
+
 	// Cria o evento de clicar e abrir os buttons da pagina de adm.
-	$("button").click(function(){
+	$("button").click(function(){		
+
 		// Coleta o modelo sobre o qual a acao sera realizada, sendo eles
 		// estudante, professor ou curso.
 		model = $(this).attr("id").slice(4);
