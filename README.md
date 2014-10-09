@@ -1,8 +1,4 @@
-# LETproject  {#index}
-
-## Conteúdo
-
-[TOC]
+# LETproject
 
 ## Index
 
@@ -26,6 +22,7 @@ Seu principal objetivo é criar uma interface amigável entre alunos e professor
 Título do projeto:
 * **LETproject (nome temporário)**
 * **ELO (Ensino de Línguas Online) (nome temporário)**
+* **SALiE (nome final)**
 
 Orientador:
 **Professor Cláudio Correa e Castro Gonçalves**
@@ -35,8 +32,8 @@ Unidade Acadêmica / Departamento:
 
 Alunos Envolvidos:
 * Yurick Hauschild Caetano da Costa 12/0024136
-* André Accioly Lima 12/0059908
-* Diego Santos da Silva 11/0027892
+* Dayanne Fernandes xx/xxxxxxxx
+* Bruna Luisa xx/xxxxxxx
 
 ### 3. Documentação
 
@@ -51,8 +48,9 @@ Toda a documentação do projeto pode ser encontrada na pasta doc/.
 
 #### 3.i. Doxyfile (html)
 
- No intuito de simplificar a navegação dentro da documentação do projeto, utilizamos a ferramenta Doxygen, gerando, assim, um arquivo HTML que contém uma interface amigável.
- Este arquivo está contido em doc/html/ e para acessá-lo basta abrir o arquivo doc/html/index.html com o seu navegador.
+ No intuito de simplificar a navegação dentro da documentação do projeto, utilizamos a ferramenta Doxygen, gerando, assim, um arquivo HTML que contém uma interface amigável, bem como um arquivo .tex capaz de gerar um pdf.
+ Tanto o pdf quanto o html possuem as mesmas informações.
+ Estes arquivos estão contidos em vendor e para acessá-los basta abrir o arquivo doc/html/index.html ou doc/latex/refman.pdf com o seu navegador ou visualizador de pdf, respectivamente.
  
 ### 4. Instalação e execução
 
@@ -64,11 +62,12 @@ Para executar o programa, siga as instruções abaixo.
 
 2. Para instalar o python no Windows:
 
+ Obs: Não desenvolvemos a plataforma em Windows, e não temos o hábito de testar neste ambiente. Então, caro usuário da microsoft, na ocasião de encontrar algum bug ocasionado por incompatibilidade, sintá-se convidado a abrir uma issue e nos avisar, para que o corrijamos o mais rápido possível.
+ [Siga este tutorial](http://docs.python-guide.org/en/latest/starting/install/win/).
 
 3. Para instalar o python no Linux:
 > OBS: As últimas versões do Ubuntu e Fedora já vêm com o python 2.7 e as últimas versões do RHEL e CentOS já vêm com o python 2.6.
 
-[BAIXE O PYTHON SCRIPT AQUI, E EXECUTE](http://python-distribute.org/distribute_setup.py). Para executar, use no terminal `python distributte_setup.py`
   * Instale o pip:
     `$ easy_install pip`
   * Instale o virtualenv:
@@ -87,7 +86,7 @@ Para executar o programa, siga as instruções abaixo.
 
 5. Para instalar django no Ubuntu:
   * Pelo pip:
-	`$ pip install Django==1.6.2`
+	`$ pip install Django==1.7`
   * "Manualmente":
 	* Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
 		`$ tar xzvf Django-1.6.2.tar.gz`
