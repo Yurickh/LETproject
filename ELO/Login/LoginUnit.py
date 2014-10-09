@@ -166,7 +166,6 @@ class UiLogin(IfUiLogin):
 								'language': l ,
 								'type': database.__name__,
 							}
-				print l
 				translation.activate(l)
 				request.session[translation.LANGUAGE_SESSION_KEY] = l
 				return HttpResponseRedirect('/')

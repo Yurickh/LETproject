@@ -122,17 +122,17 @@ class Factory:
 	@vary_on_cookie
 	def runAdm(self, request, action=None, model=None):
 		# Checa se usuario ja esta logado
-		if 'user' in request.session.keys():
+		if 'user' in request.session.keys(): # if user is logged in
 			if request.session['user']['type'] == 'Adm':
-				if action != None and model != None:
-					return self.__ui.run(request, action)
-				elif not isinstance(self.__ui, IfUiAdm):
+				if not isinstance(self.__ui, IfUiAdm):
 					self.__pers = PersAdm()
 					self.__bus = BusAdm(self.__pers)
 					self.__ui = UiAdm(self.__bus) 
-				return self.__ui.run(request)
-		else:
-			raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])
+				if action != None and model != None:
+					return self.__ui.run(request, action) # falta model
+				else:
+					return self.__ui.run(request)
+		raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])
 
 	## Classe que executa o módulo de Curso.
 	# 	Define as camadas de persistência, negócio e apresentação de

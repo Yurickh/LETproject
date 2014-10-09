@@ -214,7 +214,7 @@ class UiAdm(IfUiAdm):
                     print model
                     print action
                     if form.is_valid():
-                        self.bus.editAccounts(request.POST, action, Student, form)
+                        self.bus.editAccounts(request.POST, action, Student, form) # model entra aqui no lugar de student
                     # Caso contrário irá surgir um erro de que há dados incorretos.
                     else:
                         raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
