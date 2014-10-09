@@ -1,11 +1,19 @@
 #coding: utf-8
 
+## TODO:
+#   Passar para inglês os termos internos ao sistema que estão em português.
+#   Ajeitar os nomes das forms (e.g. 214, 234, 240)
+#   Atentar ao padrão de 80 caracteres/linha.
+#   233: verificar validade do request.POST, tal qual if anterior
+
 ## @file AdmUnit.py
-#   Este arquivo é responsável pelo armazenamento de todas as camadas correspondentes 
-#   ao módulo de administrador. 
-#   Os métodos aqui são criados e chamados pela Factory (MainUnit.py) quando necessários. 
+#   Este arquivo é responsável pelo armazenamento de todas as camadas 
+#   correspondentes ao módulo de administrador. 
+#   Os métodos aqui são criados e chamados pela Factory (MainUnit.py)
+#   quando necessários. 
 #   São responsáveis por cadastrar, deletar e editar alunos e professores 
-#   no banco de dados, criar cursos e ver um log sobre os últimos eventos no sistema.
+#   no banco de dados, criar cursos e ver um log sobre os últimos eventos no
+#   sistema.
 
 from abc import *
 
@@ -26,7 +34,7 @@ from django.http import HttpResponseRedirect
 from django import forms
 
 
-## Interface para a camada de apresentação de Usuário do módulo de Administração.
+## Interface para a camada de apresentação de Usuário do módulo de Adm.
 #   É responsável pelo carregamento do template correto e processa os dados
 #   inseridos no formulário de Administração.
 class IfUiAdm:
@@ -194,46 +202,42 @@ class UiAdm(IfUiAdm):
         #   Caso seja POST, a requisição ocorre após a submissão de uma form,
         #       podendo ser ela de registro, edição ou deleção.
         #   Caso não seja e não ocorra a passagem dos campos de ação e modelo,
-        #       a requisição há de ser um GET, para mostrar a página principal de Adm.
-        #   Em último caso será a requisição do Javascript, denominada como AJAX,
-        #       que irá solicitar em tempo de evento dos dialogs iniciados.
-        #       Será passada informações para requisitar os forms adequados e informações
-        #       do usuário procurado para uma possível edição ou deleção.
-
-        # Se a requisição for por meio de POST ela coleta o dicionário de fields ligados
-        #   aos novos dados e chama as funções adequadas de edição.
+        #       a requisição há de ser um GET, para mostrar a página principal
+        #       de Adm.
+        #   Em último caso será a requisição do Javascript, denominada como 
+        #       AJAX, que irá solicitar em tempo de evento dos dialogs 
+        #       iniciados.
+        #   Será passada informações para requisitar os forms adequados e 
+        #       informações do usuário procurado para uma possível edição ou 
+        #       deleção.
         if request.method == "POST":
             if "registrar" in request.POST:
                 try:
                     # Coleta os forms adequados a partir da requisição POST.
                     form = AdmRegStu_ProfForm(request.POST)
 
-                    # Se form for adequado então é chamado o método de edição de contas que
-                    # irá comunicar-se com o banco de dados depois de uma validação das informações
-                    # passadas pelo request.POST.
-                    print model
-                    print action
+                    # Se form for adequado então é chamado o método de edição 
+                    #   de contas que irá comunicar-se com o banco de dados 
+                    #   depois de uma validação das informações passadas pelo
+                    #   request.POST.
                     if form.is_valid():
-                        self.bus.editAccounts(request.POST, action, Student, form)
-                    # Caso contrário irá surgir um erro de que há dados incorretos.
+                        self.bus.editAccounts(request.POST,action, Student, form)
+                    # Caso contrário irá surgir um erro de que há dados
+                    #   incorretos.
                     else:
                         raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
-                # Se houver qualquer problema referente as passagens dos forms e conferência 
-                # da validação dos mesmos então o administrador será passado para a página inicial.
+                # Se houver qualquer problema referente as passagens dos forms 
+                #   e conferência da validação dos mesmos então o 
+                #   administrador será passado para a página inicial.
                 except ValueError as exc:
                     return render(request, "Adm/home.html")
-
             elif "atualizar" in request.POST:
-                
-                print request.POST
-
                 d_user = self.bus.editAccounts(request.POST, "atualizar", Student, form = None)
                 data = dict(d_user)
 
                 return render(request, "Adm/info.html", {'data' : data})
             
             elif "apagar" in request.POST:
-
                 d_user = self.bus.editAccounts(request.POST, "apagar", Student, form = None)
                 data = dict(d_user)
 
@@ -265,7 +269,6 @@ class UiAdm(IfUiAdm):
                     ":" + form.errors)
             if form.is_valid():
                 self.bus.editAccounts(request.POST, field, Student, form)
-                
                 request.session.modified = True                
 
             # Após a coleta da requisição o administrador será retornado à página inicial de controle.
@@ -280,28 +283,15 @@ class UiAdm(IfUiAdm):
             #   irá ser repassado forms adequados ao pedido ou será feito
             #   buscas de dados do usuário requisitado.
             else:
-                # Se for solicitado um registro de entidade.
-                if action == "registrar":
-                    # Coleta os forms adequados.
+                if action == "reg":
                     form = AdmRegStu_ProfForm()
-                    # Devolve os forms adequados para a página assíncrona de edição.
-                    return render(request, "Adm/edit.html", {'form': form,
-                                                            'action' : action,
-                                                            })
-                # Se for solicitado uma atualização ou deleção de entidade.
-                #   Será coletado forms primeiramente de busca da entidade a ser
-                #   editada ou deletada e posteriormente forms para visualização
-                #   dos dados da entidade.
-                elif action == "atualizar" or action == "apagar":
-                    # Coleta os forms adequados.
+                elif action == "att" or action == "del":
                     form = AdmDelStu_ProfForm()
-                    # Devolve os forms adequados para a página assíncrona de edição.
-                    return render(request, "Adm/edit.html", {'form': form,
-                                                            'action' : action,
-                                                            })
-                # Caso ocorra algum erro relacionado à ação requisitada.
                 else:
                     form = lang.DICT["ERROR_FORM"]
+                return render(request, "Adm/edit.html", {'form': form,
+                                                         'action' : action,
+                                                        })
 
 
 
@@ -341,8 +331,8 @@ class BusAdm(IfBusAdm):
             # Escolhe uma linguagem padrão para cadastro de um usuário qualquer.
             dict_data['LANGUAGE'] = 'en'
 
-            # Se for uma entidade estudante então é feito o pedido de inserção no
-            # banco de dados com o determinado modelo.
+            # Se for uma entidade estudante então é feito o pedido de inserção 
+            # no banco de dados com o determinado modelo.
             if database.__name__ == "Student":
                 self.pers.data_in(dict_data, database)
 

@@ -1,28 +1,13 @@
 {% extends "includes/assync_wrapper.html" %}
 {% load staticfiles %}
 
-{% block head %}
-
-	<script src="{% static 'Adm/script.js' %}">
-	</script>
-	<script src="{% static 'include/select2/select2.min.js' %}">
-	</script>
-
-	<link	rel="stylesheet"
-			type="text/css"
-			href="{% static 'include/select2/select2.css' %}" />
-
-{% endblock %}
-
 {% block body %}
 	{% for field, value in data.items %}
 		{{ field }}: {{ value }}<br />
 			<button id="edit_{{ field }}"
 					title="{{ value }}"
 					>Edit</button><br /><br />
-	{% endfor %}	
-	<div class="dialog2"></div>
-	<div class="dialog3"></div>
+	{% endfor %}
 {% endblock %}
 
 
