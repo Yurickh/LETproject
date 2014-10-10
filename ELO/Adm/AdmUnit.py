@@ -16,18 +16,29 @@
 #   no banco de dados, criar cursos e ver um log sobre os últimos eventos no
 #   sistema.
 
+# Biblioteca para Classes Abstratas.
+
 from abc import *
+
+# Biblioteca de Tradução.
 
 import ELO.locale.index as lang
 
+# Biblioteca de Modelos.
+
 from ELO.models import Adm, Student, Professor
+
+# Biblioteca de Formulários.
+
 from forms import (
-    AdmRegStu_ProfForm,
-    AdmDelStu_ProfForm,
-    confAdm,
-    AdmRegCourForm,
-    AdmSrcCourForm,
-    AdmDelCourForm)
+    RegSPForm,
+    DelSPForm,
+    ConfAdmForm,
+    RegCourForm,
+    SrcCourForm,
+    DelCourForm)
+
+# Bibliotecas para funções básicas relativas ao Framework de Python, Django.
 
 from django.shortcuts import render
 from django.conf import settings
@@ -176,9 +187,9 @@ class IfPersAdm:
     @abstractmethod
     def fetch_del(self, username, database): pass
 
-    ##  Função que recupera todos os dados do usuário.
-    #       Percorre o banco de dados e recupera todos os dados do usuário
-    #       requisitado.
+    ##  Função que recupera todos os dados de um usuário fornecido.
+    #     Percorre o banco de dados e recupera todos os dados do usuário
+    #     requisitado.
     #
     #   @arg    username    Nome do usuário a ser pesquisado.
     #
@@ -207,15 +218,10 @@ class UiAdm(IfUiAdm):
         #       de Adm.
         #   Em último caso será a requisição do Javascript, denominada como 
         #       AJAX, que irá solicitar em tempo de evento dos dialogs 
-        #       iniciados.
-        #   Será passada informações para requisitar os forms adequados e 
-        #       informações do usuário procurado para uma possível edição ou 
-        #       deleção.
+        #       iniciados. Será passada informações para requisitar os forms
+        #       adequados e informações do usuário procurado para uma possível
+        #       edição ou deleção.
         if request.method == "POST":
-
-            #--------------------------sugestões do tio Yurick
-            # sugestão de como fazer essa verificação, mas pode fazer do jeito
-            # que preferir
 
             if 'type' in request.POST and request.POST['type'] == 'info':
                 try:
@@ -245,8 +251,6 @@ class UiAdm(IfUiAdm):
                 except ValueError as exc:
                     # falta criar algum suporte para mensagem de erro
                     return HttpResponseRedirect('/')
-
-            #-------------------------
 
             if "registrar" in request.POST:
                 try:

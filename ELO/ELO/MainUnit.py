@@ -121,17 +121,23 @@ class Factory:
 	#	administração.
 	@vary_on_cookie
 	def runAdm(self, request, action=None, model=None):
-		# Checa se usuario ja esta logado
-		if 'user' in request.session.keys(): # if user is logged in
+		#	Checa se usuario ja esta logado.
+		if 'user' in request.session.keys():
+			#	Checa se usuário é um Administrador.
 			if request.session['user']['type'] == 'Adm':
+				#	Cria as instâncias caso elas ainda não tenham sido criadas.
 				if not isinstance(self.__ui, IfUiAdm):
 					self.__pers = PersAdm()
 					self.__bus = BusAdm(self.__pers)
-					self.__ui = UiAdm(self.__bus) 				
+					self.__ui = UiAdm(self.__bus) 		
+				#	Passa a ação a ser efetuada e o devido modelo a ser
+				#		alterado para a run da Factory de Adm.
 				if action != None and model != None:
-					return self.__ui.run(request, action)
+					return self.__ui.run(request, action, model)
 				
 				return self.__ui.run(request)
+		#	Caso o  usuário não esteja logado ou não seja Administrador,
+		#		é negada a continuação das requisições.
 		raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])
 
 	## Classe que executa o módulo de Curso.

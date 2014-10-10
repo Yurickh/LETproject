@@ -22,7 +22,7 @@ from ELO.BaseUnit import(
 ## Classe de forms para o formulário de cadastro de aluno.
 #	O administrador insere os dados do aluno a ser
 #	cadastrado, validando o cadastro com a senha de administrador.
-class AdmRegStu_ProfForm(forms.Form):
+class RegSPForm(forms.Form):
 	userName = forms.CharField(max_length = 32, label = "Nome:", required= "True")
 	userMatric = forms.IntegerField(label = "Matricula:",required= "True")
 	userCampus = forms.IntegerField(label = "Código do Campus:",required= "True") 
@@ -78,7 +78,7 @@ class AdmRegStu_ProfForm(forms.Form):
 		return password
 
 
-class AdmDelStu_ProfForm(forms.Form): 
+class DelSPForm(forms.Form): 
 	username = forms.CharField(max_length = 32, label = "Nome:", required=True)
 	
 	def clean_userName(self):
@@ -88,7 +88,7 @@ class AdmDelStu_ProfForm(forms.Form):
 			raise forms.ValidationError("Usário inválido.")
 		return name
 		
-class confAdm(forms.Form):
+class ConfAdmForm(forms.Form):
 	admPass = forms.CharField(widget = forms.PasswordInput, label = "Senha do Adm",required= "True")
 
 	## Verifica se a formatação da senha do administrador está correta.
@@ -100,7 +100,7 @@ class confAdm(forms.Form):
 			raise forms.ValidationError("Senha inválida.")
 		return password 
 
-class AdmRegCourForm(forms.Form):
+class RegCourForm(forms.Form):
 	courMatric=forms.IntegerField(label= "Código da Disciplina", required = "True")
 	courName= forms.CharField(max_length = 32, label ="Nome da Disciplina", required = "True")
 	courProfessor = forms.CharField( max_length = 32, label = "Nome do Professor da Disciplina", required = "True")
@@ -127,7 +127,7 @@ class AdmRegCourForm(forms.Form):
 		return professor			
 
 
-class AdmSrcCourForm(forms.Form):
+class SrcCourForm(forms.Form):
 	courMatric = forms.IntegerField(label = "Código da Disciplina", required ="True")
 
 	def clean_courMatric(self):
@@ -137,7 +137,7 @@ class AdmSrcCourForm(forms.Form):
 			raise forms.ValidationError("Código Inválido")
 		return courMatric
 
-class AdmDelCourForm(forms.Form): 
+class DelCourForm(forms.Form): 
 	courMatric = forms.IntegerField(label = "Código da Disciplina", required ="True")
 
 	def clean_courMatric(self):
