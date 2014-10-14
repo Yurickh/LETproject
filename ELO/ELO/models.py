@@ -88,3 +88,68 @@ class Professor(models.Model):
 	## Retorna os valores do professor correspondente ao Id no banco de dados.
 	def __unicode__(self):
 		return u'%s : %s = %s' % (str(self.identity), self.field, self.value)
+
+## Classe que define o modelo de Curso.
+#	Colunas já implementadas:
+#
+#	NAME:		Identifica o nome do curso.\n
+#	ID:			Identifica univocamente o curso.\n
+#	STUDENTS:	Lista de inteiros que representam os alunos associados ao
+#					curso em questão. (ver modelo Student).\n
+#	MODULES:	Lista de inteiros que identificam os módulos contidos no curso.
+class Courses(models.Model):
+	identity = models.IntegerField()
+	field = models.CharField(max_lenth=32)
+	value = models.TextField()
+
+	def __unicode__(self):
+		return u'%s : %s = %s' % (str(self.identity), self.field, self.value)
+
+## Classe que define o modelo de Módulo.
+#	Um módulo é o primeiro nível de divisão dentro de um curso.
+#
+#	Colunas já implementadas:
+#
+#	NAME:		Identifica o nome do módulo.\n
+#	ID:			Identifica univocamente o módulo.\n
+#	LESSONS:	Lista de inteiros que identificam as lições contidas dentro
+#					dos módulos.
+class Module(models.Model):
+	identity = models.IntegerField()
+	field = models.CharField(max_length=32)
+	value = models.TextField()
+
+	def __unicode__(self):
+		return u'%s : %s = %s' % (str(self.identity), self.field, self.value)
+
+## Classe que define o modelo de Lição.
+#	Colunas já implementadas:
+#
+#	NAME:		Identifica o nome da lição.\n
+#	ID:			Identifica univocamente o módulo.\n
+#	LINK:		Caminho de arquivo para o html a ser parseado.\n
+#	EXERCISES:	Lista de ínteiros que representam os exercícios associados
+#					à lição correspondente.\n
+class Lesson(models.MOdel):
+	identity = models.IntegerField()
+	field = models.CharField(max_length=32)
+	value = models.TextField()
+
+	def __unicode__(self):
+		return u'%s : %s = %s' % (str(self.identity), self.field, self.value)
+
+## Classe que define o modelo de exercício.
+#	Colunas já implementadas:
+#
+#	ID:			Inteiro que representa univocamente um exercício.\n
+#	LINK:		Caminho de arquivo para o html a ser parseado.\n
+#	EXTYPE:		Tipo de exercicio a ser tratado.\n
+#	EXFORMAT:	Formato do exercício a ser tratado.\n
+#	ITEMS:		Lista de items.\n
+class Exercise(models.Model):
+	identity = models.IntegerField()
+	field = models.CharField(max_legth=32)
+	value = models.TextField()
+
+	def __unicode__(self):
+		return u'%s : %s = %s' % (str(self.identity), self.field, self.value)
