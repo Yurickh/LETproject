@@ -1,9 +1,11 @@
 #coding: utf-8
 
 from abc import*
-""" Interface for the User Interface layer of the Course module.
-	It is responsible for ...
-"""
+
+import ELO.locale.index as lang
+
+from django.shortcuts import render
+from django.core.exceptions import PermissionDenied
 
 class IfUiCourse:
 	__metaclass__ = ABCMeta
@@ -29,6 +31,9 @@ class IfUiCourse:
 	@bus.deleter
 	def bus(self):
 		del self.__bus
+
+	@abstractmethod
+	def run(self, request, courseid): pass
 
 
 class IfBusCourse:
@@ -59,7 +64,18 @@ class IfBusCourse:
 class IfPersCourse: pass
 
 
-class UiCourse(IfUiCourse):	pass
+class UiCourse(IfUiCourse):
+
+	def run(self, request, courseid):
+		
+		user = request.session['user']
+
+		if courseid in user['course']:
+			print 'yey'
+			return HttpResponseRedirect('/') ## TODO: everything
+		else:
+			raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])
+		
 
 class BusCourse(IfBusCourse):	pass
 

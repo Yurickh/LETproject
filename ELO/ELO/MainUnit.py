@@ -139,11 +139,12 @@ class Factory:
 	# 	Define as camadas de persistência, negócio e apresentação de
 	#	curso.
 	@vary_on_cookie
-	def runCourse(self, request):
+	def runCourse(self, request, courseid):
 		if 'user' in request.session.keys():
 			if not self.__ui is IfUiCourse:
-				self.__per = PersAdm()
-				self.__bus = BusAdm(self.__pers)
-				self.__ui = UiAdm(self.__bus)
+				self.__per = PersCourse()
+				self.__bus = BusCourse(self.__pers)
+				self.__ui = UiCourse(self.__bus)
 
-			return self.__ui.run(request)
+			return self.__ui.run(request, courseid)
+		raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])

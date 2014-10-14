@@ -43,7 +43,7 @@ urlpatterns = patterns('',
 	## URL da pagina de logout.
 	url(r'^logout/?$', factory.runLogout),
 	## URL da pagina de cursos.
-	url(r'^course/?$', factory.runCourse),
+	url(r'^course/(?P<courseid>\d+)/?$', factory.runCourse),
 	## URL da pagina de administracao.
 	url(r'^adm/?$', factory.runAdm),
 	url(r'^assync/adm-edit/(?P<action>\w{3,9})/(?P<model>\w{3,9})/?$', 
