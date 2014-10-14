@@ -31,12 +31,20 @@ from ELO.models import Adm, Student, Professor
 # Biblioteca de Formulários.
 
 from forms import (
-    RegSPForm,
-    DelSPForm,
+    RegUserForm,
+    SrcUserForm,
     ConfAdmForm,
     RegCourForm,
-    SrcCourForm,
-    DelCourForm)
+    SrcCourForm)
+
+from Profile.forms import (
+    NameForm, 
+    PasswordForm,
+    LanguageForm,
+    SexForm,
+    BiosForm,
+    InterestsForm,
+    AvatarForm)
 
 # Bibliotecas para funções básicas relativas ao Framework de Python, Django.
 
@@ -130,14 +138,26 @@ class IfBusAdm:
     def pers(self):
         del self.__pers
 
-    ## Edita dados de um conta no database.
-    #   Podendo ser este de uma conta de Estudante, Professor ou um Curso.
+    ## Cria uma conta no database.
+    #   Podendo ser esta uma conta de Estudante, Professor ou um Curso.
+    #   
+    #   @arg    form    Valores dos campos para registro validados.
     #
-    #   @arg field      Nome do objeto a ser registrado.
-    #
-    #   @arg form       Objeto form que contém os dados.
     @abstractmethod
-    def editAccounts(self, dict_field_value, action, database, form): pass
+    def regAccount(self, dict_data): pass
+   
+    ## Edita dados de um conta no database.
+    #   Podendo ser estes de uma conta de Estudante, Professor ou um Curso.  
+    #
+    #   @arg    form    Valores dos campos para edição validados.
+    #
+    @abstractmethod
+    def attAccount(self, request, form): pass
+
+    ## Deleta uma conta no database.
+    #   Podendo ser esta uma conta de Estudante, Professor ou um Curso.
+    @abstractmethod
+    def delAccount(self, request): pass
 
     ## Verifica os últimos eventos realizados pelo Administrador.
     #@abstractmethod
@@ -208,7 +228,6 @@ class IfPersAdm:
 #   requisitando os devidos dados necessários de cada ação.
 class UiAdm(IfUiAdm): 
 
-    ## O método principal de qualquer classe de UI (User Interface).
     def run(self, request, action=None, model=None):
         ## @if Verifica qual o propósito do submit.
         #   Caso seja POST, a requisição ocorre após a submissão de uma form,
@@ -222,116 +241,101 @@ class UiAdm(IfUiAdm):
         #       adequados e informações do usuário procurado para uma possível
         #       edição ou deleção.
         if request.method == "POST":
+            if "reg" in request.POST:
+                # Inicia o dicionário dict_data. Será utilizado para informar os 
+                # campos e dados para registro do usuário.
+                dict_data = {}
+                database_fields = ['NAME', 'SEX', 'PASSWORD', 'MATRIC', 'CAMPUS','EMAIL']
 
-            if 'type' in request.POST and request.POST['type'] == 'info':
+                print request.POST
+
                 try:
-                    # pus aqui só para não precisar mudar a assinatura da
-                    # editAccounts, já que 'action' é um campo redudante
-                    action = "atualizar"
+                    # Coleta os forms adequados a partir da requisição POST.
+                    form = RegUserForm(request.POST)
 
-                    form = AdmDelStu_ProfForm(request.POST)
+                    ## @if Se form for adequado então é chamado o método de edição 
+                    # de contas que irá comunicar-se com o banco de dados 
+                    # depois da validação das informações passadas pelo
+                    # request.POST.
                     if form.is_valid():
-                        # aconselho usar um método diferente
-                        # para recuperação de dados, bem como corrigir
-                        # os argumentos redundantes
-                        d_user = self.bus.editAccounts(request.POST,
-                                                        action,
-                                                        Student,
-                                                        form)
+                        for field, value in request.POST.items():
+                            # Transforma campo unicode em string.
+                            field = str(field)
+                            # Coleta a palavra chave do campo designado.
+                            # Esta é coletada a partir dos campos contidos no dicionário.
+                            newField = field[4:].upper()
+
+                            # Se o campo encontrado pertence à lista de campos do database
+                            # que deveriam pertencer a um usuário, então este é adicionado
+                            # ao dicionário que será repassado para inserção no banco de
+                            # dados posteriormente.
+                            if newField in database_fields:
+                                dict_data[newField] = form.cleaned_data[field].value
+
+                        # Escolhe uma linguagem padrão para cadastro do usuário recente.
+                        dict_data['LANGUAGE'] = 'pt-br'
+
+                        self.bus.regAccount(dict_data)
+                    else:
+                        raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
+
+                # Se houver qualquer problema referente as passagens dos forms 
+                # e conferência da validação dos mesmos então o 
+                # administrador será passado para a página inicial.
+                except ValueError as exc:
+                    return render(request, "Adm/home.html")
+
+            elif 'att' in request.POST:
+                try:
+                    form = SrcUserForm(request.POST)
+                    if form.is_valid():
+                        d_user = self.bus.attAccount(request, form)
                         if not d_user:
-                            raise ValueError("TALVEZ ALGUMA MENSAGEM DE ERRO?")
+                            raise ValueError(lang.DICT['?????????'])
 
                         d_user = dict(d_user)
 
                         return render(request, 
-                                      "Adm/info.html", 
-                                      {'data':d_user})
+                                      "Adm/info.html", {'data':d_user})
                     else:
                         raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
                 except ValueError as exc:
                     # falta criar algum suporte para mensagem de erro
                     return HttpResponseRedirect('/')
 
-            if "registrar" in request.POST:
-                try:
-                    # Coleta os forms adequados a partir da requisição POST.
-                    form = AdmRegStu_ProfForm(request.POST)
-
-                    # Se form for adequado então é chamado o método de edição 
-                    #   de contas que irá comunicar-se com o banco de dados 
-                    #   depois de uma validação das informações passadas pelo
-                    #   request.POST.
-                    if form.is_valid():
-                        self.bus.editAccounts(request.POST,action, Student, form)
-                    # Caso contrário irá surgir um erro de que há dados
-                    #   incorretos.
-                    else:
-                        raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
-                # Se houver qualquer problema referente as passagens dos forms 
-                #   e conferência da validação dos mesmos então o 
-                #   administrador será passado para a página inicial.
-                except ValueError as exc:
-                    return render(request, "Adm/home.html")
-            elif "atualizar" in request.POST:
-                d_user = self.bus.editAccounts(request.POST, "atualizar", Student, form = None)
+            elif "att" in request.POST:
+                d_user = self.bus.attAccount(request, form)
                 data = dict(d_user)
 
                 return render(request, "Adm/info.html", {'data' : data})
             
-            elif "apagar" in request.POST:
-                d_user = self.bus.editAccounts(request.POST, "apagar", Student, form = None)
+            elif "del" in request.POST:
+                d_user = self.bus.delAccount(request, form)
                 data = dict(d_user)
 
                 return render(request, "Adm/info.html", {'data' : data})
 
-            elif "name" in request.POST:
-                form = NameForm(request.POST)
-                field = "name"
-            elif  "password" in request.POST:
-                form = PasswordForm(request.POST)
-                field = "password"
-            elif "language" in request.POST:
-                form = LanguageForm(request.POST)
-                field = "language"
-            elif "sex" in request.POST:
-                form = SexForm(request.POST)
-                field = "sex"
-            elif "bios" in request.POST:
-                form = BiosForm(request.POST)
-                field = "bios"
-            elif "interests" in request.POST:
-                form = InterestsForm(request.POST)
-                field = "interests"
-            elif "avatar" in request.POST:
-                form = AvatarForm(request.POST, request.FILES)
-                field = "avatar"
-            else:
-                #raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
-                return HttpResponseRedirect('/')
-            if form.is_valid():
-                self.bus.editAccounts(request.POST, field, Student, form)
-                request.session.modified = True                
-
             # Após a coleta da requisição o administrador será retornado à página inicial de controle.
             return HttpResponseRedirect('/')
-
-        # Quando a requisição for de GET então é retornado para a página principal.                                           
+                                         
         else:
-            # Chamada normal de GET.
+            ## @if Confere se esta sendo passado alguma acao ou modelo.
+            # Se nao for passada nenhuma acao ou modelo entao e renderizado
+            # a pagina inicial de Administracao.
             if not (action or model):
                 return render(request, "Adm/home.html")
-            # Caso contrário, no caso de requisições do tipo AJAX, 
-            #   irá ser repassado forms adequados ao pedido ou será feito
-            #   buscas de dados do usuário requisitado.
             else:
+                ## @if Confere qual a acao requisitada.
+                #   Passa os forms necessarios da acao requisitada.
                 if action == "reg":
-                    form = AdmRegStu_ProfForm()
+                    form = RegUserForm()
                 elif action == "att" or action == "del":
-                    form = AdmDelStu_ProfForm()
+                    form = SrcUserForm()
                 else:
                     form = lang.DICT["ERROR_FORM"]
                 return render(request, "Adm/edit.html", {'form': form,
                                                          'action' : action,
+                                                         'model' : model,
                                                         })
 
 
@@ -344,55 +348,32 @@ class UiAdm(IfUiAdm):
 #   conta, podendo ser esta de um Estudante, Professor ou de um Curso.
 class BusAdm(IfBusAdm): 
 
-    ## Edita dados de um conta no database.
-    #   Podendo ser este de uma conta de Estudante, Professor ou um Curso.
-    def editAccounts(self, dict_field_value, action, database, form):
-        
-        # Inicia o dicionário dict_data.
-        #   Será utilizado para informar os campos e dados para registro do usuário.
-        dict_data = {}
-        database_fields = ['NAME', 'SEX', 'PASSWORD', 'MATRIC', 'CAMPUS','EMAIL']
+    def regAccount(self, dict_data):
 
-        # Se for uma ação de registro do usuário.
-        if action == "registrar": 
-            # Percorre os campos e valores coletador no request.POST.
-            for field, value in dict_field_value.items():
-                # Transforma os unicodes do dicionário em strings.
-                field = str(field)
-                # Coleta a palavra chave do campo designado.
-                #   Esta é coletada a partir dos campos contidos no dicionário.
-                newField = field[4:].upper()
+        # Se for uma entidade estudante então é feito o pedido de inserção 
+        # no banco de dados com o determinado modelo.
+        self.pers.data_in(dict_data, Student)
 
-                # Se o campo encontrado pertence à lista de campos do database que deveriam
-                # pertencer a um usuário, então este é adicionado ao dicionário que será
-                # repassado para inserção no banco de dados posteriormente.
-                if newField in database_fields:
-                    dict_data[newField] = form.cleaned_data[field].value
+    def attAccount(self, request, form):
+        data = self.pers.fetch(dict_field_value['username'], Student)
 
-            # Escolhe uma linguagem padrão para cadastro de um usuário qualquer.
-            dict_data['LANGUAGE'] = 'en'
+        return data
 
-            # Se for uma entidade estudante então é feito o pedido de inserção 
-            # no banco de dados com o determinado modelo.
-            if database.__name__ == "Student":
-                self.pers.data_in(dict_data, database)
+    def delAccount(self, request):
+        data = self.pers.fetch(dict_field_value['username'], Student)
 
-        elif action == "atualizar":
-            data = self.pers.fetch(dict_field_value['username'], Student)
+        return data
 
-            return data
+    ## Edita campos de um usuario.
+    def editField(self, request, field, form):
 
-        elif action == "apagar":
-            data = self.pers.fetch(dict_field_value['username'], Student)
-
-            return data
-
-        elif action == "name":
+        user = request.session['user']
+        if field == "name":
             fpw = form.cleaned_data['password'].value
             if fpw != user['password']:
                 raise ValueError(lang.DICT['EXCEPTION_INV_PW_F'])
             newdata = form.cleaned_data['newdata'].value
-        elif action == "password":
+        elif field == "password":
             npw = form.cleaned_data['newdata'].value
             rpw = form.cleaned_data['rp_newdata'].value
             opw = form.cleaned_data['old_password'].value
@@ -401,9 +382,9 @@ class BusAdm(IfBusAdm):
             if opw != user['password']:
                 raise ValueError(lang.DICt['EXCEPTION_INV_PW_F'])
             newdata = npw
-        elif action == "language":
+        elif field == "language":
             newdata = form.cleaned_data['newdata']
-        elif action == "avatar":
+        elif field == "avatar":
             addr = settings.MEDIA_ROOT + u"/" + user['avatar']
             with open(addr, "wb") as destination:
                     for chunk in request.FILES['newdata'].chunks():
@@ -412,9 +393,19 @@ class BusAdm(IfBusAdm):
             newdata = form.cleaned_data['newdata'].value
 
         try:
-            self.pers.update(user['name'], field, newdata, Student)
+            if user['type'] == 'Student' and field != 'avatar':
+                self.pers.update(user['name'], field, newdata, Student)
+            elif user['type'] == 'Professor' and field != 'avatar':
+                self.pers.update(user['name'], field, newdata, Professor)
         except ValueError as exc:
             raise ValueError(lang.DICT['EXCEPTION_ERR_DB_U'])
+        else:
+            if field == "language":
+                request.session['django_language'] = newdata
+        if field == 'avatar':
+            return user['avatar']
+        else:
+            return newdata
 
 
 ## Camada de persistência para o módulo de administração.
