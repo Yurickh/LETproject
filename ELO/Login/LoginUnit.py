@@ -148,6 +148,8 @@ class UiLogin(IfUiLogin):
 					target = "proflogin"
 				elif database.__name__ == "Adm":
 					target = "364fd8cdc3a35a89b7be75bc9d10ebea"
+				elif database.__name__ == "God":
+					target = "e50b058759a52eda8a507687887186e5"
 				else:
 					target = ""
 
@@ -156,7 +158,8 @@ class UiLogin(IfUiLogin):
 			else:
 				l = None
 				cd = login_form.cleaned_data
-				if database.__name__ != "Adm":
+				if (database.__name__ != "Adm" and
+					database.__name__ != "God"):
 					l = self.bus.getLang(cd['username'], database)
 				else:
 					l = request.LANGUAGE_CODE
@@ -166,7 +169,6 @@ class UiLogin(IfUiLogin):
 								'language': l ,
 								'type': database.__name__,
 							}
-				print l
 				translation.activate(l)
 				request.session[translation.LANGUAGE_SESSION_KEY] = l
 				return HttpResponseRedirect('/')
@@ -179,10 +181,13 @@ class UiLogin(IfUiLogin):
 				target = "proflogin"
 			elif database.__name__ == "Adm":
 				target = "364fd8cdc3a35a89b7be75bc9d10ebea"
+			elif database.__name__ == "God":
+				target = "e50b058759a52eda8a507687887186e5"
 			else:
 				target = ""
 
-			return render(request, "Login/form.html", {'form': login_form, 'target': target})
+			return render(request, "Login/form.html", 
+				{'form': login_form, 'target': target})
 
 
 ## Camada de negócio de usuário para o módulo de Login.
@@ -204,20 +209,37 @@ class PersLogin(IfPersLogin):
 		if not username: return False
 		if not database: return False
 
+		upass = None
 		ulang = None
 
-		try:
-			uid = database.objects.get(value=username, field='NAME').identity
-			upass = database.objects.get(identity=uid, field='PASSWORD').value
-		except database.DoesNotExist:
-			return False
-
-		if isinstance(database, Student):
+		if database.__name__ == "God":
 			try:
-				ulang = database.objects.get(identity=uid, field='LANGUAGE').value
+				usr = database.objects.get()
 			except database.DoesNotExist:
-				pass
-		else:
-			ulang = settings.LANGUAGE_CODE
+				return False
+			except database.MultipleObjectsReturned:
+				return False
 
-		return {'name': username, 'password': upass, 'language': ulang}
+			username = usr.username
+			upass = usr.password
+		else:
+
+			try:
+				uid = database.objects.get(value=username, field='NAME')
+				uid = uid.identity
+				upass = database.objects.get(identity=uid, field='PASSWORD')
+				upass = upass.value
+			except database.DoesNotExist:
+				return False
+
+			if(database.__name__ == "Student" or 
+			   database.__name__ == "Professor"):
+				try:
+					ulang= database.objects.get(identity=uid, field='LANGUAGE')
+					ulang= ulang.value
+				except database.DoesNotExist:
+					return False
+			else:
+				ulang = settings.LANGUAGE_CODE
+
+		return { 'name': username, 'password': upass, 'language': ulang }

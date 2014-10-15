@@ -89,6 +89,17 @@ class Professor(models.Model):
 	def __unicode__(self):
 		return u'%s : %s = %s' % (str(self.identity), self.field, self.value)
 
+## Classe que define o modelo de deus.
+#	Esta tabela sempre conterá apenas uma entrada, ou seja, este sistema é
+#		monoteísta.
+class God(models.Model):
+	username = models.CharField(max_length=32)
+	password = models.TextField()
+
+	def __unicode__(self):
+		return u'\nusername: %s\n password: %s' % (self.username, 
+													   self.password)
+
 ## Classe que define o modelo de Curso.
 #	Colunas já implementadas:
 #
@@ -99,7 +110,7 @@ class Professor(models.Model):
 #	MODULES:	Lista de inteiros que identificam os módulos contidos no curso.
 class Courses(models.Model):
 	identity = models.IntegerField()
-	field = models.CharField(max_lenth=32)
+	field = models.CharField(max_length=32)
 	value = models.TextField()
 
 	def __unicode__(self):
@@ -130,7 +141,7 @@ class Module(models.Model):
 #	LINK:		Caminho de arquivo para o html a ser parseado.\n
 #	EXERCISES:	Lista de ínteiros que representam os exercícios associados
 #					à lição correspondente.\n
-class Lesson(models.MOdel):
+class Lesson(models.Model):
 	identity = models.IntegerField()
 	field = models.CharField(max_length=32)
 	value = models.TextField()
@@ -148,7 +159,7 @@ class Lesson(models.MOdel):
 #	ITEMS:		Lista de items.\n
 class Exercise(models.Model):
 	identity = models.IntegerField()
-	field = models.CharField(max_legth=32)
+	field = models.CharField(max_length=32)
 	value = models.TextField()
 
 	def __unicode__(self):

@@ -16,7 +16,7 @@ from Course.CourseUnit import *
 
 import ELO.locale.index as lang
 
-from models import Adm, Professor, Student
+from models import Adm, Professor, Student, God
 
 from django.core.exceptions import PermissionDenied
 from django.http import Http404
@@ -45,7 +45,8 @@ class Factory:
 	@vary_on_cookie
 	def runHome(self, request, entity):
 		if 'user' in request.session.keys():
-			if request.session['user']['type'] == "Adm":
+			if (request.session['user']['type'] == "Adm" or 
+			   request.session['user']['type'] == "God"):
 				return self.runAdm(request)
 			else:
 				return self.runProfile(request, acctype='Home')
@@ -64,6 +65,8 @@ class Factory:
 
 		if entity == "Adm":
 			database = Adm
+ 		elif entity == "God":
+			database = God
 		elif entity == "Professor":
 			database = Professor
 		elif entity == "Student":
@@ -123,7 +126,8 @@ class Factory:
 	def runAdm(self, request, action=None, model=None):
 		# Checa se usuario ja esta logado
 		if 'user' in request.session.keys():
-			if request.session['user']['type'] == 'Adm':
+			if(request.session['user']['type'] == 'Adm' or
+			   request.session['user']['type'] == 'God'):
 				if not isinstance(self.__ui, IfUiAdm):
 					self.__pers = PersAdm()
 					self.__bus = BusAdm(self.__pers)
