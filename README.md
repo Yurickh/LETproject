@@ -1,8 +1,4 @@
-# LETproject  {#index}
-
-## Conteúdo
-
-[TOC]
+# LETproject
 
 ## Index
 
