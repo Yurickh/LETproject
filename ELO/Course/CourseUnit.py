@@ -77,7 +77,6 @@ class UiCourse(IfUiCourse):
 		user = request.session['user']
 
 		if request.method == "GET":
-			print user['courses']
 			if courseid in user['courses']:
 				course = self.bus.getCourse(user, courseid)
 				return render(request, "Course/frame.html", {'course':course})
