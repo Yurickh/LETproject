@@ -39,7 +39,7 @@ class IfUiCourse:
 class IfBusCourse:
 	__metaclass__ = ABCMeta
 
-	def __init_(self, pers):
+	def __init__(self, pers):
 		try:
 			self.pers = pers
 		except TypeError as exc:
@@ -61,7 +61,13 @@ class IfBusCourse:
 	def pers(self):
 		del self.__pers
 
-class IfPersCourse: pass
+	@abstractmethod
+	def getCourse(self, user, courseid): pass
+
+class IfPersCourse:
+
+	@abstractmethod
+	def fetch(id, db): pass
 
 
 class UiCourse(IfUiCourse):
@@ -70,13 +76,21 @@ class UiCourse(IfUiCourse):
 		
 		user = request.session['user']
 
-		if courseid in user['course']:
-			print 'yey'
-			return HttpResponseRedirect('/') ## TODO: everything
-		else:
-			raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])
+		if request.method == "GET":
+			print user['courses']
+			if courseid in user['courses']:
+				course = self.bus.getCourse(user, courseid)
+				return render(request, "Course/frame.html", {'course':course})
+			else:
+				raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])
 		
 
-class BusCourse(IfBusCourse):	pass
+class BusCourse(IfBusCourse):
 
-class PersCourse(IfPersCourse):	pass
+	def getCourse(self, user, courseid):
+		return True
+
+class PersCourse(IfPersCourse):
+
+	def fetch(id, db):
+		return False

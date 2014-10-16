@@ -146,7 +146,7 @@ class Factory:
 	def runCourse(self, request, courseid):
 		if 'user' in request.session.keys():
 			if not self.__ui is IfUiCourse:
-				self.__per = PersCourse()
+				self.__pers = PersCourse()
 				self.__bus = BusCourse(self.__pers)
 				self.__ui = UiCourse(self.__bus)
 
