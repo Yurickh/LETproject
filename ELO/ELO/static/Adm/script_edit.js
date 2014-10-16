@@ -6,10 +6,11 @@ $(document).ready(function(){
 		data = $(this).serialize();
 		uname = data.slice(9, data.indexOf("&csrfmiddlewaretoken="));
 		crsf = data.slice(data.indexOf("&csrfmiddlewaretoken=")+21);
+		model = $("div[id^='model_']").attr("id").slice(6);
 
 		data = { username: uname,
 				 csrfmiddlewaretoken: crsf,
-				 type: "info"
+				 model: model
 			   };
 
 		$in_dialog.load("/assync/adm-info/", data, function(){

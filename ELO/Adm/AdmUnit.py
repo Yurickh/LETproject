@@ -17,19 +17,15 @@
 #   sistema.
 
 # Biblioteca para Classes Abstratas.
-
 from abc import *
 
 # Biblioteca de Tradução.
-
 import ELO.locale.index as lang
 
 # Biblioteca de Modelos.
-
 from ELO.models import Adm, Student, Professor
 
 # Biblioteca de Formulários.
-
 from forms import (
     RegUserForm,
     SrcUserForm,
@@ -144,7 +140,7 @@ class IfBusAdm:
     #   @arg    form    Valores dos campos para registro validados.
     #
     @abstractmethod
-    def regAccount(self, dict_data): pass
+    def regAccount(self, request, form): pass
    
     ## Edita dados de um conta no database.
     #   Podendo ser estes de uma conta de Estudante, Professor ou um Curso.  
@@ -152,7 +148,7 @@ class IfBusAdm:
     #   @arg    form    Valores dos campos para edição validados.
     #
     @abstractmethod
-    def attAccount(self, request, form): pass
+    def attAccount(self, request): pass
 
     ## Deleta uma conta no database.
     #   Podendo ser esta uma conta de Estudante, Professor ou um Curso.
@@ -242,42 +238,17 @@ class UiAdm(IfUiAdm):
         #       edição ou deleção.
         if request.method == "POST":
             if "reg" in request.POST:
-                # Inicia o dicionário dict_data. Será utilizado para informar os 
-                # campos e dados para registro do usuário.
-                dict_data = {}
-                database_fields = ['NAME', 'SEX', 'PASSWORD', 'MATRIC', 'CAMPUS','EMAIL']
-
                 print request.POST
-
                 try:
                     # Coleta os forms adequados a partir da requisição POST.
                     form = RegUserForm(request.POST)
 
-                    ## @if Se form for adequado então é chamado o método de edição 
-                    # de contas que irá comunicar-se com o banco de dados 
-                    # depois da validação das informações passadas pelo
-                    # request.POST.
+                    ## @if Se form for adequado então é chamado o método 
+                    # de edição de contas que irá comunicar-se com o 
+                    # banco de dados depois da validação das informações 
+                    # passadas pelo request.POST.
                     if form.is_valid():
-                        for field, value in request.POST.items():
-                            # Transforma campo unicode em string.
-                            field = str(field)
-                            # Coleta a palavra chave do campo designado.
-                            # Esta é coletada a partir dos campos contidos no dicionário.
-                            newField = field[4:].upper()
-
-                            # Se o campo encontrado pertence à lista de campos do database
-                            # que deveriam pertencer a um usuário, então este é adicionado
-                            # ao dicionário que será repassado para inserção no banco de
-                            # dados posteriormente.
-                            if newField in database_fields:
-                                dict_data[newField] = form.cleaned_data[field].value
-
-                        # Escolhe uma linguagem padrão para cadastro do usuário recente.
-                        dict_data['LANGUAGE'] = 'pt-br'
-
-                        self.bus.regAccount(dict_data)
-                    else:
-                        raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
+                        self.bus.regAccount(request, form)
 
                 # Se houver qualquer problema referente as passagens dos forms 
                 # e conferência da validação dos mesmos então o 
@@ -285,13 +256,15 @@ class UiAdm(IfUiAdm):
                 except ValueError as exc:
                     return render(request, "Adm/home.html")
 
-            elif 'att' in request.POST:
+            elif 'att' or 'del 'in request.POST:
                 try:
                     form = SrcUserForm(request.POST)
+
                     if form.is_valid():
-                        d_user = self.bus.attAccount(request, form)
+                        d_user = self.bus.attAccount(request)
+
                         if not d_user:
-                            raise ValueError(lang.DICT['?????????'])
+                            raise ValueError(lang.DICT['EXCEPTION_INV_USR_NM'])
 
                         d_user = dict(d_user)
 
@@ -299,23 +272,12 @@ class UiAdm(IfUiAdm):
                                       "Adm/info.html", {'data':d_user})
                     else:
                         raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
-                except ValueError as exc:
-                    # falta criar algum suporte para mensagem de erro
+
+                except ValueError:
                     return HttpResponseRedirect('/')
 
-            elif "att" in request.POST:
-                d_user = self.bus.attAccount(request, form)
-                data = dict(d_user)
-
-                return render(request, "Adm/info.html", {'data' : data})
-            
-            elif "del" in request.POST:
-                d_user = self.bus.delAccount(request, form)
-                data = dict(d_user)
-
-                return render(request, "Adm/info.html", {'data' : data})
-
-            # Após a coleta da requisição o administrador será retornado à página inicial de controle.
+            # Após a coleta da requisição o administrador será retornado à 
+            # página inicial de controle.
             return HttpResponseRedirect('/')
                                          
         else:
@@ -339,8 +301,6 @@ class UiAdm(IfUiAdm):
                                                         })
 
 
-
-
 ## Camada de negócio para o módulo de administração.
 #   Deve ser capaz de manipular os dados do sistema,
 #   dando as devidas diretrizes ao banco de dados para que seja
@@ -348,19 +308,75 @@ class UiAdm(IfUiAdm):
 #   conta, podendo ser esta de um Estudante, Professor ou de um Curso.
 class BusAdm(IfBusAdm): 
 
-    def regAccount(self, dict_data):
+    def regAccount(self, request, form):
+        # Inicia o dicionário dict_data. Será utilizado para informar os 
+        # campos e dados para registro do usuário.
+        dict_data = {}
+        database_fields = ['NAME', 'SEX', 'PASSWORD', 'MATRIC', 
+                           'CAMPUS','EMAIL']
 
-        # Se for uma entidade estudante então é feito o pedido de inserção 
-        # no banco de dados com o determinado modelo.
-        self.pers.data_in(dict_data, Student)
+        try:
+            for field, value in request.POST.items():
+                # Transforma campo unicode em string.
+                field = str(field)
+                # Coleta a palavra chave do campo designado.
+                # Esta é coletada a partir dos campos contidos 
+                # no dicionário.
+                newField = field[4:].upper()
 
-    def attAccount(self, request, form):
-        data = self.pers.fetch(dict_field_value['username'], Student)
+                # Se o campo encontrado pertence à lista de campos
+                # do database que deveriam pertencer a um usuário,
+                # então este é adicionado ao dicionário que será 
+                # repassado para inserção no banco de dados 
+                # posteriormente.
+                if newField in database_fields:
+                    dict_data[newField] = form.cleaned_data[
+                                                field].value
 
-        return data
+            # Escolhe uma linguagem padrão para cadastro do 
+            # usuário recente.
+            dict_data['LANGUAGE'] = 'pt-br'
+
+            try:
+                db = None
+
+                model = str(request.POST['model'])
+
+                if model == "Student":
+                    db = Student
+                elif model == "Professor":
+                    db = Professor  
+
+            except ValueError as exc:
+                raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
+
+            # Se for uma entidade estudante então é feito o pedido de inserção 
+            # no banco de dados com o determinado modelo.
+            self.pers.data_in(dict_data, db)
+
+        except ValueError as exc:
+            raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
+
+        
+    def attAccount(self, request):
+        try:
+            db = None
+
+            model = str(request.POST['model'])
+
+            if model == "Student":
+                db = Student
+            elif model == "Professor":
+                db = Professor
+
+            data = self.pers.fetch(str(request.POST['username']), db)    
+
+            return data
+        except ValueError as exc:
+            raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
 
     def delAccount(self, request):
-        data = self.pers.fetch(dict_field_value['username'], Student)
+        data = self.pers.fetch(request.POST['username'], Student)
 
         return data
 
@@ -450,9 +466,11 @@ class PersAdm(IfPersAdm):
                 data = database.objects.get(identity=uid, field=field.upper())
                 # Nova informação é colocada no tipo que deseja atualizar.
                 data.value = newdata
-            # Caso o novo valor a ser colocado já exista então este continua o mesmo.
+            # Caso o novo valor a ser colocado já exista então este 
+            # continua o mesmo.
             except database.DoesNotExist:
-                data = database(identity=uid, field=field.upper(), value=newdata)
+                data = database(identity=uid, field=field.upper(), 
+                                value=newdata)
             # Salva os novos dados no database.
             data.save()
 

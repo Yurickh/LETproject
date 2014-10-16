@@ -53,7 +53,7 @@ urlpatterns = patterns('',
 	## URL da página assíncrona que informa os dados de um usuário requisitado.
 	url(r'^assync/adm-info/?$', factory.runAdm),
 	## URL para mostrar assincronamente a edição de um campo de perfil.
-	#		Requisitado pelo Administrador.
+	#	Requisitado pelo Administrador.
 	url(r'^assync/editfield/(?P<field>\w{3,9})/?$', factory.runAdm),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

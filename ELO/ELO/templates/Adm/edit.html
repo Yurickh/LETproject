@@ -11,14 +11,16 @@
 {% block body %}
 	<form {% if action == "att" %} id="edit_form" {% endif %} action="" method="post" >
 
-		{{ model }}
-
-		{{ form }}<br />
+		{{ form }}<br /> 
+		{% if action == "reg" %} <input type="hidden" name="model" value="{{ model }}"> {% endif %}
 		{% csrf_token %}
 
 		<input type="submit" name="{{ action }}" {% if action == "reg" %} 
-				value="{{ DICT.REGISTER }}" {% endif %} 
-				value="{{ DICT.SEARCH }}" /> 
+			   value="{{ DICT.REGISTER }}" {% endif %} 
+			   value="{{ DICT.SEARCH }}" /> 
 	</form>
+
+	<div class="dialog"></div>
+	<div id="model_{{ model }}"></div>
 
 {% endblock %}
