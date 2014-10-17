@@ -16,7 +16,7 @@ from Course.CourseUnit import *
 
 import ELO.locale.index as lang
 
-from models import Adm, Professor, Student
+from models import Adm, Professor, Student, God
 
 from django.core.exceptions import PermissionDenied
 from django.http import Http404
@@ -45,7 +45,8 @@ class Factory:
 	@vary_on_cookie
 	def runHome(self, request, entity):
 		if 'user' in request.session.keys():
-			if request.session['user']['type'] == "Adm":
+			if (request.session['user']['type'] == "Adm" or 
+			   request.session['user']['type'] == "God"):
 				return self.runAdm(request)
 			else:
 				return self.runProfile(request, acctype='Home')
@@ -64,6 +65,8 @@ class Factory:
 
 		if entity == "Adm":
 			database = Adm
+ 		elif entity == "God":
+			database = God
 		elif entity == "Professor":
 			database = Professor
 		elif entity == "Student":
@@ -123,9 +126,14 @@ class Factory:
 	def runAdm(self, request, action=None, model=None):
 		#	Checa se usuario ja esta logado.
 		if 'user' in request.session.keys():
+<<<<<<< HEAD
 			#	Checa se usuário é um Administrador.
 			if request.session['user']['type'] == 'Adm':
 				#	Cria as instâncias caso elas ainda não tenham sido criadas.
+=======
+			if(request.session['user']['type'] == 'Adm' or
+			   request.session['user']['type'] == 'God'):
+>>>>>>> 0037be056c980d31d5f15cb2d97134220b673086
 				if not isinstance(self.__ui, IfUiAdm):
 					self.__pers = PersAdm()
 					self.__bus = BusAdm(self.__pers)
@@ -144,11 +152,12 @@ class Factory:
 	# 	Define as camadas de persistência, negócio e apresentação de
 	#	curso.
 	@vary_on_cookie
-	def runCourse(self, request):
+	def runCourse(self, request, courseid):
 		if 'user' in request.session.keys():
 			if not self.__ui is IfUiCourse:
-				self.__per = PersAdm()
-				self.__bus = BusAdm(self.__pers)
-				self.__ui = UiAdm(self.__bus)
+				self.__pers = PersCourse()
+				self.__bus = BusCourse(self.__pers)
+				self.__ui = UiCourse(self.__bus)
 
-			return self.__ui.run(request)
+			return self.__ui.run(request, courseid)
+		raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])

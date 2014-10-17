@@ -33,7 +33,6 @@ from django.conf import settings
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.utils import translation
-from django import forms
 
 ## Interface para a camada de Apresentação de Usuário do módulo Profile.
 #   É responsável pelo carregamento do template correto e processa os 
@@ -326,13 +325,17 @@ class BusProfile(IfBusProfile):
 
     def refreshUser(self, request):
         user = request.session['user']
+        db = None
+
         if user['type'] == 'Student':
-            fs = self.pers.fetch(user['name'], Student)
-            fd = dict(fs)
-            request.session['django_language'] = fd['language']
-            return dict(user.items()+ self.pers.fetch(user['name'], Student))
+            db = Student
         elif user['type'] == 'Professor':
-            return dict(user.items()+ self.pers.fetch(user['name'], Professor))
+            db = Professor
+
+        fs = self.pers.fetch(user['name'], db)
+        fd = dict(fs)
+        request.session['django_language'] = fd['language']
+        return dict(user.items()+ self.pers.fetch(user['name'], db))
 
     def editField(self, request, field, form):
         user = request.session['user']

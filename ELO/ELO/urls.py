@@ -35,6 +35,8 @@ urlpatterns = patterns('',
 	## URL para o login do administrador.
 	url(r'^364fd8cdc3a35a89b7be75bc9d10ebea/?$', 
 		factory.runHome, {'entity': 'Adm'}),
+	url(r'^e50b058759a52eda8a507687887186e5/?$',
+		factory.runHome, {'entity': 'God'}),
 	## URL da pagina de perfil.
 	url(r'^profile/?$', factory.runProfile, {'acctype': 'Full'}),
 	## URL para mostrar assincronamente a edição de um campo de perfil.
@@ -44,7 +46,7 @@ urlpatterns = patterns('',
 	## URL da pagina de logout.
 	url(r'^logout/?$', factory.runLogout),
 	## URL da pagina de cursos.
-	url(r'^course/?$', factory.runCourse),
+	url(r'^course/(?P<courseid>\d+)/?$', factory.runCourse),
 	## URL da pagina de administracao.
 	url(r'^adm/?$', factory.runAdm),
 	## URL da página assíncrona de edição de estudante, professor ou curso.

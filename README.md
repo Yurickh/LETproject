@@ -32,7 +32,7 @@ Unidade Acadêmica / Departamento:
 
 Alunos Envolvidos:
 * Yurick Hauschild Caetano da Costa 12/0024136
-* Dayanne Fernandes xx/xxxxxxxx
+* Dayanne Fernandes 13/0107191
 * Bruna Luisa xx/xxxxxxx
 
 ### 3. Documentação

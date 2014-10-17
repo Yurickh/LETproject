@@ -1,9 +1,11 @@
 #coding: utf-8
 
 from abc import*
-""" Interface for the User Interface layer of the Course module.
-	It is responsible for ...
-"""
+
+import ELO.locale.index as lang
+
+from django.shortcuts import render
+from django.core.exceptions import PermissionDenied
 
 class IfUiCourse:
 	__metaclass__ = ABCMeta
@@ -30,11 +32,14 @@ class IfUiCourse:
 	def bus(self):
 		del self.__bus
 
+	@abstractmethod
+	def run(self, request, courseid): pass
+
 
 class IfBusCourse:
 	__metaclass__ = ABCMeta
 
-	def __init_(self, pers):
+	def __init__(self, pers):
 		try:
 			self.pers = pers
 		except TypeError as exc:
@@ -56,11 +61,35 @@ class IfBusCourse:
 	def pers(self):
 		del self.__pers
 
-class IfPersCourse: pass
+	@abstractmethod
+	def getCourse(self, user, courseid): pass
+
+class IfPersCourse:
+
+	@abstractmethod
+	def fetch(id, db): pass
 
 
-class UiCourse(IfUiCourse):	pass
+class UiCourse(IfUiCourse):
 
-class BusCourse(IfBusCourse):	pass
+	def run(self, request, courseid):
+		
+		user = request.session['user']
 
-class PersCourse(IfPersCourse):	pass
+		if request.method == "GET":
+			if courseid in user['courses']:
+				course = self.bus.getCourse(user, courseid)
+				return render(request, "Course/frame.html", {'course':course})
+			else:
+				raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])
+		
+
+class BusCourse(IfBusCourse):
+
+	def getCourse(self, user, courseid):
+		return True
+
+class PersCourse(IfPersCourse):
+
+	def fetch(id, db):
+		return False

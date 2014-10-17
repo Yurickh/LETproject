@@ -1,0 +1,24 @@
+#parent { height: 100%; }
+
+#topper
+{
+    background-color: blue;
+    width: 100%;
+    height: 14%;
+}
+
+#left_bar
+{
+    background-color: red;
+    width: 15%;
+    float: left;
+    height: 75%;
+}
+
+#container
+{
+    background-color: green;
+    width: 85%;
+    float: left;
+    height: 75%;
+}

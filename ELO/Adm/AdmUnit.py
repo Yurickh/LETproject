@@ -143,7 +143,7 @@ class IfBusAdm:
     def regAccount(self, request, form): pass
    
     ## Edita dados de um conta no database.
-    #   Podendo ser estes de uma conta de Estudante, Professor ou um Curso.  
+    #   Podendo ser estes .de uma conta de Estudante, Professor ou um Curso.  
     #
     #   @arg    form    Valores dos campos para edição validados.
     #
@@ -238,7 +238,6 @@ class UiAdm(IfUiAdm):
         #       edição ou deleção.
         if request.method == "POST":
             if "reg" in request.POST:
-                print request.POST
                 try:
                     # Coleta os forms adequados a partir da requisição POST.
                     form = RegUserForm(request.POST)
