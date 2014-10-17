@@ -126,14 +126,10 @@ class Factory:
 	def runAdm(self, request, action=None, model=None):
 		#	Checa se usuario ja esta logado.
 		if 'user' in request.session.keys():
-<<<<<<< HEAD
-			#	Checa se usuário é um Administrador.
-			if request.session['user']['type'] == 'Adm':
-				#	Cria as instâncias caso elas ainda não tenham sido criadas.
-=======
+			#	Checa se usuário é um Administrador ou Super Administrador.
 			if(request.session['user']['type'] == 'Adm' or
 			   request.session['user']['type'] == 'God'):
->>>>>>> 0037be056c980d31d5f15cb2d97134220b673086
+				#	Cria as instâncias caso elas ainda não tenham sido criadas.
 				if not isinstance(self.__ui, IfUiAdm):
 					self.__pers = PersAdm()
 					self.__bus = BusAdm(self.__pers)

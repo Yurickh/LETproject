@@ -23,7 +23,7 @@ from abc import *
 import ELO.locale.index as lang
 
 # Biblioteca de Modelos.
-from ELO.models import Adm, Student, Professor
+from ELO.models import Adm, Student, Professor, Courses
 
 # Biblioteca de Formulários.
 from forms import (
@@ -260,7 +260,12 @@ class UiAdm(IfUiAdm):
                     form = SrcUserForm(request.POST)
 
                     if form.is_valid():
-                        d_user = self.bus.attAccount(request)
+                        if 'att' in request.POST:
+                            d_user = self.bus.attAccount(request)
+                        elif 'del 'in request.POST:
+                            d_user = self.bus.delAccount(request)
+                        else:
+                            
 
                         if not d_user:
                             raise ValueError(lang.DICT['EXCEPTION_INV_USR_NM'])
@@ -344,7 +349,11 @@ class BusAdm(IfBusAdm):
                 if model == "Student":
                     db = Student
                 elif model == "Professor":
-                    db = Professor  
+                    db = Professor
+                elif model == "Courses":
+                    db = Courses 
+                else:
+                    raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
 
             except ValueError as exc:
                 raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
@@ -367,6 +376,10 @@ class BusAdm(IfBusAdm):
                 db = Student
             elif model == "Professor":
                 db = Professor
+            elif model == "Courses":
+                db = Courses 
+            else:
+                raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
 
             data = self.pers.fetch(str(request.POST['username']), db)    
 
