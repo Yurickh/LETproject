@@ -143,7 +143,7 @@ class IfBusAdm:
     def regAccount(self, request, form): pass
    
     ## Edita dados de um conta no database.
-    #   Podendo ser estes .de uma conta de Estudante, Professor ou um Curso.  
+    #   Podendo ser estes de uma conta de Estudante, Professor ou um Curso.  
     #
     #   @arg    form    Valores dos campos para edição validados.
     #
@@ -154,6 +154,13 @@ class IfBusAdm:
     #   Podendo ser esta uma conta de Estudante, Professor ou um Curso.
     @abstractmethod
     def delAccount(self, request): pass
+
+    ## Procura conta do database.
+    #   Podendo ser esta uma conta de Estudante, Professor ou um Curso.
+    #
+    #   @return data    Dados da conta procurada.
+    @abstractmethod
+    def fetchAccount(self, request): pass
 
     ## Verifica os últimos eventos realizados pelo Administrador.
     #@abstractmethod
@@ -226,26 +233,65 @@ class UiAdm(IfUiAdm):
 
     def run(self, request, action=None, model=None):
         ## @if Verifica qual o propósito do submit.
+        #
         #   Caso seja POST, a requisição ocorre após a submissão de uma form,
-        #       podendo ser ela de registro, edição ou deleção.
+        #   podendo ser ela de registro, edição ou deleção.
+        #
         #   Caso não seja e não ocorra a passagem dos campos de ação e modelo,
-        #       a requisição há de ser um GET, para mostrar a página principal
-        #       de Adm.
+        #   a requisição há de ser um GET, para mostrar a página principal
+        #   de Adm.
+        #
         #   Em último caso será a requisição do Javascript, denominada como 
-        #       AJAX, que irá solicitar em tempo de evento dos dialogs 
-        #       iniciados. Será passada informações para requisitar os forms
-        #       adequados e informações do usuário procurado para uma possível
-        #       edição ou deleção.
+        #   AJAX, que irá solicitar em tempo de evento dos dialogs 
+        #   iniciados. Será passada informações para requisitar os forms
+        #   adequados e informações do usuário procurado para uma possível
+        #   edição ou deleção.
         if request.method == "POST":
+            ## @if Confere se é uma ação de registro pedido pelo Adm.
+            #
+            #   Caso seja então é feito a verificação do modelo de conta
+            #   para que a validação do form seja conforme o requisitado.
+            #
+            #   Caso contrário confere se é uma ação do tipo atualização ou
+            #   deleção, onde, ambas enviam um POST de procura de usuário
+            #   e esperam algum retorno das informações deste.
             if "reg" in request.POST:
                 try:
-                    # Coleta os forms adequados a partir da requisição POST.
-                    form = RegUserForm(request.POST)
+                    ## @if Confere se o modelo de Conta é do tipo Estudante
+                    #       ou Professor.
+                    #
+                    #   Caso seja então é coletado o formulário da requisição
+                    #   para a validação deste.
+                    #
+                    #   Caso contrário confere se o modelo da conta é do tipo
+                    #   Curso, e faz a mesmas validações para o formulário
+                    #   adequado para Cursos.
+                    #
+                    #   Por último caso, caso não seja nenhum destes 3 modelos
+                    #   iŕa ser criada uma excessão de erro indicando Modelo
+                    #   inválido.
+                    if request.POST['model'] == 'Student' or \
+                        request.POST['model'] == 'Professor':
+                        # Coleta os forms de registro de estudante ou professor 
+                        # a partir da requisição POST.
+                        form = RegUserForm(request.POST)
+                    elif request.POST['model'] == 'Course':
+                        # Coleta os forms de registro de Cursos a partir da 
+                        # requisição POST.
+                        form = RegCourForm(request.POST)
+                    else:
+                        # TODO ERRO PARA MODELO INCORRETO.
+                        raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
 
-                    ## @if Se form for adequado então é chamado o método 
-                    # de edição de contas que irá comunicar-se com o 
-                    # banco de dados depois da validação das informações 
-                    # passadas pelo request.POST.
+                    ## @if Confere se form de registro é valido.
+                    #
+                    #   Se form for adequado então é chamado o método 
+                    #   de registro de contas que irá comunicar-se 
+                    #   com o banco de dados depois da validação das 
+                    #   informações passadas pelo request.POST.
+                    #
+                    #   Caso contrário, é lançada exceção de erro referente à
+                    #   form inválido.
                     if form.is_valid():
                         self.bus.regAccount(request, form)
 
@@ -256,27 +302,46 @@ class UiAdm(IfUiAdm):
                     return render(request, "Adm/home.html")
 
             elif 'att' or 'del 'in request.POST:
+                # Dicionario com informações do usuário procurado pelo Adm.
+                dUser = None;
+
                 try:
+                    # Coleta os forms de busca a partir da requisição POST.
                     form = SrcUserForm(request.POST)
 
+                    ## @if Confere se form de busca é valido.
+                    #
+                    #   Se form for adequado então é chamado o método 
+                    #   de procura de contas que irá comunicar-se 
+                    #   com o banco de dados depois da validação das 
+                    #   informações passadas pelo request.POST.
+                    #
+                    #   Caso contrário, é lançada exceção de erro referente à
+                    #   form inválido.
                     if form.is_valid():
-                        if 'att' in request.POST:
-                            d_user = self.bus.attAccount(request)
-                        elif 'del 'in request.POST:
-                            d_user = self.bus.delAccount(request)
-                        else:
-                            
+                        dUser = self.bus.fetchAccount(request)
 
-                        if not d_user:
+                        ## @if Confere se dicionário de informações de usuário
+                        #       ainda continua nulo.
+                        #
+                        #   Caso esteja nulo então é lançado excessão de conta
+                        #   inexistente.
+                        if not dUser:
                             raise ValueError(lang.DICT['EXCEPTION_INV_USR_NM'])
 
-                        d_user = dict(d_user)
+                        # Força a ter uma estruturação correta de dicionário.
+                        dUser = dict(dUser)
 
+                        # Renderiza uma página assíncrona de informação da
+                        # conta requisitada.
                         return render(request, 
-                                      "Adm/info.html", {'data':d_user})
+                                      "Adm/info.html", {'data':dUser})
                     else:
                         raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
 
+                # Se houver qualquer problema referente as passagens dos forms 
+                # e conferência da validação dos mesmos então o 
+                # administrador será passado para a página inicial.
                 except ValueError:
                     return HttpResponseRedirect('/')
 
@@ -285,16 +350,27 @@ class UiAdm(IfUiAdm):
             return HttpResponseRedirect('/')
                                          
         else:
-            ## @if Confere se esta sendo passado alguma acao ou modelo.
-            # Se nao for passada nenhuma acao ou modelo entao e renderizado
-            # a pagina inicial de Administracao.
             if not (action or model):
                 return render(request, "Adm/home.html")
             else:
-                ## @if Confere qual a acao requisitada.
-                #   Passa os forms necessarios da acao requisitada.
+                ## @if Confere qual a ação requisitada.
+                #
+                #   Caso for uma ação de registro então é passado os forms de
+                #   registro de acordo com o modelo de conta requisitado.
+                #
+                #   Caso for uma ação de atualização ou deleção é passado o
+                #   form de busca de conta.
+                #
+                #   Caso contrário, é passado para a página renderizada erro
+                #   de formulário.
                 if action == "reg":
-                    form = RegUserForm()
+                    if model == "Student" or model == "Professor":
+                        form = RegUserForm()
+                    elif model == "Course":
+                        form = RegCourForm()
+                    else:
+                        # TODO ERRO PARA MODELO INCORRETO.
+                        raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
                 elif action == "att" or action == "del":
                     form = SrcUserForm()
                 else:
@@ -317,7 +393,7 @@ class BusAdm(IfBusAdm):
         # campos e dados para registro do usuário.
         dict_data = {}
         database_fields = ['NAME', 'SEX', 'PASSWORD', 'MATRIC', 
-                           'CAMPUS','EMAIL']
+                           'CAMPUS','EMAIL', 'PROFESSOR']
 
         try:
             for field, value in request.POST.items():
@@ -366,31 +442,56 @@ class BusAdm(IfBusAdm):
             raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
 
         
-    def attAccount(self, request):
+    def attAccount(self, request): pass
+        
+    def delAccount(self, request):
+        data = self.pers.fetch(request.POST['username'], Student)
+
+        return data
+
+    def fetchAccount(self, request):
         try:
+            # Inicializa modelo como nulo.
             db = None
 
+            # Força modelo da conta passado pela requisição a ser uma String.
             model = str(request.POST['model'])
 
+            ## @if Confere qual o modelo da conta procurado.
+            #
+            #   Caso seja Estudante este é alocado em uma variável temporária.
+            #
+            #   Caso seja Professor este é alocado em uma variável temporária.
+            #
+            #   Caso seja Curso este é alocado em uma variável temporária.   
+            #   
+            #   Caso contrário, irá emitir excessão de modelo inválido.
             if model == "Student":
                 db = Student
             elif model == "Professor":
                 db = Professor
-            elif model == "Courses":
+            elif model == "Course":
                 db = Courses 
             else:
+                # TODO ERRO PARA MODELO INCORRETO.
                 raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
 
-            data = self.pers.fetch(str(request.POST['username']), db)    
+            ## @if Confere se o modelo da Conta é um Curso.
+            #
+            #   Caso seja um curso é necessário passar a matrícula do Curso 
+            #   como chave de busca de informações.
+            #
+            #   Caso contrário, é passado o username da conta de Estudante ou 
+            #   de Professor.
+            if db == Courses:
+                data = self.pers.fetch(str(request.POST['matric']), db)  
+            else:
+                data = self.pers.fetch(str(request.POST['username']), db)    
 
             return data
         except ValueError as exc:
             raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
 
-    def delAccount(self, request):
-        data = self.pers.fetch(request.POST['username'], Student)
-
-        return data
 
     ## Edita campos de um usuario.
     def editField(self, request, field, form):

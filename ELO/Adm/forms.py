@@ -148,7 +148,7 @@ class RegCourForm(forms.Form):
 			name = Name(self.cleaned_data["courName"])
 		except ValueError:
 			raise forms.ValidationError("Nome de Disciplina Inválido")
-		return professor
+		return name
 
 	## Verifica se a formatação do nome do Professor responsável do curso 
 	##	está correta.
