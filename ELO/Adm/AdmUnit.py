@@ -210,17 +210,27 @@ class IfPersAdm:
     @abstractmethod
     def fetch_del(self, username, database): pass
 
-    ##  Função que recupera todos os dados de um usuário fornecido.
-    #     Percorre o banco de dados e recupera todos os dados do usuário
-    #     requisitado.
+    ##  Função que recupera todos os dados de um usuário pesquisado.
     #
     #   @arg    username    Nome do usuário a ser pesquisado.
     #
     #   @arg    database    Objeto modelo sobre o qual a consulta será
     #                       realizada.
+    #
+    #   @return fetchset    Dicionário com campos e valores do usuário.
     @abstractmethod
-    def fetch(self, username, database): pass
+    def fetchSP(self, username, database): pass
 
+    ##  Função que recupera todos os dados de um curso pesquisado.
+    #
+    #   @arg    courMatric  Número da matrícula do Curso a ser pesquisado.
+    #
+    #   @arg    database    Objeto modelo sobre o qual a consulta será
+    #                       realizada.
+    #
+    #   @return fetchset    Dicionário com campos e valores do curso.
+    @abstractmethod
+    def fetchCour(self, courMatric, database): pass
 
 ## Camada de interface do Administrador para o módulo de Administração.
 #   Deve carregar o devido template, contendo campos onde será
@@ -394,7 +404,7 @@ class BusAdm(IfBusAdm):
         dict_data = {}
         database_fields = ['NAME', 'SEX', 'PASSWORD', 'MATRIC', 
                            'CAMPUS','EMAIL', 'PROFESSOR']
-
+        print request.POST
         try:
             for field, value in request.POST.items():
                 # Transforma campo unicode em string.
@@ -413,10 +423,6 @@ class BusAdm(IfBusAdm):
                     dict_data[newField] = form.cleaned_data[
                                                 field].value
 
-            # Escolhe uma linguagem padrão para cadastro do 
-            # usuário recente.
-            dict_data['LANGUAGE'] = 'pt-br'
-
             try:
                 db = None
 
@@ -426,13 +432,18 @@ class BusAdm(IfBusAdm):
                     db = Student
                 elif model == "Professor":
                     db = Professor
-                elif model == "Courses":
+                elif model == "Course":
                     db = Courses 
                 else:
                     raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
 
             except ValueError as exc:
                 raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
+
+            if model != "Course":
+                # Escolhe uma linguagem padrão para cadastro do usuário 
+                # recente.
+                dict_data['LANGUAGE'] = 'pt-br'
 
             # Se for uma entidade estudante então é feito o pedido de inserção 
             # no banco de dados com o determinado modelo.
@@ -484,9 +495,9 @@ class BusAdm(IfBusAdm):
             #   Caso contrário, é passado o username da conta de Estudante ou 
             #   de Professor.
             if db == Courses:
-                data = self.pers.fetch(str(request.POST['matric']), db)  
+                data = self.pers.fetchCour(str(request.POST['username']), db)  
             else:
-                data = self.pers.fetch(str(request.POST['username']), db)    
+                data = self.pers.fetchSP(str(request.POST['username']), db)    
 
             return data
         except ValueError as exc:
@@ -537,12 +548,8 @@ class BusAdm(IfBusAdm):
             return newdata
 
 
-## Camada de persistência para o módulo de administração.
-#   Insere, atualiza ou deleta dados do banco de dados referentes aos 
-#   alunos professores e cursos.
 class PersAdm(IfPersAdm):
 
-    ## Insere os dados do registro de contas no banco de dados.
     def data_in(self, dict_field_value, database):
         # Tenta coletar o último id inserido.
         # Caso não tenha ocorrido nenhum registro de contas então
@@ -563,7 +570,6 @@ class PersAdm(IfPersAdm):
             # Salva os novos dados no database.
             data.save()
 
-    ## Método que atualiza os dados de uma conta fornecida.
     def update(self, username, field, newdata, database): 
         # Tenta procurar se o username existe no banco de dados.
         # Caso não exista, é emitido um erro.
@@ -591,7 +597,6 @@ class PersAdm(IfPersAdm):
                  database.MultipleObjectsReturned ) as exc:
             raise ValueError(exc)
 
-    ## Método que deleta os dados de uma conta fornecida.
     def fetch_del(self, username, database):
         # Tenta procurar se o username existe no banco de dados.
         # Caso não exista, é emitido um erro.
@@ -627,14 +632,14 @@ class PersAdm(IfPersAdm):
         except database.MultipleObjectsReturned:
             ret = map(lambda x: x.value, database.objects.filter(
                     identity=uid, field=field))
+            print ret
 
         except database.DoesNotExist:
             ret = None 
 
         return ret
 
-    ##  Função que recupera todos os dados do usuário.
-    def fetch(self, username, database):
+    def fetchSP(self, username, database):
 
         try:
             uid = database.objects.get(field='NAME',value=username)
@@ -659,6 +664,24 @@ class PersAdm(IfPersAdm):
                     ('interests',   sf('INTEREST')),
                     ('language',    sf('LANGUAGE')),
                 ]
+
+        except database.DoesNotExist as exc:
+            fetchset = []
+
+        return fetchset
+
+    def fetchCour(self, courMatric, database):
+
+        try:
+            uid = database.objects.get(field='MATRIC',value=courMatric)
+            uid = uid.identity
+
+            sf = lambda x: self.__select_field(uid, x, database)
+
+            fetchset = [
+                    ('professor',   sf('PROFESSOR')),
+                    ('name',        sf('NAME')),
+            ]
 
         except database.DoesNotExist as exc:
             fetchset = []
