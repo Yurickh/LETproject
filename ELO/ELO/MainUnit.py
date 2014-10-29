@@ -32,7 +32,7 @@ def globalContext(request):
 		}
 
 ## Classe factory.
-# 	Responsável pela construção e controle de fluxo de todo o programa. 
+#	Responsável pela construção e controle de fluxo de todo o programa. 
 # 	Tudo é criado a partir dela.
 class Factory:
 	__ui = None

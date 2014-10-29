@@ -5,11 +5,11 @@ $(document).ready(function(){
 		autoOpen: false,
 		show: {
 			effect: "blind",
-			duration: 1000
+			duration: 1
 		},
 		hide: {
 			effect: "blind",
-			duration: 1000
+			duration: 1
 		},
 		modal: true,
 		resizable: false,
@@ -20,11 +20,11 @@ $(document).ready(function(){
 		autoOpen: false,
 		show: {
 			effect: "blind",
-			duration: 1000
+			duration: 1
 		},
 		hide: {
 			effect: "blind",
-			duration: 1000
+			duration: 1
 		},
 		modal: true,
 		resizable: false,

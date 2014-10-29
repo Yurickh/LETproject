@@ -154,7 +154,7 @@ Additional Inherited Members</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Descrição Detalhada</h2>
 <div class="textblock"><p>Deve ser capaz de manipular os dados de usuário, seja no sentido de atualizá-los ou modificá-los de alguma forma. </p>
 
-<p>Definição na linha <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html#l00325">325</a> do arquivo <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html">ProfileUnit.py</a>.</p>
+<p>Definição na linha <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html#l00324">324</a> do arquivo <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html">ProfileUnit.py</a>.</p>
 </div><h2 class="groupheader">Métodos</h2>
 <a class="anchor" id="a5c116d007081ffefcc1c45cd34c88e10"></a>
 <div class="memitem">
@@ -192,50 +192,50 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definição na linha <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html#l00337">337</a> do arquivo <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html">ProfileUnit.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00337"></a><span class="lineno"><a class="line" href="../../df/da4/classProfile_1_1ProfileUnit_1_1BusProfile.html#a5c116d007081ffefcc1c45cd34c88e10">  337</a></span>&#160;</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <span class="keyword">def </span><a class="code" href="../../df/da4/classProfile_1_1ProfileUnit_1_1BusProfile.html#a5c116d007081ffefcc1c45cd34c88e10">editField</a>(self, request, field, form):</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;        user = request.session[<span class="stringliteral">&#39;user&#39;</span>]</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;        <span class="keywordflow">if</span> field == <span class="stringliteral">&quot;name&quot;</span>:</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;            fpw = form.cleaned_data[<span class="stringliteral">&#39;password&#39;</span>].value</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;            <span class="keywordflow">if</span> fpw != user[<span class="stringliteral">&#39;password&#39;</span>]:</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                <span class="keywordflow">raise</span> ValueError(lang.DICT[<span class="stringliteral">&#39;EXCEPTION_INV_PW_F&#39;</span>])</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;            newdata = form.cleaned_data[<span class="stringliteral">&#39;newdata&#39;</span>].value</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;        <span class="keywordflow">elif</span> field == <span class="stringliteral">&quot;password&quot;</span>:</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;            npw = form.cleaned_data[<span class="stringliteral">&#39;newdata&#39;</span>].value</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;            rpw = form.cleaned_data[<span class="stringliteral">&#39;rp_newdata&#39;</span>].value</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;            opw = form.cleaned_data[<span class="stringliteral">&#39;old_password&#39;</span>].value</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;            <span class="keywordflow">if</span> npw != rpw:</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                <span class="keywordflow">raise</span> ValueError(lang.DICT[<span class="stringliteral">&#39;EXCEPTION_INV_PW_R&#39;</span>])</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;            <span class="keywordflow">if</span> opw != user[<span class="stringliteral">&#39;password&#39;</span>]:</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;                <span class="keywordflow">raise</span> ValueError(lang.DICt[<span class="stringliteral">&#39;EXCEPTION_INV_PW_F&#39;</span>])</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;            newdata = npw</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;        <span class="keywordflow">elif</span> field == <span class="stringliteral">&quot;language&quot;</span>:</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;            newdata = form.cleaned_data[<span class="stringliteral">&#39;newdata&#39;</span>]</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;        <span class="keywordflow">elif</span> field == <span class="stringliteral">&quot;avatar&quot;</span>:</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;            addr = settings.MEDIA_ROOT + <span class="stringliteral">u&quot;/&quot;</span> + user[<span class="stringliteral">&#39;avatar&#39;</span>]</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;            with open(addr, <span class="stringliteral">&quot;wb&quot;</span>) <span class="keyword">as</span> destination:</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;                    <span class="keywordflow">for</span> chunk <span class="keywordflow">in</span> request.FILES[<span class="stringliteral">&#39;newdata&#39;</span>].chunks():</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                        destination.write(chunk)</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;        <span class="keywordflow">else</span>:</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;            newdata = form.cleaned_data[<span class="stringliteral">&#39;newdata&#39;</span>].value</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;        <span class="keywordflow">try</span>:</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;            <span class="keywordflow">if</span> user[<span class="stringliteral">&#39;type&#39;</span>] == <span class="stringliteral">&#39;Student&#39;</span> <span class="keywordflow">and</span> field != <span class="stringliteral">&#39;avatar&#39;</span>:</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                self.pers.update(user[<span class="stringliteral">&#39;name&#39;</span>], field, newdata, Student)</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;            <span class="keywordflow">elif</span> user[<span class="stringliteral">&#39;type&#39;</span>] == <span class="stringliteral">&#39;Professor&#39;</span> <span class="keywordflow">and</span> field != <span class="stringliteral">&#39;avatar&#39;</span>:</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;                self.pers.update(user[<span class="stringliteral">&#39;name&#39;</span>], field, newdata, Professor)</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;        <span class="keywordflow">except</span> ValueError <span class="keyword">as</span> exc:</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;            <span class="keywordflow">raise</span> ValueError(lang.DICT[<span class="stringliteral">&#39;EXCEPTION_ERR_DB_U&#39;</span>])</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;        <span class="keywordflow">else</span>:</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;            <span class="keywordflow">if</span> field == <span class="stringliteral">&quot;language&quot;</span>:</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;                request.session[<span class="stringliteral">&#39;django_language&#39;</span>] = newdata</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        <span class="keywordflow">if</span> field == <span class="stringliteral">&#39;avatar&#39;</span>:</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;            <span class="keywordflow">return</span> user[<span class="stringliteral">&#39;avatar&#39;</span>]</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;        <span class="keywordflow">else</span>:</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;            <span class="keywordflow">return</span> newdata</div>
+<p>Definição na linha <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html#l00340">340</a> do arquivo <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html">ProfileUnit.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00340"></a><span class="lineno"><a class="line" href="../../df/da4/classProfile_1_1ProfileUnit_1_1BusProfile.html#a5c116d007081ffefcc1c45cd34c88e10">  340</a></span>&#160;</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    <span class="keyword">def </span><a class="code" href="../../df/da4/classProfile_1_1ProfileUnit_1_1BusProfile.html#a5c116d007081ffefcc1c45cd34c88e10">editField</a>(self, request, field, form):</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;        user = request.session[<span class="stringliteral">&#39;user&#39;</span>]</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        <span class="keywordflow">if</span> field == <span class="stringliteral">&quot;name&quot;</span>:</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;            fpw = form.cleaned_data[<span class="stringliteral">&#39;password&#39;</span>].value</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;            <span class="keywordflow">if</span> fpw != user[<span class="stringliteral">&#39;password&#39;</span>]:</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                <span class="keywordflow">raise</span> ValueError(lang.DICT[<span class="stringliteral">&#39;EXCEPTION_INV_PW_F&#39;</span>])</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;            newdata = form.cleaned_data[<span class="stringliteral">&#39;newdata&#39;</span>].value</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        <span class="keywordflow">elif</span> field == <span class="stringliteral">&quot;password&quot;</span>:</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;            npw = form.cleaned_data[<span class="stringliteral">&#39;newdata&#39;</span>].value</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;            rpw = form.cleaned_data[<span class="stringliteral">&#39;rp_newdata&#39;</span>].value</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;            opw = form.cleaned_data[<span class="stringliteral">&#39;old_password&#39;</span>].value</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;            <span class="keywordflow">if</span> npw != rpw:</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;                <span class="keywordflow">raise</span> ValueError(lang.DICT[<span class="stringliteral">&#39;EXCEPTION_INV_PW_R&#39;</span>])</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;            <span class="keywordflow">if</span> opw != user[<span class="stringliteral">&#39;password&#39;</span>]:</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                <span class="keywordflow">raise</span> ValueError(lang.DICt[<span class="stringliteral">&#39;EXCEPTION_INV_PW_F&#39;</span>])</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;            newdata = npw</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;        <span class="keywordflow">elif</span> field == <span class="stringliteral">&quot;language&quot;</span>:</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;            newdata = form.cleaned_data[<span class="stringliteral">&#39;newdata&#39;</span>]</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;        <span class="keywordflow">elif</span> field == <span class="stringliteral">&quot;avatar&quot;</span>:</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;            addr = settings.MEDIA_ROOT + <span class="stringliteral">u&quot;/&quot;</span> + user[<span class="stringliteral">&#39;avatar&#39;</span>]</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;            with open(addr, <span class="stringliteral">&quot;wb&quot;</span>) <span class="keyword">as</span> destination:</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                    <span class="keywordflow">for</span> chunk <span class="keywordflow">in</span> request.FILES[<span class="stringliteral">&#39;newdata&#39;</span>].chunks():</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                        destination.write(chunk)</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;        <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;            newdata = form.cleaned_data[<span class="stringliteral">&#39;newdata&#39;</span>].value</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;        <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            <span class="keywordflow">if</span> user[<span class="stringliteral">&#39;type&#39;</span>] == <span class="stringliteral">&#39;Student&#39;</span> <span class="keywordflow">and</span> field != <span class="stringliteral">&#39;avatar&#39;</span>:</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;                self.pers.update(user[<span class="stringliteral">&#39;name&#39;</span>], field, newdata, Student)</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;            <span class="keywordflow">elif</span> user[<span class="stringliteral">&#39;type&#39;</span>] == <span class="stringliteral">&#39;Professor&#39;</span> <span class="keywordflow">and</span> field != <span class="stringliteral">&#39;avatar&#39;</span>:</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;                self.pers.update(user[<span class="stringliteral">&#39;name&#39;</span>], field, newdata, Professor)</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;        <span class="keywordflow">except</span> ValueError <span class="keyword">as</span> exc:</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;            <span class="keywordflow">raise</span> ValueError(lang.DICT[<span class="stringliteral">&#39;EXCEPTION_ERR_DB_U&#39;</span>])</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;            <span class="keywordflow">if</span> field == <span class="stringliteral">&quot;language&quot;</span>:</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;                request.session[<span class="stringliteral">&#39;django_language&#39;</span>] = newdata</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        <span class="keywordflow">if</span> field == <span class="stringliteral">&#39;avatar&#39;</span>:</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;            <span class="keywordflow">return</span> user[<span class="stringliteral">&#39;avatar&#39;</span>]</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;        <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;            <span class="keywordflow">return</span> newdata</div>
 </div>
-<div class="ttc" id="classProfile_1_1ProfileUnit_1_1BusProfile_html_a5c116d007081ffefcc1c45cd34c88e10"><div class="ttname"><a href="../../df/da4/classProfile_1_1ProfileUnit_1_1BusProfile.html#a5c116d007081ffefcc1c45cd34c88e10">Profile.ProfileUnit.BusProfile.editField</a></div><div class="ttdeci">def editField</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6d/ProfileUnit_8py_source.html#l00337">ProfileUnit.py:337</a></div></div>
+<div class="ttc" id="classProfile_1_1ProfileUnit_1_1BusProfile_html_a5c116d007081ffefcc1c45cd34c88e10"><div class="ttname"><a href="../../df/da4/classProfile_1_1ProfileUnit_1_1BusProfile.html#a5c116d007081ffefcc1c45cd34c88e10">Profile.ProfileUnit.BusProfile.editField</a></div><div class="ttdeci">def editField</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6d/ProfileUnit_8py_source.html#l00340">ProfileUnit.py:340</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -263,19 +263,23 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definição na linha <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html#l00327">327</a> do arquivo <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html">ProfileUnit.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00327"></a><span class="lineno"><a class="line" href="../../df/da4/classProfile_1_1ProfileUnit_1_1BusProfile.html#a87c3d0374f709af7904656938eafd6d3">  327</a></span>&#160;</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    <span class="keyword">def </span><a class="code" href="../../df/da4/classProfile_1_1ProfileUnit_1_1BusProfile.html#a87c3d0374f709af7904656938eafd6d3">refreshUser</a>(self, request):</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;        user = request.session[<span class="stringliteral">&#39;user&#39;</span>]</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;        <span class="keywordflow">if</span> user[<span class="stringliteral">&#39;type&#39;</span>] == <span class="stringliteral">&#39;Student&#39;</span>:</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;            fs = self.pers.fetch(user[<span class="stringliteral">&#39;name&#39;</span>], Student)</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;            fd = dict(fs)</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;            request.session[<span class="stringliteral">&#39;django_language&#39;</span>] = fd[<span class="stringliteral">&#39;language&#39;</span>]</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;            <span class="keywordflow">return</span> dict(user.items()+ self.pers.fetch(user[<span class="stringliteral">&#39;name&#39;</span>], Student))</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        <span class="keywordflow">elif</span> user[<span class="stringliteral">&#39;type&#39;</span>] == <span class="stringliteral">&#39;Professor&#39;</span>:</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;            <span class="keywordflow">return</span> dict(user.items()+ self.pers.fetch(user[<span class="stringliteral">&#39;name&#39;</span>], Professor))</div>
+<p>Definição na linha <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html#l00326">326</a> do arquivo <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html">ProfileUnit.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00326"></a><span class="lineno"><a class="line" href="../../df/da4/classProfile_1_1ProfileUnit_1_1BusProfile.html#a87c3d0374f709af7904656938eafd6d3">  326</a></span>&#160;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="keyword">def </span><a class="code" href="../../df/da4/classProfile_1_1ProfileUnit_1_1BusProfile.html#a87c3d0374f709af7904656938eafd6d3">refreshUser</a>(self, request):</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        user = request.session[<span class="stringliteral">&#39;user&#39;</span>]</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;        db = <span class="keywordtype">None</span></div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        <span class="keywordflow">if</span> user[<span class="stringliteral">&#39;type&#39;</span>] == <span class="stringliteral">&#39;Student&#39;</span>:</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;            db = Student</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        <span class="keywordflow">elif</span> user[<span class="stringliteral">&#39;type&#39;</span>] == <span class="stringliteral">&#39;Professor&#39;</span>:</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;            db = Professor</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        fs = self.pers.fetch(user[<span class="stringliteral">&#39;name&#39;</span>], db)</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        fd = dict(fs)</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        request.session[<span class="stringliteral">&#39;django_language&#39;</span>] = fd[<span class="stringliteral">&#39;language&#39;</span>]</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;        <span class="keywordflow">return</span> dict(user.items()+ self.pers.fetch(user[<span class="stringliteral">&#39;name&#39;</span>], db))</div>
 </div>
-<div class="ttc" id="classProfile_1_1ProfileUnit_1_1BusProfile_html_a87c3d0374f709af7904656938eafd6d3"><div class="ttname"><a href="../../df/da4/classProfile_1_1ProfileUnit_1_1BusProfile.html#a87c3d0374f709af7904656938eafd6d3">Profile.ProfileUnit.BusProfile.refreshUser</a></div><div class="ttdeci">def refreshUser</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6d/ProfileUnit_8py_source.html#l00327">ProfileUnit.py:327</a></div></div>
+<div class="ttc" id="classProfile_1_1ProfileUnit_1_1BusProfile_html_a87c3d0374f709af7904656938eafd6d3"><div class="ttname"><a href="../../df/da4/classProfile_1_1ProfileUnit_1_1BusProfile.html#a87c3d0374f709af7904656938eafd6d3">Profile.ProfileUnit.BusProfile.refreshUser</a></div><div class="ttdeci">def refreshUser</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6d/ProfileUnit_8py_source.html#l00326">ProfileUnit.py:326</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -288,7 +292,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../d8/dc2/namespaceProfile.html">Profile</a></li><li class="navelem"><a class="el" href="../../d0/d31/namespaceProfile_1_1ProfileUnit.html">ProfileUnit</a></li><li class="navelem"><a class="el" href="../../df/da4/classProfile_1_1ProfileUnit_1_1BusProfile.html">BusProfile</a></li>
-    <li class="footer">Gerado em Quinta, 9 de Outubro de 2014 03:09:14 para LETproject por
+    <li class="footer">Gerado em Terça, 21 de Outubro de 2014 13:48:48 para LETproject por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

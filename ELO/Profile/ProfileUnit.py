@@ -415,13 +415,13 @@ class PersProfile(IfPersProfile):
                     ('avatar',      sf('AVATAR')),
                     ('email',       sf('EMAIL')),
                     ('sex',         sf('SEX')),
+                    ('language',    sf('LANGUAGE')),
             ]
 
             if database is Student:
                 fetchset = fetchset + [     
                     ('grades',      sf('GRADE')),
                     ('interests',   sf('INTEREST')),
-                    ('language',    sf('LANGUAGE')),
                 ]
 
         except database.DoesNotExist as exc:

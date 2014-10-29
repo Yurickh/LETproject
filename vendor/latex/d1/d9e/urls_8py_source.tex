@@ -40,22 +40,24 @@
 00035     \textcolor{comment}{## URL para o login do administrador.}
 00036     url(\textcolor{stringliteral}{r'^364fd8cdc3a35a89b7be75bc9d10ebea/?$'}, 
 00037         factory.runHome, \{\textcolor{stringliteral}{'entity'}: \textcolor{stringliteral}{'Adm'}\}),
-00038     \textcolor{comment}{## URL da pagina de perfil.}
-00039     url(\textcolor{stringliteral}{r'^profile/?$'}, factory.runProfile, \{\textcolor{stringliteral}{'acctype'}: \textcolor{stringliteral}{'Full'}\}),
-00040     \textcolor{comment}{## URL para mostrar assincronamente a edição de um campo de perfil.}
-00041     url(\textcolor{stringliteral}{r'^assync/editfield/(?P<field>\(\backslash\)w\{3,9\})/?$'}, 
-00042         factory.runProfile, \{\textcolor{stringliteral}{'acctype'} : \textcolor{stringliteral}{'Full'}\}),
-00043     \textcolor{comment}{## URL da pagina de logout.}
-00044     url(\textcolor{stringliteral}{r'^logout/?$'}, factory.runLogout),
-00045     \textcolor{comment}{## URL da pagina de cursos.}
-00046     url(\textcolor{stringliteral}{r'^course/?$'}, factory.runCourse),
-00047     \textcolor{comment}{## URL da pagina de administracao.}
-00048     url(\textcolor{stringliteral}{r'^adm/?$'}, factory.runAdm),
-00049     url(\textcolor{stringliteral}{r'^assync/adm-edit/(?P<action>\(\backslash\)w\{3,9\})/(?P<model>\(\backslash\)w\{3,9\})/?$'}, 
-00050         factory.runAdm),
-00051     url(\textcolor{stringliteral}{r'^assync/adm-info/?$'}, factory.runAdm),
-00052     url(\textcolor{stringliteral}{r'^assync/edit-field/(?P<field>\(\backslash\)w\{3,9\})/?$'}, factory.runAdm),
-00053 ) + static(settings.MEDIA\_URL, document\_root=settings.MEDIA\_ROOT)
-00054 
-00055 urlpatterns += staticfiles\_urlpatterns()
+00038     url(\textcolor{stringliteral}{r'^e50b058759a52eda8a507687887186e5/?$'},
+00039         factory.runHome, \{\textcolor{stringliteral}{'entity'}: \textcolor{stringliteral}{'God'}\}),
+00040     \textcolor{comment}{## URL da pagina de perfil.}
+00041     url(\textcolor{stringliteral}{r'^profile/?$'}, factory.runProfile, \{\textcolor{stringliteral}{'acctype'}: \textcolor{stringliteral}{'Full'}\}),
+00042     \textcolor{comment}{## URL para mostrar assincronamente a edição de um campo de perfil.}
+00043     url(\textcolor{stringliteral}{r'^assync/editfield/(?P<field>\(\backslash\)w\{3,9\})/?$'}, 
+00044         factory.runProfile, \{\textcolor{stringliteral}{'acctype'} : \textcolor{stringliteral}{'Full'}\}),
+00045     \textcolor{comment}{## URL da pagina de logout.}
+00046     url(\textcolor{stringliteral}{r'^logout/?$'}, factory.runLogout),
+00047     \textcolor{comment}{## URL da pagina de cursos.}
+00048     url(\textcolor{stringliteral}{r'^course/(?P<courseid>\(\backslash\)d+)/?$'}, factory.runCourse),
+00049     \textcolor{comment}{## URL da pagina de administracao.}
+00050     url(\textcolor{stringliteral}{r'^adm/?$'}, factory.runAdm),
+00051     url(\textcolor{stringliteral}{r'^assync/adm-edit/(?P<action>\(\backslash\)w\{3,9\})/(?P<model>\(\backslash\)w\{3,9\})/?$'}, 
+00052         factory.runAdm),
+00053     url(\textcolor{stringliteral}{r'^assync/adm-info/?$'}, factory.runAdm),
+00054     url(\textcolor{stringliteral}{r'^assync/edit-field/(?P<field>\(\backslash\)w\{3,9\})/?$'}, factory.runAdm),
+00055 ) + static(settings.MEDIA\_URL, document\_root=settings.MEDIA\_ROOT)
+00056 
+00057 urlpatterns += staticfiles\_urlpatterns()
 \end{DoxyCode}

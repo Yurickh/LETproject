@@ -71,6 +71,11 @@ var hierarchy =
     ] ],
     [ "Model", null, [
       [ "ELO.models.Adm", "df/d5e/classELO_1_1models_1_1Adm.html", null ],
+      [ "ELO.models.Courses", "dd/dd9/classELO_1_1models_1_1Courses.html", null ],
+      [ "ELO.models.Exercise", "d3/da8/classELO_1_1models_1_1Exercise.html", null ],
+      [ "ELO.models.God", "d2/d8b/classELO_1_1models_1_1God.html", null ],
+      [ "ELO.models.Lesson", "d0/da3/classELO_1_1models_1_1Lesson.html", null ],
+      [ "ELO.models.Module", "d1/d5d/classELO_1_1models_1_1Module.html", null ],
       [ "ELO.models.Professor", "d5/d93/classELO_1_1models_1_1Professor.html", null ],
       [ "ELO.models.Student", "d0/dc8/classELO_1_1models_1_1Student.html", null ]
     ] ],

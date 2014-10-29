@@ -21,7 +21,7 @@
 00016 
 00017 \textcolor{keyword}{import} \hyperlink{namespaceELO_1_1locale_1_1index}{ELO.locale.index} \textcolor{keyword}{as} lang
 00018 
-00019 \textcolor{keyword}{from} models \textcolor{keyword}{import} Adm, Professor, Student
+00019 \textcolor{keyword}{from} models \textcolor{keyword}{import} Adm, Professor, Student, God
 00020 
 00021 \textcolor{keyword}{from} django.core.exceptions \textcolor{keyword}{import} PermissionDenied
 00022 \textcolor{keyword}{from} django.http \textcolor{keyword}{import} Http404
@@ -50,106 +50,111 @@
 00045     @vary\_on\_cookie
 \hypertarget{MainUnit_8py_source_l00046}{}\hyperlink{classELO_1_1MainUnit_1_1Factory_a766943202ba781821cf749ca0fb133ba}{00046}     \textcolor{keyword}{def }\hyperlink{classELO_1_1MainUnit_1_1Factory_a766943202ba781821cf749ca0fb133ba}{runHome}(self, request, entity):
 00047         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'user'} \textcolor{keywordflow}{in} request.session.keys():
-00048             \textcolor{keywordflow}{if} request.session[\textcolor{stringliteral}{'user'}][\textcolor{stringliteral}{'type'}] == \textcolor{stringliteral}{"Adm"}:
-00049                 \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a533b402a54bf6f6715824a8687fa7a24}{runAdm}(request)
-00050             \textcolor{keywordflow}{else}:
-00051                 \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1MainUnit_1_1Factory_ab20a76f74180fc77c6b8fcd8de7942f1}{runProfile}(request, acctype=\textcolor{stringliteral}{'Home'})
-00052         \textcolor{keywordflow}{else}:
-00053             \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a515d1ff460a335b750e58e0cbddf20ae}{runLogin}(request, entity)
-00054 
-00055     \textcolor{comment}{## Classe que executa o módulo de login.}
-00056     \textcolor{comment}{#   Define as camadas de persistência, negócio de login e}
-00057     \textcolor{comment}{#   apresentação e verifica o tipo de usuário.}
-00058     @vary\_on\_cookie
-\hypertarget{MainUnit_8py_source_l00059}{}\hyperlink{classELO_1_1MainUnit_1_1Factory_a515d1ff460a335b750e58e0cbddf20ae}{00059}     \textcolor{keyword}{def }\hyperlink{classELO_1_1MainUnit_1_1Factory_a515d1ff460a335b750e58e0cbddf20ae}{runLogin}(self, request, entity):
-00060         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} isinstance(self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a189a44a11e1a66ba69663eb2c598dd7c}{\_\_ui}, IfUiLogin):
-00061             self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a68f6640ad3b515e1b8cd48d1554c0779}{\_\_pers} = \hyperlink{classLogin_1_1LoginUnit_1_1PersLogin}{PersLogin}()
-00062             self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a6a0b7b93046e095779ba54e0a8a4d02c}{\_\_bus} = \hyperlink{classLogin_1_1LoginUnit_1_1BusLogin}{BusLogin}(self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a68f6640ad3b515e1b8cd48d1554c0779}{\_\_pers})
-00063             self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a189a44a11e1a66ba69663eb2c598dd7c}{\_\_ui} = \hyperlink{classLogin_1_1LoginUnit_1_1UiLogin}{UiLogin}(self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a6a0b7b93046e095779ba54e0a8a4d02c}{\_\_bus})
-00064 
-00065         \textcolor{keywordflow}{if} entity == \textcolor{stringliteral}{"Adm"}:
-00066             database = Adm
-00067         \textcolor{keywordflow}{elif} entity == \textcolor{stringliteral}{"Professor"}:
-00068             database = Professor
-00069         \textcolor{keywordflow}{elif} entity == \textcolor{stringliteral}{"Student"}:
-00070             database = Student
-00071         \textcolor{keywordflow}{else}:
-00072             database = \textcolor{keywordtype}{None}
-00073 
-00074         \textcolor{keywordflow}{return} self.\_\_ui.run(request, database)
-00075 
-00076     \textcolor{comment}{## Classe que executa o logout.}
-00077     \textcolor{comment}{#   Finaliza a sessão do usuário e redireciona para }
-00078     \textcolor{comment}{#   a página de login.}
-\hypertarget{MainUnit_8py_source_l00079}{}\hyperlink{classELO_1_1MainUnit_1_1Factory_aa26c51486ba65030399897a6e3b4f4f1}{00079}     \textcolor{keyword}{def }\hyperlink{classELO_1_1MainUnit_1_1Factory_aa26c51486ba65030399897a6e3b4f4f1}{runLogout}(self, request):
-00080         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'user'} \textcolor{keywordflow}{in} request.session.keys():
-00081             del request.session[\textcolor{stringliteral}{'user'}]
-00082             del request.session[translation.LANGUAGE\_SESSION\_KEY]
-00083         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a515d1ff460a335b750e58e0cbddf20ae}{runLogin}(request, \textcolor{stringliteral}{"Student"})
-00084 
-00085     \textcolor{comment}{## Classe que executa a página inicial do módulo de Perfil.}
-00086     \textcolor{comment}{#   Define as camadas de persistência, negócio e apresentação de}
-00087     \textcolor{comment}{#   perfil e proíbe o acesso de usuários não logados no sistema.}
-00088     \textcolor{comment}{#}
-00089     \textcolor{comment}{#   @arg acctype    Define o tipo de acesso que o usuário está requerindo.}
-00090     \textcolor{comment}{#                   "Full": Acessa o Perfil completo, com possibilidade de}
-00091     \textcolor{comment}{#                       edição. Caso a chamada seja assíncrona, retorna a}
-00092     \textcolor{comment}{#                       form de edição do campo específico.}
-00093     \textcolor{comment}{#                   "Home": Acessa o Perfil resumido, a home do site em si.}
-00094     @vary\_on\_cookie
-\hypertarget{MainUnit_8py_source_l00095}{}\hyperlink{classELO_1_1MainUnit_1_1Factory_ab20a76f74180fc77c6b8fcd8de7942f1}{00095}     \textcolor{keyword}{def }\hyperlink{classELO_1_1MainUnit_1_1Factory_ab20a76f74180fc77c6b8fcd8de7942f1}{runProfile}(self, request, acctype, field=None):
-00096         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'user'} \textcolor{keywordflow}{in} request.session.keys(): \textcolor{comment}{# is user logged?}
-00097             user\_type = request.session[\textcolor{stringliteral}{'user'}][\textcolor{stringliteral}{'type'}]
-00098             \textcolor{keywordflow}{if} user\_type == \textcolor{stringliteral}{'Professor'} \textcolor{keywordflow}{or} user\_type == \textcolor{stringliteral}{'Student'}:
-00099                 \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} isinstance(self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a189a44a11e1a66ba69663eb2c598dd7c}{\_\_ui}, IfUiProfile):
-00100                     self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a68f6640ad3b515e1b8cd48d1554c0779}{\_\_pers} = \hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile}{PersProfile}()
-00101                     self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a6a0b7b93046e095779ba54e0a8a4d02c}{\_\_bus} = \hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile}{BusProfile}(self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a68f6640ad3b515e1b8cd48d1554c0779}{\_\_pers})
-00102                 \textcolor{keywordflow}{if} acctype == \textcolor{stringliteral}{"Full"}:
-00103                     self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a189a44a11e1a66ba69663eb2c598dd7c}{\_\_ui} = \hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile}{UiFullProfile}(self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a6a0b7b93046e095779ba54e0a8a4d02c}{\_\_bus})
-00104                 \textcolor{keywordflow}{elif} acctype == \textcolor{stringliteral}{"Home"}:
-00105                     self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a189a44a11e1a66ba69663eb2c598dd7c}{\_\_ui} = \hyperlink{classProfile_1_1ProfileUnit_1_1UiHomeProfile}{UiHomeProfile}(self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a6a0b7b93046e095779ba54e0a8a4d02c}{\_\_bus})
-00106                 \textcolor{keywordflow}{else}:
-00107                     \textcolor{keywordflow}{raise} Http404(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_404\_ERR"}])
-00108             
-00109                 \textcolor{keywordflow}{if} field \textcolor{keywordflow}{and} acctype == \textcolor{stringliteral}{"Full"}:
-00110                     \textcolor{keywordflow}{return} self.\_\_ui.run(request, field)
-00111                 \textcolor{keywordflow}{else}:
-00112                     \textcolor{keywordflow}{return} self.\_\_ui.run(request)
-00113             \textcolor{keywordflow}{else}:
-00114                 \textcolor{keywordflow}{raise} Http404(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_404\_ERR"}])
-00115         \textcolor{keywordflow}{else}:
-00116             \textcolor{keywordflow}{raise} PermissionDenied(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_403\_STD"}])
-00117         
-00118 
-00119     \textcolor{comment}{## Classe que executa o módulo de Administração.}
-00120     \textcolor{comment}{#   Define as camadas de persinstência, negócio e apresentação de}
-00121     \textcolor{comment}{#   administração.}
-00122     @vary\_on\_cookie
-\hypertarget{MainUnit_8py_source_l00123}{}\hyperlink{classELO_1_1MainUnit_1_1Factory_a533b402a54bf6f6715824a8687fa7a24}{00123}     \textcolor{keyword}{def }\hyperlink{classELO_1_1MainUnit_1_1Factory_a533b402a54bf6f6715824a8687fa7a24}{runAdm}(self, request, action=None, model=None):
-00124         \textcolor{comment}{# Checa se usuario ja esta logado}
-00125         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'user'} \textcolor{keywordflow}{in} request.session.keys():
-00126             \textcolor{keywordflow}{if} request.session[\textcolor{stringliteral}{'user'}][\textcolor{stringliteral}{'type'}] == \textcolor{stringliteral}{'Adm'}:
-00127                 \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} isinstance(self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a189a44a11e1a66ba69663eb2c598dd7c}{\_\_ui}, IfUiAdm):
-00128                     self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a68f6640ad3b515e1b8cd48d1554c0779}{\_\_pers} = \hyperlink{classAdm_1_1AdmUnit_1_1PersAdm}{PersAdm}()
-00129                     self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a6a0b7b93046e095779ba54e0a8a4d02c}{\_\_bus} = \hyperlink{classAdm_1_1AdmUnit_1_1BusAdm}{BusAdm}(self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a68f6640ad3b515e1b8cd48d1554c0779}{\_\_pers})
-00130                     self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a189a44a11e1a66ba69663eb2c598dd7c}{\_\_ui} = \hyperlink{classAdm_1_1AdmUnit_1_1UiAdm}{UiAdm}(self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a6a0b7b93046e095779ba54e0a8a4d02c}{\_\_bus}) 
-00131                 
-00132                 \textcolor{keywordflow}{if} action != \textcolor{keywordtype}{None} \textcolor{keywordflow}{and} model != \textcolor{keywordtype}{None}:
-00133                     \textcolor{keywordflow}{return} self.\_\_ui.run(request, action)
-00134                 
-00135                 \textcolor{keywordflow}{return} self.\_\_ui.run(request)
-00136         \textcolor{keywordflow}{raise} PermissionDenied(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_403\_STD"}])
-00137 
-00138     \textcolor{comment}{## Classe que executa o módulo de Curso.}
-00139     \textcolor{comment}{#   Define as camadas de persistência, negócio e apresentação de}
-00140     \textcolor{comment}{#   curso.}
-00141     @vary\_on\_cookie
-\hypertarget{MainUnit_8py_source_l00142}{}\hyperlink{classELO_1_1MainUnit_1_1Factory_a5e360bc5396fd576e0614b9e157b3816}{00142}     \textcolor{keyword}{def }\hyperlink{classELO_1_1MainUnit_1_1Factory_a5e360bc5396fd576e0614b9e157b3816}{runCourse}(self, request):
-00143         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'user'} \textcolor{keywordflow}{in} request.session.keys():
-00144             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a189a44a11e1a66ba69663eb2c598dd7c}{\_\_ui} \textcolor{keywordflow}{is} IfUiCourse:
-00145                 self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a68d9e3ac6990b31d2d6a4fd68cf66d30}{\_\_per} = \hyperlink{classAdm_1_1AdmUnit_1_1PersAdm}{PersAdm}()
-00146                 self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a6a0b7b93046e095779ba54e0a8a4d02c}{\_\_bus} = \hyperlink{classAdm_1_1AdmUnit_1_1BusAdm}{BusAdm}(self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a68f6640ad3b515e1b8cd48d1554c0779}{\_\_pers})
-00147                 self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a189a44a11e1a66ba69663eb2c598dd7c}{\_\_ui} = \hyperlink{classAdm_1_1AdmUnit_1_1UiAdm}{UiAdm}(self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a6a0b7b93046e095779ba54e0a8a4d02c}{\_\_bus})
-00148 
-00149             \textcolor{keywordflow}{return} self.\_\_ui.run(request)
+00048             \textcolor{keywordflow}{if} (request.session[\textcolor{stringliteral}{'user'}][\textcolor{stringliteral}{'type'}] == \textcolor{stringliteral}{"Adm"} \textcolor{keywordflow}{or} 
+00049                request.session[\textcolor{stringliteral}{'user'}][\textcolor{stringliteral}{'type'}] == \textcolor{stringliteral}{"God"}):
+00050                 \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a533b402a54bf6f6715824a8687fa7a24}{runAdm}(request)
+00051             \textcolor{keywordflow}{else}:
+00052                 \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1MainUnit_1_1Factory_ab20a76f74180fc77c6b8fcd8de7942f1}{runProfile}(request, acctype=\textcolor{stringliteral}{'Home'})
+00053         \textcolor{keywordflow}{else}:
+00054             \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a515d1ff460a335b750e58e0cbddf20ae}{runLogin}(request, entity)
+00055 
+00056     \textcolor{comment}{## Classe que executa o módulo de login.}
+00057     \textcolor{comment}{#   Define as camadas de persistência, negócio de login e}
+00058     \textcolor{comment}{#   apresentação e verifica o tipo de usuário.}
+00059     @vary\_on\_cookie
+\hypertarget{MainUnit_8py_source_l00060}{}\hyperlink{classELO_1_1MainUnit_1_1Factory_a515d1ff460a335b750e58e0cbddf20ae}{00060}     \textcolor{keyword}{def }\hyperlink{classELO_1_1MainUnit_1_1Factory_a515d1ff460a335b750e58e0cbddf20ae}{runLogin}(self, request, entity):
+00061         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} isinstance(self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a189a44a11e1a66ba69663eb2c598dd7c}{\_\_ui}, IfUiLogin):
+00062             self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a68f6640ad3b515e1b8cd48d1554c0779}{\_\_pers} = \hyperlink{classLogin_1_1LoginUnit_1_1PersLogin}{PersLogin}()
+00063             self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a6a0b7b93046e095779ba54e0a8a4d02c}{\_\_bus} = \hyperlink{classLogin_1_1LoginUnit_1_1BusLogin}{BusLogin}(self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a68f6640ad3b515e1b8cd48d1554c0779}{\_\_pers})
+00064             self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a189a44a11e1a66ba69663eb2c598dd7c}{\_\_ui} = \hyperlink{classLogin_1_1LoginUnit_1_1UiLogin}{UiLogin}(self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a6a0b7b93046e095779ba54e0a8a4d02c}{\_\_bus})
+00065 
+00066         \textcolor{keywordflow}{if} entity == \textcolor{stringliteral}{"Adm"}:
+00067             database = Adm
+00068         \textcolor{keywordflow}{elif} entity == \textcolor{stringliteral}{"God"}:
+00069             database = God
+00070         \textcolor{keywordflow}{elif} entity == \textcolor{stringliteral}{"Professor"}:
+00071             database = Professor
+00072         \textcolor{keywordflow}{elif} entity == \textcolor{stringliteral}{"Student"}:
+00073             database = Student
+00074         \textcolor{keywordflow}{else}:
+00075             database = \textcolor{keywordtype}{None}
+00076 
+00077         \textcolor{keywordflow}{return} self.\_\_ui.run(request, database)
+00078 
+00079     \textcolor{comment}{## Classe que executa o logout.}
+00080     \textcolor{comment}{#   Finaliza a sessão do usuário e redireciona para }
+00081     \textcolor{comment}{#   a página de login.}
+\hypertarget{MainUnit_8py_source_l00082}{}\hyperlink{classELO_1_1MainUnit_1_1Factory_aa26c51486ba65030399897a6e3b4f4f1}{00082}     \textcolor{keyword}{def }\hyperlink{classELO_1_1MainUnit_1_1Factory_aa26c51486ba65030399897a6e3b4f4f1}{runLogout}(self, request):
+00083         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'user'} \textcolor{keywordflow}{in} request.session.keys():
+00084             del request.session[\textcolor{stringliteral}{'user'}]
+00085             del request.session[translation.LANGUAGE\_SESSION\_KEY]
+00086         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a515d1ff460a335b750e58e0cbddf20ae}{runLogin}(request, \textcolor{stringliteral}{"Student"})
+00087 
+00088     \textcolor{comment}{## Classe que executa a página inicial do módulo de Perfil.}
+00089     \textcolor{comment}{#   Define as camadas de persistência, negócio e apresentação de}
+00090     \textcolor{comment}{#   perfil e proíbe o acesso de usuários não logados no sistema.}
+00091     \textcolor{comment}{#}
+00092     \textcolor{comment}{#   @arg acctype    Define o tipo de acesso que o usuário está requerindo.}
+00093     \textcolor{comment}{#                   "Full": Acessa o Perfil completo, com possibilidade de}
+00094     \textcolor{comment}{#                       edição. Caso a chamada seja assíncrona, retorna a}
+00095     \textcolor{comment}{#                       form de edição do campo específico.}
+00096     \textcolor{comment}{#                   "Home": Acessa o Perfil resumido, a home do site em si.}
+00097     @vary\_on\_cookie
+\hypertarget{MainUnit_8py_source_l00098}{}\hyperlink{classELO_1_1MainUnit_1_1Factory_ab20a76f74180fc77c6b8fcd8de7942f1}{00098}     \textcolor{keyword}{def }\hyperlink{classELO_1_1MainUnit_1_1Factory_ab20a76f74180fc77c6b8fcd8de7942f1}{runProfile}(self, request, acctype, field=None):
+00099         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'user'} \textcolor{keywordflow}{in} request.session.keys(): \textcolor{comment}{# is user logged?}
+00100             user\_type = request.session[\textcolor{stringliteral}{'user'}][\textcolor{stringliteral}{'type'}]
+00101             \textcolor{keywordflow}{if} user\_type == \textcolor{stringliteral}{'Professor'} \textcolor{keywordflow}{or} user\_type == \textcolor{stringliteral}{'Student'}:
+00102                 \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} isinstance(self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a189a44a11e1a66ba69663eb2c598dd7c}{\_\_ui}, IfUiProfile):
+00103                     self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a68f6640ad3b515e1b8cd48d1554c0779}{\_\_pers} = \hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile}{PersProfile}()
+00104                     self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a6a0b7b93046e095779ba54e0a8a4d02c}{\_\_bus} = \hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile}{BusProfile}(self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a68f6640ad3b515e1b8cd48d1554c0779}{\_\_pers})
+00105                 \textcolor{keywordflow}{if} acctype == \textcolor{stringliteral}{"Full"}:
+00106                     self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a189a44a11e1a66ba69663eb2c598dd7c}{\_\_ui} = \hyperlink{classProfile_1_1ProfileUnit_1_1UiFullProfile}{UiFullProfile}(self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a6a0b7b93046e095779ba54e0a8a4d02c}{\_\_bus})
+00107                 \textcolor{keywordflow}{elif} acctype == \textcolor{stringliteral}{"Home"}:
+00108                     self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a189a44a11e1a66ba69663eb2c598dd7c}{\_\_ui} = \hyperlink{classProfile_1_1ProfileUnit_1_1UiHomeProfile}{UiHomeProfile}(self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a6a0b7b93046e095779ba54e0a8a4d02c}{\_\_bus})
+00109                 \textcolor{keywordflow}{else}:
+00110                     \textcolor{keywordflow}{raise} Http404(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_404\_ERR"}])
+00111             
+00112                 \textcolor{keywordflow}{if} field \textcolor{keywordflow}{and} acctype == \textcolor{stringliteral}{"Full"}:
+00113                     \textcolor{keywordflow}{return} self.\_\_ui.run(request, field)
+00114                 \textcolor{keywordflow}{else}:
+00115                     \textcolor{keywordflow}{return} self.\_\_ui.run(request)
+00116             \textcolor{keywordflow}{else}:
+00117                 \textcolor{keywordflow}{raise} Http404(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_404\_ERR"}])
+00118         \textcolor{keywordflow}{else}:
+00119             \textcolor{keywordflow}{raise} PermissionDenied(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_403\_STD"}])
+00120         
+00121 
+00122     \textcolor{comment}{## Classe que executa o módulo de Administração.}
+00123     \textcolor{comment}{#   Define as camadas de persinstência, negócio e apresentação de}
+00124     \textcolor{comment}{#   administração.}
+00125     @vary\_on\_cookie
+\hypertarget{MainUnit_8py_source_l00126}{}\hyperlink{classELO_1_1MainUnit_1_1Factory_a533b402a54bf6f6715824a8687fa7a24}{00126}     \textcolor{keyword}{def }\hyperlink{classELO_1_1MainUnit_1_1Factory_a533b402a54bf6f6715824a8687fa7a24}{runAdm}(self, request, action=None, model=None):
+00127         \textcolor{comment}{# Checa se usuario ja esta logado}
+00128         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'user'} \textcolor{keywordflow}{in} request.session.keys():
+00129             if(request.session[\textcolor{stringliteral}{'user'}][\textcolor{stringliteral}{'type'}] == \textcolor{stringliteral}{'Adm'} \textcolor{keywordflow}{or}
+00130                request.session[\textcolor{stringliteral}{'user'}][\textcolor{stringliteral}{'type'}] == \textcolor{stringliteral}{'God'}):
+00131                 \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} isinstance(self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a189a44a11e1a66ba69663eb2c598dd7c}{\_\_ui}, IfUiAdm):
+00132                     self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a68f6640ad3b515e1b8cd48d1554c0779}{\_\_pers} = \hyperlink{classAdm_1_1AdmUnit_1_1PersAdm}{PersAdm}()
+00133                     self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a6a0b7b93046e095779ba54e0a8a4d02c}{\_\_bus} = \hyperlink{classAdm_1_1AdmUnit_1_1BusAdm}{BusAdm}(self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a68f6640ad3b515e1b8cd48d1554c0779}{\_\_pers})
+00134                     self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a189a44a11e1a66ba69663eb2c598dd7c}{\_\_ui} = \hyperlink{classAdm_1_1AdmUnit_1_1UiAdm}{UiAdm}(self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a6a0b7b93046e095779ba54e0a8a4d02c}{\_\_bus}) 
+00135                 
+00136                 \textcolor{keywordflow}{if} action != \textcolor{keywordtype}{None} \textcolor{keywordflow}{and} model != \textcolor{keywordtype}{None}:
+00137                     \textcolor{keywordflow}{return} self.\_\_ui.run(request, action)
+00138                 
+00139                 \textcolor{keywordflow}{return} self.\_\_ui.run(request)
+00140         \textcolor{keywordflow}{raise} PermissionDenied(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_403\_STD"}])
+00141 
+00142     \textcolor{comment}{## Classe que executa o módulo de Curso.}
+00143     \textcolor{comment}{#   Define as camadas de persistência, negócio e apresentação de}
+00144     \textcolor{comment}{#   curso.}
+00145     @vary\_on\_cookie
+\hypertarget{MainUnit_8py_source_l00146}{}\hyperlink{classELO_1_1MainUnit_1_1Factory_a5e360bc5396fd576e0614b9e157b3816}{00146}     \textcolor{keyword}{def }\hyperlink{classELO_1_1MainUnit_1_1Factory_a5e360bc5396fd576e0614b9e157b3816}{runCourse}(self, request, courseid):
+00147         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'user'} \textcolor{keywordflow}{in} request.session.keys():
+00148             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a189a44a11e1a66ba69663eb2c598dd7c}{\_\_ui} \textcolor{keywordflow}{is} IfUiCourse:
+00149                 self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a68f6640ad3b515e1b8cd48d1554c0779}{\_\_pers} = \hyperlink{classCourse_1_1CourseUnit_1_1PersCourse}{PersCourse}()
+00150                 self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a6a0b7b93046e095779ba54e0a8a4d02c}{\_\_bus} = \hyperlink{classCourse_1_1CourseUnit_1_1BusCourse}{BusCourse}(self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a68f6640ad3b515e1b8cd48d1554c0779}{\_\_pers})
+00151                 self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a189a44a11e1a66ba69663eb2c598dd7c}{\_\_ui} = \hyperlink{classCourse_1_1CourseUnit_1_1UiCourse}{UiCourse}(self.\hyperlink{classELO_1_1MainUnit_1_1Factory_a6a0b7b93046e095779ba54e0a8a4d02c}{\_\_bus})
+00152 
+00153             \textcolor{keywordflow}{return} self.\_\_ui.run(request, courseid)
+00154         \textcolor{keywordflow}{raise} PermissionDenied(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_403\_STD"}])
 \end{DoxyCode}
