@@ -16,16 +16,12 @@
 #   no banco de dados, criar cursos e ver um log sobre os últimos eventos no
 #   sistema.
 
-# Biblioteca para Classes Abstratas.
 from abc import *
 
-# Biblioteca de Tradução.
 import ELO.locale.index as lang
 
-# Biblioteca de Modelos.
-from ELO.models import Adm, Student, Professor, Courses
+from ELO.models import Adm, Student, Professor, Courses, God
 
-# Biblioteca de Formulários.
 from forms import (
     RegUserForm,
     SrcUserForm,
@@ -41,8 +37,6 @@ from Profile.forms import (
     BiosForm,
     InterestsForm,
     AvatarForm)
-
-# Bibliotecas para funções básicas relativas ao Framework de Python, Django.
 
 from django.shortcuts import render
 from django.conf import settings
@@ -399,12 +393,16 @@ class UiAdm(IfUiAdm):
 class BusAdm(IfBusAdm): 
 
     def regAccount(self, request, form):
-        # Inicia o dicionário dict_data. Será utilizado para informar os 
-        # campos e dados para registro do usuário.
+        # Inicia o dicionário dict_data. 
+        #   Será utilizado para informar os campos e dados para registro
+        #   do usuário.
         dict_data = {}
+        # Possíveis campos valorados dos modelos de contas.
         database_fields = ['NAME', 'SEX', 'PASSWORD', 'MATRIC', 
                            'CAMPUS','EMAIL', 'PROFESSOR']
-        print request.POST
+        ## Percorre a requisição procurando os dados inseridos para registro.
+        #   Se algum valor do campo não for válido então irá emitir erro de
+        #   formulário inválido.
         try:
             for field, value in request.POST.items():
                 # Transforma campo unicode em string.
@@ -422,7 +420,11 @@ class BusAdm(IfBusAdm):
                 if newField in database_fields:
                     dict_data[newField] = form.cleaned_data[
                                                 field].value
-
+            ## Verifica qual e o tipo do modelo requisitado para inserção 
+            #   de nova conta.
+            #    
+            #   Caso a requisição venha com outro modelo não especificado nos
+            #   condicionais então é emitido erro.
             try:
                 db = None
 
@@ -440,13 +442,19 @@ class BusAdm(IfBusAdm):
             except ValueError as exc:
                 raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
 
+            ## @if Verifica se a requisição pede outro modelo diferente de 
+            #       Curso.
+            #       
+            #   Caso não for do modelo de Curso então é adionado a linguagem
+            #   com valor default de Português.
             if model != "Course":
                 # Escolhe uma linguagem padrão para cadastro do usuário 
                 # recente.
                 dict_data['LANGUAGE'] = 'pt-br'
 
-            # Se for uma entidade estudante então é feito o pedido de inserção 
-            # no banco de dados com o determinado modelo.
+            # É passado o dicionário de campos e valores do novo registro, e
+            # o modelo de conta requisitado para criação destas informações 
+            # no banco de dados (Persistência).
             self.pers.data_in(dict_data, db)
 
         except ValueError as exc:
@@ -546,14 +554,14 @@ class BusAdm(IfBusAdm):
             return user['avatar']
         else:
             return newdata
-
+            ## 
 
 class PersAdm(IfPersAdm):
 
     def data_in(self, dict_field_value, database):
         # Tenta coletar o último id inserido.
-        # Caso não tenha ocorrido nenhum registro de contas então
-        # é atribuído o valor inicial como '1'
+        #   Caso não tenha ocorrido nenhum registro de contas então
+        #   é atribuído o valor inicial como '1'
         try:
             # Coleta o ultimo ID inserido no identity do database.
             lastid = database.objects.order_by('-identity')[0]
@@ -571,8 +579,9 @@ class PersAdm(IfPersAdm):
             data.save()
 
     def update(self, username, field, newdata, database): 
-        # Tenta procurar se o username existe no banco de dados.
-        # Caso não exista, é emitido um erro.
+        ##  Tenta coletar a identidade da conta pelo nome determinado a ela.
+        #
+        # Caso não exista ou seja encontrado valores múltiplos , é emitido um erro.
         try:
             # Filtra o database pelo nome do usuario.
             uid = database.objects.get(field='NAME', value=username)
@@ -623,8 +632,24 @@ class PersAdm(IfPersAdm):
                 database.MultipleObjectsReturned ) as exc:
             raise ValueError(exc)
 
+    ## Seleciona campo a partir da identidade do usuário.
+    #   Podendo ser estes de uma conta de Estudante, Professor ou um Curso.  
+    #
+    #   @arg    uid         Identidade de uma conta.
+    #
+    #   @arg    field       Objeto modelo sobre o qual a consulta será
+    #                       realizada. 
+    #
+    #   @arg    database    Modelo de uma conta.   
+    #
+    #   @return ret         Valor do campo de alguma conta.
     def __select_field(self, uid, field, database):
-
+        ##  Tenta coletar o valor de algum campo pelo user id.
+        #
+        # Caso seja encontrado valores múltiplos é mostrado na tela
+        #   os valores encontrados.
+        # Caso algum dado nao exista no banco de dados 
+        #   entao a variável de retorno recebe um valor nulo.
         try:
             ret = database.objects.get(identity=uid, field=field)
             ret = ret.value
