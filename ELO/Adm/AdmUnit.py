@@ -1,4 +1,4 @@
-#coding: utf-8
+    #coding: utf-8
 
 ## TODO:
 #   Passar para inglês os termos internos ao sistema que estão em português. 
@@ -18,7 +18,7 @@
 
 from abc import *
 
-import ELO.locale.index as lang
+import ELO.index as lang
 
 from ELO.models import Adm, Student, Professor, Courses, God
 
@@ -177,6 +177,16 @@ class IfPersAdm:
     @abstractmethod
     def data_in(self, dict_field_value, database): pass
 
+    ## Insere Estudantes ou Professores em algum Curso.
+    #
+    #   @arg    course_id   Matrícula do Curso que irá receber as inserções.
+    #
+    #   @arg    user_id     Matrícula do Usuário que será inserido.
+    #
+    #   @arg    model       Modelo do usuário que será inserido no Curso.
+    @abstractmethod
+    def insert_User(self, course_id, user_id, model): pass
+
     ## Método que atualiza os dados de uma conta fornecida.
     #   No caso de campos multivalorados, adiciona uma nova entrada.
     #   Caso contrário, substitui a entrada anterior.
@@ -213,7 +223,7 @@ class IfPersAdm:
     #
     #   @return fetchset    Dicionário com campos e valores do usuário.
     @abstractmethod
-    def fetchSP(self, username, database): pass
+    def fetchUser(self, username, database): pass
 
     ##  Função que recupera todos os dados de um curso pesquisado.
     #
@@ -367,7 +377,10 @@ class UiAdm(IfUiAdm):
                 #
                 #   Caso contrário, é passado para a página renderizada erro
                 #   de formulário.
-                if action == "reg":
+                if action == "insert":
+                    return render(request, "Adm/edit_course.html", 
+                                    {'action' : action,'model' : model, })
+                elif action == "reg":
                     if model == "Student" or model == "Professor":
                         form = RegUserForm()
                     elif model == "Course":
@@ -578,10 +591,39 @@ class PersAdm(IfPersAdm):
             # Salva os novos dados no database.
             data.save()
 
+    def insert_User(self, course_id , user_id, model):
+        ##  Tenta coletar a identidade do Curso pela matrícula.
+        #
+        # Caso não exista ou seja encontrado valores múltiplos, 
+        #   é emitido erro.
+        try:
+            # Filtra o database pela matrícula do Curso.
+            uid = Courses.objects.get(field='MATRIC',value=course_id)
+            # Coleta a ID do Curso encontrado.
+            uid = uid.identity
+
+            try:
+                # Coleta a partir do ID do curso a lista de Estudantes ou 
+                # Professores existentes no Curso.
+                data = Courses.objects.get(identity=uid, field=model.upper())
+                new_data = eval(data)
+                new_data.value.append(user_id)
+
+            except ( Courses.MultipleObjectsReturned ) as exc:
+                raise ValueError(exc)
+
+            new_data.save()
+
+        except ( Courses.MultipleObjectsReturned ) as exc:
+            raise ValueError(exc)
+
+
+
     def update(self, username, field, newdata, database): 
         ##  Tenta coletar a identidade da conta pelo nome determinado a ela.
         #
-        # Caso não exista ou seja encontrado valores múltiplos , é emitido um erro.
+        # Caso não exista ou seja encontrado valores múltiplos , é
+        #   emitido erro.
         try:
             # Filtra o database pelo nome do usuario.
             uid = database.objects.get(field='NAME', value=username)
@@ -589,7 +631,7 @@ class PersAdm(IfPersAdm):
             uid = uid.identity
                 
             try:
-                # Coleta a partir do ID do usuário o valor do campo
+                # Coleta a partir do ID do curso a lista do campo
                 # que deseja atualizar.
                 data = database.objects.get(identity=uid, field=field.upper())
                 # Nova informação é colocada no tipo que deseja atualizar.
@@ -664,7 +706,7 @@ class PersAdm(IfPersAdm):
 
         return ret
 
-    def fetchSP(self, username, database):
+    def fetchUser(self, username, database):
 
         try:
             uid = database.objects.get(field='NAME',value=username)

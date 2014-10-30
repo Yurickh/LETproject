@@ -56,7 +56,11 @@ urlpatterns = patterns('',
 	url(r'^assync/adm-info/?$', factory.runAdm),
 	## URL para mostrar assincronamente a edição de um campo de perfil.
 	#	Requisitado pelo Administrador.
-	url(r'^assync/editfield/(?P<field>\w{3,9})/?$', factory.runAdm),
+	url(r'^assync/edit-field-adm/(?P<field>\w{3,9})/?$', factory.runAdm),
+	## URL da página assíncrona que abre Dialog de inserção de Estudantes e
+	#	Professores em algum determinado curso.
+	url(r'^assync/adm-course/(?P<action>\w{5,7})/(?P<model>\w{5,7})/?$', 
+		factory.runAdm),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()
