@@ -26,7 +26,7 @@ def \hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_af1e4b3cf0eee0a14b5113
 \subsubsection{Descrição Detalhada}
 Recupera os dados do usuário logado, retornando-\/os para a camada de negócio. 
 
-Definição na linha \hyperlink{ProfileUnit_8py_source_l00347}{347} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
+Definição na linha \hyperlink{ProfileUnit_8py_source_l00381}{381} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
 
 
 
@@ -42,45 +42,45 @@ Definição na linha \hyperlink{ProfileUnit_8py_source_l00347}{347} do arquivo \
 )}}\label{classProfile_1_1ProfileUnit_1_1PersProfile_aca301abc09bc12a7cf0a61437f941a8a}
 
 
-Definição na linha \hyperlink{ProfileUnit_8py_source_l00364}{364} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
+Definição na linha \hyperlink{ProfileUnit_8py_source_l00398}{398} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
 
 
 
-Referências \hyperlink{ProfileUnit_8py_source_l00349}{Profile.\-Profile\-Unit.\-Pers\-Profile.\-\_\-\-\_\-select\-\_\-field()}.
+Referências \hyperlink{ProfileUnit_8py_source_l00383}{Profile.\-Profile\-Unit.\-Pers\-Profile.\-\_\-\-\_\-select\-\_\-field()} e \hyperlink{AdmUnit_8py_source_l00495}{Adm.\-Adm\-Unit.\-Pers\-Adm.\-\_\-\-\_\-select\-\_\-field()}.
 
 
 \begin{DoxyCode}
-\hypertarget{classProfile_1_1ProfileUnit_1_1PersProfile_l00364}{}\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_aca301abc09bc12a7cf0a61437f941a8a}{00364} 
-00365     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_aca301abc09bc12a7cf0a61437f941a8a}{fetch}(self, username, database):
-00366 
-00367         \textcolor{keywordflow}{try}:
-00368             uid = database.objects.get(field=\textcolor{stringliteral}{'NAME'},value=username)
-00369             uid = uid.identity
-00370 
-00371             sf = \textcolor{keyword}{lambda} x: self.\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_a48bc2c04d89772752559fc19dc79f321}{\_\_select\_field}(uid, x, database)
-00372 
-00373             fetchset = [
-00374                     (\textcolor{stringliteral}{'password'},    sf(\textcolor{stringliteral}{'PASSWORD'})),
-00375                     (\textcolor{stringliteral}{'matric'},      sf(\textcolor{stringliteral}{'MATRIC'})),
-00376                     (\textcolor{stringliteral}{'bios'},        sf(\textcolor{stringliteral}{'BIOS'})),
-00377                     (\textcolor{stringliteral}{'campus'},      sf(\textcolor{stringliteral}{'CAMPUS'})),
-00378                     (\textcolor{stringliteral}{'courses'},     sf(\textcolor{stringliteral}{'COURSE'})),
-00379                     (\textcolor{stringliteral}{'avatar'},      sf(\textcolor{stringliteral}{'AVATAR'})),
-00380                     (\textcolor{stringliteral}{'email'},       sf(\textcolor{stringliteral}{'EMAIL'})),
-00381                     (\textcolor{stringliteral}{'sex'},         sf(\textcolor{stringliteral}{'SEX'})),
-00382             ]
-00383 
-00384             \textcolor{keywordflow}{if} database \textcolor{keywordflow}{is} Student:
-00385                 fetchset = fetchset + [     
-00386                     (\textcolor{stringliteral}{'grades'},      sf(\textcolor{stringliteral}{'GRADE'})),
-00387                     (\textcolor{stringliteral}{'interests'},   sf(\textcolor{stringliteral}{'INTEREST'})),
-00388                     (\textcolor{stringliteral}{'language'},    sf(\textcolor{stringliteral}{'LANGUAGE'})),
-00389                 ]
-00390 
-00391         \textcolor{keywordflow}{except} database.DoesNotExist \textcolor{keyword}{as} exc:
-00392             fetchset = []
-00393 
-00394         \textcolor{keywordflow}{return} fetchset
+\hypertarget{classProfile_1_1ProfileUnit_1_1PersProfile_l00398}{}\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_aca301abc09bc12a7cf0a61437f941a8a}{00398} 
+00399     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_aca301abc09bc12a7cf0a61437f941a8a}{fetch}(self, username, database):
+00400 
+00401         \textcolor{keywordflow}{try}:
+00402             uid = database.objects.get(field=\textcolor{stringliteral}{'NAME'},value=username)
+00403             uid = uid.identity
+00404 
+00405             sf = \textcolor{keyword}{lambda} x: self.\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_a48bc2c04d89772752559fc19dc79f321}{\_\_select\_field}(uid, x, database)
+00406 
+00407             fetchset = [
+00408                     (\textcolor{stringliteral}{'password'},    sf(\textcolor{stringliteral}{'PASSWORD'})),
+00409                     (\textcolor{stringliteral}{'matric'},      sf(\textcolor{stringliteral}{'MATRIC'})),
+00410                     (\textcolor{stringliteral}{'bios'},        sf(\textcolor{stringliteral}{'BIOS'})),
+00411                     (\textcolor{stringliteral}{'campus'},      sf(\textcolor{stringliteral}{'CAMPUS'})),
+00412                     (\textcolor{stringliteral}{'courses'},     sf(\textcolor{stringliteral}{'COURSE'})),
+00413                     (\textcolor{stringliteral}{'avatar'},      sf(\textcolor{stringliteral}{'AVATAR'})),
+00414                     (\textcolor{stringliteral}{'email'},       sf(\textcolor{stringliteral}{'EMAIL'})),
+00415                     (\textcolor{stringliteral}{'sex'},         sf(\textcolor{stringliteral}{'SEX'})),
+00416             ]
+00417 
+00418             \textcolor{keywordflow}{if} database \textcolor{keywordflow}{is} Student:
+00419                 fetchset = fetchset + [     
+00420                     (\textcolor{stringliteral}{'grades'},      sf(\textcolor{stringliteral}{'GRADE'})),
+00421                     (\textcolor{stringliteral}{'interests'},   sf(\textcolor{stringliteral}{'INTEREST'})),
+00422                     (\textcolor{stringliteral}{'language'},    sf(\textcolor{stringliteral}{'LANGUAGE'})),
+00423                 ]
+00424 
+00425         \textcolor{keywordflow}{except} database.DoesNotExist \textcolor{keyword}{as} exc:
+00426             fetchset = []
+00427 
+00428         \textcolor{keywordflow}{return} fetchset
 
 \end{DoxyCode}
 \hypertarget{classProfile_1_1ProfileUnit_1_1PersProfile_a68ab67bed74c46b72216e256af8f6711}{\index{Profile\-::\-Profile\-Unit\-::\-Pers\-Profile@{Profile\-::\-Profile\-Unit\-::\-Pers\-Profile}!fetch\-Field@{fetch\-Field}}
@@ -93,31 +93,31 @@ Referências \hyperlink{ProfileUnit_8py_source_l00349}{Profile.\-Profile\-Unit.\
 )}}\label{classProfile_1_1ProfileUnit_1_1PersProfile_a68ab67bed74c46b72216e256af8f6711}
 
 
-Definição na linha \hyperlink{ProfileUnit_8py_source_l00395}{395} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
+Definição na linha \hyperlink{ProfileUnit_8py_source_l00429}{429} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
 
 
 \begin{DoxyCode}
-\hypertarget{classProfile_1_1ProfileUnit_1_1PersProfile_l00395}{}\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_a68ab67bed74c46b72216e256af8f6711}{00395} 
-00396     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_a68ab67bed74c46b72216e256af8f6711}{fetchField}(self, field):
-00397 
-00398         ret = []
-00399 
-00400         \textcolor{keywordflow}{try}:
-00401             lstu = Student.objects.filter(field=field)   \textcolor{comment}{#list of students}
-00402             lpro = Professor.objects.filter(field=field) \textcolor{comment}{#list of professors }
-00403 
-00404         \textcolor{keywordflow}{except} Student.DoesNotExist:
-00405             lstu = []
-00406         \textcolor{keywordflow}{except} Professor.DoesNotExist:
-00407             lpro = []
-00408 
-00409         \textcolor{keywordflow}{for} s \textcolor{keywordflow}{in} lstu:
-00410             ret.append(s.value)
-00411 
-00412         \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} lpro:
-00413             ret.append(p.value)
-00414 
-00415         \textcolor{keywordflow}{return} ret
+\hypertarget{classProfile_1_1ProfileUnit_1_1PersProfile_l00429}{}\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_a68ab67bed74c46b72216e256af8f6711}{00429} 
+00430     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_a68ab67bed74c46b72216e256af8f6711}{fetchField}(self, field):
+00431 
+00432         ret = []
+00433 
+00434         \textcolor{keywordflow}{try}:
+00435             lstu = Student.objects.filter(field=field)   \textcolor{comment}{#list of students}
+00436             lpro = Professor.objects.filter(field=field) \textcolor{comment}{#list of professors }
+00437 
+00438         \textcolor{keywordflow}{except} Student.DoesNotExist:
+00439             lstu = []
+00440         \textcolor{keywordflow}{except} Professor.DoesNotExist:
+00441             lpro = []
+00442 
+00443         \textcolor{keywordflow}{for} s \textcolor{keywordflow}{in} lstu:
+00444             ret.append(s.value)
+00445 
+00446         \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} lpro:
+00447             ret.append(p.value)
+00448 
+00449         \textcolor{keywordflow}{return} ret
 
 \end{DoxyCode}
 \hypertarget{classProfile_1_1ProfileUnit_1_1PersProfile_af1e4b3cf0eee0a14b5113210503ff665}{\index{Profile\-::\-Profile\-Unit\-::\-Pers\-Profile@{Profile\-::\-Profile\-Unit\-::\-Pers\-Profile}!update@{update}}
@@ -133,32 +133,32 @@ Definição na linha \hyperlink{ProfileUnit_8py_source_l00395}{395} do arquivo \
 )}}\label{classProfile_1_1ProfileUnit_1_1PersProfile_af1e4b3cf0eee0a14b5113210503ff665}
 
 
-Definição na linha \hyperlink{ProfileUnit_8py_source_l00416}{416} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
+Definição na linha \hyperlink{ProfileUnit_8py_source_l00450}{450} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
 
 
 \begin{DoxyCode}
-\hypertarget{classProfile_1_1ProfileUnit_1_1PersProfile_l00416}{}\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_af1e4b3cf0eee0a14b5113210503ff665}{00416} 
-00417     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_af1e4b3cf0eee0a14b5113210503ff665}{update}(self, username, field, newdata, database):
-00418         
-00419         \textcolor{keywordflow}{try}:
-00420             uid = database.objects.get(field=\textcolor{stringliteral}{'NAME'}, value=username)
-00421             uid = uid.identity
-00422 
-00423             \textcolor{comment}{## Para o caso de COURSEs, GRADEs ou INTERESTs.}
-00424             \textcolor{keywordflow}{if} field[-1] == \textcolor{stringliteral}{'s'}:
-00425                 \textcolor{keywordflow}{if} field[-2] == \textcolor{stringliteral}{'e'} \textcolor{keywordflow}{or} field[-2] == \textcolor{stringliteral}{'t'}:
-00426                     field = field[:-1]
-00427                 
-00428             \textcolor{keywordflow}{try}:
-00429                 data = database.objects.get(field=field.upper(), identity=uid)
-00430                 data.value = newdata
-00431             \textcolor{keywordflow}{except} database.DoesNotExist:
-00432                 data = database(identity=uid, field=field.upper(), value=newdata)
-00433             data.save()
-00434 
-00435         \textcolor{keywordflow}{except} ( database.DoesNotExist, 
-00436                  database.MultipleObjectsReturned ) \textcolor{keyword}{as} exc:
-00437             \textcolor{keywordflow}{raise} ValueError(exc)
+\hypertarget{classProfile_1_1ProfileUnit_1_1PersProfile_l00450}{}\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_af1e4b3cf0eee0a14b5113210503ff665}{00450} 
+00451     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_af1e4b3cf0eee0a14b5113210503ff665}{update}(self, username, field, newdata, database):
+00452         
+00453         \textcolor{keywordflow}{try}:
+00454             uid = database.objects.get(field=\textcolor{stringliteral}{'NAME'}, value=username)
+00455             uid = uid.identity
+00456 
+00457             \textcolor{comment}{## Para o caso de COURSEs, GRADEs ou INTERESTs.}
+00458             \textcolor{keywordflow}{if} field[-1] == \textcolor{stringliteral}{'s'}:
+00459                 \textcolor{keywordflow}{if} field[-2] == \textcolor{stringliteral}{'e'} \textcolor{keywordflow}{or} field[-2] == \textcolor{stringliteral}{'t'}:
+00460                     field = field[:-1]
+00461                 
+00462             \textcolor{keywordflow}{try}:
+00463                 data = database.objects.get(field=field.upper(), identity=uid)
+00464                 data.value = newdata
+00465             \textcolor{keywordflow}{except} database.DoesNotExist:
+00466                 data = database(identity=uid, field=field.upper(), value=newdata)
+00467             data.save()
+00468 
+00469         \textcolor{keywordflow}{except} ( database.DoesNotExist, 
+00470                  database.MultipleObjectsReturned ) \textcolor{keyword}{as} exc:
+00471             \textcolor{keywordflow}{raise} ValueError(exc)
 \end{DoxyCode}
 
 

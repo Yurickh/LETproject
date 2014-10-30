@@ -3,7 +3,7 @@
 }
 
 
-Interface para a camada de negócio do módulo de perfil.  
+Interface para a camada de negócio do módulo de Administração.  
 
 
 Diagrama de Hierarquia para Adm.\-Adm\-Unit.\-If\-Bus\-Adm\-:\begin{figure}[H]
@@ -16,13 +16,15 @@ Diagrama de Hierarquia para Adm.\-Adm\-Unit.\-If\-Bus\-Adm\-:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 def \hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_abe924f0f983b1fe97ca466907d35c834}{\-\_\-\-\_\-init\-\_\-\-\_\-}
-\item 
+\begin{DoxyCompactList}\small\item\em Construtor da classe. \end{DoxyCompactList}\item 
 def \hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a31857b146085382c8d778ae90cd46c6f}{pers}
-\item 
+\begin{DoxyCompactList}\small\item\em Objeto que representa a camada de persistência, subjacente a de Bus. \end{DoxyCompactList}\item 
 def \hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a31857b146085382c8d778ae90cd46c6f}{pers}
-\item 
+\begin{DoxyCompactList}\small\item\em Checa se o objeto recebido é uma instância da Persistência. \end{DoxyCompactList}\item 
 def \hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a31857b146085382c8d778ae90cd46c6f}{pers}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Método de deleção do objeto que representa a camada de persistência. \end{DoxyCompactList}\item 
+def \hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a4dd3605edbfe5fdc729fdeceec5ab879}{edit\-Accounts}
+\begin{DoxyCompactList}\small\item\em Edita dados de um conta no database. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsubsection*{Atributos Públicos}
 \begin{DoxyCompactItemize}
 \item 
@@ -31,9 +33,9 @@ def \hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a31857b146085382c8d778ae90cd46c6f
 
 
 \subsubsection{Descrição Detalhada}
-É responsável por... 
+É responsável pela validação dos dados submetidos através do formulário de Administração. 
 
-Definição na linha \hyperlink{AdmUnit_8py_source_l00044}{44} do arquivo \hyperlink{AdmUnit_8py_source}{Adm\-Unit.\-py}.
+Definição na linha \hyperlink{AdmUnit_8py_source_l00086}{86} do arquivo \hyperlink{AdmUnit_8py_source}{Adm\-Unit.\-py}.
 
 
 
@@ -46,24 +48,51 @@ Definição na linha \hyperlink{AdmUnit_8py_source_l00044}{44} do arquivo \hyper
 \item[{}]{pers}
 \end{DoxyParamCaption}
 )}}\label{classAdm_1_1AdmUnit_1_1IfBusAdm_abe924f0f983b1fe97ca466907d35c834}
+Força a criação da camada subjacente. 
 
-
-Definição na linha \hyperlink{AdmUnit_8py_source_l00047}{47} do arquivo \hyperlink{AdmUnit_8py_source}{Adm\-Unit.\-py}.
+Definição na linha \hyperlink{AdmUnit_8py_source_l00091}{91} do arquivo \hyperlink{AdmUnit_8py_source}{Adm\-Unit.\-py}.
 
 
 \begin{DoxyCode}
-\hypertarget{classAdm_1_1AdmUnit_1_1IfBusAdm_l00047}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_abe924f0f983b1fe97ca466907d35c834}{00047} 
-00048     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_abe924f0f983b1fe97ca466907d35c834}{\_\_init\_\_}(self, pers):
-\hypertarget{classAdm_1_1AdmUnit_1_1IfBusAdm_l00049}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a95ea8f39fbbcddf44822e1614c712bfe}{00049}         \textcolor{keywordflow}{try}:
-00050             self.\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a95ea8f39fbbcddf44822e1614c712bfe}{pers} = pers
-00051         \textcolor{keywordflow}{except} TypeError \textcolor{keyword}{as} exc:
-00052             del self
-00053             \textcolor{keywordflow}{raise} exc
+\hypertarget{classAdm_1_1AdmUnit_1_1IfBusAdm_l00091}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_abe924f0f983b1fe97ca466907d35c834}{00091} 
+00092     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_abe924f0f983b1fe97ca466907d35c834}{\_\_init\_\_}(self, pers):
+\hypertarget{classAdm_1_1AdmUnit_1_1IfBusAdm_l00093}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a95ea8f39fbbcddf44822e1614c712bfe}{00093}         \textcolor{keywordflow}{try}:
+00094             self.\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a95ea8f39fbbcddf44822e1614c712bfe}{pers} = pers
+00095         \textcolor{keywordflow}{except} TypeError \textcolor{keyword}{as} exc:
+00096             del self
+00097             \textcolor{keywordflow}{raise} exc
     
 \end{DoxyCode}
 
 
 \subsubsection{Métodos}
+\hypertarget{classAdm_1_1AdmUnit_1_1IfBusAdm_a4dd3605edbfe5fdc729fdeceec5ab879}{\index{Adm\-::\-Adm\-Unit\-::\-If\-Bus\-Adm@{Adm\-::\-Adm\-Unit\-::\-If\-Bus\-Adm}!edit\-Accounts@{edit\-Accounts}}
+\index{edit\-Accounts@{edit\-Accounts}!Adm::AdmUnit::IfBusAdm@{Adm\-::\-Adm\-Unit\-::\-If\-Bus\-Adm}}
+\paragraph[{edit\-Accounts}]{\setlength{\rightskip}{0pt plus 5cm}def Adm.\-Adm\-Unit.\-If\-Bus\-Adm.\-edit\-Accounts (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{dict\-\_\-field\-\_\-value, }
+\item[{}]{action, }
+\item[{}]{database, }
+\item[{}]{form}
+\end{DoxyParamCaption}
+)}}\label{classAdm_1_1AdmUnit_1_1IfBusAdm_a4dd3605edbfe5fdc729fdeceec5ab879}
+Podendo ser este de uma conta de Estudante, Professor ou um Curso.
+
+\begin{DoxyItemize}
+\item field Nome do objeto a ser registrado.\end{DoxyItemize}
+\begin{DoxyItemize}
+\item form Objeto form que contém os dados. \end{DoxyItemize}
+
+
+Definição na linha \hyperlink{AdmUnit_8py_source_l00129}{129} do arquivo \hyperlink{AdmUnit_8py_source}{Adm\-Unit.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classAdm_1_1AdmUnit_1_1IfBusAdm_l00129}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a4dd3605edbfe5fdc729fdeceec5ab879}{00129} 
+00130     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a4dd3605edbfe5fdc729fdeceec5ab879}{editAccounts}(self, dict\_field\_value, action, database, form): \textcolor{keyword}{pass}
+
+\end{DoxyCode}
 \hypertarget{classAdm_1_1AdmUnit_1_1IfBusAdm_a31857b146085382c8d778ae90cd46c6f}{\index{Adm\-::\-Adm\-Unit\-::\-If\-Bus\-Adm@{Adm\-::\-Adm\-Unit\-::\-If\-Bus\-Adm}!pers@{pers}}
 \index{pers@{pers}!Adm::AdmUnit::IfBusAdm@{Adm\-::\-Adm\-Unit\-::\-If\-Bus\-Adm}}
 \paragraph[{pers}]{\setlength{\rightskip}{0pt plus 5cm}def Adm.\-Adm\-Unit.\-If\-Bus\-Adm.\-pers (
@@ -71,19 +100,19 @@ Definição na linha \hyperlink{AdmUnit_8py_source_l00047}{47} do arquivo \hyper
 \item[{}]{self}
 \end{DoxyParamCaption}
 )}}\label{classAdm_1_1AdmUnit_1_1IfBusAdm_a31857b146085382c8d778ae90cd46c6f}
+Deve ser inicializada no momento da criação de um objeto do tipo \hyperlink{classAdm_1_1AdmUnit_1_1BusAdm}{Bus\-Adm}, ou seja, uma camada de Bus nunca existirá sem uma camada de Pers suportando-\/a. 
+
+Definição na linha \hyperlink{AdmUnit_8py_source_l00103}{103} do arquivo \hyperlink{AdmUnit_8py_source}{Adm\-Unit.\-py}.
 
 
-Definição na linha \hyperlink{AdmUnit_8py_source_l00055}{55} do arquivo \hyperlink{AdmUnit_8py_source}{Adm\-Unit.\-py}.
 
-
-
-Referências \hyperlink{AdmUnit_8py_source_l00061}{Adm.\-Adm\-Unit.\-If\-Bus\-Adm.\-\_\-\-\_\-pers} e \hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a95ea8f39fbbcddf44822e1614c712bfe}{Adm.\-Adm\-Unit.\-If\-Bus\-Adm.\-pers}.
+Referências \hyperlink{AdmUnit_8py_source_l00112}{Adm.\-Adm\-Unit.\-If\-Bus\-Adm.\-\_\-\-\_\-pers} e \hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a95ea8f39fbbcddf44822e1614c712bfe}{Adm.\-Adm\-Unit.\-If\-Bus\-Adm.\-pers}.
 
 
 \begin{DoxyCode}
-\hypertarget{classAdm_1_1AdmUnit_1_1IfBusAdm_l00055}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a31857b146085382c8d778ae90cd46c6f}{00055} 
-00056     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a95ea8f39fbbcddf44822e1614c712bfe}{pers}(self):
-00057         \textcolor{keywordflow}{return} self.\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a52e9179e1047122bc667c1afa377c82c}{\_\_pers}
+\hypertarget{classAdm_1_1AdmUnit_1_1IfBusAdm_l00103}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a31857b146085382c8d778ae90cd46c6f}{00103} 
+00104     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a95ea8f39fbbcddf44822e1614c712bfe}{pers}(self):
+00105         \textcolor{keywordflow}{return} self.\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a52e9179e1047122bc667c1afa377c82c}{\_\_pers}
 
 \end{DoxyCode}
 \hypertarget{classAdm_1_1AdmUnit_1_1IfBusAdm_a31857b146085382c8d778ae90cd46c6f}{\index{Adm\-::\-Adm\-Unit\-::\-If\-Bus\-Adm@{Adm\-::\-Adm\-Unit\-::\-If\-Bus\-Adm}!pers@{pers}}
@@ -94,23 +123,23 @@ Referências \hyperlink{AdmUnit_8py_source_l00061}{Adm.\-Adm\-Unit.\-If\-Bus\-Ad
 \item[{}]{value}
 \end{DoxyParamCaption}
 )}}\label{classAdm_1_1AdmUnit_1_1IfBusAdm_a31857b146085382c8d778ae90cd46c6f}
+Caso contrário, ele emite um erro de tipo, explicitando qual tipo do objeto que foi recebido. 
+
+Definição na linha \hyperlink{AdmUnit_8py_source_l00110}{110} do arquivo \hyperlink{AdmUnit_8py_source}{Adm\-Unit.\-py}.
 
 
-Definição na linha \hyperlink{AdmUnit_8py_source_l00059}{59} do arquivo \hyperlink{AdmUnit_8py_source}{Adm\-Unit.\-py}.
 
-
-
-Referências \hyperlink{AdmUnit_8py_source_l00061}{Adm.\-Adm\-Unit.\-If\-Bus\-Adm.\-\_\-\-\_\-pers} e \hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a95ea8f39fbbcddf44822e1614c712bfe}{Adm.\-Adm\-Unit.\-If\-Bus\-Adm.\-pers}.
+Referências \hyperlink{AdmUnit_8py_source_l00112}{Adm.\-Adm\-Unit.\-If\-Bus\-Adm.\-\_\-\-\_\-pers} e \hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a95ea8f39fbbcddf44822e1614c712bfe}{Adm.\-Adm\-Unit.\-If\-Bus\-Adm.\-pers}.
 
 
 \begin{DoxyCode}
-\hypertarget{classAdm_1_1AdmUnit_1_1IfBusAdm_l00059}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a31857b146085382c8d778ae90cd46c6f}{00059} 
-00060     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a95ea8f39fbbcddf44822e1614c712bfe}{pers}(self, value):
-00061         \textcolor{keywordflow}{if} isinstance(value, IfPersAdm):
-00062             self.\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a52e9179e1047122bc667c1afa377c82c}{\_\_pers} = value
-00063         \textcolor{keywordflow}{else}:
-00064             \textcolor{keywordflow}{raise} TypeError(\textcolor{stringliteral}{"Expected IfPersAdm instance at BusAdm.\_\_pers. Received "} + str(type(value)) + \textcolor{stringliteral}{
-      " instead."})
+\hypertarget{classAdm_1_1AdmUnit_1_1IfBusAdm_l00110}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a31857b146085382c8d778ae90cd46c6f}{00110} 
+00111     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a95ea8f39fbbcddf44822e1614c712bfe}{pers}(self, value):
+00112         \textcolor{keywordflow}{if} isinstance(value, IfPersAdm):
+00113             self.\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a52e9179e1047122bc667c1afa377c82c}{\_\_pers} = value
+00114         \textcolor{keywordflow}{else}:
+00115             \textcolor{keywordflow}{raise} TypeError(\textcolor{stringliteral}{"Expected IfPersAdm instance at \(\backslash\)}
+00116 \textcolor{stringliteral}{                BusAdm.\_\_pers. Received }\textcolor{stringliteral}{" + str(type(value)) + "} instead.\textcolor{stringliteral}{")}
 
 \end{DoxyCode}
 \hypertarget{classAdm_1_1AdmUnit_1_1IfBusAdm_a31857b146085382c8d778ae90cd46c6f}{\index{Adm\-::\-Adm\-Unit\-::\-If\-Bus\-Adm@{Adm\-::\-Adm\-Unit\-::\-If\-Bus\-Adm}!pers@{pers}}
@@ -122,17 +151,17 @@ Referências \hyperlink{AdmUnit_8py_source_l00061}{Adm.\-Adm\-Unit.\-If\-Bus\-Ad
 )}}\label{classAdm_1_1AdmUnit_1_1IfBusAdm_a31857b146085382c8d778ae90cd46c6f}
 
 
-Definição na linha \hyperlink{AdmUnit_8py_source_l00066}{66} do arquivo \hyperlink{AdmUnit_8py_source}{Adm\-Unit.\-py}.
+Definição na linha \hyperlink{AdmUnit_8py_source_l00119}{119} do arquivo \hyperlink{AdmUnit_8py_source}{Adm\-Unit.\-py}.
 
 
 
-Referências \hyperlink{AdmUnit_8py_source_l00061}{Adm.\-Adm\-Unit.\-If\-Bus\-Adm.\-\_\-\-\_\-pers} e \hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a95ea8f39fbbcddf44822e1614c712bfe}{Adm.\-Adm\-Unit.\-If\-Bus\-Adm.\-pers}.
+Referências \hyperlink{AdmUnit_8py_source_l00112}{Adm.\-Adm\-Unit.\-If\-Bus\-Adm.\-\_\-\-\_\-pers} e \hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a95ea8f39fbbcddf44822e1614c712bfe}{Adm.\-Adm\-Unit.\-If\-Bus\-Adm.\-pers}.
 
 
 \begin{DoxyCode}
-\hypertarget{classAdm_1_1AdmUnit_1_1IfBusAdm_l00066}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a31857b146085382c8d778ae90cd46c6f}{00066} 
-00067     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a95ea8f39fbbcddf44822e1614c712bfe}{pers}(self):
-00068         del self.\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a52e9179e1047122bc667c1afa377c82c}{\_\_pers}
+\hypertarget{classAdm_1_1AdmUnit_1_1IfBusAdm_l00119}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a31857b146085382c8d778ae90cd46c6f}{00119} 
+00120     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a95ea8f39fbbcddf44822e1614c712bfe}{pers}(self):
+00121         del self.\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a52e9179e1047122bc667c1afa377c82c}{\_\_pers}
 
 \end{DoxyCode}
 
@@ -143,7 +172,7 @@ Referências \hyperlink{AdmUnit_8py_source_l00061}{Adm.\-Adm\-Unit.\-If\-Bus\-Ad
 \paragraph[{pers}]{\setlength{\rightskip}{0pt plus 5cm}Adm.\-Adm\-Unit.\-If\-Bus\-Adm.\-pers}}\label{classAdm_1_1AdmUnit_1_1IfBusAdm_a95ea8f39fbbcddf44822e1614c712bfe}
 
 
-Definição na linha \hyperlink{AdmUnit_8py_source_l00049}{49} do arquivo \hyperlink{AdmUnit_8py_source}{Adm\-Unit.\-py}.
+Definição na linha \hyperlink{AdmUnit_8py_source_l00093}{93} do arquivo \hyperlink{AdmUnit_8py_source}{Adm\-Unit.\-py}.
 
 
 

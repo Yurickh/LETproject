@@ -2,23 +2,20 @@ var hierarchy =
 [
     [ "ELO.MainUnit.Factory", "d1/dc6/classELO_1_1MainUnit_1_1Factory.html", null ],
     [ "Form", null, [
-      [ "Adm.forms.AdmDelProfForm", "dd/d81/classAdm_1_1forms_1_1AdmDelProfForm.html", null ],
-      [ "Adm.forms.AdmDelStuForm", "db/db9/classAdm_1_1forms_1_1AdmDelStuForm.html", null ],
+      [ "Adm.forms.AdmDelCourForm", "da/d13/classAdm_1_1forms_1_1AdmDelCourForm.html", null ],
+      [ "Adm.forms.AdmDelStu_ProfForm", "d1/d26/classAdm_1_1forms_1_1AdmDelStu__ProfForm.html", null ],
       [ "Adm.forms.AdmRegCourForm", "df/d14/classAdm_1_1forms_1_1AdmRegCourForm.html", null ],
-      [ "Adm.forms.AdmRegProfForm", "d3/d88/classAdm_1_1forms_1_1AdmRegProfForm.html", null ],
-      [ "Adm.forms.AdmRegStuForm", "d0/d94/classAdm_1_1forms_1_1AdmRegStuForm.html", null ],
+      [ "Adm.forms.AdmRegStu_ProfForm", "d5/d88/classAdm_1_1forms_1_1AdmRegStu__ProfForm.html", null ],
+      [ "Adm.forms.AdmSrcCourForm", "de/d02/classAdm_1_1forms_1_1AdmSrcCourForm.html", null ],
+      [ "Adm.forms.confAdm", "d2/db2/classAdm_1_1forms_1_1confAdm.html", null ],
       [ "Login.forms.LoginForm", "d0/db9/classLogin_1_1forms_1_1LoginForm.html", null ],
       [ "Profile.forms.AvatarForm", "da/da4/classProfile_1_1forms_1_1AvatarForm.html", null ],
       [ "Profile.forms.BiosForm", "d7/d1e/classProfile_1_1forms_1_1BiosForm.html", null ],
       [ "Profile.forms.InterestsForm", "d4/d5e/classProfile_1_1forms_1_1InterestsForm.html", null ],
       [ "Profile.forms.LanguageForm", "de/d9b/classProfile_1_1forms_1_1LanguageForm.html", null ],
       [ "Profile.forms.NameForm", "d6/d33/classProfile_1_1forms_1_1NameForm.html", null ],
+      [ "Profile.forms.PasswordForm", "df/dbb/classProfile_1_1forms_1_1PasswordForm.html", null ],
       [ "Profile.forms.SexForm", "d1/dea/classProfile_1_1forms_1_1SexForm.html", null ]
-    ] ],
-    [ "form", null, [
-      [ "Adm.forms.AdmDelCourForm", "da/d13/classAdm_1_1forms_1_1AdmDelCourForm.html", null ],
-      [ "Adm.forms.AdmSrcProfForm", "d5/d6d/classAdm_1_1forms_1_1AdmSrcProfForm.html", null ],
-      [ "Adm.forms.AdmSrcStuForm", "d7/d61/classAdm_1_1forms_1_1AdmSrcStuForm.html", null ]
     ] ],
     [ "ELO.BaseUnit.IfBaseType", "d7/d79/classELO_1_1BaseUnit_1_1IfBaseType.html", [
       [ "ELO.BaseUnit.Campus", "d4/d76/classELO_1_1BaseUnit_1_1Campus.html", null ],

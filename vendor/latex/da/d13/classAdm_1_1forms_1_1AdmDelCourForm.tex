@@ -7,12 +7,56 @@ Diagrama de Hierarquia para Adm.\-forms.\-Adm\-Del\-Cour\-Form\-:\begin{figure}[
 \includegraphics[height=2.000000cm]{da/d13/classAdm_1_1forms_1_1AdmDelCourForm}
 \end{center}
 \end{figure}
+\subsubsection*{Métodos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classAdm_1_1forms_1_1AdmDelCourForm_aea58507d923f08b75d0c2f5898c162f7}{clean\-\_\-cour\-Matric}
+\end{DoxyCompactItemize}
+\subsubsection*{Atributos Estáticos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+tuple \hyperlink{classAdm_1_1forms_1_1AdmDelCourForm_a8ed2bcde12e5bb321960517b3c653b2f}{cour\-Matric} = forms.\-Integer\-Field(label = \char`\"{}Código da Disciplina\char`\"{}, required =\char`\"{}True\char`\"{})
+\end{DoxyCompactItemize}
 
 
 \subsubsection{Descrição Detalhada}
 
 
-Definição na linha \hyperlink{Adm_2forms_8py_source_l00207}{207} do arquivo \hyperlink{Adm_2forms_8py_source}{forms.\-py}.
+Definição na linha \hyperlink{Adm_2forms_8py_source_l00140}{140} do arquivo \hyperlink{Adm_2forms_8py_source}{forms.\-py}.
+
+
+
+\subsubsection{Métodos}
+\hypertarget{classAdm_1_1forms_1_1AdmDelCourForm_aea58507d923f08b75d0c2f5898c162f7}{\index{Adm\-::forms\-::\-Adm\-Del\-Cour\-Form@{Adm\-::forms\-::\-Adm\-Del\-Cour\-Form}!clean\-\_\-cour\-Matric@{clean\-\_\-cour\-Matric}}
+\index{clean\-\_\-cour\-Matric@{clean\-\_\-cour\-Matric}!Adm::forms::AdmDelCourForm@{Adm\-::forms\-::\-Adm\-Del\-Cour\-Form}}
+\paragraph[{clean\-\_\-cour\-Matric}]{\setlength{\rightskip}{0pt plus 5cm}def Adm.\-forms.\-Adm\-Del\-Cour\-Form.\-clean\-\_\-cour\-Matric (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{classAdm_1_1forms_1_1AdmDelCourForm_aea58507d923f08b75d0c2f5898c162f7}
+
+
+Definição na linha \hyperlink{Adm_2forms_8py_source_l00143}{143} do arquivo \hyperlink{Adm_2forms_8py_source}{forms.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classAdm_1_1forms_1_1AdmDelCourForm_l00143}{}\hyperlink{classAdm_1_1forms_1_1AdmDelCourForm_aea58507d923f08b75d0c2f5898c162f7}{00143} 
+00144     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmDelCourForm_aea58507d923f08b75d0c2f5898c162f7}{clean\_courMatric}(self):
+00145         \textcolor{keywordflow}{try}:
+00146             courMatric = Matric(self.cleaned\_data[\textcolor{stringliteral}{"courMatric"}])
+00147         \textcolor{keywordflow}{except} ValueError:
+00148             \textcolor{keywordflow}{raise} forms.ValidationError(\textcolor{stringliteral}{"Código Inválido"})
+        \textcolor{keywordflow}{return} courMatric\textcolor{comment}{#.}
+\end{DoxyCode}
+
+
+\subsubsection{Atributos}
+\hypertarget{classAdm_1_1forms_1_1AdmDelCourForm_a8ed2bcde12e5bb321960517b3c653b2f}{\index{Adm\-::forms\-::\-Adm\-Del\-Cour\-Form@{Adm\-::forms\-::\-Adm\-Del\-Cour\-Form}!cour\-Matric@{cour\-Matric}}
+\index{cour\-Matric@{cour\-Matric}!Adm::forms::AdmDelCourForm@{Adm\-::forms\-::\-Adm\-Del\-Cour\-Form}}
+\paragraph[{cour\-Matric}]{\setlength{\rightskip}{0pt plus 5cm}tuple Adm.\-forms.\-Adm\-Del\-Cour\-Form.\-cour\-Matric = forms.\-Integer\-Field(label = \char`\"{}Código da Disciplina\char`\"{}, required =\char`\"{}True\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}}\label{classAdm_1_1forms_1_1AdmDelCourForm_a8ed2bcde12e5bb321960517b3c653b2f}
+
+
+Definição na linha \hyperlink{Adm_2forms_8py_source_l00141}{141} do arquivo \hyperlink{Adm_2forms_8py_source}{forms.\-py}.
 
 
 

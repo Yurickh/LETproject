@@ -1,0 +1,44 @@
+/** Arquivo folha de estilos de css para o Modulo de Adm. **/
+
+/* Home Adm */
+
+#container 
+{
+    width:1280px;
+    text-align:center;
+}
+
+#left
+{
+    float:left;
+    width:100px;
+}
+
+#center 
+{
+    display: inline-block;
+    margin:0 auto;
+    width:100px;
+}
+
+#right 
+{
+    float:right;
+    width:100px;
+}
+
+.button
+{
+	 width: 200px;  
+     height: 40px;  
+}
+
+.p-left
+{
+	padding-left: 200px;
+}
+
+.p-right
+{
+	padding-right: 300px;
+}

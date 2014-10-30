@@ -3,7 +3,7 @@
 }
 
 
-Arquivo responsável pelo redirecionamento e navegação entre as páginas do site.  
+Arquivo responsável pelo processo de reconhecimento da U\-R\-L requisitada e correspondente chamada da função da Factory (ver \hyperlink{MainUnit_8py}{Main\-Unit.\-py}).  
 
 
 \subsubsection*{Namespaces}
@@ -18,3 +18,18 @@ tuple \hyperlink{namespaceELO_1_1urls_a85325dfebd736ced5558533f2c4bc29a}{E\-L\-O
 \item 
 tuple \hyperlink{namespaceELO_1_1urls_a3451f093ed6ab05c006fd0d1cdba836d}{E\-L\-O.\-urls.\-urlpatterns}
 \end{DoxyCompactItemize}
+
+
+\subsubsection{Descrição Detalhada}
+Cada pattern dentro do urlpatterns deve ter o formato\-: \begin{DoxyVerb}url(r'REGEX', VIEW),
+\end{DoxyVerb}
+
+
+onde R\-E\-G\-E\-X é a expressão regular que será utilizada para identificar a U\-R\-L, e V\-I\-E\-W o método correspondente que será chamado para processar a requisição.
+
+É importante ressaltar que o método view deverá retornar obrigatoriamente um objeto do tipo Http\-Response.
+
+Dentro do projeto, todas as views são chamadas de dentro da Factory. Para mais informações, leia a documentação do \hyperlink{MainUnit_8py}{Main\-Unit.\-py}. 
+
+Definição no arquivo \hyperlink{urls_8py_source}{urls.\-py}.
+

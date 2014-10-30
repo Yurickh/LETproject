@@ -3,7 +3,7 @@
 }
 
 
-Interface para qualquer tipo básico (Base Type) pertencente ao projeto.  
+Interface para todos os tipos básicos.  
 
 
 Diagrama de Hierarquia para E\-L\-O.\-Base\-Unit.\-If\-Base\-Type\-:\begin{figure}[H]
@@ -26,9 +26,11 @@ def \hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a69c338f6f1574bd3524e9d59ebc17
 
 
 \subsubsection{Descrição Detalhada}
-Sua descrição implica que todos os tipos básicos devem ter um método \-\_\-validate(self, value). 
+Classe abstrata que contém os métodos get, set e del de todos os tipos básicos. Estes métodos são chamados implicitamente através dos processos de requisição de valor, atribuição de valor, e deleção do objeto, respectivamente.
 
-Definição na linha \hyperlink{BaseUnit_8py_source_l00017}{17} do arquivo \hyperlink{BaseUnit_8py_source}{Base\-Unit.\-py}.
+Possui um único método abstrato, o validador do tipo básico, que varia de tipo para tipo, e deve ser obrigatoriamente implementado, sob a pena do tipo básico não poder ser instanciado. 
+
+Definição na linha \hyperlink{BaseUnit_8py_source_l00027}{27} do arquivo \hyperlink{BaseUnit_8py_source}{Base\-Unit.\-py}.
 
 
 
@@ -48,22 +50,22 @@ Retornos predefinidos do próprio python.
 \end{DoxyReturn}
 
 
-Definição na linha \hyperlink{BaseUnit_8py_source_l00051}{51} do arquivo \hyperlink{BaseUnit_8py_source}{Base\-Unit.\-py}.
+Definição na linha \hyperlink{BaseUnit_8py_source_l00065}{65} do arquivo \hyperlink{BaseUnit_8py_source}{Base\-Unit.\-py}.
 
 
 
-Referências \hyperlink{classELO_1_1models_1_1Student_a201226779dce6e064cb16bd92ed016e2}{E\-L\-O.\-models.\-Student.\-value}, \hyperlink{classELO_1_1models_1_1Adm_a98f249c493fbcbcd347297437a098212}{E\-L\-O.\-models.\-Adm.\-value}, \hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{E\-L\-O.\-Base\-Unit.\-If\-Base\-Type.\-value()} e \hyperlink{classELO_1_1models_1_1Professor_abfa283169333876d02cf63886ca872e6}{E\-L\-O.\-models.\-Professor.\-value}.
+Referências \hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{E\-L\-O.\-Base\-Unit.\-If\-Base\-Type.\-value()}, \hyperlink{classELO_1_1models_1_1Student_a201226779dce6e064cb16bd92ed016e2}{E\-L\-O.\-models.\-Student.\-value}, \hyperlink{classELO_1_1models_1_1Adm_a98f249c493fbcbcd347297437a098212}{E\-L\-O.\-models.\-Adm.\-value} e \hyperlink{classELO_1_1models_1_1Professor_abfa283169333876d02cf63886ca872e6}{E\-L\-O.\-models.\-Professor.\-value}.
 
 
 \begin{DoxyCode}
-\hypertarget{classELO_1_1BaseUnit_1_1IfBaseType_l00051}{}\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a69c338f6f1574bd3524e9d59ebc17a7c}{00051} 
-00052     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a69c338f6f1574bd3524e9d59ebc17a7c}{\_\_cmp\_\_}(self, other):
-00053         \textcolor{keywordflow}{if} other.value == self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{value}:
-00054             \textcolor{keywordflow}{return} 0
-00055         \textcolor{keywordflow}{elif} other.value > self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{value}:
-00056             \textcolor{keywordflow}{return} 1
-00057         \textcolor{keywordflow}{else}:
-00058             \textcolor{keywordflow}{return} -1
+\hypertarget{classELO_1_1BaseUnit_1_1IfBaseType_l00065}{}\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a69c338f6f1574bd3524e9d59ebc17a7c}{00065} 
+00066     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a69c338f6f1574bd3524e9d59ebc17a7c}{\_\_cmp\_\_}(self, other):
+00067         \textcolor{keywordflow}{if} other.value == self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{value}:
+00068             \textcolor{keywordflow}{return} 0
+00069         \textcolor{keywordflow}{elif} other.value > self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{value}:
+00070             \textcolor{keywordflow}{return} 1
+00071         \textcolor{keywordflow}{else}:
+00072             \textcolor{keywordflow}{return} -1
 
 \end{DoxyCode}
 \hypertarget{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{\index{E\-L\-O\-::\-Base\-Unit\-::\-If\-Base\-Type@{E\-L\-O\-::\-Base\-Unit\-::\-If\-Base\-Type}!value@{value}}
@@ -73,13 +75,13 @@ Referências \hyperlink{classELO_1_1models_1_1Student_a201226779dce6e064cb16bd92
 \item[{}]{self}
 \end{DoxyParamCaption}
 )}}\label{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}
+Método G\-E\-T. 
+
+Definição na linha \hyperlink{BaseUnit_8py_source_l00038}{38} do arquivo \hyperlink{BaseUnit_8py_source}{Base\-Unit.\-py}.
 
 
-Definição na linha \hyperlink{BaseUnit_8py_source_l00027}{27} do arquivo \hyperlink{BaseUnit_8py_source}{Base\-Unit.\-py}.
 
-
-
-Referências \hyperlink{BaseUnit_8py_source_l00035}{E\-L\-O.\-Base\-Unit.\-If\-Base\-Type.\-\_\-value}.
+Referências \hyperlink{BaseUnit_8py_source_l00048}{E\-L\-O.\-Base\-Unit.\-If\-Base\-Type.\-\_\-value}.
 
 
 
@@ -87,9 +89,9 @@ Referenciado por \hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a69c338f6f1574bd3
 
 
 \begin{DoxyCode}
-\hypertarget{classELO_1_1BaseUnit_1_1IfBaseType_l00027}{}\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{00027} 
-00028     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{value}(self):
-00029         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value}
+\hypertarget{classELO_1_1BaseUnit_1_1IfBaseType_l00038}{}\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{00038} 
+00039     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{value}(self):
+00040         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value}
 
 \end{DoxyCode}
 \hypertarget{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{\index{E\-L\-O\-::\-Base\-Unit\-::\-If\-Base\-Type@{E\-L\-O\-::\-Base\-Unit\-::\-If\-Base\-Type}!value@{value}}
@@ -100,22 +102,24 @@ Referenciado por \hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a69c338f6f1574bd3
 \item[{}]{aux}
 \end{DoxyParamCaption}
 )}}\label{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}
+Método S\-E\-T.
+
 \begin{DoxyItemize}
 \item aux Recebe o valor que será validado. \end{DoxyItemize}
 
 
-Definição na linha \hyperlink{BaseUnit_8py_source_l00033}{33} do arquivo \hyperlink{BaseUnit_8py_source}{Base\-Unit.\-py}.
+Definição na linha \hyperlink{BaseUnit_8py_source_l00046}{46} do arquivo \hyperlink{BaseUnit_8py_source}{Base\-Unit.\-py}.
 
 
 
-Referências \hyperlink{BaseUnit_8py_source_l00044}{E\-L\-O.\-Base\-Unit.\-If\-Base\-Type.\-\_\-validate()}, \hyperlink{BaseUnit_8py_source_l00035}{E\-L\-O.\-Base\-Unit.\-If\-Base\-Type.\-\_\-value} e \hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{E\-L\-O.\-Base\-Unit.\-If\-Base\-Type.\-value()}.
+Referências \hyperlink{BaseUnit_8py_source_l00058}{E\-L\-O.\-Base\-Unit.\-If\-Base\-Type.\-\_\-validate()}, \hyperlink{BaseUnit_8py_source_l00048}{E\-L\-O.\-Base\-Unit.\-If\-Base\-Type.\-\_\-value} e \hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{E\-L\-O.\-Base\-Unit.\-If\-Base\-Type.\-value()}.
 
 
 \begin{DoxyCode}
-\hypertarget{classELO_1_1BaseUnit_1_1IfBaseType_l00033}{}\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{00033} 
-00034     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{value}(self, aux):
-00035         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(aux)
-00036         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value} = aux
+\hypertarget{classELO_1_1BaseUnit_1_1IfBaseType_l00046}{}\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{00046} 
+00047     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{value}(self, aux):
+00048         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(aux)
+00049         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value} = aux
 
 \end{DoxyCode}
 \hypertarget{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{\index{E\-L\-O\-::\-Base\-Unit\-::\-If\-Base\-Type@{E\-L\-O\-::\-Base\-Unit\-::\-If\-Base\-Type}!value@{value}}
@@ -125,19 +129,19 @@ Referências \hyperlink{BaseUnit_8py_source_l00044}{E\-L\-O.\-Base\-Unit.\-If\-B
 \item[{}]{self}
 \end{DoxyParamCaption}
 )}}\label{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}
+Método D\-E\-L. 
+
+Definição na linha \hyperlink{BaseUnit_8py_source_l00053}{53} do arquivo \hyperlink{BaseUnit_8py_source}{Base\-Unit.\-py}.
 
 
-Definição na linha \hyperlink{BaseUnit_8py_source_l00039}{39} do arquivo \hyperlink{BaseUnit_8py_source}{Base\-Unit.\-py}.
 
-
-
-Referências \hyperlink{BaseUnit_8py_source_l00035}{E\-L\-O.\-Base\-Unit.\-If\-Base\-Type.\-\_\-value} e \hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{E\-L\-O.\-Base\-Unit.\-If\-Base\-Type.\-value()}.
+Referências \hyperlink{BaseUnit_8py_source_l00048}{E\-L\-O.\-Base\-Unit.\-If\-Base\-Type.\-\_\-value} e \hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{E\-L\-O.\-Base\-Unit.\-If\-Base\-Type.\-value()}.
 
 
 \begin{DoxyCode}
-\hypertarget{classELO_1_1BaseUnit_1_1IfBaseType_l00039}{}\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{00039} 
-00040     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{value}(self):
-00041         del self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value}
+\hypertarget{classELO_1_1BaseUnit_1_1IfBaseType_l00053}{}\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{00053} 
+00054     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{value}(self):
+00055         del self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value}
 
 \end{DoxyCode}
 
