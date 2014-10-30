@@ -2,7 +2,7 @@
 
 from abc import*
 
-import ELO.locale.index as lang
+import ELO.index as lang
 
 from django.shortcuts import render
 from django.core.exceptions import PermissionDenied
