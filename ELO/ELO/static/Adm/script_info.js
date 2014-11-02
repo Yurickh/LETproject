@@ -8,7 +8,7 @@ $(document).ready(function(){
 		// Gets the title of the dialog from the title of button.
 		$(".dialog").dialog("option", "title", fname);
 
-		$(".dialog").load("/assync/edit-field/"+field+"/", function(){
+		$(".dialog").load("/assync/edit-field-adm/"+field+"/", function(){
 			$(".dialog").dialog("open");
 		});
 	});

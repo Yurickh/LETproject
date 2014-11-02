@@ -7,7 +7,8 @@
 
 from django import forms
 
-import ELO.locale.index as lang
+import ELO.index as lang
+
 from ELO.BaseUnit import(
 	Name,
 	Sex,

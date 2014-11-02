@@ -225,8 +225,12 @@ DICT = {
 	'REGISTER_COURSE' : _(u'Registrar Novo Curso'),
 	'SUBMIT_COURSE' : _(u'Atualizar dados de Curso'),
 	'DEL_COURSE' : _(u'Apagar Registro de Curso'),
+<<<<<<< HEAD:ELO/ELO/locale/index.py
 	'ADD_STUDENTS_COURSE' : _(u'Adicionar alunos ao Curso'),
 	'ADD_MODULES_COURSE' : _(u'Adicionar Módulos ao Curso'),
+=======
+	'INSERT_COURSE' : _(u'Editar alunos e professores inscritos no Curso'),
+>>>>>>> e1379e7e0573ad46d5c407ea3a200a47d7ea23b0:ELO/ELO/index.py
 	
 	'REGISTER_PROFESSOR' : _(u'Registrar Novo Professor'),
 	'SUBMIT_PROFESSOR' : _(u'Atualizar dados de Professor'),

@@ -1,4 +1,4 @@
-#coding: utf-8
+    #coding: utf-8
 
 ## TODO:
 #   Passar para inglês os termos internos ao sistema que estão em português. 
@@ -18,7 +18,7 @@
 
 from abc import *
 
-import ELO.locale.index as lang
+import ELO.index as lang
 
 from ELO.models import Adm, Student, Professor, Courses, God
 
@@ -177,6 +177,16 @@ class IfPersAdm:
     @abstractmethod
     def data_in(self, dict_field_value, database): pass
 
+    ## Insere Estudantes ou Professores em algum Curso.
+    #
+    #   @arg    course_id   Matrícula do Curso que irá receber as inserções.
+    #
+    #   @arg    user_id     Matrícula do Usuário que será inserido.
+    #
+    #   @arg    model       Modelo do usuário que será inserido no Curso.
+    @abstractmethod
+    def insert_User(self, course_id, user_id, model): pass
+
     ## Método que atualiza os dados de uma conta fornecida.
     #   No caso de campos multivalorados, adiciona uma nova entrada.
     #   Caso contrário, substitui a entrada anterior.
@@ -213,7 +223,7 @@ class IfPersAdm:
     #
     #   @return fetchset    Lista com tuplas dos campos e valores do curso.
     @abstractmethod
-    def fetchSP(self, username, database): pass
+    def fetchUser(self, username, database): pass
 
     ##  Função que recupera todos os dados de um curso pesquisado.
     #
@@ -367,7 +377,10 @@ class UiAdm(IfUiAdm):
                 #
                 #   Caso contrário, é passado para a página renderizada erro
                 #   de formulário.
-                if action == "reg":
+                if action == "insert":
+                    return render(request, "Adm/edit_course.html", 
+                                    {'action' : action,'model' : model, })
+                elif action == "reg":
                     if model == "Student" or model == "Professor":
                         form = RegUserForm()
                     elif model == "Course":
@@ -393,12 +406,16 @@ class UiAdm(IfUiAdm):
 class BusAdm(IfBusAdm): 
 
     def regAccount(self, request, form):
-        # Inicia o dicionário dict_data. Será utilizado para informar os 
-        # campos e dados para registro do usuário.
+        # Inicia o dicionário dict_data. 
+        #   Será utilizado para informar os campos e dados para registro
+        #   do usuário.
         dict_data = {}
+        # Possíveis campos valorados dos modelos de contas.
         database_fields = ['NAME', 'SEX', 'PASSWORD', 'MATRIC', 
                            'CAMPUS','EMAIL', 'PROFESSOR']
-        print request.POST
+        ## Percorre a requisição procurando os dados inseridos para registro.
+        #   Se algum valor do campo não for válido então irá emitir erro de
+        #   formulário inválido.
         try:
             for field, value in request.POST.items():
                 # Transforma campo unicode em string.
@@ -416,7 +433,11 @@ class BusAdm(IfBusAdm):
                 if newField in database_fields:
                     dict_data[newField] = form.cleaned_data[
                                                 field].value
-
+            ## Verifica qual e o tipo do modelo requisitado para inserção 
+            #   de nova conta.
+            #    
+            #   Caso a requisição venha com outro modelo não especificado nos
+            #   condicionais então é emitido erro.
             try:
                 db = None
 
@@ -434,13 +455,19 @@ class BusAdm(IfBusAdm):
             except ValueError as exc:
                 raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
 
+            ## @if Verifica se a requisição pede outro modelo diferente de 
+            #       Curso.
+            #       
+            #   Caso não for do modelo de Curso então é adionado a linguagem
+            #   com valor default de Português.
             if model != "Course":
                 # Escolhe uma linguagem padrão para cadastro do usuário 
                 # recente.
                 dict_data['LANGUAGE'] = 'pt-br'
 
-            # Se for uma entidade estudante então é feito o pedido de inserção 
-            # no banco de dados com o determinado modelo.
+            # É passado o dicionário de campos e valores do novo registro, e
+            # o modelo de conta requisitado para criação destas informações 
+            # no banco de dados (Persistência).
             self.pers.data_in(dict_data, db)
 
         except ValueError as exc:
@@ -546,8 +573,8 @@ class PersAdm(IfPersAdm):
 
     def data_in(self, dict_field_value, database):
         # Tenta coletar o último id inserido.
-        # Caso não tenha ocorrido nenhum registro de contas então
-        # é atribuído o valor inicial como '1'
+        #   Caso não tenha ocorrido nenhum registro de contas então
+        #   é atribuído o valor inicial como '1'
         try:
             # Coleta o ultimo ID inserido no identity do database.
             lastid = database.objects.order_by('-identity')[0]
@@ -564,10 +591,39 @@ class PersAdm(IfPersAdm):
             # Salva os novos dados no database.
             data.save()
 
+    def insert_User(self, course_id , user_id, model):
+        ##  Tenta coletar a identidade do Curso pela matrícula.
+        #
+        # Caso não exista ou seja encontrado valores múltiplos, 
+        #   é emitido erro.
+        try:
+            # Filtra o database pela matrícula do Curso.
+            uid = Courses.objects.get(field='MATRIC',value=course_id)
+            # Coleta a ID do Curso encontrado.
+            uid = uid.identity
+
+            try:
+                # Coleta a partir do ID do curso a lista de Estudantes ou 
+                # Professores existentes no Curso.
+                data = Courses.objects.get(identity=uid, field=model.upper())
+                new_data = eval(data)
+                new_data.value.append(user_id)
+
+            except ( Courses.MultipleObjectsReturned ) as exc:
+                raise ValueError(exc)
+
+            new_data.save()
+
+        except ( Courses.MultipleObjectsReturned ) as exc:
+            raise ValueError(exc)
+
+
+
     def update(self, username, field, newdata, database): 
         ##  Tenta coletar a identidade da conta pelo nome determinado a ela.
         #
-        # Caso não exista ou seja encontrado valores múltiplos , é emitido um erro.
+        # Caso não exista ou seja encontrado valores múltiplos , é
+        #   emitido erro.
         try:
             # Filtra o database pelo nome do usuario.
             uid = database.objects.get(field='NAME', value=username)
@@ -575,7 +631,7 @@ class PersAdm(IfPersAdm):
             uid = uid.identity
                 
             try:
-                # Coleta a partir do ID do usuário o valor do campo
+                # Coleta a partir do ID do curso a lista do campo
                 # que deseja atualizar.
                 data = database.objects.get(identity=uid, field=field.upper())
                 # Nova informação é colocada no tipo que deseja atualizar.
@@ -650,7 +706,7 @@ class PersAdm(IfPersAdm):
 
         return ret
 
-    def fetchSP(self, username, database):
+    def fetchUser(self, username, database):
 
         try:
             uid = database.objects.get(field='NAME',value=username)
