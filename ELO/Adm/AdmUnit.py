@@ -16,16 +16,12 @@
 #   no banco de dados, criar cursos e ver um log sobre os últimos eventos no
 #   sistema.
 
-# Biblioteca para Classes Abstratas.
 from abc import *
 
-# Biblioteca de Tradução.
 import ELO.locale.index as lang
 
-# Biblioteca de Modelos.
-from ELO.models import Adm, Student, Professor, Courses
+from ELO.models import Adm, Student, Professor, Courses, God
 
-# Biblioteca de Formulários.
 from forms import (
     RegUserForm,
     SrcUserForm,
@@ -41,8 +37,6 @@ from Profile.forms import (
     BiosForm,
     InterestsForm,
     AvatarForm)
-
-# Bibliotecas para funções básicas relativas ao Framework de Python, Django.
 
 from django.shortcuts import render
 from django.conf import settings
@@ -217,7 +211,7 @@ class IfPersAdm:
     #   @arg    database    Objeto modelo sobre o qual a consulta será
     #                       realizada.
     #
-    #   @return fetchset    Dicionário com campos e valores do usuário.
+    #   @return fetchset    Lista com tuplas dos campos e valores do curso.
     @abstractmethod
     def fetchSP(self, username, database): pass
 
@@ -228,7 +222,7 @@ class IfPersAdm:
     #   @arg    database    Objeto modelo sobre o qual a consulta será
     #                       realizada.
     #
-    #   @return fetchset    Dicionário com campos e valores do curso.
+    #   @return fetchset    Lista com tuplas dos campos e valores do curso.
     @abstractmethod
     def fetchCour(self, courMatric, database): pass
 
@@ -546,7 +540,7 @@ class BusAdm(IfBusAdm):
             return user['avatar']
         else:
             return newdata
-
+            ## 
 
 class PersAdm(IfPersAdm):
 
@@ -571,8 +565,9 @@ class PersAdm(IfPersAdm):
             data.save()
 
     def update(self, username, field, newdata, database): 
-        # Tenta procurar se o username existe no banco de dados.
-        # Caso não exista, é emitido um erro.
+        ##  Tenta coletar a identidade da conta pelo nome determinado a ela.
+        #
+        # Caso não exista ou seja encontrado valores múltiplos , é emitido um erro.
         try:
             # Filtra o database pelo nome do usuario.
             uid = database.objects.get(field='NAME', value=username)
@@ -623,8 +618,24 @@ class PersAdm(IfPersAdm):
                 database.MultipleObjectsReturned ) as exc:
             raise ValueError(exc)
 
+    ## Seleciona campo a partir da identidade do usuário.
+    #   Podendo ser estes de uma conta de Estudante, Professor ou um Curso.  
+    #
+    #   @arg    uid         Identidade de uma conta.
+    #
+    #   @arg    field       Objeto modelo sobre o qual a consulta será
+    #                       realizada. 
+    #
+    #   @arg    database    Modelo de uma conta.   
+    #
+    #   @return ret         Valor do campo de alguma conta.
     def __select_field(self, uid, field, database):
-
+        ##  Tenta coletar o valor de algum campo pelo user id.
+        #
+        # Caso seja encontrado valores múltiplos é mostrado na tela
+        #   os valores encontrados.
+        # Caso algum dado nao exista no banco de dados 
+        #   entao a variável de retorno recebe um valor nulo.
         try:
             ret = database.objects.get(identity=uid, field=field)
             ret = ret.value
@@ -671,17 +682,22 @@ class PersAdm(IfPersAdm):
         return fetchset
 
     def fetchCour(self, courMatric, database):
-
+        ## Tenta coletar a identidade do curso pela matrícula.
+        #
+        #   Caso curso não exista então lista de retorno é retornada sem
+        #		nenhum valor.
         try:
             uid = database.objects.get(field='MATRIC',value=courMatric)
             uid = uid.identity
 
             sf = lambda x: self.__select_field(uid, x, database)
 
+            # Coleta os valores dos campos de Professor responsável pelo curso
+            # e o nome determinado à ele.
             fetchset = [
-                    ('professor',   sf('PROFESSOR')),
-                    ('name',        sf('NAME')),
-            ]
+                ('professor',   sf('PROFESSOR')),
+                ('name',        sf('NAME')),
+        	]
 
         except database.DoesNotExist as exc:
             fetchset = []

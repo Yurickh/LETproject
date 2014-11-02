@@ -225,6 +225,8 @@ DICT = {
 	'REGISTER_COURSE' : _(u'Registrar Novo Curso'),
 	'SUBMIT_COURSE' : _(u'Atualizar dados de Curso'),
 	'DEL_COURSE' : _(u'Apagar Registro de Curso'),
+	'ADD_STUDENTS_COURSE' : _(u'Adicionar alunos ao Curso'),
+	'ADD_MODULES_COURSE' : _(u'Adicionar Módulos ao Curso'),
 	
 	'REGISTER_PROFESSOR' : _(u'Registrar Novo Professor'),
 	'SUBMIT_PROFESSOR' : _(u'Atualizar dados de Professor'),
