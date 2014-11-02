@@ -31,22 +31,24 @@ Definição na linha \hyperlink{urls_8py_source_l00028}{28} do arquivo \hyperlin
 00006     \textcolor{comment}{## URL para o login do administrador.}
 00007     url(\textcolor{stringliteral}{r'^364fd8cdc3a35a89b7be75bc9d10ebea/?$'}, 
 00008         factory.runHome, \{\textcolor{stringliteral}{'entity'}: \textcolor{stringliteral}{'Adm'}\}),
-00009     \textcolor{comment}{## URL da pagina de perfil.}
-00010     url(\textcolor{stringliteral}{r'^profile/?$'}, factory.runProfile, \{\textcolor{stringliteral}{'acctype'}: \textcolor{stringliteral}{'Full'}\}),
-00011     \textcolor{comment}{## URL para mostrar assincronamente a edição de um campo de perfil.}
-00012     url(\textcolor{stringliteral}{r'^assync/editfield/(?P<field>\(\backslash\)w\{3,9\})/?$'}, 
-00013         factory.runProfile, \{\textcolor{stringliteral}{'acctype'} : \textcolor{stringliteral}{'Full'}\}),
-00014     \textcolor{comment}{## URL da pagina de logout.}
-00015     url(\textcolor{stringliteral}{r'^logout/?$'}, factory.runLogout),
-00016     \textcolor{comment}{## URL da pagina de cursos.}
-00017     url(\textcolor{stringliteral}{r'^course/?$'}, factory.runCourse),
-00018     \textcolor{comment}{## URL da pagina de administracao.}
-00019     url(\textcolor{stringliteral}{r'^adm/?$'}, factory.runAdm),
-00020     url(\textcolor{stringliteral}{r'^assync/adm-edit/(?P<action>\(\backslash\)w\{3,9\})/(?P<model>\(\backslash\)w\{3,9\})/?$'}, 
-00021         factory.runAdm),
-00022     url(\textcolor{stringliteral}{r'^assync/adm-info/?$'}, factory.runAdm),
-00023     url(\textcolor{stringliteral}{r'^assync/edit-field/(?P<field>\(\backslash\)w\{3,9\})/?$'}, factory.runAdm),
-00024 )
+00009     url(\textcolor{stringliteral}{r'^e50b058759a52eda8a507687887186e5/?$'},
+00010         factory.runHome, \{\textcolor{stringliteral}{'entity'}: \textcolor{stringliteral}{'God'}\}),
+00011     \textcolor{comment}{## URL da pagina de perfil.}
+00012     url(\textcolor{stringliteral}{r'^profile/?$'}, factory.runProfile, \{\textcolor{stringliteral}{'acctype'}: \textcolor{stringliteral}{'Full'}\}),
+00013     \textcolor{comment}{## URL para mostrar assincronamente a edição de um campo de perfil.}
+00014     url(\textcolor{stringliteral}{r'^assync/editfield/(?P<field>\(\backslash\)w\{3,9\})/?$'}, 
+00015         factory.runProfile, \{\textcolor{stringliteral}{'acctype'} : \textcolor{stringliteral}{'Full'}\}),
+00016     \textcolor{comment}{## URL da pagina de logout.}
+00017     url(\textcolor{stringliteral}{r'^logout/?$'}, factory.runLogout),
+00018     \textcolor{comment}{## URL da pagina de cursos.}
+00019     url(\textcolor{stringliteral}{r'^course/(?P<courseid>\(\backslash\)d+)/?$'}, factory.runCourse),
+00020     \textcolor{comment}{## URL da pagina de administracao.}
+00021     url(\textcolor{stringliteral}{r'^adm/?$'}, factory.runAdm),
+00022     url(\textcolor{stringliteral}{r'^assync/adm-edit/(?P<action>\(\backslash\)w\{3,9\})/(?P<model>\(\backslash\)w\{3,9\})/?$'}, 
+00023         factory.runAdm),
+00024     url(\textcolor{stringliteral}{r'^assync/adm-info/?$'}, factory.runAdm),
+00025     url(\textcolor{stringliteral}{r'^assync/edit-field/(?P<field>\(\backslash\)w\{3,9\})/?$'}, factory.runAdm),
+00026 )
 \end{DoxyCode}
 
 

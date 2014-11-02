@@ -153,77 +153,99 @@
 00148                     target = \textcolor{stringliteral}{"proflogin"}
 00149                 \textcolor{keywordflow}{elif} database.\_\_name\_\_ == \textcolor{stringliteral}{"Adm"}:
 00150                     target = \textcolor{stringliteral}{"364fd8cdc3a35a89b7be75bc9d10ebea"}
-00151                 \textcolor{keywordflow}{else}:
-00152                     target = \textcolor{stringliteral}{""}
-00153 
-00154                 \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Login/form.html"}, \{\textcolor{stringliteral}{'form'}: login\_form, 
-00155                     \textcolor{stringliteral}{'error'}: exc, \textcolor{stringliteral}{'target'}: target\})
-00156             \textcolor{keywordflow}{else}:
-00157                 l = \textcolor{keywordtype}{None}
-00158                 cd = login\_form.cleaned\_data
-00159                 \textcolor{keywordflow}{if} database.\_\_name\_\_ != \textcolor{stringliteral}{"Adm"}:
-00160                     l = self.bus.getLang(cd[\textcolor{stringliteral}{'username'}], database)
-00161                 \textcolor{keywordflow}{else}:
-00162                     l = request.LANGUAGE\_CODE
-00163                 request.session[\textcolor{stringliteral}{'user'}] = \{
-00164                                 \textcolor{stringliteral}{'name'}: cd[\textcolor{stringliteral}{'username'}].value,
-00165                                 \textcolor{stringliteral}{'password'}: cd[\textcolor{stringliteral}{'password'}].value,
-00166                                 \textcolor{stringliteral}{'language'}: l ,
-00167                                 \textcolor{stringliteral}{'type'}: database.\_\_name\_\_,
-00168                             \}
-00169                 \textcolor{keywordflow}{print} l
-00170                 translation.activate(l)
-00171                 request.session[translation.LANGUAGE\_SESSION\_KEY] = l
-00172                 \textcolor{keywordflow}{return} HttpResponseRedirect(\textcolor{stringliteral}{'/'})
-00173         \textcolor{keywordflow}{else}:
-00174             login\_form = \hyperlink{classLogin_1_1forms_1_1LoginForm}{LoginForm}()
-00175 
-00176             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} database:
-00177                 target = \textcolor{stringliteral}{""}
-00178             \textcolor{keywordflow}{if} database.\_\_name\_\_ == \textcolor{stringliteral}{"Professor"}:
-00179                 target = \textcolor{stringliteral}{"proflogin"}
-00180             \textcolor{keywordflow}{elif} database.\_\_name\_\_ == \textcolor{stringliteral}{"Adm"}:
-00181                 target = \textcolor{stringliteral}{"364fd8cdc3a35a89b7be75bc9d10ebea"}
-00182             \textcolor{keywordflow}{else}:
-00183                 target = \textcolor{stringliteral}{""}
-00184 
-00185             \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Login/form.html"}, \{\textcolor{stringliteral}{'form'}: login\_form, \textcolor{stringliteral}{'target'}: target\})
-00186 
-00187 
-00188 \textcolor{comment}{## Camada de negócio de usuário para o módulo de Login.}
-\hypertarget{LoginUnit_8py_source_l00189}{}\hyperlink{classLogin_1_1LoginUnit_1_1BusLogin}{00189} \textcolor{keyword}{class }\hyperlink{classLogin_1_1LoginUnit_1_1BusLogin}{BusLogin}(\hyperlink{classLogin_1_1LoginUnit_1_1IfBusLogin}{IfBusLogin}):
-00190 
-\hypertarget{LoginUnit_8py_source_l00191}{}\hyperlink{classLogin_1_1LoginUnit_1_1BusLogin_a2301425767b811697ce559801b955a58}{00191}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1BusLogin_a2301425767b811697ce559801b955a58}{validate}(self, username, password, database):
-00192         upass = self.pers.select(username.value, database)
-00193         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} upass \textcolor{keywordflow}{or} upass[\textcolor{stringliteral}{'password'}] != password.value:
-00194             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_LOG'}])
+00151                 \textcolor{keywordflow}{elif} database.\_\_name\_\_ == \textcolor{stringliteral}{"God"}:
+00152                     target = \textcolor{stringliteral}{"e50b058759a52eda8a507687887186e5"}
+00153                 \textcolor{keywordflow}{else}:
+00154                     target = \textcolor{stringliteral}{""}
+00155 
+00156                 \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Login/form.html"}, \{\textcolor{stringliteral}{'form'}: login\_form, 
+00157                     \textcolor{stringliteral}{'error'}: exc, \textcolor{stringliteral}{'target'}: target\})
+00158             \textcolor{keywordflow}{else}:
+00159                 l = \textcolor{keywordtype}{None}
+00160                 cd = login\_form.cleaned\_data
+00161                 \textcolor{keywordflow}{if} (database.\_\_name\_\_ != \textcolor{stringliteral}{"Adm"} \textcolor{keywordflow}{and}
+00162                     database.\_\_name\_\_ != \textcolor{stringliteral}{"God"}):
+00163                     l = self.bus.getLang(cd[\textcolor{stringliteral}{'username'}], database)
+00164                 \textcolor{keywordflow}{else}:
+00165                     l = request.LANGUAGE\_CODE
+00166                 request.session[\textcolor{stringliteral}{'user'}] = \{
+00167                                 \textcolor{stringliteral}{'name'}: cd[\textcolor{stringliteral}{'username'}].value,
+00168                                 \textcolor{stringliteral}{'password'}: cd[\textcolor{stringliteral}{'password'}].value,
+00169                                 \textcolor{stringliteral}{'language'}: l ,
+00170                                 \textcolor{stringliteral}{'type'}: database.\_\_name\_\_,
+00171                             \}
+00172                 translation.activate(l)
+00173                 request.session[translation.LANGUAGE\_SESSION\_KEY] = l
+00174                 \textcolor{keywordflow}{return} HttpResponseRedirect(\textcolor{stringliteral}{'/'})
+00175         \textcolor{keywordflow}{else}:
+00176             login\_form = \hyperlink{classLogin_1_1forms_1_1LoginForm}{LoginForm}()
+00177 
+00178             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} database:
+00179                 target = \textcolor{stringliteral}{""}
+00180             \textcolor{keywordflow}{if} database.\_\_name\_\_ == \textcolor{stringliteral}{"Professor"}:
+00181                 target = \textcolor{stringliteral}{"proflogin"}
+00182             \textcolor{keywordflow}{elif} database.\_\_name\_\_ == \textcolor{stringliteral}{"Adm"}:
+00183                 target = \textcolor{stringliteral}{"364fd8cdc3a35a89b7be75bc9d10ebea"}
+00184             \textcolor{keywordflow}{elif} database.\_\_name\_\_ == \textcolor{stringliteral}{"God"}:
+00185                 target = \textcolor{stringliteral}{"e50b058759a52eda8a507687887186e5"}
+00186             \textcolor{keywordflow}{else}:
+00187                 target = \textcolor{stringliteral}{""}
+00188 
+00189             \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Login/form.html"}, 
+00190                 \{\textcolor{stringliteral}{'form'}: login\_form, \textcolor{stringliteral}{'target'}: target\})
+00191 
+00192 
+00193 \textcolor{comment}{## Camada de negócio de usuário para o módulo de Login.}
+\hypertarget{LoginUnit_8py_source_l00194}{}\hyperlink{classLogin_1_1LoginUnit_1_1BusLogin}{00194} \textcolor{keyword}{class }\hyperlink{classLogin_1_1LoginUnit_1_1BusLogin}{BusLogin}(\hyperlink{classLogin_1_1LoginUnit_1_1IfBusLogin}{IfBusLogin}):
 00195 
-\hypertarget{LoginUnit_8py_source_l00196}{}\hyperlink{classLogin_1_1LoginUnit_1_1BusLogin_a23223ddd567bf874e6230efaf4912e98}{00196}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1BusLogin_a23223ddd567bf874e6230efaf4912e98}{getLang}(self, username, database):
-00197         ulang = self.pers.select(username.value, database)
-00198         \textcolor{keywordflow}{return} ulang[\textcolor{stringliteral}{'language'}]
-00199 
-00200 \textcolor{comment}{## Camada de persistência de usuário para o módulo de Login.}
-\hypertarget{LoginUnit_8py_source_l00201}{}\hyperlink{classLogin_1_1LoginUnit_1_1PersLogin}{00201} \textcolor{keyword}{class }\hyperlink{classLogin_1_1LoginUnit_1_1PersLogin}{PersLogin}(\hyperlink{classLogin_1_1LoginUnit_1_1IfPersLogin}{IfPersLogin}):
-00202 
-\hypertarget{LoginUnit_8py_source_l00203}{}\hyperlink{classLogin_1_1LoginUnit_1_1PersLogin_a1847dbd744377283add2327d2eb0b99f}{00203}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1PersLogin_a1847dbd744377283add2327d2eb0b99f}{select}(self, username=None, database=None):
-00204         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} username: \textcolor{keywordflow}{return} \textcolor{keyword}{False}
-00205         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} database: \textcolor{keywordflow}{return} \textcolor{keyword}{False}
-00206 
-00207         ulang = \textcolor{keywordtype}{None}
-00208 
-00209         \textcolor{keywordflow}{try}:
-00210             uid = database.objects.get(value=username, field=\textcolor{stringliteral}{'NAME'}).identity
-00211             upass = database.objects.get(identity=uid, field=\textcolor{stringliteral}{'PASSWORD'}).value
-00212         \textcolor{keywordflow}{except} database.DoesNotExist:
-00213             \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+\hypertarget{LoginUnit_8py_source_l00196}{}\hyperlink{classLogin_1_1LoginUnit_1_1BusLogin_a2301425767b811697ce559801b955a58}{00196}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1BusLogin_a2301425767b811697ce559801b955a58}{validate}(self, username, password, database):
+00197         upass = self.pers.select(username.value, database)
+00198         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} upass \textcolor{keywordflow}{or} upass[\textcolor{stringliteral}{'password'}] != password.value:
+00199             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_LOG'}])
+00200 
+\hypertarget{LoginUnit_8py_source_l00201}{}\hyperlink{classLogin_1_1LoginUnit_1_1BusLogin_a23223ddd567bf874e6230efaf4912e98}{00201}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1BusLogin_a23223ddd567bf874e6230efaf4912e98}{getLang}(self, username, database):
+00202         ulang = self.pers.select(username.value, database)
+00203         \textcolor{keywordflow}{return} ulang[\textcolor{stringliteral}{'language'}]
+00204 
+00205 \textcolor{comment}{## Camada de persistência de usuário para o módulo de Login.}
+\hypertarget{LoginUnit_8py_source_l00206}{}\hyperlink{classLogin_1_1LoginUnit_1_1PersLogin}{00206} \textcolor{keyword}{class }\hyperlink{classLogin_1_1LoginUnit_1_1PersLogin}{PersLogin}(\hyperlink{classLogin_1_1LoginUnit_1_1IfPersLogin}{IfPersLogin}):
+00207 
+\hypertarget{LoginUnit_8py_source_l00208}{}\hyperlink{classLogin_1_1LoginUnit_1_1PersLogin_a1847dbd744377283add2327d2eb0b99f}{00208}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1PersLogin_a1847dbd744377283add2327d2eb0b99f}{select}(self, username=None, database=None):
+00209         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} username: \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+00210         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} database: \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+00211 
+00212         upass = \textcolor{keywordtype}{None}
+00213         ulang = \textcolor{keywordtype}{None}
 00214 
-00215         \textcolor{keywordflow}{if} isinstance(database, Student):
+00215         \textcolor{keywordflow}{if} database.\_\_name\_\_ == \textcolor{stringliteral}{"God"}:
 00216             \textcolor{keywordflow}{try}:
-00217                 ulang = database.objects.get(identity=uid, field=\textcolor{stringliteral}{'LANGUAGE'}).value
+00217                 usr = database.objects.get()
 00218             \textcolor{keywordflow}{except} database.DoesNotExist:
-00219                 \textcolor{keywordflow}{pass}
-00220         \textcolor{keywordflow}{else}:
-00221             ulang = settings.LANGUAGE\_CODE
+00219                 \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+00220             \textcolor{keywordflow}{except} database.MultipleObjectsReturned:
+00221                 \textcolor{keywordflow}{return} \textcolor{keyword}{False}
 00222 
-00223         \textcolor{keywordflow}{return} \{\textcolor{stringliteral}{'name'}: username, \textcolor{stringliteral}{'password'}: upass, \textcolor{stringliteral}{'language'}: ulang\}
+00223             username = usr.username
+00224             upass = usr.password
+00225         \textcolor{keywordflow}{else}:
+00226 
+00227             \textcolor{keywordflow}{try}:
+00228                 uid = database.objects.get(value=username, field=\textcolor{stringliteral}{'NAME'})
+00229                 uid = uid.identity
+00230                 upass = database.objects.get(identity=uid, field=\textcolor{stringliteral}{'PASSWORD'})
+00231                 upass = upass.value
+00232             \textcolor{keywordflow}{except} database.DoesNotExist:
+00233                 \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+00234 
+00235             if(database.\_\_name\_\_ == \textcolor{stringliteral}{"Student"} \textcolor{keywordflow}{or} 
+00236                database.\_\_name\_\_ == \textcolor{stringliteral}{"Professor"}):
+00237                 \textcolor{keywordflow}{try}:
+00238                     ulang= database.objects.get(identity=uid, field=\textcolor{stringliteral}{'LANGUAGE'})
+00239                     ulang= ulang.value
+00240                 \textcolor{keywordflow}{except} database.DoesNotExist:
+00241                     \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+00242             \textcolor{keywordflow}{else}:
+00243                 ulang = settings.LANGUAGE\_CODE
+00244 
+00245         \textcolor{keywordflow}{return} \{ \textcolor{stringliteral}{'name'}: username, \textcolor{stringliteral}{'password'}: upass, \textcolor{stringliteral}{'language'}: ulang \}
 \end{DoxyCode}

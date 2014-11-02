@@ -199,42 +199,47 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                    target = <span class="stringliteral">&quot;proflogin&quot;</span></div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                <span class="keywordflow">elif</span> database.__name__ == <span class="stringliteral">&quot;Adm&quot;</span>:</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                    target = <span class="stringliteral">&quot;364fd8cdc3a35a89b7be75bc9d10ebea&quot;</span></div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                <span class="keywordflow">else</span>:</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                    target = <span class="stringliteral">&quot;&quot;</span></div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                <span class="keywordflow">return</span> render(request, <span class="stringliteral">&quot;Login/form.html&quot;</span>, {<span class="stringliteral">&#39;form&#39;</span>: login_form, </div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                    <span class="stringliteral">&#39;error&#39;</span>: exc, <span class="stringliteral">&#39;target&#39;</span>: target})</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            <span class="keywordflow">else</span>:</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                l = <span class="keywordtype">None</span></div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                cd = login_form.cleaned_data</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                <span class="keywordflow">if</span> database.__name__ != <span class="stringliteral">&quot;Adm&quot;</span>:</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                    l = self.bus.getLang(cd[<span class="stringliteral">&#39;username&#39;</span>], database)</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                <span class="keywordflow">else</span>:</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                    l = request.LANGUAGE_CODE</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                request.session[<span class="stringliteral">&#39;user&#39;</span>] = {</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                                <span class="stringliteral">&#39;name&#39;</span>: cd[<span class="stringliteral">&#39;username&#39;</span>].value,</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                                <span class="stringliteral">&#39;password&#39;</span>: cd[<span class="stringliteral">&#39;password&#39;</span>].value,</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                                <span class="stringliteral">&#39;language&#39;</span>: l ,</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                                <span class="stringliteral">&#39;type&#39;</span>: database.__name__,</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                            }</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                <span class="keywordflow">print</span> l</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                translation.activate(l)</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                request.session[translation.LANGUAGE_SESSION_KEY] = l</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                <span class="keywordflow">return</span> HttpResponseRedirect(<span class="stringliteral">&#39;/&#39;</span>)</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="keywordflow">else</span>:</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            login_form = <a class="code" href="../../d0/db9/classLogin_1_1forms_1_1LoginForm.html">LoginForm</a>()</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            <span class="keywordflow">if</span> <span class="keywordflow">not</span> database:</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                target = <span class="stringliteral">&quot;&quot;</span></div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            <span class="keywordflow">if</span> database.__name__ == <span class="stringliteral">&quot;Professor&quot;</span>:</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                target = <span class="stringliteral">&quot;proflogin&quot;</span></div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            <span class="keywordflow">elif</span> database.__name__ == <span class="stringliteral">&quot;Adm&quot;</span>:</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                target = <span class="stringliteral">&quot;364fd8cdc3a35a89b7be75bc9d10ebea&quot;</span></div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            <span class="keywordflow">else</span>:</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                target = <span class="stringliteral">&quot;&quot;</span></div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            <span class="keywordflow">return</span> render(request, <span class="stringliteral">&quot;Login/form.html&quot;</span>, {<span class="stringliteral">&#39;form&#39;</span>: login_form, <span class="stringliteral">&#39;target&#39;</span>: target})</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                <span class="keywordflow">elif</span> database.__name__ == <span class="stringliteral">&quot;God&quot;</span>:</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                    target = <span class="stringliteral">&quot;e50b058759a52eda8a507687887186e5&quot;</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                    target = <span class="stringliteral">&quot;&quot;</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                <span class="keywordflow">return</span> render(request, <span class="stringliteral">&quot;Login/form.html&quot;</span>, {<span class="stringliteral">&#39;form&#39;</span>: login_form, </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                    <span class="stringliteral">&#39;error&#39;</span>: exc, <span class="stringliteral">&#39;target&#39;</span>: target})</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                l = <span class="keywordtype">None</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                cd = login_form.cleaned_data</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                <span class="keywordflow">if</span> (database.__name__ != <span class="stringliteral">&quot;Adm&quot;</span> <span class="keywordflow">and</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                    database.__name__ != <span class="stringliteral">&quot;God&quot;</span>):</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                    l = self.bus.getLang(cd[<span class="stringliteral">&#39;username&#39;</span>], database)</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                    l = request.LANGUAGE_CODE</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                request.session[<span class="stringliteral">&#39;user&#39;</span>] = {</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                                <span class="stringliteral">&#39;name&#39;</span>: cd[<span class="stringliteral">&#39;username&#39;</span>].value,</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                                <span class="stringliteral">&#39;password&#39;</span>: cd[<span class="stringliteral">&#39;password&#39;</span>].value,</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                                <span class="stringliteral">&#39;language&#39;</span>: l ,</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                                <span class="stringliteral">&#39;type&#39;</span>: database.__name__,</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                            }</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                translation.activate(l)</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                request.session[translation.LANGUAGE_SESSION_KEY] = l</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                <span class="keywordflow">return</span> HttpResponseRedirect(<span class="stringliteral">&#39;/&#39;</span>)</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            login_form = <a class="code" href="../../d0/db9/classLogin_1_1forms_1_1LoginForm.html">LoginForm</a>()</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            <span class="keywordflow">if</span> <span class="keywordflow">not</span> database:</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                target = <span class="stringliteral">&quot;&quot;</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            <span class="keywordflow">if</span> database.__name__ == <span class="stringliteral">&quot;Professor&quot;</span>:</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                target = <span class="stringliteral">&quot;proflogin&quot;</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            <span class="keywordflow">elif</span> database.__name__ == <span class="stringliteral">&quot;Adm&quot;</span>:</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                target = <span class="stringliteral">&quot;364fd8cdc3a35a89b7be75bc9d10ebea&quot;</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            <span class="keywordflow">elif</span> database.__name__ == <span class="stringliteral">&quot;God&quot;</span>:</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                target = <span class="stringliteral">&quot;e50b058759a52eda8a507687887186e5&quot;</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                target = <span class="stringliteral">&quot;&quot;</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            <span class="keywordflow">return</span> render(request, <span class="stringliteral">&quot;Login/form.html&quot;</span>, </div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                {<span class="stringliteral">&#39;form&#39;</span>: login_form, <span class="stringliteral">&#39;target&#39;</span>: target})</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;</div>
 </div>
 <div class="ttc" id="classLogin_1_1LoginUnit_1_1UiLogin_html_a9cd61a78d5ab0d201051ccf5898f86bc"><div class="ttname"><a href="../../de/da8/classLogin_1_1LoginUnit_1_1UiLogin.html#a9cd61a78d5ab0d201051ccf5898f86bc">Login.LoginUnit.UiLogin.run</a></div><div class="ttdeci">def run</div><div class="ttdoc">Método que inicia o módulo de login. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/dc7/LoginUnit_8py_source.html#l00137">LoginUnit.py:137</a></div></div>
 <div class="ttc" id="classLogin_1_1forms_1_1LoginForm_html"><div class="ttname"><a href="../../d0/db9/classLogin_1_1forms_1_1LoginForm.html">Login.forms.LoginForm</a></div><div class="ttdoc">Classe de formulário para o fomulário de Login. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/Login_2forms_8py_source.html#l00014">forms.py:14</a></div></div>
@@ -250,7 +255,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dc/d54/namespaceLogin.html">Login</a></li><li class="navelem"><a class="el" href="../../d1/dc4/namespaceLogin_1_1LoginUnit.html">LoginUnit</a></li><li class="navelem"><a class="el" href="../../de/da8/classLogin_1_1LoginUnit_1_1UiLogin.html">UiLogin</a></li>
-    <li class="footer">Gerado em Quinta, 9 de Outubro de 2014 03:09:06 para LETproject por
+    <li class="footer">Gerado em Terça, 21 de Outubro de 2014 13:48:48 para LETproject por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
