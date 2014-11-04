@@ -262,7 +262,6 @@ class UiAdm(IfUiAdm):
         #   adequados e informações do usuário procurado para uma possível
         #   edição ou deleção.
         if request.method == "POST":
-            print request.POST
             ## @if Confere se é uma ação de registro pedido pelo Adm.
             #
             #   Caso seja então é feito a verificação do modelo de conta
@@ -325,7 +324,6 @@ class UiAdm(IfUiAdm):
                 try:
                     # Coleta os forms de busca a partir da requisição POST.
                     form = SrcCourForm(request.POST)
-                    print form
 
                     ## @if Confere se form de busca é valido.
                     #
@@ -337,10 +335,7 @@ class UiAdm(IfUiAdm):
                     #   Caso contrário, é lançada exceção de erro referente à
                     #   form inválido.
                     if form.is_valid():
-                        print "something"
                         dCourse = self.bus.fetchAccount(request)
-                        print dCourse
-                        print "something"
 
                         ## @if Confere se dicionário de informações do Curso
                         #       ainda continua nulo.
@@ -371,8 +366,11 @@ class UiAdm(IfUiAdm):
                 dUser = {}
 
                 try:
-                    # Coleta os forms de busca a partir da requisição POST.
-                    form = SrcUserForm(request.POST)
+                    if request.POST['model'] == "Course":
+                        # Coleta os forms de busca a partir da requisição POST.
+                        form = SrcCourForm(request.POST)
+                    else:
+                        form = SrcUserForm(request.POST)
 
                     ## @if Confere se form de busca é valido.
                     #
@@ -572,8 +570,7 @@ class BusAdm(IfBusAdm):
             #   Caso contrário, é passado o username da conta de Estudante ou 
             #   de Professor.
             if db == Courses:
-                data = self.pers.fetchCour(str(request.POST['username']), db)  
-                print data
+                data = self.pers.fetchCour(str(request.POST['courMatric']), db)  
             else:
                 data = self.pers.fetchUser(str(request.POST['username']), db)    
 
@@ -624,7 +621,6 @@ class BusAdm(IfBusAdm):
             return user['avatar']
         else:
             return newdata
-            ## 
 
 class PersAdm(IfPersAdm):
 
@@ -828,7 +824,7 @@ class PersAdm(IfPersAdm):
             fetchset = [
                 ('professor',   sf('PROFESSOR')),
                 ('name',        sf('NAME')),
-                ('student',     sf('STUDENT')),
+                ('students',     sf('STUDENTS')),
         	]
 
         except database.DoesNotExist as exc:

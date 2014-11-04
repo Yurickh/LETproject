@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-30 17:05-0200\n"
+"POT-Creation-Date: 2014-11-04 13:28-0200\n"
 "PO-Revision-Date: 2014-06-24 19:05-0300\n"
 "Last-Translator: Yurick Hauschild <yurick.hauschild@gmail.com>\n"
 "Language-Team: LETproj <https://github.com/LETproj>\n"
@@ -478,6 +478,11 @@ msgstr "Update data from professor"
 #: index.py:232
 msgid "Apagar Registro de Professor"
 msgstr "Clear record of professor"
+
+#, fuzzy
+#~| msgid "Atualizar dados de Curso"
+#~ msgid "Adicionar alunos ao Curso"
+#~ msgstr "Update data from course"
 
 #~ msgid "ELO"
 #~ msgstr "ELO"
