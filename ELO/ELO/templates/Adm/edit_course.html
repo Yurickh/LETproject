@@ -8,6 +8,27 @@
 {% endblock %}
 
 {% block body %}
-	Existing Users:
+	<form id="insert_form" action="" method="post" >
+		
+		{{ form }}<br /> 
 
+		{% csrf_token %}
+
+		<input type="submit" name="STUDENT" 
+			   value="{{ DICT.REGISTER }}"  /> 
+
+		<input type="submit" name="PROFESSOR" 
+			   value="{{ DICT.REGISTER }}"  /> 
+
+	</form>
+
+	{% for i, value in enumerate(data) %}
+		{{ i }}: {{ value }}<br />
+	{% endfor %}
+
+	<button id="refresh">Atualizar</button>
+
+	<div class="dialog"></div>
+	<div id="model_{{ model }}"></div>
+	
 {% endblock %}

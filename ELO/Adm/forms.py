@@ -160,7 +160,21 @@ class RegCourForm(forms.Form):
 			professor = Name(self.cleaned_data["courProfessor"])
 		except ValueError:
 			raise forms.ValidationError("Nome de Professor Inválido")
-		return professor			
+		return professor		
+
+## Classe para o formulário de registro de Estudantes ou Professores do Curso.
+#	O administrador insere a matrícula do aluno ou professor a ser inserido.
+class RegUserCourForm(forms.Form):
+	userMatric = forms.IntegerField(label = "Matricula:",required= True)
+      
+    ## Verifica se a formatação da matrícula do usuário está correta.
+	#	Caso esteja, retorna a matrícula, caso contrário, lança uma excessão.
+	def clean_userMatric(self):
+		try:
+			matric = Matric(self.cleaned_data["userMatric"])
+		except ValueError:
+			raise forms.ValidationError(lang.DICT["EXCEPTION_INV_STU_MT"])
+		return matric			
 
 ## Classe para o formulário de procura de curso.
 #	O administrador insere a matrícula do curso a ser pesquisado.
@@ -172,7 +186,7 @@ class SrcCourForm(forms.Form):
 	#	Caso esteja, retorna a matrícula, caso contrário, lança uma excessão.
 	def clean_courMatric(self):
 		try:
-			courMatric = Matric(self.cleaned_data["courMatric"])
+			matric = Matric(self.cleaned_data["courMatric"])
 		except ValueError:
 			raise forms.ValidationError("Código Inválido")
-		return courMatric
+		return matric

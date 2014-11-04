@@ -1,11 +1,12 @@
-    #coding: utf-8
+#coding: utf-8
 
 ## TODO:
-#   Passar para inglês os termos internos ao sistema que estão em português. 
-#       (e.g. 214, 234, 240)
-#   Ajeitar os nomes das forms. (Adm/forms)
-#   Atentar ao padrão de 80 caracteres/linha.
 #   233: verificar validade do request.POST, tal qual if anterior.
+#   Colocar permissões de Adm e God diferenciadas.
+#   Implementar deleção de contas.
+#   Implementar confirmação de senha do Adm após qualquer ação realizada.
+#   Implementar log de eventos que o Adm ou God realizar.
+#   Verificar melhorias na conferência de ação em request.POST em UIAdm
 
 ## @file AdmUnit.py
 #   Este arquivo é responsável pelo armazenamento de todas as camadas 
@@ -261,6 +262,7 @@ class UiAdm(IfUiAdm):
         #   adequados e informações do usuário procurado para uma possível
         #   edição ou deleção.
         if request.method == "POST":
+            print request.POST
             ## @if Confere se é uma ação de registro pedido pelo Adm.
             #
             #   Caso seja então é feito a verificação do modelo de conta
@@ -315,9 +317,58 @@ class UiAdm(IfUiAdm):
                 except ValueError as exc:
                     return render(request, "Adm/home.html")
 
-            elif 'att' or 'del 'in request.POST:
+
+            elif action == "insert":
+                # Dicionário com informações do curso procurado pelo Adm.
+                dCourse = {}
+
+                try:
+                    # Coleta os forms de busca a partir da requisição POST.
+                    form = SrcCourForm(request.POST)
+                    print form
+
+                    ## @if Confere se form de busca é valido.
+                    #
+                    #   Se form for adequado então é chamado o método 
+                    #   de procura de contas que irá comunicar-se 
+                    #   com o banco de dados depois da validação das 
+                    #   informações passadas pelo request.POST.
+                    #
+                    #   Caso contrário, é lançada exceção de erro referente à
+                    #   form inválido.
+                    if form.is_valid():
+                        print "something"
+                        dCourse = self.bus.fetchAccount(request)
+                        print dCourse
+                        print "something"
+
+                        ## @if Confere se dicionário de informações do Curso
+                        #       ainda continua nulo.
+                        #
+                        #   Caso esteja nulo então é lançado excessão de conta
+                        #   inexistente.
+                        if not dCourse:
+                            raise ValueError(lang.DICT['EXCEPTION_INV_USR_NM'])
+
+                        # Força a ter uma estruturação correta de dicionário.
+                        dCourse = dict(dCourse)
+
+                        # Renderiza uma página assíncrona de informação da
+                        # conta requisitada.
+                        return render(request, 
+                                      "Adm/edit_course.html", {'data':dCourse})
+                    else:
+                        raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
+
+                # Se houver qualquer problema referente as passagens dos forms 
+                # e conferência da validação dos mesmos então o 
+                # administrador será passado para a página inicial.
+                except ValueError:
+                    return HttpResponseRedirect('/')
+
+            elif action == 'att' or 'del':
                 # Dicionario com informações do usuário procurado pelo Adm.
-                dUser = None;
+                dUser = {}
 
                 try:
                     # Coleta os forms de busca a partir da requisição POST.
@@ -372,15 +423,12 @@ class UiAdm(IfUiAdm):
                 #   Caso for uma ação de registro então é passado os forms de
                 #   registro de acordo com o modelo de conta requisitado.
                 #
-                #   Caso for uma ação de atualização ou deleção é passado o
-                #   form de busca de conta.
+                #   Caso for uma ação de atualização, deleção ou inserção de 
+                #   usuário em algum Curso é passado o form de busca de conta.
                 #
                 #   Caso contrário, é passado para a página renderizada erro
-                #   de formulário.
-                if action == "insert":
-                    return render(request, "Adm/edit_course.html", 
-                                    {'action' : action,'model' : model, })
-                elif action == "reg":
+                #   de formulário.   
+                if action == "reg":
                     if model == "Student" or model == "Professor":
                         form = RegUserForm()
                     elif model == "Course":
@@ -389,7 +437,15 @@ class UiAdm(IfUiAdm):
                         # TODO ERRO PARA MODELO INCORRETO.
                         raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
                 elif action == "att" or action == "del":
-                    form = SrcUserForm()
+                    if model == "Student" or model == "Professor":
+                        form = SrcUserForm()
+                    elif model == "Course":
+                        form = SrcCourForm()
+                    else:
+                        # TODO ERRO PARA MODELO INCORRETO.
+                        raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
+                elif action == "insert":
+                    form = SrcCourForm()
                 else:
                     form = lang.DICT["ERROR_FORM"]
                 return render(request, "Adm/edit.html", {'form': form,
@@ -517,8 +573,9 @@ class BusAdm(IfBusAdm):
             #   de Professor.
             if db == Courses:
                 data = self.pers.fetchCour(str(request.POST['username']), db)  
+                print data
             else:
-                data = self.pers.fetchSP(str(request.POST['username']), db)    
+                data = self.pers.fetchUser(str(request.POST['username']), db)    
 
             return data
         except ValueError as exc:
@@ -602,19 +659,38 @@ class PersAdm(IfPersAdm):
             # Coleta a ID do Curso encontrado.
             uid = uid.identity
 
+            ## Tenta coletar a lista de Estudantes ou Professores de algum 
+            #   Curso.
+            #
+            # Caso seja encontrado valores múltiplos então é emitido erro.
+            #
+            # Caso lista de Estudantes ou Professores não exista então
+            # novo valor é iniciado como primeiro item da lista.
             try:
                 # Coleta a partir do ID do curso a lista de Estudantes ou 
                 # Professores existentes no Curso.
                 data = Courses.objects.get(identity=uid, field=model.upper())
-                new_data = eval(data)
-                new_data.value.append(user_id)
+                # Transforma lista unicode para formato de lista padrão.
+                new_data = eval(data.value)
+                # Adiciona ao final da lista um novo valor de Estudante ou
+                # Professor.
+                new_data.append(user_id)
+                # Retorna lista com novo valor à lista do Curso direcionado.
+                data.value = new_data
 
             except ( Courses.MultipleObjectsReturned ) as exc:
                 raise ValueError(exc)
 
-            new_data.save()
+            except ( Courses.DoesNotExist ) as exc:
+                new_list = []
+                new_list.append(user_id)
+                data = Courses(identity=uid, field=model.upper(), 
+                                value=new_list)
+            # Salva os novos dados no database. 
+            data.save()
 
-        except ( Courses.MultipleObjectsReturned ) as exc:
+        except ( Courses.DoesNotExist, 
+                 Courses.MultipleObjectsReturned ) as exc:
             raise ValueError(exc)
 
 
@@ -699,7 +775,6 @@ class PersAdm(IfPersAdm):
         except database.MultipleObjectsReturned:
             ret = map(lambda x: x.value, database.objects.filter(
                     identity=uid, field=field))
-            print ret
 
         except database.DoesNotExist:
             ret = None 
@@ -753,6 +828,7 @@ class PersAdm(IfPersAdm):
             fetchset = [
                 ('professor',   sf('PROFESSOR')),
                 ('name',        sf('NAME')),
+                ('student',     sf('STUDENT')),
         	]
 
         except database.DoesNotExist as exc:
