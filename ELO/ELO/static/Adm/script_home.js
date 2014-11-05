@@ -56,8 +56,16 @@ $(document).ready(function(){
 				$dialog.dialog('open');
 			});
 		}
-		else{
+		else if (action == "srcdel"){
 
+			model = $(this).attr("id").slice(7);
+
+			$dialog.load("/assync/adm-edit/"+action+"/"+model+"/", function(){
+				$dialog.dialog('open');
+			});
+			
+		}
+		else{
 			action = $(this).attr("id").slice(0,3);
 
 			model = $(this).attr("id").slice(4);

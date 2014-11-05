@@ -1,13 +1,30 @@
 {% extends "includes/assync_wrapper.html" %}
 {% load staticfiles %}
 
+{% block head %}
+
+	<script src="{% static 'Adm/script_edit.js' %}"></script>
+
+{% endblock %}
+
 {% block body %}
 	{% for field, value in data.items %}
 		{{ field }}: {{ value }}<br />
+
+		{% if action == "att" %}
 			<button id="edit_{{ field }}"
-					title="{{ value }}"
+					title="{{ action }}"
 					>Edit</button><br /><br />
+		{% endif %}
+
 	{% endfor %}
+
+	{% if action == "scrdel" %}
+		<button id="del_{{ model }}"
+				title="{{ action }}"
+				>Delete</button><br /><br />
+	{% endif %}
+
 {% endblock %}
 
 

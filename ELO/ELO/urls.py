@@ -50,7 +50,7 @@ urlpatterns = patterns('',
 	## URL da pagina de administracao.
 	url(r'^adm/?$', factory.runAdm),
 	## URL da página assíncrona de edição de estudante, professor ou curso.
-	url(r'^assync/adm-edit/(?P<action>\w{3})/(?P<model>\w{3,9})/?$', 
+	url(r'^assync/adm-edit/(?P<action>\w{3,7})/(?P<model>\w{3,9})/?$', 
 		factory.runAdm),
 	## URL da página assíncrona que informa os dados de um usuário requisitado.
 	url(r'^assync/adm-info/?$', factory.runAdm),

@@ -9,9 +9,9 @@
 {% endblock %}
 
 {% block body %}
-	<form {% if action == "att" %} id="edit_form" {% endif %} 
-		{% if action == "insert" %} id="insert_form" {% endif %} action="" 
-		method="post" >
+	<form {% if action == "att" or action == "srcdel" %} id="edit_form" 
+		{% endif %} {% if action == "insert" %} id="insert_form" {% endif %} 
+		action="" method="post" >
 
 		{{ form }}<br /> 
 		{% if action == "reg" %} <input type="hidden" name="model" 

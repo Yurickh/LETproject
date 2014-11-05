@@ -11,10 +11,10 @@ $(document).ready(function(){
 			uname = data.slice(11, data.indexOf("&csrfmiddlewaretoken="));
 
 			data = { courMatric: uname,
-				 csrfmiddlewaretoken: crsf,
-				 model: model,
-				 action: action
-				};
+					 csrfmiddlewaretoken: crsf,
+					 model: model,
+					 action: action
+					};
 		}
 		else{
 			uname = data.slice(9, data.indexOf("&csrfmiddlewaretoken="));
@@ -25,7 +25,6 @@ $(document).ready(function(){
 					 action: action
 					};
 		}
-		
 
 		$in_dialog.load("/assync/adm-info/", data, function(){
 			$in_dialog.dialog('open');
@@ -53,5 +52,24 @@ $(document).ready(function(){
 		});
 
 	});
+
+	$("button").click(function(e){
+		e.preventDefault();
+		$in_dialog.dialog('close');
+
+		username = data.username;
+		action = $(this).attr("title").slice(3);
+		model = $(this).attr("id").slice(4);
+
+		data = { username: username,
+				 action: action,
+				 model: model
+			   };
+
+		$dialog.load("/assync/adm-edit/"+action+"/"+model+"/", data,
+						function(){ 
+			$dialog.dialog('open');
+		});
+	});	
 
 });

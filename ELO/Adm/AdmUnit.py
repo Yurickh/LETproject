@@ -247,6 +247,7 @@ class IfPersAdm:
 class UiAdm(IfUiAdm): 
 
     def run(self, request, action=None, model=None):
+        print request.POST
         ## @if Verifica qual o propósito do submit.
         #
         #   Caso seja POST, a requisição ocorre após a submissão de uma form,
@@ -361,12 +362,16 @@ class UiAdm(IfUiAdm):
                 except ValueError:
                     return HttpResponseRedirect('/')
 
-            elif action == 'att' or 'del':
+            elif request.POST['action'] == 'att' or \
+                    request.POST['action'] == 'scrdel':
                 # Dicionario com informações do usuário procurado pelo Adm.
                 dUser = {}
+                
+                action = request.POST['action']
+                model = request.POST['model']
 
                 try:
-                    if request.POST['model'] == "Course":
+                    if model == "Course":
                         # Coleta os forms de busca a partir da requisição POST.
                         form = SrcCourForm(request.POST)
                     else:
@@ -398,7 +403,10 @@ class UiAdm(IfUiAdm):
                         # Renderiza uma página assíncrona de informação da
                         # conta requisitada.
                         return render(request, 
-                                      "Adm/info.html", {'data':dUser})
+                                      "Adm/info.html", {'data':dUser, 
+                                                        'action': action,
+                                                        'model' : model, 
+                                                        })
                     else:
                         raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
 
@@ -431,17 +439,21 @@ class UiAdm(IfUiAdm):
                         form = RegUserForm()
                     elif model == "Course":
                         form = RegCourForm()
-                    else:
+                    else:   
                         # TODO ERRO PARA MODELO INCORRETO.
                         raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
-                elif action == "att" or action == "del":
+                elif action == "att" or action == "srcdel":
                     if model == "Student" or model == "Professor":
                         form = SrcUserForm()
+                        print form
                     elif model == "Course":
                         form = SrcCourForm()
                     else:
                         # TODO ERRO PARA MODELO INCORRETO.
                         raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
+                elif action == "del":
+                    possible = self.bus.delAccount(request)
+                    print possible
                 elif action == "insert":
                     form = SrcCourForm()
                 else:
@@ -531,7 +543,24 @@ class BusAdm(IfBusAdm):
     def attAccount(self, request): pass
         
     def delAccount(self, request):
-        data = self.pers.fetch(request.POST['username'], Student)
+        try:
+            db = None
+
+            model = str(request.POST['model'])
+
+            if model == "Student":
+                db = Student
+            elif model == "Professor":
+                db = Professor
+            elif model == "Course":
+                db = Courses 
+            else:
+                raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
+
+        except ValueError as exc:
+            raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
+
+        data = self.pers.fetch_del(request.POST['username'], db)
 
         return data
 
@@ -741,6 +770,8 @@ class PersAdm(IfPersAdm):
             accdel = database.objects.filter(identity=uid)
             # Lista dos dados é deletada do database.
             accdel.delete()
+
+            return True
        
         except ( database.DoesNotExist, 
                 database.MultipleObjectsReturned ) as exc:
