@@ -80,15 +80,15 @@ Para executar o programa, siga as instruções abaixo.
 	`$ deactivate`
 
 4. Para instalar django no Windows:
-  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então extraia o arquivo, inicie o DOS
- shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+  * Baixe [Download Django-1.7.1.tar.gz](https://www.djangoproject.com/download/1.7.1/tarball/). Então extraia o arquivo, inicie o DOS
+ shell (ctrl+E, cmd) com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
 	`$ python setup.py install`
 
 5. Para instalar django no Ubuntu:
   * Pelo pip:
 	`$ pip install Django==1.7`
   * "Manualmente":
-	* Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+	* Baixe [Download Django-1.7.1.tar.gz](https://www.djangoproject.com/download/1.7.1/tarball/). Então:
 		`$ tar xzvf Django-1.6.2.tar.gz`
 		`$ cd Django-1.6.2`
 		`$ sudo python setup.py install`
