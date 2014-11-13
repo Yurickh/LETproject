@@ -3,11 +3,18 @@
 
 {% block head %}
 
-	<script src="{% static 'Adm/script_edit.js' %}"></script>
+	<script src="{% static 'Adm/script_info.js' %}">
+	</script>
 
 {% endblock %}
 
 {% block body %}
+
+	<div {% if model == 'Student' or model == 'Professor' %} 
+	id="username_{{ data.username }}" {% endif %} 
+	id="username_{{ data.courMatric }}" ></div>
+	<div id="csrf_{{ csrf }}"></div>
+
 	{% for field, value in data.items %}
 		{{ field }}: {{ value }}<br />
 
@@ -19,11 +26,12 @@
 
 	{% endfor %}
 
-	{% if action == "scrdel" %}
+	{% if action == "srcdel" %}
 		<button id="del_{{ model }}"
 				title="{{ action }}"
 				>Delete</button><br /><br />
 	{% endif %}
+
 
 {% endblock %}
 

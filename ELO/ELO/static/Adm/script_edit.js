@@ -52,24 +52,4 @@ $(document).ready(function(){
 		});
 
 	});
-
-	$("button").click(function(e){
-		e.preventDefault();
-		$in_dialog.dialog('close');
-
-		username = data.username;
-		action = $(this).attr("title").slice(3);
-		model = $(this).attr("id").slice(4);
-
-		data = { username: username,
-				 action: action,
-				 model: model
-			   };
-
-		$dialog.load("/assync/adm-edit/"+action+"/"+model+"/", data,
-						function(){ 
-			$dialog.dialog('open');
-		});
-	});	
-
 });

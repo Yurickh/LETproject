@@ -61,6 +61,9 @@ urlpatterns = patterns('',
 	#	Professores em algum determinado curso.
 	url(r'^assync/adm-course/(?P<action>\w{5,7})/(?P<model>\w{5,7})/?$', 
 		factory.runAdm),
+	## URL para mostrar assincronamente a deleção de uma conta.
+	#	Requisitado pelo Administrador.
+	url(r'^assync/adm-del/?$', factory.runAdm),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()

@@ -1,15 +1,34 @@
 $(document).ready(function(){
 
 
-	$("button[id^='edit_']").click(function(){
-		field = $(this).attr("id").slice(5);
-		fname = $(this).attr("title")
+	$("button").click(function(e){
+		e.preventDefault();
+		$in_dialog.dialog('close');
 
-		// Gets the title of the dialog from the title of button.
-		$(".dialog").dialog("option", "title", fname);
+		action = $(this).attr("id").slice(0,3);
+		model = $(this).attr("id").slice(4);
+		csrf = $("div[id^='csrf_']").attr("id").slice(5);
 
-		$(".dialog").load("/assync/edit-field-adm/"+field+"/", function(){
-			$(".dialog").dialog("open");
-		});
+		if (model == "Course"){
+			uname = $("div[id^='username_']").attr("id").slice(9);
+
+			data = { courMatric: uname,
+					 csrfmiddlewaretoken: crsf,
+					 model: model,
+					 action: action
+					};
+		}
+		else{
+			uname = $("div[id^='username_']").attr("id").slice(9);
+
+			data = { username: uname,
+					 csrfmiddlewaretoken: crsf,
+					 model: model,
+					 action: action
+					};
+		}
+
+		$in2_dialog.load("/assync/adm-del/", data);
 	});
+
 });

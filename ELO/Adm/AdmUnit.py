@@ -213,7 +213,18 @@ class IfPersAdm:
     #   @arg    database    Objeto modelo sobre o qual a consulta será
     #                       realizada.
     @abstractmethod
-    def fetch_del(self, username, database): pass
+    def fetch_del_User(self, username, database): pass
+
+    ## Método que deleta os dados de um curso fornecida.
+    #   É necessário a senha do administrador para que
+    #   essa operação possa ser executada.
+    #
+    #   @arg    courMatric    Matrícula da conta a ser deletada.
+    #
+    #   @arg    database    Objeto modelo sobre o qual a consulta será
+    #                       realizada.
+    @abstractmethod
+    def fetch_del_Cour(self, courMatric, database): pass
 
     ##  Função que recupera todos os dados de um usuário pesquisado.
     #
@@ -247,7 +258,6 @@ class IfPersAdm:
 class UiAdm(IfUiAdm): 
 
     def run(self, request, action=None, model=None):
-        print request.POST
         ## @if Verifica qual o propósito do submit.
         #
         #   Caso seja POST, a requisição ocorre após a submissão de uma form,
@@ -363,12 +373,13 @@ class UiAdm(IfUiAdm):
                     return HttpResponseRedirect('/')
 
             elif request.POST['action'] == 'att' or \
-                    request.POST['action'] == 'scrdel':
+                    request.POST['action'] == 'srcdel':
                 # Dicionario com informações do usuário procurado pelo Adm.
                 dUser = {}
                 
                 action = request.POST['action']
                 model = request.POST['model']
+                csrf = request.POST['csrfmiddlewaretoken']
 
                 try:
                     if model == "Course":
@@ -399,13 +410,13 @@ class UiAdm(IfUiAdm):
 
                         # Força a ter uma estruturação correta de dicionário.
                         dUser = dict(dUser)
-
                         # Renderiza uma página assíncrona de informação da
                         # conta requisitada.
                         return render(request, 
                                       "Adm/info.html", {'data':dUser, 
                                                         'action': action,
-                                                        'model' : model, 
+                                                        'model' : model,
+                                                        'csrf' : csrf, 
                                                         })
                     else:
                         raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
@@ -416,6 +427,11 @@ class UiAdm(IfUiAdm):
                 except ValueError:
                     return HttpResponseRedirect('/')
 
+            elif request.POST['action'] == 'del':
+                possible = self.bus.delAccount(request)
+                print possible
+                return HttpResponseRedirect('/')
+
             # Após a coleta da requisição o administrador será retornado à 
             # página inicial de controle.
             return HttpResponseRedirect('/')
@@ -423,6 +439,7 @@ class UiAdm(IfUiAdm):
         else:
             if not (action or model):
                 return render(request, "Adm/home.html")
+
             else:
                 ## @if Confere qual a ação requisitada.
                 #
@@ -445,15 +462,11 @@ class UiAdm(IfUiAdm):
                 elif action == "att" or action == "srcdel":
                     if model == "Student" or model == "Professor":
                         form = SrcUserForm()
-                        print form
                     elif model == "Course":
                         form = SrcCourForm()
                     else:
                         # TODO ERRO PARA MODELO INCORRETO.
                         raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
-                elif action == "del":
-                    possible = self.bus.delAccount(request)
-                    print possible
                 elif action == "insert":
                     form = SrcCourForm()
                 else:
@@ -557,10 +570,13 @@ class BusAdm(IfBusAdm):
             else:
                 raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
 
+            if db == Courses:
+                data = self.pers.fetch_del_Cour(str(request.POST['courMatric']), db)  
+            else:
+                data = self.pers.fetch_del_User(request.POST['username'], db) 
+
         except ValueError as exc:
             raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
-
-        data = self.pers.fetch_del(request.POST['username'], db)
 
         return data
 
@@ -601,7 +617,7 @@ class BusAdm(IfBusAdm):
             if db == Courses:
                 data = self.pers.fetchCour(str(request.POST['courMatric']), db)  
             else:
-                data = self.pers.fetchUser(str(request.POST['username']), db)    
+                data = self.pers.fetchUser(str(request.POST['username']), db) 
 
             return data
         except ValueError as exc:
@@ -749,12 +765,40 @@ class PersAdm(IfPersAdm):
                  database.MultipleObjectsReturned ) as exc:
             raise ValueError(exc)
 
-    def fetch_del(self, username, database):
+    def fetch_del_User(self, username, database):
         # Tenta procurar se o username existe no banco de dados.
         # Caso não exista, é emitido um erro.
         try:
             # Filtra o database pelo nome do usuario.
             uid = database.objects.get(field='NAME',value=username)
+            # Coleta a ID do usuário
+            uid = uid.identity
+
+        # Caso usuário não exista, então é retornado para o Business
+        # que não foi encontrado.
+        except database.DoesNotExist:
+            return False
+
+        # Tenta filtrar os dados de um ID.
+        # Caso não exista, é emitido um erro.
+        try:   
+            # Lista da filtragem dos dados de um determinado ID.
+            accdel = database.objects.filter(identity=uid)
+            # Lista dos dados é deletada do database.
+            accdel.delete()
+
+            return True
+       
+        except ( database.DoesNotExist, 
+                database.MultipleObjectsReturned ) as exc:
+            raise ValueError(exc)
+
+    def fetch_del_Cour(self, courMatric, database):
+        # Tenta procurar se o username existe no banco de dados.
+        # Caso não exista, é emitido um erro.
+        try:
+            # Filtra o database pelo nome do usuario.
+            uid = database.objects.get(field='MATRIC',value=courMatric)
             # Coleta a ID do usuário
             uid = uid.identity
 
@@ -817,6 +861,7 @@ class PersAdm(IfPersAdm):
             sf = lambda x: self.__select_field(uid, x, database)
 
             fetchset = [
+                    ('username',    sf('NAME')),
                     ('password',    sf('PASSWORD')),
                     ('matric',      sf('MATRIC')),
                     ('bios',        sf('BIOS')),
@@ -853,6 +898,7 @@ class PersAdm(IfPersAdm):
             # Coleta os valores dos campos de Professor responsável pelo curso
             # e o nome determinado à ele.
             fetchset = [
+                ('courMatric', sf('MATRIC')),
                 ('professor',   sf('PROFESSOR')),
                 ('name',        sf('NAME')),
                 ('students',     sf('STUDENTS')),

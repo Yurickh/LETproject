@@ -31,9 +31,24 @@ $(document).ready(function(){
 		resizable: false,
 	});
 
+	//	Características do Dialog.
+	$in2_dialog = $(".inner2_dialog").dialog({
+		autoOpen: false,
+		show: {
+			effect: "blind",
+			duration: 1
+		},
+		hide: {
+			effect: "blind",
+			duration: 1
+		},
+		modal: true,
+		resizable: false,
+	});
+
 	//	Cria o evento de abertura dos formulários de registro, edição ou deleção
 	//		após clicar em qualquer button da home da Administração.
-	$("button").click(function(){		
+	$("button").click(function(){
 
 		//	Coleta o título do button clicado na home de Adm.
 		text_button = $(this).text();
