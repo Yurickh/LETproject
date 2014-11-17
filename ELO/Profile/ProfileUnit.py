@@ -271,8 +271,7 @@ class UiFullProfile(IfUiProfile):
                                                         form )
                     request.session.modified = True
                 else:
-                    raise ValueError(lang.DICT['EXCEPTION_INV_FRM'] + 
-                        ":" + form.errors)
+                    raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
 
             except ValueError as exc:
                 data = self.__makeData(get_user())
