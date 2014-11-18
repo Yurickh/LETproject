@@ -1,0 +1,57 @@
+T{% extends "includes/assync_wrapper.html" %}
+{% load staticfiles %}
+
+{% block body %}
+
+<p>I am just putting this out there to see what people think of the idea... I propose that the mind is in a dire need to prove itself to others and give its oppinion to others. I also proppose that this creates a massive phycological need as it is fullfilled.</p>
+
+<p>There have been a few 'Bet you can't resist to answer this question' questions asked, and the fact is that people do answer them... they might say things like 'I will not answer' and do, or they might express their feelings about the question and/or asker. In situations like this you have to question what the motives for even responding to the given question are. To believe that a person thought that the other should know is acceptable, until you see the AMOUNT of times it has been said. Incorporate the fact that you are limited in your amount of reponses and you have to wonder... what force actually is keeping you here? It seems simple, a person asks a question, you answer... but why? Even if the question.. </p>
+
+<p>Update : is retorical, even if your playing by the 'points' game and there is o chance of getting the 10 bonus (besides the +2 for answering).</p>
+
+<p>Then you have to question why answer a question only for the +2... Many people have areas of expertise... some are an expert in Math, others in Slang and Socail Skills. What I am saying is why would a person, who purely cared about points gained, answer only for a small number of points... </p>
+
+<p>I understand that most people will not see what I see, they will say 'well, it is an easy 2 points'... but the question reall is why answer that question? </p>
+
+<p>I once posed a question which invovled highly sophsiticated math, only two people answered it. You can naturally tell from that people would feel 'stupid' attempting an answer on a subject they knew not, it also shows that people who do know such a subject do stay on, and they do answer, which adds to the question, why would you answer a question, given your after points, if there is other better questions?
+Update 2: What I am showing you is basically a pattern of random answerings, poeple will take a question and answer it without even caring what the question is. </p>
+
+<p>I have also shown, although minimally, that people typically stick in areas of expertise, so not to impose a sign that they are ignorant in the subject presented. </p>
+
+<p>What I have asked is why people answer questions, for points, or for the answer, if they do not offer any incentive for the answer. </p>
+
+<p>I further ask what causes the mind to make an answer, and incorporate the number of answers a person might give in a given day. </p>
+
+<p>I have read several times that even though people are not suppose to multi-account, some do, for the simple rush of answering questions. </p>
+
+<p>It would also stand to reason that before participating in YA they probally didn't think of multi-accounting. So what should be asked is why they would want to answer even more questions then allowed... </p>
+
+<p>From here one can rule out the point system of being a lure...
+Update 3: Because the splitting of points gained is irrational in thought and practice. The human mind typically is priority oriented. You have greater prioritys of your favorite foods then foods you don't like, similarly, people would play characters in a game that they like more then ones they don't. This can be equated to YA in the sense that each 'avitar' is a separate individual... You may like to use one over another... There by dimminishing, if not refuting, the entire concept of split points. </p>
+
+<p>Going once again back to what I have said, there people may have multiple accounts, if this is the case, then why not make 'flame' answers with that account. </p>
+<p>Furthermore, I place empasiss on what I said before... people who answer retorical question sometimes answer with 'thanks for the two points'. </p>
+
+<p>You have a pattern seeming to emerge here... people will 'want' to level their 'main avitar' but still answer with it. And when they can answer no more they revert to another avitar to continue...</p>
+<p>Update 4: And So I leave you, with my theory and with known issues that exist... </p>
+
+<p>People MAY make other account to persitantly answer questions 
+People MAY answer questions that require no answer, or might answer in a hostile way twords the question or asker. 
+People MAY claim to want points, but show errors in judgment that result in them getting less points then they can. </p>
+
+<p>And my Theory that the act of persistantly answering questions creates a phycological need TO answer questions, and that the reasoning behind that is a need to Prove One Self (by answering 'complex' questions) or to express a view (Be it positive or negitive). </p>
+
+<p>Personally, I view this 'need' as being bad for you.... you might make different conclustions, yet what I have made sticks until I can decide elsewise. </p>
+
+<p>I leave you now to make up your decisions, I truely expect few, if any at all, to answer, or to care about reading this short passage, but that is another Theory, for another time...</p><br />
+
+    <form action="" method="post" id="exercise_form" 
+        {% for field in form %}
+            
+            {{ field }}<br />
+
+        {% endfor %}
+        {% csrf_token %}
+        <input type="submit" name="{{ ff }}" value="{{ DICT.SUBMIT }}" />
+    </form>
+{% endblock %}
