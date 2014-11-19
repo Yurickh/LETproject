@@ -19,8 +19,9 @@
 		{{ field }}: {{ value }}<br />
 
 		{% if action == "att" %}
-			<button id="edit_{{ field }}"
+			<button id="edit_{{ model }}"
 					title="{{ action }}"
+					field="{{ field }}"
 					>Edit</button><br /><br />
 		{% endif %}
 

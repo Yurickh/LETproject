@@ -91,4 +91,14 @@ $(document).ready(function(){
 		}
 	});
 
+	if ($(".rslt").attr("id") == "True")
+	{
+		alert("Reg completed!!");
+	}
+	else if ($(".rslt").attr("id") != ""){
+		alert("ERROR HERE");
+		$dialog.dialog('close');
+		$in_dialog.dialog('close');
+	}
+
 });

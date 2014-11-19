@@ -16,6 +16,9 @@
 {% block content %}
 
 <h3>{{ DICT.MENU }}</h3>
+	{{ error }}
+	{{ result }}
+
 	<div id="container">
 		<div id="left" class="p-left">
 			<div style="padding-left:70px"><h2>{{ DICT.STUDENT }}</h2></div>
@@ -52,5 +55,6 @@
 	<div class="dialog"></div>
 	<div class="inner_dialog"></div>
 	<div class="inner2_dialog"></div>
+	<div class="rslt" id="{{ result }}"></div>
 
 {% endblock %}

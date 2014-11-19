@@ -1,12 +1,9 @@
 #coding: utf-8
 
 ## TODO:
-#   233: verificar validade do request.POST, tal qual if anterior.
 #   Colocar permissões de Adm e God diferenciadas.
-#   Implementar deleção de contas.
 #   Implementar confirmação de senha do Adm após qualquer ação realizada.
 #   Implementar log de eventos que o Adm ou God realizar.
-#   Verificar melhorias na conferência de ação em request.POST em UIAdm
 
 ## @file AdmUnit.py
 #   Este arquivo é responsável pelo armazenamento de todas as camadas 
@@ -143,7 +140,7 @@ class IfBusAdm:
     #   @arg    form    Valores dos campos para edição validados.
     #
     @abstractmethod
-    def attAccount(self, request): pass
+    def attAccount(self, request, field, form): pass
 
     ## Deleta uma conta no database.
     #   Podendo ser esta uma conta de Estudante, Professor ou um Curso.
@@ -273,6 +270,7 @@ class UiAdm(IfUiAdm):
         #   adequados e informações do usuário procurado para uma possível
         #   edição ou deleção.
         if request.method == "POST":
+            print request.POST
             ## @if Confere se é uma ação de registro pedido pelo Adm.
             #
             #   Caso seja então é feito a verificação do modelo de conta
@@ -320,12 +318,18 @@ class UiAdm(IfUiAdm):
                     #   form inválido.
                     if form.is_valid():
                         self.bus.regAccount(request, form)
+                        request.session.modified = True
+                        exc = ""
+                    else:
+                        raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
+
 
                 # Se houver qualquer problema referente as passagens dos forms 
                 # e conferência da validação dos mesmos então o 
                 # administrador será passado para a página inicial.
                 except ValueError as exc:
-                    return render(request, "Adm/home.html")
+                    request.session.modified = True
+                    return render(request, "Adm/home.html", {'error': exc })
 
 
             elif action == "insert":
@@ -369,78 +373,125 @@ class UiAdm(IfUiAdm):
                 # Se houver qualquer problema referente as passagens dos forms 
                 # e conferência da validação dos mesmos então o 
                 # administrador será passado para a página inicial.
-                except ValueError:
-                    return HttpResponseRedirect('/')
+                except ValueError as exc:
+                    return render(request, "Adm/home.html", {'error': exc })
 
-            elif request.POST['action'] == 'att' or \
+            elif 'action' in request.POST:
+                if request.POST['action'] == 'att' or \
                     request.POST['action'] == 'srcdel':
-                # Dicionario com informações do usuário procurado pelo Adm.
-                dUser = {}
-                
-                action = request.POST['action']
-                model = request.POST['model']
-                csrf = request.POST['csrfmiddlewaretoken']
+                    # Dicionario com informações do usuário procurado pelo Adm.
+                    dUser = {}
+                    
+                    action = request.POST['action']
+                    model = request.POST['model']
+                    csrf = request.POST['csrfmiddlewaretoken']
 
-                try:
-                    if model == "Course":
-                        # Coleta os forms de busca a partir da requisição POST.
-                        form = SrcCourForm(request.POST)
-                    else:
-                        form = SrcUserForm(request.POST)
+                    try:
+                        if model == "Course":
+                            # Coleta os forms de busca a partir da requisição POST.
+                            form = SrcCourForm(request.POST)
+                        else:
+                            form = SrcUserForm(request.POST)
 
-                    ## @if Confere se form de busca é valido.
-                    #
-                    #   Se form for adequado então é chamado o método 
-                    #   de procura de contas que irá comunicar-se 
-                    #   com o banco de dados depois da validação das 
-                    #   informações passadas pelo request.POST.
-                    #
-                    #   Caso contrário, é lançada exceção de erro referente à
-                    #   form inválido.
-                    if form.is_valid():
-                        dUser = self.bus.fetchAccount(request)
-
-                        ## @if Confere se dicionário de informações de usuário
-                        #       ainda continua nulo.
+                        ## @if Confere se form de busca é valido.
                         #
-                        #   Caso esteja nulo então é lançado excessão de conta
-                        #   inexistente.
-                        if not dUser:
-                            raise ValueError(lang.DICT['EXCEPTION_INV_USR_NM'])
+                        #   Se form for adequado então é chamado o método 
+                        #   de procura de contas que irá comunicar-se 
+                        #   com o banco de dados depois da validação das 
+                        #   informações passadas pelo request.POST.
+                        #
+                        #   Caso contrário, é lançada exceção de erro referente à
+                        #   form inválido.
+                        if form.is_valid():
+                            try:
+                                dUser = self.bus.fetchAccount(request)
+                                # Força a ter uma estruturação correta de dicionário.
+                                dUser = dict(dUser)
+                            except ValueError as exc:
+                                result = False
+                                request.session.modified = True
+                                return render(request, "Adm/home.html", {'error': exc,
+                                                                    'result': result, })
 
-                        # Força a ter uma estruturação correta de dicionário.
-                        dUser = dict(dUser)
-                        # Renderiza uma página assíncrona de informação da
-                        # conta requisitada.
-                        return render(request, 
-                                      "Adm/info.html", {'data':dUser, 
-                                                        'action': action,
-                                                        'model' : model,
-                                                        'csrf' : csrf, 
-                                                        })
+                                ## @if Confere se dicionário de informações de usuário
+                                #       ainda continua nulo.
+                                #
+                                #   Caso esteja nulo então é lançado excessão de conta
+                                #   inexistente.
+                                if not dUser:
+                                    raise ValueError(lang.DICT['EXCEPTION_INV_USR_NM'])
+                            
+                            request.session.modified = True
+                            # Renderiza uma página assíncrona de informação da
+                            # conta requisitada.
+                            return render(request, "Adm/info.html", {'data':dUser, 
+                                                            'action': action,
+                                                            'model' : model,
+                                                            'csrf' : csrf, 
+                                                            })
+                        else:
+                            raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
+
+                    # Se houver qualquer problema referente as passagens dos forms 
+                    # e conferência da validação dos mesmos então o 
+                    # administrador será passado para a página inicial.
+                    except ValueError as exc:
+                        return render(request, "Adm/home.html", {'error': exc })
+
+                elif request.POST['action'] == 'del':
+                    result = self.bus.delAccount(request)
+                    return render(request, "Adm/home.html", {'result': result })
+
+            else:
+                print request.POST
+                try:
+                    if "username" in request.POST:
+                        form = NameForm(request.POST)
+                        field = "name"
+                    if  "password" in request.POST:
+                        form = PasswordForm(request.POST)
+                        field = "password"
+                    elif "language" in request.POST:
+                        form = LanguageForm(request.POST)
+                        field = "language"
+                    elif "sex" in request.POST:
+                        form = SexForm(request.POST)
+                        field = "sex"
+                    elif "bios" in request.POST:
+                        form = BiosForm(request.POST)
+                        field = "bios"
+                    elif "interests" in request.POST:
+                        form = InterestsForm(request.POST)
+                        field = "interests"
+                    elif "avatar" in request.POST:
+                        form = AvatarForm(request.POST, request.FILES)
+                        field = "avatar"
                     else:
                         raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
 
-                # Se houver qualquer problema referente as passagens dos forms 
-                # e conferência da validação dos mesmos então o 
-                # administrador será passado para a página inicial.
-                except ValueError:
-                    return HttpResponseRedirect('/')
+                        if form.is_valid():
+                            self.bus.attAccount(request, field, form)
+                            request.session.modified = True
+                        else:
+                            raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
+                except ValueError as exc:
+                    return render(request, "Adm/home.html", {'error': exc })
 
-            elif request.POST['action'] == 'del':
-                possible = self.bus.delAccount(request)
-                print possible
-                return HttpResponseRedirect('/')
-
+            request.session.modified = True
             # Após a coleta da requisição o administrador será retornado à 
             # página inicial de controle.
             return HttpResponseRedirect('/')
                                          
         else:
             if not (action or model):
-                return render(request, "Adm/home.html")
+                result = ""
+                error = ""
+                request.session.modified = True
+                return render(request, "Adm/home.html", {'error': error,
+                                                        'result': result, })
 
             else:
+                err = False
                 ## @if Confere qual a ação requisitada.
                 #
                 #   Caso for uma ação de registro então é passado os forms de
@@ -451,31 +502,58 @@ class UiAdm(IfUiAdm):
                 #
                 #   Caso contrário, é passado para a página renderizada erro
                 #   de formulário.   
-                if action == "reg":
-                    if model == "Student" or model == "Professor":
-                        form = RegUserForm()
-                    elif model == "Course":
-                        form = RegCourForm()
-                    else:   
-                        # TODO ERRO PARA MODELO INCORRETO.
-                        raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
-                elif action == "att" or action == "srcdel":
-                    if model == "Student" or model == "Professor":
-                        form = SrcUserForm()
-                    elif model == "Course":
+                if action == 'reg' or action == 'att' or action == 'srcdel' or action == 'insert':
+                    if action == "reg":
+                        if model == "Student" or model == "Professor":
+                            form = RegUserForm()
+                        elif model == "Course":
+                            form = RegCourForm()
+                        else:   
+                            # TODO ERRO PARA MODELO INCORRETO.
+                            raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
+                    elif action == "att" or action == "srcdel":
+                        if model == "Student" or model == "Professor":
+                            form = SrcUserForm()
+                        elif model == "Course":
+                            form = SrcCourForm()
+                        else:
+                            # TODO ERRO PARA MODELO INCORRETO.
+                            raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
+                    elif action == "insert":
                         form = SrcCourForm()
                     else:
-                        # TODO ERRO PARA MODELO INCORRETO.
-                        raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
-                elif action == "insert":
-                    form = SrcCourForm()
-                else:
-                    form = lang.DICT["ERROR_FORM"]
-                return render(request, "Adm/edit.html", {'form': form,
-                                                         'action' : action,
-                                                         'model' : model,
-                                                        })
+                        form = lang.DICT["ERROR_FORM"]
 
+                    return render(request, "Adm/edit.html", {'form': form,
+                                                             'action' : action,
+                                                             'model' : model,
+                                                            })
+                else:
+                    if action == "username":
+                        action = "name"
+                        form = NameForm()
+                    elif action == "password":
+                        form = PasswordForm()
+                    elif action == "language":
+                        form = LanguageForm()
+                        print form
+                    elif action == "sex":
+                        form = SexForm()
+                    elif action == "bios":
+                        form = BiosForm()
+                    elif action == "interests":
+                        form = InterestsForm()
+                    elif action == "avatar":
+                        form = AvatarForm()
+                    else:
+                        form = lang.DICT["ERROR_FORM"]
+                        err = True 
+
+                    return render(request, "Adm/edit_field.html", {'form': form,
+                                                                 'ff': action,
+                                                                 'err': err,
+                                                                })
+            
 
 ## Camada de negócio para o módulo de administração.
 #   Deve ser capaz de manipular os dados do sistema,
@@ -553,7 +631,38 @@ class BusAdm(IfBusAdm):
             raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
 
         
-    def attAccount(self, request): pass
+    def attAccount(self, request, field, form): 
+        if field == "name":
+            fpw = form.cleaned_data['password'].value
+            if fpw != user['password']:
+                raise ValueError(lang.DICT['EXCEPTION_INV_PW_F'])
+            newdata = form.cleaned_data['newdata'].value
+        elif field == "password":
+            npw = form.cleaned_data['newdata'].value
+            rpw = form.cleaned_data['rp_newdata'].value
+            opw = form.cleaned_data['old_password'].value
+            if npw != rpw:
+                raise ValueError(lang.DICT['EXCEPTION_INV_PW_R'])
+            if opw != user['password']:
+                raise ValueError(lang.DICt['EXCEPTION_INV_PW_F'])
+            newdata = npw
+        elif field == "language":
+            newdata = form.cleaned_data['newdata']
+        elif field == "avatar":
+            addr = settings.MEDIA_ROOT + u"/" + user['avatar']
+            with open(addr, "wb") as destination:
+                    for chunk in request.FILES['newdata'].chunks():
+                        destination.write(chunk)
+        else:
+            newdata = form.cleaned_data['newdata'].value
+
+        try:
+            if user['type'] == 'Student' and field != 'avatar':
+                self.pers.update(user['name'], field, newdata, Student)
+            elif user['type'] == 'Professor' and field != 'avatar':
+                self.pers.update(user['name'], field, newdata, Professor)
+        except ValueError as exc:
+            raise ValueError(lang.DICT['EXCEPTION_ERR_DB_U'])
         
     def delAccount(self, request):
         try:
@@ -620,52 +729,8 @@ class BusAdm(IfBusAdm):
                 data = self.pers.fetchUser(str(request.POST['username']), db) 
 
             return data
-        except ValueError as exc:
+        except ValueError:
             raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
-
-
-    ## Edita campos de um usuario.
-    def editField(self, request, field, form):
-
-        user = request.session['user']
-        if field == "name":
-            fpw = form.cleaned_data['password'].value
-            if fpw != user['password']:
-                raise ValueError(lang.DICT['EXCEPTION_INV_PW_F'])
-            newdata = form.cleaned_data['newdata'].value
-        elif field == "password":
-            npw = form.cleaned_data['newdata'].value
-            rpw = form.cleaned_data['rp_newdata'].value
-            opw = form.cleaned_data['old_password'].value
-            if npw != rpw:
-                raise ValueError(lang.DICT['EXCEPTION_INV_PW_R'])
-            if opw != user['password']:
-                raise ValueError(lang.DICt['EXCEPTION_INV_PW_F'])
-            newdata = npw
-        elif field == "language":
-            newdata = form.cleaned_data['newdata']
-        elif field == "avatar":
-            addr = settings.MEDIA_ROOT + u"/" + user['avatar']
-            with open(addr, "wb") as destination:
-                    for chunk in request.FILES['newdata'].chunks():
-                        destination.write(chunk)
-        else:
-            newdata = form.cleaned_data['newdata'].value
-
-        try:
-            if user['type'] == 'Student' and field != 'avatar':
-                self.pers.update(user['name'], field, newdata, Student)
-            elif user['type'] == 'Professor' and field != 'avatar':
-                self.pers.update(user['name'], field, newdata, Professor)
-        except ValueError as exc:
-            raise ValueError(lang.DICT['EXCEPTION_ERR_DB_U'])
-        else:
-            if field == "language":
-                request.session['django_language'] = newdata
-        if field == 'avatar':
-            return user['avatar']
-        else:
-            return newdata
 
 class PersAdm(IfPersAdm):
 
@@ -746,6 +811,11 @@ class PersAdm(IfPersAdm):
             uid = database.objects.get(field='NAME', value=username)
             # Coleta a ID do usuário encontrado.
             uid = uid.identity
+
+            ## Para o caso de COURSEs, GRADEs ou INTERESTs.
+            if field[-1] == 's':
+                if field[-2] == 'e' or field[-2] == 't':
+                    field = field[:-1]
                 
             try:
                 # Coleta a partir do ID do curso a lista do campo
@@ -776,8 +846,9 @@ class PersAdm(IfPersAdm):
 
         # Caso usuário não exista, então é retornado para o Business
         # que não foi encontrado.
-        except database.DoesNotExist:
-            return False
+        except ( database.DoesNotExist, 
+                database.MultipleObjectsReturned ) as exc:
+            raise ValueError(exc)
 
         # Tenta filtrar os dados de um ID.
         # Caso não exista, é emitido um erro.
@@ -881,6 +952,8 @@ class PersAdm(IfPersAdm):
 
         except database.DoesNotExist as exc:
             fetchset = []
+        except database.MultipleObjectsReturned as exc:
+            raise ValueError(exc)
 
         return fetchset
 

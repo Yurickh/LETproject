@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 
-	$("button").click(function(e){
+	$("button[id^='del_']").click(function(e){
 		e.preventDefault();
 		$in_dialog.dialog('close');
 
@@ -29,6 +29,19 @@ $(document).ready(function(){
 		}
 
 		$in2_dialog.load("/assync/adm-del/", data);
+	});
+
+	$("button[id^='edit_']").click(function(e){
+		e.preventDefault();
+		$in_dialog.dialog('close');
+
+		model = $(this).attr("id").slice(5);
+		field = $(this).attr("field");
+
+		$in2_dialog.load("assync/edit-field-adm/"+field+"/"+model+"/", function(){
+			$in2_dialog.dialog('open');
+		});
+
 	});
 
 });
