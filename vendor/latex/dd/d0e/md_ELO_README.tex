@@ -1,0 +1,42 @@
+\subsection*{Conteúdo}
+
+As entradas em negrito indicam pastas, as normais indicam arquivos.
+
+
+\begin{DoxyItemize}
+\item {\bfseries \hyperlink{namespaceAdm}{Adm}}
+\item {\bfseries \hyperlink{namespaceBuilding}{Building}}
+\item {\bfseries \hyperlink{namespaceCourse}{Course}}
+\item {\bfseries \hyperlink{namespaceELO}{E\-L\-O}}
+\item {\bfseries \hyperlink{namespaceLogin}{Login}}
+\item \hyperlink{manage_8py}{manage.\-py}
+\item {\bfseries \hyperlink{namespaceProfile}{Profile}}
+\end{DoxyItemize}
+
+\subsubsection*{\hyperlink{namespaceAdm}{Adm}}
+
+Pasta que contém o módulo de administração. Esta parte do projeto é a responsável pelas páginas do administrador, através das quais ele poderá criar e deletar cursos, bem como matricular e desmatricular alunos ou professores e associar estes.
+
+\subsubsection*{\hyperlink{namespaceBuilding}{Building}}
+
+Pasta que contém o módulo de contrução de curso. Esta parte do projeto é a responsável pelas páginas de contrução de curso, visível somente aos professores. Com elas será possível desenvolver conteúdo visualmente interessante e personalizado sem conhecimentos avançados de H\-T\-M\-L, C\-S\-S ou Javascript.
+
+\subsubsection*{\hyperlink{namespaceCourse}{Course}}
+
+Pasta que contém o módulo de visualização de curso. Cria e organiza as páginas que possibilitam ao aluno acompanhar os cursos, bem como interagir com o professor através de exercícios e talvez comentários.
+
+\subsubsection*{\hyperlink{namespaceELO}{E\-L\-O}}
+
+Pasta que contém os arquivos que são comuns a todos os módulos, assim como as pastas de template, static e media. São arquivos responsáveis, em geral, pelo controle do fluxo e a organização intermodular.
+
+\subsubsection*{\hyperlink{namespaceLogin}{Login}}
+
+Pasta que contém o módulo de login. Responsável pelo controle de login e logout dos usuários do sistema. É capaz de validar nomes e senhas.
+
+\subsubsection*{\hyperlink{manage_8py}{manage.\-py}}
+
+Arquivo de controle do Django. Utilizado para simular um servidor local, bem como rodar versões de debug do python e outros utilitários para desenvolvimento.
+
+\subsubsection*{\hyperlink{namespaceProfile}{Profile}}
+
+Pasta que contém o módulo de perfil. Responsável pelas páginas onde se encontram os dados do usuário, seja ela a Home ou a página de dados detalhados (referenciada internamente como 'perfil completo'). Também permite ao usuário editar seus próprios dados. A uma primeira versão, é inacessível para administradores. 

@@ -8,6 +8,13 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
@@ -37,7 +44,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Página&#160;Principal</span></a></li>
-      <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Arquivos</span></a></li>
@@ -62,7 +68,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="annotated.html"><span>Lista&#160;de&#160;Componentes</span></a></li>
-      <li><a href="classes.html"><span>Índice&#160;dos&#160;Componentes</span></a></li>
       <li><a href="hierarchy.html"><span>Hierarquia&#160;de&#160;Classes</span></a></li>
       <li class="current"><a href="functions.html"><span>Componentes&#160;Membros</span></a></li>
     </ul>
@@ -86,7 +91,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
       <li><a href="#index_l"><span>l</span></a></li>
       <li><a href="#index_m"><span>m</span></a></li>
       <li><a href="#index_n"><span>n</span></a></li>
+      <li><a href="#index_o"><span>o</span></a></li>
       <li><a href="#index_p"><span>p</span></a></li>
+      <li><a href="#index_r"><span>r</span></a></li>
       <li><a href="#index_s"><span>s</span></a></li>
       <li><a href="#index_t"><span>t</span></a></li>
       <li><a href="#index_u"><span>u</span></a></li>
@@ -94,12 +101,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
     </ul>
   </div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('functions_vars.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variáveis</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variáveis</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -113,11 +134,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
 
 <h3><a class="anchor" id="index_a"></a>- a -</h3><ul>
 <li>admPass
-: <a class="el" href="dd/d81/classAdm_1_1forms_1_1AdmDelProfForm.html#a5c75c479d2d63fb207af1fd9eb1d85ad">Adm.forms.AdmDelProfForm</a>
-, <a class="el" href="db/db9/classAdm_1_1forms_1_1AdmDelStuForm.html#aff2b1076da947f2f4415f985bdc46d18">Adm.forms.AdmDelStuForm</a>
-, <a class="el" href="df/d14/classAdm_1_1forms_1_1AdmRegCourForm.html#a0b753c4784edb7d3f2bbca64f8883ae9">Adm.forms.AdmRegCourForm</a>
-, <a class="el" href="d3/d88/classAdm_1_1forms_1_1AdmRegProfForm.html#aa9a564546d369e53f8512a473669b78d">Adm.forms.AdmRegProfForm</a>
-, <a class="el" href="d0/d94/classAdm_1_1forms_1_1AdmRegStuForm.html#aa2463e5a3bdc53561cf1a1212099b8ca">Adm.forms.AdmRegStuForm</a>
+: <a class="el" href="d2/db2/classAdm_1_1forms_1_1confAdm.html#a30fc9256d1b7a6ca4ac453111c6944b9">Adm.forms.confAdm</a>
 </li>
 <li>avatar
 : <a class="el" href="d5/df1/classELO_1_1EntityUnit_1_1Professor.html#a593a0636e87dcdd9ced2e6b7494a45dc">ELO.EntityUnit.Professor</a>
@@ -136,6 +153,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
 , <a class="el" href="d6/d82/classCourse_1_1CourseUnit_1_1IfUiCourse.html#a228fc709b99da3a7e6f5020bd07cee03">Course.CourseUnit.IfUiCourse</a>
 , <a class="el" href="d9/d56/classLogin_1_1LoginUnit_1_1IfUiLogin.html#af6823ae4c77d340c2341932d8f338753">Login.LoginUnit.IfUiLogin</a>
 , <a class="el" href="dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html#a32a87d193e5d14e0ff3125d6bab2c420">Profile.ProfileUnit.IfUiProfile</a>
+, <a class="el" href="db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html#a47049f3f61c7fada93dd84fccd19a2bd">Profile.ProfileUnit.UiFullProfile</a>
 </li>
 </ul>
 
@@ -146,7 +164,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
 , <a class="el" href="dd/d1d/classELO_1_1EntityUnit_1_1Student.html#aeff51011a4e35705fb6aefc54e1d4f35">ELO.EntityUnit.Student</a>
 </li>
 <li>courMatric
-: <a class="el" href="df/d14/classAdm_1_1forms_1_1AdmRegCourForm.html#a5030e7e3ac46b325e10adc6d39ea9736">Adm.forms.AdmRegCourForm</a>
+: <a class="el" href="da/d13/classAdm_1_1forms_1_1AdmDelCourForm.html#a8ed2bcde12e5bb321960517b3c653b2f">Adm.forms.AdmDelCourForm</a>
+, <a class="el" href="df/d14/classAdm_1_1forms_1_1AdmRegCourForm.html#a5030e7e3ac46b325e10adc6d39ea9736">Adm.forms.AdmRegCourForm</a>
+, <a class="el" href="de/d02/classAdm_1_1forms_1_1AdmSrcCourForm.html#ad1687195ebe49268ac1cccbcaab2cd83">Adm.forms.AdmSrcCourForm</a>
 </li>
 <li>courName
 : <a class="el" href="df/d14/classAdm_1_1forms_1_1AdmRegCourForm.html#afc325feb749069ea57387630cc0acc5a">Adm.forms.AdmRegCourForm</a>
@@ -211,7 +231,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
 
 <h3><a class="anchor" id="index_l"></a>- l -</h3><ul>
 <li>language
-: <a class="el" href="dd/d1d/classELO_1_1EntityUnit_1_1Student.html#ad58a5d0f4e75b34e6c2b93ac05b59faf">ELO.EntityUnit.Student</a>
+: <a class="el" href="d3/d3a/classELO_1_1EntityUnit_1_1Adm.html#a2d4b3c7bd74c828fa965f4d840ff7124">ELO.EntityUnit.Adm</a>
+, <a class="el" href="dd/d1d/classELO_1_1EntityUnit_1_1Student.html#ad58a5d0f4e75b34e6c2b93ac05b59faf">ELO.EntityUnit.Student</a>
 </li>
 <li>lessons
 : <a class="el" href="db/de8/classELO_1_1EntityUnit_1_1Module.html#a33eacfd2527f80841b87ccd73eb5fec0">ELO.EntityUnit.Module</a>
@@ -243,6 +264,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
 , <a class="el" href="d5/df1/classELO_1_1EntityUnit_1_1Professor.html#ae85cc0fc9c64a277111a85e87efbe049">ELO.EntityUnit.Professor</a>
 , <a class="el" href="dd/d1d/classELO_1_1EntityUnit_1_1Student.html#a33329ec1da0181f6305626b4444a8e0b">ELO.EntityUnit.Student</a>
 </li>
+<li>newdata
+: <a class="el" href="da/da4/classProfile_1_1forms_1_1AvatarForm.html#af61dac7a51640ffe7d4e51aef53631ce">Profile.forms.AvatarForm</a>
+, <a class="el" href="d7/d1e/classProfile_1_1forms_1_1BiosForm.html#a2862b20c24bac9aa5dc896925a2cb3d6">Profile.forms.BiosForm</a>
+, <a class="el" href="d4/d5e/classProfile_1_1forms_1_1InterestsForm.html#ad400f3a7b43e71bd7772fa85e2961ff0">Profile.forms.InterestsForm</a>
+, <a class="el" href="de/d9b/classProfile_1_1forms_1_1LanguageForm.html#a327d764765fba9b8d9d82c86ca7e08a6">Profile.forms.LanguageForm</a>
+, <a class="el" href="d6/d33/classProfile_1_1forms_1_1NameForm.html#a6ebfb316b263c162dd3895b1da149eda">Profile.forms.NameForm</a>
+, <a class="el" href="df/dbb/classProfile_1_1forms_1_1PasswordForm.html#a8000a7fa167f74f0cd554f39dd1e3871">Profile.forms.PasswordForm</a>
+, <a class="el" href="d1/dea/classProfile_1_1forms_1_1SexForm.html#a0d99412ab99ee46149a50fabb2614845">Profile.forms.SexForm</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_o"></a>- o -</h3><ul>
+<li>old_password
+: <a class="el" href="df/dbb/classProfile_1_1forms_1_1PasswordForm.html#a71438e4977095210067fd7d2f4cf551c">Profile.forms.PasswordForm</a>
+</li>
 </ul>
 
 
@@ -252,6 +289,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
 , <a class="el" href="d5/df1/classELO_1_1EntityUnit_1_1Professor.html#af0810854479e9f9a806eb6bfe7468e60">ELO.EntityUnit.Professor</a>
 , <a class="el" href="dd/d1d/classELO_1_1EntityUnit_1_1Student.html#a834cad492221bfe3f26e590666e13f9a">ELO.EntityUnit.Student</a>
 , <a class="el" href="d0/db9/classLogin_1_1forms_1_1LoginForm.html#a23e321f790e9c7bfc3e9abf767826a2d">Login.forms.LoginForm</a>
+, <a class="el" href="d6/d33/classProfile_1_1forms_1_1NameForm.html#a5a6959db0132c607a56f9cda75769ecf">Profile.forms.NameForm</a>
 </li>
 <li>pers
 : <a class="el" href="d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a95ea8f39fbbcddf44822e1614c712bfe">Adm.AdmUnit.IfBusAdm</a>
@@ -259,25 +297,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
 , <a class="el" href="dc/dd6/classLogin_1_1LoginUnit_1_1IfBusLogin.html#a53b8075436052b94282021c84a2c3211">Login.LoginUnit.IfBusLogin</a>
 , <a class="el" href="dc/d47/classProfile_1_1ProfileUnit_1_1IfBusProfile.html#abe265adaf3fd39d6534f9ad4c9ba8abb">Profile.ProfileUnit.IfBusProfile</a>
 </li>
-<li>profCampus
-: <a class="el" href="d3/d88/classAdm_1_1forms_1_1AdmRegProfForm.html#a0c90beb927b61260feb194030798db38">Adm.forms.AdmRegProfForm</a>
-</li>
-<li>profEmail
-: <a class="el" href="d3/d88/classAdm_1_1forms_1_1AdmRegProfForm.html#a56c1eca35253b136bf8886135c9633b0">Adm.forms.AdmRegProfForm</a>
-</li>
-<li>profMatric
-: <a class="el" href="dd/d81/classAdm_1_1forms_1_1AdmDelProfForm.html#a3b53155ed7b63a0ad994c47305061ca1">Adm.forms.AdmDelProfForm</a>
-, <a class="el" href="d3/d88/classAdm_1_1forms_1_1AdmRegProfForm.html#ac53b20321fbc980c896f534229c68ff1">Adm.forms.AdmRegProfForm</a>
-, <a class="el" href="d5/d6d/classAdm_1_1forms_1_1AdmSrcProfForm.html#a774a36bf303e747a3139b988a4a714b3">Adm.forms.AdmSrcProfForm</a>
-</li>
-<li>profName
-: <a class="el" href="d3/d88/classAdm_1_1forms_1_1AdmRegProfForm.html#aec9f5746e7eb7f389c0f159780dd71fa">Adm.forms.AdmRegProfForm</a>
-</li>
-<li>profPass
-: <a class="el" href="d3/d88/classAdm_1_1forms_1_1AdmRegProfForm.html#afe9e2e7368001ac81851ece8b42ccb57">Adm.forms.AdmRegProfForm</a>
-</li>
-<li>profSex
-: <a class="el" href="d3/d88/classAdm_1_1forms_1_1AdmRegProfForm.html#ab910e0448e7d6dac759c1cdcb24a4314">Adm.forms.AdmRegProfForm</a>
+</ul>
+
+
+<h3><a class="anchor" id="index_r"></a>- r -</h3><ul>
+<li>rp_newdata
+: <a class="el" href="df/dbb/classProfile_1_1forms_1_1PasswordForm.html#a7560db05a7e3dfebdd4e95385192b2ad">Profile.forms.PasswordForm</a>
 </li>
 </ul>
 
@@ -287,30 +312,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
 : <a class="el" href="d5/df1/classELO_1_1EntityUnit_1_1Professor.html#ac049dc360c4af27037158e33577288e1">ELO.EntityUnit.Professor</a>
 , <a class="el" href="dd/d1d/classELO_1_1EntityUnit_1_1Student.html#a5ca85c1d00044512e5dc3cfabac4ff9f">ELO.EntityUnit.Student</a>
 </li>
-<li>studCampus
-: <a class="el" href="d0/d94/classAdm_1_1forms_1_1AdmRegStuForm.html#ad626ad8ba2b3609252db029fba8112c1">Adm.forms.AdmRegStuForm</a>
-</li>
-<li>studEmail
-: <a class="el" href="d0/d94/classAdm_1_1forms_1_1AdmRegStuForm.html#a7bb9d477582961bb017d459d7beb2a48">Adm.forms.AdmRegStuForm</a>
-</li>
 <li>students
 : <a class="el" href="d2/dc4/classELO_1_1EntityUnit_1_1Courses.html#ac8e5e595ec895e03b088764d7506e735">ELO.EntityUnit.Courses</a>
-</li>
-<li>studMatric
-: <a class="el" href="db/db9/classAdm_1_1forms_1_1AdmDelStuForm.html#a9ab40744579cf679da8a3a922a29061c">Adm.forms.AdmDelStuForm</a>
-, <a class="el" href="d0/d94/classAdm_1_1forms_1_1AdmRegStuForm.html#a3952916b9a15da1d6f5aef0fe70ca37a">Adm.forms.AdmRegStuForm</a>
-</li>
-<li>studName
-: <a class="el" href="d0/d94/classAdm_1_1forms_1_1AdmRegStuForm.html#a148f5094b9746641dc5787e2d2f9b442">Adm.forms.AdmRegStuForm</a>
-</li>
-<li>studPass
-: <a class="el" href="d0/d94/classAdm_1_1forms_1_1AdmRegStuForm.html#a64f5a91780fe16298e824629a7315327">Adm.forms.AdmRegStuForm</a>
-</li>
-<li>studSex
-: <a class="el" href="d0/d94/classAdm_1_1forms_1_1AdmRegStuForm.html#a3a4118b48fa8d77ceb006cd7da92cfd6">Adm.forms.AdmRegStuForm</a>
-</li>
-<li>stuMatric
-: <a class="el" href="d7/d61/classAdm_1_1forms_1_1AdmSrcStuForm.html#a0229d190c71b996fea62f558235bd588">Adm.forms.AdmSrcStuForm</a>
 </li>
 </ul>
 
@@ -326,8 +329,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
 
 
 <h3><a class="anchor" id="index_u"></a>- u -</h3><ul>
+<li>userCampus
+: <a class="el" href="d5/d88/classAdm_1_1forms_1_1AdmRegStu__ProfForm.html#a885786ae8be597f051f8e3ff65ddb02d">Adm.forms.AdmRegStu_ProfForm</a>
+</li>
+<li>userEmail
+: <a class="el" href="d5/d88/classAdm_1_1forms_1_1AdmRegStu__ProfForm.html#a97ccca87a1c1c3a223e13d51e8196ef4">Adm.forms.AdmRegStu_ProfForm</a>
+</li>
+<li>userMatric
+: <a class="el" href="d5/d88/classAdm_1_1forms_1_1AdmRegStu__ProfForm.html#a8cd50b9437effd2fecd6e4c66c307e41">Adm.forms.AdmRegStu_ProfForm</a>
+</li>
+<li>username
+: <a class="el" href="d1/d26/classAdm_1_1forms_1_1AdmDelStu__ProfForm.html#a780eaf9b2d36cd160f6e574fe9023452">Adm.forms.AdmDelStu_ProfForm</a>
+</li>
+<li>userName
+: <a class="el" href="d5/d88/classAdm_1_1forms_1_1AdmRegStu__ProfForm.html#a4e5391112a173e2d304e20c2cc8bca4d">Adm.forms.AdmRegStu_ProfForm</a>
+</li>
 <li>username
 : <a class="el" href="d0/db9/classLogin_1_1forms_1_1LoginForm.html#af3766bb4ea8cabdf57ad77214b7545fd">Login.forms.LoginForm</a>
+</li>
+<li>userPass
+: <a class="el" href="d5/d88/classAdm_1_1forms_1_1AdmRegStu__ProfForm.html#ad50fce73918c911541bd1c385d25eeca">Adm.forms.AdmRegStu_ProfForm</a>
+</li>
+<li>userSex
+: <a class="el" href="d5/d88/classAdm_1_1forms_1_1AdmRegStu__ProfForm.html#af8e16ffbc31dfdec8496b7751bb51bed">Adm.forms.AdmRegStu_ProfForm</a>
 </li>
 </ul>
 
@@ -340,11 +364,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
 </li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Gerado em Quinta, 24 de Abril de 2014 15:33:58 para LETproject por &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.6
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Gerado em Quinta, 9 de Outubro de 2014 03:09:15 para LETproject por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
 </body>
 </html>

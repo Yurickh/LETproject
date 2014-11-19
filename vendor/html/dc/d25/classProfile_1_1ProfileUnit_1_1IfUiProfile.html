@@ -8,6 +8,13 @@
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../search/search.js"></script>
 <script type="text/javascript">
@@ -37,7 +44,6 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="../../index.html"><span>Página&#160;Principal</span></a></li>
-      <li><a href="../../pages.html"><span>Páginas&#160;relacionadas</span></a></li>
       <li><a href="../../namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="../../annotated.html"><span>Classes</span></a></li>
       <li><a href="../../files.html"><span>Arquivos</span></a></li>
@@ -62,17 +68,31 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="../../annotated.html"><span>Lista&#160;de&#160;Componentes</span></a></li>
-      <li><a href="../../classes.html"><span>Índice&#160;dos&#160;Componentes</span></a></li>
       <li><a href="../../hierarchy.html"><span>Hierarquia&#160;de&#160;Classes</span></a></li>
       <li><a href="../../functions.html"><span>Componentes&#160;Membros</span></a></li>
     </ul>
   </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html','../../');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variáveis</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variáveis</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -81,11 +101,6 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="../../d8/dc2/namespaceProfile.html">Profile</a></li><li class="navelem"><a class="el" href="../../d0/d31/namespaceProfile_1_1ProfileUnit.html">ProfileUnit</a></li><li class="navelem"><a class="el" href="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html">IfUiProfile</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Métodos Públicos</a> &#124;
@@ -104,8 +119,8 @@ Diagrama de Hierarquia para Profile.ProfileUnit.IfUiProfile:</div>
  <div class="center">
   <img src="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.png" usemap="#Profile.ProfileUnit.IfUiProfile_map" alt=""/>
   <map id="Profile.ProfileUnit.IfUiProfile_map" name="Profile.ProfileUnit.IfUiProfile_map">
-<area href="../../d8/dcc/classProfile_1_1ProfileUnit_1_1UiProfileP.html" alt="Profile.ProfileUnit.UiProfileP" shape="rect" coords="0,56,171,80"/>
-<area href="../../dc/dbe/classProfile_1_1ProfileUnit_1_1UiProfileS.html" title="Camada de apresentação para estudantes. " alt="Profile.ProfileUnit.UiProfileS" shape="rect" coords="181,56,352,80"/>
+<area href="../../db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile.html" title="Camada de apresentação para a página de perfil completa. " alt="Profile.ProfileUnit.UiFullProfile" shape="rect" coords="0,56,195,80"/>
+<area href="../../db/dcf/classProfile_1_1ProfileUnit_1_1UiHomeProfile.html" title="Camada de apresentação para a página principal do site. " alt="Profile.ProfileUnit.UiHomeProfile" shape="rect" coords="205,56,400,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -130,8 +145,9 @@ Atributos Públicos</h2></td></tr>
 <tr class="separator:a32a87d193e5d14e0ff3125d6bab2c420"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descrição Detalhada</h2>
-<div class="textblock"><p>Interface para a camada de Apresentação de Usuário do módulo <a class="el" href="../../d8/dc2/namespaceProfile.html">Profile</a>. </p>
-<p>É responsável pelo carregamento do template correto e processa os dados inseridos nos formulários de Perfil. </p>
+<div class="textblock"><p>É responsável pelo carregamento do template correto e processa os dados inseridos nos formulários de Perfil. </p>
+
+<p>Definição na linha <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html#l00041">41</a> do arquivo <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html">ProfileUnit.py</a>.</p>
 </div><h2 class="groupheader">Construtores &amp; Destrutores</h2>
 <a class="anchor" id="a558fbb501ee3dbc4a16d3165479c38bc"></a>
 <div class="memitem">
@@ -157,8 +173,18 @@ Atributos Públicos</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Força a criação da camada subjacente. </p>
-
+<p>Definição na linha <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html#l00045">45</a> do arquivo <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html">ProfileUnit.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html#a558fbb501ee3dbc4a16d3165479c38bc">   45</a></span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">def </span><a class="code" href="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html#a558fbb501ee3dbc4a16d3165479c38bc">__init__</a>(self, bus):</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html#a32a87d193e5d14e0ff3125d6bab2c420">   47</a></span>&#160;        <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            self.<a class="code" href="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html#a32a87d193e5d14e0ff3125d6bab2c420">bus</a> = bus</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordflow">except</span> TypeError <span class="keyword">as</span> exc:</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            del self</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keywordflow">raise</span> exc</div>
+</div>
+<div class="ttc" id="classProfile_1_1ProfileUnit_1_1IfUiProfile_html_a558fbb501ee3dbc4a16d3165479c38bc"><div class="ttname"><a href="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html#a558fbb501ee3dbc4a16d3165479c38bc">Profile.ProfileUnit.IfUiProfile.__init__</a></div><div class="ttdeci">def __init__</div><div class="ttdoc">Força a criação da camada subjacente. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6d/ProfileUnit_8py_source.html#l00045">ProfileUnit.py:45</a></div></div>
+<div class="ttc" id="classProfile_1_1ProfileUnit_1_1IfUiProfile_html_a32a87d193e5d14e0ff3125d6bab2c420"><div class="ttname"><a href="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html#a32a87d193e5d14e0ff3125d6bab2c420">Profile.ProfileUnit.IfUiProfile.bus</a></div><div class="ttdeci">bus</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6d/ProfileUnit_8py_source.html#l00047">ProfileUnit.py:47</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Métodos</h2>
@@ -176,6 +202,16 @@ Atributos Públicos</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Definição na linha <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html#l00053">53</a> do arquivo <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html">ProfileUnit.py</a>.</p>
+
+<p>Referências <a class="el" href="../../de/d1e/CourseUnit_8py_source.html#l00025">Course.CourseUnit.IfUiCourse.__bus</a>, <a class="el" href="../../dd/d7f/MainUnit_8py_source.html#l00039">ELO.MainUnit.Factory.__bus</a>, <a class="el" href="../../da/dc7/LoginUnit_8py_source.html#l00049">Login.LoginUnit.IfUiLogin.__bus</a>, <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html#l00059">Profile.ProfileUnit.IfUiProfile.__bus</a>, <a class="el" href="../../db/dd3/AdmUnit_8py_source.html#l00067">Adm.AdmUnit.IfUiAdm.__bus</a> e <a class="el" href="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html#a32a87d193e5d14e0ff3125d6bab2c420">Profile.ProfileUnit.IfUiProfile.bus</a>.</p>
+<div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html#ac3d0a7a780dcf729b9f3cf1fff243a78">   53</a></span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">def </span><a class="code" href="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html#a32a87d193e5d14e0ff3125d6bab2c420">bus</a>(self):</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">return</span> self.<a class="code" href="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html#af2171c776276848c2961f6fa818e0f67">__bus</a></div>
+</div>
+<div class="ttc" id="classProfile_1_1ProfileUnit_1_1IfUiProfile_html_af2171c776276848c2961f6fa818e0f67"><div class="ttname"><a href="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html#af2171c776276848c2961f6fa818e0f67">Profile.ProfileUnit.IfUiProfile.__bus</a></div><div class="ttdeci">__bus</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6d/ProfileUnit_8py_source.html#l00059">ProfileUnit.py:59</a></div></div>
+<div class="ttc" id="classProfile_1_1ProfileUnit_1_1IfUiProfile_html_a32a87d193e5d14e0ff3125d6bab2c420"><div class="ttname"><a href="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html#a32a87d193e5d14e0ff3125d6bab2c420">Profile.ProfileUnit.IfUiProfile.bus</a></div><div class="ttdeci">bus</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6d/ProfileUnit_8py_source.html#l00047">ProfileUnit.py:47</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="ac3d0a7a780dcf729b9f3cf1fff243a78"></a>
@@ -202,6 +238,21 @@ Atributos Públicos</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Definição na linha <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html#l00057">57</a> do arquivo <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html">ProfileUnit.py</a>.</p>
+
+<p>Referências <a class="el" href="../../de/d1e/CourseUnit_8py_source.html#l00025">Course.CourseUnit.IfUiCourse.__bus</a>, <a class="el" href="../../dd/d7f/MainUnit_8py_source.html#l00039">ELO.MainUnit.Factory.__bus</a>, <a class="el" href="../../da/dc7/LoginUnit_8py_source.html#l00049">Login.LoginUnit.IfUiLogin.__bus</a>, <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html#l00059">Profile.ProfileUnit.IfUiProfile.__bus</a>, <a class="el" href="../../db/dd3/AdmUnit_8py_source.html#l00067">Adm.AdmUnit.IfUiAdm.__bus</a> e <a class="el" href="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html#a32a87d193e5d14e0ff3125d6bab2c420">Profile.ProfileUnit.IfUiProfile.bus</a>.</p>
+<div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html#ac3d0a7a780dcf729b9f3cf1fff243a78">   57</a></span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">def </span><a class="code" href="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html#a32a87d193e5d14e0ff3125d6bab2c420">bus</a>(self, value):</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordflow">if</span> isinstance(value, IfBusProfile):</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            self.<a class="code" href="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html#af2171c776276848c2961f6fa818e0f67">__bus</a> = value</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keywordflow">raise</span> TypeError(<span class="stringliteral">&quot;Expected IfBusProfile instance at \</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="stringliteral">                UiProfile.__bus. Received &quot;</span> + </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                str(type(value)) + <span class="stringliteral">&quot; instead.&quot;</span>)</div>
+</div>
+<div class="ttc" id="classProfile_1_1ProfileUnit_1_1IfUiProfile_html_af2171c776276848c2961f6fa818e0f67"><div class="ttname"><a href="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html#af2171c776276848c2961f6fa818e0f67">Profile.ProfileUnit.IfUiProfile.__bus</a></div><div class="ttdeci">__bus</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6d/ProfileUnit_8py_source.html#l00059">ProfileUnit.py:59</a></div></div>
+<div class="ttc" id="classProfile_1_1ProfileUnit_1_1IfUiProfile_html_a32a87d193e5d14e0ff3125d6bab2c420"><div class="ttname"><a href="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html#a32a87d193e5d14e0ff3125d6bab2c420">Profile.ProfileUnit.IfUiProfile.bus</a></div><div class="ttdeci">bus</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6d/ProfileUnit_8py_source.html#l00047">ProfileUnit.py:47</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="ac3d0a7a780dcf729b9f3cf1fff243a78"></a>
@@ -218,6 +269,16 @@ Atributos Públicos</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Definição na linha <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html#l00066">66</a> do arquivo <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html">ProfileUnit.py</a>.</p>
+
+<p>Referências <a class="el" href="../../de/d1e/CourseUnit_8py_source.html#l00025">Course.CourseUnit.IfUiCourse.__bus</a>, <a class="el" href="../../dd/d7f/MainUnit_8py_source.html#l00039">ELO.MainUnit.Factory.__bus</a>, <a class="el" href="../../da/dc7/LoginUnit_8py_source.html#l00049">Login.LoginUnit.IfUiLogin.__bus</a>, <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html#l00059">Profile.ProfileUnit.IfUiProfile.__bus</a>, <a class="el" href="../../db/dd3/AdmUnit_8py_source.html#l00067">Adm.AdmUnit.IfUiAdm.__bus</a> e <a class="el" href="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html#a32a87d193e5d14e0ff3125d6bab2c420">Profile.ProfileUnit.IfUiProfile.bus</a>.</p>
+<div class="fragment"><div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html#ac3d0a7a780dcf729b9f3cf1fff243a78">   66</a></span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">def </span><a class="code" href="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html#a32a87d193e5d14e0ff3125d6bab2c420">bus</a>(self):</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        del self.<a class="code" href="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html#af2171c776276848c2961f6fa818e0f67">__bus</a></div>
+</div>
+<div class="ttc" id="classProfile_1_1ProfileUnit_1_1IfUiProfile_html_af2171c776276848c2961f6fa818e0f67"><div class="ttname"><a href="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html#af2171c776276848c2961f6fa818e0f67">Profile.ProfileUnit.IfUiProfile.__bus</a></div><div class="ttdeci">__bus</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6d/ProfileUnit_8py_source.html#l00059">ProfileUnit.py:59</a></div></div>
+<div class="ttc" id="classProfile_1_1ProfileUnit_1_1IfUiProfile_html_a32a87d193e5d14e0ff3125d6bab2c420"><div class="ttname"><a href="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html#a32a87d193e5d14e0ff3125d6bab2c420">Profile.ProfileUnit.IfUiProfile.bus</a></div><div class="ttdeci">bus</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6d/ProfileUnit_8py_source.html#l00047">ProfileUnit.py:47</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="afb22574cb4a2dc58c068437bd7075e5a"></a>
@@ -243,10 +304,15 @@ Atributos Públicos</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>'Run' é o principal método de qualquer classe de apresentação. </p>
 <p>Este método permite a Factory dar o controle do programa módulo. </p>
 
+<p>Definição na linha <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html#l00073">73</a> do arquivo <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html">ProfileUnit.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html#afb22574cb4a2dc58c068437bd7075e5a">   73</a></span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keyword">def </span><a class="code" href="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html#afb22574cb4a2dc58c068437bd7075e5a">run</a>(self, request): <span class="keyword">pass</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+</div>
+<div class="ttc" id="classProfile_1_1ProfileUnit_1_1IfUiProfile_html_afb22574cb4a2dc58c068437bd7075e5a"><div class="ttname"><a href="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html#afb22574cb4a2dc58c068437bd7075e5a">Profile.ProfileUnit.IfUiProfile.run</a></div><div class="ttdeci">def run</div><div class="ttdoc">&#39;Run&#39; é o principal método de qualquer classe de apresentação. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6d/ProfileUnit_8py_source.html#l00073">ProfileUnit.py:73</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Atributos</h2>
@@ -260,17 +326,25 @@ Atributos Públicos</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Definição na linha <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html#l00047">47</a> do arquivo <a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html">ProfileUnit.py</a>.</p>
+
+<p>Referenciado por <a class="el" href="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html#ac3d0a7a780dcf729b9f3cf1fff243a78">Profile.ProfileUnit.IfUiProfile.bus()</a>.</p>
+
 </div>
 </div>
 <hr/>A documentação para esta classe foi gerada a partir do seguinte arquivo:<ul>
-<li>ELO/Profile/<a class="el" href="../../d7/d6d/ProfileUnit_8py.html">ProfileUnit.py</a></li>
+<li>ELO/Profile/<a class="el" href="../../d7/d6d/ProfileUnit_8py_source.html">ProfileUnit.py</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Gerado em Quinta, 24 de Abril de 2014 15:33:56 para LETproject por &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="../../doxygen.png" alt="doxygen"/>
-</a> 1.8.6
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../d8/dc2/namespaceProfile.html">Profile</a></li><li class="navelem"><a class="el" href="../../d0/d31/namespaceProfile_1_1ProfileUnit.html">ProfileUnit</a></li><li class="navelem"><a class="el" href="../../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html">IfUiProfile</a></li>
+    <li class="footer">Gerado em Quinta, 9 de Outubro de 2014 03:09:11 para LETproject por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
 </body>
 </html>

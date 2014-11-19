@@ -1,0 +1,238 @@
+\hypertarget{classAdm_1_1forms_1_1AdmRegStu__ProfForm}{\subsection{Referência da Classe Adm.\-forms.\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form}
+\label{classAdm_1_1forms_1_1AdmRegStu__ProfForm}\index{Adm.\-forms.\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form@{Adm.\-forms.\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form}}
+}
+
+
+Classe de forms para o formulário de cadastro de aluno.  
+
+
+Diagrama de Hierarquia para Adm.\-forms.\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d5/d88/classAdm_1_1forms_1_1AdmRegStu__ProfForm}
+\end{center}
+\end{figure}
+\subsubsection*{Métodos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a9e03034d573c6875f0fa14a34cbfb62f}{clean\-\_\-user\-Name}
+\begin{DoxyCompactList}\small\item\em Verifica se a formatação do nome de aluno está correta. \end{DoxyCompactList}\item 
+def \hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a1af070695c9fa22eed6d77684cf4625f}{clean\-\_\-user\-Matric}
+\item 
+def \hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_aaef53dc13585bd4111c6af2e7d37beb8}{clean\-\_\-user\-Campus}
+\item 
+def \hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a4f5e5eaaec2bd840dbd7f42789f6653f}{clean\-\_\-user\-Sex}
+\item 
+def \hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_ad536dd1ac5f2f78cbee94bfcc9c12e8e}{clean\-\_\-user\-Email}
+\item 
+def \hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a8d8e75e4acd91204d62ae15f9b40e48f}{clean\-\_\-user\-Pass}
+\begin{DoxyCompactList}\small\item\em Verifica se a formatação da senha de aluno está correta. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Atributos Estáticos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+tuple \hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a4e5391112a173e2d304e20c2cc8bca4d}{user\-Name} = forms.\-Char\-Field(max\-\_\-length = 32, label = \char`\"{}Nome\-:\char`\"{}, required= \char`\"{}True\char`\"{})
+\item 
+tuple \hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a8cd50b9437effd2fecd6e4c66c307e41}{user\-Matric} = forms.\-Integer\-Field(label = \char`\"{}Matricula\-:\char`\"{},required= \char`\"{}True\char`\"{})
+\item 
+tuple \hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a885786ae8be597f051f8e3ff65ddb02d}{user\-Campus} = forms.\-Integer\-Field(label = \char`\"{}Código do Campus\-:\char`\"{},required= \char`\"{}True\char`\"{})
+\item 
+tuple \hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_af8e16ffbc31dfdec8496b7751bb51bed}{user\-Sex} = forms.\-Choice\-Field(choices=\mbox{[}('M','M'),(\char`\"{}F\char`\"{},'F')\mbox{]}, widget=forms.\-Radio\-Select(),required= \char`\"{}True\char`\"{}, label = \char`\"{}Sexo\char`\"{})
+\item 
+tuple \hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a97ccca87a1c1c3a223e13d51e8196ef4}{user\-Email} = forms.\-Email\-Field(label = \char`\"{}Email\-:\char`\"{}, required= \char`\"{}True\char`\"{})
+\item 
+tuple \hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_ad50fce73918c911541bd1c385d25eeca}{user\-Pass} = forms.\-Char\-Field(widget = forms.\-Password\-Input(attrs=\{'autocomplete'\-:'off'\}), label = \char`\"{}Sua senha\char`\"{},required= \char`\"{}True\char`\"{})
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Descrição Detalhada}
+O administrador insere os dados do aluno a ser cadastrado, validando o cadastro com a senha de administrador. 
+
+Definição na linha \hyperlink{Adm_2forms_8py_source_l00025}{25} do arquivo \hyperlink{Adm_2forms_8py_source}{forms.\-py}.
+
+
+
+\subsubsection{Métodos}
+\hypertarget{classAdm_1_1forms_1_1AdmRegStu__ProfForm_aaef53dc13585bd4111c6af2e7d37beb8}{\index{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form@{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form}!clean\-\_\-user\-Campus@{clean\-\_\-user\-Campus}}
+\index{clean\-\_\-user\-Campus@{clean\-\_\-user\-Campus}!Adm::forms::AdmRegStu_ProfForm@{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form}}
+\paragraph[{clean\-\_\-user\-Campus}]{\setlength{\rightskip}{0pt plus 5cm}def Adm.\-forms.\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form.\-clean\-\_\-user\-Campus (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{classAdm_1_1forms_1_1AdmRegStu__ProfForm_aaef53dc13585bd4111c6af2e7d37beb8}
+
+
+Definição na linha \hyperlink{Adm_2forms_8py_source_l00049}{49} do arquivo \hyperlink{Adm_2forms_8py_source}{forms.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classAdm_1_1forms_1_1AdmRegStu__ProfForm_l00049}{}\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_aaef53dc13585bd4111c6af2e7d37beb8}{00049} 
+00050     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_aaef53dc13585bd4111c6af2e7d37beb8}{clean\_userCampus}(self):
+00051         \textcolor{keywordflow}{try}:
+00052             campus = Campus(self.cleaned\_data[\textcolor{stringliteral}{"userCampus"}])
+00053         \textcolor{keywordflow}{except} ValueError:
+00054             \textcolor{keywordflow}{raise} forms.ValidationError(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_INV\_STU\_CP"}])
+00055         \textcolor{keywordflow}{return} campus
+
+\end{DoxyCode}
+\hypertarget{classAdm_1_1forms_1_1AdmRegStu__ProfForm_ad536dd1ac5f2f78cbee94bfcc9c12e8e}{\index{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form@{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form}!clean\-\_\-user\-Email@{clean\-\_\-user\-Email}}
+\index{clean\-\_\-user\-Email@{clean\-\_\-user\-Email}!Adm::forms::AdmRegStu_ProfForm@{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form}}
+\paragraph[{clean\-\_\-user\-Email}]{\setlength{\rightskip}{0pt plus 5cm}def Adm.\-forms.\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form.\-clean\-\_\-user\-Email (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{classAdm_1_1forms_1_1AdmRegStu__ProfForm_ad536dd1ac5f2f78cbee94bfcc9c12e8e}
+
+
+Definição na linha \hyperlink{Adm_2forms_8py_source_l00063}{63} do arquivo \hyperlink{Adm_2forms_8py_source}{forms.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classAdm_1_1forms_1_1AdmRegStu__ProfForm_l00063}{}\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_ad536dd1ac5f2f78cbee94bfcc9c12e8e}{00063} 
+00064     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_ad536dd1ac5f2f78cbee94bfcc9c12e8e}{clean\_userEmail}(self):
+00065         \textcolor{keywordflow}{try}:
+00066             email = Mail(self.cleaned\_data[\textcolor{stringliteral}{"userEmail"}])
+00067         \textcolor{keywordflow}{except} ValueError:
+00068             \textcolor{keywordflow}{raise} forms.ValidationError(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_INV\_STU\_ML"}])
+00069         \textcolor{keywordflow}{return} email    
+00070     
+    
+\end{DoxyCode}
+\hypertarget{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a1af070695c9fa22eed6d77684cf4625f}{\index{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form@{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form}!clean\-\_\-user\-Matric@{clean\-\_\-user\-Matric}}
+\index{clean\-\_\-user\-Matric@{clean\-\_\-user\-Matric}!Adm::forms::AdmRegStu_ProfForm@{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form}}
+\paragraph[{clean\-\_\-user\-Matric}]{\setlength{\rightskip}{0pt plus 5cm}def Adm.\-forms.\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form.\-clean\-\_\-user\-Matric (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a1af070695c9fa22eed6d77684cf4625f}
+
+
+Definição na linha \hyperlink{Adm_2forms_8py_source_l00042}{42} do arquivo \hyperlink{Adm_2forms_8py_source}{forms.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classAdm_1_1forms_1_1AdmRegStu__ProfForm_l00042}{}\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a1af070695c9fa22eed6d77684cf4625f}{00042} 
+00043     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a1af070695c9fa22eed6d77684cf4625f}{clean\_userMatric}(self):
+00044         \textcolor{keywordflow}{try}:
+00045             matric = Matric(self.cleaned\_data[\textcolor{stringliteral}{"userMatric"}])
+00046         \textcolor{keywordflow}{except} ValueError:
+00047             \textcolor{keywordflow}{raise} forms.ValidationError(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_INV\_STU\_MT"}])
+00048         \textcolor{keywordflow}{return} matric
+
+\end{DoxyCode}
+\hypertarget{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a9e03034d573c6875f0fa14a34cbfb62f}{\index{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form@{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form}!clean\-\_\-user\-Name@{clean\-\_\-user\-Name}}
+\index{clean\-\_\-user\-Name@{clean\-\_\-user\-Name}!Adm::forms::AdmRegStu_ProfForm@{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form}}
+\paragraph[{clean\-\_\-user\-Name}]{\setlength{\rightskip}{0pt plus 5cm}def Adm.\-forms.\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form.\-clean\-\_\-user\-Name (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a9e03034d573c6875f0fa14a34cbfb62f}
+Caso esteja, retorna o nome, caso contrário, lança uma excessão. 
+
+Definição na linha \hyperlink{Adm_2forms_8py_source_l00035}{35} do arquivo \hyperlink{Adm_2forms_8py_source}{forms.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classAdm_1_1forms_1_1AdmRegStu__ProfForm_l00035}{}\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a9e03034d573c6875f0fa14a34cbfb62f}{00035} 
+00036     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a9e03034d573c6875f0fa14a34cbfb62f}{clean\_userName}(self):
+00037         \textcolor{keywordflow}{try}:
+00038             name = Name(self.cleaned\_data[\textcolor{stringliteral}{'userName'}])
+00039         \textcolor{keywordflow}{except} ValueError:
+00040             \textcolor{keywordflow}{raise} forms.ValidationError(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_INV\_LOG"}])
+00041         \textcolor{keywordflow}{return} name
+
+\end{DoxyCode}
+\hypertarget{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a8d8e75e4acd91204d62ae15f9b40e48f}{\index{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form@{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form}!clean\-\_\-user\-Pass@{clean\-\_\-user\-Pass}}
+\index{clean\-\_\-user\-Pass@{clean\-\_\-user\-Pass}!Adm::forms::AdmRegStu_ProfForm@{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form}}
+\paragraph[{clean\-\_\-user\-Pass}]{\setlength{\rightskip}{0pt plus 5cm}def Adm.\-forms.\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form.\-clean\-\_\-user\-Pass (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a8d8e75e4acd91204d62ae15f9b40e48f}
+Caso esteja, retorna a senha, caso contrário, lança uma excessão. 
+
+Definição na linha \hyperlink{Adm_2forms_8py_source_l00073}{73} do arquivo \hyperlink{Adm_2forms_8py_source}{forms.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classAdm_1_1forms_1_1AdmRegStu__ProfForm_l00073}{}\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a8d8e75e4acd91204d62ae15f9b40e48f}{00073} 
+00074     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a8d8e75e4acd91204d62ae15f9b40e48f}{clean\_userPass}(self):
+00075         \textcolor{keywordflow}{try}:
+00076             password = Password(self.cleaned\_data[\textcolor{stringliteral}{'userPass'}])
+00077         \textcolor{keywordflow}{except} ValueError:
+00078             \textcolor{keywordflow}{raise} forms.ValidationError(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_INV\_LOG"}])
+00079         \textcolor{keywordflow}{return} password
+00080 
+
+\end{DoxyCode}
+\hypertarget{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a4f5e5eaaec2bd840dbd7f42789f6653f}{\index{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form@{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form}!clean\-\_\-user\-Sex@{clean\-\_\-user\-Sex}}
+\index{clean\-\_\-user\-Sex@{clean\-\_\-user\-Sex}!Adm::forms::AdmRegStu_ProfForm@{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form}}
+\paragraph[{clean\-\_\-user\-Sex}]{\setlength{\rightskip}{0pt plus 5cm}def Adm.\-forms.\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form.\-clean\-\_\-user\-Sex (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a4f5e5eaaec2bd840dbd7f42789f6653f}
+
+
+Definição na linha \hyperlink{Adm_2forms_8py_source_l00056}{56} do arquivo \hyperlink{Adm_2forms_8py_source}{forms.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classAdm_1_1forms_1_1AdmRegStu__ProfForm_l00056}{}\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a4f5e5eaaec2bd840dbd7f42789f6653f}{00056} 
+00057     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a4f5e5eaaec2bd840dbd7f42789f6653f}{clean\_userSex}(self):
+00058         \textcolor{keywordflow}{try}:
+00059             sex = Sex(self.cleaned\_data[\textcolor{stringliteral}{"userSex"}])
+00060         \textcolor{keywordflow}{except} ValueError:
+00061             \textcolor{keywordflow}{raise} forms.ValidationError(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_INV\_STU\_SX"}])
+00062         \textcolor{keywordflow}{return} sex
+
+\end{DoxyCode}
+
+
+\subsubsection{Atributos}
+\hypertarget{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a885786ae8be597f051f8e3ff65ddb02d}{\index{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form@{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form}!user\-Campus@{user\-Campus}}
+\index{user\-Campus@{user\-Campus}!Adm::forms::AdmRegStu_ProfForm@{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form}}
+\paragraph[{user\-Campus}]{\setlength{\rightskip}{0pt plus 5cm}tuple Adm.\-forms.\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form.\-user\-Campus = forms.\-Integer\-Field(label = \char`\"{}Código do Campus\-:\char`\"{},required= \char`\"{}True\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}}\label{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a885786ae8be597f051f8e3ff65ddb02d}
+
+
+Definição na linha \hyperlink{Adm_2forms_8py_source_l00028}{28} do arquivo \hyperlink{Adm_2forms_8py_source}{forms.\-py}.
+
+\hypertarget{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a97ccca87a1c1c3a223e13d51e8196ef4}{\index{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form@{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form}!user\-Email@{user\-Email}}
+\index{user\-Email@{user\-Email}!Adm::forms::AdmRegStu_ProfForm@{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form}}
+\paragraph[{user\-Email}]{\setlength{\rightskip}{0pt plus 5cm}tuple Adm.\-forms.\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form.\-user\-Email = forms.\-Email\-Field(label = \char`\"{}Email\-:\char`\"{}, required= \char`\"{}True\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}}\label{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a97ccca87a1c1c3a223e13d51e8196ef4}
+
+
+Definição na linha \hyperlink{Adm_2forms_8py_source_l00030}{30} do arquivo \hyperlink{Adm_2forms_8py_source}{forms.\-py}.
+
+\hypertarget{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a8cd50b9437effd2fecd6e4c66c307e41}{\index{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form@{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form}!user\-Matric@{user\-Matric}}
+\index{user\-Matric@{user\-Matric}!Adm::forms::AdmRegStu_ProfForm@{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form}}
+\paragraph[{user\-Matric}]{\setlength{\rightskip}{0pt plus 5cm}tuple Adm.\-forms.\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form.\-user\-Matric = forms.\-Integer\-Field(label = \char`\"{}Matricula\-:\char`\"{},required= \char`\"{}True\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}}\label{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a8cd50b9437effd2fecd6e4c66c307e41}
+
+
+Definição na linha \hyperlink{Adm_2forms_8py_source_l00027}{27} do arquivo \hyperlink{Adm_2forms_8py_source}{forms.\-py}.
+
+\hypertarget{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a4e5391112a173e2d304e20c2cc8bca4d}{\index{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form@{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form}!user\-Name@{user\-Name}}
+\index{user\-Name@{user\-Name}!Adm::forms::AdmRegStu_ProfForm@{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form}}
+\paragraph[{user\-Name}]{\setlength{\rightskip}{0pt plus 5cm}tuple Adm.\-forms.\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form.\-user\-Name = forms.\-Char\-Field(max\-\_\-length = 32, label = \char`\"{}Nome\-:\char`\"{}, required= \char`\"{}True\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}}\label{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a4e5391112a173e2d304e20c2cc8bca4d}
+
+
+Definição na linha \hyperlink{Adm_2forms_8py_source_l00026}{26} do arquivo \hyperlink{Adm_2forms_8py_source}{forms.\-py}.
+
+\hypertarget{classAdm_1_1forms_1_1AdmRegStu__ProfForm_ad50fce73918c911541bd1c385d25eeca}{\index{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form@{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form}!user\-Pass@{user\-Pass}}
+\index{user\-Pass@{user\-Pass}!Adm::forms::AdmRegStu_ProfForm@{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form}}
+\paragraph[{user\-Pass}]{\setlength{\rightskip}{0pt plus 5cm}tuple Adm.\-forms.\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form.\-user\-Pass = forms.\-Char\-Field(widget = forms.\-Password\-Input(attrs=\{'autocomplete'\-:'off'\}), label = \char`\"{}Sua senha\char`\"{},required= \char`\"{}True\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}}\label{classAdm_1_1forms_1_1AdmRegStu__ProfForm_ad50fce73918c911541bd1c385d25eeca}
+
+
+Definição na linha \hyperlink{Adm_2forms_8py_source_l00031}{31} do arquivo \hyperlink{Adm_2forms_8py_source}{forms.\-py}.
+
+\hypertarget{classAdm_1_1forms_1_1AdmRegStu__ProfForm_af8e16ffbc31dfdec8496b7751bb51bed}{\index{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form@{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form}!user\-Sex@{user\-Sex}}
+\index{user\-Sex@{user\-Sex}!Adm::forms::AdmRegStu_ProfForm@{Adm\-::forms\-::\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form}}
+\paragraph[{user\-Sex}]{\setlength{\rightskip}{0pt plus 5cm}tuple Adm.\-forms.\-Adm\-Reg\-Stu\-\_\-\-Prof\-Form.\-user\-Sex = forms.\-Choice\-Field(choices=\mbox{[}('M','M'),(\char`\"{}F\char`\"{},'F')\mbox{]}, widget=forms.\-Radio\-Select(),required= \char`\"{}True\char`\"{}, label = \char`\"{}Sexo\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}}\label{classAdm_1_1forms_1_1AdmRegStu__ProfForm_af8e16ffbc31dfdec8496b7751bb51bed}
+
+
+Definição na linha \hyperlink{Adm_2forms_8py_source_l00029}{29} do arquivo \hyperlink{Adm_2forms_8py_source}{forms.\-py}.
+
+
+
+A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}
+\item 
+E\-L\-O/\-Adm/\hyperlink{Adm_2forms_8py}{forms.\-py}\end{DoxyCompactItemize}

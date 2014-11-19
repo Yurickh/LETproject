@@ -1,21 +1,25 @@
-<!-- Template da pagina de Perfil-->
-
 {% extends "includes/wrapper.html" %}
+{% load staticfiles %}
 
-{% block title %} {{ DICT.ELO_PROFILE }} {% endblock %}
+{% block title %} {{ DICT.ELO_HOME }} {% endblock %}
+
+{% block head %}
+	<link 	rel="stylesheet"
+		type="text/css"
+		href="{% static 'Profile/styles.css' %}" />
+{% endblock %}
 
 {% block content %}	
 	<div id="topper">
-		<div id="p_avatar">
-			<img src="{{ user.avatar }}" />
-		</div>
-		<div id="p_info">
-			<h1>{{ user.name }}</h1>
-			<ul>
-				<li>{{ user.matric }}</li>
-				<li>{{ user.bios }}</li>
-			</ul>
-			<div id="p_info_edit">Edit</div>
+		<div id="profile-ph">
+			<img id="avatar-ph" src="{{ MEDIA_URL}}{{ user.avatar }}" />
+			<div id="p_info">
+				<h1>{{ user.name }}</h1>
+				<ul>
+					<li>{{ DICT.MATRIC }}: {{ user.matric }}</li>
+					<li>{{ DICT.BIOS }}: {{ user.bios }}</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 

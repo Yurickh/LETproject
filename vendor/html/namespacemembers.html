@@ -8,6 +8,13 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
@@ -37,7 +44,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Página&#160;Principal</span></a></li>
-      <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
       <li class="current"><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Arquivos</span></a></li>
@@ -75,7 +81,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
   <div id="navrow4" class="tabs3">
     <ul class="tablist">
       <li><a href="#index_a"><span>a</span></a></li>
-      <li><a href="#index_c"><span>c</span></a></li>
       <li><a href="#index_d"><span>d</span></a></li>
       <li><a href="#index_f"><span>f</span></a></li>
       <li><a href="#index_g"><span>g</span></a></li>
@@ -90,12 +95,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
     </ul>
   </div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('namespacemembers.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variáveis</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variáveis</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -117,12 +136,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
 <li>application
 : <a class="el" href="d9/d53/namespaceELO_1_1wsgi.html#a8951c4ea2920440aeeb73c65ab517a5d">ELO::wsgi</a>
 </li>
-</ul>
-
-
-<h3><a class="anchor" id="index_c"></a>- c -</h3><ul>
-<li>clean_admPass()
-: <a class="el" href="dd/d9d/namespaceAdm_1_1forms.html#a24e20fddb6abcb82f01bad3bccb4d44e">Adm::forms</a>
+<li>available_langs
+: <a class="el" href="d7/de8/namespaceELO_1_1locale_1_1index.html#ab62adb4738ab68b1693adb90951d92a9">ELO::locale::index</a>
 </li>
 </ul>
 
@@ -135,7 +150,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
 : <a class="el" href="df/d5b/namespaceELO_1_1settings.html#a62f457ac29cc6f3e85282c71ce3b4f26">ELO::settings</a>
 </li>
 <li>DICT
-: <a class="el" href="d5/d70/namespaceELO_1_1lang_1_1pt__br.html#a37d91f508a335ecdb0e0ecc519a1f1a5">ELO::lang::pt_br</a>
+: <a class="el" href="d7/de8/namespaceELO_1_1locale_1_1index.html#a065d26641ba89f86fe642e3858607087">ELO::locale::index</a>
 </li>
 </ul>
 
@@ -143,6 +158,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
 <h3><a class="anchor" id="index_f"></a>- f -</h3><ul>
 <li>factory
 : <a class="el" href="dd/de1/namespaceELO_1_1urls.html#a85325dfebd736ced5558533f2c4bc29a">ELO::urls</a>
+</li>
+<li>filepath
+: <a class="el" href="df/d5b/namespaceELO_1_1settings.html#a7730264ddd478343e0f282f36d4a5ab4">ELO::settings</a>
 </li>
 </ul>
 
@@ -162,11 +180,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
 
 
 <h3><a class="anchor" id="index_l"></a>- l -</h3><ul>
-<li>lang
-: <a class="el" href="db/d73/namespaceELO_1_1MainUnit.html#a7261ae58058821c58db5b6c3e02d830d">ELO::MainUnit</a>
-</li>
 <li>LANGUAGE_CODE
 : <a class="el" href="df/d5b/namespaceELO_1_1settings.html#a388841a63bae5418e55fb741f938d4fb">ELO::settings</a>
+</li>
+<li>LOCALE_PATHS
+: <a class="el" href="df/d5b/namespaceELO_1_1settings.html#a977570dd2e9cd8142b3d65c4fa37c172">ELO::settings</a>
 </li>
 <li>LOGGING
 : <a class="el" href="df/d5b/namespaceELO_1_1settings.html#addc421e02af1569796e2d33b2bc62ff5">ELO::settings</a>
@@ -175,15 +193,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
 
 
 <h3><a class="anchor" id="index_m"></a>- m -</h3><ul>
-<li>main()
-: <a class="el" href="de/d8f/namespacebaseTestUnit.html#a14bce793f0a27355022607c49179733c">baseTestUnit</a>
-, <a class="el" href="d4/d43/namespaceentityTestUnit.html#a0d027a0bc98ec362354c54095fc616e4">entityTestUnit</a>
-</li>
 <li>MANAGERS
 : <a class="el" href="df/d5b/namespaceELO_1_1settings.html#a43e8826e0b24e337065b4975f3eace4c">ELO::settings</a>
 </li>
 <li>MEDIA_ROOT
-: <a class="el" href="df/d5b/namespaceELO_1_1settings.html#a1f618eef9196cda0088f532a66ec0648">ELO::settings</a>
+: <a class="el" href="df/d5b/namespaceELO_1_1settings.html#a7f83b56101acea110bb525439aaa69aa">ELO::settings</a>
 </li>
 <li>MEDIA_URL
 : <a class="el" href="df/d5b/namespaceELO_1_1settings.html#acd3e1c3559f7c87f5aad004b76458ddc">ELO::settings</a>
@@ -264,11 +278,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
 </li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Gerado em Quinta, 24 de Abril de 2014 15:33:57 para LETproject por &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.6
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Gerado em Quinta, 9 de Outubro de 2014 03:09:15 para LETproject por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
 </body>
 </html>

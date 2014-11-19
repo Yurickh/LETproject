@@ -8,6 +8,13 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
@@ -37,7 +44,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Página&#160;Principal</span></a></li>
-      <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Arquivos</span></a></li>
@@ -62,7 +68,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="annotated.html"><span>Lista&#160;de&#160;Componentes</span></a></li>
-      <li><a href="classes.html"><span>Índice&#160;dos&#160;Componentes</span></a></li>
       <li><a href="hierarchy.html"><span>Hierarquia&#160;de&#160;Classes</span></a></li>
       <li class="current"><a href="functions.html"><span>Componentes&#160;Membros</span></a></li>
     </ul>
@@ -80,6 +85,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
       <li><a href="functions_a.html#index_a"><span>a</span></a></li>
       <li><a href="functions_b.html#index_b"><span>b</span></a></li>
       <li><a href="functions_c.html#index_c"><span>c</span></a></li>
+      <li><a href="functions_d.html#index_d"><span>d</span></a></li>
       <li><a href="functions_e.html#index_e"><span>e</span></a></li>
       <li><a href="functions_f.html#index_f"><span>f</span></a></li>
       <li><a href="functions_g.html#index_g"><span>g</span></a></li>
@@ -87,6 +93,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
       <li><a href="functions_l.html#index_l"><span>l</span></a></li>
       <li><a href="functions_m.html#index_m"><span>m</span></a></li>
       <li><a href="functions_n.html#index_n"><span>n</span></a></li>
+      <li><a href="functions_o.html#index_o"><span>o</span></a></li>
       <li class="current"><a href="functions_p.html#index_p"><span>p</span></a></li>
       <li><a href="functions_r.html#index_r"><span>r</span></a></li>
       <li><a href="functions_s.html#index_s"><span>s</span></a></li>
@@ -96,12 +103,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
     </ul>
   </div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('functions_p.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variáveis</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variáveis</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -120,6 +141,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
 , <a class="el" href="dd/d1d/classELO_1_1EntityUnit_1_1Student.html#a834cad492221bfe3f26e590666e13f9a">ELO.EntityUnit.Student</a>
 , <a class="el" href="dd/d09/classELO_1_1EntityUnit_1_1User.html#a01ae16d257db991dd048c84dba5034c0">ELO.EntityUnit.User</a>
 , <a class="el" href="d0/db9/classLogin_1_1forms_1_1LoginForm.html#a23e321f790e9c7bfc3e9abf767826a2d">Login.forms.LoginForm</a>
+, <a class="el" href="d6/d33/classProfile_1_1forms_1_1NameForm.html#a5a6959db0132c607a56f9cda75769ecf">Profile.forms.NameForm</a>
 </li>
 <li>pers
 : <a class="el" href="d3/d53/classAdm_1_1AdmUnit_1_1IfBusAdm.html#a95ea8f39fbbcddf44822e1614c712bfe">Adm.AdmUnit.IfBusAdm</a>
@@ -127,33 +149,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
 , <a class="el" href="dc/dd6/classLogin_1_1LoginUnit_1_1IfBusLogin.html#a807b0a5d5bdae58087feb9d810a6538d">Login.LoginUnit.IfBusLogin</a>
 , <a class="el" href="dc/d47/classProfile_1_1ProfileUnit_1_1IfBusProfile.html#a996592f4b01e0540f45d042065d5a7f4">Profile.ProfileUnit.IfBusProfile</a>
 </li>
-<li>profCampus
-: <a class="el" href="d3/d88/classAdm_1_1forms_1_1AdmRegProfForm.html#a0c90beb927b61260feb194030798db38">Adm.forms.AdmRegProfForm</a>
-</li>
-<li>profEmail
-: <a class="el" href="d3/d88/classAdm_1_1forms_1_1AdmRegProfForm.html#a56c1eca35253b136bf8886135c9633b0">Adm.forms.AdmRegProfForm</a>
-</li>
-<li>profMatric
-: <a class="el" href="dd/d81/classAdm_1_1forms_1_1AdmDelProfForm.html#a3b53155ed7b63a0ad994c47305061ca1">Adm.forms.AdmDelProfForm</a>
-, <a class="el" href="d3/d88/classAdm_1_1forms_1_1AdmRegProfForm.html#ac53b20321fbc980c896f534229c68ff1">Adm.forms.AdmRegProfForm</a>
-, <a class="el" href="d5/d6d/classAdm_1_1forms_1_1AdmSrcProfForm.html#a774a36bf303e747a3139b988a4a714b3">Adm.forms.AdmSrcProfForm</a>
-</li>
-<li>profName
-: <a class="el" href="d3/d88/classAdm_1_1forms_1_1AdmRegProfForm.html#aec9f5746e7eb7f389c0f159780dd71fa">Adm.forms.AdmRegProfForm</a>
-</li>
-<li>profPass
-: <a class="el" href="d3/d88/classAdm_1_1forms_1_1AdmRegProfForm.html#afe9e2e7368001ac81851ece8b42ccb57">Adm.forms.AdmRegProfForm</a>
-</li>
-<li>profSex
-: <a class="el" href="d3/d88/classAdm_1_1forms_1_1AdmRegProfForm.html#ab910e0448e7d6dac759c1cdcb24a4314">Adm.forms.AdmRegProfForm</a>
-</li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Gerado em Quinta, 24 de Abril de 2014 15:33:57 para LETproject por &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.6
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Gerado em Quinta, 9 de Outubro de 2014 03:09:15 para LETproject por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
 </body>
 </html>

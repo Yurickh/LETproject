@@ -8,6 +8,13 @@
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../search/search.js"></script>
 <script type="text/javascript">
@@ -37,7 +44,6 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="../../index.html"><span>Página&#160;Principal</span></a></li>
-      <li><a href="../../pages.html"><span>Páginas&#160;relacionadas</span></a></li>
       <li><a href="../../namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="../../annotated.html"><span>Classes</span></a></li>
       <li><a href="../../files.html"><span>Arquivos</span></a></li>
@@ -62,17 +68,31 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="../../annotated.html"><span>Lista&#160;de&#160;Componentes</span></a></li>
-      <li><a href="../../classes.html"><span>Índice&#160;dos&#160;Componentes</span></a></li>
       <li><a href="../../hierarchy.html"><span>Hierarquia&#160;de&#160;Classes</span></a></li>
       <li><a href="../../functions.html"><span>Componentes&#160;Membros</span></a></li>
     </ul>
   </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('d7/d61/classAdm_1_1forms_1_1AdmSrcStuForm.html','../../');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variáveis</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variáveis</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -81,11 +101,6 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="../../da/d8c/namespaceAdm.html">Adm</a></li><li class="navelem"><a class="el" href="../../dd/d9d/namespaceAdm_1_1forms.html">forms</a></li><li class="navelem"><a class="el" href="../../d7/d61/classAdm_1_1forms_1_1AdmSrcStuForm.html">AdmSrcStuForm</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Métodos Públicos</a> &#124;
@@ -114,7 +129,10 @@ Atributos Estáticos Públicos</h2></td></tr>
 <tr class="memitem:a0229d190c71b996fea62f558235bd588"><td class="memItemLeft" align="right" valign="top">tuple&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d61/classAdm_1_1forms_1_1AdmSrcStuForm.html#a0229d190c71b996fea62f558235bd588">stuMatric</a> = form.IntergerField(label = &quot;Matricula do Estudante&quot;, required = &quot;True&quot;)</td></tr>
 <tr class="separator:a0229d190c71b996fea62f558235bd588"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Métodos</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Descrição Detalhada</h2>
+<div class="textblock">
+<p>Definição na linha <a class="el" href="../../df/d87/Adm_2forms_8py_source.html#l00209">209</a> do arquivo <a class="el" href="../../df/d87/Adm_2forms_8py_source.html">forms.py</a>.</p>
+</div><h2 class="groupheader">Métodos</h2>
 <a class="anchor" id="a59bb6673b9d60df71065b72d1395200e"></a>
 <div class="memitem">
 <div class="memproto">
@@ -129,6 +147,17 @@ Atributos Estáticos Públicos</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Definição na linha <a class="el" href="../../df/d87/Adm_2forms_8py_source.html#l00212">212</a> do arquivo <a class="el" href="../../df/d87/Adm_2forms_8py_source.html">forms.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00212"></a><span class="lineno"><a class="line" href="../../d7/d61/classAdm_1_1forms_1_1AdmSrcStuForm.html#a59bb6673b9d60df71065b72d1395200e">  212</a></span>&#160;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <span class="keyword">def </span><a class="code" href="../../d7/d61/classAdm_1_1forms_1_1AdmSrcStuForm.html#a59bb6673b9d60df71065b72d1395200e">clean_studMatric</a>(self):</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            matric = Matric(self.cleaned_data[<span class="stringliteral">&quot;studMatric&quot;</span>]</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        <span class="keywordflow">except</span> ValueError:</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            <span class="keywordflow">raise</span> forms.ValidationError(<span class="stringliteral">&quot;Matricula inválida.&quot;</span>)</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        <span class="keywordflow">return</span> matric</div>
+       </div>
+<div class="ttc" id="classAdm_1_1forms_1_1AdmSrcStuForm_html_a59bb6673b9d60df71065b72d1395200e"><div class="ttname"><a href="../../d7/d61/classAdm_1_1forms_1_1AdmSrcStuForm.html#a59bb6673b9d60df71065b72d1395200e">Adm.forms.AdmSrcStuForm.clean_studMatric</a></div><div class="ttdeci">def clean_studMatric</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d87/Adm_2forms_8py_source.html#l00212">forms.py:212</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Atributos</h2>
@@ -150,17 +179,23 @@ Atributos Estáticos Públicos</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Definição na linha <a class="el" href="../../df/d87/Adm_2forms_8py_source.html#l00210">210</a> do arquivo <a class="el" href="../../df/d87/Adm_2forms_8py_source.html">forms.py</a>.</p>
+
 </div>
 </div>
 <hr/>A documentação para esta classe foi gerada a partir do seguinte arquivo:<ul>
-<li>ELO/Adm/<a class="el" href="../../df/d87/Adm_2forms_8py.html">forms.py</a></li>
+<li>ELO/Adm/<a class="el" href="../../df/d87/Adm_2forms_8py_source.html">forms.py</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Gerado em Quinta, 24 de Abril de 2014 15:33:45 para LETproject por &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="../../doxygen.png" alt="doxygen"/>
-</a> 1.8.6
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../da/d8c/namespaceAdm.html">Adm</a></li><li class="navelem"><a class="el" href="../../dd/d9d/namespaceAdm_1_1forms.html">forms</a></li><li class="navelem"><a class="el" href="../../d7/d61/classAdm_1_1forms_1_1AdmSrcStuForm.html">AdmSrcStuForm</a></li>
+    <li class="footer">Gerado em Sexta, 22 de Agosto de 2014 17:35:23 para LETproject por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
 </body>
 </html>

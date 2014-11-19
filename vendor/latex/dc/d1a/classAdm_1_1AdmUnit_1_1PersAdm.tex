@@ -1,4 +1,4 @@
-\hypertarget{classAdm_1_1AdmUnit_1_1PersAdm}{\section{Referência da Classe Adm.\-Adm\-Unit.\-Pers\-Adm}
+\hypertarget{classAdm_1_1AdmUnit_1_1PersAdm}{\subsection{Referência da Classe Adm.\-Adm\-Unit.\-Pers\-Adm}
 \label{classAdm_1_1AdmUnit_1_1PersAdm}\index{Adm.\-Adm\-Unit.\-Pers\-Adm@{Adm.\-Adm\-Unit.\-Pers\-Adm}}
 }
 
@@ -12,11 +12,204 @@ Diagrama de Hierarquia para Adm.\-Adm\-Unit.\-Pers\-Adm\-:\begin{figure}[H]
 \includegraphics[height=2.000000cm]{dc/d1a/classAdm_1_1AdmUnit_1_1PersAdm}
 \end{center}
 \end{figure}
+\subsubsection*{Métodos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classAdm_1_1AdmUnit_1_1PersAdm_aef8c5933d2de37ac9b210a6b4ea7db5f}{data\-\_\-in}
+\begin{DoxyCompactList}\small\item\em Insere os dados do registro de contas no banco de dados. \end{DoxyCompactList}\item 
+def \hyperlink{classAdm_1_1AdmUnit_1_1PersAdm_a3d9372eca5d134e3c2125c40bf2147a3}{update}
+\begin{DoxyCompactList}\small\item\em Método que atualiza os dados de uma conta fornecida. \end{DoxyCompactList}\item 
+def \hyperlink{classAdm_1_1AdmUnit_1_1PersAdm_aa02d44b8f34bebc0e82133fd54da0c37}{fetch\-\_\-del}
+\begin{DoxyCompactList}\small\item\em Método que deleta os dados de uma conta fornecida. \end{DoxyCompactList}\item 
+def \hyperlink{classAdm_1_1AdmUnit_1_1PersAdm_a021e43040d51fa147a42018ced240a84}{fetch}
+\begin{DoxyCompactList}\small\item\em Função que recupera todos os dados do usuário. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\subsection{Descrição Detalhada}
-Camada de persistência para o módulo de administração. 
+\subsubsection{Descrição Detalhada}
+Insere, atualiza ou deleta dados do banco de dados referentes aos alunos professores e cursos. 
 
+Definição na linha \hyperlink{AdmUnit_8py_source_l00419}{419} do arquivo \hyperlink{AdmUnit_8py_source}{Adm\-Unit.\-py}.
+
+
+
+\subsubsection{Métodos}
+\hypertarget{classAdm_1_1AdmUnit_1_1PersAdm_aef8c5933d2de37ac9b210a6b4ea7db5f}{\index{Adm\-::\-Adm\-Unit\-::\-Pers\-Adm@{Adm\-::\-Adm\-Unit\-::\-Pers\-Adm}!data\-\_\-in@{data\-\_\-in}}
+\index{data\-\_\-in@{data\-\_\-in}!Adm::AdmUnit::PersAdm@{Adm\-::\-Adm\-Unit\-::\-Pers\-Adm}}
+\paragraph[{data\-\_\-in}]{\setlength{\rightskip}{0pt plus 5cm}def Adm.\-Adm\-Unit.\-Pers\-Adm.\-data\-\_\-in (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{dict\-\_\-field\-\_\-value, }
+\item[{}]{database}
+\end{DoxyParamCaption}
+)}}\label{classAdm_1_1AdmUnit_1_1PersAdm_aef8c5933d2de37ac9b210a6b4ea7db5f}
+
+
+Definição na linha \hyperlink{AdmUnit_8py_source_l00422}{422} do arquivo \hyperlink{AdmUnit_8py_source}{Adm\-Unit.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classAdm_1_1AdmUnit_1_1PersAdm_l00422}{}\hyperlink{classAdm_1_1AdmUnit_1_1PersAdm_aef8c5933d2de37ac9b210a6b4ea7db5f}{00422} 
+00423     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1PersAdm_aef8c5933d2de37ac9b210a6b4ea7db5f}{data\_in}(self, dict\_field\_value, database):
+00424         \textcolor{comment}{# Tenta coletar o último id inserido.}
+00425         \textcolor{comment}{# Caso não tenha ocorrido nenhum registro de contas então}
+00426         \textcolor{comment}{# é atribuído o valor inicial como '1'}
+00427         \textcolor{keywordflow}{try}:
+00428             \textcolor{comment}{# Coleta o ultimo ID inserido no identity do database.}
+00429             lastid = database.objects.order\_by(\textcolor{stringliteral}{'-identity'})[0]
+00430             \textcolor{comment}{# Newid será a identity do novo usuário.}
+00431             newid = lastid.identity + 1
+00432         \textcolor{keywordflow}{except} IndexError:
+00433             newid = 1
+00434         
+00435         \textcolor{comment}{# Percorre o dicionário ligado aos campos a seu valores.}
+00436         \textcolor{keywordflow}{for} fields \textcolor{keywordflow}{in} dict\_field\_value:
+00437             \textcolor{comment}{# Insere novos dados: identidade, campo e a novo valor.}
+00438             data = database(identity=newid, field=fields,
+00439                              value=dict\_field\_value[fields])
+00440             \textcolor{comment}{# Salva os novos dados no database.}
+00441             data.save()
+
+\end{DoxyCode}
+\hypertarget{classAdm_1_1AdmUnit_1_1PersAdm_a021e43040d51fa147a42018ced240a84}{\index{Adm\-::\-Adm\-Unit\-::\-Pers\-Adm@{Adm\-::\-Adm\-Unit\-::\-Pers\-Adm}!fetch@{fetch}}
+\index{fetch@{fetch}!Adm::AdmUnit::PersAdm@{Adm\-::\-Adm\-Unit\-::\-Pers\-Adm}}
+\paragraph[{fetch}]{\setlength{\rightskip}{0pt plus 5cm}def Adm.\-Adm\-Unit.\-Pers\-Adm.\-fetch (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{username, }
+\item[{}]{database}
+\end{DoxyParamCaption}
+)}}\label{classAdm_1_1AdmUnit_1_1PersAdm_a021e43040d51fa147a42018ced240a84}
+
+
+Definição na linha \hyperlink{AdmUnit_8py_source_l00511}{511} do arquivo \hyperlink{AdmUnit_8py_source}{Adm\-Unit.\-py}.
+
+
+
+Referências \hyperlink{AdmUnit_8py_source_l00495}{Adm.\-Adm\-Unit.\-Pers\-Adm.\-\_\-\-\_\-select\-\_\-field()}.
+
+
+\begin{DoxyCode}
+\hypertarget{classAdm_1_1AdmUnit_1_1PersAdm_l00511}{}\hyperlink{classAdm_1_1AdmUnit_1_1PersAdm_a021e43040d51fa147a42018ced240a84}{00511} 
+00512     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1PersAdm_a021e43040d51fa147a42018ced240a84}{fetch}(self, username, database):
+00513 
+00514         \textcolor{keywordflow}{try}:
+00515             uid = database.objects.get(field=\textcolor{stringliteral}{'NAME'},value=username)
+00516             uid = uid.identity
+00517 
+00518             sf = \textcolor{keyword}{lambda} x: self.\hyperlink{classAdm_1_1AdmUnit_1_1PersAdm_a2e5fd44c72dfc852a0b44b9b4ca566f9}{\_\_select\_field}(uid, x, database)
+00519 
+00520             fetchset = [
+00521                     (\textcolor{stringliteral}{'password'},    sf(\textcolor{stringliteral}{'PASSWORD'})),
+00522                     (\textcolor{stringliteral}{'matric'},      sf(\textcolor{stringliteral}{'MATRIC'})),
+00523                     (\textcolor{stringliteral}{'bios'},        sf(\textcolor{stringliteral}{'BIOS'})),
+00524                     (\textcolor{stringliteral}{'campus'},      sf(\textcolor{stringliteral}{'CAMPUS'})),
+00525                     (\textcolor{stringliteral}{'courses'},     sf(\textcolor{stringliteral}{'COURSE'})),
+00526                     (\textcolor{stringliteral}{'avatar'},      sf(\textcolor{stringliteral}{'AVATAR'})),
+00527                     (\textcolor{stringliteral}{'email'},       sf(\textcolor{stringliteral}{'EMAIL'})),
+00528                     (\textcolor{stringliteral}{'sex'},         sf(\textcolor{stringliteral}{'SEX'})),
+00529             ]
+00530 
+00531             \textcolor{keywordflow}{if} database \textcolor{keywordflow}{is} Student:
+00532                 fetchset = fetchset + [     
+00533                     (\textcolor{stringliteral}{'grades'},      sf(\textcolor{stringliteral}{'GRADE'})),
+00534                     (\textcolor{stringliteral}{'interests'},   sf(\textcolor{stringliteral}{'INTEREST'})),
+00535                     (\textcolor{stringliteral}{'language'},    sf(\textcolor{stringliteral}{'LANGUAGE'})),
+00536                 ]
+00537 
+00538         \textcolor{keywordflow}{except} database.DoesNotExist \textcolor{keyword}{as} exc:
+00539             fetchset = []
+00540 
+00541         \textcolor{keywordflow}{return} fetchset
+00542 
+00543 
+\end{DoxyCode}
+\hypertarget{classAdm_1_1AdmUnit_1_1PersAdm_aa02d44b8f34bebc0e82133fd54da0c37}{\index{Adm\-::\-Adm\-Unit\-::\-Pers\-Adm@{Adm\-::\-Adm\-Unit\-::\-Pers\-Adm}!fetch\-\_\-del@{fetch\-\_\-del}}
+\index{fetch\-\_\-del@{fetch\-\_\-del}!Adm::AdmUnit::PersAdm@{Adm\-::\-Adm\-Unit\-::\-Pers\-Adm}}
+\paragraph[{fetch\-\_\-del}]{\setlength{\rightskip}{0pt plus 5cm}def Adm.\-Adm\-Unit.\-Pers\-Adm.\-fetch\-\_\-del (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{username, }
+\item[{}]{database}
+\end{DoxyParamCaption}
+)}}\label{classAdm_1_1AdmUnit_1_1PersAdm_aa02d44b8f34bebc0e82133fd54da0c37}
+
+
+Definição na linha \hyperlink{AdmUnit_8py_source_l00469}{469} do arquivo \hyperlink{AdmUnit_8py_source}{Adm\-Unit.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classAdm_1_1AdmUnit_1_1PersAdm_l00469}{}\hyperlink{classAdm_1_1AdmUnit_1_1PersAdm_aa02d44b8f34bebc0e82133fd54da0c37}{00469} 
+00470     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1PersAdm_aa02d44b8f34bebc0e82133fd54da0c37}{fetch\_del}(self, username, database):
+00471         \textcolor{comment}{# Tenta procurar se o username existe no banco de dados.}
+00472         \textcolor{comment}{# Caso não exista, é emitido um erro.}
+00473         \textcolor{keywordflow}{try}:
+00474             \textcolor{comment}{# Filtra o database pelo nome do usuario.}
+00475             uid = database.objects.get(field=\textcolor{stringliteral}{'NAME'},value=username)
+00476             \textcolor{comment}{# Coleta a ID do usuário}
+00477             uid = uid.identity
+00478 
+00479         \textcolor{comment}{# Caso usuário não exista, então é retornado para o Business}
+00480         \textcolor{comment}{# que não foi encontrado.}
+00481         \textcolor{keywordflow}{except} database.DoesNotExist:
+00482             \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+00483 
+00484         \textcolor{comment}{# Tenta filtrar os dados de um ID.}
+00485         \textcolor{comment}{# Caso não exista, é emitido um erro.}
+00486         \textcolor{keywordflow}{try}:   
+00487             \textcolor{comment}{# Lista da filtragem dos dados de um determinado ID.}
+00488             accdel = database.objects.filter(identity=uid)
+00489             \textcolor{comment}{# Lista dos dados é deletada do database.}
+00490             accdel.delete()
+00491        
+00492         \textcolor{keywordflow}{except} ( database.DoesNotExist, 
+00493                 database.MultipleObjectsReturned ) \textcolor{keyword}{as} exc:
+00494             \textcolor{keywordflow}{raise} ValueError(exc)
+
+\end{DoxyCode}
+\hypertarget{classAdm_1_1AdmUnit_1_1PersAdm_a3d9372eca5d134e3c2125c40bf2147a3}{\index{Adm\-::\-Adm\-Unit\-::\-Pers\-Adm@{Adm\-::\-Adm\-Unit\-::\-Pers\-Adm}!update@{update}}
+\index{update@{update}!Adm::AdmUnit::PersAdm@{Adm\-::\-Adm\-Unit\-::\-Pers\-Adm}}
+\paragraph[{update}]{\setlength{\rightskip}{0pt plus 5cm}def Adm.\-Adm\-Unit.\-Pers\-Adm.\-update (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{username, }
+\item[{}]{field, }
+\item[{}]{newdata, }
+\item[{}]{database}
+\end{DoxyParamCaption}
+)}}\label{classAdm_1_1AdmUnit_1_1PersAdm_a3d9372eca5d134e3c2125c40bf2147a3}
+
+
+Definição na linha \hyperlink{AdmUnit_8py_source_l00443}{443} do arquivo \hyperlink{AdmUnit_8py_source}{Adm\-Unit.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classAdm_1_1AdmUnit_1_1PersAdm_l00443}{}\hyperlink{classAdm_1_1AdmUnit_1_1PersAdm_a3d9372eca5d134e3c2125c40bf2147a3}{00443} 
+00444     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1PersAdm_a3d9372eca5d134e3c2125c40bf2147a3}{update}(self, username, field, newdata, database): 
+00445         \textcolor{comment}{# Tenta procurar se o username existe no banco de dados.}
+00446         \textcolor{comment}{# Caso não exista, é emitido um erro.}
+00447         \textcolor{keywordflow}{try}:
+00448             \textcolor{comment}{# Filtra o database pelo nome do usuario.}
+00449             uid = database.objects.get(field=\textcolor{stringliteral}{'NAME'}, value=username)
+00450             \textcolor{comment}{# Coleta a ID do usuário encontrado.}
+00451             uid = uid.identity
+00452                 
+00453             \textcolor{keywordflow}{try}:
+00454                 \textcolor{comment}{# Coleta a partir do ID do usuário o valor do campo}
+00455                 \textcolor{comment}{# que deseja atualizar.}
+00456                 data = database.objects.get(identity=uid, field=field.upper())
+00457                 \textcolor{comment}{# Nova informação é colocada no tipo que deseja atualizar.}
+00458                 data.value = newdata
+00459             \textcolor{comment}{# Caso o novo valor a ser colocado já exista então este continua o mesmo.}
+00460             \textcolor{keywordflow}{except} database.DoesNotExist:
+00461                 data = database(identity=uid, field=field.upper(), value=newdata)
+00462             \textcolor{comment}{# Salva os novos dados no database.}
+00463             data.save()
+00464 
+00465         \textcolor{keywordflow}{except} ( database.DoesNotExist, 
+00466                  database.MultipleObjectsReturned ) \textcolor{keyword}{as} exc:
+00467             \textcolor{keywordflow}{raise} ValueError(exc)
+
+\end{DoxyCode}
 
 
 A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}

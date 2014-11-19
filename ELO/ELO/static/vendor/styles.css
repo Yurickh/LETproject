@@ -1,0 +1,126 @@
+/** Arquivo folha de estilos de css. */
+
+/* ARQUIVO includes/wrapper.html */
+
+body
+{
+	background:#E3E3E3;
+	margin:0;
+	padding:0;	
+	padding-bottom:30px;
+}
+
+/* Ícone do ELO */
+.banner
+{
+ 	text-shadow: -1px 0 gray, 0 1px gray, 1px 0 gray, 0 -1px gray;
+	position: fixed;
+	font-size: 30px;
+	text-align: left;
+	color: white;
+	top: 0px;
+	padding-left:20px;
+}
+
+/* Menu principal */
+.mainMenu
+{
+	position: fixed;
+	top:0px;
+	width:100%;
+	height:35px;
+	padding-top: 5px;
+	background-color:black;
+}
+
+/* Botão do menu */
+.field
+{
+	text-align: right;
+	color: white;
+	font-size:17px;
+	float:right;
+	padding-right:20px;
+	padding-top:5px;
+}
+
+a.field
+{	
+	text-decoration:none;
+}
+
+.field:hover
+{
+	color: #67B6FF;
+}
+
+/* Conteúdo do site */
+.content
+{
+	text-align: left;
+	color: #331156;
+	margin-top: 1cm;
+	height:100%;
+	padding:10px;
+	padding-bottom:-1000px;	
+}
+
+/* FIM-ARQUIVO wrapper */
+
+.error
+{
+	color: #dd1150;
+}
+
+.dados{
+	text-align: right;
+	margin-top: 0.2cm;
+}
+
+.foot{
+	padding-top:10px;
+	padding-bottom:10px;
+	text-align:center;
+	position:absolute;
+   	width:100%;
+   	height:100px;   
+   	background:#000;
+}
+
+.footp
+{
+	position:fixed;
+	left:0px;
+	bottom:0px;
+	height:71px;
+	width:100%;
+}
+
+.foot a
+{
+	text-decoration:none;
+}
+
+.footnode
+{
+	color: white;
+}
+
+.firstAcess{
+	color:gray;
+}
+
+.ffield
+{
+	margin-top: 0.2cm;
+	margin-bottom:10px;
+}
+
+.manipular ul{
+	margin-top:50px;
+}
+
+.manipular li{
+	margin-top:10px;
+}
+

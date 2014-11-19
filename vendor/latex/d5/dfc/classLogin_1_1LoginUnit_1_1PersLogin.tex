@@ -1,4 +1,4 @@
-\hypertarget{classLogin_1_1LoginUnit_1_1PersLogin}{\section{Referência da Classe Login.\-Login\-Unit.\-Pers\-Login}
+\hypertarget{classLogin_1_1LoginUnit_1_1PersLogin}{\subsection{Referência da Classe Login.\-Login\-Unit.\-Pers\-Login}
 \label{classLogin_1_1LoginUnit_1_1PersLogin}\index{Login.\-Login\-Unit.\-Pers\-Login@{Login.\-Login\-Unit.\-Pers\-Login}}
 }
 
@@ -12,22 +12,24 @@ Diagrama de Hierarquia para Login.\-Login\-Unit.\-Pers\-Login\-:\begin{figure}[H
 \includegraphics[height=2.000000cm]{d5/dfc/classLogin_1_1LoginUnit_1_1PersLogin}
 \end{center}
 \end{figure}
-\subsection*{Métodos Públicos}
+\subsubsection*{Métodos Públicos}
 \begin{DoxyCompactItemize}
 \item 
 def \hyperlink{classLogin_1_1LoginUnit_1_1PersLogin_a1847dbd744377283add2327d2eb0b99f}{select}
-\begin{DoxyCompactList}\small\item\em Método de busca no banco de dados. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
 
-\subsection{Descrição Detalhada}
-Camada de persistência de usuário para o módulo de \hyperlink{namespaceLogin}{Login}. 
+\subsubsection{Descrição Detalhada}
+
+
+Definição na linha \hyperlink{LoginUnit_8py_source_l00201}{201} do arquivo \hyperlink{LoginUnit_8py_source}{Login\-Unit.\-py}.
 
 
 
-\subsection{Métodos}
+\subsubsection{Métodos}
 \hypertarget{classLogin_1_1LoginUnit_1_1PersLogin_a1847dbd744377283add2327d2eb0b99f}{\index{Login\-::\-Login\-Unit\-::\-Pers\-Login@{Login\-::\-Login\-Unit\-::\-Pers\-Login}!select@{select}}
 \index{select@{select}!Login::LoginUnit::PersLogin@{Login\-::\-Login\-Unit\-::\-Pers\-Login}}
-\subsubsection[{select}]{\setlength{\rightskip}{0pt plus 5cm}def Login.\-Login\-Unit.\-Pers\-Login.\-select (
+\paragraph[{select}]{\setlength{\rightskip}{0pt plus 5cm}def Login.\-Login\-Unit.\-Pers\-Login.\-select (
 \begin{DoxyParamCaption}
 \item[{}]{self, }
 \item[{}]{username = {\ttfamily None}, }
@@ -36,9 +38,33 @@ Camada de persistência de usuário para o módulo de \hyperlink{namespaceLogin}
 )}}\label{classLogin_1_1LoginUnit_1_1PersLogin_a1847dbd744377283add2327d2eb0b99f}
 
 
-Método de busca no banco de dados. 
+Definição na linha \hyperlink{LoginUnit_8py_source_l00203}{203} do arquivo \hyperlink{LoginUnit_8py_source}{Login\-Unit.\-py}.
 
-Recebe o nome de usuário e busca no bando de dados o valor correspondente à senha daquele usuário. 
+
+\begin{DoxyCode}
+\hypertarget{classLogin_1_1LoginUnit_1_1PersLogin_l00203}{}\hyperlink{classLogin_1_1LoginUnit_1_1PersLogin_a1847dbd744377283add2327d2eb0b99f}{00203} 
+00204     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1PersLogin_a1847dbd744377283add2327d2eb0b99f}{select}(self, username=None, database=None):
+00205         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} username: \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+00206         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} database: \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+00207 
+00208         ulang = \textcolor{keywordtype}{None}
+00209 
+00210         \textcolor{keywordflow}{try}:
+00211             uid = database.objects.get(value=username, field=\textcolor{stringliteral}{'NAME'}).identity
+00212             upass = database.objects.get(identity=uid, field=\textcolor{stringliteral}{'PASSWORD'}).value
+00213         \textcolor{keywordflow}{except} database.DoesNotExist:
+00214             \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+00215 
+00216         \textcolor{keywordflow}{if} isinstance(database, Student):
+00217             \textcolor{keywordflow}{try}:
+00218                 ulang = database.objects.get(identity=uid, field=\textcolor{stringliteral}{'LANGUAGE'}).value
+00219             \textcolor{keywordflow}{except} database.DoesNotExist:
+00220                 \textcolor{keywordflow}{pass}
+00221         \textcolor{keywordflow}{else}:
+00222             ulang = settings.LANGUAGE\_CODE
+00223 
+        \textcolor{keywordflow}{return} \{\textcolor{stringliteral}{'name'}: username, \textcolor{stringliteral}{'password'}: upass, \textcolor{stringliteral}{'language'}: ulang\}\end{DoxyCode}
+
 
 A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}
 \item 

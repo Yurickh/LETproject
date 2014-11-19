@@ -8,6 +8,13 @@
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../search/search.js"></script>
 <script type="text/javascript">
@@ -37,7 +44,6 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="../../index.html"><span>Página&#160;Principal</span></a></li>
-      <li><a href="../../pages.html"><span>Páginas&#160;relacionadas</span></a></li>
       <li><a href="../../namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="../../annotated.html"><span>Classes</span></a></li>
       <li><a href="../../files.html"><span>Arquivos</span></a></li>
@@ -62,17 +68,31 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="../../annotated.html"><span>Lista&#160;de&#160;Componentes</span></a></li>
-      <li><a href="../../classes.html"><span>Índice&#160;dos&#160;Componentes</span></a></li>
       <li><a href="../../hierarchy.html"><span>Hierarquia&#160;de&#160;Classes</span></a></li>
       <li><a href="../../functions.html"><span>Componentes&#160;Membros</span></a></li>
     </ul>
   </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('d2/d3e/classELO_1_1BaseUnit_1_1Language.html','../../');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variáveis</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variáveis</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -81,11 +101,6 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="../../da/d09/namespaceELO.html">ELO</a></li><li class="navelem"><a class="el" href="../../dc/d21/namespaceELO_1_1BaseUnit.html">BaseUnit</a></li><li class="navelem"><a class="el" href="../../d2/d3e/classELO_1_1BaseUnit_1_1Language.html">Language</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Métodos Públicos</a> &#124;
@@ -103,7 +118,7 @@ Diagrama de Hierarquia para ELO.BaseUnit.Language:</div>
  <div class="center">
   <img src="../../d2/d3e/classELO_1_1BaseUnit_1_1Language.png" usemap="#ELO.BaseUnit.Language_map" alt=""/>
   <map id="ELO.BaseUnit.Language_map" name="ELO.BaseUnit.Language_map">
-<area href="../../d7/d79/classELO_1_1BaseUnit_1_1IfBaseType.html" title="Interface para qualquer tipo básico (Base Type) pertencente ao projeto. " alt="ELO.BaseUnit.IfBaseType" shape="rect" coords="0,0,157,24"/>
+<area href="../../d7/d79/classELO_1_1BaseUnit_1_1IfBaseType.html" title="Interface para todos os tipos básicos. " alt="ELO.BaseUnit.IfBaseType" shape="rect" coords="0,0,157,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -127,8 +142,9 @@ Métodos Públicos</h2></td></tr>
 <tr class="separator:a69c338f6f1574bd3524e9d59ebc17a7c inherit pub_methods_classELO_1_1BaseUnit_1_1IfBaseType"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descrição Detalhada</h2>
-<div class="textblock"><p>Classe container de linguagem. </p>
-<p>Irá armazenar um número que corresponde à língua de preferência do usuário. A relação linguagem-id será armazenada numa tabela à parte. </p>
+<div class="textblock"><p>Irá armazenar um número que corresponde à língua de preferência do usuário. A relação linguagem-id será armazenada numa tabela à parte. </p>
+
+<p>Definição na linha <a class="el" href="../../d2/d4a/BaseUnit_8py_source.html#l00512">512</a> do arquivo <a class="el" href="../../d2/d4a/BaseUnit_8py_source.html">BaseUnit.py</a>.</p>
 </div><h2 class="groupheader">Construtores &amp; Destrutores</h2>
 <a class="anchor" id="a0b717ad014a17f87cbe20caf5be56fb8"></a>
 <div class="memitem">
@@ -153,8 +169,6 @@ Métodos Públicos</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Construtor da classe. </p>
 <p>Impede a criação de tipos básicos com conteúdo inválido.</p>
 <ul>
 <li>value Inteiro a ser armazenado.</li>
@@ -166,17 +180,37 @@ Métodos Públicos</h2></td></tr>
   </dd>
 </dl>
 
+<p>Definição na linha <a class="el" href="../../d2/d4a/BaseUnit_8py_source.html#l00523">523</a> do arquivo <a class="el" href="../../d2/d4a/BaseUnit_8py_source.html">BaseUnit.py</a>.</p>
+
+<p>Referências <a class="el" href="../../d2/d4a/BaseUnit_8py_source.html#l00058">ELO.BaseUnit.IfBaseType._validate()</a> e <a class="el" href="../../d2/d4a/BaseUnit_8py_source.html#l00048">ELO.BaseUnit.IfBaseType._value</a>.</p>
+<div class="fragment"><div class="line"><a name="l00523"></a><span class="lineno"><a class="line" href="../../d2/d3e/classELO_1_1BaseUnit_1_1Language.html#a0b717ad014a17f87cbe20caf5be56fb8">  523</a></span>&#160;</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;    <span class="keyword">def </span><a class="code" href="../../d2/d3e/classELO_1_1BaseUnit_1_1Language.html#a0b717ad014a17f87cbe20caf5be56fb8">__init__</a>(self, value):</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;        <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;            self.<a class="code" href="../../d7/d79/classELO_1_1BaseUnit_1_1IfBaseType.html#a11c68b128a7069e27c1c2fcb782269ea">_validate</a>(value)</div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;        <span class="keywordflow">except</span> ValueError <span class="keyword">as</span> exc:</div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;            del self</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;            <span class="keywordflow">raise</span> exc</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;        self.<a class="code" href="../../d7/d79/classELO_1_1BaseUnit_1_1IfBaseType.html#ad05d9d377fc4b99743c022cc8f6019d7">_value</a> = value</div>
+</div>
+<div class="ttc" id="classELO_1_1BaseUnit_1_1IfBaseType_html_a11c68b128a7069e27c1c2fcb782269ea"><div class="ttname"><a href="../../d7/d79/classELO_1_1BaseUnit_1_1IfBaseType.html#a11c68b128a7069e27c1c2fcb782269ea">ELO.BaseUnit.IfBaseType._validate</a></div><div class="ttdeci">def _validate</div><div class="ttdoc">Define que toda classe derivada terá um método _validate. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d4a/BaseUnit_8py_source.html#l00058">BaseUnit.py:58</a></div></div>
+<div class="ttc" id="classELO_1_1BaseUnit_1_1Language_html_a0b717ad014a17f87cbe20caf5be56fb8"><div class="ttname"><a href="../../d2/d3e/classELO_1_1BaseUnit_1_1Language.html#a0b717ad014a17f87cbe20caf5be56fb8">ELO.BaseUnit.Language.__init__</a></div><div class="ttdeci">def __init__</div><div class="ttdoc">Construtor da classe. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d4a/BaseUnit_8py_source.html#l00523">BaseUnit.py:523</a></div></div>
+<div class="ttc" id="classELO_1_1BaseUnit_1_1IfBaseType_html_ad05d9d377fc4b99743c022cc8f6019d7"><div class="ttname"><a href="../../d7/d79/classELO_1_1BaseUnit_1_1IfBaseType.html#ad05d9d377fc4b99743c022cc8f6019d7">ELO.BaseUnit.IfBaseType._value</a></div><div class="ttdeci">_value</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d4a/BaseUnit_8py_source.html#l00048">BaseUnit.py:48</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>A documentação para esta classe foi gerada a partir do seguinte arquivo:<ul>
-<li>ELO/ELO/<a class="el" href="../../d2/d4a/BaseUnit_8py.html">BaseUnit.py</a></li>
+<li>ELO/ELO/<a class="el" href="../../d2/d4a/BaseUnit_8py_source.html">BaseUnit.py</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Gerado em Quinta, 24 de Abril de 2014 15:33:50 para LETproject por &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="../../doxygen.png" alt="doxygen"/>
-</a> 1.8.6
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../da/d09/namespaceELO.html">ELO</a></li><li class="navelem"><a class="el" href="../../dc/d21/namespaceELO_1_1BaseUnit.html">BaseUnit</a></li><li class="navelem"><a class="el" href="../../d2/d3e/classELO_1_1BaseUnit_1_1Language.html">Language</a></li>
+    <li class="footer">Gerado em Quinta, 9 de Outubro de 2014 03:08:57 para LETproject por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
 </body>
 </html>

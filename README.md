@@ -22,6 +22,7 @@ Seu principal objetivo é criar uma interface amigável entre alunos e professor
 Título do projeto:
 * **LETproject (nome temporário)**
 * **ELO (Ensino de Línguas Online) (nome temporário)**
+* **SALiE (nome final)**
 
 Orientador:
 **Professor Cláudio Correa e Castro Gonçalves**
@@ -31,8 +32,8 @@ Unidade Acadêmica / Departamento:
 
 Alunos Envolvidos:
 * Yurick Hauschild Caetano da Costa 12/0024136
-* André Accioly Lima 12/0059908
-* Diego Santos da Silva 11/0027892
+* Dayanne Fernandes 13/0107191
+* Bruna Luisa xx/xxxxxxx
 
 ### 3. Documentação
 
@@ -47,8 +48,9 @@ Toda a documentação do projeto pode ser encontrada na pasta doc/.
 
 #### 3.i. Doxyfile (html)
 
- No intuito de simplificar a navegação dentro da documentação do projeto, utilizamos a ferramenta Doxygen, gerando, assim, um arquivo HTML que contém uma interface amigável.
- Este arquivo está contido em doc/html/ e para acessá-lo basta abrir o arquivo doc/html/index.html com o seu navegador.
+ No intuito de simplificar a navegação dentro da documentação do projeto, utilizamos a ferramenta Doxygen, gerando, assim, um arquivo HTML que contém uma interface amigável, bem como um arquivo .tex capaz de gerar um pdf.
+ Tanto o pdf quanto o html possuem as mesmas informações.
+ Estes arquivos estão contidos em vendor e para acessá-los basta abrir o arquivo doc/html/index.html ou doc/latex/refman.pdf com o seu navegador ou visualizador de pdf, respectivamente.
  
 ### 4. Instalação e execução
 
@@ -60,11 +62,12 @@ Para executar o programa, siga as instruções abaixo.
 
 2. Para instalar o python no Windows:
 
+ Obs: Não desenvolvemos a plataforma em Windows, e não temos o hábito de testar neste ambiente. Então, caro usuário da microsoft, na ocasião de encontrar algum bug ocasionado por incompatibilidade, sintá-se convidado a abrir uma issue e nos avisar, para que o corrijamos o mais rápido possível.
+ [Siga este tutorial](http://docs.python-guide.org/en/latest/starting/install/win/).
 
 3. Para instalar o python no Linux:
 > OBS: As últimas versões do Ubuntu e Fedora já vêm com o python 2.7 e as últimas versões do RHEL e CentOS já vêm com o python 2.6.
 
-[BAIXE O PYTHON SCRIPT AQUI, E EXECUTE](http://python-distribute.org/distribute_setup.py). Para executar, use no terminal `python distributte_setup.py`
   * Instale o pip:
     `$ easy_install pip`
   * Instale o virtualenv:
@@ -77,109 +80,15 @@ Para executar o programa, siga as instruções abaixo.
 	`$ deactivate`
 
 4. Para instalar django no Windows:
-  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então extraia o arquivo, inicie o DOS
- shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+  * Baixe [Download Django-1.7.1.tar.gz](https://www.djangoproject.com/download/1.7.1/tarball/). Então extraia o arquivo, inicie o DOS
+ shell (ctrl+E, cmd) com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
 	`$ python setup.py install`
 
 5. Para instalar django no Ubuntu:
   * Pelo pip:
-	`$ pip install Django==1.6.2`
+	`$ pip install Django==1.7`
   * "Manualmente":
-	* Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+	* Baixe [Download Django-1.7.1.tar.gz](https://www.djangoproject.com/download/1.7.1/tarball/). Então:
 		`$ tar xzvf Django-1.6.2.tar.gz`
 		`$ cd Django-1.6.2`
 		`$ sudo python setup.py install`
-  
-
-### 5. Metas de desenvolvimento
-
-0. **Refazer documentação**:
-  * ELO: 10 hrs *(completo)*
-  * Login: 10 hrs *(completo)*
-  * Profile: 10 hrs *(completo)*
-  * Doxygen: 10 hrs *(completo)*
-  * Documento: 15 hrs
-  * README: 15 hrs
-
-0. **Desenvolver módulos**:
-  * Profile
-    * forms.py: 5 hrs
-    * ProfileUnit.py: 60 hrs
-    * models.py: 5 hrs
-    * templates: 40 hrs
-    * debug: 110 hrs
-
-0. **Estudar**:
-  * Javascript:
-    * AJAX: 60 hrs
-    * jQuery: 60 hrs
-  * Diego: 30 hrs
-
-0. **Misc**: 53 hrs
-*Tempo reservado para feriados, período de adaptação e afins.*
-
-**Tempo total**: 500 hrs
-
-**Data de início:** 21/02/2014
-**Data prevista de término:** 07/07/2014
-
-**Meta até 28/02:**
-* Terminar ELO e README
-* Progredir 11 hrs no treinamento do Diego
-
-###  6. Log de Atividades
-
-> **24/02**:
-> * Refazer documentação: ELO
-> * Refazer documentação: Login
-> * Refazer documentação: Doxygen
-
-> **26/02**
-> * Refazer documentação: Profile
-> **24/03**
-> * Definidas funções de apresentação do Módulo de Administração. (WIP) (JavaScrypt/Ajax)
-> *
-
-> **17/04**
-> * Finalizado o módulo de Perfil para estudantes, em um primeiro momento. O histórico não foi implementado devido a possibilidade de inutilização do código.
-> * Reescrito o código de Perfil para que obedeça ao padrão de 80 caracteres / linha.
-
-> **23/04**
-> * Reescrito o código da Unidade Main para que obedeça ao padrão de 80
- caracteres / linha.
-> * Finalizado o módulo de Perfil para professores, implicando que o módulo de perfil foi completamente finalizado.
-
-> **24/04**
-> * Reescrito o código da Unidade de Tipos Básicos para que obedeça ao padrão de 80 caracteres / linha.
-> * Reescrita a documentação da Unidade de Tipos Básicos para o Doxygen.
-
-### 7. Comandos úteis (GIT)
-
-7.1. GIT PULL
-	Recupera do repositório virtual o código
-	
-	$ git pull origin master
-	
-7.2. GIT STATUS
-	Mostra o estado atual do repositório
-	
-	$ git status
-	
-7.3. GIT ADD/RM
-	Adiciona comandos para o commit.
-	
-	$ git add arquivo.c
-	Adicionar modificações do arquivo.c para o repositório virtual.
-	
-	$ git rm arquivo.c
-	Deletar o arquivo no repositório virtual.
-	
-7.4. GIT COMMIT
-	Cria o commit com a mensagem adicionada.
-	
-	$ git commit -m "abacates"
-	
-7.5. GIT PUSH
-	Submete o commit para o repositório virtual.
-	
-	$ git push origin master

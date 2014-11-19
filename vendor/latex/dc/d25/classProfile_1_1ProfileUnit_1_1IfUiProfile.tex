@@ -1,4 +1,4 @@
-\hypertarget{classProfile_1_1ProfileUnit_1_1IfUiProfile}{\section{Referência da Classe Profile.\-Profile\-Unit.\-If\-Ui\-Profile}
+\hypertarget{classProfile_1_1ProfileUnit_1_1IfUiProfile}{\subsection{Referência da Classe Profile.\-Profile\-Unit.\-If\-Ui\-Profile}
 \label{classProfile_1_1ProfileUnit_1_1IfUiProfile}\index{Profile.\-Profile\-Unit.\-If\-Ui\-Profile@{Profile.\-Profile\-Unit.\-If\-Ui\-Profile}}
 }
 
@@ -12,7 +12,7 @@ Diagrama de Hierarquia para Profile.\-Profile\-Unit.\-If\-Ui\-Profile\-:\begin{f
 \includegraphics[height=2.000000cm]{dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile}
 \end{center}
 \end{figure}
-\subsection*{Métodos Públicos}
+\subsubsection*{Métodos Públicos}
 \begin{DoxyCompactItemize}
 \item 
 def \hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_a558fbb501ee3dbc4a16d3165479c38bc}{\-\_\-\-\_\-init\-\_\-\-\_\-}
@@ -25,22 +25,24 @@ def \hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_ac3d0a7a780dcf729b9f3c
 \item 
 def \hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_afb22574cb4a2dc58c068437bd7075e5a}{run}
 \begin{DoxyCompactList}\small\item\em 'Run' é o principal método de qualquer classe de apresentação. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Atributos Públicos}
+\subsubsection*{Atributos Públicos}
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_a32a87d193e5d14e0ff3125d6bab2c420}{bus}
 \end{DoxyCompactItemize}
 
 
-\subsection{Descrição Detalhada}
-Interface para a camada de Apresentação de Usuário do módulo \hyperlink{namespaceProfile}{Profile}. 
-
+\subsubsection{Descrição Detalhada}
 É responsável pelo carregamento do template correto e processa os dados inseridos nos formulários de Perfil. 
 
-\subsection{Construtores \& Destrutores}
+Definição na linha \hyperlink{ProfileUnit_8py_source_l00041}{41} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
+
+
+
+\subsubsection{Construtores \& Destrutores}
 \hypertarget{classProfile_1_1ProfileUnit_1_1IfUiProfile_a558fbb501ee3dbc4a16d3165479c38bc}{\index{Profile\-::\-Profile\-Unit\-::\-If\-Ui\-Profile@{Profile\-::\-Profile\-Unit\-::\-If\-Ui\-Profile}!\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}}
 \index{\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}!Profile::ProfileUnit::IfUiProfile@{Profile\-::\-Profile\-Unit\-::\-If\-Ui\-Profile}}
-\subsubsection[{\-\_\-\-\_\-init\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def Profile.\-Profile\-Unit.\-If\-Ui\-Profile.\-\_\-\-\_\-init\-\_\-\-\_\- (
+\paragraph[{\-\_\-\-\_\-init\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def Profile.\-Profile\-Unit.\-If\-Ui\-Profile.\-\_\-\-\_\-init\-\_\-\-\_\- (
 \begin{DoxyParamCaption}
 \item[{}]{self, }
 \item[{}]{bus}
@@ -48,51 +50,127 @@ Interface para a camada de Apresentação de Usuário do módulo \hyperlink{name
 )}}\label{classProfile_1_1ProfileUnit_1_1IfUiProfile_a558fbb501ee3dbc4a16d3165479c38bc}
 
 
-Força a criação da camada subjacente. 
+Definição na linha \hyperlink{ProfileUnit_8py_source_l00045}{45} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
 
 
+\begin{DoxyCode}
+\hypertarget{classProfile_1_1ProfileUnit_1_1IfUiProfile_l00045}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_a558fbb501ee3dbc4a16d3165479c38bc}{00045} 
+00046     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_a558fbb501ee3dbc4a16d3165479c38bc}{\_\_init\_\_}(self, bus):
+\hypertarget{classProfile_1_1ProfileUnit_1_1IfUiProfile_l00047}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_a32a87d193e5d14e0ff3125d6bab2c420}{00047}         \textcolor{keywordflow}{try}:
+00048             self.\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_a32a87d193e5d14e0ff3125d6bab2c420}{bus} = bus
+00049         \textcolor{keywordflow}{except} TypeError \textcolor{keyword}{as} exc:
+00050             del self
+00051             \textcolor{keywordflow}{raise} exc
 
-\subsection{Métodos}
+\end{DoxyCode}
+
+
+\subsubsection{Métodos}
 \hypertarget{classProfile_1_1ProfileUnit_1_1IfUiProfile_ac3d0a7a780dcf729b9f3cf1fff243a78}{\index{Profile\-::\-Profile\-Unit\-::\-If\-Ui\-Profile@{Profile\-::\-Profile\-Unit\-::\-If\-Ui\-Profile}!bus@{bus}}
 \index{bus@{bus}!Profile::ProfileUnit::IfUiProfile@{Profile\-::\-Profile\-Unit\-::\-If\-Ui\-Profile}}
-\subsubsection[{bus}]{\setlength{\rightskip}{0pt plus 5cm}def Profile.\-Profile\-Unit.\-If\-Ui\-Profile.\-bus (
+\paragraph[{bus}]{\setlength{\rightskip}{0pt plus 5cm}def Profile.\-Profile\-Unit.\-If\-Ui\-Profile.\-bus (
 \begin{DoxyParamCaption}
 \item[{}]{self}
 \end{DoxyParamCaption}
 )}}\label{classProfile_1_1ProfileUnit_1_1IfUiProfile_ac3d0a7a780dcf729b9f3cf1fff243a78}
+
+
+Definição na linha \hyperlink{ProfileUnit_8py_source_l00053}{53} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
+
+
+
+Referências \hyperlink{CourseUnit_8py_source_l00025}{Course.\-Course\-Unit.\-If\-Ui\-Course.\-\_\-\-\_\-bus}, \hyperlink{MainUnit_8py_source_l00039}{E\-L\-O.\-Main\-Unit.\-Factory.\-\_\-\-\_\-bus}, \hyperlink{LoginUnit_8py_source_l00049}{Login.\-Login\-Unit.\-If\-Ui\-Login.\-\_\-\-\_\-bus}, \hyperlink{ProfileUnit_8py_source_l00059}{Profile.\-Profile\-Unit.\-If\-Ui\-Profile.\-\_\-\-\_\-bus}, \hyperlink{AdmUnit_8py_source_l00067}{Adm.\-Adm\-Unit.\-If\-Ui\-Adm.\-\_\-\-\_\-bus} e \hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_a32a87d193e5d14e0ff3125d6bab2c420}{Profile.\-Profile\-Unit.\-If\-Ui\-Profile.\-bus}.
+
+
+\begin{DoxyCode}
+\hypertarget{classProfile_1_1ProfileUnit_1_1IfUiProfile_l00053}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_ac3d0a7a780dcf729b9f3cf1fff243a78}{00053} 
+00054     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_a32a87d193e5d14e0ff3125d6bab2c420}{bus}(self):
+00055         \textcolor{keywordflow}{return} self.\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_af2171c776276848c2961f6fa818e0f67}{\_\_bus}
+
+\end{DoxyCode}
 \hypertarget{classProfile_1_1ProfileUnit_1_1IfUiProfile_ac3d0a7a780dcf729b9f3cf1fff243a78}{\index{Profile\-::\-Profile\-Unit\-::\-If\-Ui\-Profile@{Profile\-::\-Profile\-Unit\-::\-If\-Ui\-Profile}!bus@{bus}}
 \index{bus@{bus}!Profile::ProfileUnit::IfUiProfile@{Profile\-::\-Profile\-Unit\-::\-If\-Ui\-Profile}}
-\subsubsection[{bus}]{\setlength{\rightskip}{0pt plus 5cm}def Profile.\-Profile\-Unit.\-If\-Ui\-Profile.\-bus (
+\paragraph[{bus}]{\setlength{\rightskip}{0pt plus 5cm}def Profile.\-Profile\-Unit.\-If\-Ui\-Profile.\-bus (
 \begin{DoxyParamCaption}
 \item[{}]{self, }
 \item[{}]{value}
 \end{DoxyParamCaption}
 )}}\label{classProfile_1_1ProfileUnit_1_1IfUiProfile_ac3d0a7a780dcf729b9f3cf1fff243a78}
+
+
+Definição na linha \hyperlink{ProfileUnit_8py_source_l00057}{57} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
+
+
+
+Referências \hyperlink{CourseUnit_8py_source_l00025}{Course.\-Course\-Unit.\-If\-Ui\-Course.\-\_\-\-\_\-bus}, \hyperlink{MainUnit_8py_source_l00039}{E\-L\-O.\-Main\-Unit.\-Factory.\-\_\-\-\_\-bus}, \hyperlink{LoginUnit_8py_source_l00049}{Login.\-Login\-Unit.\-If\-Ui\-Login.\-\_\-\-\_\-bus}, \hyperlink{ProfileUnit_8py_source_l00059}{Profile.\-Profile\-Unit.\-If\-Ui\-Profile.\-\_\-\-\_\-bus}, \hyperlink{AdmUnit_8py_source_l00067}{Adm.\-Adm\-Unit.\-If\-Ui\-Adm.\-\_\-\-\_\-bus} e \hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_a32a87d193e5d14e0ff3125d6bab2c420}{Profile.\-Profile\-Unit.\-If\-Ui\-Profile.\-bus}.
+
+
+\begin{DoxyCode}
+\hypertarget{classProfile_1_1ProfileUnit_1_1IfUiProfile_l00057}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_ac3d0a7a780dcf729b9f3cf1fff243a78}{00057} 
+00058     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_a32a87d193e5d14e0ff3125d6bab2c420}{bus}(self, value):
+00059         \textcolor{keywordflow}{if} isinstance(value, IfBusProfile):
+00060             self.\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_af2171c776276848c2961f6fa818e0f67}{\_\_bus} = value
+00061         \textcolor{keywordflow}{else}:
+00062             \textcolor{keywordflow}{raise} TypeError(\textcolor{stringliteral}{"Expected IfBusProfile instance at \(\backslash\)}
+00063 \textcolor{stringliteral}{                UiProfile.\_\_bus. Received "} + 
+00064                 str(type(value)) + \textcolor{stringliteral}{" instead."})
+
+\end{DoxyCode}
 \hypertarget{classProfile_1_1ProfileUnit_1_1IfUiProfile_ac3d0a7a780dcf729b9f3cf1fff243a78}{\index{Profile\-::\-Profile\-Unit\-::\-If\-Ui\-Profile@{Profile\-::\-Profile\-Unit\-::\-If\-Ui\-Profile}!bus@{bus}}
 \index{bus@{bus}!Profile::ProfileUnit::IfUiProfile@{Profile\-::\-Profile\-Unit\-::\-If\-Ui\-Profile}}
-\subsubsection[{bus}]{\setlength{\rightskip}{0pt plus 5cm}def Profile.\-Profile\-Unit.\-If\-Ui\-Profile.\-bus (
+\paragraph[{bus}]{\setlength{\rightskip}{0pt plus 5cm}def Profile.\-Profile\-Unit.\-If\-Ui\-Profile.\-bus (
 \begin{DoxyParamCaption}
 \item[{}]{self}
 \end{DoxyParamCaption}
 )}}\label{classProfile_1_1ProfileUnit_1_1IfUiProfile_ac3d0a7a780dcf729b9f3cf1fff243a78}
+
+
+Definição na linha \hyperlink{ProfileUnit_8py_source_l00066}{66} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
+
+
+
+Referências \hyperlink{CourseUnit_8py_source_l00025}{Course.\-Course\-Unit.\-If\-Ui\-Course.\-\_\-\-\_\-bus}, \hyperlink{MainUnit_8py_source_l00039}{E\-L\-O.\-Main\-Unit.\-Factory.\-\_\-\-\_\-bus}, \hyperlink{LoginUnit_8py_source_l00049}{Login.\-Login\-Unit.\-If\-Ui\-Login.\-\_\-\-\_\-bus}, \hyperlink{ProfileUnit_8py_source_l00059}{Profile.\-Profile\-Unit.\-If\-Ui\-Profile.\-\_\-\-\_\-bus}, \hyperlink{AdmUnit_8py_source_l00067}{Adm.\-Adm\-Unit.\-If\-Ui\-Adm.\-\_\-\-\_\-bus} e \hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_a32a87d193e5d14e0ff3125d6bab2c420}{Profile.\-Profile\-Unit.\-If\-Ui\-Profile.\-bus}.
+
+
+\begin{DoxyCode}
+\hypertarget{classProfile_1_1ProfileUnit_1_1IfUiProfile_l00066}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_ac3d0a7a780dcf729b9f3cf1fff243a78}{00066} 
+00067     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_a32a87d193e5d14e0ff3125d6bab2c420}{bus}(self):
+00068         del self.\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_af2171c776276848c2961f6fa818e0f67}{\_\_bus}
+
+\end{DoxyCode}
 \hypertarget{classProfile_1_1ProfileUnit_1_1IfUiProfile_afb22574cb4a2dc58c068437bd7075e5a}{\index{Profile\-::\-Profile\-Unit\-::\-If\-Ui\-Profile@{Profile\-::\-Profile\-Unit\-::\-If\-Ui\-Profile}!run@{run}}
 \index{run@{run}!Profile::ProfileUnit::IfUiProfile@{Profile\-::\-Profile\-Unit\-::\-If\-Ui\-Profile}}
-\subsubsection[{run}]{\setlength{\rightskip}{0pt plus 5cm}def Profile.\-Profile\-Unit.\-If\-Ui\-Profile.\-run (
+\paragraph[{run}]{\setlength{\rightskip}{0pt plus 5cm}def Profile.\-Profile\-Unit.\-If\-Ui\-Profile.\-run (
 \begin{DoxyParamCaption}
 \item[{}]{self, }
 \item[{}]{request}
 \end{DoxyParamCaption}
 )}}\label{classProfile_1_1ProfileUnit_1_1IfUiProfile_afb22574cb4a2dc58c068437bd7075e5a}
-
-
-'Run' é o principal método de qualquer classe de apresentação. 
-
 Este método permite a Factory dar o controle do programa módulo. 
 
-\subsection{Atributos}
+Definição na linha \hyperlink{ProfileUnit_8py_source_l00073}{73} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classProfile_1_1ProfileUnit_1_1IfUiProfile_l00073}{}\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_afb22574cb4a2dc58c068437bd7075e5a}{00073} 
+00074     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_afb22574cb4a2dc58c068437bd7075e5a}{run}(self, request): \textcolor{keyword}{pass}
+00075 
+
+\end{DoxyCode}
+
+
+\subsubsection{Atributos}
 \hypertarget{classProfile_1_1ProfileUnit_1_1IfUiProfile_a32a87d193e5d14e0ff3125d6bab2c420}{\index{Profile\-::\-Profile\-Unit\-::\-If\-Ui\-Profile@{Profile\-::\-Profile\-Unit\-::\-If\-Ui\-Profile}!bus@{bus}}
 \index{bus@{bus}!Profile::ProfileUnit::IfUiProfile@{Profile\-::\-Profile\-Unit\-::\-If\-Ui\-Profile}}
-\subsubsection[{bus}]{\setlength{\rightskip}{0pt plus 5cm}Profile.\-Profile\-Unit.\-If\-Ui\-Profile.\-bus}}\label{classProfile_1_1ProfileUnit_1_1IfUiProfile_a32a87d193e5d14e0ff3125d6bab2c420}
+\paragraph[{bus}]{\setlength{\rightskip}{0pt plus 5cm}Profile.\-Profile\-Unit.\-If\-Ui\-Profile.\-bus}}\label{classProfile_1_1ProfileUnit_1_1IfUiProfile_a32a87d193e5d14e0ff3125d6bab2c420}
+
+
+Definição na linha \hyperlink{ProfileUnit_8py_source_l00047}{47} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
+
+
+
+Referenciado por \hyperlink{classProfile_1_1ProfileUnit_1_1IfUiProfile_ac3d0a7a780dcf729b9f3cf1fff243a78}{Profile.\-Profile\-Unit.\-If\-Ui\-Profile.\-bus()}.
+
 
 
 A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}

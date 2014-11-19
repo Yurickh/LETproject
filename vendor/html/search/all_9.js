@@ -1,22 +1,19 @@
 var searchData=
 [
   ['forms',['forms',['../d4/da4/namespaceLogin_1_1forms.html',1,'Login']]],
-  ['lang',['lang',['../db/d73/namespaceELO_1_1MainUnit.html#a7261ae58058821c58db5b6c3e02d830d',1,'ELO::MainUnit']]],
+  ['language',['language',['../d3/d3a/classELO_1_1EntityUnit_1_1Adm.html#a2d4b3c7bd74c828fa965f4d840ff7124',1,'ELO.EntityUnit.Adm.language()'],['../dd/d1d/classELO_1_1EntityUnit_1_1Student.html#ad58a5d0f4e75b34e6c2b93ac05b59faf',1,'ELO.EntityUnit.Student.language()'],['../d3/d3a/classELO_1_1EntityUnit_1_1Adm.html#a32ced0b1c5c7dc5d5b931e568b9d2ece',1,'ELO.EntityUnit.Adm.language'],['../d3/d3a/classELO_1_1EntityUnit_1_1Adm.html#a32ced0b1c5c7dc5d5b931e568b9d2ece',1,'ELO.EntityUnit.Adm.language'],['../d3/d3a/classELO_1_1EntityUnit_1_1Adm.html#a32ced0b1c5c7dc5d5b931e568b9d2ece',1,'ELO.EntityUnit.Adm.language'],['../dd/d1d/classELO_1_1EntityUnit_1_1Student.html#a410beeaf633ad5274bd8e471f285357c',1,'ELO.EntityUnit.Student.language'],['../dd/d1d/classELO_1_1EntityUnit_1_1Student.html#a410beeaf633ad5274bd8e471f285357c',1,'ELO.EntityUnit.Student.language'],['../dd/d1d/classELO_1_1EntityUnit_1_1Student.html#a410beeaf633ad5274bd8e471f285357c',1,'ELO.EntityUnit.Student.language']]],
   ['language',['Language',['../d2/d3e/classELO_1_1BaseUnit_1_1Language.html',1,'ELO::BaseUnit']]],
-  ['language',['language',['../dd/d1d/classELO_1_1EntityUnit_1_1Student.html#ad58a5d0f4e75b34e6c2b93ac05b59faf',1,'ELO.EntityUnit.Student.language()'],['../dd/d1d/classELO_1_1EntityUnit_1_1Student.html#a410beeaf633ad5274bd8e471f285357c',1,'ELO.EntityUnit.Student.language'],['../dd/d1d/classELO_1_1EntityUnit_1_1Student.html#a410beeaf633ad5274bd8e471f285357c',1,'ELO.EntityUnit.Student.language'],['../dd/d1d/classELO_1_1EntityUnit_1_1Student.html#a410beeaf633ad5274bd8e471f285357c',1,'ELO.EntityUnit.Student.language']]],
   ['language_5fcode',['LANGUAGE_CODE',['../df/d5b/namespaceELO_1_1settings.html#a388841a63bae5418e55fb741f938d4fb',1,'ELO::settings']]],
+  ['languageform',['LanguageForm',['../de/d9b/classProfile_1_1forms_1_1LanguageForm.html',1,'Profile::forms']]],
   ['lastlogin',['lastLogin',['../dd/d09/classELO_1_1EntityUnit_1_1User.html#a96e14d87d9a761c3c71d47dec07e1598',1,'ELO.EntityUnit.User.lastLogin'],['../dd/d09/classELO_1_1EntityUnit_1_1User.html#a96e14d87d9a761c3c71d47dec07e1598',1,'ELO.EntityUnit.User.lastLogin'],['../dd/d09/classELO_1_1EntityUnit_1_1User.html#a96e14d87d9a761c3c71d47dec07e1598',1,'ELO.EntityUnit.User.lastLogin']]],
   ['lesson',['Lesson',['../dc/d13/classELO_1_1EntityUnit_1_1Lesson.html',1,'ELO::EntityUnit']]],
   ['lessons',['lessons',['../db/de8/classELO_1_1EntityUnit_1_1Module.html#a33eacfd2527f80841b87ccd73eb5fec0',1,'ELO.EntityUnit.Module.lessons()'],['../db/de8/classELO_1_1EntityUnit_1_1Module.html#a4b12f83ecbf3722070716c9ca5adb80a',1,'ELO.EntityUnit.Module.lessons'],['../db/de8/classELO_1_1EntityUnit_1_1Module.html#a4b12f83ecbf3722070716c9ca5adb80a',1,'ELO.EntityUnit.Module.lessons'],['../db/de8/classELO_1_1EntityUnit_1_1Module.html#a4b12f83ecbf3722070716c9ca5adb80a',1,'ELO.EntityUnit.Module.lessons']]],
-  ['lingua',['Lingua',['../d7/dee/namespaceLingua.html',1,'']]],
   ['link',['Link',['../d9/dbc/classELO_1_1BaseUnit_1_1Link.html',1,'ELO::BaseUnit']]],
   ['link',['link',['../dc/d13/classELO_1_1EntityUnit_1_1Lesson.html#a5288d46b77e4b0cfd382857ef1b82fba',1,'ELO.EntityUnit.Lesson.link()'],['../d5/d6a/classELO_1_1EntityUnit_1_1Exercise.html#a13a9382d9126f07ab380ea11df276ed8',1,'ELO.EntityUnit.Exercise.link()'],['../dc/d13/classELO_1_1EntityUnit_1_1Lesson.html#a8560623b79e4379c2ba74aaf678a4764',1,'ELO.EntityUnit.Lesson.link'],['../dc/d13/classELO_1_1EntityUnit_1_1Lesson.html#a8560623b79e4379c2ba74aaf678a4764',1,'ELO.EntityUnit.Lesson.link'],['../dc/d13/classELO_1_1EntityUnit_1_1Lesson.html#a8560623b79e4379c2ba74aaf678a4764',1,'ELO.EntityUnit.Lesson.link'],['../d5/d6a/classELO_1_1EntityUnit_1_1Exercise.html#a9a140c7c2c9e4b90d1f40acfed62efd0',1,'ELO.EntityUnit.Exercise.link'],['../d5/d6a/classELO_1_1EntityUnit_1_1Exercise.html#a9a140c7c2c9e4b90d1f40acfed62efd0',1,'ELO.EntityUnit.Exercise.link'],['../d5/d6a/classELO_1_1EntityUnit_1_1Exercise.html#a9a140c7c2c9e4b90d1f40acfed62efd0',1,'ELO.EntityUnit.Exercise.link']]],
+  ['locale_5fpaths',['LOCALE_PATHS',['../df/d5b/namespaceELO_1_1settings.html#a977570dd2e9cd8142b3d65c4fa37c172',1,'ELO::settings']]],
   ['logging',['LOGGING',['../df/d5b/namespaceELO_1_1settings.html#addc421e02af1569796e2d33b2bc62ff5',1,'ELO::settings']]],
   ['login',['Login',['../dc/d54/namespaceLogin.html',1,'']]],
   ['loginform',['LoginForm',['../d0/db9/classLogin_1_1forms_1_1LoginForm.html',1,'Login::forms']]],
-  ['loginforms',['LoginForms',['../dc/da0/namespaceLoginForms.html',1,'']]],
-  ['loginmodels',['LoginModels',['../d1/d0f/namespaceLoginModels.html',1,'']]],
   ['loginunit',['LoginUnit',['../d1/dc4/namespaceLogin_1_1LoginUnit.html',1,'Login']]],
-  ['loginunit_2epy',['LoginUnit.py',['../da/dc7/LoginUnit_8py.html',1,'']]],
-  ['letproject',['LETproject',['../d0/d30/md_README.html',1,'']]]
+  ['loginunit_2epy',['LoginUnit.py',['../da/dc7/LoginUnit_8py.html',1,'']]]
 ];

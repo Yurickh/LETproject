@@ -8,6 +8,13 @@
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../search/search.js"></script>
 <script type="text/javascript">
@@ -37,7 +44,6 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="../../index.html"><span>Página&#160;Principal</span></a></li>
-      <li><a href="../../pages.html"><span>Páginas&#160;relacionadas</span></a></li>
       <li><a href="../../namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="../../annotated.html"><span>Classes</span></a></li>
       <li><a href="../../files.html"><span>Arquivos</span></a></li>
@@ -62,17 +68,31 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="../../annotated.html"><span>Lista&#160;de&#160;Componentes</span></a></li>
-      <li><a href="../../classes.html"><span>Índice&#160;dos&#160;Componentes</span></a></li>
       <li><a href="../../hierarchy.html"><span>Hierarquia&#160;de&#160;Classes</span></a></li>
       <li><a href="../../functions.html"><span>Componentes&#160;Membros</span></a></li>
     </ul>
   </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('d0/db9/classLogin_1_1forms_1_1LoginForm.html','../../');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variáveis</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variáveis</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -81,11 +101,6 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="../../dc/d54/namespaceLogin.html">Login</a></li><li class="navelem"><a class="el" href="../../d4/da4/namespaceLogin_1_1forms.html">forms</a></li><li class="navelem"><a class="el" href="../../d0/db9/classLogin_1_1forms_1_1LoginForm.html">LoginForm</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Métodos Públicos</a> &#124;
@@ -118,14 +133,15 @@ Métodos Públicos</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Atributos Estáticos Públicos</h2></td></tr>
-<tr class="memitem:af3766bb4ea8cabdf57ad77214b7545fd"><td class="memItemLeft" align="right" valign="top">tuple&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/db9/classLogin_1_1forms_1_1LoginForm.html#af3766bb4ea8cabdf57ad77214b7545fd">username</a> = forms.CharField(max_length = 32, label = &quot;Username&quot;)</td></tr>
+<tr class="memitem:af3766bb4ea8cabdf57ad77214b7545fd"><td class="memItemLeft" align="right" valign="top">tuple&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/db9/classLogin_1_1forms_1_1LoginForm.html#af3766bb4ea8cabdf57ad77214b7545fd">username</a> = forms.CharField(max_length = 32)</td></tr>
 <tr class="separator:af3766bb4ea8cabdf57ad77214b7545fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a23e321f790e9c7bfc3e9abf767826a2d"><td class="memItemLeft" align="right" valign="top">tuple&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/db9/classLogin_1_1forms_1_1LoginForm.html#a23e321f790e9c7bfc3e9abf767826a2d">password</a> = forms.CharField(widget = forms.PasswordInput, label = &quot;Password&quot;)</td></tr>
+<tr class="memitem:a23e321f790e9c7bfc3e9abf767826a2d"><td class="memItemLeft" align="right" valign="top">tuple&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/db9/classLogin_1_1forms_1_1LoginForm.html#a23e321f790e9c7bfc3e9abf767826a2d">password</a> = forms.CharField(widget = forms.PasswordInput)</td></tr>
 <tr class="separator:a23e321f790e9c7bfc3e9abf767826a2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descrição Detalhada</h2>
-<div class="textblock"><p>Classe de formulário para o fomulário de <a class="el" href="../../dc/d54/namespaceLogin.html">Login</a>. </p>
-<p>Recebe o username e o password e passa para a <a class="el" href="../../d1/dc4/namespaceLogin_1_1LoginUnit.html">LoginUnit</a> para ser validado. </p>
+<div class="textblock"><p>Recebe o username e o password e passa para a <a class="el" href="../../d1/dc4/namespaceLogin_1_1LoginUnit.html">LoginUnit</a> para ser validado. </p>
+
+<p>Definição na linha <a class="el" href="../../db/dd7/Login_2forms_8py_source.html#l00014">14</a> do arquivo <a class="el" href="../../db/dd7/Login_2forms_8py_source.html">forms.py</a>.</p>
 </div><h2 class="groupheader">Métodos</h2>
 <a class="anchor" id="a693547dba5ad5addb8f0540711441713"></a>
 <div class="memitem">
@@ -140,10 +156,19 @@ Atributos Estáticos Públicos</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Verifica se a formatação do password está correta. </p>
 <p>Caso esteja, retorna o password, caso contrário, lança uma excessão. </p>
 
+<p>Definição na linha <a class="el" href="../../db/dd7/Login_2forms_8py_source.html#l00030">30</a> do arquivo <a class="el" href="../../db/dd7/Login_2forms_8py_source.html">forms.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="../../d0/db9/classLogin_1_1forms_1_1LoginForm.html#a693547dba5ad5addb8f0540711441713">   30</a></span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">def </span><a class="code" href="../../d0/db9/classLogin_1_1forms_1_1LoginForm.html#a693547dba5ad5addb8f0540711441713">clean_password</a>(self):</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            pw = <a class="code" href="../../d4/df5/classELO_1_1BaseUnit_1_1Password.html">Password</a>(self.cleaned_data[<span class="stringliteral">&#39;password&#39;</span>])</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordflow">except</span> ValueError:</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <span class="keywordflow">raise</span> forms.ValidationError(lang.DICT[<span class="stringliteral">&quot;EXCEPTION_INV_LOG&quot;</span>])</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordflow">return</span> pw</div>
+<div class="ttc" id="classLogin_1_1forms_1_1LoginForm_html_a693547dba5ad5addb8f0540711441713"><div class="ttname"><a href="../../d0/db9/classLogin_1_1forms_1_1LoginForm.html#a693547dba5ad5addb8f0540711441713">Login.forms.LoginForm.clean_password</a></div><div class="ttdeci">def clean_password</div><div class="ttdoc">Verifica se a formatação do password está correta. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/Login_2forms_8py_source.html#l00030">forms.py:30</a></div></div>
+<div class="ttc" id="classELO_1_1BaseUnit_1_1Password_html"><div class="ttname"><a href="../../d4/df5/classELO_1_1BaseUnit_1_1Password.html">ELO.BaseUnit.Password</a></div><div class="ttdoc">Classe container de senhas. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d4a/BaseUnit_8py_source.html#l00076">BaseUnit.py:76</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a411400c2fe891080a2ccb332dd0117bf"></a>
@@ -159,10 +184,20 @@ Atributos Estáticos Públicos</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Verifica se a formatação do nome está correta. </p>
 <p>Caso esteja, retorna o nome, caso contrário, lança uma excessão. </p>
 
+<p>Definição na linha <a class="el" href="../../db/dd7/Login_2forms_8py_source.html#l00021">21</a> do arquivo <a class="el" href="../../db/dd7/Login_2forms_8py_source.html">forms.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="../../d0/db9/classLogin_1_1forms_1_1LoginForm.html#a411400c2fe891080a2ccb332dd0117bf">   21</a></span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">def </span><a class="code" href="../../d0/db9/classLogin_1_1forms_1_1LoginForm.html#a411400c2fe891080a2ccb332dd0117bf">clean_username</a>(self):</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            name = <a class="code" href="../../d9/dff/classELO_1_1BaseUnit_1_1Name.html">Name</a>(self.cleaned_data[<span class="stringliteral">&#39;username&#39;</span>])</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordflow">except</span> ValueError:</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keywordflow">raise</span> forms.ValidationError(lang.DICT[<span class="stringliteral">&quot;EXCEPTION_INV_LOG&quot;</span>])</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordflow">return</span> name</div>
+</div>
+<div class="ttc" id="classELO_1_1BaseUnit_1_1Name_html"><div class="ttname"><a href="../../d9/dff/classELO_1_1BaseUnit_1_1Name.html">ELO.BaseUnit.Name</a></div><div class="ttdoc">Classe container de nomes. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d4a/BaseUnit_8py_source.html#l00126">BaseUnit.py:126</a></div></div>
+<div class="ttc" id="classLogin_1_1forms_1_1LoginForm_html_a411400c2fe891080a2ccb332dd0117bf"><div class="ttname"><a href="../../d0/db9/classLogin_1_1forms_1_1LoginForm.html#a411400c2fe891080a2ccb332dd0117bf">Login.forms.LoginForm.clean_username</a></div><div class="ttdeci">def clean_username</div><div class="ttdoc">Verifica se a formatação do nome está correta. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/Login_2forms_8py_source.html#l00021">forms.py:21</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Atributos</h2>
@@ -174,7 +209,7 @@ Atributos Estáticos Públicos</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">tuple Login.forms.LoginForm.password = forms.CharField(widget = forms.PasswordInput, label = &quot;Password&quot;)</td>
+          <td class="memname">tuple Login.forms.LoginForm.password = forms.CharField(widget = forms.PasswordInput)</td>
         </tr>
       </table>
   </td>
@@ -183,6 +218,8 @@ Atributos Estáticos Públicos</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Definição na linha <a class="el" href="../../db/dd7/Login_2forms_8py_source.html#l00016">16</a> do arquivo <a class="el" href="../../db/dd7/Login_2forms_8py_source.html">forms.py</a>.</p>
 
 </div>
 </div>
@@ -194,7 +231,7 @@ Atributos Estáticos Públicos</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">tuple Login.forms.LoginForm.username = forms.CharField(max_length = 32, label = &quot;Username&quot;)</td>
+          <td class="memname">tuple Login.forms.LoginForm.username = forms.CharField(max_length = 32)</td>
         </tr>
       </table>
   </td>
@@ -204,17 +241,23 @@ Atributos Estáticos Públicos</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Definição na linha <a class="el" href="../../db/dd7/Login_2forms_8py_source.html#l00015">15</a> do arquivo <a class="el" href="../../db/dd7/Login_2forms_8py_source.html">forms.py</a>.</p>
+
 </div>
 </div>
 <hr/>A documentação para esta classe foi gerada a partir do seguinte arquivo:<ul>
-<li>ELO/Login/<a class="el" href="../../db/dd7/Login_2forms_8py.html">forms.py</a></li>
+<li>ELO/Login/<a class="el" href="../../db/dd7/Login_2forms_8py_source.html">forms.py</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Gerado em Quinta, 24 de Abril de 2014 15:33:54 para LETproject por &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="../../doxygen.png" alt="doxygen"/>
-</a> 1.8.6
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dc/d54/namespaceLogin.html">Login</a></li><li class="navelem"><a class="el" href="../../d4/da4/namespaceLogin_1_1forms.html">forms</a></li><li class="navelem"><a class="el" href="../../d0/db9/classLogin_1_1forms_1_1LoginForm.html">LoginForm</a></li>
+    <li class="footer">Gerado em Quinta, 9 de Outubro de 2014 03:09:04 para LETproject por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
 </body>
 </html>

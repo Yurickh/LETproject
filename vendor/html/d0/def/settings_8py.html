@@ -8,6 +8,13 @@
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../search/search.js"></script>
 <script type="text/javascript">
@@ -37,7 +44,6 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="../../index.html"><span>Página&#160;Principal</span></a></li>
-      <li><a href="../../pages.html"><span>Páginas&#160;relacionadas</span></a></li>
       <li><a href="../../namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="../../annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="../../files.html"><span>Arquivos</span></a></li>
@@ -64,12 +70,27 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
       <li><a href="../../files.html"><span>Lista&#160;de&#160;Arquivos</span></a></li>
     </ul>
   </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('d0/def/settings_8py.html','../../');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variáveis</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variáveis</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -78,11 +99,6 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="../../dir_56c8f39a95ad3669bc9ec7ac8ec99225.html">ELO</a></li><li class="navelem"><a class="el" href="../../dir_d419606626e95ea147f15c612cebbb4c.html">ELO</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
@@ -91,6 +107,8 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
 <div class="title">Referência do Arquivo settings.py</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><a href="../../d0/def/settings_8py_source.html">Vá para o código-fonte deste arquivo.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -99,6 +117,8 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variáveis</h2></td></tr>
+<tr class="memitem:a7730264ddd478343e0f282f36d4a5ab4"><td class="memItemLeft" align="right" valign="top">tuple&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d5b/namespaceELO_1_1settings.html#a7730264ddd478343e0f282f36d4a5ab4">ELO.settings.filepath</a> = lambdax:os.path.join(os.path.dirname(__file__), x)</td></tr>
+<tr class="separator:a7730264ddd478343e0f282f36d4a5ab4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62f457ac29cc6f3e85282c71ce3b4f26"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d5b/namespaceELO_1_1settings.html#a62f457ac29cc6f3e85282c71ce3b4f26">ELO.settings.DEBUG</a> = True</td></tr>
 <tr class="separator:a62f457ac29cc6f3e85282c71ce3b4f26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a014930e0bf77feccc65c20212593381e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d5b/namespaceELO_1_1settings.html#a014930e0bf77feccc65c20212593381e">ELO.settings.TEMPLATE_DEBUG</a> = DEBUG</td></tr>
@@ -113,7 +133,7 @@ Variáveis</h2></td></tr>
 <tr class="separator:afd72644768367440ae1a89e9fe95cde5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aafd318ffa70db1890eaf1f8621e19d53"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d5b/namespaceELO_1_1settings.html#aafd318ffa70db1890eaf1f8621e19d53">ELO.settings.TIME_ZONE</a> = 'America/Sao_Paulo'</td></tr>
 <tr class="separator:aafd318ffa70db1890eaf1f8621e19d53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a388841a63bae5418e55fb741f938d4fb"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d5b/namespaceELO_1_1settings.html#a388841a63bae5418e55fb741f938d4fb">ELO.settings.LANGUAGE_CODE</a> = 'en-us'</td></tr>
+<tr class="memitem:a388841a63bae5418e55fb741f938d4fb"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d5b/namespaceELO_1_1settings.html#a388841a63bae5418e55fb741f938d4fb">ELO.settings.LANGUAGE_CODE</a> = 'pt-br'</td></tr>
 <tr class="separator:a388841a63bae5418e55fb741f938d4fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31328123344da3768e97b0ac61c342de"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d5b/namespaceELO_1_1settings.html#a31328123344da3768e97b0ac61c342de">ELO.settings.SITE_ID</a> = 1</td></tr>
 <tr class="separator:a31328123344da3768e97b0ac61c342de"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -123,9 +143,11 @@ Variáveis</h2></td></tr>
 <tr class="separator:a863197f2699808509a4c32b38c16eb44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8da4c6fc66af84d08bddc0249a473553"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d5b/namespaceELO_1_1settings.html#a8da4c6fc66af84d08bddc0249a473553">ELO.settings.USE_TZ</a> = True</td></tr>
 <tr class="separator:a8da4c6fc66af84d08bddc0249a473553"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f618eef9196cda0088f532a66ec0648"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d5b/namespaceELO_1_1settings.html#a1f618eef9196cda0088f532a66ec0648">ELO.settings.MEDIA_ROOT</a> = ''</td></tr>
-<tr class="separator:a1f618eef9196cda0088f532a66ec0648"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd3e1c3559f7c87f5aad004b76458ddc"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d5b/namespaceELO_1_1settings.html#acd3e1c3559f7c87f5aad004b76458ddc">ELO.settings.MEDIA_URL</a> = ''</td></tr>
+<tr class="memitem:a977570dd2e9cd8142b3d65c4fa37c172"><td class="memItemLeft" align="right" valign="top">tuple&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d5b/namespaceELO_1_1settings.html#a977570dd2e9cd8142b3d65c4fa37c172">ELO.settings.LOCALE_PATHS</a></td></tr>
+<tr class="separator:a977570dd2e9cd8142b3d65c4fa37c172"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f83b56101acea110bb525439aaa69aa"><td class="memItemLeft" align="right" valign="top">tuple&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d5b/namespaceELO_1_1settings.html#a7f83b56101acea110bb525439aaa69aa">ELO.settings.MEDIA_ROOT</a> = filepath('media')</td></tr>
+<tr class="separator:a7f83b56101acea110bb525439aaa69aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd3e1c3559f7c87f5aad004b76458ddc"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d5b/namespaceELO_1_1settings.html#acd3e1c3559f7c87f5aad004b76458ddc">ELO.settings.MEDIA_URL</a> = '/media/'</td></tr>
 <tr class="separator:acd3e1c3559f7c87f5aad004b76458ddc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5539527ada0171fc602c561493398f4"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d5b/namespaceELO_1_1settings.html#ae5539527ada0171fc602c561493398f4">ELO.settings.STATIC_ROOT</a> = ''</td></tr>
 <tr class="separator:ae5539527ada0171fc602c561493398f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -155,11 +177,15 @@ Variáveis</h2></td></tr>
 <tr class="separator:ad62b51880946e9380913c2f3811311bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Gerado em Quinta, 24 de Abril de 2014 15:33:42 para LETproject por &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="../../doxygen.png" alt="doxygen"/>
-</a> 1.8.6
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_56c8f39a95ad3669bc9ec7ac8ec99225.html">ELO</a></li><li class="navelem"><a class="el" href="../../dir_d419606626e95ea147f15c612cebbb4c.html">ELO</a></li><li class="navelem"><a class="el" href="../../d0/def/settings_8py.html">settings.py</a></li>
+    <li class="footer">Gerado em Quinta, 9 de Outubro de 2014 03:08:41 para LETproject por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
 </body>
 </html>

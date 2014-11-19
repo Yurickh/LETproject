@@ -1,0 +1,66 @@
+\hypertarget{classAdm_1_1forms_1_1confAdm}{\subsection{Referência da Classe Adm.\-forms.\-conf\-Adm}
+\label{classAdm_1_1forms_1_1confAdm}\index{Adm.\-forms.\-conf\-Adm@{Adm.\-forms.\-conf\-Adm}}
+}
+Diagrama de Hierarquia para Adm.\-forms.\-conf\-Adm\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d2/db2/classAdm_1_1forms_1_1confAdm}
+\end{center}
+\end{figure}
+\subsubsection*{Métodos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classAdm_1_1forms_1_1confAdm_ab5a399d0326bd135a123c5aa7a49cc29}{clean\-\_\-adm\-Pass}
+\begin{DoxyCompactList}\small\item\em Verifica se a formatação da senha do administrador está correta. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Atributos Estáticos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+tuple \hyperlink{classAdm_1_1forms_1_1confAdm_a30fc9256d1b7a6ca4ac453111c6944b9}{adm\-Pass} = forms.\-Char\-Field(widget = forms.\-Password\-Input, label = \char`\"{}Senha do Adm\char`\"{},required= \char`\"{}True\char`\"{})
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Descrição Detalhada}
+
+
+Definição na linha \hyperlink{Adm_2forms_8py_source_l00091}{91} do arquivo \hyperlink{Adm_2forms_8py_source}{forms.\-py}.
+
+
+
+\subsubsection{Métodos}
+\hypertarget{classAdm_1_1forms_1_1confAdm_ab5a399d0326bd135a123c5aa7a49cc29}{\index{Adm\-::forms\-::conf\-Adm@{Adm\-::forms\-::conf\-Adm}!clean\-\_\-adm\-Pass@{clean\-\_\-adm\-Pass}}
+\index{clean\-\_\-adm\-Pass@{clean\-\_\-adm\-Pass}!Adm::forms::confAdm@{Adm\-::forms\-::conf\-Adm}}
+\paragraph[{clean\-\_\-adm\-Pass}]{\setlength{\rightskip}{0pt plus 5cm}def Adm.\-forms.\-conf\-Adm.\-clean\-\_\-adm\-Pass (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{classAdm_1_1forms_1_1confAdm_ab5a399d0326bd135a123c5aa7a49cc29}
+Caso esteja, retorna a senha, caso contrário, lança uma excessão. 
+
+Definição na linha \hyperlink{Adm_2forms_8py_source_l00096}{96} do arquivo \hyperlink{Adm_2forms_8py_source}{forms.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classAdm_1_1forms_1_1confAdm_l00096}{}\hyperlink{classAdm_1_1forms_1_1confAdm_ab5a399d0326bd135a123c5aa7a49cc29}{00096} 
+00097     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1confAdm_ab5a399d0326bd135a123c5aa7a49cc29}{clean\_admPass}(self):
+00098         \textcolor{keywordflow}{try}:
+00099             password = Password(self.cleaned\_data[\textcolor{stringliteral}{'admPass'}])
+00100         \textcolor{keywordflow}{except} ValueError:
+00101             \textcolor{keywordflow}{raise} forms.ValidationError(\textcolor{stringliteral}{"Senha inválida."})
+00102         \textcolor{keywordflow}{return} password 
+
+\end{DoxyCode}
+
+
+\subsubsection{Atributos}
+\hypertarget{classAdm_1_1forms_1_1confAdm_a30fc9256d1b7a6ca4ac453111c6944b9}{\index{Adm\-::forms\-::conf\-Adm@{Adm\-::forms\-::conf\-Adm}!adm\-Pass@{adm\-Pass}}
+\index{adm\-Pass@{adm\-Pass}!Adm::forms::confAdm@{Adm\-::forms\-::conf\-Adm}}
+\paragraph[{adm\-Pass}]{\setlength{\rightskip}{0pt plus 5cm}tuple Adm.\-forms.\-conf\-Adm.\-adm\-Pass = forms.\-Char\-Field(widget = forms.\-Password\-Input, label = \char`\"{}Senha do Adm\char`\"{},required= \char`\"{}True\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}}\label{classAdm_1_1forms_1_1confAdm_a30fc9256d1b7a6ca4ac453111c6944b9}
+
+
+Definição na linha \hyperlink{Adm_2forms_8py_source_l00092}{92} do arquivo \hyperlink{Adm_2forms_8py_source}{forms.\-py}.
+
+
+
+A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}
+\item 
+E\-L\-O/\-Adm/\hyperlink{Adm_2forms_8py}{forms.\-py}\end{DoxyCompactItemize}

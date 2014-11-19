@@ -1,9 +1,9 @@
-\hypertarget{classProfile_1_1ProfileUnit_1_1PersProfile}{\section{Referência da Classe Profile.\-Profile\-Unit.\-Pers\-Profile}
+\hypertarget{classProfile_1_1ProfileUnit_1_1PersProfile}{\subsection{Referência da Classe Profile.\-Profile\-Unit.\-Pers\-Profile}
 \label{classProfile_1_1ProfileUnit_1_1PersProfile}\index{Profile.\-Profile\-Unit.\-Pers\-Profile@{Profile.\-Profile\-Unit.\-Pers\-Profile}}
 }
 
 
-Camada de persistência para estudantes.  
+Camada de persistência de perfil.  
 
 
 Diagrama de Hierarquia para Profile.\-Profile\-Unit.\-Pers\-Profile\-:\begin{figure}[H]
@@ -12,28 +12,154 @@ Diagrama de Hierarquia para Profile.\-Profile\-Unit.\-Pers\-Profile\-:\begin{fig
 \includegraphics[height=2.000000cm]{d7/dec/classProfile_1_1ProfileUnit_1_1PersProfile}
 \end{center}
 \end{figure}
-\subsection*{Métodos Públicos}
+\subsubsection*{Métodos Públicos}
 \begin{DoxyCompactItemize}
 \item 
 def \hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_aca301abc09bc12a7cf0a61437f941a8a}{fetch}
+\item 
+def \hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_a68ab67bed74c46b72216e256af8f6711}{fetch\-Field}
+\item 
+def \hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_af1e4b3cf0eee0a14b5113210503ff665}{update}
 \end{DoxyCompactItemize}
 
 
-\subsection{Descrição Detalhada}
-Camada de persistência para estudantes. 
+\subsubsection{Descrição Detalhada}
+Recupera os dados do usuário logado, retornando-\/os para a camada de negócio. 
 
-Recupera os dados do estudante logado, retornando-\/os para a camada de negócio. 
+Definição na linha \hyperlink{ProfileUnit_8py_source_l00381}{381} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
 
-\subsection{Métodos}
+
+
+\subsubsection{Métodos}
 \hypertarget{classProfile_1_1ProfileUnit_1_1PersProfile_aca301abc09bc12a7cf0a61437f941a8a}{\index{Profile\-::\-Profile\-Unit\-::\-Pers\-Profile@{Profile\-::\-Profile\-Unit\-::\-Pers\-Profile}!fetch@{fetch}}
 \index{fetch@{fetch}!Profile::ProfileUnit::PersProfile@{Profile\-::\-Profile\-Unit\-::\-Pers\-Profile}}
-\subsubsection[{fetch}]{\setlength{\rightskip}{0pt plus 5cm}def Profile.\-Profile\-Unit.\-Pers\-Profile.\-fetch (
+\paragraph[{fetch}]{\setlength{\rightskip}{0pt plus 5cm}def Profile.\-Profile\-Unit.\-Pers\-Profile.\-fetch (
 \begin{DoxyParamCaption}
 \item[{}]{self, }
 \item[{}]{username, }
 \item[{}]{database}
 \end{DoxyParamCaption}
 )}}\label{classProfile_1_1ProfileUnit_1_1PersProfile_aca301abc09bc12a7cf0a61437f941a8a}
+
+
+Definição na linha \hyperlink{ProfileUnit_8py_source_l00398}{398} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
+
+
+
+Referências \hyperlink{ProfileUnit_8py_source_l00383}{Profile.\-Profile\-Unit.\-Pers\-Profile.\-\_\-\-\_\-select\-\_\-field()} e \hyperlink{AdmUnit_8py_source_l00495}{Adm.\-Adm\-Unit.\-Pers\-Adm.\-\_\-\-\_\-select\-\_\-field()}.
+
+
+\begin{DoxyCode}
+\hypertarget{classProfile_1_1ProfileUnit_1_1PersProfile_l00398}{}\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_aca301abc09bc12a7cf0a61437f941a8a}{00398} 
+00399     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_aca301abc09bc12a7cf0a61437f941a8a}{fetch}(self, username, database):
+00400 
+00401         \textcolor{keywordflow}{try}:
+00402             uid = database.objects.get(field=\textcolor{stringliteral}{'NAME'},value=username)
+00403             uid = uid.identity
+00404 
+00405             sf = \textcolor{keyword}{lambda} x: self.\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_a48bc2c04d89772752559fc19dc79f321}{\_\_select\_field}(uid, x, database)
+00406 
+00407             fetchset = [
+00408                     (\textcolor{stringliteral}{'password'},    sf(\textcolor{stringliteral}{'PASSWORD'})),
+00409                     (\textcolor{stringliteral}{'matric'},      sf(\textcolor{stringliteral}{'MATRIC'})),
+00410                     (\textcolor{stringliteral}{'bios'},        sf(\textcolor{stringliteral}{'BIOS'})),
+00411                     (\textcolor{stringliteral}{'campus'},      sf(\textcolor{stringliteral}{'CAMPUS'})),
+00412                     (\textcolor{stringliteral}{'courses'},     sf(\textcolor{stringliteral}{'COURSE'})),
+00413                     (\textcolor{stringliteral}{'avatar'},      sf(\textcolor{stringliteral}{'AVATAR'})),
+00414                     (\textcolor{stringliteral}{'email'},       sf(\textcolor{stringliteral}{'EMAIL'})),
+00415                     (\textcolor{stringliteral}{'sex'},         sf(\textcolor{stringliteral}{'SEX'})),
+00416             ]
+00417 
+00418             \textcolor{keywordflow}{if} database \textcolor{keywordflow}{is} Student:
+00419                 fetchset = fetchset + [     
+00420                     (\textcolor{stringliteral}{'grades'},      sf(\textcolor{stringliteral}{'GRADE'})),
+00421                     (\textcolor{stringliteral}{'interests'},   sf(\textcolor{stringliteral}{'INTEREST'})),
+00422                     (\textcolor{stringliteral}{'language'},    sf(\textcolor{stringliteral}{'LANGUAGE'})),
+00423                 ]
+00424 
+00425         \textcolor{keywordflow}{except} database.DoesNotExist \textcolor{keyword}{as} exc:
+00426             fetchset = []
+00427 
+00428         \textcolor{keywordflow}{return} fetchset
+
+\end{DoxyCode}
+\hypertarget{classProfile_1_1ProfileUnit_1_1PersProfile_a68ab67bed74c46b72216e256af8f6711}{\index{Profile\-::\-Profile\-Unit\-::\-Pers\-Profile@{Profile\-::\-Profile\-Unit\-::\-Pers\-Profile}!fetch\-Field@{fetch\-Field}}
+\index{fetch\-Field@{fetch\-Field}!Profile::ProfileUnit::PersProfile@{Profile\-::\-Profile\-Unit\-::\-Pers\-Profile}}
+\paragraph[{fetch\-Field}]{\setlength{\rightskip}{0pt plus 5cm}def Profile.\-Profile\-Unit.\-Pers\-Profile.\-fetch\-Field (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}}\label{classProfile_1_1ProfileUnit_1_1PersProfile_a68ab67bed74c46b72216e256af8f6711}
+
+
+Definição na linha \hyperlink{ProfileUnit_8py_source_l00429}{429} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classProfile_1_1ProfileUnit_1_1PersProfile_l00429}{}\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_a68ab67bed74c46b72216e256af8f6711}{00429} 
+00430     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_a68ab67bed74c46b72216e256af8f6711}{fetchField}(self, field):
+00431 
+00432         ret = []
+00433 
+00434         \textcolor{keywordflow}{try}:
+00435             lstu = Student.objects.filter(field=field)   \textcolor{comment}{#list of students}
+00436             lpro = Professor.objects.filter(field=field) \textcolor{comment}{#list of professors }
+00437 
+00438         \textcolor{keywordflow}{except} Student.DoesNotExist:
+00439             lstu = []
+00440         \textcolor{keywordflow}{except} Professor.DoesNotExist:
+00441             lpro = []
+00442 
+00443         \textcolor{keywordflow}{for} s \textcolor{keywordflow}{in} lstu:
+00444             ret.append(s.value)
+00445 
+00446         \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} lpro:
+00447             ret.append(p.value)
+00448 
+00449         \textcolor{keywordflow}{return} ret
+
+\end{DoxyCode}
+\hypertarget{classProfile_1_1ProfileUnit_1_1PersProfile_af1e4b3cf0eee0a14b5113210503ff665}{\index{Profile\-::\-Profile\-Unit\-::\-Pers\-Profile@{Profile\-::\-Profile\-Unit\-::\-Pers\-Profile}!update@{update}}
+\index{update@{update}!Profile::ProfileUnit::PersProfile@{Profile\-::\-Profile\-Unit\-::\-Pers\-Profile}}
+\paragraph[{update}]{\setlength{\rightskip}{0pt plus 5cm}def Profile.\-Profile\-Unit.\-Pers\-Profile.\-update (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{username, }
+\item[{}]{field, }
+\item[{}]{newdata, }
+\item[{}]{database}
+\end{DoxyParamCaption}
+)}}\label{classProfile_1_1ProfileUnit_1_1PersProfile_af1e4b3cf0eee0a14b5113210503ff665}
+
+
+Definição na linha \hyperlink{ProfileUnit_8py_source_l00450}{450} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classProfile_1_1ProfileUnit_1_1PersProfile_l00450}{}\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_af1e4b3cf0eee0a14b5113210503ff665}{00450} 
+00451     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1PersProfile_af1e4b3cf0eee0a14b5113210503ff665}{update}(self, username, field, newdata, database):
+00452         
+00453         \textcolor{keywordflow}{try}:
+00454             uid = database.objects.get(field=\textcolor{stringliteral}{'NAME'}, value=username)
+00455             uid = uid.identity
+00456 
+00457             \textcolor{comment}{## Para o caso de COURSEs, GRADEs ou INTERESTs.}
+00458             \textcolor{keywordflow}{if} field[-1] == \textcolor{stringliteral}{'s'}:
+00459                 \textcolor{keywordflow}{if} field[-2] == \textcolor{stringliteral}{'e'} \textcolor{keywordflow}{or} field[-2] == \textcolor{stringliteral}{'t'}:
+00460                     field = field[:-1]
+00461                 
+00462             \textcolor{keywordflow}{try}:
+00463                 data = database.objects.get(field=field.upper(), identity=uid)
+00464                 data.value = newdata
+00465             \textcolor{keywordflow}{except} database.DoesNotExist:
+00466                 data = database(identity=uid, field=field.upper(), value=newdata)
+00467             data.save()
+00468 
+00469         \textcolor{keywordflow}{except} ( database.DoesNotExist, 
+00470                  database.MultipleObjectsReturned ) \textcolor{keyword}{as} exc:
+00471             \textcolor{keywordflow}{raise} ValueError(exc)
+\end{DoxyCode}
 
 
 A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}

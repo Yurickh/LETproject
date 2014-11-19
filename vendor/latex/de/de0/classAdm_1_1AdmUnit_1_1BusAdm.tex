@@ -1,4 +1,4 @@
-\hypertarget{classAdm_1_1AdmUnit_1_1BusAdm}{\section{Referência da Classe Adm.\-Adm\-Unit.\-Bus\-Adm}
+\hypertarget{classAdm_1_1AdmUnit_1_1BusAdm}{\subsection{Referência da Classe Adm.\-Adm\-Unit.\-Bus\-Adm}
 \label{classAdm_1_1AdmUnit_1_1BusAdm}\index{Adm.\-Adm\-Unit.\-Bus\-Adm@{Adm.\-Adm\-Unit.\-Bus\-Adm}}
 }
 
@@ -12,12 +12,112 @@ Diagrama de Hierarquia para Adm.\-Adm\-Unit.\-Bus\-Adm\-:\begin{figure}[H]
 \includegraphics[height=2.000000cm]{de/de0/classAdm_1_1AdmUnit_1_1BusAdm}
 \end{center}
 \end{figure}
-\subsection*{Additional Inherited Members}
+\subsubsection*{Métodos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classAdm_1_1AdmUnit_1_1BusAdm_a0650e636805d049ce37fae5b0ac132e0}{edit\-Accounts}
+\begin{DoxyCompactList}\small\item\em Edita dados de um conta no database. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Additional Inherited Members}
 
 
-\subsection{Descrição Detalhada}
-Camada de negócio para o módulo de administração. 
+\subsubsection{Descrição Detalhada}
+Deve ser capaz de manipular os dados do sistema, dando as devidas diretrizes ao banco de dados para que seja inserido, atualizado ou deletado dados sobre uma determinada conta, podendo ser esta de um Estudante, Professor ou de um Curso. 
 
+Definição na linha \hyperlink{AdmUnit_8py_source_l00341}{341} do arquivo \hyperlink{AdmUnit_8py_source}{Adm\-Unit.\-py}.
+
+
+
+\subsubsection{Métodos}
+\hypertarget{classAdm_1_1AdmUnit_1_1BusAdm_a0650e636805d049ce37fae5b0ac132e0}{\index{Adm\-::\-Adm\-Unit\-::\-Bus\-Adm@{Adm\-::\-Adm\-Unit\-::\-Bus\-Adm}!edit\-Accounts@{edit\-Accounts}}
+\index{edit\-Accounts@{edit\-Accounts}!Adm::AdmUnit::BusAdm@{Adm\-::\-Adm\-Unit\-::\-Bus\-Adm}}
+\paragraph[{edit\-Accounts}]{\setlength{\rightskip}{0pt plus 5cm}def Adm.\-Adm\-Unit.\-Bus\-Adm.\-edit\-Accounts (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{dict\-\_\-field\-\_\-value, }
+\item[{}]{action, }
+\item[{}]{database, }
+\item[{}]{form}
+\end{DoxyParamCaption}
+)}}\label{classAdm_1_1AdmUnit_1_1BusAdm_a0650e636805d049ce37fae5b0ac132e0}
+Podendo ser este de uma conta de Estudante, Professor ou um Curso. 
+
+Definição na linha \hyperlink{AdmUnit_8py_source_l00345}{345} do arquivo \hyperlink{AdmUnit_8py_source}{Adm\-Unit.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classAdm_1_1AdmUnit_1_1BusAdm_l00345}{}\hyperlink{classAdm_1_1AdmUnit_1_1BusAdm_a0650e636805d049ce37fae5b0ac132e0}{00345} 
+00346     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1BusAdm_a0650e636805d049ce37fae5b0ac132e0}{editAccounts}(self, dict\_field\_value, action, database, form):
+00347         
+00348         \textcolor{comment}{# Inicia o dicionário dict\_data.}
+00349         \textcolor{comment}{#   Será utilizado para informar os campos e dados para registro do usuário.}
+00350         dict\_data = \{\}
+00351         database\_fields = [\textcolor{stringliteral}{'NAME'}, \textcolor{stringliteral}{'SEX'}, \textcolor{stringliteral}{'PASSWORD'}, \textcolor{stringliteral}{'MATRIC'}, \textcolor{stringliteral}{'CAMPUS'},\textcolor{stringliteral}{'EMAIL'}]
+00352 
+00353         \textcolor{comment}{# Se for uma ação de registro do usuário.}
+00354         \textcolor{keywordflow}{if} action == \textcolor{stringliteral}{"registrar"}: 
+00355             \textcolor{comment}{# Percorre os campos e valores coletador no request.POST.}
+00356             \textcolor{keywordflow}{for} field, value \textcolor{keywordflow}{in} dict\_field\_value.items():
+00357                 \textcolor{comment}{# Transforma os unicodes do dicionário em strings.}
+00358                 field = str(field)
+00359                 \textcolor{comment}{# Coleta a palavra chave do campo designado.}
+00360                 \textcolor{comment}{#   Esta é coletada a partir dos campos contidos no dicionário.}
+00361                 newField = field[4:].upper()
+00362 
+00363                 \textcolor{comment}{# Se o campo encontrado pertence à lista de campos do database que deveriam}
+00364                 \textcolor{comment}{# pertencer a um usuário, então este é adicionado ao dicionário que será}
+00365                 \textcolor{comment}{# repassado para inserção no banco de dados posteriormente.}
+00366                 \textcolor{keywordflow}{if} newField \textcolor{keywordflow}{in} database\_fields:
+00367                     dict\_data[newField] = form.cleaned\_data[field].value
+00368 
+00369             \textcolor{comment}{# Escolhe uma linguagem padrão para cadastro de um usuário qualquer.}
+00370             dict\_data[\textcolor{stringliteral}{'LANGUAGE'}] = \textcolor{stringliteral}{'en'}
+00371 
+00372             \textcolor{comment}{# Se for uma entidade estudante então é feito o pedido de inserção }
+00373             \textcolor{comment}{# no banco de dados com o determinado modelo.}
+00374             \textcolor{keywordflow}{if} database.\_\_name\_\_ == \textcolor{stringliteral}{"Student"}:
+00375                 self.pers.data\_in(dict\_data, database)
+00376 
+00377         \textcolor{keywordflow}{elif} action == \textcolor{stringliteral}{"atualizar"}:
+00378             data = self.pers.fetch(dict\_field\_value[\textcolor{stringliteral}{'username'}], Student)
+00379 
+00380             \textcolor{keywordflow}{return} data
+00381 
+00382         \textcolor{keywordflow}{elif} action == \textcolor{stringliteral}{"apagar"}:
+00383             data = self.pers.fetch(dict\_field\_value[\textcolor{stringliteral}{'username'}], Student)
+00384 
+00385             \textcolor{keywordflow}{return} data
+00386 
+00387         \textcolor{keywordflow}{elif} action == \textcolor{stringliteral}{"name"}:
+00388             fpw = form.cleaned\_data[\textcolor{stringliteral}{'password'}].value
+00389             \textcolor{keywordflow}{if} fpw != user[\textcolor{stringliteral}{'password'}]:
+00390                 \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_PW\_F'}])
+00391             newdata = form.cleaned\_data[\textcolor{stringliteral}{'newdata'}].value
+00392         \textcolor{keywordflow}{elif} action == \textcolor{stringliteral}{"password"}:
+00393             npw = form.cleaned\_data[\textcolor{stringliteral}{'newdata'}].value
+00394             rpw = form.cleaned\_data[\textcolor{stringliteral}{'rp\_newdata'}].value
+00395             opw = form.cleaned\_data[\textcolor{stringliteral}{'old\_password'}].value
+00396             \textcolor{keywordflow}{if} npw != rpw:
+00397                 \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_PW\_R'}])
+00398             \textcolor{keywordflow}{if} opw != user[\textcolor{stringliteral}{'password'}]:
+00399                 \textcolor{keywordflow}{raise} ValueError(lang.DICt[\textcolor{stringliteral}{'EXCEPTION\_INV\_PW\_F'}])
+00400             newdata = npw
+00401         \textcolor{keywordflow}{elif} action == \textcolor{stringliteral}{"language"}:
+00402             newdata = form.cleaned\_data[\textcolor{stringliteral}{'newdata'}]
+00403         \textcolor{keywordflow}{elif} action == \textcolor{stringliteral}{"avatar"}:
+00404             addr = settings.MEDIA\_ROOT + \textcolor{stringliteral}{u"/"} + user[\textcolor{stringliteral}{'avatar'}]
+00405             with open(addr, \textcolor{stringliteral}{"wb"}) \textcolor{keyword}{as} destination:
+00406                     \textcolor{keywordflow}{for} chunk \textcolor{keywordflow}{in} request.FILES[\textcolor{stringliteral}{'newdata'}].chunks():
+00407                         destination.write(chunk)
+00408         \textcolor{keywordflow}{else}:
+00409             newdata = form.cleaned\_data[\textcolor{stringliteral}{'newdata'}].value
+00410 
+00411         \textcolor{keywordflow}{try}:
+00412             self.pers.update(user[\textcolor{stringliteral}{'name'}], field, newdata, Student)
+00413         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00414             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_ERR\_DB\_U'}])
+00415 
+
+\end{DoxyCode}
 
 
 A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}

@@ -1,14 +1,20 @@
-<!--Bloco padrão das paginas do sistema-->
 {% load staticfiles %}
-
 
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8" />
 		<title> {% block title %} {% endblock %} </title>
-		<script src="{% static 'jquery-1.11.0.min.js' %}"></script>
-		<link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}" />
+		<script src="{% static 'vendor/jquery-1.11.0.min.js' %}"></script>
+		<script src="{% static 'vendor/jquery-ui-1.10.4.custom.min.js' %}">
+		</script>
+		<link	rel="stylesheet"
+				type="text/css"
+				href="{% static 'vendor/jquery-ui-1.10.4.custom.min.css' %}"/>
+		<link 	rel="stylesheet" 
+				type="text/css" 
+				href="{% static 'vendor/styles.css' %}" />
+		{% block head %}{% endblock %}
 	</head>
 
 	<body>

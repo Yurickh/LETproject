@@ -1,4 +1,4 @@
-\hypertarget{classAdm_1_1forms_1_1AdmDelStuForm}{\section{Referência da Classe Adm.\-forms.\-Adm\-Del\-Stu\-Form}
+\hypertarget{classAdm_1_1forms_1_1AdmDelStuForm}{\subsection{Referência da Classe Adm.\-forms.\-Adm\-Del\-Stu\-Form}
 \label{classAdm_1_1forms_1_1AdmDelStuForm}\index{Adm.\-forms.\-Adm\-Del\-Stu\-Form@{Adm.\-forms.\-Adm\-Del\-Stu\-Form}}
 }
 Diagrama de Hierarquia para Adm.\-forms.\-Adm\-Del\-Stu\-Form\-:\begin{figure}[H]
@@ -7,14 +7,14 @@ Diagrama de Hierarquia para Adm.\-forms.\-Adm\-Del\-Stu\-Form\-:\begin{figure}[H
 \includegraphics[height=2.000000cm]{db/db9/classAdm_1_1forms_1_1AdmDelStuForm}
 \end{center}
 \end{figure}
-\subsection*{Métodos Públicos}
+\subsubsection*{Métodos Públicos}
 \begin{DoxyCompactItemize}
 \item 
 def \hyperlink{classAdm_1_1forms_1_1AdmDelStuForm_ad50237848b6ed6ec4d8f8b943549fa37}{clean\-\_\-stud\-Matric}
 \item 
 def \hyperlink{classAdm_1_1forms_1_1AdmDelStuForm_a7da16ff5ed24848a59a7256bf30ca62c}{clean\-\_\-adm\-Pass}
 \end{DoxyCompactItemize}
-\subsection*{Atributos Estáticos Públicos}
+\subsubsection*{Atributos Estáticos Públicos}
 \begin{DoxyCompactItemize}
 \item 
 tuple \hyperlink{classAdm_1_1forms_1_1AdmDelStuForm_a9ab40744579cf679da8a3a922a29061c}{stud\-Matric} = form.\-Interger\-Field(label = \char`\"{}Matricula do estudante\char`\"{},required= \char`\"{}True\char`\"{})
@@ -23,30 +23,75 @@ tuple \hyperlink{classAdm_1_1forms_1_1AdmDelStuForm_aff2b1076da947f2f4415f985bdc
 \end{DoxyCompactItemize}
 
 
-\subsection{Métodos}
+\subsubsection{Descrição Detalhada}
+
+
+Definição na linha \hyperlink{Adm_2forms_8py_source_l00075}{75} do arquivo \hyperlink{Adm_2forms_8py_source}{forms.\-py}.
+
+
+
+\subsubsection{Métodos}
 \hypertarget{classAdm_1_1forms_1_1AdmDelStuForm_a7da16ff5ed24848a59a7256bf30ca62c}{\index{Adm\-::forms\-::\-Adm\-Del\-Stu\-Form@{Adm\-::forms\-::\-Adm\-Del\-Stu\-Form}!clean\-\_\-adm\-Pass@{clean\-\_\-adm\-Pass}}
 \index{clean\-\_\-adm\-Pass@{clean\-\_\-adm\-Pass}!Adm::forms::AdmDelStuForm@{Adm\-::forms\-::\-Adm\-Del\-Stu\-Form}}
-\subsubsection[{clean\-\_\-adm\-Pass}]{\setlength{\rightskip}{0pt plus 5cm}def Adm.\-forms.\-Adm\-Del\-Stu\-Form.\-clean\-\_\-adm\-Pass (
+\paragraph[{clean\-\_\-adm\-Pass}]{\setlength{\rightskip}{0pt plus 5cm}def Adm.\-forms.\-Adm\-Del\-Stu\-Form.\-clean\-\_\-adm\-Pass (
 \begin{DoxyParamCaption}
 \item[{}]{self}
 \end{DoxyParamCaption}
 )}}\label{classAdm_1_1forms_1_1AdmDelStuForm_a7da16ff5ed24848a59a7256bf30ca62c}
+
+
+Definição na linha \hyperlink{Adm_2forms_8py_source_l00085}{85} do arquivo \hyperlink{Adm_2forms_8py_source}{forms.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classAdm_1_1forms_1_1AdmDelStuForm_l00085}{}\hyperlink{classAdm_1_1forms_1_1AdmDelStuForm_a7da16ff5ed24848a59a7256bf30ca62c}{00085} 
+00086     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmDelStuForm_a7da16ff5ed24848a59a7256bf30ca62c}{clean\_admPass}(self):
+00087         \textcolor{keywordflow}{try}:
+00088             password = \hyperlink{classELO_1_1BaseUnit_1_1Password}{Password}(self.cleaned\_data[\textcolor{stringliteral}{"admPassword"}]
+00089         \textcolor{keywordflow}{except} ValueError:
+00090             \textcolor{keywordflow}{raise} forms.ValidationError(\textcolor{stringliteral}{"Senha inválida."})
+00091         \textcolor{keywordflow}{return} password
+
+\end{DoxyCode}
 \hypertarget{classAdm_1_1forms_1_1AdmDelStuForm_ad50237848b6ed6ec4d8f8b943549fa37}{\index{Adm\-::forms\-::\-Adm\-Del\-Stu\-Form@{Adm\-::forms\-::\-Adm\-Del\-Stu\-Form}!clean\-\_\-stud\-Matric@{clean\-\_\-stud\-Matric}}
 \index{clean\-\_\-stud\-Matric@{clean\-\_\-stud\-Matric}!Adm::forms::AdmDelStuForm@{Adm\-::forms\-::\-Adm\-Del\-Stu\-Form}}
-\subsubsection[{clean\-\_\-stud\-Matric}]{\setlength{\rightskip}{0pt plus 5cm}def Adm.\-forms.\-Adm\-Del\-Stu\-Form.\-clean\-\_\-stud\-Matric (
+\paragraph[{clean\-\_\-stud\-Matric}]{\setlength{\rightskip}{0pt plus 5cm}def Adm.\-forms.\-Adm\-Del\-Stu\-Form.\-clean\-\_\-stud\-Matric (
 \begin{DoxyParamCaption}
 \item[{}]{self}
 \end{DoxyParamCaption}
 )}}\label{classAdm_1_1forms_1_1AdmDelStuForm_ad50237848b6ed6ec4d8f8b943549fa37}
 
 
-\subsection{Atributos}
+Definição na linha \hyperlink{Adm_2forms_8py_source_l00078}{78} do arquivo \hyperlink{Adm_2forms_8py_source}{forms.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classAdm_1_1forms_1_1AdmDelStuForm_l00078}{}\hyperlink{classAdm_1_1forms_1_1AdmDelStuForm_ad50237848b6ed6ec4d8f8b943549fa37}{00078} 
+00079     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmDelStuForm_ad50237848b6ed6ec4d8f8b943549fa37}{clean\_studMatric}(self):
+00080         \textcolor{keywordflow}{try}:
+00081             matric = Matric(self.cleaned\_data[\textcolor{stringliteral}{"studMatric"}]
+00082         \textcolor{keywordflow}{except} ValueError:
+00083             \textcolor{keywordflow}{raise} forms.ValidationError(\textcolor{stringliteral}{"Matricula inválida."})
+00084         \textcolor{keywordflow}{return} matric
+    
+\end{DoxyCode}
+
+
+\subsubsection{Atributos}
 \hypertarget{classAdm_1_1forms_1_1AdmDelStuForm_aff2b1076da947f2f4415f985bdc46d18}{\index{Adm\-::forms\-::\-Adm\-Del\-Stu\-Form@{Adm\-::forms\-::\-Adm\-Del\-Stu\-Form}!adm\-Pass@{adm\-Pass}}
 \index{adm\-Pass@{adm\-Pass}!Adm::forms::AdmDelStuForm@{Adm\-::forms\-::\-Adm\-Del\-Stu\-Form}}
-\subsubsection[{adm\-Pass}]{\setlength{\rightskip}{0pt plus 5cm}tuple Adm.\-forms.\-Adm\-Del\-Stu\-Form.\-adm\-Pass = forms.\-Char\-Field(widget = forms.\-Password\-Input, label = \char`\"{}Sua senha\char`\"{},required= \char`\"{}True\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}}\label{classAdm_1_1forms_1_1AdmDelStuForm_aff2b1076da947f2f4415f985bdc46d18}
+\paragraph[{adm\-Pass}]{\setlength{\rightskip}{0pt plus 5cm}tuple Adm.\-forms.\-Adm\-Del\-Stu\-Form.\-adm\-Pass = forms.\-Char\-Field(widget = forms.\-Password\-Input, label = \char`\"{}Sua senha\char`\"{},required= \char`\"{}True\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}}\label{classAdm_1_1forms_1_1AdmDelStuForm_aff2b1076da947f2f4415f985bdc46d18}
+
+
+Definição na linha \hyperlink{Adm_2forms_8py_source_l00077}{77} do arquivo \hyperlink{Adm_2forms_8py_source}{forms.\-py}.
+
 \hypertarget{classAdm_1_1forms_1_1AdmDelStuForm_a9ab40744579cf679da8a3a922a29061c}{\index{Adm\-::forms\-::\-Adm\-Del\-Stu\-Form@{Adm\-::forms\-::\-Adm\-Del\-Stu\-Form}!stud\-Matric@{stud\-Matric}}
 \index{stud\-Matric@{stud\-Matric}!Adm::forms::AdmDelStuForm@{Adm\-::forms\-::\-Adm\-Del\-Stu\-Form}}
-\subsubsection[{stud\-Matric}]{\setlength{\rightskip}{0pt plus 5cm}tuple Adm.\-forms.\-Adm\-Del\-Stu\-Form.\-stud\-Matric = form.\-Interger\-Field(label = \char`\"{}Matricula do estudante\char`\"{},required= \char`\"{}True\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}}\label{classAdm_1_1forms_1_1AdmDelStuForm_a9ab40744579cf679da8a3a922a29061c}
+\paragraph[{stud\-Matric}]{\setlength{\rightskip}{0pt plus 5cm}tuple Adm.\-forms.\-Adm\-Del\-Stu\-Form.\-stud\-Matric = form.\-Interger\-Field(label = \char`\"{}Matricula do estudante\char`\"{},required= \char`\"{}True\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}}\label{classAdm_1_1forms_1_1AdmDelStuForm_a9ab40744579cf679da8a3a922a29061c}
+
+
+Definição na linha \hyperlink{Adm_2forms_8py_source_l00076}{76} do arquivo \hyperlink{Adm_2forms_8py_source}{forms.\-py}.
+
 
 
 A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}
