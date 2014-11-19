@@ -408,10 +408,8 @@ class UiAdm(IfUiAdm):
                                 # Força a ter uma estruturação correta de dicionário.
                                 dUser = dict(dUser)
                             except ValueError as exc:
-                                result = False
                                 request.session.modified = True
-                                return render(request, "Adm/home.html", {'error': exc,
-                                                                    'result': result, })
+                                return render(request, "Adm/err.html", {'error': exc })
 
                                 ## @if Confere se dicionário de informações de usuário
                                 #       ainda continua nulo.
@@ -690,47 +688,47 @@ class BusAdm(IfBusAdm):
         return data
 
     def fetchAccount(self, request):
-        try:
-            # Inicializa modelo como nulo.
-            db = None
+        #  Inicializa modelo como nulo.
+        db = None
 
-            # Força modelo da conta passado pela requisição a ser uma String.
-            model = str(request.POST['model'])
+        # Força modelo da conta passado pela requisição a ser uma String.
+        model = str(request.POST['model'])
 
-            ## @if Confere qual o modelo da conta procurado.
-            #
-            #   Caso seja Estudante este é alocado em uma variável temporária.
-            #
-            #   Caso seja Professor este é alocado em uma variável temporária.
-            #
-            #   Caso seja Curso este é alocado em uma variável temporária.   
-            #   
-            #   Caso contrário, irá emitir excessão de modelo inválido.
-            if model == "Student":
-                db = Student
-            elif model == "Professor":
-                db = Professor
-            elif model == "Course":
-                db = Courses 
-            else:
-                # TODO ERRO PARA MODELO INCORRETO.
-                raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
-
-            ## @if Confere se o modelo da Conta é um Curso.
-            #
-            #   Caso seja um curso é necessário passar a matrícula do Curso 
-            #   como chave de busca de informações.
-            #
-            #   Caso contrário, é passado o username da conta de Estudante ou 
-            #   de Professor.
-            if db == Courses:
-                data = self.pers.fetchCour(str(request.POST['courMatric']), db)  
-            else:
-                data = self.pers.fetchUser(str(request.POST['username']), db) 
-
-            return data
-        except ValueError:
+        ## @if Confere qual o modelo da conta procurado.
+        #
+        #   Caso seja Estudante este é alocado em uma variável temporária.
+        #
+        #   Caso seja Professor este é alocado em uma variável temporária.
+        #
+        #   Caso seja Curso este é alocado em uma variável temporária.   
+        #   
+        #   Caso contrário, irá emitir excessão de modelo inválido.
+        if model == "Student":
+            db = Student
+        elif model == "Professor":
+            db = Professor
+        elif model == "Course":
+            db = Courses 
+        else:
+            # TODO ERRO PARA MODELO INCORRETO.
             raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
+
+        ## @if Confere se o modelo da Conta é um Curso.
+        #
+        #   Caso seja um curso é necessário passar a matrícula do Curso 
+        #   como chave de busca de informações.
+        #
+        #   Caso contrário, é passado o username da conta de Estudante ou 
+        #   de Professor.
+        if db == Courses:
+            data = self.pers.fetchCour(str(request.POST['courMatric']), db)  
+        else:
+            data = self.pers.fetchUser(str(request.POST['username']), db) 
+
+        if not data:
+            raise ValueError(lang.DICT['EXCEPTION_INV_USR_NM'])
+        else:
+            return data
 
 class PersAdm(IfPersAdm):
 
@@ -820,6 +818,7 @@ class PersAdm(IfPersAdm):
             try:
                 # Coleta a partir do ID do curso a lista do campo
                 # que deseja atualizar.
+                print field
                 data = database.objects.get(identity=uid, field=field.upper())
                 # Nova informação é colocada no tipo que deseja atualizar.
                 data.value = newdata
@@ -979,6 +978,8 @@ class PersAdm(IfPersAdm):
 
         except database.DoesNotExist as exc:
             fetchset = []
+        except database.MultipleObjectsReturned as exc:
+            raise ValueError(exc)
 
         return fetchset
 
