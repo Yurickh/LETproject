@@ -79,7 +79,8 @@ class UiCourse(IfUiCourse):
 		if request.method == "GET":
 			if courseid in user['courses']:
 				course = self.bus.getCourse(user, courseid)
-				return render(request, "Course/frame.html", {'course':course})
+				return render(request, "Course/general/frame.html", 
+					{'course':course})
 			else:
 				raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])
 		
