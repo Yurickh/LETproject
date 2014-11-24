@@ -4,6 +4,8 @@ from abc import*
 
 import ELO.locale.index as lang
 
+from ELO.models import Courses
+
 from django.shortcuts import render
 from django.core.exceptions import PermissionDenied
 
@@ -88,9 +90,18 @@ class UiCourse(IfUiCourse):
 class BusCourse(IfBusCourse):
 
 	def getCourse(self, user, courseid):
-		return True
+		coursedata = self.pers.fetch(courseid, Courses)
 
 class PersCourse(IfPersCourse):
 
 	def fetch(id, db):
-		return False
+		model_data = db.objects.filter(identity=id)
+
+		## @for
+		#	Cria um dicionário de listas, no fomato:
+		#
+		#	CAMPO_NO_BANCO_DE_DADOS => [ VALOR_1, VALOR_2 ... VALOR_N ]
+		for inst in model_data:
+			format_data[inst.field] = format_data[inst.field] + [ inst.value ]
+
+		return format_data
