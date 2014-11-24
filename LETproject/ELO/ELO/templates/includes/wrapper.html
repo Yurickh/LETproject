@@ -1,0 +1,28 @@
+<!--Bloco padrão das paginas do sistema-->
+{% load staticfiles %}
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title> {% block title %} {% endblock %} </title>
+		<script src="{% static 'jquery-1.11.0.min.js' %}"></script>
+		<link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}" />
+	</head>
+
+	<body>
+		<div class="header">
+			{% include "includes/header.html" %}
+		</div>
+		
+		<div class="content">
+			{% block content %}{% endblock %}
+		</div>
+
+		<div class="footer">
+			{% include "includes/footer.html" %}
+		</div>
+
+	</body>
+</html>

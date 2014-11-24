@@ -1,0 +1,25 @@
+########################################################################################################
+
+Dirétório ELO contem arquivos utilizados por varios módulos do sistema:
+
+	BaseUnity.py: Arquivo de código responsavel por implementar os tipos básicos do sistema. Exp: Nome,
+	senha, id, password, data, etc...
+	
+	EntityUnity.py Arquivo de código responsavel por implementar as entidades dos sistema. Cada entidade
+	possui possui tipos básicos como atributos relacionados a elas. Exemplos de entidades do sitema lição
+	módulo, user, aluno, professor etc...
+	
+	MainUnit.py: Arquivo de código responsavel por implementar a factory, classe que instancia e destroi
+	objetos do sistema. Ela é o arquivo base do sistema, pelo qual ele é iniciado.
+	
+	models.py: Arquivo contendo as tabelas de entidades para registro no banco de dados.
+
+	urls.py: Arquivo contendo o dicionário de processaremento de endereços de url.
+
+	wsgi.py: Arquivo utilizado pelo framework Django para auxiliar o desenvolvimento.
+
+	database: Contem o banco de dados do sistema. NÃO APAGUE; NÃO MEXA; NEM OLHE. SAI!
+
+	lang: contem a definição das macros de erros para ingles e portugues. Outras linguas podem ser implementadas 
+	posteriormente.
+
