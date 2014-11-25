@@ -304,8 +304,7 @@ class UiAdm(IfUiAdm):
                         # requisição POST.
                         form = RegCourForm(request.POST)
                     else:
-                        # TODO ERRO PARA MODELO INCORRETO.
-                        raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
+                        raise ValueError(lang.DICT['ERROR_MODEL'])
 
                     ## @if Confere se form de registro é valido.
                     #
@@ -317,22 +316,23 @@ class UiAdm(IfUiAdm):
                     #   Caso contrário, é lançada exceção de erro referente à
                     #   form inválido.
                     if form.is_valid():
-                        self.bus.regAccount(request, form)
-                        request.session.modified = True
+                        conf = self.bus.regAccount(request, form)
                         exc = ""
+                        return render(request, "Adm/confirm_adm.html", 
+                                    {'conf': conf })
                     else:
                         raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
 
 
                 # Se houver qualquer problema referente as passagens dos forms 
                 # e conferência da validação dos mesmos então o 
-                # administrador será passado para a página inicial.
+                # administrador será passado para a página inicial indicando 
+                # qual erro ocorreu.
                 except ValueError as exc:
-                    request.session.modified = True
                     return render(request, "Adm/home.html", {'error': exc })
 
 
-            elif action == "insert":
+            elif action == "insert":    
                 # Dicionário com informações do curso procurado pelo Adm.
                 dCourse = {}
 
@@ -507,16 +507,14 @@ class UiAdm(IfUiAdm):
                         elif model == "Course":
                             form = RegCourForm()
                         else:   
-                            # TODO ERRO PARA MODELO INCORRETO.
-                            raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
+                            raise ValueError(lang.DICT['ERROR_MODEL'])
                     elif action == "att" or action == "srcdel":
                         if model == "Student" or model == "Professor":
                             form = SrcUserForm()
                         elif model == "Course":
                             form = SrcCourForm()
                         else:
-                            # TODO ERRO PARA MODELO INCORRETO.
-                            raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
+                            raise ValueError(lang.DICT['ERROR_MODEL'])
                     elif action == "insert":
                         form = SrcCourForm()
                     else:
@@ -561,17 +559,18 @@ class UiAdm(IfUiAdm):
 class BusAdm(IfBusAdm): 
 
     def regAccount(self, request, form):
-        # Inicia o dicionário dict_data. 
-        #   Será utilizado para informar os campos e dados para registro
-        #   do usuário.
-        dict_data = {}
-        # Possíveis campos valorados dos modelos de contas.
-        database_fields = ['NAME', 'SEX', 'PASSWORD', 'MATRIC', 
-                           'CAMPUS','EMAIL', 'PROFESSOR']
-        ## Percorre a requisição procurando os dados inseridos para registro.
-        #   Se algum valor do campo não for válido então irá emitir erro de
-        #   formulário inválido.
         try:
+            # Inicia o dicionário dict_data. 
+            #   Será utilizado para informar os campos e dados para registro
+            #   do usuário.
+            dict_data = {}
+            # Possíveis campos valorados dos modelos de contas.
+            database_fields = ['NAME', 'SEX', 'PASSWORD', 'MATRIC', 
+                               'CAMPUS','EMAIL', 'PROFESSOR']
+
+            ## Percorre a requisição procurando os dados inseridos para registro.
+            #   Se algum valor do campo não for válido então irá emitir erro de
+            #   formulário inválido.
             for field, value in request.POST.items():
                 # Transforma campo unicode em string.
                 field = str(field)
@@ -588,27 +587,25 @@ class BusAdm(IfBusAdm):
                 if newField in database_fields:
                     dict_data[newField] = form.cleaned_data[
                                                 field].value
+
             ## Verifica qual e o tipo do modelo requisitado para inserção 
             #   de nova conta.
             #    
             #   Caso a requisição venha com outro modelo não especificado nos
             #   condicionais então é emitido erro.
-            try:
-                db = None
+            db = None
 
-                model = str(request.POST['model'])
+            model = str(request.POST['model'])
 
-                if model == "Student":
-                    db = Student
-                elif model == "Professor":
-                    db = Professor
-                elif model == "Course":
-                    db = Courses 
-                else:
-                    raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
+            if model == "Student":
+                db = Student
+            elif model == "Professor":
+                db = Professor
+            elif model == "Course":
+                db = Courses 
+            else:
+                raise ValueError(lang.DICT['ERROR_MODEL'])
 
-            except ValueError as exc:
-                raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
 
             ## @if Verifica se a requisição pede outro modelo diferente de 
             #       Curso.
@@ -624,9 +621,12 @@ class BusAdm(IfBusAdm):
             # o modelo de conta requisitado para criação destas informações 
             # no banco de dados (Persistência).
             self.pers.data_in(dict_data, db)
-
         except ValueError as exc:
-            raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
+            raise ValueError(exc)
+            return False
+        else:
+            return True
+
 
         
     def attAccount(self, request, field, form): 
@@ -710,8 +710,7 @@ class BusAdm(IfBusAdm):
         elif model == "Course":
             db = Courses 
         else:
-            # TODO ERRO PARA MODELO INCORRETO.
-            raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
+            raise ValueError(lang.DICT['ERROR_MODEL'])
 
         ## @if Confere se o modelo da Conta é um Curso.
         #
@@ -725,6 +724,11 @@ class BusAdm(IfBusAdm):
         else:
             data = self.pers.fetchUser(str(request.POST['username']), db) 
 
+        ## @if Confere se foi retornado algo do banco de dados.
+        #
+        #   Caso não tenha sido retornado então é porque conta não existe.
+        #
+        #   Caso contrário é retornado as informações da conta.
         if not data:
             raise ValueError(lang.DICT['EXCEPTION_INV_USR_NM'])
         else:

@@ -46,6 +46,21 @@ $(document).ready(function(){
 		resizable: false,
 	});
 
+	//	Características do Dialog.
+	$in3_dialog = $(".inner3_dialog").dialog({
+		autoOpen: false,
+		show: {
+			effect: "blind",
+			duration: 1
+		},
+		hide: {
+			effect: "blind",
+			duration: 1
+		},
+		modal: true,
+		resizable: false,
+	});
+
 	//	Cria o evento de abertura dos formulários de registro, edição ou deleção
 	//		após clicar em qualquer button da home da Administração.
 	$("button").click(function(){
@@ -91,14 +106,5 @@ $(document).ready(function(){
 		}
 	});
 
-	if ($(".rslt").attr("id") == "True")
-	{
-		alert("Reg completed!!");
-	}
-	else if ($(".rslt").attr("id") != ""){
-		alert("ERROR HERE");
-		$dialog.dialog('close');
-		$in_dialog.dialog('close');
-	}
 
 });

@@ -52,4 +52,25 @@ $(document).ready(function(){
 		});
 
 	});
+
+	//$("input[name^='reg']").on('submit', function(e){
+	//	e.preventDefault();
+	//	$dialog.dialog('close');
+	//
+	//	data = $(this).serialize();
+	//	uname = data.slice(11, data.indexOf("&csrfmiddlewaretoken="));
+	//	uemail = data.slice(11, data.indexOf("&csrfmiddlewaretoken="));
+	//	crsf = data.slice(data.indexOf("&csrfmiddlewaretoken=")+21);
+	//	model = $("div[id^='model_']").attr("id").slice(6);
+	//
+	//	data = { username: uname,
+	//			 csrfmiddlewaretoken: crsf,
+	//			 model: model,
+	//			 action: action
+	//		   };
+	//
+	//	$in_dialog.load("/assync/conf-adm/",function(){ 
+	//		$in_dialog.dialog('open');
+	//	});
+	//});
 });

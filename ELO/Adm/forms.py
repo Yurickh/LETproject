@@ -25,10 +25,10 @@ from ELO.BaseUnit import(
 #	cadastrado, validando o cadastro com a senha de administrador.
 class RegUserForm(forms.Form):
 	username = forms.CharField(max_length = 32, label = "Nome:", 
-								required= "True")
+								required= True)
 	userMatric = forms.IntegerField(label = "Matricula:",required= True)
 	userCampus = forms.IntegerField(label = "Código do Campus:",
-									required= "True") 
+									required= True) 
 	userSex = forms.ChoiceField(choices=[('M','M'),("F",'F')], 
 								widget=forms.RadioSelect(),
 								required= True, label = "Sexo")
