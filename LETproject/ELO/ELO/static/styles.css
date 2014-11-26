@@ -1,0 +1,84 @@
+/**Arquivo folha de estilos de css*/
+.banner
+{
+ 	text-shadow: -1px 0 gray, 0 1px gray, 1px 0 gray, 0 -1px gray;
+	position: fixed;
+	font-size: 30px;
+	text-align: left;
+	color: white;
+	top: 0px;
+}
+.error
+{
+	color: #dd1150;
+}
+
+.field
+{
+	float: right;
+	text-align: center;
+	width: 100px;
+	position:relative;
+	color: white;
+}
+
+a.field
+{	
+	text-decoration:none;
+}
+
+.field:hover
+{
+	color: #67B6FF;
+}
+
+.mainMenu
+{
+	position: fixed;
+	top: 5px;
+	right: 0px;
+}
+
+.menuTab
+{
+	background-color: black;
+	position: fixed;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:30px;
+}
+
+.content
+{
+	text-align: center;
+	color: #331156;
+	margin-top: 1cm;
+}
+
+body
+{
+}
+
+.dados{
+	text-align: left;
+	margin-top: 0.2cm;
+}
+.foot{
+	position: fixed;
+	left: 480px;
+}
+
+.ffield
+{
+	margin-top: 0.2cm;
+}
+
+.manipular ul{
+		margin-top:50px;
+}
+
+.manipular li{
+	margin-top:10px;
+}
+

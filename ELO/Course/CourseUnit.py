@@ -4,6 +4,8 @@ from abc import*
 
 import ELO.locale.index as lang
 
+from ELO.models import Courses
+
 from django.shortcuts import render
 from django.core.exceptions import PermissionDenied
 
@@ -39,7 +41,7 @@ class IfUiCourse:
 class IfBusCourse:
 	__metaclass__ = ABCMeta
 
-	def __init_(self, pers):
+	def __init__(self, pers):
 		try:
 			self.pers = pers
 		except TypeError as exc:
@@ -61,7 +63,13 @@ class IfBusCourse:
 	def pers(self):
 		del self.__pers
 
-class IfPersCourse: pass
+	@abstractmethod
+	def getCourse(self, user, courseid): pass
+
+class IfPersCourse:
+
+	@abstractmethod
+	def fetch(id, db): pass
 
 
 class UiCourse(IfUiCourse):
@@ -70,13 +78,30 @@ class UiCourse(IfUiCourse):
 		
 		user = request.session['user']
 
-		if courseid in user['course']:
-			print 'yey'
-			return HttpResponseRedirect('/') ## TODO: everything
-		else:
-			raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])
+		if request.method == "GET":
+			if courseid in user['courses']:
+				course = self.bus.getCourse(user, courseid)
+				return render(request, "Course/general/frame.html", 
+					{'course':course})
+			else:
+				raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])
 		
 
-class BusCourse(IfBusCourse):	pass
+class BusCourse(IfBusCourse):
 
-class PersCourse(IfPersCourse):	pass
+	def getCourse(self, user, courseid):
+		coursedata = self.pers.fetch(courseid, Courses)
+
+class PersCourse(IfPersCourse):
+
+	def fetch(id, db):
+		model_data = db.objects.filter(identity=id)
+
+		## @for
+		#	Cria um dicionário de listas, no fomato:
+		#
+		#	CAMPO_NO_BANCO_DE_DADOS => [ VALOR_1, VALOR_2 ... VALOR_N ]
+		for inst in model_data:
+			format_data[inst.field] = format_data[inst.field] + [ inst.value ]
+
+		return format_data

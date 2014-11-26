@@ -1,0 +1,37 @@
+{% extends "includes/wrapper.html" %}
+
+{% block title %} Elo-Administração {% endblock %}
+
+{% block content %}
+
+<ui><h3>Opções</h3>
+	<li class="admopt"> Aluno  </li>
+	<li class="admopt"> Professor  </li>
+	<li class="admopt"> Curso  </li>
+</ui>
+
+<div class="admtable">
+	<div id="admoptStudent">
+		<ul>
+			<li onclick="registerStudent()">Registrar Novo Aluno</li>
+			<li oncclik="updateStudent()">Atualizar dados de Aluno</li>
+			<li onclik="deleteStudent()">Apagar Registro de Aluno</li>
+		</ul>
+	</div>
+	<div id="admoptProfessor">
+		<ul>
+			<li onclick="registerProfessor()">Registrar Novo Professor</li>
+			<li oncclik="updateProfessor()">Atualizar dados de Professor</li>
+			<li onclik="deleteProfessor()">Apagar Registro de Professor</li>
+		</ul>
+	</div>
+	<div id="admoptCourses">
+		<ul>
+			<li onclick="registerCourses()">Registrar Novo Curso</li>
+			<li oncclik="updateCourses()">Atualizar dados de Curso</li>
+			<li onclik="deleteCourses()">Apagar Registro de Curso</li>
+		</ul>
+	</div>
+	
+</div>
+{% endblock %}

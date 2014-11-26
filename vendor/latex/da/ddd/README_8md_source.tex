@@ -2,36 +2,33 @@
 }
 
 \begin{DoxyCode}
-00001 \textcolor{preprocessor}{# LETproject  \{#index\}}
+00001 \textcolor{preprocessor}{# LETproject}
 00002 \textcolor{preprocessor}{}
-00003 \textcolor{preprocessor}{## Conteúdo}
+00003 \textcolor{preprocessor}{## Index}
 00004 \textcolor{preprocessor}{}
-00005 [TOC]
-00006 
-00007 \textcolor{preprocessor}{## Index}
-00008 \textcolor{preprocessor}{}
-00009 1. Definição
-00010 2. Dados \textcolor{keywordflow}{do} projeto
-00011 3. Documentação
-00012   3.1. Doxygen (html)
-00013 4. Instalação e execução
-00014 5. Metas de desenvolvimento
-00015 6. Log de Atividades
-00016 
-00017 \textcolor{preprocessor}{## Conteúdo}
-00018 \textcolor{preprocessor}{}
-00019 \textcolor{preprocessor}{### 1. Definição}
-00020 \textcolor{preprocessor}{}
-00021 O LETproject é uma iniciativa \textcolor{keywordflow}{do} laboratório \textcolor{keywordflow}{do} LET para o desenvolvimento de uma plataforma de ensino de 
+00005 1. Definição
+00006 2. Dados \textcolor{keywordflow}{do} projeto
+00007 3. Documentação
+00008   3.1. Doxygen (html)
+00009 4. Instalação e execução
+00010 5. Metas de desenvolvimento
+00011 6. Log de Atividades
+00012 
+00013 \textcolor{preprocessor}{## Conteúdo}
+00014 \textcolor{preprocessor}{}
+00015 \textcolor{preprocessor}{### 1. Definição}
+00016 \textcolor{preprocessor}{}
+00017 O LETproject é uma iniciativa \textcolor{keywordflow}{do} laboratório \textcolor{keywordflow}{do} LET para o desenvolvimento de uma plataforma de ensino de 
       línguas online.
-00022 Seu principal objetivo é criar uma \textcolor{keyword}{interface }amigável entre alunos e professores de forma a incluir o 
+00018 Seu principal objetivo é criar uma \textcolor{keyword}{interface }amigável entre alunos e professores de forma a incluir o 
       estudo doméstico de línguas no mundo informatizado.
-00023 
-00024 ### 2. Dados do projeto
-00025 
-00026 Título do projeto:
-00027 * **LETproject (nome tempor�
+00019 
+00020 ### 2. Dados do projeto
+00021 
+00022 Título do projeto:
+00023 * **LETproject (nome tempor�
 * **ELO (Ensino de Línguas Online) (nome temporário)**
+* **SALiE (nome final)**
 
 Orientador:
 **Professor Cláudio Correa e Castro Gonçalves**
@@ -41,8 +38,8 @@ Unidade Acadêmica / Departamento:
 
 Alunos Envolvidos:
 * Yurick Hauschild Caetano da Costa 12/0024136
-* André Accioly Lima 12/0059908
-* Diego Santos da Silva 11/0027892
+* Dayanne Fernandes 13/0107191
+* Bruna Luisa xx/xxxxxxx
 
 ### 3. Documentação
 
@@ -59,9 +56,11 @@ Toda a documentação do projeto pode ser encontrada na pasta doc/.
 #### 3.i. Doxyfile (html)
 
  No intuito de simplificar a navegação dentro da documentação do projeto, utilizamos a ferramenta Doxygen,
-       gerando, assim, um arquivo HTML que contém uma interface amigável.
- Este arquivo está contido em doc/html/ e para acessá-lo basta abrir o arquivo doc/html/index.html com o
-       seu navegador.
+       gerando, assim, um arquivo HTML que contém uma interface amigável, bem como um arquivo .tex capaz de gerar
+       um pdf.
+ Tanto o pdf quanto o html possuem as mesmas informações.
+ Estes arquivos estão contidos em vendor e para acessá-los basta abrir o arquivo doc/html/index.html ou
+       doc/latex/refman.pdf com o seu navegador ou visualizador de pdf, respectivamente.
  
 ### 4. Instalação e execução
 
@@ -73,13 +72,15 @@ Para executar o programa, siga as instruções abaixo.
 
 2. Para instalar o python no Windows:
 
+ Obs: Não desenvolvemos a plataforma em Windows, e não temos o hábito de testar neste ambiente. Então, caro
+       usuário da microsoft, na ocasião de encontrar algum bug ocasionado por incompatibilidade, sintá-se
+       convidado a abrir uma issue e nos avisar, para que o corrijamos o mais rápido possível.
+ [Siga este tutorial](http://docs.python-guide.org/en/latest/starting/install/win/).
 
 3. Para instalar o python no Linux:
 > OBS: As últimas versões do Ubuntu e Fedora já vêm com o python 2.7 e as últimas versões do RHEL e CentOS
        já vêm com o python 2.6.
 
-[BAIXE O PYTHON SCRIPT AQUI, E EXECUTE](http://python-distribute.org/distribute\_setup.py). Para executar,
-       use no terminal `python distributte\_setup.py`
   * Instale o pip:
     `$ easy\_install pip`
   * Instale o virtualenv:
@@ -99,13 +100,15 @@ Para executar o programa, siga as instruções abaixo.
 
 5. Para instalar django no Ubuntu:
   * Pelo pip:
-    `$ pip install Django==1.6.2`
+    `$ pip install Django==1.7`
   * "Manualmente":
     * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
         `$ tar xzvf Django-1.6.2.tar.gz`
         `$ cd Django-1.6.2`
-        `$ sudo python setup.py install`�
+        `$ sudo python setup.py install`
+�
 * **ELO (Ensino de Línguas Online) (nome temporário)**
+* **SALiE (nome final)**
 
 Orientador:
 **Professor Cláudio Correa e Castro Gonçalves**
@@ -115,8 +118,8 @@ Unidade Acadêmica / Departamento:
 
 Alunos Envolvidos:
 * Yurick Hauschild Caetano da Costa 12/0024136
-* André Accioly Lima 12/0059908
-* Diego Santos da Silva 11/0027892
+* Dayanne Fernandes 13/0107191
+* Bruna Luisa xx/xxxxxxx
 
 ### 3. Documentação
 
@@ -133,9 +136,11 @@ Toda a documentação do projeto pode ser encontrada na pasta doc/.
 #### 3.i. Doxyfile (html)
 
  No intuito de simplificar a navegação dentro da documentação do projeto, utilizamos a ferramenta Doxygen,
-       gerando, assim, um arquivo HTML que contém uma interface amigável.
- Este arquivo está contido em doc/html/ e para acessá-lo basta abrir o arquivo doc/html/index.html com o
-       seu navegador.
+       gerando, assim, um arquivo HTML que contém uma interface amigável, bem como um arquivo .tex capaz de gerar
+       um pdf.
+ Tanto o pdf quanto o html possuem as mesmas informações.
+ Estes arquivos estão contidos em vendor e para acessá-los basta abrir o arquivo doc/html/index.html ou
+       doc/latex/refman.pdf com o seu navegador ou visualizador de pdf, respectivamente.
  
 ### 4. Instalação e execução
 
@@ -147,13 +152,15 @@ Para executar o programa, siga as instruções abaixo.
 
 2. Para instalar o python no Windows:
 
+ Obs: Não desenvolvemos a plataforma em Windows, e não temos o hábito de testar neste ambiente. Então, caro
+       usuário da microsoft, na ocasião de encontrar algum bug ocasionado por incompatibilidade, sintá-se
+       convidado a abrir uma issue e nos avisar, para que o corrijamos o mais rápido possível.
+ [Siga este tutorial](http://docs.python-guide.org/en/latest/starting/install/win/).
 
 3. Para instalar o python no Linux:
 > OBS: As últimas versões do Ubuntu e Fedora já vêm com o python 2.7 e as últimas versões do RHEL e CentOS
        já vêm com o python 2.6.
 
-[BAIXE O PYTHON SCRIPT AQUI, E EXECUTE](http://python-distribute.org/distribute\_setup.py). Para executar,
-       use no terminal `python distributte\_setup.py`
   * Instale o pip:
     `$ easy\_install pip`
   * Instale o virtualenv:
@@ -173,13 +180,15 @@ Para executar o programa, siga as instruções abaixo.
 
 5. Para instalar django no Ubuntu:
   * Pelo pip:
-    `$ pip install Django==1.6.2`
+    `$ pip install Django==1.7`
   * "Manualmente":
     * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
         `$ tar xzvf Django-1.6.2.tar.gz`
         `$ cd Django-1.6.2`
-        `$ sudo python setup.py install`rio)**
-00028 * **ELO (Ensino de L� Online) (nome temporário)**
+        `$ sudo python setup.py install`
+rio)**
+00024 * **ELO (Ensino de L� Online) (nome temporário)**
+* **SALiE (nome final)**
 
 Orientador:
 **Professor Cláudio Correa e Castro Gonçalves**
@@ -189,8 +198,8 @@ Unidade Acadêmica / Departamento:
 
 Alunos Envolvidos:
 * Yurick Hauschild Caetano da Costa 12/0024136
-* André Accioly Lima 12/0059908
-* Diego Santos da Silva 11/0027892
+* Dayanne Fernandes 13/0107191
+* Bruna Luisa xx/xxxxxxx
 
 ### 3. Documentação
 
@@ -207,9 +216,11 @@ Toda a documentação do projeto pode ser encontrada na pasta doc/.
 #### 3.i. Doxyfile (html)
 
  No intuito de simplificar a navegação dentro da documentação do projeto, utilizamos a ferramenta Doxygen,
-       gerando, assim, um arquivo HTML que contém uma interface amigável.
- Este arquivo está contido em doc/html/ e para acessá-lo basta abrir o arquivo doc/html/index.html com o
-       seu navegador.
+       gerando, assim, um arquivo HTML que contém uma interface amigável, bem como um arquivo .tex capaz de gerar
+       um pdf.
+ Tanto o pdf quanto o html possuem as mesmas informações.
+ Estes arquivos estão contidos em vendor e para acessá-los basta abrir o arquivo doc/html/index.html ou
+       doc/latex/refman.pdf com o seu navegador ou visualizador de pdf, respectivamente.
  
 ### 4. Instalação e execução
 
@@ -221,13 +232,15 @@ Para executar o programa, siga as instruções abaixo.
 
 2. Para instalar o python no Windows:
 
+ Obs: Não desenvolvemos a plataforma em Windows, e não temos o hábito de testar neste ambiente. Então, caro
+       usuário da microsoft, na ocasião de encontrar algum bug ocasionado por incompatibilidade, sintá-se
+       convidado a abrir uma issue e nos avisar, para que o corrijamos o mais rápido possível.
+ [Siga este tutorial](http://docs.python-guide.org/en/latest/starting/install/win/).
 
 3. Para instalar o python no Linux:
 > OBS: As últimas versões do Ubuntu e Fedora já vêm com o python 2.7 e as últimas versões do RHEL e CentOS
        já vêm com o python 2.6.
 
-[BAIXE O PYTHON SCRIPT AQUI, E EXECUTE](http://python-distribute.org/distribute\_setup.py). Para executar,
-       use no terminal `python distributte\_setup.py`
   * Instale o pip:
     `$ easy\_install pip`
   * Instale o virtualenv:
@@ -247,12 +260,14 @@ Para executar o programa, siga as instruções abaixo.
 
 5. Para instalar django no Ubuntu:
   * Pelo pip:
-    `$ pip install Django==1.6.2`
+    `$ pip install Django==1.7`
   * "Manualmente":
     * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
         `$ tar xzvf Django-1.6.2.tar.gz`
         `$ cd Django-1.6.2`
-        `$ sudo python setup.py install`� Online) (nome temporário)**
+        `$ sudo python setup.py install`
+� Online) (nome temporário)**
+* **SALiE (nome final)**
 
 Orientador:
 **Professor Cláudio Correa e Castro Gonçalves**
@@ -262,8 +277,8 @@ Unidade Acadêmica / Departamento:
 
 Alunos Envolvidos:
 * Yurick Hauschild Caetano da Costa 12/0024136
-* André Accioly Lima 12/0059908
-* Diego Santos da Silva 11/0027892
+* Dayanne Fernandes 13/0107191
+* Bruna Luisa xx/xxxxxxx
 
 ### 3. Documentação
 
@@ -280,9 +295,11 @@ Toda a documentação do projeto pode ser encontrada na pasta doc/.
 #### 3.i. Doxyfile (html)
 
  No intuito de simplificar a navegação dentro da documentação do projeto, utilizamos a ferramenta Doxygen,
-       gerando, assim, um arquivo HTML que contém uma interface amigável.
- Este arquivo está contido em doc/html/ e para acessá-lo basta abrir o arquivo doc/html/index.html com o
-       seu navegador.
+       gerando, assim, um arquivo HTML que contém uma interface amigável, bem como um arquivo .tex capaz de gerar
+       um pdf.
+ Tanto o pdf quanto o html possuem as mesmas informações.
+ Estes arquivos estão contidos em vendor e para acessá-los basta abrir o arquivo doc/html/index.html ou
+       doc/latex/refman.pdf com o seu navegador ou visualizador de pdf, respectivamente.
  
 ### 4. Instalação e execução
 
@@ -294,13 +311,15 @@ Para executar o programa, siga as instruções abaixo.
 
 2. Para instalar o python no Windows:
 
+ Obs: Não desenvolvemos a plataforma em Windows, e não temos o hábito de testar neste ambiente. Então, caro
+       usuário da microsoft, na ocasião de encontrar algum bug ocasionado por incompatibilidade, sintá-se
+       convidado a abrir uma issue e nos avisar, para que o corrijamos o mais rápido possível.
+ [Siga este tutorial](http://docs.python-guide.org/en/latest/starting/install/win/).
 
 3. Para instalar o python no Linux:
 > OBS: As últimas versões do Ubuntu e Fedora já vêm com o python 2.7 e as últimas versões do RHEL e CentOS
        já vêm com o python 2.6.
 
-[BAIXE O PYTHON SCRIPT AQUI, E EXECUTE](http://python-distribute.org/distribute\_setup.py). Para executar,
-       use no terminal `python distributte\_setup.py`
   * Instale o pip:
     `$ easy\_install pip`
   * Instale o virtualenv:
@@ -320,12 +339,14 @@ Para executar o programa, siga as instruções abaixo.
 
 5. Para instalar django no Ubuntu:
   * Pelo pip:
-    `$ pip install Django==1.6.2`
+    `$ pip install Django==1.7`
   * "Manualmente":
     * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
         `$ tar xzvf Django-1.6.2.tar.gz`
         `$ cd Django-1.6.2`
-        `$ sudo python setup.py install`nguas Online) (nome tempor�
+        `$ sudo python setup.py install`
+nguas Online) (nome tempor�
+* **SALiE (nome final)**
 
 Orientador:
 **Professor Cláudio Correa e Castro Gonçalves**
@@ -335,8 +356,8 @@ Unidade Acadêmica / Departamento:
 
 Alunos Envolvidos:
 * Yurick Hauschild Caetano da Costa 12/0024136
-* André Accioly Lima 12/0059908
-* Diego Santos da Silva 11/0027892
+* Dayanne Fernandes 13/0107191
+* Bruna Luisa xx/xxxxxxx
 
 ### 3. Documentação
 
@@ -353,9 +374,11 @@ Toda a documentação do projeto pode ser encontrada na pasta doc/.
 #### 3.i. Doxyfile (html)
 
  No intuito de simplificar a navegação dentro da documentação do projeto, utilizamos a ferramenta Doxygen,
-       gerando, assim, um arquivo HTML que contém uma interface amigável.
- Este arquivo está contido em doc/html/ e para acessá-lo basta abrir o arquivo doc/html/index.html com o
-       seu navegador.
+       gerando, assim, um arquivo HTML que contém uma interface amigável, bem como um arquivo .tex capaz de gerar
+       um pdf.
+ Tanto o pdf quanto o html possuem as mesmas informações.
+ Estes arquivos estão contidos em vendor e para acessá-los basta abrir o arquivo doc/html/index.html ou
+       doc/latex/refman.pdf com o seu navegador ou visualizador de pdf, respectivamente.
  
 ### 4. Instalação e execução
 
@@ -367,13 +390,15 @@ Para executar o programa, siga as instruções abaixo.
 
 2. Para instalar o python no Windows:
 
+ Obs: Não desenvolvemos a plataforma em Windows, e não temos o hábito de testar neste ambiente. Então, caro
+       usuário da microsoft, na ocasião de encontrar algum bug ocasionado por incompatibilidade, sintá-se
+       convidado a abrir uma issue e nos avisar, para que o corrijamos o mais rápido possível.
+ [Siga este tutorial](http://docs.python-guide.org/en/latest/starting/install/win/).
 
 3. Para instalar o python no Linux:
 > OBS: As últimas versões do Ubuntu e Fedora já vêm com o python 2.7 e as últimas versões do RHEL e CentOS
        já vêm com o python 2.6.
 
-[BAIXE O PYTHON SCRIPT AQUI, E EXECUTE](http://python-distribute.org/distribute\_setup.py). Para executar,
-       use no terminal `python distributte\_setup.py`
   * Instale o pip:
     `$ easy\_install pip`
   * Instale o virtualenv:
@@ -393,12 +418,14 @@ Para executar o programa, siga as instruções abaixo.
 
 5. Para instalar django no Ubuntu:
   * Pelo pip:
-    `$ pip install Django==1.6.2`
+    `$ pip install Django==1.7`
   * "Manualmente":
     * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
         `$ tar xzvf Django-1.6.2.tar.gz`
         `$ cd Django-1.6.2`
-        `$ sudo python setup.py install`�
+        `$ sudo python setup.py install`
+�
+* **SALiE (nome final)**
 
 Orientador:
 **Professor Cláudio Correa e Castro Gonçalves**
@@ -408,8 +435,8 @@ Unidade Acadêmica / Departamento:
 
 Alunos Envolvidos:
 * Yurick Hauschild Caetano da Costa 12/0024136
-* André Accioly Lima 12/0059908
-* Diego Santos da Silva 11/0027892
+* Dayanne Fernandes 13/0107191
+* Bruna Luisa xx/xxxxxxx
 
 ### 3. Documentação
 
@@ -426,9 +453,11 @@ Toda a documentação do projeto pode ser encontrada na pasta doc/.
 #### 3.i. Doxyfile (html)
 
  No intuito de simplificar a navegação dentro da documentação do projeto, utilizamos a ferramenta Doxygen,
-       gerando, assim, um arquivo HTML que contém uma interface amigável.
- Este arquivo está contido em doc/html/ e para acessá-lo basta abrir o arquivo doc/html/index.html com o
-       seu navegador.
+       gerando, assim, um arquivo HTML que contém uma interface amigável, bem como um arquivo .tex capaz de gerar
+       um pdf.
+ Tanto o pdf quanto o html possuem as mesmas informações.
+ Estes arquivos estão contidos em vendor e para acessá-los basta abrir o arquivo doc/html/index.html ou
+       doc/latex/refman.pdf com o seu navegador ou visualizador de pdf, respectivamente.
  
 ### 4. Instalação e execução
 
@@ -440,13 +469,15 @@ Para executar o programa, siga as instruções abaixo.
 
 2. Para instalar o python no Windows:
 
+ Obs: Não desenvolvemos a plataforma em Windows, e não temos o hábito de testar neste ambiente. Então, caro
+       usuário da microsoft, na ocasião de encontrar algum bug ocasionado por incompatibilidade, sintá-se
+       convidado a abrir uma issue e nos avisar, para que o corrijamos o mais rápido possível.
+ [Siga este tutorial](http://docs.python-guide.org/en/latest/starting/install/win/).
 
 3. Para instalar o python no Linux:
 > OBS: As últimas versões do Ubuntu e Fedora já vêm com o python 2.7 e as últimas versões do RHEL e CentOS
        já vêm com o python 2.6.
 
-[BAIXE O PYTHON SCRIPT AQUI, E EXECUTE](http://python-distribute.org/distribute\_setup.py). Para executar,
-       use no terminal `python distributte\_setup.py`
   * Instale o pip:
     `$ easy\_install pip`
   * Instale o virtualenv:
@@ -466,65 +497,1101 @@ Para executar o programa, siga as instruções abaixo.
 
 5. Para instalar django no Ubuntu:
   * Pelo pip:
-    `$ pip install Django==1.6.2`
+    `$ pip install Django==1.7`
   * "Manualmente":
     * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
         `$ tar xzvf Django-1.6.2.tar.gz`
         `$ cd Django-1.6.2`
-        `$ sudo python setup.py install`rio)**
+        `$ sudo python setup.py install`
+rio)**
+00025 * **SALiE (nome final)**
+00026 
+00027 Orientador:
+00028 **Professor Cláudio Correa e Castro Gonçalves**
 00029 
-00030 Orientador:
-00031 **Professor Cláudio Correa e Castro Gonçalves**
+00030 Unidade Acadêmica / Departamento:
+00031 **Instituto de Letras/IL - Departamento de Línguas Estrangeiras e Tradução/LET**
 00032 
-00033 Unidade Acadêmica / Departamento:
-00034 **Instituto de Letras/IL - Departamento de Línguas Estrangeiras e Tradução/LET**
-00035 
-00036 Alunos Envolvidos:
-00037 * Yurick Hauschild Caetano da Costa 12/0024136
-00038 * André Accioly Lima 12/0059908
-00039 * Diego Santos da Silva 11/0027892
-00040 
-00041 \textcolor{preprocessor}{### 3. Documentação}
-00042 \textcolor{preprocessor}{}
-00043 Toda a documentação do projeto pode ser encontrada na pasta doc/.
-00044 
-00045 > **ATENÇÃO**:
-00046 > A documentação acima referenciada inclui explanações das funções de
-00047 > todas as classes e métodos implementados e tem por público alvo
-00048 > principalmente desenvolvedores interessados em contribuir com o projeto.
-00049 
-00050 > Para uma versão específica para usuários, ou seja, pessoas que estão interessadas no funcionamento da 
+00033 Alunos Envolvidos:
+00034 * Yurick Hauschild Caetano da Costa 12/0024136
+00035 * Dayanne Fernandes 13/0107191
+00036 * Bruna Luisa xx/xxxxxxx
+00037 
+00038 \textcolor{preprocessor}{### 3. Documentação}
+00039 \textcolor{preprocessor}{}
+00040 Toda a documentação do projeto pode ser encontrada na pasta doc/.
+00041 
+00042 > **ATENÇÃO**:
+00043 > A documentação acima referenciada inclui explanações das funções de
+00044 > todas as classes e métodos implementados e tem por público alvo
+00045 > principalmente desenvolvedores interessados em contribuir com o projeto.
+00046 
+00047 > Para uma versão específica para usuários, ou seja, pessoas que estão interessadas no funcionamento da 
       ferramenta e não em seus mecanismos, leia o ponto *4. Instalação e execução*
-00051 
-00052 \textcolor{preprocessor}{#### 3.i. Doxyfile (html)}
-00053 \textcolor{preprocessor}{}
-00054  No intuito de simplificar a navegação dentro da documentação do projeto, utilizamos a ferramenta Doxygen, 
-      gerando, assim, um arquivo HTML que contém uma interface amigável.
-00055  Este arquivo está contido em doc/html/ e para acessá-lo basta abrir o arquivo doc/html/index.html com o 
-      seu navegador.
-00056  
-00057 \textcolor{preprocessor}{### 4. Instalação e execução}
-00058 \textcolor{preprocessor}{}
-00059 Para executar o programa, siga as instruções abaixo.
-00060 
-00061 1. Baixe o código fonte do projeto.
-00062   Para isso, basta clicar no botão "Download ZIP" ao lado deste arquivo, como na imagem abaixo.  
-00063 ![example1](http:\textcolor{comment}{//i.imgur.com/kJtzWwf.jpg)}
+00048 
+00049 \textcolor{preprocessor}{#### 3.i. Doxyfile (html)}
+00050 \textcolor{preprocessor}{}
+00051  No intuito de simplificar a navegação dentro da documentação do projeto, utilizamos a ferramenta Doxygen, 
+      gerando, assim, um arquivo HTML que contém uma interface amigável, bem como um arquivo .tex capaz de gerar 
+      um pdf.
+00052  Tanto o pdf quanto o html possuem as mesmas informações.
+00053  Estes arquivos estão contidos em vendor e para acessá-los basta abrir o arquivo doc/html/index.html ou doc
+      /latex/refman.pdf com o seu navegador ou visualizador de pdf, respectivamente.
+00054  
+00055 \textcolor{preprocessor}{### 4. Instalação e execução}
+00056 \textcolor{preprocessor}{}
+00057 Para executar o programa, siga as instruções abaixo.
+00058 
+00059 1. Baixe o código fonte do projeto.
+00060   Para isso, basta clicar no botão "Download ZIP" ao lado deste arquivo, como na imagem abaixo.  
+00061 ![example1](http:\textcolor{comment}{//i.imgur.com/kJtzWwf.jpg)}
+00062 
+00063 2. Para instalar o python no Windows:
 00064 
-00065 2. Para instalar o python no Windows:
-00066 
+00065  Obs: N� desenvolvemos a plataforma em Windows, e não temos o hábito de testar neste ambiente. Então, caro
+       usuário da microsoft, na ocasião de encontrar algum bug ocasionado por incompatibilidade, sintá-se
+       convidado a abrir uma issue e nos avisar, para que o corrijamos o mais rápido possível.
+ [Siga este tutorial](http://docs.python-guide.org/en/latest/starting/install/win/).
+
+3. Para instalar o python no Linux:
+> OBS: As últimas versões do Ubuntu e Fedora já vêm com o python 2.7 e as últimas versões do RHEL e CentOS
+       já vêm com o python 2.6.
+
+  * Instale o pip:
+    `$ easy\_install pip`
+  * Instale o virtualenv:
+    `$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+    `$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+    `$ source venv/bin/activate`
+  * Para sair do ambiente:
+    `$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então
+       extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+    `$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+    `$ pip install Django==1.7`
+  * "Manualmente":
+    * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+        `$ tar xzvf Django-1.6.2.tar.gz`
+        `$ cd Django-1.6.2`
+        `$ sudo python setup.py install`
+� desenvolvemos a plataforma em Windows, e não temos o hábito de testar neste ambiente. Então, caro usuário
+       da microsoft, na ocasião de encontrar algum bug ocasionado por incompatibilidade, sintá-se convidado a
+       abrir uma issue e nos avisar, para que o corrijamos o mais rápido possível.
+ [Siga este tutorial](http://docs.python-guide.org/en/latest/starting/install/win/).
+
+3. Para instalar o python no Linux:
+> OBS: As últimas versões do Ubuntu e Fedora já vêm com o python 2.7 e as últimas versões do RHEL e CentOS
+       já vêm com o python 2.6.
+
+  * Instale o pip:
+    `$ easy\_install pip`
+  * Instale o virtualenv:
+    `$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+    `$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+    `$ source venv/bin/activate`
+  * Para sair do ambiente:
+    `$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então
+       extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+    `$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+    `$ pip install Django==1.7`
+  * "Manualmente":
+    * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+        `$ tar xzvf Django-1.6.2.tar.gz`
+        `$ cd Django-1.6.2`
+        `$ sudo python setup.py install`
+o desenvolvemos a plataforma em Windows, e n� temos o hábito de testar neste ambiente. Então, caro usuário
+       da microsoft, na ocasião de encontrar algum bug ocasionado por incompatibilidade, sintá-se convidado a
+       abrir uma issue e nos avisar, para que o corrijamos o mais rápido possível.
+ [Siga este tutorial](http://docs.python-guide.org/en/latest/starting/install/win/).
+
+3. Para instalar o python no Linux:
+> OBS: As últimas versões do Ubuntu e Fedora já vêm com o python 2.7 e as últimas versões do RHEL e CentOS
+       já vêm com o python 2.6.
+
+  * Instale o pip:
+    `$ easy\_install pip`
+  * Instale o virtualenv:
+    `$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+    `$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+    `$ source venv/bin/activate`
+  * Para sair do ambiente:
+    `$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então
+       extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+    `$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+    `$ pip install Django==1.7`
+  * "Manualmente":
+    * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+        `$ tar xzvf Django-1.6.2.tar.gz`
+        `$ cd Django-1.6.2`
+        `$ sudo python setup.py install`
+� temos o hábito de testar neste ambiente. Então, caro usuário da microsoft, na ocasião de encontrar algum
+       bug ocasionado por incompatibilidade, sintá-se convidado a abrir uma issue e nos avisar, para que o
+       corrijamos o mais rápido possível.
+ [Siga este tutorial](http://docs.python-guide.org/en/latest/starting/install/win/).
+
+3. Para instalar o python no Linux:
+> OBS: As últimas versões do Ubuntu e Fedora já vêm com o python 2.7 e as últimas versões do RHEL e CentOS
+       já vêm com o python 2.6.
+
+  * Instale o pip:
+    `$ easy\_install pip`
+  * Instale o virtualenv:
+    `$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+    `$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+    `$ source venv/bin/activate`
+  * Para sair do ambiente:
+    `$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então
+       extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+    `$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+    `$ pip install Django==1.7`
+  * "Manualmente":
+    * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+        `$ tar xzvf Django-1.6.2.tar.gz`
+        `$ cd Django-1.6.2`
+        `$ sudo python setup.py install`
+o temos o h� de testar neste ambiente. Então, caro usuário da microsoft, na ocasião de encontrar algum
+       bug ocasionado por incompatibilidade, sintá-se convidado a abrir uma issue e nos avisar, para que o
+       corrijamos o mais rápido possível.
+ [Siga este tutorial](http://docs.python-guide.org/en/latest/starting/install/win/).
+
+3. Para instalar o python no Linux:
+> OBS: As últimas versões do Ubuntu e Fedora já vêm com o python 2.7 e as últimas versões do RHEL e CentOS
+       já vêm com o python 2.6.
+
+  * Instale o pip:
+    `$ easy\_install pip`
+  * Instale o virtualenv:
+    `$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+    `$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+    `$ source venv/bin/activate`
+  * Para sair do ambiente:
+    `$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então
+       extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+    `$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+    `$ pip install Django==1.7`
+  * "Manualmente":
+    * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+        `$ tar xzvf Django-1.6.2.tar.gz`
+        `$ cd Django-1.6.2`
+        `$ sudo python setup.py install`
+� de testar neste ambiente. Então, caro usuário da microsoft, na ocasião de encontrar algum bug
+       ocasionado por incompatibilidade, sintá-se convidado a abrir uma issue e nos avisar, para que o corrijamos o mais
+       rápido possível.
+ [Siga este tutorial](http://docs.python-guide.org/en/latest/starting/install/win/).
+
+3. Para instalar o python no Linux:
+> OBS: As últimas versões do Ubuntu e Fedora já vêm com o python 2.7 e as últimas versões do RHEL e CentOS
+       já vêm com o python 2.6.
+
+  * Instale o pip:
+    `$ easy\_install pip`
+  * Instale o virtualenv:
+    `$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+    `$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+    `$ source venv/bin/activate`
+  * Para sair do ambiente:
+    `$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então
+       extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+    `$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+    `$ pip install Django==1.7`
+  * "Manualmente":
+    * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+        `$ tar xzvf Django-1.6.2.tar.gz`
+        `$ cd Django-1.6.2`
+        `$ sudo python setup.py install`
+bito de testar neste ambiente. Ent� caro usuário da microsoft, na ocasião de encontrar algum bug
+       ocasionado por incompatibilidade, sintá-se convidado a abrir uma issue e nos avisar, para que o corrijamos o mais
+       rápido possível.
+ [Siga este tutorial](http://docs.python-guide.org/en/latest/starting/install/win/).
+
+3. Para instalar o python no Linux:
+> OBS: As últimas versões do Ubuntu e Fedora já vêm com o python 2.7 e as últimas versões do RHEL e CentOS
+       já vêm com o python 2.6.
+
+  * Instale o pip:
+    `$ easy\_install pip`
+  * Instale o virtualenv:
+    `$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+    `$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+    `$ source venv/bin/activate`
+  * Para sair do ambiente:
+    `$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então
+       extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+    `$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+    `$ pip install Django==1.7`
+  * "Manualmente":
+    * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+        `$ tar xzvf Django-1.6.2.tar.gz`
+        `$ cd Django-1.6.2`
+        `$ sudo python setup.py install`
+� caro usuário da microsoft, na ocasião de encontrar algum bug ocasionado por incompatibilidade, sintá-se
+       convidado a abrir uma issue e nos avisar, para que o corrijamos o mais rápido possível.
+ [Siga este tutorial](http://docs.python-guide.org/en/latest/starting/install/win/).
+
+3. Para instalar o python no Linux:
+> OBS: As últimas versões do Ubuntu e Fedora já vêm com o python 2.7 e as últimas versões do RHEL e CentOS
+       já vêm com o python 2.6.
+
+  * Instale o pip:
+    `$ easy\_install pip`
+  * Instale o virtualenv:
+    `$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+    `$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+    `$ source venv/bin/activate`
+  * Para sair do ambiente:
+    `$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então
+       extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+    `$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+    `$ pip install Django==1.7`
+  * "Manualmente":
+    * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+        `$ tar xzvf Django-1.6.2.tar.gz`
+        `$ cd Django-1.6.2`
+        `$ sudo python setup.py install`
+o, caro usu� da microsoft, na ocasião de encontrar algum bug ocasionado por incompatibilidade, sintá-se
+       convidado a abrir uma issue e nos avisar, para que o corrijamos o mais rápido possível.
+ [Siga este tutorial](http://docs.python-guide.org/en/latest/starting/install/win/).
+
+3. Para instalar o python no Linux:
+> OBS: As últimas versões do Ubuntu e Fedora já vêm com o python 2.7 e as últimas versões do RHEL e CentOS
+       já vêm com o python 2.6.
+
+  * Instale o pip:
+    `$ easy\_install pip`
+  * Instale o virtualenv:
+    `$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+    `$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+    `$ source venv/bin/activate`
+  * Para sair do ambiente:
+    `$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então
+       extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+    `$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+    `$ pip install Django==1.7`
+  * "Manualmente":
+    * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+        `$ tar xzvf Django-1.6.2.tar.gz`
+        `$ cd Django-1.6.2`
+        `$ sudo python setup.py install`
+� da microsoft, na ocasião de encontrar algum bug ocasionado por incompatibilidade, sintá-se convidado a
+       abrir uma issue e nos avisar, para que o corrijamos o mais rápido possível.
+ [Siga este tutorial](http://docs.python-guide.org/en/latest/starting/install/win/).
+
+3. Para instalar o python no Linux:
+> OBS: As últimas versões do Ubuntu e Fedora já vêm com o python 2.7 e as últimas versões do RHEL e CentOS
+       já vêm com o python 2.6.
+
+  * Instale o pip:
+    `$ easy\_install pip`
+  * Instale o virtualenv:
+    `$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+    `$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+    `$ source venv/bin/activate`
+  * Para sair do ambiente:
+    `$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então
+       extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+    `$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+    `$ pip install Django==1.7`
+  * "Manualmente":
+    * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+        `$ tar xzvf Django-1.6.2.tar.gz`
+        `$ cd Django-1.6.2`
+        `$ sudo python setup.py install`
+rio da microsoft, na ocasi� de encontrar algum bug ocasionado por incompatibilidade, sintá-se convidado a
+       abrir uma issue e nos avisar, para que o corrijamos o mais rápido possível.
+ [Siga este tutorial](http://docs.python-guide.org/en/latest/starting/install/win/).
+
+3. Para instalar o python no Linux:
+> OBS: As últimas versões do Ubuntu e Fedora já vêm com o python 2.7 e as últimas versões do RHEL e CentOS
+       já vêm com o python 2.6.
+
+  * Instale o pip:
+    `$ easy\_install pip`
+  * Instale o virtualenv:
+    `$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+    `$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+    `$ source venv/bin/activate`
+  * Para sair do ambiente:
+    `$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então
+       extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+    `$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+    `$ pip install Django==1.7`
+  * "Manualmente":
+    * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+        `$ tar xzvf Django-1.6.2.tar.gz`
+        `$ cd Django-1.6.2`
+        `$ sudo python setup.py install`
+� de encontrar algum bug ocasionado por incompatibilidade, sintá-se convidado a abrir uma issue e nos
+       avisar, para que o corrijamos o mais rápido possível.
+ [Siga este tutorial](http://docs.python-guide.org/en/latest/starting/install/win/).
+
+3. Para instalar o python no Linux:
+> OBS: As últimas versões do Ubuntu e Fedora já vêm com o python 2.7 e as últimas versões do RHEL e CentOS
+       já vêm com o python 2.6.
+
+  * Instale o pip:
+    `$ easy\_install pip`
+  * Instale o virtualenv:
+    `$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+    `$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+    `$ source venv/bin/activate`
+  * Para sair do ambiente:
+    `$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então
+       extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+    `$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+    `$ pip install Django==1.7`
+  * "Manualmente":
+    * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+        `$ tar xzvf Django-1.6.2.tar.gz`
+        `$ cd Django-1.6.2`
+        `$ sudo python setup.py install`
+o de encontrar algum bug ocasionado por incompatibilidade, sint� convidado a abrir uma issue e nos
+       avisar, para que o corrijamos o mais rápido possível.
+ [Siga este tutorial](http://docs.python-guide.org/en/latest/starting/install/win/).
+
+3. Para instalar o python no Linux:
+> OBS: As últimas versões do Ubuntu e Fedora já vêm com o python 2.7 e as últimas versões do RHEL e CentOS
+       já vêm com o python 2.6.
+
+  * Instale o pip:
+    `$ easy\_install pip`
+  * Instale o virtualenv:
+    `$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+    `$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+    `$ source venv/bin/activate`
+  * Para sair do ambiente:
+    `$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então
+       extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+    `$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+    `$ pip install Django==1.7`
+  * "Manualmente":
+    * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+        `$ tar xzvf Django-1.6.2.tar.gz`
+        `$ cd Django-1.6.2`
+        `$ sudo python setup.py install`
+� convidado a abrir uma issue e nos avisar, para que o corrijamos o mais rápido possível.
+ [Siga este tutorial](http://docs.python-guide.org/en/latest/starting/install/win/).
+
+3. Para instalar o python no Linux:
+> OBS: As últimas versões do Ubuntu e Fedora já vêm com o python 2.7 e as últimas versões do RHEL e CentOS
+       já vêm com o python 2.6.
+
+  * Instale o pip:
+    `$ easy\_install pip`
+  * Instale o virtualenv:
+    `$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+    `$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+    `$ source venv/bin/activate`
+  * Para sair do ambiente:
+    `$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então
+       extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+    `$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+    `$ pip install Django==1.7`
+  * "Manualmente":
+    * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+        `$ tar xzvf Django-1.6.2.tar.gz`
+        `$ cd Django-1.6.2`
+        `$ sudo python setup.py install`
+-se convidado a abrir uma issue e nos avisar, para que o corrijamos o mais r� possível.
+ [Siga este tutorial](http://docs.python-guide.org/en/latest/starting/install/win/).
+
+3. Para instalar o python no Linux:
+> OBS: As últimas versões do Ubuntu e Fedora já vêm com o python 2.7 e as últimas versões do RHEL e CentOS
+       já vêm com o python 2.6.
+
+  * Instale o pip:
+    `$ easy\_install pip`
+  * Instale o virtualenv:
+    `$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+    `$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+    `$ source venv/bin/activate`
+  * Para sair do ambiente:
+    `$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então
+       extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+    `$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+    `$ pip install Django==1.7`
+  * "Manualmente":
+    * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+        `$ tar xzvf Django-1.6.2.tar.gz`
+        `$ cd Django-1.6.2`
+        `$ sudo python setup.py install`
+� possível.
+ [Siga este tutorial](http://docs.python-guide.org/en/latest/starting/install/win/).
+
+3. Para instalar o python no Linux:
+> OBS: As últimas versões do Ubuntu e Fedora já vêm com o python 2.7 e as últimas versões do RHEL e CentOS
+       já vêm com o python 2.6.
+
+  * Instale o pip:
+    `$ easy\_install pip`
+  * Instale o virtualenv:
+    `$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+    `$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+    `$ source venv/bin/activate`
+  * Para sair do ambiente:
+    `$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então
+       extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+    `$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+    `$ pip install Django==1.7`
+  * "Manualmente":
+    * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+        `$ tar xzvf Django-1.6.2.tar.gz`
+        `$ cd Django-1.6.2`
+        `$ sudo python setup.py install`
+pido poss�
+ [Siga este tutorial](http://docs.python-guide.org/en/latest/starting/install/win/).
+
+3. Para instalar o python no Linux:
+> OBS: As últimas versões do Ubuntu e Fedora já vêm com o python 2.7 e as últimas versões do RHEL e CentOS
+       já vêm com o python 2.6.
+
+  * Instale o pip:
+    `$ easy\_install pip`
+  * Instale o virtualenv:
+    `$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+    `$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+    `$ source venv/bin/activate`
+  * Para sair do ambiente:
+    `$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então
+       extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+    `$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+    `$ pip install Django==1.7`
+  * "Manualmente":
+    * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+        `$ tar xzvf Django-1.6.2.tar.gz`
+        `$ cd Django-1.6.2`
+        `$ sudo python setup.py install`
+�
+ [Siga este tutorial](http://docs.python-guide.org/en/latest/starting/install/win/).
+
+3. Para instalar o python no Linux:
+> OBS: As últimas versões do Ubuntu e Fedora já vêm com o python 2.7 e as últimas versões do RHEL e CentOS
+       já vêm com o python 2.6.
+
+  * Instale o pip:
+    `$ easy\_install pip`
+  * Instale o virtualenv:
+    `$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+    `$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+    `$ source venv/bin/activate`
+  * Para sair do ambiente:
+    `$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então
+       extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+    `$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+    `$ pip install Django==1.7`
+  * "Manualmente":
+    * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+        `$ tar xzvf Django-1.6.2.tar.gz`
+        `$ cd Django-1.6.2`
+        `$ sudo python setup.py install`
+vel.
+00066  [Siga este tutorial](http:\textcolor{comment}{//docs.python-guide.org/en/latest/starting/install/win/).}
 00067 
 00068 3. Para instalar o python no Linux:
-00069 > OBS: As últimas versões do Ubuntu e Fedora já vêm com o python 2.7 e as últimas versões do RHEL e CentOS 
-      já vêm com o python 2.6.
+00069 > OBS: As � versões do Ubuntu e Fedora já vêm com o python 2.7 e as últimas versões do RHEL e CentOS
+       já vêm com o python 2.6.
+
+  * Instale o pip:
+    `$ easy\_install pip`
+  * Instale o virtualenv:
+    `$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+    `$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+    `$ source venv/bin/activate`
+  * Para sair do ambiente:
+    `$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então
+       extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+    `$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+    `$ pip install Django==1.7`
+  * "Manualmente":
+    * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+        `$ tar xzvf Django-1.6.2.tar.gz`
+        `$ cd Django-1.6.2`
+        `$ sudo python setup.py install`
+� versões do Ubuntu e Fedora já vêm com o python 2.7 e as últimas versões do RHEL e CentOS já vêm com
+       o python 2.6.
+
+  * Instale o pip:
+    `$ easy\_install pip`
+  * Instale o virtualenv:
+    `$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+    `$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+    `$ source venv/bin/activate`
+  * Para sair do ambiente:
+    `$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então
+       extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+    `$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+    `$ pip install Django==1.7`
+  * "Manualmente":
+    * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+        `$ tar xzvf Django-1.6.2.tar.gz`
+        `$ cd Django-1.6.2`
+        `$ sudo python setup.py install`
+ltimas vers� do Ubuntu e Fedora já vêm com o python 2.7 e as últimas versões do RHEL e CentOS já vêm com
+       o python 2.6.
+
+  * Instale o pip:
+    `$ easy\_install pip`
+  * Instale o virtualenv:
+    `$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+    `$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+    `$ source venv/bin/activate`
+  * Para sair do ambiente:
+    `$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então
+       extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+    `$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+    `$ pip install Django==1.7`
+  * "Manualmente":
+    * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+        `$ tar xzvf Django-1.6.2.tar.gz`
+        `$ cd Django-1.6.2`
+        `$ sudo python setup.py install`
+� do Ubuntu e Fedora já vêm com o python 2.7 e as últimas versões do RHEL e CentOS já vêm com o python
+       2.6.
+
+  * Instale o pip:
+    `$ easy\_install pip`
+  * Instale o virtualenv:
+    `$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+    `$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+    `$ source venv/bin/activate`
+  * Para sair do ambiente:
+    `$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então
+       extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+    `$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+    `$ pip install Django==1.7`
+  * "Manualmente":
+    * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+        `$ tar xzvf Django-1.6.2.tar.gz`
+        `$ cd Django-1.6.2`
+        `$ sudo python setup.py install`
+es do Ubuntu e Fedora j� vêm com o python 2.7 e as últimas versões do RHEL e CentOS já vêm com o python
+       2.6.
+
+  * Instale o pip:
+    `$ easy\_install pip`
+  * Instale o virtualenv:
+    `$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+    `$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+    `$ source venv/bin/activate`
+  * Para sair do ambiente:
+    `$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então
+       extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+    `$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+    `$ pip install Django==1.7`
+  * "Manualmente":
+    * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+        `$ tar xzvf Django-1.6.2.tar.gz`
+        `$ cd Django-1.6.2`
+        `$ sudo python setup.py install`
+� com o python 2.7 e as últimas versões do RHEL e CentOS já vêm com o python 2.6.
+
+  * Instale o pip:
+    `$ easy\_install pip`
+  * Instale o virtualenv:
+    `$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+    `$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+    `$ source venv/bin/activate`
+  * Para sair do ambiente:
+    `$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então
+       extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+    `$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+    `$ pip install Django==1.7`
+  * "Manualmente":
+    * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+        `$ tar xzvf Django-1.6.2.tar.gz`
+        `$ cd Django-1.6.2`
+        `$ sudo python setup.py install`
+ v� com o python 2.7 e as últimas versões do RHEL e CentOS já vêm com o python 2.6.
+
+  * Instale o pip:
+    `$ easy\_install pip`
+  * Instale o virtualenv:
+    `$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+    `$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+    `$ source venv/bin/activate`
+  * Para sair do ambiente:
+    `$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então
+       extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+    `$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+    `$ pip install Django==1.7`
+  * "Manualmente":
+    * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+        `$ tar xzvf Django-1.6.2.tar.gz`
+        `$ cd Django-1.6.2`
+        `$ sudo python setup.py install`
+� com o python 2.7 e as últimas versões do RHEL e CentOS já vêm com o python 2.6.
+
+  * Instale o pip:
+    `$ easy\_install pip`
+  * Instale o virtualenv:
+    `$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+    `$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+    `$ source venv/bin/activate`
+  * Para sair do ambiente:
+    `$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então
+       extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+    `$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+    `$ pip install Django==1.7`
+  * "Manualmente":
+    * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+        `$ tar xzvf Django-1.6.2.tar.gz`
+        `$ cd Django-1.6.2`
+        `$ sudo python setup.py install`
+m com o python 2.7 e as � versões do RHEL e CentOS já vêm com o python 2.6.
+
+  * Instale o pip:
+    `$ easy\_install pip`
+  * Instale o virtualenv:
+    `$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+    `$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+    `$ source venv/bin/activate`
+  * Para sair do ambiente:
+    `$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então
+       extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+    `$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+    `$ pip install Django==1.7`
+  * "Manualmente":
+    * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+        `$ tar xzvf Django-1.6.2.tar.gz`
+        `$ cd Django-1.6.2`
+        `$ sudo python setup.py install`
+� versões do RHEL e CentOS já vêm com o python 2.6.
+
+  * Instale o pip:
+    `$ easy\_install pip`
+  * Instale o virtualenv:
+    `$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+    `$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+    `$ source venv/bin/activate`
+  * Para sair do ambiente:
+    `$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então
+       extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+    `$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+    `$ pip install Django==1.7`
+  * "Manualmente":
+    * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+        `$ tar xzvf Django-1.6.2.tar.gz`
+        `$ cd Django-1.6.2`
+        `$ sudo python setup.py install`
+ltimas vers� do RHEL e CentOS já vêm com o python 2.6.
+
+  * Instale o pip:
+    `$ easy\_install pip`
+  * Instale o virtualenv:
+    `$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+    `$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+    `$ source venv/bin/activate`
+  * Para sair do ambiente:
+    `$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então
+       extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+    `$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+    `$ pip install Django==1.7`
+  * "Manualmente":
+    * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+        `$ tar xzvf Django-1.6.2.tar.gz`
+        `$ cd Django-1.6.2`
+        `$ sudo python setup.py install`
+� do RHEL e CentOS já vêm com o python 2.6.
+
+  * Instale o pip:
+    `$ easy\_install pip`
+  * Instale o virtualenv:
+    `$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+    `$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+    `$ source venv/bin/activate`
+  * Para sair do ambiente:
+    `$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então
+       extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+    `$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+    `$ pip install Django==1.7`
+  * "Manualmente":
+    * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+        `$ tar xzvf Django-1.6.2.tar.gz`
+        `$ cd Django-1.6.2`
+        `$ sudo python setup.py install`
+es do RHEL e CentOS j� vêm com o python 2.6.
+
+  * Instale o pip:
+    `$ easy\_install pip`
+  * Instale o virtualenv:
+    `$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+    `$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+    `$ source venv/bin/activate`
+  * Para sair do ambiente:
+    `$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então
+       extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+    `$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+    `$ pip install Django==1.7`
+  * "Manualmente":
+    * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+        `$ tar xzvf Django-1.6.2.tar.gz`
+        `$ cd Django-1.6.2`
+        `$ sudo python setup.py install`
+� com o python 2.6.
+
+  * Instale o pip:
+    `$ easy\_install pip`
+  * Instale o virtualenv:
+    `$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+    `$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+    `$ source venv/bin/activate`
+  * Para sair do ambiente:
+    `$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então
+       extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+    `$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+    `$ pip install Django==1.7`
+  * "Manualmente":
+    * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+        `$ tar xzvf Django-1.6.2.tar.gz`
+        `$ cd Django-1.6.2`
+        `$ sudo python setup.py install`
+ v� com o python 2.6.
+
+  * Instale o pip:
+    `$ easy\_install pip`
+  * Instale o virtualenv:
+    `$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+    `$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+    `$ source venv/bin/activate`
+  * Para sair do ambiente:
+    `$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então
+       extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+    `$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+    `$ pip install Django==1.7`
+  * "Manualmente":
+    * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+        `$ tar xzvf Django-1.6.2.tar.gz`
+        `$ cd Django-1.6.2`
+        `$ sudo python setup.py install`
+� com o python 2.6.
+
+  * Instale o pip:
+    `$ easy\_install pip`
+  * Instale o virtualenv:
+    `$ pip install virtualenv`
+  * Selecione o diretório para a instalação do python e execute o virtualenv.
+    `$ virtualenv --distributte venv`
+  * Para executar o ambiente, rode:
+    `$ source venv/bin/activate`
+  * Para sair do ambiente:
+    `$ deactivate`
+
+4. Para instalar django no Windows:
+  * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então
+       extraia o arquivo, inicie o DOS
+ shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+    `$ python setup.py install`
+
+5. Para instalar django no Ubuntu:
+  * Pelo pip:
+    `$ pip install Django==1.7`
+  * "Manualmente":
+    * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
+        `$ tar xzvf Django-1.6.2.tar.gz`
+        `$ cd Django-1.6.2`
+        `$ sudo python setup.py install`
+m com o python 2.6.
 00070 
-00071 [BAIXE O PYTHON SCRIPT AQUI, E EXECUTE](http:\textcolor{comment}{//python-distribute.org/distribute\_setup.py). Para executar,
-       use no terminal `python distributte\_setup.py`}
-00072   * Instale o pip:
-00073     `$ easy\_install pip`
-00074   * Instale o virtualenv:
-00075     `$ pip install virtualenv`
-00076   * Selecione o diret� para a instalação do python e execute o virtualenv.
+00071   * Instale o pip:
+00072     `$ easy\_install pip`
+00073   * Instale o virtualenv:
+00074     `$ pip install virtualenv`
+00075   * Selecione o diret� para a instalação do python e execute o virtualenv.
     `$ virtualenv --distributte venv`
   * Para executar o ambiente, rode:
     `$ source venv/bin/activate`
@@ -539,12 +1606,13 @@ Para executar o programa, siga as instruções abaixo.
 
 5. Para instalar django no Ubuntu:
   * Pelo pip:
-    `$ pip install Django==1.6.2`
+    `$ pip install Django==1.7`
   * "Manualmente":
     * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
         `$ tar xzvf Django-1.6.2.tar.gz`
         `$ cd Django-1.6.2`
-        `$ sudo python setup.py install`� para a instalação do python e execute o virtualenv.
+        `$ sudo python setup.py install`
+� para a instalação do python e execute o virtualenv.
     `$ virtualenv --distributte venv`
   * Para executar o ambiente, rode:
     `$ source venv/bin/activate`
@@ -559,12 +1627,13 @@ Para executar o programa, siga as instruções abaixo.
 
 5. Para instalar django no Ubuntu:
   * Pelo pip:
-    `$ pip install Django==1.6.2`
+    `$ pip install Django==1.7`
   * "Manualmente":
     * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
         `$ tar xzvf Django-1.6.2.tar.gz`
         `$ cd Django-1.6.2`
-        `$ sudo python setup.py install`rio para a instala� do python e execute o virtualenv.
+        `$ sudo python setup.py install`
+rio para a instala� do python e execute o virtualenv.
     `$ virtualenv --distributte venv`
   * Para executar o ambiente, rode:
     `$ source venv/bin/activate`
@@ -579,12 +1648,13 @@ Para executar o programa, siga as instruções abaixo.
 
 5. Para instalar django no Ubuntu:
   * Pelo pip:
-    `$ pip install Django==1.6.2`
+    `$ pip install Django==1.7`
   * "Manualmente":
     * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
         `$ tar xzvf Django-1.6.2.tar.gz`
         `$ cd Django-1.6.2`
-        `$ sudo python setup.py install`� do python e execute o virtualenv.
+        `$ sudo python setup.py install`
+� do python e execute o virtualenv.
     `$ virtualenv --distributte venv`
   * Para executar o ambiente, rode:
     `$ source venv/bin/activate`
@@ -599,12 +1669,13 @@ Para executar o programa, siga as instruções abaixo.
 
 5. Para instalar django no Ubuntu:
   * Pelo pip:
-    `$ pip install Django==1.6.2`
+    `$ pip install Django==1.7`
   * "Manualmente":
     * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
         `$ tar xzvf Django-1.6.2.tar.gz`
         `$ cd Django-1.6.2`
-        `$ sudo python setup.py install`� do python e execute o virtualenv.
+        `$ sudo python setup.py install`
+� do python e execute o virtualenv.
     `$ virtualenv --distributte venv`
   * Para executar o ambiente, rode:
     `$ source venv/bin/activate`
@@ -619,12 +1690,13 @@ Para executar o programa, siga as instruções abaixo.
 
 5. Para instalar django no Ubuntu:
   * Pelo pip:
-    `$ pip install Django==1.6.2`
+    `$ pip install Django==1.7`
   * "Manualmente":
     * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
         `$ tar xzvf Django-1.6.2.tar.gz`
         `$ cd Django-1.6.2`
-        `$ sudo python setup.py install`� do python e execute o virtualenv.
+        `$ sudo python setup.py install`
+� do python e execute o virtualenv.
     `$ virtualenv --distributte venv`
   * Para executar o ambiente, rode:
     `$ source venv/bin/activate`
@@ -639,72 +1711,75 @@ Para executar o programa, siga as instruções abaixo.
 
 5. Para instalar django no Ubuntu:
   * Pelo pip:
-    `$ pip install Django==1.6.2`
+    `$ pip install Django==1.7`
   * "Manualmente":
     * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
         `$ tar xzvf Django-1.6.2.tar.gz`
         `$ cd Django-1.6.2`
-        `$ sudo python setup.py install`o do python e execute o virtualenv.
-00077     `$ virtualenv --distributte venv`
-00078   * Para executar o ambiente, rode:
-00079     `$ source venv/bin/activate`
-00080   * Para sair do ambiente:
-00081     `$ deactivate`
-00082 
-00083 4. Para instalar django no Windows:
-00084   * Baixe [Download Django-1.6.2.tar.gz](https:\textcolor{comment}{//www.djangoproject.com/download/1.6.2/tarball/). Então
+        `$ sudo python setup.py install`
+o do python e execute o virtualenv.
+00076     `$ virtualenv --distributte venv`
+00077   * Para executar o ambiente, rode:
+00078     `$ source venv/bin/activate`
+00079   * Para sair do ambiente:
+00080     `$ deactivate`
+00081 
+00082 4. Para instalar django no Windows:
+00083   * Baixe [Download Django-1.6.2.tar.gz](https:\textcolor{comment}{//www.djangoproject.com/download/1.6.2/tarball/). Então
        extraia o arquivo, inicie o DOS}
-00085  shell com permiss� de administrador e execute o comando no diretório cujo nome inicie com "Django-":
+00084  shell com permiss� de administrador e execute o comando no diretório cujo nome inicie com "Django-":
     `$ python setup.py install`
 
 5. Para instalar django no Ubuntu:
   * Pelo pip:
-    `$ pip install Django==1.6.2`
+    `$ pip install Django==1.7`
   * "Manualmente":
     * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
         `$ tar xzvf Django-1.6.2.tar.gz`
         `$ cd Django-1.6.2`
-        `$ sudo python setup.py install`� de administrador e execute o comando no diretório cujo nome
-       inicie com "Django-":
+        `$ sudo python setup.py install`
+� de administrador e execute o comando no diretório cujo nome inicie com "Django-":
     `$ python setup.py install`
 
 5. Para instalar django no Ubuntu:
   * Pelo pip:
-    `$ pip install Django==1.6.2`
+    `$ pip install Django==1.7`
   * "Manualmente":
     * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
         `$ tar xzvf Django-1.6.2.tar.gz`
         `$ cd Django-1.6.2`
-        `$ sudo python setup.py install`o de administrador e execute o comando no diret� cujo nome
-       inicie com "Django-":
+        `$ sudo python setup.py install`
+o de administrador e execute o comando no diret� cujo nome inicie com "Django-":
     `$ python setup.py install`
 
 5. Para instalar django no Ubuntu:
   * Pelo pip:
-    `$ pip install Django==1.6.2`
+    `$ pip install Django==1.7`
   * "Manualmente":
     * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
         `$ tar xzvf Django-1.6.2.tar.gz`
         `$ cd Django-1.6.2`
-        `$ sudo python setup.py install`� cujo nome inicie com "Django-":
+        `$ sudo python setup.py install`
+� cujo nome inicie com "Django-":
     `$ python setup.py install`
 
 5. Para instalar django no Ubuntu:
   * Pelo pip:
-    `$ pip install Django==1.6.2`
+    `$ pip install Django==1.7`
   * "Manualmente":
     * Baixe [Download Django-1.6.2.tar.gz](https://www.djangoproject.com/download/1.6.2/tarball/). Então:
         `$ tar xzvf Django-1.6.2.tar.gz`
         `$ cd Django-1.6.2`
-        `$ sudo python setup.py install`rio cujo nome inicie com "Django-":
-00086     `$ python setup.py install`
-00087 
-00088 5. Para instalar django no Ubuntu:
-00089   * Pelo pip:
-00090     `$ pip install Django==1.6.2`
-00091   * "Manualmente":
-00092     * Baixe [Download Django-1.6.2.tar.gz](https:\textcolor{comment}{//www.djangoproject.com/download/1.6.2/tarball/). Então:}
-00093         `$ tar xzvf Django-1.6.2.tar.gz`
-00094         `$ cd Django-1.6.2`
-00095         `$ sudo python setup.py install`
+        `$ sudo python setup.py install`
+rio cujo nome inicie com "Django-":
+00085     `$ python setup.py install`
+00086 
+00087 5. Para instalar django no Ubuntu:
+00088   * Pelo pip:
+00089     `$ pip install Django==1.7`
+00090   * "Manualmente":
+00091     * Baixe [Download Django-1.6.2.tar.gz](https:\textcolor{comment}{//www.djangoproject.com/download/1.6.2/tarball/). Então:}
+00092         `$ tar xzvf Django-1.6.2.tar.gz`
+00093         `$ cd Django-1.6.2`
+00094         `$ sudo python setup.py install`
 \end{DoxyCode}

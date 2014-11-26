@@ -32,7 +32,7 @@ def globalContext(request):
 		}
 
 ## Classe factory.
-# 	Responsável pela construção e controle de fluxo de todo o programa. 
+#	Responsável pela construção e controle de fluxo de todo o programa. 
 # 	Tudo é criado a partir dela.
 class Factory:
 	__ui = None
@@ -146,7 +146,7 @@ class Factory:
 	def runCourse(self, request, courseid):
 		if 'user' in request.session.keys():
 			if not self.__ui is IfUiCourse:
-				self.__per = PersCourse()
+				self.__pers = PersCourse()
 				self.__bus = BusCourse(self.__pers)
 				self.__ui = UiCourse(self.__bus)
 

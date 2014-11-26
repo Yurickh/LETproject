@@ -37,3 +37,8 @@
 	list-style-type: none;
 	text-align: left;
 }
+
+#topper
+{
+	height: 50%;
+}

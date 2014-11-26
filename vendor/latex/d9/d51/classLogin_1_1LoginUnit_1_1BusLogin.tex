@@ -25,7 +25,7 @@ def \hyperlink{classLogin_1_1LoginUnit_1_1BusLogin_a23223ddd567bf874e6230efaf491
 \subsubsection{Descrição Detalhada}
 
 
-Definição na linha \hyperlink{LoginUnit_8py_source_l00189}{189} do arquivo \hyperlink{LoginUnit_8py_source}{Login\-Unit.\-py}.
+Definição na linha \hyperlink{LoginUnit_8py_source_l00194}{194} do arquivo \hyperlink{LoginUnit_8py_source}{Login\-Unit.\-py}.
 
 
 
@@ -41,14 +41,14 @@ Definição na linha \hyperlink{LoginUnit_8py_source_l00189}{189} do arquivo \hy
 )}}\label{classLogin_1_1LoginUnit_1_1BusLogin_a23223ddd567bf874e6230efaf4912e98}
 
 
-Definição na linha \hyperlink{LoginUnit_8py_source_l00196}{196} do arquivo \hyperlink{LoginUnit_8py_source}{Login\-Unit.\-py}.
+Definição na linha \hyperlink{LoginUnit_8py_source_l00201}{201} do arquivo \hyperlink{LoginUnit_8py_source}{Login\-Unit.\-py}.
 
 
 \begin{DoxyCode}
-\hypertarget{classLogin_1_1LoginUnit_1_1BusLogin_l00196}{}\hyperlink{classLogin_1_1LoginUnit_1_1BusLogin_a23223ddd567bf874e6230efaf4912e98}{00196} 
-00197     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1BusLogin_a23223ddd567bf874e6230efaf4912e98}{getLang}(self, username, database):
-00198         ulang = self.pers.select(username.value, database)
-00199         \textcolor{keywordflow}{return} ulang[\textcolor{stringliteral}{'language'}]
+\hypertarget{classLogin_1_1LoginUnit_1_1BusLogin_l00201}{}\hyperlink{classLogin_1_1LoginUnit_1_1BusLogin_a23223ddd567bf874e6230efaf4912e98}{00201} 
+00202     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1BusLogin_a23223ddd567bf874e6230efaf4912e98}{getLang}(self, username, database):
+00203         ulang = self.pers.select(username.value, database)
+00204         \textcolor{keywordflow}{return} ulang[\textcolor{stringliteral}{'language'}]
 
 \end{DoxyCode}
 \hypertarget{classLogin_1_1LoginUnit_1_1BusLogin_a2301425767b811697ce559801b955a58}{\index{Login\-::\-Login\-Unit\-::\-Bus\-Login@{Login\-::\-Login\-Unit\-::\-Bus\-Login}!validate@{validate}}
@@ -63,15 +63,15 @@ Definição na linha \hyperlink{LoginUnit_8py_source_l00196}{196} do arquivo \hy
 )}}\label{classLogin_1_1LoginUnit_1_1BusLogin_a2301425767b811697ce559801b955a58}
 
 
-Definição na linha \hyperlink{LoginUnit_8py_source_l00191}{191} do arquivo \hyperlink{LoginUnit_8py_source}{Login\-Unit.\-py}.
+Definição na linha \hyperlink{LoginUnit_8py_source_l00196}{196} do arquivo \hyperlink{LoginUnit_8py_source}{Login\-Unit.\-py}.
 
 
 \begin{DoxyCode}
-\hypertarget{classLogin_1_1LoginUnit_1_1BusLogin_l00191}{}\hyperlink{classLogin_1_1LoginUnit_1_1BusLogin_a2301425767b811697ce559801b955a58}{00191} 
-00192     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1BusLogin_a2301425767b811697ce559801b955a58}{validate}(self, username, password, database):
-00193         upass = self.pers.select(username.value, database)
-00194         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} upass \textcolor{keywordflow}{or} upass[\textcolor{stringliteral}{'password'}] != password.value:
-00195             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_LOG'}])
+\hypertarget{classLogin_1_1LoginUnit_1_1BusLogin_l00196}{}\hyperlink{classLogin_1_1LoginUnit_1_1BusLogin_a2301425767b811697ce559801b955a58}{00196} 
+00197     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1BusLogin_a2301425767b811697ce559801b955a58}{validate}(self, username, password, database):
+00198         upass = self.pers.select(username.value, database)
+00199         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} upass \textcolor{keywordflow}{or} upass[\textcolor{stringliteral}{'password'}] != password.value:
+00200             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_LOG'}])
 
 \end{DoxyCode}
 

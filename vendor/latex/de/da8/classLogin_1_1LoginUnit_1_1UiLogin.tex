@@ -58,42 +58,47 @@ Definição na linha \hyperlink{LoginUnit_8py_source_l00137}{137} do arquivo \hy
 00149                     target = \textcolor{stringliteral}{"proflogin"}
 00150                 \textcolor{keywordflow}{elif} database.\_\_name\_\_ == \textcolor{stringliteral}{"Adm"}:
 00151                     target = \textcolor{stringliteral}{"364fd8cdc3a35a89b7be75bc9d10ebea"}
-00152                 \textcolor{keywordflow}{else}:
-00153                     target = \textcolor{stringliteral}{""}
-00154 
-00155                 \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Login/form.html"}, \{\textcolor{stringliteral}{'form'}: login\_form, 
-00156                     \textcolor{stringliteral}{'error'}: exc, \textcolor{stringliteral}{'target'}: target\})
-00157             \textcolor{keywordflow}{else}:
-00158                 l = \textcolor{keywordtype}{None}
-00159                 cd = login\_form.cleaned\_data
-00160                 \textcolor{keywordflow}{if} database.\_\_name\_\_ != \textcolor{stringliteral}{"Adm"}:
-00161                     l = self.bus.getLang(cd[\textcolor{stringliteral}{'username'}], database)
-00162                 \textcolor{keywordflow}{else}:
-00163                     l = request.LANGUAGE\_CODE
-00164                 request.session[\textcolor{stringliteral}{'user'}] = \{
-00165                                 \textcolor{stringliteral}{'name'}: cd[\textcolor{stringliteral}{'username'}].value,
-00166                                 \textcolor{stringliteral}{'password'}: cd[\textcolor{stringliteral}{'password'}].value,
-00167                                 \textcolor{stringliteral}{'language'}: l ,
-00168                                 \textcolor{stringliteral}{'type'}: database.\_\_name\_\_,
-00169                             \}
-00170                 \textcolor{keywordflow}{print} l
-00171                 translation.activate(l)
-00172                 request.session[translation.LANGUAGE\_SESSION\_KEY] = l
-00173                 \textcolor{keywordflow}{return} HttpResponseRedirect(\textcolor{stringliteral}{'/'})
-00174         \textcolor{keywordflow}{else}:
-00175             login\_form = \hyperlink{classLogin_1_1forms_1_1LoginForm}{LoginForm}()
-00176 
-00177             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} database:
-00178                 target = \textcolor{stringliteral}{""}
-00179             \textcolor{keywordflow}{if} database.\_\_name\_\_ == \textcolor{stringliteral}{"Professor"}:
-00180                 target = \textcolor{stringliteral}{"proflogin"}
-00181             \textcolor{keywordflow}{elif} database.\_\_name\_\_ == \textcolor{stringliteral}{"Adm"}:
-00182                 target = \textcolor{stringliteral}{"364fd8cdc3a35a89b7be75bc9d10ebea"}
-00183             \textcolor{keywordflow}{else}:
-00184                 target = \textcolor{stringliteral}{""}
-00185 
-00186             \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Login/form.html"}, \{\textcolor{stringliteral}{'form'}: login\_form, \textcolor{stringliteral}{'target'}: target\})
-00187 
+00152                 \textcolor{keywordflow}{elif} database.\_\_name\_\_ == \textcolor{stringliteral}{"God"}:
+00153                     target = \textcolor{stringliteral}{"e50b058759a52eda8a507687887186e5"}
+00154                 \textcolor{keywordflow}{else}:
+00155                     target = \textcolor{stringliteral}{""}
+00156 
+00157                 \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Login/form.html"}, \{\textcolor{stringliteral}{'form'}: login\_form, 
+00158                     \textcolor{stringliteral}{'error'}: exc, \textcolor{stringliteral}{'target'}: target\})
+00159             \textcolor{keywordflow}{else}:
+00160                 l = \textcolor{keywordtype}{None}
+00161                 cd = login\_form.cleaned\_data
+00162                 \textcolor{keywordflow}{if} (database.\_\_name\_\_ != \textcolor{stringliteral}{"Adm"} \textcolor{keywordflow}{and}
+00163                     database.\_\_name\_\_ != \textcolor{stringliteral}{"God"}):
+00164                     l = self.bus.getLang(cd[\textcolor{stringliteral}{'username'}], database)
+00165                 \textcolor{keywordflow}{else}:
+00166                     l = request.LANGUAGE\_CODE
+00167                 request.session[\textcolor{stringliteral}{'user'}] = \{
+00168                                 \textcolor{stringliteral}{'name'}: cd[\textcolor{stringliteral}{'username'}].value,
+00169                                 \textcolor{stringliteral}{'password'}: cd[\textcolor{stringliteral}{'password'}].value,
+00170                                 \textcolor{stringliteral}{'language'}: l ,
+00171                                 \textcolor{stringliteral}{'type'}: database.\_\_name\_\_,
+00172                             \}
+00173                 translation.activate(l)
+00174                 request.session[translation.LANGUAGE\_SESSION\_KEY] = l
+00175                 \textcolor{keywordflow}{return} HttpResponseRedirect(\textcolor{stringliteral}{'/'})
+00176         \textcolor{keywordflow}{else}:
+00177             login\_form = \hyperlink{classLogin_1_1forms_1_1LoginForm}{LoginForm}()
+00178 
+00179             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} database:
+00180                 target = \textcolor{stringliteral}{""}
+00181             \textcolor{keywordflow}{if} database.\_\_name\_\_ == \textcolor{stringliteral}{"Professor"}:
+00182                 target = \textcolor{stringliteral}{"proflogin"}
+00183             \textcolor{keywordflow}{elif} database.\_\_name\_\_ == \textcolor{stringliteral}{"Adm"}:
+00184                 target = \textcolor{stringliteral}{"364fd8cdc3a35a89b7be75bc9d10ebea"}
+00185             \textcolor{keywordflow}{elif} database.\_\_name\_\_ == \textcolor{stringliteral}{"God"}:
+00186                 target = \textcolor{stringliteral}{"e50b058759a52eda8a507687887186e5"}
+00187             \textcolor{keywordflow}{else}:
+00188                 target = \textcolor{stringliteral}{""}
+00189 
+00190             \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Login/form.html"}, 
+00191                 \{\textcolor{stringliteral}{'form'}: login\_form, \textcolor{stringliteral}{'target'}: target\})
+00192 
 
 \end{DoxyCode}
 

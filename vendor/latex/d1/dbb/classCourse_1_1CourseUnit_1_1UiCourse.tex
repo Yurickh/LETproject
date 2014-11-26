@@ -7,14 +7,51 @@ Diagrama de Hierarquia para Course.\-Course\-Unit.\-Ui\-Course\-:\begin{figure}[
 \includegraphics[height=2.000000cm]{d1/dbb/classCourse_1_1CourseUnit_1_1UiCourse}
 \end{center}
 \end{figure}
+\subsubsection*{Métodos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classCourse_1_1CourseUnit_1_1UiCourse_aaaf2b8229f2b774f12e719bc0e6f13cb}{run}
+\end{DoxyCompactItemize}
 \subsubsection*{Additional Inherited Members}
 
 
 \subsubsection{Descrição Detalhada}
 
 
-Definição na linha \hyperlink{CourseUnit_8py_source_l00062}{62} do arquivo \hyperlink{CourseUnit_8py_source}{Course\-Unit.\-py}.
+Definição na linha \hyperlink{CourseUnit_8py_source_l00073}{73} do arquivo \hyperlink{CourseUnit_8py_source}{Course\-Unit.\-py}.
 
+
+
+\subsubsection{Métodos}
+\hypertarget{classCourse_1_1CourseUnit_1_1UiCourse_aaaf2b8229f2b774f12e719bc0e6f13cb}{\index{Course\-::\-Course\-Unit\-::\-Ui\-Course@{Course\-::\-Course\-Unit\-::\-Ui\-Course}!run@{run}}
+\index{run@{run}!Course::CourseUnit::UiCourse@{Course\-::\-Course\-Unit\-::\-Ui\-Course}}
+\paragraph[{run}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\-Course\-Unit.\-Ui\-Course.\-run (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{request, }
+\item[{}]{courseid}
+\end{DoxyParamCaption}
+)}}\label{classCourse_1_1CourseUnit_1_1UiCourse_aaaf2b8229f2b774f12e719bc0e6f13cb}
+
+
+Definição na linha \hyperlink{CourseUnit_8py_source_l00075}{75} do arquivo \hyperlink{CourseUnit_8py_source}{Course\-Unit.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classCourse_1_1CourseUnit_1_1UiCourse_l00075}{}\hyperlink{classCourse_1_1CourseUnit_1_1UiCourse_aaaf2b8229f2b774f12e719bc0e6f13cb}{00075} 
+00076     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1UiCourse_aaaf2b8229f2b774f12e719bc0e6f13cb}{run}(self, request, courseid):
+00077         
+00078         user = request.session[\textcolor{stringliteral}{'user'}]
+00079 
+00080         \textcolor{keywordflow}{if} request.method == \textcolor{stringliteral}{"GET"}:
+00081             \textcolor{keywordflow}{if} courseid \textcolor{keywordflow}{in} user[\textcolor{stringliteral}{'courses'}]:
+00082                 course = self.bus.getCourse(user, courseid)
+00083                 \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Course/frame.html"}, \{\textcolor{stringliteral}{'course'}:course\})
+00084             \textcolor{keywordflow}{else}:
+00085                 \textcolor{keywordflow}{raise} PermissionDenied(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_403\_STD"}])
+00086         
+
+\end{DoxyCode}
 
 
 A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}
