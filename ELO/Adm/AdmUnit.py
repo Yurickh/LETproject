@@ -316,10 +316,8 @@ class UiAdm(IfUiAdm):
                     #   Caso contrário, é lançada exceção de erro referente à
                     #   form inválido.
                     if form.is_valid():
-                        conf = self.bus.regAccount(request, form)
+                        self.bus.regAccount(request, form)
                         exc = ""
-                        return render(request, "Adm/confirm_adm.html", 
-                                    {'conf': conf })
                     else:
                         raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
 
@@ -559,75 +557,70 @@ class UiAdm(IfUiAdm):
 class BusAdm(IfBusAdm): 
 
     def regAccount(self, request, form):
-        try:
-            # Inicia o dicionário dict_data. 
-            #   Será utilizado para informar os campos e dados para registro
-            #   do usuário.
-            dict_data = {}
-            # Possíveis campos valorados dos modelos de contas.
-            database_fields = ['NAME', 'SEX', 'PASSWORD', 'MATRIC', 
-                               'CAMPUS','EMAIL', 'PROFESSOR']
+        # Inicia o dicionário dict_data. 
+        #   Será utilizado para informar os campos e dados para registro
+        #   do usuário.
+        dict_data = {}
+        # Possíveis campos valorados dos modelos de contas.
+        database_fields = ['NAME', 'SEX', 'PASSWORD', 'MATRIC', 
+                           'CAMPUS','EMAIL', 'PROFESSOR']
 
-            ## Percorre a requisição procurando os dados inseridos para registro.
-            #   Se algum valor do campo não for válido então irá emitir erro de
-            #   formulário inválido.
-            for field, value in request.POST.items():
-                # Transforma campo unicode em string.
-                field = str(field)
-                # Coleta a palavra chave do campo designado.
-                # Esta é coletada a partir dos campos contidos 
-                # no dicionário.
-                newField = field[4:].upper()
+        ## Percorre a requisição procurando os dados inseridos para registro.
+        #   Se algum valor do campo não for válido então irá emitir erro de
+        #   formulário inválido.
+        for field, value in request.POST.items():
+            # Transforma campo unicode em string.
+            field = str(field)
+            # Coleta a palavra chave do campo designado.
+            # Esta é coletada a partir dos campos contidos 
+            # no dicionário.
+            newField = field[4:].upper()
 
-                # Se o campo encontrado pertence à lista de campos
-                # do database que deveriam pertencer a um usuário,
-                # então este é adicionado ao dicionário que será 
-                # repassado para inserção no banco de dados 
-                # posteriormente.
-                if newField in database_fields:
-                    dict_data[newField] = form.cleaned_data[
-                                                field].value
+            # Se o campo encontrado pertence à lista de campos
+            # do database que deveriam pertencer a um usuário,
+            # então este é adicionado ao dicionário que será 
+            # repassado para inserção no banco de dados 
+            # posteriormente.
+            if newField in database_fields:
+                dict_data[newField] = form.cleaned_data[
+                                            field].value
 
-            ## Verifica qual e o tipo do modelo requisitado para inserção 
-            #   de nova conta.
-            #    
-            #   Caso a requisição venha com outro modelo não especificado nos
-            #   condicionais então é emitido erro.
-            db = None
+        ## Verifica qual e o tipo do modelo requisitado para inserção 
+        #   de nova conta.
+        #    
+        #   Caso a requisição venha com outro modelo não especificado nos
+        #   condicionais então é emitido erro.
+        db = None
 
-            model = str(request.POST['model'])
+        model = str(request.POST['model'])
 
-            if model == "Student":
-                db = Student
-            elif model == "Professor":
-                db = Professor
-            elif model == "Course":
-                db = Courses 
-            else:
-                raise ValueError(lang.DICT['ERROR_MODEL'])
+        if model == "Student":
+            db = Student
+        elif model == "Professor":
+            db = Professor
+        elif model == "Course":
+            db = Courses 
+        else:
+            raise ValueError(lang.DICT['ERROR_MODEL'])
 
 
-            ## @if Verifica se a requisição pede outro modelo diferente de 
-            #       Curso.
-            #       
-            #   Caso não for do modelo de Curso então é adionado a linguagem
-            #   com valor default de Português.
-            if model != "Course":
-                # Escolhe uma linguagem padrão para cadastro do usuário 
-                # recente.
-                dict_data['LANGUAGE'] = 'pt-br'
+        ## @if Verifica se a requisição pede outro modelo diferente de 
+        #       Curso.
+        #       
+        #   Caso não for do modelo de Curso então é adionado a linguagem
+        #   com valor default de Português.
+        if model != "Course":
+            # Escolhe uma linguagem padrão para cadastro do usuário 
+            # recente.
+            dict_data['LANGUAGE'] = 'pt-br'
 
+        result = self.pers.fetchUser(request.POST['username'], db)
+
+        if not result:
             # É passado o dicionário de campos e valores do novo registro, e
             # o modelo de conta requisitado para criação destas informações 
             # no banco de dados (Persistência).
             self.pers.data_in(dict_data, db)
-        except ValueError as exc:
-            raise ValueError(exc)
-            return False
-        else:
-            return True
-
-
         
     def attAccount(self, request, field, form): 
         if field == "name":
@@ -663,19 +656,21 @@ class BusAdm(IfBusAdm):
             raise ValueError(lang.DICT['EXCEPTION_ERR_DB_U'])
         
     def delAccount(self, request):
+        
+        db = None
+
+        model = str(request.POST['model'])
+
+        if model == "Student":
+            db = Student
+        elif model == "Professor":
+            db = Professor
+        elif model == "Course":
+            db = Courses 
+        else:
+            raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
+
         try:
-            db = None
-
-            model = str(request.POST['model'])
-
-            if model == "Student":
-                db = Student
-            elif model == "Professor":
-                db = Professor
-            elif model == "Course":
-                db = Courses 
-            else:
-                raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
 
             if db == Courses:
                 data = self.pers.fetch_del_Cour(str(request.POST['courMatric']), db)  
@@ -683,7 +678,7 @@ class BusAdm(IfBusAdm):
                 data = self.pers.fetch_del_User(request.POST['username'], db) 
 
         except ValueError as exc:
-            raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
+            raise ValueError(exc)
 
         return data
 
@@ -712,6 +707,7 @@ class BusAdm(IfBusAdm):
         else:
             raise ValueError(lang.DICT['ERROR_MODEL'])
 
+
         ## @if Confere se o modelo da Conta é um Curso.
         #
         #   Caso seja um curso é necessário passar a matrícula do Curso 
@@ -723,6 +719,7 @@ class BusAdm(IfBusAdm):
             data = self.pers.fetchCour(str(request.POST['courMatric']), db)  
         else:
             data = self.pers.fetchUser(str(request.POST['username']), db) 
+    
 
         ## @if Confere se foi retornado algo do banco de dados.
         #
@@ -849,10 +846,9 @@ class PersAdm(IfPersAdm):
 
         # Caso usuário não exista, então é retornado para o Business
         # que não foi encontrado.
-        except ( database.DoesNotExist, 
-                database.MultipleObjectsReturned ) as exc:
+        except (database.DoesNotExist, database.MultipleObjectsReturned) as exc: 
             raise ValueError(exc)
-
+                
         # Tenta filtrar os dados de um ID.
         # Caso não exista, é emitido um erro.
         try:   
@@ -863,8 +859,7 @@ class PersAdm(IfPersAdm):
 
             return True
        
-        except ( database.DoesNotExist, 
-                database.MultipleObjectsReturned ) as exc:
+        except (database.DoesNotExist, database.MultipleObjectsReturned) as exc: 
             raise ValueError(exc)
 
     def fetch_del_Cour(self, courMatric, database):

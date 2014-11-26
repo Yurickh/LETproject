@@ -33,7 +33,7 @@ class RegUserForm(forms.Form):
 								widget=forms.RadioSelect(),
 								required= True, label = "Sexo")
 	userEmail =  forms.EmailField(label = "Email:", required= True)
-	userPass = forms.CharField(widget = forms.PasswordInput(
+	userPassword = forms.CharField(widget = forms.PasswordInput(
 								attrs={'autocomplete':'off'}), 
 								label = "Sua senha",required= True)
 	
@@ -85,9 +85,9 @@ class RegUserForm(forms.Form):
 	
 	## Verifica se a formatação da senha do usuario está correta.
 	#	Caso esteja, retorna a senha, caso contrário, lança uma excessão.
-	def clean_userPass(self):
+	def clean_userPassword(self):
 		try:
-			password = Password(self.cleaned_data['userPass'])
+			password = Password(self.cleaned_data['userPassword'])
 		except ValueError:
 			raise forms.ValidationError(lang.DICT["EXCEPTION_INV_LOG"])
 		return password
