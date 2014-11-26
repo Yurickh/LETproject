@@ -16,7 +16,7 @@
 			<label for="id_username">
 				{{ DICT.USERNAME }}
 			</label>
-			{{ form.username }}
+			{{ form.username }}	
 		</div>
 
 		<div class="ffield">
@@ -28,10 +28,15 @@
 		
 		<div class="ffield">
 			{% csrf_token %}
-			<input type="submit" value="Login" name="login_form" />
+			<button class="btn btn-large"><input type="submit" value="Login" name="login_form" /></button>
 		</div>
 	</form>
-
+	<div class="textoHome" style="TEXT-ALIGN:center;POSITION:relative">
+		<h2>Bem vindo ao SALIE!</h2>
+		O Sitema de Aprendizado de Línguas Estrangeiras foi desenvolvido por alunos da Ciência da Computação em parceria com o LET, ambos parte da Universidade de 	
+		Brasília(UnB). Com a intenção de facilitar e agilizar a aprendizagem de línguas à distância, estão disponíveis vários tipos de exercícios e aulas multimídia. 
+		<h3><b>Bom proveito!</b></h3>
+	</div>
 {% endblock %}
 
 

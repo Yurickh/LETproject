@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <div class="mainMenu">
 	
 	{% if user %}
@@ -25,12 +26,28 @@
 		{{ DICT.LOGIN }}
 		</div>
 	</a>
-	{% endif %}
 
 	<a href="/">
 		<div class="banner">
-			{{ DICT.ELO }}
+			<div id="logo">
+				<a target="_blank">
+					<img src="{% static "..media/images/SalieColorido.jpg" %}" border="0" alt="Salie Logo" width="50" height="50"/>
+				</a>
+			</div>
 		</div>
 	</a>
 
-</div>
+	</div>
+
+	<div class="camaleao">
+		<a target="_blank">
+			<img src="http://i1375.photobucket.com/albums/ag477/bruna_luisa2/ColoridoCamaleatildeoPronto_zps1ba54b45.jpg"  alt="Camaleao" width="370px" height="300px" style="OPACITY:0.9;FLOAT:left;PADDING:10%"/>
+		</a>
+	</div>
+	{% endif %}
+
+
+
+
+
+

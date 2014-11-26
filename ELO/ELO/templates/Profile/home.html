@@ -11,6 +11,7 @@
 
 {% block content %}	
 	<div id="topper">
+
 		<div id="profile-ph">
 			<img id="avatar-ph" src="{{ MEDIA_URL}}{{ user.avatar }}" />
 			<div id="p_info">
@@ -22,7 +23,6 @@
 			</div>
 		</div>
 	</div>
-
 	<div id="bottomer">
 		<div id="p_courses">
 			{% if user.type == 'Student' %}
