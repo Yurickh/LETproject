@@ -437,7 +437,9 @@ class PersProfile(IfPersProfile):
                     sfmc = 1 if not sfmc is list else sfmc.length()
 
                     cname = Courses.objects.get(identity=c, field='NAME').value
-                    lc = lc + [({'name':cname, 'id':c}, sfmc*100/nmod)]
+                    lc = lc + [{'name':cname, 
+                                 'id':c, 
+                                 'completion': sfmc*100/nmod}]
 
                 sfc = lc
 

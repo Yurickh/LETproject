@@ -26,10 +26,10 @@
 	<div id="bottomer">
 		<div id="p_courses">
 			{% if user.type == 'Student' %}
-				{% for course, perc in user.courses %}
+				{% for course in user.courses %}
 					<a href="/course/{{ course.id }}/">
 						{{ course.name }}: 
-						<progress value="{{ perc }}" max="100"></progress>
+						<progress value="{{ course.completion }}" max="100"></progress>
 					</a>
 				{% endfor %}
 			{% endif %}

@@ -79,7 +79,7 @@ class UiCourse(IfUiCourse):
 		user = request.session['user']
 
 		if request.method == "GET":
-			if courseid in user['courses']:
+			if courseid in map(lambda x: x["id"], user["courses"]):
 				course = self.bus.getCourse(user, courseid)
 				return render(request, "Course/general/frame.html", 
 					{'course':course})
@@ -94,14 +94,15 @@ class BusCourse(IfBusCourse):
 
 class PersCourse(IfPersCourse):
 
-	def fetch(id, db):
+	def fetch(self, id, db):
 		model_data = db.objects.filter(identity=id)
+		format_data = {}
 
 		## @for
 		#	Cria um dicionário de listas, no fomato:
 		#
 		#	CAMPO_NO_BANCO_DE_DADOS => [ VALOR_1, VALOR_2 ... VALOR_N ]
 		for inst in model_data:
-			format_data[inst.field] = format_data[inst.field] + [ inst.value ]
+			format_data[inst.field]=format_data.get(inst.field,[])+[inst.value]
 
 		return format_data
