@@ -4,6 +4,7 @@
 {% block title %}{{ DICT.ELO_COURSE }}{% endblock %}
 
 {% block head %}
+    <script src="{% static 'Course/script.js' %}"></script>
     <link   rel="stylesheet"
             type="text/css"
             href="{% static 'Course/styles.css' %}" />
@@ -16,11 +17,16 @@
         </div>
         <br />
         <div id="left_bar">
-            <ul>
+            <div id="module_accordion">
             {% for module in course.MODULE %}
-                <li><div class="module_link">{{ module.name }}</div></li>
+                <h3>{{ module.name }}</h3>
+                <div>
+                    {% for lesson in module.lessons %}
+                        {{ lesson }}
+                    {% endfor %}
+                </div>
             {% endfor %}
-            </ul>
+            </div>
         </div>
         <div id="container">
         </div>

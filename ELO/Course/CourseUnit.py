@@ -4,7 +4,7 @@ from abc import*
 
 import ELO.locale.index as lang
 
-from ELO.models import Courses, Module
+from ELO.models import Courses, Module, Lesson
 
 from django.shortcuts import render
 from django.core.exceptions import PermissionDenied
@@ -92,13 +92,20 @@ class BusCourse(IfBusCourse):
 	def getCourse(self, user, courseid):
 		coursedata = self.pers.fetch(courseid, Courses)
 		modulelist = []
-
-		ret = []
 		
 		for moduleid in coursedata['MODULE']:
-			modulename = self.pers.fetch(moduleid, Module)['NAME'][0]
-			modulelist = modulelist + [{'id': 	moduleid,
-										'name': modulename 
+			sfm = self.pers.fetch(moduleid, Module)
+			modulename = sfm['NAME'][0]
+
+			lessonlist = []
+
+			for lessonid in sfm['LESSON']:
+				lessoname = self.pers.fetch(lessonid, Lesson)['NAME']
+				lessonlist = lessonlist + lessoname
+
+			modulelist = modulelist + [{'id': 		moduleid,
+										'name': 	modulename,
+										'lessons':	lessonlist,
 									  }]
 		
 		coursedata['MODULE'] = sorted(modulelist, key=lambda x: x['id'])
