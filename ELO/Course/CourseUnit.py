@@ -4,7 +4,7 @@ from abc import*
 
 import ELO.locale.index as lang
 
-from ELO.models import Courses
+from ELO.models import Courses, Module
 
 from django.shortcuts import render
 from django.core.exceptions import PermissionDenied
@@ -91,7 +91,20 @@ class BusCourse(IfBusCourse):
 
 	def getCourse(self, user, courseid):
 		coursedata = self.pers.fetch(courseid, Courses)
+		modulelist = []
 
+		ret = []
+		
+		for moduleid in coursedata['MODULE']:
+			modulename = self.pers.fetch(moduleid, Module)['NAME'][0]
+			modulelist = modulelist + [{'id': 	moduleid,
+										'name': modulename 
+									  }]
+		
+		coursedata['MODULE'] = sorted(modulelist, key=lambda x: x['id'])
+
+		return coursedata
+		
 class PersCourse(IfPersCourse):
 
 	def fetch(self, id, db):
@@ -102,7 +115,7 @@ class PersCourse(IfPersCourse):
 		#	Cria um dicionário de listas, no fomato:
 		#
 		#	CAMPO_NO_BANCO_DE_DADOS => [ VALOR_1, VALOR_2 ... VALOR_N ]
-		for inst in model_data:
-			format_data[inst.field]=format_data.get(inst.field,[])+[inst.value]
+		for i in model_data.values():
+			format_data[i['field']]=format_data.get(i['field'],[])+[i['value']]
 
 		return format_data

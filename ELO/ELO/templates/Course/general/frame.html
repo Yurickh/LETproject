@@ -16,6 +16,11 @@
         </div>
         <br />
         <div id="left_bar">
+            <ul>
+            {% for module in course.MODULE %}
+                <li><div class="module_link">{{ module.name }}</div></li>
+            {% endfor %}
+            </ul>
         </div>
         <div id="container">
         </div>
