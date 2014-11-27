@@ -53,13 +53,13 @@ $(document).ready(function(){
 
 	});
 
-	$("#reg_form").on('submit', function(e){
-		e.preventDefault();
-		$dialog.dialog('close');
+	//$("#reg_form").on('submit', function(e){
+	//	e.preventDefault();
+	//	$dialog.dialog('close');
+	//
+	//	data = $(this).serialize();
+	//	alert(data);
 
-		data = $(this).serialize();
-		alert(data);
 
-
-	});
+	//});
 });

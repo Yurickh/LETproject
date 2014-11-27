@@ -172,6 +172,7 @@ class Exercise(models.Model):
 #					inserção de contas.\n
 class Identities(models.Model):
 	identity = models.IntegerField()
+	model = models.TextField()
 
 	def __unicode__(self):
-		return u'%d ' % (self.identity)
+		return u'%d : %s' % (self.identity, self.model)

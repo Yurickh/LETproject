@@ -18,7 +18,7 @@ from abc import *
 
 import ELO.index as lang
 
-from ELO.models import Adm, Student, Professor, Courses, God
+from ELO.models import Adm, Student, Professor, Courses, God, Identities
 
 from forms import (
     RegUserForm,
@@ -734,16 +734,26 @@ class BusAdm(IfBusAdm):
 class PersAdm(IfPersAdm):
 
     def data_in(self, dict_field_value, database):
-        # Tenta coletar o último id inserido.
-        #   Caso não tenha ocorrido nenhum registro de contas então
-        #   é atribuído o valor inicial como '1'
-        try:
-            # Coleta o ultimo ID inserido no identity do database.
-            lastid = database.objects.order_by('-identity')[0]
-            # Newid será a identity do novo usuário.
-            newid = lastid.identity + 1
-        except IndexError:
-            newid = 1
+        # Coleta identidades ordenadas do modelo requisitado.
+        catch = Identities.objects.filter(
+            model=database.__name__).order_by('identity')
+
+        if not catch:
+            # Tenta coletar o último id inserido.
+            #   Caso não tenha ocorrido nenhum registro de contas então
+            #   é atribuído o valor inicial como '1'
+            try:
+                # Coleta o ultimo ID inserido no identity do database.
+                lastid = database.objects.order_by('-identity')[0]
+                # Newid será a identity do novo usuário.
+                newid = lastid.identity + 1
+            except IndexError:
+                newid = 1
+        else:
+            # Atribui o menor valor de identidade à nova conta a ser criada 
+            #   e retira este número do banco de dados de id's disponíveis.
+            newid = catch[0].identity
+            catch[0].delete()
         
         # Percorre o dicionário ligado aos campos a seu valores.
         for fields in dict_field_value:
@@ -856,11 +866,16 @@ class PersAdm(IfPersAdm):
             accdel = database.objects.filter(identity=uid)
             # Lista dos dados é deletada do database.
             accdel.delete()
+       
+        except (database.DoesNotExist, 
+            database.MultipleObjectsReturned) as exc: 
+            raise ValueError(exc)
+        else:
+            # Salva o Id deletado na model de Id's disponíveis.
+            newid = Identities(identity=uid, model=database.__name__)
+            newid.save()
 
             return True
-       
-        except (database.DoesNotExist, database.MultipleObjectsReturned) as exc: 
-            raise ValueError(exc)
 
     def fetch_del_Cour(self, courMatric, database):
         # Tenta procurar se o username existe no banco de dados.
@@ -883,12 +898,17 @@ class PersAdm(IfPersAdm):
             accdel = database.objects.filter(identity=uid)
             # Lista dos dados é deletada do database.
             accdel.delete()
-
-            return True
        
         except ( database.DoesNotExist, 
                 database.MultipleObjectsReturned ) as exc:
             raise ValueError(exc)
+        else:  
+            # Salva o Id deletado na model de Id's disponíveis.
+            newid = Identities(identity=uid, model=database.__name__)
+            newid.save()
+
+            return True
+
 
     ## Seleciona campo a partir da identidade do usuário.
     #   Podendo ser estes de uma conta de Estudante, Professor ou um Curso.  
