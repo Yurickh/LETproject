@@ -51,7 +51,7 @@ class Student(models.Model):
 
 	## Retorna os valores do aluno correspondente ao Id no banco de dados.
 	def __unicode__(self):
-		return u'%s : %s = %s' % (str(self.identity), self.field, self.value)
+		return u'%d : %s = %s' % (self.identity, self.field, self.value)
 
 ## Classe que define o modelo de administrador.
 # 	Colunas já implementadas:
@@ -65,7 +65,7 @@ class Adm(models.Model):
 
 	## Retorna os valores do administrador correspondente ao Id no banco de dados.
 	def __unicode__(self):
-		return u'%s : %s = %s' % (str(self.identity), self.field, self.value)
+		return u'%d : %s = %s' % (self.identity, self.field, self.value)
 
 ## Classe que define o modelo de professor.
 # 	Colunas já implementadas:
@@ -87,7 +87,7 @@ class Professor(models.Model):
 
 	## Retorna os valores do professor correspondente ao Id no banco de dados.
 	def __unicode__(self):
-		return u'%s : %s = %s' % (str(self.identity), self.field, self.value)
+		return u'%d : %s = %s' % (self.identity, self.field, self.value)
 
 ## Classe que define o modelo de deus.
 #	Esta tabela sempre conterá apenas uma entrada, ou seja, este sistema é
@@ -114,7 +114,7 @@ class Courses(models.Model):
 	value = models.TextField()
 
 	def __unicode__(self):
-		return u'%s : %s = %s' % (str(self.identity), self.field, self.value)
+		return u'%d : %s = %s' % (self.identity, self.field, self.value)
 
 ## Classe que define o modelo de Módulo.
 #	Um módulo é o primeiro nível de divisão dentro de um curso.
@@ -131,7 +131,7 @@ class Module(models.Model):
 	value = models.TextField()
 
 	def __unicode__(self):
-		return u'%s : %s = %s' % (str(self.identity), self.field, self.value)
+		return u'%d : %s = %s' % (self.identity, self.field, self.value)
 
 ## Classe que define o modelo de Lição.
 #	Colunas já implementadas:
@@ -147,7 +147,7 @@ class Lesson(models.Model):
 	value = models.TextField()
 
 	def __unicode__(self):
-		return u'%s : %s = %s' % (str(self.identity), self.field, self.value)
+		return u'%d : %s = %s' % (self.identity, self.field, self.value)
 
 ## Classe que define o modelo de exercício.
 #	Colunas já implementadas:
@@ -163,4 +163,15 @@ class Exercise(models.Model):
 	value = models.TextField()
 
 	def __unicode__(self):
-		return u'%s : %s = %s' % (str(self.identity), self.field, self.value)
+		return u'%d : %s = %s' % (self.identity, self.field, self.value)
+
+## Classe que define o modelo de Ids disponíveis.
+#	É utilizada para cadastro de contas no banco de dados.
+#
+#	ID:			Pilha de inteiros que identificam locais disponíveis para 
+#					inserção de contas.\n
+class Identities(models.Model):
+	identity = models.IntegerField()
+
+	def __unicode__(self):
+		return u'%d ' % (self.identity)
