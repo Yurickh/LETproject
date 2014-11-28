@@ -1,0 +1,13 @@
+#login_left
+{
+	position: relative;
+	float: right;
+	width: 50%;
+}
+
+#login_right
+{
+	position: relative;
+	float: right;
+	width: 50%;
+}

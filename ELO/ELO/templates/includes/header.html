@@ -21,13 +21,6 @@
 		</div>
 	</a>
 
-	{% else %}
-	<a href="/">
-		<div class="field">
-		{{ DICT.LOGIN }}
-		</div>
-	</a>
-
 	<a href="/">
 		<div class="banner">
 			<div id="logo">
@@ -38,12 +31,15 @@
 		</div>
 	</a>
 
-	</div>
+	{% else %}
+	<a href="/">
+		<div class="field">
+		{{ DICT.LOGIN }}
+		</div>
+	</a>
 
-	<div class="camaleao">
-			<img src="http://i1375.photobucket.com/albums/ag477/bruna_luisa2/ColoridoCamaleatildeoPronto_zps1ba54b45.jpg"  alt="Camaleao" width="370px" height="300px" style="OPACITY:0.9;FLOAT:left;PADDING:10%"/>
-	</div>
-	{% endif %}
+{% endif %}
+</div>
 
 
 

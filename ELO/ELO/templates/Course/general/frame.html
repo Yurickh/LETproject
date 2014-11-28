@@ -11,27 +11,34 @@
 {% endblock %}
 
 {% block content %}
-
-    <div id="parent">
-        <div id="topper">
-        </div>
-        <br />
-        <div id="left_bar">
-            <div id="module_accordion">
-            {% for module in course.MODULE %}
-                <h3>{{ module.name }}</h3>
-                <div>
-                    {% for lesson in module.lessons %}
-                        {{ lesson }}
-                    {% endfor %}
-                </div>
-            {% endfor %}
+    <div id="left_bar">
+        <div id="module_accordion">
+        {% for module in course.MODULE %}
+            <h3>{{ module.name }}</h3>
+            <div>
+                {% for lesson in module.lessons %}
+                    {{ lesson }}<br />
+                {% endfor %}
             </div>
+        {% endfor %}
         </div>
-        <div id="container">
-        </div>
-        <button>&lt;</button><button>&gt;</button>
-        <br />
     </div>
+    <div id="topper">
+        
+    </div>
+    <div id="container">
+        <center>
+            <div id="lesson_ctn">
+                <img id="bkg_img" src="{{ MEDIA_URL }}images/cham_rel.png"/>
+            </div>
+        </center>
+    </div>
+    <div id="bottomer">
+        <center>
+                    <button id="c_bt">&lt;</button>
+                    <button id="c_bt">&gt;</button>
+        </center>
+    </div>
+    <br />
 
 {% endblock %}
