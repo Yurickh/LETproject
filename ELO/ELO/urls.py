@@ -40,6 +40,7 @@ urlpatterns = patterns('',
 	## URL da pagina de perfil.
 	url(r'^profile/?$', factory.runProfile, {'acctype': 'Full'}),
 	## URL para mostrar assincronamente a edição de um campo de perfil.
+	#		Requisitado pelo usuário.
 	url(r'^assync/editfield/(?P<field>\w{3,9})/?$', 
 		factory.runProfile, {'acctype' : 'Full'}),
 	## URL da pagina de logout.
@@ -48,10 +49,23 @@ urlpatterns = patterns('',
 	url(r'^course/(?P<courseid>\d+)/?$', factory.runCourse),
 	## URL da pagina de administracao.
 	url(r'^adm/?$', factory.runAdm),
-	url(r'^assync/adm-edit/(?P<action>\w{3,9})/(?P<model>\w{3,9})/?$', 
+	## URL da página assíncrona de edição de estudante, professor ou curso.
+	url(r'^assync/adm-edit/(?P<action>\w{3,7})/(?P<model>\w{3,9})/?$', 
 		factory.runAdm),
+	## URL da página assíncrona que informa os dados de um usuário requisitado.
 	url(r'^assync/adm-info/?$', factory.runAdm),
-	url(r'^assync/edit-field/(?P<field>\w{3,9})/?$', factory.runAdm),
+	## URL para mostrar assincronamente a edição de um campo de perfil.
+	#	Requisitado pelo Administrador.
+	url(r'^assync/edit-field-adm/(?P<action>\w{3,9})/(?P<model>\w{5,7})/?$', factory.runAdm),
+	## URL da página assíncrona que abre Dialog de inserção de Estudantes e
+	#	Professores em algum determinado curso.
+	url(r'^assync/adm-course/(?P<action>\w{5,7})/(?P<model>\w{5,7})/?$', 
+		factory.runAdm),
+	## URL para mostrar assincronamente a deleção de uma conta.
+	#	Requisitado pelo Administrador.
+	url(r'^assync/adm-del/?$', factory.runAdm),
+	## URL para confirmar alguma ação.
+	url(r'^assync/conf-adm/?$', factory.runAdm),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()

@@ -179,6 +179,9 @@ DICT = {
 
 	## Mensagem de erro de formulário
 	'ERROR_FORM'  : _(u"Ocorreu um problema ao carregar o formulário. Favor tentar novamente mais tarde."),
+
+	## Mensagem de erro para tipo de modelo inválido.
+	'ERROR_MODEL'  : _(u"Modelo requisitado inválido."),
 	
 	'ELO_HOME' : _(u'SALiE - Página Inicial'),
 	'ELO_PROFILE' : _(u'SALiE - Perfil'),
@@ -225,6 +228,7 @@ DICT = {
 	'REGISTER_COURSE' : _(u'Registrar Novo Curso'),
 	'SUBMIT_COURSE' : _(u'Atualizar dados de Curso'),
 	'DEL_COURSE' : _(u'Apagar Registro de Curso'),
+	'INSERT_COURSE' : _(u'Editar alunos e professores inscritos no Curso'),
 	
 	'REGISTER_PROFESSOR' : _(u'Registrar Novo Professor'),
 	'SUBMIT_PROFESSOR' : _(u'Atualizar dados de Professor'),

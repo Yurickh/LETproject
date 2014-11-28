@@ -1,0 +1,24 @@
+{% extends "includes/assync_wrapper.html" %}
+{% load staticfiles %}
+
+{% block head %}
+
+	<link 	rel="stylesheet"
+			type="text/css"
+			href="{% static 'Adm/styles.css' %}" />
+
+{% endblock %}
+
+{% block body %}
+	{% if conf %}
+		<h1>Deseja confirmar esta ação?</h1>
+
+		<button>Sim</button>
+
+		<button>Não</button>
+	{% endif %}
+	{% if conf != None %}
+		<h1>Não foi possível registrar.</h1>
+	{% endif %}
+
+{% endblock %}

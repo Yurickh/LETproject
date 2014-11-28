@@ -105,34 +105,55 @@ CREATE TABLE "django_content_type" (
     "model" varchar(100) NOT NULL,
     UNIQUE ("app_label", "model")
 );
-INSERT INTO "django_content_type" VALUES(1,'permission','auth','permission');
-INSERT INTO "django_content_type" VALUES(2,'group','auth','group');
-INSERT INTO "django_content_type" VALUES(3,'user','auth','user');
-INSERT INTO "django_content_type" VALUES(4,'content type','contenttypes','contenttype');
-INSERT INTO "django_content_type" VALUES(5,'session','sessions','session');
-INSERT INTO "django_content_type" VALUES(6,'student','Login','student');
-INSERT INTO "django_content_type" VALUES(7,'professor','ELO','professor');
-INSERT INTO "django_content_type" VALUES(8,'adm','ELO','adm');
-INSERT INTO "django_content_type" VALUES(9,'student','ELO','student');
-INSERT INTO "django_content_type" VALUES(10,'god','ELO','god');
-INSERT INTO "django_content_type" VALUES(11,'module','ELO','module');
-INSERT INTO "django_content_type" VALUES(12,'courses','ELO','courses');
-INSERT INTO "django_content_type" VALUES(13,'lesson','ELO','lesson');
-INSERT INTO "django_content_type" VALUES(14,'exercise','ELO','exercise');
-CREATE TABLE "Login_student" (
-    "id" integer NOT NULL PRIMARY KEY,
-    "identity" integer NOT NULL,
-    "field" varchar(32) NOT NULL,
-    "value" text NOT NULL
+INSERT INTO "django_content_type" VALUES(1,'content type','contenttypes','contenttype');
+INSERT INTO "django_content_type" VALUES(2,'session','sessions','session');
+INSERT INTO "django_content_type" VALUES(3,'professor','ELO','professor');
+INSERT INTO "django_content_type" VALUES(4,'adm','ELO','adm');
+INSERT INTO "django_content_type" VALUES(5,'student','ELO','student');
+INSERT INTO "django_content_type" VALUES(6,'god','ELO','god');
+INSERT INTO "django_content_type" VALUES(7,'module','ELO','module');
+INSERT INTO "django_content_type" VALUES(8,'courses','ELO','courses');
+INSERT INTO "django_content_type" VALUES(9,'lesson','ELO','lesson');
+INSERT INTO "django_content_type" VALUES(10,'exercise','ELO','exercise');
+INSERT INTO "django_content_type" VALUES(11,'identities','ELO','identities');
+CREATE TABLE "django_session" (
+    "session_key" varchar(40) NOT NULL PRIMARY KEY,
+    "session_data" text NOT NULL,
+    "expire_date" datetime NOT NULL
 );
-INSERT INTO "Login_student" VALUES(1,1,'NAME','Yurick');
-INSERT INTO "Login_student" VALUES(2,1,'PASSWORD','b0f1646252f4434be3ef74e7ab6ac177');
+INSERT INTO "django_session" VALUES('3ewvot5bp7vm4om0zon1hxe1pnfebtzc','ZWRhZDI4NzAxMjUwMDkwZDY2NTczZmI4YWMxYjI0MjVhNDQzYjkxNzp7InVzZXIiOnsicGFzc3dvcmQiOiJkYWZiN2JiNjhhZjM3OWM2YzM5MWZmOWU0ZjJkMWJiZSIsInR5cGUiOiJBZG0iLCJuYW1lIjoiRGF5YW5uZSIsImxhbmd1YWdlIjoicHQtYnIifX0=','2014-10-17 18:11:23.278731');
+INSERT INTO "django_session" VALUES('tzqiuiajf3agum8ffobip264rkkqndb9','MWY4ZjA0NDYwMmU0MWQxOWM1ODg3YzFiZGRkOTkyOGIwYTU4MzZjMTp7Il9sYW5ndWFnZSI6ImVuIn0=','2014-10-17 21:15:22.493487');
+INSERT INTO "django_session" VALUES('qv3f743pm7yv2y40ni3cxkdtwzdj35qt','NDI1MzQxM2VkZGFiMGQzZGNiZDY4OWY4NDcyOGI3ZWRhYzJiNjhlNTp7Il9sYW5ndWFnZSI6InB0LWJyIiwidXNlciI6eyJwYXNzd29yZCI6ImIwZjE2NDYyNTJmNDQzNGJlM2VmNzRlN2FiNmFjMTc3IiwidHlwZSI6IkFkbSIsIm5hbWUiOiJZdXJpY2siLCJsYW5ndWFnZSI6InB0LWJyIn19','2014-10-17 21:16:15.356578');
+INSERT INTO "django_session" VALUES('y9ejmdvi4lvf3egwvx6giakw3wee6f9k','ZWRhZDI4NzAxMjUwMDkwZDY2NTczZmI4YWMxYjI0MjVhNDQzYjkxNzp7InVzZXIiOnsicGFzc3dvcmQiOiJkYWZiN2JiNjhhZjM3OWM2YzM5MWZmOWU0ZjJkMWJiZSIsInR5cGUiOiJBZG0iLCJuYW1lIjoiRGF5YW5uZSIsImxhbmd1YWdlIjoicHQtYnIifX0=','2014-10-20 14:54:06.895188');
+INSERT INTO "django_session" VALUES('nhcq2vey6yvqxsvx68ba9ulo9pkkknfu','ZWRhZDI4NzAxMjUwMDkwZDY2NTczZmI4YWMxYjI0MjVhNDQzYjkxNzp7InVzZXIiOnsicGFzc3dvcmQiOiJkYWZiN2JiNjhhZjM3OWM2YzM5MWZmOWU0ZjJkMWJiZSIsInR5cGUiOiJBZG0iLCJuYW1lIjoiRGF5YW5uZSIsImxhbmd1YWdlIjoicHQtYnIifX0=','2014-10-21 23:31:08.870743');
+INSERT INTO "django_session" VALUES('9lc0fa8zbpd6libhoyya950336tn3jfs','NTBiMGQ2Zjc4YTIyZGNjOTkxYmY4N2E0MTllMjgxOTA1NTY4YTdlMTp7Il9sYW5ndWFnZSI6InB0LWJyIiwidXNlciI6eyJwYXNzd29yZCI6ImRhZmI3YmI2OGFmMzc5YzZjMzkxZmY5ZTRmMmQxYmJlIiwidHlwZSI6IkFkbSIsIm5hbWUiOiJEYXlhbm5lIiwibGFuZ3VhZ2UiOiJwdC1iciJ9fQ==','2014-10-23 18:31:17.510749');
+INSERT INTO "django_session" VALUES('hsi55cup5c23pwa6o60nfbkzd91yixch','NTBiMGQ2Zjc4YTIyZGNjOTkxYmY4N2E0MTllMjgxOTA1NTY4YTdlMTp7Il9sYW5ndWFnZSI6InB0LWJyIiwidXNlciI6eyJwYXNzd29yZCI6ImRhZmI3YmI2OGFmMzc5YzZjMzkxZmY5ZTRmMmQxYmJlIiwidHlwZSI6IkFkbSIsIm5hbWUiOiJEYXlhbm5lIiwibGFuZ3VhZ2UiOiJwdC1iciJ9fQ==','2014-10-24 17:45:19.477189');
+INSERT INTO "django_session" VALUES('3hnxbs7r1btobg53m6torpa5lin82x2m','NTBiMGQ2Zjc4YTIyZGNjOTkxYmY4N2E0MTllMjgxOTA1NTY4YTdlMTp7Il9sYW5ndWFnZSI6InB0LWJyIiwidXNlciI6eyJwYXNzd29yZCI6ImRhZmI3YmI2OGFmMzc5YzZjMzkxZmY5ZTRmMmQxYmJlIiwidHlwZSI6IkFkbSIsIm5hbWUiOiJEYXlhbm5lIiwibGFuZ3VhZ2UiOiJwdC1iciJ9fQ==','2014-10-28 19:45:38.417432');
+INSERT INTO "django_session" VALUES('pi21efywgiikt76b7oxubvb58epecpg8','NTBiMGQ2Zjc4YTIyZGNjOTkxYmY4N2E0MTllMjgxOTA1NTY4YTdlMTp7Il9sYW5ndWFnZSI6InB0LWJyIiwidXNlciI6eyJwYXNzd29yZCI6ImRhZmI3YmI2OGFmMzc5YzZjMzkxZmY5ZTRmMmQxYmJlIiwidHlwZSI6IkFkbSIsIm5hbWUiOiJEYXlhbm5lIiwibGFuZ3VhZ2UiOiJwdC1iciJ9fQ==','2014-10-29 16:37:59.759592');
+INSERT INTO "django_session" VALUES('qevsmpzizr2pcjgvj8qe0047rfv5ppm2','NTBiMGQ2Zjc4YTIyZGNjOTkxYmY4N2E0MTllMjgxOTA1NTY4YTdlMTp7Il9sYW5ndWFnZSI6InB0LWJyIiwidXNlciI6eyJwYXNzd29yZCI6ImRhZmI3YmI2OGFmMzc5YzZjMzkxZmY5ZTRmMmQxYmJlIiwidHlwZSI6IkFkbSIsIm5hbWUiOiJEYXlhbm5lIiwibGFuZ3VhZ2UiOiJwdC1iciJ9fQ==','2014-10-30 20:31:32.213229');
+INSERT INTO "django_session" VALUES('h9cawya7gzzzy6gtbripa9y2eal2c6y1','NTBiMGQ2Zjc4YTIyZGNjOTkxYmY4N2E0MTllMjgxOTA1NTY4YTdlMTp7Il9sYW5ndWFnZSI6InB0LWJyIiwidXNlciI6eyJwYXNzd29yZCI6ImRhZmI3YmI2OGFmMzc5YzZjMzkxZmY5ZTRmMmQxYmJlIiwidHlwZSI6IkFkbSIsIm5hbWUiOiJEYXlhbm5lIiwibGFuZ3VhZ2UiOiJwdC1iciJ9fQ==','2014-10-31 17:50:52.971224');
+INSERT INTO "django_session" VALUES('bkel26j213mcsp14vgz20hty5j0a1ku7','NTBiMGQ2Zjc4YTIyZGNjOTkxYmY4N2E0MTllMjgxOTA1NTY4YTdlMTp7Il9sYW5ndWFnZSI6InB0LWJyIiwidXNlciI6eyJwYXNzd29yZCI6ImRhZmI3YmI2OGFmMzc5YzZjMzkxZmY5ZTRmMmQxYmJlIiwidHlwZSI6IkFkbSIsIm5hbWUiOiJEYXlhbm5lIiwibGFuZ3VhZ2UiOiJwdC1iciJ9fQ==','2014-11-04 16:33:04.139698');
+INSERT INTO "django_session" VALUES('hwzxzn4bukrmfke93mln46rr2g13xhdo','ODY5NmNhODZjY2RkY2NlMDIwMzYzZjI3NTQ2MTA3MTYyYTU4OTM0NTp7Il9sYW5ndWFnZSI6ImVuIiwiZGphbmdvX2xhbmd1YWdlIjoiZW4iLCJ1c2VyIjp7InBhc3N3b3JkIjoiZGFmYjdiYjY4YWYzNzljNmMzOTFmZjllNGYyZDFiYmUiLCJ0eXBlIjoiQWRtIiwibmFtZSI6IkRheWFubmUiLCJsYW5ndWFnZSI6ImVuIn19','2014-11-05 16:18:13.273154');
+INSERT INTO "django_session" VALUES('pks2yfs60yzq8l671ubna76s1rtm1kyw','NTBiMGQ2Zjc4YTIyZGNjOTkxYmY4N2E0MTllMjgxOTA1NTY4YTdlMTp7Il9sYW5ndWFnZSI6InB0LWJyIiwidXNlciI6eyJwYXNzd29yZCI6ImRhZmI3YmI2OGFmMzc5YzZjMzkxZmY5ZTRmMmQxYmJlIiwidHlwZSI6IkFkbSIsIm5hbWUiOiJEYXlhbm5lIiwibGFuZ3VhZ2UiOiJwdC1iciJ9fQ==','2014-11-10 17:18:42.560322');
+INSERT INTO "django_session" VALUES('py78dshfbn4fpfpd5k93afq4c8jpyfb3','NTBiMGQ2Zjc4YTIyZGNjOTkxYmY4N2E0MTllMjgxOTA1NTY4YTdlMTp7Il9sYW5ndWFnZSI6InB0LWJyIiwidXNlciI6eyJwYXNzd29yZCI6ImRhZmI3YmI2OGFmMzc5YzZjMzkxZmY5ZTRmMmQxYmJlIiwidHlwZSI6IkFkbSIsIm5hbWUiOiJEYXlhbm5lIiwibGFuZ3VhZ2UiOiJwdC1iciJ9fQ==','2014-11-12 11:14:18.569774');
+INSERT INTO "django_session" VALUES('wzceik97sfj7sroigti6vm0f0jni4zhb','NTBiMGQ2Zjc4YTIyZGNjOTkxYmY4N2E0MTllMjgxOTA1NTY4YTdlMTp7Il9sYW5ndWFnZSI6InB0LWJyIiwidXNlciI6eyJwYXNzd29yZCI6ImRhZmI3YmI2OGFmMzc5YzZjMzkxZmY5ZTRmMmQxYmJlIiwidHlwZSI6IkFkbSIsIm5hbWUiOiJEYXlhbm5lIiwibGFuZ3VhZ2UiOiJwdC1iciJ9fQ==','2014-11-13 16:44:38.845277');
+INSERT INTO "django_session" VALUES('aj69onltsx7613b0hlwxb97lrgjvb3fh','NTBiMGQ2Zjc4YTIyZGNjOTkxYmY4N2E0MTllMjgxOTA1NTY4YTdlMTp7Il9sYW5ndWFnZSI6InB0LWJyIiwidXNlciI6eyJwYXNzd29yZCI6ImRhZmI3YmI2OGFmMzc5YzZjMzkxZmY5ZTRmMmQxYmJlIiwidHlwZSI6IkFkbSIsIm5hbWUiOiJEYXlhbm5lIiwibGFuZ3VhZ2UiOiJwdC1iciJ9fQ==','2014-11-18 15:15:57.153754');
+INSERT INTO "django_session" VALUES('27jwu6n8i32be84bvpar8jy96rhpn9nm','ODY5NmNhODZjY2RkY2NlMDIwMzYzZjI3NTQ2MTA3MTYyYTU4OTM0NTp7Il9sYW5ndWFnZSI6ImVuIiwiZGphbmdvX2xhbmd1YWdlIjoiZW4iLCJ1c2VyIjp7InBhc3N3b3JkIjoiZGFmYjdiYjY4YWYzNzljNmMzOTFmZjllNGYyZDFiYmUiLCJ0eXBlIjoiQWRtIiwibmFtZSI6IkRheWFubmUiLCJsYW5ndWFnZSI6ImVuIn19','2014-11-19 15:14:07.520942');
+INSERT INTO "django_session" VALUES('25ph8qc8veissh7n0fcva8rqvxpuo9hq','NTBiMGQ2Zjc4YTIyZGNjOTkxYmY4N2E0MTllMjgxOTA1NTY4YTdlMTp7Il9sYW5ndWFnZSI6InB0LWJyIiwidXNlciI6eyJwYXNzd29yZCI6ImRhZmI3YmI2OGFmMzc5YzZjMzkxZmY5ZTRmMmQxYmJlIiwidHlwZSI6IkFkbSIsIm5hbWUiOiJEYXlhbm5lIiwibGFuZ3VhZ2UiOiJwdC1iciJ9fQ==','2014-11-24 16:46:17.253274');
+INSERT INTO "django_session" VALUES('975v56uz074cb7vf0l69jgcp9gksioop','NTBiMGQ2Zjc4YTIyZGNjOTkxYmY4N2E0MTllMjgxOTA1NTY4YTdlMTp7Il9sYW5ndWFnZSI6InB0LWJyIiwidXNlciI6eyJwYXNzd29yZCI6ImRhZmI3YmI2OGFmMzc5YzZjMzkxZmY5ZTRmMmQxYmJlIiwidHlwZSI6IkFkbSIsIm5hbWUiOiJEYXlhbm5lIiwibGFuZ3VhZ2UiOiJwdC1iciJ9fQ==','2014-11-25 15:14:28.242360');
+INSERT INTO "django_session" VALUES('18uaers2sqc7igopgf70wnas9rfgrl2i','NTBiMGQ2Zjc4YTIyZGNjOTkxYmY4N2E0MTllMjgxOTA1NTY4YTdlMTp7Il9sYW5ndWFnZSI6InB0LWJyIiwidXNlciI6eyJwYXNzd29yZCI6ImRhZmI3YmI2OGFmMzc5YzZjMzkxZmY5ZTRmMmQxYmJlIiwidHlwZSI6IkFkbSIsIm5hbWUiOiJEYXlhbm5lIiwibGFuZ3VhZ2UiOiJwdC1iciJ9fQ==','2014-11-27 16:58:14.608530');
+INSERT INTO "django_session" VALUES('1mw9r4vs6uo9feigyiwy1r27n6oji0rp','MDM3Yjk0OTdlMDRiMTY3NzRhNTlmNWU3YzA5ODE3NzNlMDg2Yjc1Yjp7Il9sYW5ndWFnZSI6ImVuIiwiZGphbmdvX2xhbmd1YWdlIjoiZW4iLCJ1c2VyIjp7ImludGVyZXN0cyI6Im9pLHNvbWV0aGluZyxvdGhlciIsIm5hbWUiOiJEYXkiLCJsYW5ndWFnZSI6ImVuIiwiY291cnNlcyI6bnVsbCwic2V4IjpudWxsLCJiaW9zIjpudWxsLCJncmFkZXMiOm51bGwsImVtYWlsIjpudWxsLCJhdmF0YXIiOm51bGwsInBhc3N3b3JkIjoiZGFmYjdiYjY4YWYzNzljNmMzOTFmZjllNGYyZDFiYmUiLCJ0eXBlIjoiU3R1ZGVudCIsImNhbXB1cyI6bnVsbCwibWF0cmljIjpudWxsfX0=','2014-12-01 16:00:48.936293');
+INSERT INTO "django_session" VALUES('xxrsw2i1bb7m2ct6zc4zvifyp3sgf1s3','NTBiMGQ2Zjc4YTIyZGNjOTkxYmY4N2E0MTllMjgxOTA1NTY4YTdlMTp7Il9sYW5ndWFnZSI6InB0LWJyIiwidXNlciI6eyJwYXNzd29yZCI6ImRhZmI3YmI2OGFmMzc5YzZjMzkxZmY5ZTRmMmQxYmJlIiwidHlwZSI6IkFkbSIsIm5hbWUiOiJEYXlhbm5lIiwibGFuZ3VhZ2UiOiJwdC1iciJ9fQ==','2014-12-03 17:41:37.119090');
+INSERT INTO "django_session" VALUES('hbajvnar6zfaenv9qkcu6d8g3zlx414j','NTBiMGQ2Zjc4YTIyZGNjOTkxYmY4N2E0MTllMjgxOTA1NTY4YTdlMTp7Il9sYW5ndWFnZSI6InB0LWJyIiwidXNlciI6eyJwYXNzd29yZCI6ImRhZmI3YmI2OGFmMzc5YzZjMzkxZmY5ZTRmMmQxYmJlIiwidHlwZSI6IkFkbSIsIm5hbWUiOiJEYXlhbm5lIiwibGFuZ3VhZ2UiOiJwdC1iciJ9fQ==','2014-12-09 15:59:50.660599');
+INSERT INTO "django_session" VALUES('agr17m2uk5t18mywouknylu9d5lsazie','NTBiMGQ2Zjc4YTIyZGNjOTkxYmY4N2E0MTllMjgxOTA1NTY4YTdlMTp7Il9sYW5ndWFnZSI6InB0LWJyIiwidXNlciI6eyJwYXNzd29yZCI6ImRhZmI3YmI2OGFmMzc5YzZjMzkxZmY5ZTRmMmQxYmJlIiwidHlwZSI6IkFkbSIsIm5hbWUiOiJEYXlhbm5lIiwibGFuZ3VhZ2UiOiJwdC1iciJ9fQ==','2014-12-10 18:05:05.869811');
+INSERT INTO "django_session" VALUES('82sbmb1fofdc6puq1xrown1zbshqzdc6','NTBiMGQ2Zjc4YTIyZGNjOTkxYmY4N2E0MTllMjgxOTA1NTY4YTdlMTp7Il9sYW5ndWFnZSI6InB0LWJyIiwidXNlciI6eyJwYXNzd29yZCI6ImRhZmI3YmI2OGFmMzc5YzZjMzkxZmY5ZTRmMmQxYmJlIiwidHlwZSI6IkFkbSIsIm5hbWUiOiJEYXlhbm5lIiwibGFuZ3VhZ2UiOiJwdC1iciJ9fQ==','2014-12-11 17:51:36.913330');
 CREATE TABLE "ELO_student" (
     "id" integer NOT NULL PRIMARY KEY,
     "identity" integer NOT NULL,
     "field" varchar(32) NOT NULL,
     "value" text NOT NULL
 );
+<<<<<<< HEAD
 INSERT INTO "ELO_student" VALUES(1,1,'NAME','Andre');
 INSERT INTO "ELO_student" VALUES(2,1,'PASSWORD','84d1cfd4a1e0aa2dcd7b6754a3624747');
 INSERT INTO "ELO_student" VALUES(3,1,'BIOS','Is this real life?
@@ -151,8 +172,11 @@ CREATE TABLE "ELO_adm" (
     "field" varchar(32) NOT NULL,
     "value" text NOT NULL
 );
-INSERT INTO "ELO_adm" VALUES(1,0,'NAME','Yurick');
-INSERT INTO "ELO_adm" VALUES(2,0,'PASSWORD','b0f1646252f4434be3ef74e7ab6ac177');
+INSERT INTO "ELO_adm" VALUES(1,1,'NAME','Dayanne');
+INSERT INTO "ELO_adm" VALUES(2,1,'PASSWORD','dafb7bb68af379c6c391ff9e4f2d1bbe');
+INSERT INTO "ELO_adm" VALUES(3,1,'LANGUAGE','en');
+INSERT INTO "ELO_adm" VALUES(4,2,'NAME','Yurick');
+INSERT INTO "ELO_adm" VALUES(5,2,'PASSWORD','b0f1646252f4434be3ef74e7ab6ac177');
 CREATE TABLE "ELO_professor" (
     "id" integer NOT NULL PRIMARY KEY,
     "identity" integer NOT NULL,
@@ -253,18 +277,18 @@ INSERT INTO "ELO_exercise" VALUES(35,6,'ITEM_1','Good for throwing at people');
 INSERT INTO "ELO_exercise" VALUES(36,6,'ITEM_2','Hard as rock');
 INSERT INTO "ELO_exercise" VALUES(37,6,'ITEM_3','AWSM!!!1!!!11');
 INSERT INTO "ELO_exercise" VALUES(38,6,'CORRECT','3');
+CREATE TABLE "ELO_identities" (
+    "id" integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "identity" integer NOT NULL,
+    "model" text NOT NULL
+);
 DELETE FROM sqlite_sequence;
 INSERT INTO "sqlite_sequence" VALUES('django_migrations',2);
 INSERT INTO "sqlite_sequence" VALUES('ELO_courses',5);
 INSERT INTO "sqlite_sequence" VALUES('ELO_module',9);
 INSERT INTO "sqlite_sequence" VALUES('ELO_lesson',11);
 INSERT INTO "sqlite_sequence" VALUES('ELO_exercise',38);
+INSERT INTO "sqlite_sequence" VALUES('ELO_courses',14);
+INSERT INTO "sqlite_sequence" VALUES('ELO_identities',2);
 CREATE INDEX "django_session_b7b81f0c" ON "django_session" ("expire_date");
-CREATE INDEX "auth_permission_37ef4eb4" ON "auth_permission" ("content_type_id");
-CREATE INDEX "auth_group_permissions_5f412f9a" ON "auth_group_permissions" ("group_id");
-CREATE INDEX "auth_group_permissions_83d7f98b" ON "auth_group_permissions" ("permission_id");
-CREATE INDEX "auth_user_groups_6340c63c" ON "auth_user_groups" ("user_id");
-CREATE INDEX "auth_user_groups_5f412f9a" ON "auth_user_groups" ("group_id");
-CREATE INDEX "auth_user_user_permissions_6340c63c" ON "auth_user_user_permissions" ("user_id");
-CREATE INDEX "auth_user_user_permissions_83d7f98b" ON "auth_user_user_permissions" ("permission_id");
 COMMIT;
