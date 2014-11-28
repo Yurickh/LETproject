@@ -18,6 +18,12 @@ html, body,.content { height: 100%; }
     float: left;
 }
 
+.ui-
+{
+    width: 100%;
+    height: 100%;
+}
+
 #container
 {
     width: 79%;
