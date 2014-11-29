@@ -19,7 +19,7 @@ from __future__ import division
 
 from abc import *
 
-import ELO.index as lang
+import ELO.locale.index as lang
 
 from ELO.models import Student, Professor, Courses
 from Profile.forms import (

@@ -19,7 +19,7 @@ from ELO.models import Student, Adm, Professor
 from ELO.BaseUnit import Name, Password
 from Login.forms import LoginForm
 
-import ELO.index as lang
+import ELO.locale.index as lang
 
 ## Interface para a camada de Apresentação de Usuário do módulo Login.
 # 	É responsável pelo carregamento do template correto e processa os dados

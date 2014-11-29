@@ -2,7 +2,7 @@
 
 from abc import*
 
-import ELO.index as lang
+import ELO.locale.index as lang
 
 from ELO.models import Courses, Module, Lesson
 

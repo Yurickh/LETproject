@@ -7,7 +7,7 @@
 
 from django import forms
 
-import ELO.index as lang
+import ELO.locale.index as lang
 
 from ELO.BaseUnit import(
 	Name,

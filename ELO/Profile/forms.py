@@ -9,7 +9,8 @@ import os.path
 
 from django.conf import settings
 
-import ELO.index as lang
+import ELO.locale.index as lang
+
 from ELO.BaseUnit import(
 	Name,
 	Sex,

@@ -12,7 +12,7 @@
 from abc import *
 import hashlib
 
-import ELO.index as lang
+import ELO.locale.index as lang
 
 ## Interface para todos os tipos básicos.
 #
