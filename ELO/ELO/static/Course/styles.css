@@ -65,3 +65,13 @@ html, body,.content { height: 100%; }
 {
     width: 50%;
 }
+
+#complete
+{
+    color: green;
+}
+
+#incomplete
+{
+    color:red;
+}

@@ -4,7 +4,7 @@ from abc import*
 
 import ELO.locale.index as lang
 
-from ELO.models import Courses, Module, Lesson
+from ELO.models import Courses, Module, Lesson, Student
 
 from django.shortcuts import render
 from django.core.exceptions import PermissionDenied
@@ -64,12 +64,18 @@ class IfBusCourse:
 		del self.__pers
 
 	@abstractmethod
+	def getCompleted(self, user, accesstype): pass
+
+	@abstractmethod
 	def getCourse(self, user, courseid): pass
 
 class IfPersCourse:
 
 	@abstractmethod
-	def fetch(id, db): pass
+	def getid(self, field, value, db): pass
+
+	@abstractmethod
+	def fetch(self, id, db): pass
 
 
 class UiCourse(IfUiCourse):
@@ -89,7 +95,15 @@ class UiCourse(IfUiCourse):
 
 class BusCourse(IfBusCourse):
 
+	def getCompleted(self, user, accesstype):
+		userid = self.pers.getid('NAME', user['name'], Student)
+		userdata = self.pers.fetch(userid, Student)
+
+		return userdata.get(accesstype + '_COMPLETED', [])
+
 	def getCourse(self, user, courseid):
+		compmlist = self.getCompleted(user, 'MODULE')
+		compllist = self.getCompleted(user, 'LESSON')
 		coursedata = self.pers.fetch(courseid, Courses)
 		modulelist = []
 		
@@ -101,18 +115,29 @@ class BusCourse(IfBusCourse):
 
 			for lessonid in sfm['LESSON']:
 				lessoname = self.pers.fetch(lessonid, Lesson)['NAME']
-				lessonlist = lessonlist + lessoname
+				lessoncomplete = True if lessonid in compllist else False
+				print lessoncomplete
+				lessonlist = lessonlist + [{'name':lessoname[0],
+										   'complete':lessoncomplete }]
 
 			modulelist = modulelist + [{'id': 		moduleid,
 										'name': 	modulename,
 										'lessons':	lessonlist,
+										'complete':True \
+											if moduleid in compmlist \
+											else False
 									  }]
 		
 		coursedata['MODULE'] = sorted(modulelist, key=lambda x: x['id'])
 
 		return coursedata
-		
+
+
 class PersCourse(IfPersCourse):
+
+	def getid(self, field, value, db):
+		model_data = db.objects.get(field=field, value=value)
+		return model_data.identity
 
 	def fetch(self, id, db):
 		model_data = db.objects.filter(identity=id)
