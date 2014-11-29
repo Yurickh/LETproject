@@ -116,7 +116,6 @@ class BusCourse(IfBusCourse):
 			for lessonid in sfm['LESSON']:
 				lessoname = self.pers.fetch(lessonid, Lesson)['NAME']
 				lessoncomplete = True if lessonid in compllist else False
-				print lessoncomplete
 				lessonlist = lessonlist + [{'name':lessoname[0],
 										   'complete':lessoncomplete }]
 
