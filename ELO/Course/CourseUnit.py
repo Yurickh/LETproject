@@ -6,6 +6,8 @@ import ELO.locale.index as lang
 
 from ELO.models import Courses, Module, Lesson, Student
 
+from Course.forms import LessonForm
+
 from django.shortcuts import render
 from django.core.exceptions import PermissionDenied
 from django.http import Http404
@@ -36,7 +38,7 @@ class IfUiCourse:
 		del self.__bus
 
 	@abstractmethod
-	def run(self, request, courseid=None, lesson=None, exercise=None): pass
+	def run(self, request, courseid=None): pass
 
 
 class IfBusCourse:
@@ -107,7 +109,7 @@ class UiCourse(IfUiCourse):
 						raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])
 				else:
 					raise ValueError(lang.DICT['EXCEPTION_INV_LES'])
-			except ValueError as exc:
+			except (ValueError, ValidationError) as exc:
 				return render(request, "Course/general/assync_std.html",
 						{'error': exc})
 				

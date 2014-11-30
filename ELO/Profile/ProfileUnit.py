@@ -441,12 +441,12 @@ class PersProfile(IfPersProfile):
 
                     for mc in sfmc:
                         if mc in mods:
-                            mcftc = mcftc + mc
+                            mcftc = mcftc + [mc]
 
                     # Get number of modules completed
-                    mcftc = mcftc.length()
+                    mcftc = len(mcftc)
                     # Get number of modules in this course
-                    nmod = mods.length()
+                    nmod = len(mods)
 
                     cname = Courses.objects.get(identity=c, field='NAME').value
                     lc = lc + [{'name':cname, 

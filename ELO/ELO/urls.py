@@ -52,7 +52,7 @@ urlpatterns = patterns('',
 		factory.runAdm),
 	url(r'^assync/adm-info/?$', factory.runAdm),
 	url(r'^assync/edit-field/(?P<field>\w{3,9})/?$', factory.runAdm),
-	url(r'^assync/lesson/(?P<lessonid>\d)/?$', factory.runCourse),
+	url(r'^assync/lesson/?$', factory.runCourse),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()

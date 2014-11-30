@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    
+
     $accordion = $("#module_accordion").accordion({
         icons: {    "header": "ui-icon-plus",
                     "activeHeader": "ui-icon-minus"
@@ -7,7 +7,6 @@ $(document).ready(function(){
         heightStyle: 'fill'
     });
 
-	
 	$("div[class^='lesson_']").click(function(){
 		less_id = $(this).attr("class").slice(7);
 
