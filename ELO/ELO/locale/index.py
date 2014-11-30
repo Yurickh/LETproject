@@ -169,6 +169,9 @@ DICT = {
 	## Mensagem de erro para dados de form incorretos.
 	'EXCEPTION_INV_FRM' : _(u"Dados incorretos"),
 
+	## Mensagem de erro para requisição de lição forjada.
+	'EXCEPTION_INV_LES' : _(u"Id de lição inválido"),
+
 	## Mensagem de erro padrão 403
 	'EXCEPTION_403_STD' : _(u"Permissão de acesso negada."),
 	## Mensagem de erro inesperado 404

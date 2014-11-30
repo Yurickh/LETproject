@@ -22,7 +22,7 @@
                     {% endif %}>{{ module.name }}</h3>
             <div>
                 {% for lesson in module.lessons %}
-                    <div id=
+                    <div class="lesson_{{ lesson.id }}" id=
                     {% if module.complete or lesson.complete %}
                         "complete"
                     {% else %}

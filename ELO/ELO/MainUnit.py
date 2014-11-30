@@ -143,7 +143,7 @@ class Factory:
 	# 	Define as camadas de persistência, negócio e apresentação de
 	#	curso.
 	@vary_on_cookie
-	def runCourse(self, request, courseid):
+	def runCourse(self, request, courseid=None, lessonid=None, exercise=None):
 		if 'user' in request.session.keys():
 			if not self.__ui is IfUiCourse:
 				self.__pers = PersCourse()

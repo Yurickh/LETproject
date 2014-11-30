@@ -8,6 +8,7 @@ from ELO.models import Courses, Module, Lesson, Student
 
 from django.shortcuts import render
 from django.core.exceptions import PermissionDenied
+from django.http import Http404
 
 class IfUiCourse:
 	__metaclass__ = ABCMeta
@@ -35,7 +36,7 @@ class IfUiCourse:
 		del self.__bus
 
 	@abstractmethod
-	def run(self, request, courseid): pass
+	def run(self, request, courseid=None, lesson=None, exercise=None): pass
 
 
 class IfBusCourse:
@@ -80,18 +81,36 @@ class IfPersCourse:
 
 class UiCourse(IfUiCourse):
 
-	def run(self, request, courseid):
+	def run(self, request, courseid=None):
 		
 		user = request.session['user']
 
 		if request.method == "GET":
-			if courseid in map(lambda x: x["id"], user["courses"]):
-				course = self.bus.getCourse(user, courseid)
-				return render(request, "Course/general/frame.html", 
-					{'course':course})
-			else:
-				raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])
-		
+			if courseid:
+				if courseid in map(lambda x: x["id"], user["courses"]):
+					course = self.bus.getCourse(user, courseid)
+					return render(request, "Course/general/frame.html", 
+						{'course':course})
+				else:
+					raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])
+		elif request.method == "POST":
+			lesson_form = LessonForm(request.POST)
+			try:
+				if lesson_form.is_valid():
+					lessonid = lesson_form.cleaned_data['id']
+					if self.bus.isLessonRight(lessonid, user):
+						lesson = self.bus.getLesson(user, lessonid)
+						return render(request, 
+									  "Course/general/assync_lesson.html",
+									  {'lesson': lesson})
+					else:
+						raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])
+				else:
+					raise ValueError(lang.DICT['EXCEPTION_INV_LES'])
+			except ValueError as exc:
+				return render(request, "Course/general/assync_std.html",
+						{'error': exc})
+				
 
 class BusCourse(IfBusCourse):
 
@@ -116,8 +135,9 @@ class BusCourse(IfBusCourse):
 			for lessonid in sfm['LESSON']:
 				lessoname = self.pers.fetch(lessonid, Lesson)['NAME']
 				lessoncomplete = True if lessonid in compllist else False
-				lessonlist = lessonlist + [{'name':lessoname[0],
-										   'complete':lessoncomplete }]
+				lessonlist = lessonlist + [{'id': lessonid,
+											'name':lessoname[0],
+										    'complete':lessoncomplete }]
 
 			modulelist = modulelist + [{'id': 		moduleid,
 										'name': 	modulename,
@@ -130,6 +150,10 @@ class BusCourse(IfBusCourse):
 		coursedata['MODULE'] = sorted(modulelist, key=lambda x: x['id'])
 
 		return coursedata
+
+	def getLesson(self, user, lessonid):
+		lessondata = self.pers.fetch(lessonid, Lesson)
+		lessonlink = lessondata['LINK'][0]
 
 
 class PersCourse(IfPersCourse):

@@ -8,5 +8,9 @@ $(document).ready(function(){
     });
 
 	
+	$("div[class^='lesson_']").click(function(){
+		less_id = $(this).attr("class").slice(7);
 
+		$('#lesson_ctn').load("/assync/lesson/", {'lessonid':less_id});
+	});
 });
