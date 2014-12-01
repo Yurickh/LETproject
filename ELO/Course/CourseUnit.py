@@ -66,6 +66,11 @@ class IfBusCourse:
 	def pers(self):
 		del self.__pers
 
+	## Método que recupera uma lista dos módulos ou lições.
+	#
+	#	@arg user		Objeto usuário, como no contido no cookie user.
+	#
+	#	@arg accesstype	String contendo "MODULE" ou "LESSON"
 	@abstractmethod
 	def getCompleted(self, user, accesstype): pass
 
