@@ -65,7 +65,7 @@ urlpatterns = patterns('',
 	#	Requisitado pelo Administrador.
 	url(r'^assync/adm-del/?$', factory.runAdm),
 	## URL para confirmar alguma ação.
-	url(r'^assync/conf-adm/?$', factory.runAdm),
+	url(r'^assync/conf-adm/(?P<action>\w{2,7})/(?P<model>\w{5,7})/?$', factory.runAdm),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()

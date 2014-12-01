@@ -53,13 +53,60 @@ $(document).ready(function(){
 
 	});
 
-	//$("#reg_form").on('submit', function(e){
-	//	e.preventDefault();
-	//	$dialog.dialog('close');
-	//
-	//	data = $(this).serialize();
-	//	alert(data);
+	$("#reg_form").on('submit', function(e){
+		e.preventDefault();
+		$dialog.dialog('close');
+
+		data = $(this).serialize();
+		uname = data.slice(9, data.indexOf("&userMatric="));
+		umatric = data.slice(data.indexOf("&userMatric="), data.indexOf("&userCampus="));
+		ucampus = data.slice(data.indexOf("&userCampus="), data.indexOf("&userSex="));
+		usex = data.slice(data.indexOf("&userSex="), data.indexOf("&userEmail="));
+		umail = data.slice(data.indexOf("&userEmail="), data.indexOf("&userPassword="));
+		upass = data.slice(data.indexOf("&userPassword="), data.indexOf("&model="));
+		model = $("div[id^='model_']").attr("id").slice(6);
+		crsf = data.slice(data.indexOf("&csrfmiddlewaretoken=")+21);
+		
+
+		data = { username: uname,
+				 userMatric: umatric,
+				 userCampus: ucampus,
+				 userSex: usex,
+				 userEmail: umail,
+				 userPassword: upass,
+				 model: model,
+				 action: action,
+				 csrfmiddlewaretoken: crsf
+			   };
+
+		
+		$dialogConf = $( "#dialog-confirm" ).dialog({
+			resizable: false,
+			height:140,
+			modal: true,
+		});
+
+		$dialogConf.dialog("option", "buttons", 
+			[{
+				text: "Confirm action",
+				click: function() {
+					$( this ).load("/assync/conf-adm/"+action+"/"+model+"/", data, function(){
+						$( this ).dialog( "close" );
+					});				
+				}},
+				{
+				text: "Cancel",
+				click: function() {
+					$( this ).dialog( "close" );
+				}}
+			]);
+
+		$dialogConf.dialog('open');
 
 
-	//});
+		
+
+	});
+
+
 });
