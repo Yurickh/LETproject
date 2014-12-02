@@ -90,23 +90,20 @@ $(document).ready(function(){
 			[{
 				text: "Confirm action",
 				click: function() {
-					$( this ).load("/assync/conf-adm/"+action+"/"+model+"/", data, function(){
-						$( this ).dialog( "close" );
-					});				
-				}},
-				{
+					$( this ).load("/assync/conf-adm/"+action+"/"+model+"/", data);		
+					$( this ).dialog( "close" );
+				}
+			},
+			{
 				text: "Cancel",
 				click: function() {
 					$( this ).dialog( "close" );
-				}}
-			]);
+				}
+			}]
+		);
 
 		$dialogConf.dialog('open');
 
-
-		
-
 	});
-
 
 });
