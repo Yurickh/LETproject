@@ -21,13 +21,11 @@
 		<input type="submit" name="{{ action }}" {% if action == "reg" %} 
 			   value="{{ DICT.REGISTER }}" {% endif %} 
 			   value="{{ DICT.SEARCH }}" /> 
+
 	</form>
 
 	<div class="dialog"></div>
 	<div class="inner_dialog"></div>
 	<div id="model_{{ model }}"></div>
-	<div id="dialog-confirm" title="Confirm {{ action }}?">
-		<p><span class="ui-icon ui-icon-alert" ></span>Confirm action?. Are you sure?</p>
-	</div>
 
 {% endblock %}

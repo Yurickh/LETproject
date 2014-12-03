@@ -15,7 +15,7 @@ $(document).ready(function(){
 			data = { courMatric: uname,
 					 csrfmiddlewaretoken: crsf,
 					 model: model,
-					 action: action
+					 act: action
 					};
 		}
 		else{
@@ -24,7 +24,7 @@ $(document).ready(function(){
 			data = { username: uname,
 					 csrfmiddlewaretoken: crsf,
 					 model: model,
-					 action: action
+					 act: action
 					};
 		}
 

@@ -108,7 +108,7 @@ class SrcUserForm(forms.Form):
 		
 ## Classe para o formulário de confirmação de senha do administrador.
 class ConfAdmForm(forms.Form):
-	admPass = forms.CharField(widget = forms.PasswordInput, 
+	admPassword = forms.CharField(widget = forms.PasswordInput, 
 							label = "Senha do Adm",
 							required= True)
 
@@ -116,7 +116,7 @@ class ConfAdmForm(forms.Form):
 	#	Caso esteja, retorna a senha, caso contrário, lança uma excessão.
 	def clean_admPass(self):
 		try:
-			password = Password(self.cleaned_data['admPass'])
+			password = Password(self.cleaned_data['admPassword'])
 		except ValueError:
 			raise forms.ValidationError("Senha inválida.")
 		return password 

@@ -13,7 +13,7 @@ $(document).ready(function(){
 			data = { courMatric: uname,
 					 csrfmiddlewaretoken: crsf,
 					 model: model,
-					 action: action
+					 act: action
 					};
 		}
 		else{
@@ -43,7 +43,7 @@ $(document).ready(function(){
 		data = { courMatric: umatric,
 				 csrfmiddlewaretoken: crsf,
 				 model: model,
-				 action: action
+				 act: action
 			   };
 
 		$in_dialog.load("/assync/adm-course/"+action+"/"+model+"/", data,
@@ -59,11 +59,13 @@ $(document).ready(function(){
 
 		data = $(this).serialize();
 		uname = data.slice(9, data.indexOf("&userMatric="));
-		umatric = data.slice(data.indexOf("&userMatric="), data.indexOf("&userCampus="));
-		ucampus = data.slice(data.indexOf("&userCampus="), data.indexOf("&userSex="));
-		usex = data.slice(data.indexOf("&userSex="), data.indexOf("&userEmail="));
-		umail = data.slice(data.indexOf("&userEmail="), data.indexOf("&userPassword="));
-		upass = data.slice(data.indexOf("&userPassword="), data.indexOf("&model="));
+		umatric = data.slice(data.indexOf("&userMatric=")+12, data.indexOf("&userCampus="));
+		ucampus = data.slice(data.indexOf("&userCampus=")+12, data.indexOf("&userSex="));
+		usex = data.slice(data.indexOf("&userSex=")+9, data.indexOf("&userEmail="));
+		umail = data.slice(data.indexOf("&userEmail=")+11, data.indexOf("&userPassword="));
+		// convert %40 to @, since serialize transformed @ to %40
+		umail = decodeURIComponent(umail);
+		upass = data.slice(data.indexOf("&userPassword=")+14, data.indexOf("&model="));
 		model = $("div[id^='model_']").attr("id").slice(6);
 		crsf = data.slice(data.indexOf("&csrfmiddlewaretoken=")+21);
 		
@@ -75,35 +77,15 @@ $(document).ready(function(){
 				 userEmail: umail,
 				 userPassword: upass,
 				 model: model,
-				 action: action,
+				 act: action,
 				 csrfmiddlewaretoken: crsf
 			   };
 
-		
-		$dialogConf = $( "#dialog-confirm" ).dialog({
-			resizable: false,
-			height:140,
-			modal: true,
+		$in_dialog.load("/assync/adm-info/", data, function(){ 
+			$in_dialog.dialog('open');
 		});
-
-		$dialogConf.dialog("option", "buttons", 
-			[{
-				text: "Confirm action",
-				click: function() {
-					$( this ).load("/assync/conf-adm/"+action+"/"+model+"/", data);		
-					$( this ).dialog( "close" );
-				}
-			},
-			{
-				text: "Cancel",
-				click: function() {
-					$( this ).dialog( "close" );
-				}
-			}]
-		);
-
-		$dialogConf.dialog('open');
-
+		
+		
 	});
 
 });
