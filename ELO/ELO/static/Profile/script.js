@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	$(".dialog").dialog({
+	$dialog = $(".dialog").dialog({
 		autoOpen: false,
 		hide: "slideUp",
 		modal: true,
@@ -12,10 +12,11 @@ $(document).ready(function(){
 		fname = $(this).attr("title")
 
 		// Gets the title of the dialog from the title of button.
-		$(".dialog").dialog("option", "title", fname);
+		$dialog.dialog("option", "title", fname);
 
-		$(".dialog").load("/assync/editfield/"+field);
-		$(".dialog").dialog("open")
+		$dialog.load("/assync/editfield/"+field, function(){
+			$dialog.dialog("open");
+		});
 	});
 
 });

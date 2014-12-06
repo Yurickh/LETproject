@@ -22,7 +22,7 @@ def \hyperlink{classLogin_1_1LoginUnit_1_1PersLogin_a1847dbd744377283add2327d2eb
 \subsubsection{Descrição Detalhada}
 
 
-Definição na linha \hyperlink{LoginUnit_8py_source_l00193}{193} do arquivo \hyperlink{LoginUnit_8py_source}{Login\-Unit.\-py}.
+Definição na linha \hyperlink{LoginUnit_8py_source_l00206}{206} do arquivo \hyperlink{LoginUnit_8py_source}{Login\-Unit.\-py}.
 
 
 
@@ -38,32 +38,50 @@ Definição na linha \hyperlink{LoginUnit_8py_source_l00193}{193} do arquivo \hy
 )}}\label{classLogin_1_1LoginUnit_1_1PersLogin_a1847dbd744377283add2327d2eb0b99f}
 
 
-Definição na linha \hyperlink{LoginUnit_8py_source_l00195}{195} do arquivo \hyperlink{LoginUnit_8py_source}{Login\-Unit.\-py}.
+Definição na linha \hyperlink{LoginUnit_8py_source_l00208}{208} do arquivo \hyperlink{LoginUnit_8py_source}{Login\-Unit.\-py}.
 
 
 \begin{DoxyCode}
-\hypertarget{classLogin_1_1LoginUnit_1_1PersLogin_l00195}{}\hyperlink{classLogin_1_1LoginUnit_1_1PersLogin_a1847dbd744377283add2327d2eb0b99f}{00195} 
-00196     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1PersLogin_a1847dbd744377283add2327d2eb0b99f}{select}(self, username=None, database=None):
-00197         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} username: \textcolor{keywordflow}{return} \textcolor{keyword}{False}
-00198         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} database: \textcolor{keywordflow}{return} \textcolor{keyword}{False}
-00199 
-00200         ulang = \textcolor{keywordtype}{None}
-00201 
-00202         \textcolor{keywordflow}{try}:
-00203             uid = database.objects.get(value=username, field=\textcolor{stringliteral}{'NAME'}).identity
-00204             upass = database.objects.get(identity=uid, field=\textcolor{stringliteral}{'PASSWORD'}).value
-00205         \textcolor{keywordflow}{except} database.DoesNotExist:
-00206             \textcolor{keywordflow}{return} \textcolor{keyword}{False}
-00207 
-00208         \textcolor{keywordflow}{if} isinstance(database, Student):
-00209             \textcolor{keywordflow}{try}:
-00210                 ulang = database.objects.get(identity=uid, field=\textcolor{stringliteral}{'LANGUAGE'}).value
-00211             \textcolor{keywordflow}{except} database.DoesNotExist:
-00212                 \textcolor{keywordflow}{pass}
-00213         \textcolor{keywordflow}{else}:
-00214             ulang = settings.LANGUAGE\_CODE
+\hypertarget{classLogin_1_1LoginUnit_1_1PersLogin_l00208}{}\hyperlink{classLogin_1_1LoginUnit_1_1PersLogin_a1847dbd744377283add2327d2eb0b99f}{00208} 
+00209     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1PersLogin_a1847dbd744377283add2327d2eb0b99f}{select}(self, username=None, database=None):
+00210         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} username: \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+00211         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} database: \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+00212 
+00213         upass = \textcolor{keywordtype}{None}
+00214         ulang = \textcolor{keywordtype}{None}
 00215 
-        \textcolor{keywordflow}{return} \{\textcolor{stringliteral}{'name'}: username, \textcolor{stringliteral}{'password'}: upass, \textcolor{stringliteral}{'language'}: ulang\}\end{DoxyCode}
+00216         \textcolor{keywordflow}{if} database.\_\_name\_\_ == \textcolor{stringliteral}{"God"}:
+00217             \textcolor{keywordflow}{try}:
+00218                 usr = database.objects.get()
+00219             \textcolor{keywordflow}{except} database.DoesNotExist:
+00220                 \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+00221             \textcolor{keywordflow}{except} database.MultipleObjectsReturned:
+00222                 \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+00223 
+00224             username = usr.username
+00225             upass = usr.password
+00226         \textcolor{keywordflow}{else}:
+00227 
+00228             \textcolor{keywordflow}{try}:
+00229                 uid = database.objects.get(value=username, field=\textcolor{stringliteral}{'NAME'})
+00230                 uid = uid.identity
+00231                 upass = database.objects.get(identity=uid, field=\textcolor{stringliteral}{'PASSWORD'})
+00232                 upass = upass.value
+00233             \textcolor{keywordflow}{except} database.DoesNotExist:
+00234                 \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+00235 
+00236             if(database.\_\_name\_\_ == \textcolor{stringliteral}{"Student"} \textcolor{keywordflow}{or} 
+00237                database.\_\_name\_\_ == \textcolor{stringliteral}{"Professor"}):
+00238                 \textcolor{keywordflow}{try}:
+00239                     ulang= database.objects.get(identity=uid, field=\textcolor{stringliteral}{'LANGUAGE'})
+00240                     ulang= ulang.value
+00241                 \textcolor{keywordflow}{except} database.DoesNotExist:
+00242                     \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+00243             \textcolor{keywordflow}{else}:
+00244                 ulang = settings.LANGUAGE\_CODE
+00245 
+00246         \textcolor{keywordflow}{return} \{ \textcolor{stringliteral}{'name'}: username, \textcolor{stringliteral}{'password'}: upass, \textcolor{stringliteral}{'language'}: ulang \}
+\end{DoxyCode}
 
 
 A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}

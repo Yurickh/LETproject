@@ -108,7 +108,7 @@ $(document).ready(function(){initNavTree('d1/d9e/urls_8py.html','../../');});
 </div><!--header-->
 <div class="contents">
 
-<p>Arquivo responsável pelo redirecionamento e navegação entre as páginas do site.  
+<p>Arquivo responsável pelo processo de reconhecimento da URL requisitada e correspondente chamada da função da Factory (ver <a class="el" href="../../dd/d7f/MainUnit_8py.html" title="Arquivo responsável pela devida execução e estruturação do programa. ">MainUnit.py</a>).  
 <a href="#details">Mais...</a></p>
 
 <p><a href="../../d1/d9e/urls_8py_source.html">Vá para o código-fonte deste arquivo.</a></p>
@@ -125,13 +125,21 @@ Variáveis</h2></td></tr>
 <tr class="memitem:a3451f093ed6ab05c006fd0d1cdba836d"><td class="memItemLeft" align="right" valign="top">tuple&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/de1/namespaceELO_1_1urls.html#a3451f093ed6ab05c006fd0d1cdba836d">ELO.urls.urlpatterns</a></td></tr>
 <tr class="separator:a3451f093ed6ab05c006fd0d1cdba836d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Descrição Detalhada</h2>
+<div class="textblock"><p>Cada pattern dentro do urlpatterns deve ter o formato: </p>
+<pre class="fragment">url(r'REGEX', VIEW),
+</pre><p>onde REGEX é a expressão regular que será utilizada para identificar a URL, e VIEW o método correspondente que será chamado para processar a requisição.</p>
+<p>É importante ressaltar que o método view deverá retornar obrigatoriamente um objeto do tipo HttpResponse.</p>
+<p>Dentro do projeto, todas as views são chamadas de dentro da Factory. Para mais informações, leia a documentação do <a class="el" href="../../dd/d7f/MainUnit_8py.html" title="Arquivo responsável pela devida execução e estruturação do programa. ">MainUnit.py</a>. </p>
+
+<p>Definição no arquivo <a class="el" href="../../d1/d9e/urls_8py_source.html">urls.py</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_56c8f39a95ad3669bc9ec7ac8ec99225.html">ELO</a></li><li class="navelem"><a class="el" href="../../dir_d419606626e95ea147f15c612cebbb4c.html">ELO</a></li><li class="navelem"><a class="el" href="../../d1/d9e/urls_8py.html">urls.py</a></li>
-    <li class="footer">Gerado em Sexta, 22 de Agosto de 2014 17:35:23 para LETproject por
+    <li class="footer">Gerado em Terça, 21 de Outubro de 2014 13:48:47 para LETproject por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

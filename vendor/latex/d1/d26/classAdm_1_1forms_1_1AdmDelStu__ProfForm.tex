@@ -1,0 +1,70 @@
+\hypertarget{classAdm_1_1forms_1_1AdmDelStu__ProfForm}{\subsection{Referência da Classe Adm.\-forms.\-Adm\-Del\-Stu\-\_\-\-Prof\-Form}
+\label{classAdm_1_1forms_1_1AdmDelStu__ProfForm}\index{Adm.\-forms.\-Adm\-Del\-Stu\-\_\-\-Prof\-Form@{Adm.\-forms.\-Adm\-Del\-Stu\-\_\-\-Prof\-Form}}
+}
+Diagrama de Hierarquia para Adm.\-forms.\-Adm\-Del\-Stu\-\_\-\-Prof\-Form\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d1/d26/classAdm_1_1forms_1_1AdmDelStu__ProfForm}
+\end{center}
+\end{figure}
+\subsubsection*{Métodos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classAdm_1_1forms_1_1AdmDelStu__ProfForm_af247df629a728f32b413307930dc2748}{clean\-\_\-user\-Name}
+\end{DoxyCompactItemize}
+\subsubsection*{Atributos Estáticos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+tuple \hyperlink{classAdm_1_1forms_1_1AdmDelStu__ProfForm_a780eaf9b2d36cd160f6e574fe9023452}{username} = forms.\-Char\-Field(max\-\_\-length = 32, label = \char`\"{}Nome\-:\char`\"{}, required=True)
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Descrição Detalhada}
+
+
+Definição na linha \hyperlink{Adm_2forms_8py_source_l00081}{81} do arquivo \hyperlink{Adm_2forms_8py_source}{forms.\-py}.
+
+
+
+\subsubsection{Métodos}
+\hypertarget{classAdm_1_1forms_1_1AdmDelStu__ProfForm_af247df629a728f32b413307930dc2748}{\index{Adm\-::forms\-::\-Adm\-Del\-Stu\-\_\-\-Prof\-Form@{Adm\-::forms\-::\-Adm\-Del\-Stu\-\_\-\-Prof\-Form}!clean\-\_\-user\-Name@{clean\-\_\-user\-Name}}
+\index{clean\-\_\-user\-Name@{clean\-\_\-user\-Name}!Adm::forms::AdmDelStu_ProfForm@{Adm\-::forms\-::\-Adm\-Del\-Stu\-\_\-\-Prof\-Form}}
+\paragraph[{clean\-\_\-user\-Name}]{\setlength{\rightskip}{0pt plus 5cm}def Adm.\-forms.\-Adm\-Del\-Stu\-\_\-\-Prof\-Form.\-clean\-\_\-user\-Name (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{classAdm_1_1forms_1_1AdmDelStu__ProfForm_af247df629a728f32b413307930dc2748}
+
+
+Definição na linha \hyperlink{Adm_2forms_8py_source_l00084}{84} do arquivo \hyperlink{Adm_2forms_8py_source}{forms.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classAdm_1_1forms_1_1AdmDelStu__ProfForm_l00084}{}\hyperlink{classAdm_1_1forms_1_1AdmDelStu__ProfForm_af247df629a728f32b413307930dc2748}{00084} 
+00085     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmDelStu__ProfForm_af247df629a728f32b413307930dc2748}{clean\_userName}(self):
+00086         \textcolor{keywordflow}{try}:
+00087             name = Name(self.cleaned\_data[\textcolor{stringliteral}{"username"}])
+00088         \textcolor{keywordflow}{except} ValueError:
+00089             \textcolor{keywordflow}{raise} forms.ValidationError(\textcolor{stringliteral}{"Usário inválido."})
+00090         \textcolor{keywordflow}{return} name
+        
+\end{DoxyCode}
+
+
+\subsubsection{Atributos}
+\hypertarget{classAdm_1_1forms_1_1AdmDelStu__ProfForm_a780eaf9b2d36cd160f6e574fe9023452}{\index{Adm\-::forms\-::\-Adm\-Del\-Stu\-\_\-\-Prof\-Form@{Adm\-::forms\-::\-Adm\-Del\-Stu\-\_\-\-Prof\-Form}!username@{username}}
+\index{username@{username}!Adm::forms::AdmDelStu_ProfForm@{Adm\-::forms\-::\-Adm\-Del\-Stu\-\_\-\-Prof\-Form}}
+\paragraph[{username}]{\setlength{\rightskip}{0pt plus 5cm}tuple Adm.\-forms.\-Adm\-Del\-Stu\-\_\-\-Prof\-Form.\-username = forms.\-Char\-Field(max\-\_\-length = 32, label = \char`\"{}Nome\-:\char`\"{}, required=True)\hspace{0.3cm}{\ttfamily [static]}}}\label{classAdm_1_1forms_1_1AdmDelStu__ProfForm_a780eaf9b2d36cd160f6e574fe9023452}
+
+
+Definição na linha \hyperlink{Adm_2forms_8py_source_l00082}{82} do arquivo \hyperlink{Adm_2forms_8py_source}{forms.\-py}.
+
+
+
+Referenciado por \hyperlink{classELO_1_1models_1_1God_aec7e462406b98293c953589a3a368825}{E\-L\-O.\-models.\-God.\-\_\-\-\_\-unicode\-\_\-\-\_\-()}.
+
+
+
+A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}
+\item 
+E\-L\-O/\-Adm/\hyperlink{Adm_2forms_8py}{forms.\-py}\end{DoxyCompactItemize}

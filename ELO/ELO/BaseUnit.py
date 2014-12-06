@@ -3,31 +3,44 @@
 ## @file BaseUnit.py
 #  Implementa os tipos básicos do programa.
 #
-#   Cada classe deve conter o validator, que garante que os tipos básicos
-#   são compatíveis com o formato especificado nos requisitos.
+#   Os tipos básicos são os blocos formadores do programa. Eles contêm
+#   informações atômicas como Nome, Senha ou Matrícula, e devem ser capazes
+#   de validá-los no momento de sua criação. Ou seja, caso o valor fornecido
+#   não esteja de acordo com as especificações, o tipo básico não é criado
+#   e lança uma exceção do tipo ValueError.
 
 from abc import *
 import hashlib
 
-import ELO.locale.index as lang
+import ELO.index as lang
 
-## Interface para qualquer tipo básico (Base Type) pertencente ao projeto.
-#   Sua descrição implica que todos os tipos básicos devem ter um método
-#   _validate(self, value).
+## Interface para todos os tipos básicos.
+#
+#   Classe abstrata que contém os métodos get, set e del de todos os tipos
+#   básicos. Estes métodos são chamados implicitamente através dos processos
+#   de requisição de valor, atribuição de valor, e deleção do objeto,
+#   respectivamente.
+#
+#   Possui um único método abstrato, o validador do tipo básico, que varia
+#   de tipo para tipo, e deve ser obrigatoriamente implementado, sob a pena
+#   do tipo básico não poder ser instanciado.
 class IfBaseType:
 
-    ## Especifica que o IfBaseType é uma classe base abstrata (abc). 
+    ## Especifica que IfBaseType é uma classe base abstrata (abc). 
     #   Isso significa que uma classe derivada pode ser instanciada se
     #   - e somente se - ela der "override" em todos os métodos e
     #   propriedades abstratas.
     __metaclass__ = ABCMeta
 
     ## Método que retorna o valor contido no tipo básico.
+    #   Método GET.
     @property
     def value(self):
         return self._value
 
     ## Método que fixa e valida o conteúdo do tipo básico.
+    #   Método SET.
+    #
     #   @arg aux Recebe o valor que será validado.
     @value.setter
     def value(self, aux):
@@ -35,6 +48,7 @@ class IfBaseType:
         self._value = aux
 
     ## Método que deleta o conteúdo do tipo básico.
+    #   Método DEL.
     @value.deleter
     def value(self):
         del self._value
@@ -58,17 +72,18 @@ class IfBaseType:
 
 ## Classe container de senhas.
 #   Deve ser responsável não somente por armazenar, mas também por
-#   encriptar strings passadas.
+#   encriptar a string recebida.
 class Password(IfBaseType):
     _value = None
 
     ## Construtor da classe.
-    #   Valida e encripta a string passada.
+    #   Valida e encripta a string recebida.
     #
     #   @arg        value       String a ser armazenada.
     #
     #   @exception  ValueError  Exceção lançada no caso do
-    #                           valor de entrada ser inválido.
+    #                           valor de entrada não passar pelos
+    #                           critérios do método _validate().
     def __init__(self, value):
         try:
             self._validate(value)
@@ -79,7 +94,7 @@ class Password(IfBaseType):
         self._value = hashlib.md5(self._value).hexdigest()
 
     ## Validator da classe.
-    #   Verifica se o tamanho da string passada (value) está correta.
+    #   Verifica se o tamanho da string recebida (value) está correta.
     #
     #   @arg        value       String a ser validada.
     #
@@ -94,8 +109,8 @@ class Password(IfBaseType):
     def value(self):
         return self._value
 
-    ## Decorador específico de password.
-    #   Sobrescreve o decorador definido na interface para que ocorra
+    ## Método setter específico de password.
+    #   Sobrescreve o setter definido na interface para que ocorra
     #   a encriptação de forma correta.
     #
     #   @arg value String a ser validada e encriptada.
@@ -129,11 +144,11 @@ class Name(IfBaseType):
     #   Verifica se a string de entrada (value) está de acordo com as
     #   especificações.
     #
-    #   @arg       value    String a ser validada.
+    #   @arg       value        String a ser validada.
     #
     #   @exception ValueError   Exceção lançada no caso da string de
-    #               entrada ser vazia ou conter algum
-    #               caractere não-alfanumérico.
+    #                           entrada ser vazia ou conter algum
+    #                           caractere não-alfanumérico.
     def _validate(self, value):
         if len(value) > 32:
             raise ValueError(lang.DICT['EXCEPTION_INV_NM_B'])
@@ -147,7 +162,7 @@ class Name(IfBaseType):
 
 ## Classe container de matrículas.
 #   Responsável por armazenar um número inteiro que identifica
-#   alguns usuários do sistema.
+#   univocamente alguns usuários do sistema.
 class Matric(IfBaseType):
 
     _value = None
@@ -185,7 +200,7 @@ class Matric(IfBaseType):
         
 ## Classe container de texto.
 #   Responsável por armazenar texto corrido, como em descrições,
-#   biografias, resumos, etc.
+#   biografias, resumos etc.
 class PlainText(IfBaseType):
     _value = None
 

@@ -1,0 +1,33 @@
+{% extends "includes/assync_wrapper.html" %}
+{% load staticfiles %}
+
+{% block head %}
+
+	<link 	rel="stylesheet"
+			type="text/css"
+			href="{% static 'Adm/styles.css' %}" />
+
+	<script src="{% static 'Adm/script_conf.js' %}">
+	</script>
+
+{% endblock %}
+
+{% block body %}
+	<form id = "reg_form" action="" method="post" >
+
+		Deseja confirmar esta ação?
+
+		{{ form }}
+
+		{{ req }}
+
+		{% csrf_token %}
+
+		<button type="submit">Confirm action</button>
+
+	</form>
+
+	<div class="dialog"></div>
+	<div class="dialogConf"></div>
+
+{% endblock %}

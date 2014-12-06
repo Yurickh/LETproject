@@ -15,9 +15,9 @@
 # editar alguns campos, como "interesses" ou "biografia".
 # É nesta página que o usuário poderá alterar sua senha.
 
-from abc import*
+from abc import *
 
-import ELO.locale.index as lang
+import ELO.index as lang
 
 from ELO.models import Student, Professor
 from Profile.forms import (
@@ -33,7 +33,6 @@ from django.conf import settings
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.utils import translation
-from django import forms
 
 ## Interface para a camada de Apresentação de Usuário do módulo Profile.
 #   É responsável pelo carregamento do template correto e processa os 
@@ -170,7 +169,6 @@ class UiHomeProfile(IfUiProfile):
         if not 'matric' in user:
             request.session['user'] = self.bus.refreshUser(request)
             user = request.session['user']
-        translation.activate(request.session['user']['language'])
         return render(request, "Profile/home.html", {'user' : user})
 
 ## Camada de apresentação para a página de perfil completa.
@@ -287,8 +285,10 @@ class UiFullProfile(IfUiProfile):
         else: # request.method == "GET"
             if not field: # normal call
                 request.session['user'] = self.bus.refreshUser(request)
-                data = self.__makeData(get_user())        
-                translation.activate(request.session['user']['language'])
+                data = self.__makeData(get_user())
+                l = request.session['user']['language']
+                translation.activate(l)
+                request.session[translation.LANGUAGE_SESSION_KEY] = l
                 return render(request, "Profile/full.html", {'data' : data})
             else: # ajax call
                 err = False
@@ -325,13 +325,17 @@ class BusProfile(IfBusProfile):
 
     def refreshUser(self, request):
         user = request.session['user']
+        db = None
+
         if user['type'] == 'Student':
-            fs = self.pers.fetch(user['name'], Student)
-            fd = dict(fs)
-            request.session['django_language'] = fd['language']
-            return dict(user.items()+ self.pers.fetch(user['name'], Student))
+            db = Student
         elif user['type'] == 'Professor':
-            return dict(user.items()+ self.pers.fetch(user['name'], Professor))
+            db = Professor
+
+        fs = self.pers.fetch(user['name'], db)
+        fd = dict(fs)
+        request.session['django_language'] = fd['language']
+        return dict(user.items()+ self.pers.fetch(user['name'], db))
 
     def editField(self, request, field, form):
         user = request.session['user']
@@ -411,13 +415,13 @@ class PersProfile(IfPersProfile):
                     ('avatar',      sf('AVATAR')),
                     ('email',       sf('EMAIL')),
                     ('sex',         sf('SEX')),
+                    ('language',    sf('LANGUAGE')),
             ]
 
             if database is Student:
                 fetchset = fetchset + [     
                     ('grades',      sf('GRADE')),
                     ('interests',   sf('INTEREST')),
-                    ('language',    sf('LANGUAGE')),
                 ]
 
         except database.DoesNotExist as exc:

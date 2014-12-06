@@ -4,47 +4,176 @@
 
 \begin{DoxyCode}
 \hypertarget{ELO_2models_8py_source_l00001}{}\hyperlink{namespaceELO_1_1models}{00001} \textcolor{comment}{#coding: utf-8}
-00002 \textcolor{keyword}{from} django.db \textcolor{keyword}{import} models
-00003 
-00004 \textcolor{comment}{## @package LoginModels}
-00005 \textcolor{comment}{# Este arquivo define os modelos de Login no sistema, ou seja, os tipos de usuários que podem fazer login.}
-00006 \textcolor{comment}{# Define como é formatada a tabela no banco de dados, de forma que cada usuário está armazenado em tabelas
-       triple. Cada elemento da tabela}
-00007 \textcolor{comment}{# terá um Id, um campo que armazena o nome do campo analisado e um com o valor contido dentro desse campo.}
-00008 
-00009 \textcolor{comment}{## Classe que define o modelo de estudante.}
-00010 \textcolor{comment}{# Representa o modelo de um aluno armazenado no banco de dados.}
-\hypertarget{ELO_2models_8py_source_l00011}{}\hyperlink{classELO_1_1models_1_1Student}{00011} \textcolor{keyword}{class }\hyperlink{classELO_1_1models_1_1Student}{Student}(models.Model):
-\hypertarget{ELO_2models_8py_source_l00012}{}\hyperlink{classELO_1_1models_1_1Student_a20a7789a2b0f5b7d0c98453dcf38bc4e}{00012}     identity = models.IntegerField()
-\hypertarget{ELO_2models_8py_source_l00013}{}\hyperlink{classELO_1_1models_1_1Student_a893ec9b2ece5c6b829fce5e5a7c1d576}{00013}     field = models.CharField(max\_length=32)
-\hypertarget{ELO_2models_8py_source_l00014}{}\hyperlink{classELO_1_1models_1_1Student_a201226779dce6e064cb16bd92ed016e2}{00014}     value = models.TextField()
-00015 
-00016     \textcolor{comment}{## Retorna os valores do aluno correspondente ao Id no banco de dados.}
-\hypertarget{ELO_2models_8py_source_l00017}{}\hyperlink{classELO_1_1models_1_1Student_a2f51785c1beb3b45269a8678d97ec783}{00017}     \textcolor{keyword}{def }\hyperlink{classELO_1_1models_1_1Student_a2f51785c1beb3b45269a8678d97ec783}{\_\_unicode\_\_}(self):
-00018         \textcolor{keywordflow}{return} \textcolor{stringliteral}{u'%s : %s = %s'} % (str(self.\hyperlink{classELO_1_1models_1_1Student_a20a7789a2b0f5b7d0c98453dcf38bc4e}{identity}), self.\hyperlink{classELO_1_1models_1_1Student_a893ec9b2ece5c6b829fce5e5a7c1d576}{field}, self.
-      \hyperlink{classELO_1_1models_1_1Student_a201226779dce6e064cb16bd92ed016e2}{value})
-00019 
-00020 \textcolor{comment}{## Classe que define o modelo de administrador.}
-00021 \textcolor{comment}{# Representa o modelo de um administrador armazenado no banco de dados.}
-\hypertarget{ELO_2models_8py_source_l00022}{}\hyperlink{classELO_1_1models_1_1Adm}{00022} \textcolor{keyword}{class }\hyperlink{classELO_1_1models_1_1Adm}{Adm}(models.Model):
-\hypertarget{ELO_2models_8py_source_l00023}{}\hyperlink{classELO_1_1models_1_1Adm_af7e7b797ce5d3396e8a54d8927450d75}{00023}     identity = models.IntegerField()
-\hypertarget{ELO_2models_8py_source_l00024}{}\hyperlink{classELO_1_1models_1_1Adm_ae1af4ca22491b1cfe9cb0a7acefaa71e}{00024}     field = models.CharField(max\_length=32)
-\hypertarget{ELO_2models_8py_source_l00025}{}\hyperlink{classELO_1_1models_1_1Adm_a98f249c493fbcbcd347297437a098212}{00025}     value = models.TextField()
-00026 
-00027     \textcolor{comment}{## Retorna os valores do administrador correspondente ao Id no banco de dados.}
-\hypertarget{ELO_2models_8py_source_l00028}{}\hyperlink{classELO_1_1models_1_1Adm_a3541c3ae12b8d2da3f44ac6be00a23e6}{00028}     \textcolor{keyword}{def }\hyperlink{classELO_1_1models_1_1Adm_a3541c3ae12b8d2da3f44ac6be00a23e6}{\_\_unicode\_\_}(self):
-00029         \textcolor{keywordflow}{return} \textcolor{stringliteral}{u'%s : %s = %s'} % (str(self.\hyperlink{classELO_1_1models_1_1Adm_af7e7b797ce5d3396e8a54d8927450d75}{identity}), self.\hyperlink{classELO_1_1models_1_1Adm_ae1af4ca22491b1cfe9cb0a7acefaa71e}{field}, self.
-      \hyperlink{classELO_1_1models_1_1Adm_a98f249c493fbcbcd347297437a098212}{value})
+00002 
+00003 \textcolor{comment}{## @file models.py}
+00004 \textcolor{comment}{#   Arquivo de modelos do sistema.}
+00005 \textcolor{comment}{#}
+00006 \textcolor{comment}{#   Este arquivo é responsável por armazenar todos os modelos que serão}
+00007 \textcolor{comment}{#   utilizados no sistema.}
+00008 \textcolor{comment}{#}
+00009 \textcolor{comment}{#   Modelos são abstrações de tabelas em um banco de dados.}
+00010 \textcolor{comment}{#   Neste sistema, utilizamos o modelo de Triplestore. Assim, todas as tabelas}
+00011 \textcolor{comment}{#   são definidas com três colunas essenciais: identity, field e value.}
+00012 \textcolor{comment}{#   }
+00013 \textcolor{comment}{#   A coluna de identity deve guardar um inteiro que identifique um objeto de}
+00014 \textcolor{comment}{#   de forma unívoca. Funciona como uma chave primária, mas não tem relação}
+00015 \textcolor{comment}{#   alguma com nenhum dado do objeto referenciado e deve aparecer em mais de}
+00016 \textcolor{comment}{#   uma linha da tabela.}
+00017 \textcolor{comment}{#}
+00018 \textcolor{comment}{#   A coluna de field guardará o campo que está sendo referenciado. Ou seja,}
+00019 \textcolor{comment}{#   se uma linha da tabela guarda informações sobre uma matrícula, seu field }
+00020 \textcolor{comment}{#   deverá  ser semelhante a "PASSWORD". Por padrão, todos os fields são}
+00021 \textcolor{comment}{#   escritos em caixa alta.}
+00022 \textcolor{comment}{#}
+00023 \textcolor{comment}{#   A coluna de value armazena o valor descrito na linha. Ou seja, no exemplo}
+00024 \textcolor{comment}{#   da matrícula, o campo value armazenaria o valor real da matrícula do}
+00025 \textcolor{comment}{#   usuário referenciado pelo campo identity.}
+00026 \textcolor{comment}{#}
+00027 \textcolor{comment}{#   Dessa forma, cada linha da tabela tem o formato 'sujeito-verbo-predicado'.}
+00028 
+00029 \textcolor{keyword}{from} django.db \textcolor{keyword}{import} models
 00030 
-00031 \textcolor{comment}{## Classe que define o modelo de professor.}
-00032 \textcolor{comment}{# Representa o modelo de um professor armazenado no banco de dados.}
-\hypertarget{ELO_2models_8py_source_l00033}{}\hyperlink{classELO_1_1models_1_1Professor}{00033} \textcolor{keyword}{class }\hyperlink{classELO_1_1models_1_1Professor}{Professor}(models.Model):
-\hypertarget{ELO_2models_8py_source_l00034}{}\hyperlink{classELO_1_1models_1_1Professor_a314012619a14c0319c86ba52b6beeb2f}{00034}     identity = models.IntegerField()
-\hypertarget{ELO_2models_8py_source_l00035}{}\hyperlink{classELO_1_1models_1_1Professor_aaf0638dbb44d27f5acadeed376afafa1}{00035}     field = models.CharField(max\_length=32)
-\hypertarget{ELO_2models_8py_source_l00036}{}\hyperlink{classELO_1_1models_1_1Professor_abfa283169333876d02cf63886ca872e6}{00036}     value = models.TextField()
-00037 
-00038     \textcolor{comment}{## Retorna os valores do professor correspondente ao Id no banco de dados.}
-\hypertarget{ELO_2models_8py_source_l00039}{}\hyperlink{classELO_1_1models_1_1Professor_aefc9d63d429e19ec3487a7879879f29d}{00039}     \textcolor{keyword}{def }\hyperlink{classELO_1_1models_1_1Professor_aefc9d63d429e19ec3487a7879879f29d}{\_\_unicode\_\_}(self):
-00040         \textcolor{keywordflow}{return} \textcolor{stringliteral}{u'%s : %s = %s'} % (str(self.\hyperlink{classELO_1_1models_1_1Professor_a314012619a14c0319c86ba52b6beeb2f}{identity}), self.\hyperlink{classELO_1_1models_1_1Professor_aaf0638dbb44d27f5acadeed376afafa1}{field}, self.
+00031 \textcolor{comment}{## Classe que define o modelo de estudante.}
+00032 \textcolor{comment}{#   Colunas já implementadas:}
+00033 \textcolor{comment}{#   }
+00034 \textcolor{comment}{#   NAME:       Identifica o nome do estudante.\(\backslash\)n}
+00035 \textcolor{comment}{#   PASSWORD:   Contém a hash da senha do estudante.\(\backslash\)n}
+00036 \textcolor{comment}{#   BIOS:       Biografia do estudante.\(\backslash\)n}
+00037 \textcolor{comment}{#   MATRIC:     Inteiro que representa a matrícula do estudante.\(\backslash\)n}
+00038 \textcolor{comment}{#   CAMPUS:     Número inteiro que representa a identity de um Campus.}
+00039 \textcolor{comment}{#                   (ver modelo Campus)\(\backslash\)n}
+00040 \textcolor{comment}{#   AVATAR:     Caminho completo do avatar do usuário.\(\backslash\)n}
+00041 \textcolor{comment}{#   EMAIL:      Email utilizado pelo estudante.\(\backslash\)n}
+00042 \textcolor{comment}{#   SEX:        Caractere que representa o sexo do usuário. Varia entre M/F.\(\backslash\)n}
+00043 \textcolor{comment}{#   INTEREST:   Lista de strings que representam o interesse do usuário.\(\backslash\)n}
+00044 \textcolor{comment}{#   LANGUAGE:   Código da linguagem preferida do usuário.\(\backslash\)n}
+00045 \textcolor{comment}{#   COURSE:     Lista de inteiros que representam identities de Cursos.}
+00046 \textcolor{comment}{#                   (ver modelo Course)}
+\hypertarget{ELO_2models_8py_source_l00047}{}\hyperlink{classELO_1_1models_1_1Student}{00047} \textcolor{keyword}{class }\hyperlink{classELO_1_1models_1_1Student}{Student}(models.Model):
+\hypertarget{ELO_2models_8py_source_l00048}{}\hyperlink{classELO_1_1models_1_1Student_a20a7789a2b0f5b7d0c98453dcf38bc4e}{00048}     identity = models.IntegerField()
+\hypertarget{ELO_2models_8py_source_l00049}{}\hyperlink{classELO_1_1models_1_1Student_a893ec9b2ece5c6b829fce5e5a7c1d576}{00049}     field = models.CharField(max\_length=32)
+\hypertarget{ELO_2models_8py_source_l00050}{}\hyperlink{classELO_1_1models_1_1Student_a201226779dce6e064cb16bd92ed016e2}{00050}     value = models.TextField()
+00051 
+00052     \textcolor{comment}{## Retorna os valores do aluno correspondente ao Id no banco de dados.}
+\hypertarget{ELO_2models_8py_source_l00053}{}\hyperlink{classELO_1_1models_1_1Student_a2f51785c1beb3b45269a8678d97ec783}{00053}     \textcolor{keyword}{def }\hyperlink{classELO_1_1models_1_1Student_a2f51785c1beb3b45269a8678d97ec783}{\_\_unicode\_\_}(self):
+00054         \textcolor{keywordflow}{return} \textcolor{stringliteral}{u'%s : %s = %s'} % (str(self.\hyperlink{classELO_1_1models_1_1Student_a20a7789a2b0f5b7d0c98453dcf38bc4e}{identity}), self.\hyperlink{classELO_1_1models_1_1Student_a893ec9b2ece5c6b829fce5e5a7c1d576}{field}, self.
+      \hyperlink{classELO_1_1models_1_1Student_a201226779dce6e064cb16bd92ed016e2}{value})
+00055 
+00056 \textcolor{comment}{## Classe que define o modelo de administrador.}
+00057 \textcolor{comment}{#   Colunas já implementadas:}
+00058 \textcolor{comment}{#}
+00059 \textcolor{comment}{#   NAME:       Identifica o nome do Administrador.\(\backslash\)n}
+00060 \textcolor{comment}{#   PASSWORD:   Contém a hash da senha do administrador.}
+\hypertarget{ELO_2models_8py_source_l00061}{}\hyperlink{classELO_1_1models_1_1Adm}{00061} \textcolor{keyword}{class }\hyperlink{classELO_1_1models_1_1Adm}{Adm}(models.Model):
+\hypertarget{ELO_2models_8py_source_l00062}{}\hyperlink{classELO_1_1models_1_1Adm_af7e7b797ce5d3396e8a54d8927450d75}{00062}     identity = models.IntegerField()
+\hypertarget{ELO_2models_8py_source_l00063}{}\hyperlink{classELO_1_1models_1_1Adm_ae1af4ca22491b1cfe9cb0a7acefaa71e}{00063}     field = models.CharField(max\_length=32)
+\hypertarget{ELO_2models_8py_source_l00064}{}\hyperlink{classELO_1_1models_1_1Adm_a98f249c493fbcbcd347297437a098212}{00064}     value = models.TextField()
+00065 
+00066     \textcolor{comment}{## Retorna os valores do administrador correspondente ao Id no banco de dados.}
+\hypertarget{ELO_2models_8py_source_l00067}{}\hyperlink{classELO_1_1models_1_1Adm_a3541c3ae12b8d2da3f44ac6be00a23e6}{00067}     \textcolor{keyword}{def }\hyperlink{classELO_1_1models_1_1Adm_a3541c3ae12b8d2da3f44ac6be00a23e6}{\_\_unicode\_\_}(self):
+00068         \textcolor{keywordflow}{return} \textcolor{stringliteral}{u'%s : %s = %s'} % (str(self.\hyperlink{classELO_1_1models_1_1Adm_af7e7b797ce5d3396e8a54d8927450d75}{identity}), self.\hyperlink{classELO_1_1models_1_1Adm_ae1af4ca22491b1cfe9cb0a7acefaa71e}{field}, self.
+      \hyperlink{classELO_1_1models_1_1Adm_a98f249c493fbcbcd347297437a098212}{value})
+00069 
+00070 \textcolor{comment}{## Classe que define o modelo de professor.}
+00071 \textcolor{comment}{#   Colunas já implementadas:}
+00072 \textcolor{comment}{#}
+00073 \textcolor{comment}{#   NAME:       Identifica o nome do Professor.\(\backslash\)n}
+00074 \textcolor{comment}{#   PASSWORD:   Contém a hash da senha de acesso do professor.\(\backslash\)n}
+00075 \textcolor{comment}{#   MATRIC:     Inteiro que representa o número de registro do professor.\(\backslash\)n}
+00076 \textcolor{comment}{#   BIOS:       Descrição detalhada do perfil do professor.\(\backslash\)n}
+00077 \textcolor{comment}{#   CAMPUS:     Inteiro que representa a identity do campus de atuação do}
+00078 \textcolor{comment}{#                   professor. (ver modelo Campus)\(\backslash\)n}
+00079 \textcolor{comment}{#   COURSE:     Lista de inteiros que representam os cursos associados ao}
+00080 \textcolor{comment}{#                   professor em questão. (ver modelo Course)\(\backslash\)n}
+00081 \textcolor{comment}{#   AVATAR:     Caminho completo do avatar do usuário.\(\backslash\)n}
+00082 \textcolor{comment}{#   SEX:        Caractere que representa o sexo do usuário. Varia entre M/F.\(\backslash\)n}
+\hypertarget{ELO_2models_8py_source_l00083}{}\hyperlink{classELO_1_1models_1_1Professor}{00083} \textcolor{keyword}{class }\hyperlink{classELO_1_1models_1_1Professor}{Professor}(models.Model):
+\hypertarget{ELO_2models_8py_source_l00084}{}\hyperlink{classELO_1_1models_1_1Professor_a314012619a14c0319c86ba52b6beeb2f}{00084}     identity = models.IntegerField()
+\hypertarget{ELO_2models_8py_source_l00085}{}\hyperlink{classELO_1_1models_1_1Professor_aaf0638dbb44d27f5acadeed376afafa1}{00085}     field = models.CharField(max\_length=32)
+\hypertarget{ELO_2models_8py_source_l00086}{}\hyperlink{classELO_1_1models_1_1Professor_abfa283169333876d02cf63886ca872e6}{00086}     value = models.TextField()
+00087 
+00088     \textcolor{comment}{## Retorna os valores do professor correspondente ao Id no banco de dados.}
+\hypertarget{ELO_2models_8py_source_l00089}{}\hyperlink{classELO_1_1models_1_1Professor_aefc9d63d429e19ec3487a7879879f29d}{00089}     \textcolor{keyword}{def }\hyperlink{classELO_1_1models_1_1Professor_aefc9d63d429e19ec3487a7879879f29d}{\_\_unicode\_\_}(self):
+00090         \textcolor{keywordflow}{return} \textcolor{stringliteral}{u'%s : %s = %s'} % (str(self.\hyperlink{classELO_1_1models_1_1Professor_a314012619a14c0319c86ba52b6beeb2f}{identity}), self.\hyperlink{classELO_1_1models_1_1Professor_aaf0638dbb44d27f5acadeed376afafa1}{field}, self.
       \hyperlink{classELO_1_1models_1_1Professor_abfa283169333876d02cf63886ca872e6}{value})
+00091 
+00092 \textcolor{comment}{## Classe que define o modelo de deus.}
+00093 \textcolor{comment}{#   Esta tabela sempre conterá apenas uma entrada, ou seja, este sistema é}
+00094 \textcolor{comment}{#       monoteísta.}
+\hypertarget{ELO_2models_8py_source_l00095}{}\hyperlink{classELO_1_1models_1_1God}{00095} \textcolor{keyword}{class }\hyperlink{classELO_1_1models_1_1God}{God}(models.Model):
+\hypertarget{ELO_2models_8py_source_l00096}{}\hyperlink{classELO_1_1models_1_1God_a8b9ebc1601b71f2b52e72c9fbd3030bc}{00096}     username = models.CharField(max\_length=32)
+\hypertarget{ELO_2models_8py_source_l00097}{}\hyperlink{classELO_1_1models_1_1God_ae566fce421f4a31517a053af2abcff31}{00097}     password = models.TextField()
+00098 
+\hypertarget{ELO_2models_8py_source_l00099}{}\hyperlink{classELO_1_1models_1_1God_aec7e462406b98293c953589a3a368825}{00099}     \textcolor{keyword}{def }\hyperlink{classELO_1_1models_1_1God_aec7e462406b98293c953589a3a368825}{\_\_unicode\_\_}(self):
+00100         \textcolor{keywordflow}{return} \textcolor{stringliteral}{u'\(\backslash\)nusername: %s\(\backslash\)n password: %s'} % (self.\hyperlink{classELO_1_1models_1_1God_a8b9ebc1601b71f2b52e72c9fbd3030bc}{username}, 
+00101                                                        self.\hyperlink{classELO_1_1models_1_1God_ae566fce421f4a31517a053af2abcff31}{password})
+00102 
+00103 \textcolor{comment}{## Classe que define o modelo de Curso.}
+00104 \textcolor{comment}{#   Colunas já implementadas:}
+00105 \textcolor{comment}{#}
+00106 \textcolor{comment}{#   NAME:       Identifica o nome do curso.\(\backslash\)n}
+00107 \textcolor{comment}{#   ID:         Identifica univocamente o curso.\(\backslash\)n}
+00108 \textcolor{comment}{#   STUDENTS:   Lista de inteiros que representam os alunos associados ao}
+00109 \textcolor{comment}{#                   curso em questão. (ver modelo Student).\(\backslash\)n}
+00110 \textcolor{comment}{#   MODULES:    Lista de inteiros que identificam os módulos contidos no curso.}
+\hypertarget{ELO_2models_8py_source_l00111}{}\hyperlink{classELO_1_1models_1_1Courses}{00111} \textcolor{keyword}{class }\hyperlink{classELO_1_1models_1_1Courses}{Courses}(models.Model):
+\hypertarget{ELO_2models_8py_source_l00112}{}\hyperlink{classELO_1_1models_1_1Courses_a83d1bd0bc45319f3b88446f87f42a03e}{00112}     identity = models.IntegerField()
+\hypertarget{ELO_2models_8py_source_l00113}{}\hyperlink{classELO_1_1models_1_1Courses_a0ecbb317d4d82d5630b7a16a1df1711d}{00113}     field = models.CharField(max\_length=32)
+\hypertarget{ELO_2models_8py_source_l00114}{}\hyperlink{classELO_1_1models_1_1Courses_a2b3c228ef67c767570b3555b3b7f1de2}{00114}     value = models.TextField()
+00115 
+\hypertarget{ELO_2models_8py_source_l00116}{}\hyperlink{classELO_1_1models_1_1Courses_a8926a37152be8d4fc3e0ba6af200f871}{00116}     \textcolor{keyword}{def }\hyperlink{classELO_1_1models_1_1Courses_a8926a37152be8d4fc3e0ba6af200f871}{\_\_unicode\_\_}(self):
+00117         \textcolor{keywordflow}{return} \textcolor{stringliteral}{u'%s : %s = %s'} % (str(self.\hyperlink{classELO_1_1models_1_1Courses_a83d1bd0bc45319f3b88446f87f42a03e}{identity}), self.\hyperlink{classELO_1_1models_1_1Courses_a0ecbb317d4d82d5630b7a16a1df1711d}{field}, self.
+      \hyperlink{classELO_1_1models_1_1Courses_a2b3c228ef67c767570b3555b3b7f1de2}{value})
+00118 
+00119 \textcolor{comment}{## Classe que define o modelo de Módulo.}
+00120 \textcolor{comment}{#   Um módulo é o primeiro nível de divisão dentro de um curso.}
+00121 \textcolor{comment}{#}
+00122 \textcolor{comment}{#   Colunas já implementadas:}
+00123 \textcolor{comment}{#}
+00124 \textcolor{comment}{#   NAME:       Identifica o nome do módulo.\(\backslash\)n}
+00125 \textcolor{comment}{#   ID:         Identifica univocamente o módulo.\(\backslash\)n}
+00126 \textcolor{comment}{#   LESSONS:    Lista de inteiros que identificam as lições contidas dentro}
+00127 \textcolor{comment}{#                   dos módulos.}
+\hypertarget{ELO_2models_8py_source_l00128}{}\hyperlink{classELO_1_1models_1_1Module}{00128} \textcolor{keyword}{class }\hyperlink{classELO_1_1models_1_1Module}{Module}(models.Model):
+\hypertarget{ELO_2models_8py_source_l00129}{}\hyperlink{classELO_1_1models_1_1Module_abbf09409159a27a42ea6cb33fcc7fde7}{00129}     identity = models.IntegerField()
+\hypertarget{ELO_2models_8py_source_l00130}{}\hyperlink{classELO_1_1models_1_1Module_ad05ba106a7012cd72877fe21e8639e2d}{00130}     field = models.CharField(max\_length=32)
+\hypertarget{ELO_2models_8py_source_l00131}{}\hyperlink{classELO_1_1models_1_1Module_a5b31cea93dea5474f3ff974cd745e39f}{00131}     value = models.TextField()
+00132 
+\hypertarget{ELO_2models_8py_source_l00133}{}\hyperlink{classELO_1_1models_1_1Module_a1b54aa7a5e8dac090dea0926eca5550d}{00133}     \textcolor{keyword}{def }\hyperlink{classELO_1_1models_1_1Module_a1b54aa7a5e8dac090dea0926eca5550d}{\_\_unicode\_\_}(self):
+00134         \textcolor{keywordflow}{return} \textcolor{stringliteral}{u'%s : %s = %s'} % (str(self.\hyperlink{classELO_1_1models_1_1Module_abbf09409159a27a42ea6cb33fcc7fde7}{identity}), self.\hyperlink{classELO_1_1models_1_1Module_ad05ba106a7012cd72877fe21e8639e2d}{field}, self.
+      \hyperlink{classELO_1_1models_1_1Module_a5b31cea93dea5474f3ff974cd745e39f}{value})
+00135 
+00136 \textcolor{comment}{## Classe que define o modelo de Lição.}
+00137 \textcolor{comment}{#   Colunas já implementadas:}
+00138 \textcolor{comment}{#}
+00139 \textcolor{comment}{#   NAME:       Identifica o nome da lição.\(\backslash\)n}
+00140 \textcolor{comment}{#   ID:         Identifica univocamente o módulo.\(\backslash\)n}
+00141 \textcolor{comment}{#   LINK:       Caminho de arquivo para o html a ser parseado.\(\backslash\)n}
+00142 \textcolor{comment}{#   EXERCISES:  Lista de ínteiros que representam os exercícios associados}
+00143 \textcolor{comment}{#                   à lição correspondente.\(\backslash\)n}
+\hypertarget{ELO_2models_8py_source_l00144}{}\hyperlink{classELO_1_1models_1_1Lesson}{00144} \textcolor{keyword}{class }\hyperlink{classELO_1_1models_1_1Lesson}{Lesson}(models.Model):
+\hypertarget{ELO_2models_8py_source_l00145}{}\hyperlink{classELO_1_1models_1_1Lesson_aa650c6add387eee9e15421717074c0d3}{00145}     identity = models.IntegerField()
+\hypertarget{ELO_2models_8py_source_l00146}{}\hyperlink{classELO_1_1models_1_1Lesson_a1657c9c36e8d9c58d86c272e2339e7b1}{00146}     field = models.CharField(max\_length=32)
+\hypertarget{ELO_2models_8py_source_l00147}{}\hyperlink{classELO_1_1models_1_1Lesson_a27927b9763fb13a9e41b3f826439c600}{00147}     value = models.TextField()
+00148 
+\hypertarget{ELO_2models_8py_source_l00149}{}\hyperlink{classELO_1_1models_1_1Lesson_a3d9f0295dbe1ed5c74668d6c0876f97c}{00149}     \textcolor{keyword}{def }\hyperlink{classELO_1_1models_1_1Lesson_a3d9f0295dbe1ed5c74668d6c0876f97c}{\_\_unicode\_\_}(self):
+00150         \textcolor{keywordflow}{return} \textcolor{stringliteral}{u'%s : %s = %s'} % (str(self.\hyperlink{classELO_1_1models_1_1Lesson_aa650c6add387eee9e15421717074c0d3}{identity}), self.\hyperlink{classELO_1_1models_1_1Lesson_a1657c9c36e8d9c58d86c272e2339e7b1}{field}, self.
+      \hyperlink{classELO_1_1models_1_1Lesson_a27927b9763fb13a9e41b3f826439c600}{value})
+00151 
+00152 \textcolor{comment}{## Classe que define o modelo de exercício.}
+00153 \textcolor{comment}{#   Colunas já implementadas:}
+00154 \textcolor{comment}{#}
+00155 \textcolor{comment}{#   ID:         Inteiro que representa univocamente um exercício.\(\backslash\)n}
+00156 \textcolor{comment}{#   LINK:       Caminho de arquivo para o html a ser parseado.\(\backslash\)n}
+00157 \textcolor{comment}{#   EXTYPE:     Tipo de exercicio a ser tratado.\(\backslash\)n}
+00158 \textcolor{comment}{#   EXFORMAT:   Formato do exercício a ser tratado.\(\backslash\)n}
+00159 \textcolor{comment}{#   ITEMS:      Lista de items.\(\backslash\)n}
+\hypertarget{ELO_2models_8py_source_l00160}{}\hyperlink{classELO_1_1models_1_1Exercise}{00160} \textcolor{keyword}{class }\hyperlink{classELO_1_1models_1_1Exercise}{Exercise}(models.Model):
+\hypertarget{ELO_2models_8py_source_l00161}{}\hyperlink{classELO_1_1models_1_1Exercise_a0b63268e129a279de260ad21060a1b55}{00161}     identity = models.IntegerField()
+\hypertarget{ELO_2models_8py_source_l00162}{}\hyperlink{classELO_1_1models_1_1Exercise_a4567f8aa62747a0eabb1c89ab18ec1ce}{00162}     field = models.CharField(max\_length=32)
+\hypertarget{ELO_2models_8py_source_l00163}{}\hyperlink{classELO_1_1models_1_1Exercise_ae4d0d7ecfe0004385c031cbba76f3b4d}{00163}     value = models.TextField()
+00164 
+\hypertarget{ELO_2models_8py_source_l00165}{}\hyperlink{classELO_1_1models_1_1Exercise_af3e991e5610cec815a2c3260ec6aae0b}{00165}     \textcolor{keyword}{def }\hyperlink{classELO_1_1models_1_1Exercise_af3e991e5610cec815a2c3260ec6aae0b}{\_\_unicode\_\_}(self):
+00166         \textcolor{keywordflow}{return} \textcolor{stringliteral}{u'%s : %s = %s'} % (str(self.\hyperlink{classELO_1_1models_1_1Exercise_a0b63268e129a279de260ad21060a1b55}{identity}), self.\hyperlink{classELO_1_1models_1_1Exercise_a4567f8aa62747a0eabb1c89ab18ec1ce}{field}, self.
+      \hyperlink{classELO_1_1models_1_1Exercise_ae4d0d7ecfe0004385c031cbba76f3b4d}{value})
 \end{DoxyCode}

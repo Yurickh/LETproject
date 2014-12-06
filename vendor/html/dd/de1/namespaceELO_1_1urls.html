@@ -126,7 +126,7 @@ Variáveis</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definição na linha <a class="el" href="../../d1/d9e/urls_8py_source.html#l00014">14</a> do arquivo <a class="el" href="../../d1/d9e/urls_8py_source.html">urls.py</a>.</p>
+<p>Definição na linha <a class="el" href="../../d1/d9e/urls_8py_source.html#l00028">28</a> do arquivo <a class="el" href="../../d1/d9e/urls_8py_source.html">urls.py</a>.</p>
 
 </div>
 </div>
@@ -147,20 +147,26 @@ Variáveis</h2></td></tr>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="comment">## URL para o login do administrador.</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    url(<span class="stringliteral">r&#39;^364fd8cdc3a35a89b7be75bc9d10ebea/?$&#39;</span>, </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        factory.runHome, {<span class="stringliteral">&#39;entity&#39;</span>: <span class="stringliteral">&#39;Adm&#39;</span>}),</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="comment">## URL da pagina de perfil.</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    url(<span class="stringliteral">r&#39;^profile/?$&#39;</span>, factory.runProfile, {<span class="stringliteral">&#39;acctype&#39;</span>: <span class="stringliteral">&#39;Full&#39;</span>}),</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="comment">## URL para mostrar assincronamente a edição de um campo de perfil.</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    url(<span class="stringliteral">r&#39;^assync/editfield/(?P&lt;field&gt;\w{3,9})/?$&#39;</span>, </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        factory.runProfile, {<span class="stringliteral">&#39;acctype&#39;</span> : <span class="stringliteral">&#39;Full&#39;</span>}),</div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="../../dd/de1/namespaceELO_1_1urls.html#a85325dfebd736ced5558533f2c4bc29a">   14</a></span>&#160;    <span class="comment">## URL da pagina de logout.</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    url(<span class="stringliteral">r&#39;^logout/?$&#39;</span>, factory.runLogout),</div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="../../dd/de1/namespaceELO_1_1urls.html#a3451f093ed6ab05c006fd0d1cdba836d">   16</a></span>&#160;    <span class="comment">## URL da pagina de cursos.</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    url(<span class="stringliteral">r&#39;^course/?$&#39;</span>, factory.runCourse),</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="comment">## URL da pagina de administracao.</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    url(<span class="stringliteral">r&#39;^adm/?$&#39;</span>, factory.runAdm),</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;)</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    url(<span class="stringliteral">r&#39;^e50b058759a52eda8a507687887186e5/?$&#39;</span>,</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        factory.runHome, {<span class="stringliteral">&#39;entity&#39;</span>: <span class="stringliteral">&#39;God&#39;</span>}),</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="comment">## URL da pagina de perfil.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    url(<span class="stringliteral">r&#39;^profile/?$&#39;</span>, factory.runProfile, {<span class="stringliteral">&#39;acctype&#39;</span>: <span class="stringliteral">&#39;Full&#39;</span>}),</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="comment">## URL para mostrar assincronamente a edição de um campo de perfil.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    url(<span class="stringliteral">r&#39;^assync/editfield/(?P&lt;field&gt;\w{3,9})/?$&#39;</span>, </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        factory.runProfile, {<span class="stringliteral">&#39;acctype&#39;</span> : <span class="stringliteral">&#39;Full&#39;</span>}),</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="comment">## URL da pagina de logout.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    url(<span class="stringliteral">r&#39;^logout/?$&#39;</span>, factory.runLogout),</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="comment">## URL da pagina de cursos.</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    url(<span class="stringliteral">r&#39;^course/(?P&lt;courseid&gt;\d+)/?$&#39;</span>, factory.runCourse),</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="comment">## URL da pagina de administracao.</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    url(<span class="stringliteral">r&#39;^adm/?$&#39;</span>, factory.runAdm),</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    url(<span class="stringliteral">r&#39;^assync/adm-edit/(?P&lt;action&gt;\w{3,9})/(?P&lt;model&gt;\w{3,9})/?$&#39;</span>, </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        factory.runAdm),</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    url(<span class="stringliteral">r&#39;^assync/adm-info/?$&#39;</span>, factory.runAdm),</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    url(<span class="stringliteral">r&#39;^assync/edit-field/(?P&lt;field&gt;\w{3,9})/?$&#39;</span>, factory.runAdm),</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;)</div>
 </div><!-- fragment -->
-<p>Definição na linha <a class="el" href="../../d1/d9e/urls_8py_source.html#l00016">16</a> do arquivo <a class="el" href="../../d1/d9e/urls_8py_source.html">urls.py</a>.</p>
+<p>Definição na linha <a class="el" href="../../d1/d9e/urls_8py_source.html#l00030">30</a> do arquivo <a class="el" href="../../d1/d9e/urls_8py_source.html">urls.py</a>.</p>
 
 </div>
 </div>
@@ -170,7 +176,7 @@ Variáveis</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../da/d09/namespaceELO.html">ELO</a></li><li class="navelem"><a class="el" href="../../dd/de1/namespaceELO_1_1urls.html">urls</a></li>
-    <li class="footer">Gerado em Sexta, 22 de Agosto de 2014 17:35:23 para LETproject por
+    <li class="footer">Gerado em Terça, 21 de Outubro de 2014 13:48:48 para LETproject por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

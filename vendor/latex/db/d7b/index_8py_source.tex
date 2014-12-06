@@ -16,199 +16,224 @@
 \hypertarget{index_8py_source_l00011}{}\hyperlink{namespaceELO_1_1locale_1_1index_a065d26641ba89f86fe642e3858607087}{00011} DICT = \{
 00012     \textcolor{comment}{## Mensagem de erro para um password menor que o especificado.}
 00013     \textcolor{stringliteral}{'EXCEPTION\_INV\_PW\_S'} : \_(\textcolor{stringliteral}{u"A senha deve conter no mínimo 6 caracteres."}),
-00014 
-00015     \textcolor{comment}{## Mensagem de erro para um nome maior do que o especificado.}
-00016     \textcolor{stringliteral}{'EXCEPTION\_INV\_NM\_B'} : \_(\textcolor{stringliteral}{u"O nome deve conter menos de 32 caracteres."}),
-00017     \textcolor{comment}{## Mensagem de erro para um nome menor que o especificado.}
-00018     \textcolor{stringliteral}{'EXCEPTION\_INV\_NM\_S'} : \_(\textcolor{stringliteral}{u"O nome deve conter algum caractere."}),
-00019     \textcolor{comment}{## Mensagem de erro para um nome que contém caracteres não alfanuméricos.}
-00020     \textcolor{stringliteral}{'EXCEPTION\_INV\_NM\_F'} : \_(\textcolor{stringliteral}{u"O nome deve conter apenas caracteres alfanuméricos."}),
-00021 
-00022     \textcolor{comment}{## Mensagem de erro para uma matric maior que o especificado.}
-00023     \textcolor{stringliteral}{'EXCEPTION\_INV\_MT\_B'} : \_(\textcolor{stringliteral}{u"O número de matrícula ultrapassou o tamanho máximo permitido."}),
-00024     \textcolor{comment}{## Mensagem de erro para uma matric menor que o especificado.}
-00025     \textcolor{stringliteral}{'EXCEPTION\_INV\_MT\_S'} : \_(\textcolor{stringliteral}{u"O número de matrícula digitado é menor do que o mínimo permitido."}),
-00026     \textcolor{comment}{## Mensagem de erro para uma matric com conteúdo não numérico.}
-00027     \textcolor{stringliteral}{'EXCEPTION\_INT\_MT\_F'} : \_(\textcolor{stringliteral}{u"Valor inválido para matrícula."}),
-00028 
-00029     \textcolor{comment}{## Mensagem de erro para um texto maior que o especificado.}
-00030     \textcolor{stringliteral}{'EXCEPTION\_INV\_PT\_B'} : \_(\textcolor{stringliteral}{u"O texto deve conter no máximo 1024 caracteres."}),
-00031 
-00032     \textcolor{comment}{## Mensagem de erro para um número de campus menor que o especificado.}
-00033     \textcolor{stringliteral}{'EXCEPTION\_INV\_CP\_S'} : \_(\textcolor{stringliteral}{u"O número do campus deve ser maior do que 0."}),
-00034     \textcolor{comment}{## Mensagem de erro para um valor de campus não numérico.}
-00035     \textcolor{stringliteral}{'EXCEPTION\_INV\_CP\_F'} : \_(\textcolor{stringliteral}{u"Valor inválido para o Campus."}),
-00036 
-00037     \textcolor{comment}{## Mensagem de erro para um valor de sexo inválido.}
-00038     \textcolor{stringliteral}{'EXCEPTION\_INV\_SX\_F'} : \_(\textcolor{stringliteral}{u"O caractere de sexo deve ser 'M', 'm', 'f' e 'F'."}),
-00039 
-00040     \textcolor{comment}{## Mensagem de erro para um link que é NULL.}
-00041     \textcolor{stringliteral}{'EXCEPTION\_INV\_LK\_S'} : \_(\textcolor{stringliteral}{u"O link deve conter pelo menos um caractere."}),
-00042     \textcolor{comment}{## Mensagem de erro para um link que contém caracteres não alfanuéricos.}
-00043     \textcolor{stringliteral}{'EXCEPTION\_INV\_LK\_F'} : \_(\textcolor{stringliteral}{u"O link deve conter apenas caracteres alfanuméricos."}),
-00044 
-00045     \textcolor{comment}{## Mensagem de erro para um mail vazio.}
-00046     \textcolor{stringliteral}{'EXCEPTION\_INV\_ML\_S'} : \_(\textcolor{stringliteral}{u"O campo e-mail nao pode ser nulo."}),
-00047     \textcolor{comment}{## Mensagem de erro para para um mail escrito no formato incrreto.}
-00048     \textcolor{stringliteral}{'EXCEPTION\_INV\_ML\_F'} : \_(\textcolor{stringliteral}{u"O campo e-mail esta escrito no formato incorreto (Mais de um '@', algum
+00014     \textcolor{comment}{## Mensagem de erro para um password inválido.}
+00015     \textcolor{stringliteral}{'EXCEPTION\_INV\_PW\_F'} : \_(\textcolor{stringliteral}{u"Senha inválida."}),
+00016     \textcolor{comment}{## Mensagem de erro para validação de senha repetida.}
+00017     \textcolor{stringliteral}{'EXCEPTION\_INV\_PW\_R'} : \_(\textcolor{stringliteral}{u"As senhas inseridas não batem."}),
+00018 
+00019     \textcolor{comment}{## Mensagem de erro para um nome maior do que o especificado.}
+00020     \textcolor{stringliteral}{'EXCEPTION\_INV\_NM\_B'} : \_(\textcolor{stringliteral}{u"O nome deve conter menos de 32 caracteres."}),
+00021     \textcolor{comment}{## Mensagem de erro para um nome menor que o especificado.}
+00022     \textcolor{stringliteral}{'EXCEPTION\_INV\_NM\_S'} : \_(\textcolor{stringliteral}{u"O nome deve conter algum caractere."}),
+00023     \textcolor{comment}{## Mensagem de erro para um nome que contém caracteres não alfanuméricos.}
+00024     \textcolor{stringliteral}{'EXCEPTION\_INV\_NM\_F'} : \_(\textcolor{stringliteral}{u"O nome deve conter apenas caracteres alfanuméricos."}),
+00025 
+00026     \textcolor{comment}{## Mensagem de erro para uma matric maior que o especificado.}
+00027     \textcolor{stringliteral}{'EXCEPTION\_INV\_MT\_B'} : \_(\textcolor{stringliteral}{u"O número de matrícula ultrapassou o tamanho máximo permitido."}),
+00028     \textcolor{comment}{## Mensagem de erro para uma matric menor que o especificado.}
+00029     \textcolor{stringliteral}{'EXCEPTION\_INV\_MT\_S'} : \_(\textcolor{stringliteral}{u"O número de matrícula digitado é menor do que o mínimo permitido."}),
+00030     \textcolor{comment}{## Mensagem de erro para uma matric com conteúdo não numérico.}
+00031     \textcolor{stringliteral}{'EXCEPTION\_INT\_MT\_F'} : \_(\textcolor{stringliteral}{u"Valor inválido para matrícula."}),
+00032 
+00033     \textcolor{comment}{## Mensagem de erro para um texto maior que o especificado.}
+00034     \textcolor{stringliteral}{'EXCEPTION\_INV\_PT\_B'} : \_(\textcolor{stringliteral}{u"O texto deve conter no máximo 1024 caracteres."}),
+00035 
+00036     \textcolor{comment}{## Mensagem de erro para um número de campus menor que o especificado.}
+00037     \textcolor{stringliteral}{'EXCEPTION\_INV\_CP\_S'} : \_(\textcolor{stringliteral}{u"O número do campus deve ser maior do que 0."}),
+00038     \textcolor{comment}{## Mensagem de erro para um valor de campus não numérico.}
+00039     \textcolor{stringliteral}{'EXCEPTION\_INV\_CP\_F'} : \_(\textcolor{stringliteral}{u"Valor inválido para o Campus."}),
+00040 
+00041     \textcolor{comment}{## Mensagem de erro para um valor de sexo inválido.}
+00042     \textcolor{stringliteral}{'EXCEPTION\_INV\_SX\_F'} : \_(\textcolor{stringliteral}{u"O caractere de sexo deve ser 'M', 'm', 'f' e 'F'."}),
+00043 
+00044     \textcolor{comment}{## Mensagem de erro para um link que é NULL.}
+00045     \textcolor{stringliteral}{'EXCEPTION\_INV\_LK\_S'} : \_(\textcolor{stringliteral}{u"O link deve conter pelo menos um caractere."}),
+00046     \textcolor{comment}{## Mensagem de erro para um link que contém caracteres não alfanuéricos.}
+00047     \textcolor{stringliteral}{'EXCEPTION\_INV\_LK\_F'} : \_(\textcolor{stringliteral}{u"O link deve conter apenas caracteres alfanuméricos."}),
+00048 
+00049     \textcolor{comment}{## Mensagem de erro para um mail vazio.}
+00050     \textcolor{stringliteral}{'EXCEPTION\_INV\_ML\_S'} : \_(\textcolor{stringliteral}{u"O campo e-mail nao pode ser nulo."}),
+00051     \textcolor{comment}{## Mensagem de erro para para um mail escrito no formato incrreto.}
+00052     \textcolor{stringliteral}{'EXCEPTION\_INV\_ML\_F'} : \_(\textcolor{stringliteral}{u"O campo e-mail esta escrito no formato incorreto (Mais de um '@', algum
        espaço ou nenhum ponto)."}),
-00049 
-00050     \textcolor{comment}{## Mensagem de erro para um tipo de exercício manor que o especificado ou igual a zero.}
-00051     \textcolor{stringliteral}{'EXCEPTION\_INV\_ET\_S'} : \_(\textcolor{stringliteral}{u"O id do tipo de exercício deve ser maior que zero."}),
-00052     \textcolor{comment}{## Mensagem de erro para um valor não numérico.}
-00053     \textcolor{stringliteral}{'EXCEPTION\_INV\_ET\_F'} : \_(\textcolor{stringliteral}{u"Tipo de exercício inválido."}),
-00054 
-00055     \textcolor{comment}{## Mensagem de erro para uma nota negativa.}
-00056     \textcolor{stringliteral}{'EXCEPTION\_INV\_GR\_S'} : \_(\textcolor{stringliteral}{u"A nota deve ser maior ou igual a zero."}),
-00057     \textcolor{comment}{## Mensagem de erro para uma nota maior que 100.}
-00058     \textcolor{stringliteral}{'EXCEPTION\_INV\_GR\_B'} : \_(\textcolor{stringliteral}{u"A nota deve ser menor do que cem."}),
-00059     \textcolor{comment}{## Mensagem de erro para uma nota com valor não numérico.}
-00060     \textcolor{stringliteral}{'EXCEPTION\_INV\_GR\_F'} : \_(\textcolor{stringliteral}{u"A nota deve ser um valor numérico."}),
-00061 
-00062     \textcolor{comment}{## Mensagem de erro para um número de Id muito baixo.}
-00063     \textcolor{stringliteral}{'EXCEPTION\_INV\_ID\_S'} : \_(\textcolor{stringliteral}{u"O campo Id deve ser maior ou igual a 1."}),
-00064     \textcolor{comment}{## Mensagem de erro para um valor de Id inválido.}
-00065     \textcolor{stringliteral}{'EXCEPTION\_INV\_ID\_F'} : \_(\textcolor{stringliteral}{u"Valor inválido para o campo ID."}),
-00066 
-00067     \textcolor{comment}{## Mensagem de erro para um idioma inexistente.}
-00068     \textcolor{stringliteral}{'EXCEPTION\_INV\_LG\_F'} : \_(\textcolor{stringliteral}{u"Idioma inválido."}),
-00069 
-00070     \textcolor{comment}{## Mensagem de erro para}
-00071     \textcolor{stringliteral}{'EXCEPTION\_INV\_DT\_D'} : \_(\textcolor{stringliteral}{u"Dia inválido."}),
-00072     \textcolor{comment}{## Mensagem de erro para}
-00073     \textcolor{stringliteral}{'EXCEPTION\_INV\_DT\_M'} : \_(\textcolor{stringliteral}{u"Mês inválido."}),
+00053 
+00054     \textcolor{comment}{## Mensagem de erro para um tipo de exercício manor que o especificado ou igual a zero.}
+00055     \textcolor{stringliteral}{'EXCEPTION\_INV\_ET\_S'} : \_(\textcolor{stringliteral}{u"O id do tipo de exercício deve ser maior que zero."}),
+00056     \textcolor{comment}{## Mensagem de erro para um valor não numérico.}
+00057     \textcolor{stringliteral}{'EXCEPTION\_INV\_ET\_F'} : \_(\textcolor{stringliteral}{u"Tipo de exercício inválido."}),
+00058 
+00059     \textcolor{comment}{## Mensagem de erro para uma nota negativa.}
+00060     \textcolor{stringliteral}{'EXCEPTION\_INV\_GR\_S'} : \_(\textcolor{stringliteral}{u"A nota deve ser maior ou igual a zero."}),
+00061     \textcolor{comment}{## Mensagem de erro para uma nota maior que 100.}
+00062     \textcolor{stringliteral}{'EXCEPTION\_INV\_GR\_B'} : \_(\textcolor{stringliteral}{u"A nota deve ser menor do que cem."}),
+00063     \textcolor{comment}{## Mensagem de erro para uma nota com valor não numérico.}
+00064     \textcolor{stringliteral}{'EXCEPTION\_INV\_GR\_F'} : \_(\textcolor{stringliteral}{u"A nota deve ser um valor numérico."}),
+00065 
+00066     \textcolor{comment}{## Mensagem de erro para um número de Id muito baixo.}
+00067     \textcolor{stringliteral}{'EXCEPTION\_INV\_ID\_S'} : \_(\textcolor{stringliteral}{u"O campo Id deve ser maior ou igual a 1."}),
+00068     \textcolor{comment}{## Mensagem de erro para um valor de Id inválido.}
+00069     \textcolor{stringliteral}{'EXCEPTION\_INV\_ID\_F'} : \_(\textcolor{stringliteral}{u"Valor inválido para o campo ID."}),
+00070 
+00071     \textcolor{comment}{## Mensagem de erro para um idioma inexistente.}
+00072     \textcolor{stringliteral}{'EXCEPTION\_INV\_LG\_F'} : \_(\textcolor{stringliteral}{u"Idioma inválido."}),
+00073 
 00074     \textcolor{comment}{## Mensagem de erro para}
-00075     \textcolor{stringliteral}{'EXCEPTION\_INV\_DT\_Y'} : \_(\textcolor{stringliteral}{u"Ano inválido."}),
-00076 
-00077     \textcolor{comment}{## Prefixo usado para compor mensagens de erro.}
-00078     \textcolor{stringliteral}{'EXCEPTION\_TEST\_PREFIX'} : \_(\textcolor{stringliteral}{u"Ocorreu um erro:"}),
-00079     \textcolor{comment}{## Mensagem de erro para erro no getValue.}
-00080     \textcolor{stringliteral}{'EXCEPTION\_TEST\_INV\_GET'} : \_(\textcolor{stringliteral}{u"Ocorreu um erro no método getValue."}),
-00081 
-00082     \textcolor{comment}{# Excessões para os tipos de entidades.}
-00083 
-00084     \textcolor{comment}{## Mensagem de erro para um username inválido.}
-00085     \textcolor{stringliteral}{'EXCEPTION\_INV\_USR\_NM'} : \_(\textcolor{stringliteral}{u"Nome de usuário inválido."}),
-00086     \textcolor{comment}{## Mensagem de erro para um password inválido.}
-00087     \textcolor{stringliteral}{'EXCEPTION\_INV\_USR\_PW'} : \_(\textcolor{stringliteral}{u"Senha de usuário inválida."}),
-00088 
-00089     \textcolor{comment}{## Mensagem de erro para um erro com o número de registro (matric) do professor.}
-00090     \textcolor{stringliteral}{'EXCEPTION\_INV\_PRF\_MT'} : \_(\textcolor{stringliteral}{u"Ocorreu um erro na matrícula do professor."}),
-00091     \textcolor{comment}{## Mensagem de erro para um erro na biografia do professor.}
-00092     \textcolor{stringliteral}{'EXCEPTION\_INV\_PRF\_BS'} : \_(\textcolor{stringliteral}{u"Ocorreu um erro na biografia do professor."}),
-00093     \textcolor{comment}{## Mensagem de erro para um erro com o campus do professor.}
-00094     \textcolor{stringliteral}{'EXCEPTION\_INV\_PRF\_CP'} : \_(\textcolor{stringliteral}{u"Ocorreu um erro no campus do professor."}),
-00095     \textcolor{comment}{## Mensagem de erro para um erro com os cursos do professor.}
-00096     \textcolor{stringliteral}{'EXCEPTION\_INV\_PRF\_CS'} : \_(\textcolor{stringliteral}{u"Ocorreu um erro nos cursos do professor."}),
-00097     \textcolor{comment}{## Mensagem de erro para um erro com o avatar do professor.}
-00098     \textcolor{stringliteral}{'EXCEPTION\_INV\_PRF\_AV'} : \_(\textcolor{stringliteral}{u"Ocorreu um erro no avatar do professor."}),
-00099     \textcolor{comment}{## Mensagem de erro para um erro com o sexo do professor.}
-00100     \textcolor{stringliteral}{'EXCEPTION\_INV\_PRF\_SX'} : \_(\textcolor{stringliteral}{u"Ocorreu um erro no sexo do professor."}),
-00101     \textcolor{comment}{## Mensagem de erro para um e-mail de professor inválido}
-00102     \textcolor{stringliteral}{'EXCEPTION\_INV\_PRF\_ML'} : \_(\textcolor{stringliteral}{u"E-mail de professor inválido."}),
-00103 
-00104     \textcolor{comment}{## Mensagem de erro para um número de registro de estudante (matric) inválido.}
-00105     \textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_MT'} : \_(\textcolor{stringliteral}{u"Matricula de aluno inválida."}),
-00106     \textcolor{comment}{## Mensagem de erro para uma biografia de estudante inválida.}
-00107     \textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_BS'} : \_(\textcolor{stringliteral}{u"Biografia de aluno inválida."}),
-00108     \textcolor{comment}{## Mensagem de erro para um vampus de estudante inválido.}
-00109     \textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_CP'} : \_(\textcolor{stringliteral}{u"Campus de aluno inválido."}),
-00110     \textcolor{comment}{## Mensagem de erro para um curso de estudante inválido}
-00111     \textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_CO'} : \_(\textcolor{stringliteral}{u"Campo curso de aluno inválido."}),
-00112     \textcolor{comment}{## Mensagem de erro para um avatar de estudante inválido.}
-00113     \textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_AV'} : \_(\textcolor{stringliteral}{u"Avatar de aluno inválido."}),
-00114     \textcolor{comment}{## Mensagem de erro para um sexo de estudante inválido.}
-00115     \textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_SX'} : \_(\textcolor{stringliteral}{u"Sexo de aluno inválido."}),
-00116     \textcolor{comment}{## Mensagem de erro para um e-mail de aluno inválido}
-00117     \textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_ML'} : \_(\textcolor{stringliteral}{u"E-mail de aluno inválido."}),
-00118     \textcolor{comment}{## Mensagem de erro para notas de estudante em formato inválido.}
-00119     \textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_GR'} : \_(\textcolor{stringliteral}{u"Formato de notas do aluno inválidas."}),
-00120     \textcolor{comment}{## Mensagem de erro para interesses de estudante escritos em formato inválido.}
-00121     \textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_IN'} : \_(\textcolor{stringliteral}{u"Interesses do aluno em formato inválido."}),
-00122     \textcolor{comment}{## Mensagem de erro para um idioma selecionado inexistente.}
-00123     \textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_LN'} : \_(\textcolor{stringliteral}{u"O idioma selecionado não existe."}),
-00124 
-00125     \textcolor{comment}{## Mensagem de erro para um nome de curso inválido.}
-00126     \textcolor{stringliteral}{'EXCEPTION\_INV\_CRS\_NM'} : \_(\textcolor{stringliteral}{u"Nome do curso inválido."}),
-00127     \textcolor{comment}{## Mensagem de erro para um Id de curso inválido.}
-00128     \textcolor{stringliteral}{'EXCEPTION\_INV\_CRS\_ID'} : \_(\textcolor{stringliteral}{u"Id do curso inválido."}),
-00129     \textcolor{comment}{## Mensagem de erro para um curso de estudante inválido.}
-00130     \textcolor{stringliteral}{'EXCEPTION\_INV\_CRS\_ST'} : \_(\textcolor{stringliteral}{u"Aluno(s) do curso inválido(s)."}),
-00131     \textcolor{comment}{## Mensagem de erro para um módulo de curso inválido.}
-00132     \textcolor{stringliteral}{'EXCEPTION\_INV\_CRS\_MD'} : \_(\textcolor{stringliteral}{u"Módulo(s) do curso inválido(s)."}),
-00133 
-00134     \textcolor{comment}{## Mensagem de erro para um nome de módulo inválido.}
-00135     \textcolor{stringliteral}{'EXCEPTION\_INV\_MD\_NM'} : \_(\textcolor{stringliteral}{u"Nome de módulo inválido."}),
-00136     \textcolor{comment}{## Mensagem de erro para um Id de módulo inválido.}
-00137     \textcolor{stringliteral}{'EXCEPTION\_INV\_MD\_ID'} : \_(\textcolor{stringliteral}{u"Id do módulo inválido."}),
-00138     \textcolor{comment}{## Mensagem de erro para um tipo de lição inválido.}
-00139     \textcolor{stringliteral}{'EXCEPTION\_INV\_MD\_LT'} : \_(\textcolor{stringliteral}{u"Tipo de lição inválido."}),
-00140 
-00141     \textcolor{comment}{## Mensagem de erro para um nome de lição inválido.}
-00142     \textcolor{stringliteral}{'EXCEPTION\_INV\_LS\_NM'} : \_(\textcolor{stringliteral}{u"Nome da lição inválido."}),
-00143     \textcolor{comment}{## Mensagem de erro para um Id de lição inválido.}
-00144     \textcolor{stringliteral}{'EXCEPTION\_INV\_LS\_ID'} : \_(\textcolor{stringliteral}{u"Id da lição inválido."}),
-00145     \textcolor{comment}{## Mensagem de erro para um link de lição inválido.}
-00146     \textcolor{stringliteral}{'EXCEPTION\_INV\_LS\_LK'} : \_(\textcolor{stringliteral}{u"Link da lição inválido."}),
-00147     \textcolor{comment}{## Mensagem de erro para um tipo de exercício inválido.}
-00148     \textcolor{stringliteral}{'EXCEPTION\_INV\_LS\_ST'} : \_(\textcolor{stringliteral}{u"Tipo de exercício da lição inválido."}),
-00149 
-00150     \textcolor{comment}{## Mensagem de erro para um Id de exercício inválido.}
-00151     \textcolor{stringliteral}{'EXCEPTION\_INV\_EX\_ID'} : \_(\textcolor{stringliteral}{u"Id do exercício inválido."}),
-00152     \textcolor{comment}{## Mensagem de erro para um link de exercício inválido.}
-00153     \textcolor{stringliteral}{'EXCEPTION\_INV\_EX\_LK'} : \_(\textcolor{stringliteral}{u"Link do exercício inválido."}),
-00154     \textcolor{comment}{## Mensagem de erro para um tipo de exercício inválido.}
-00155     \textcolor{stringliteral}{'EXCEPTION\_INV\_EX\_ET'} : \_(\textcolor{stringliteral}{u"Tipo do exercício inválido."}),
-00156     \textcolor{comment}{## Mensagem de erro para um formato de exercício inválido.}
-00157     \textcolor{stringliteral}{'EXCEPTION\_INV\_EX\_FT'} : \_(\textcolor{stringliteral}{u"Formato do exercicio inválido."}),
-00158     \textcolor{comment}{## Mensagem de erro para itens de exercício inválidos.}
-00159     \textcolor{stringliteral}{'EXCEPTION\_INV\_EX\_IT'} : \_(\textcolor{stringliteral}{u"Itens do exercício inválidos."}),
-00160 
-00161 
-00162     \textcolor{comment}{## Mensagem de erro para login inválido.}
-00163     \textcolor{stringliteral}{'EXCEPTION\_INV\_LOG'} : \_(\textcolor{stringliteral}{u"Login ou senha inválidos."}),
+00075     \textcolor{stringliteral}{'EXCEPTION\_INV\_DT\_D'} : \_(\textcolor{stringliteral}{u"Dia inválido."}),
+00076     \textcolor{comment}{## Mensagem de erro para}
+00077     \textcolor{stringliteral}{'EXCEPTION\_INV\_DT\_M'} : \_(\textcolor{stringliteral}{u"Mês inválido."}),
+00078     \textcolor{comment}{## Mensagem de erro para}
+00079     \textcolor{stringliteral}{'EXCEPTION\_INV\_DT\_Y'} : \_(\textcolor{stringliteral}{u"Ano inválido."}),
+00080 
+00081     \textcolor{comment}{## Prefixo usado para compor mensagens de erro.}
+00082     \textcolor{stringliteral}{'EXCEPTION\_TEST\_PREFIX'} : \_(\textcolor{stringliteral}{u"Ocorreu um erro:"}),
+00083     \textcolor{comment}{## Mensagem de erro para erro no getValue.}
+00084     \textcolor{stringliteral}{'EXCEPTION\_TEST\_INV\_GET'} : \_(\textcolor{stringliteral}{u"Ocorreu um erro no método getValue."}),
+00085 
+00086     \textcolor{comment}{# Excessões para os tipos de entidades.}
+00087 
+00088     \textcolor{comment}{## Mensagem de erro para um username inválido.}
+00089     \textcolor{stringliteral}{'EXCEPTION\_INV\_USR\_NM'} : \_(\textcolor{stringliteral}{u"Nome de usuário inválido."}),
+00090     \textcolor{comment}{## Mensagem de erro para um password inválido.}
+00091     \textcolor{stringliteral}{'EXCEPTION\_INV\_USR\_PW'} : \_(\textcolor{stringliteral}{u"Senha de usuário inválida."}),
+00092 
+00093     \textcolor{comment}{## Mensagem de erro para um erro com o número de registro (matric) do professor.}
+00094     \textcolor{stringliteral}{'EXCEPTION\_INV\_PRF\_MT'} : \_(\textcolor{stringliteral}{u"Ocorreu um erro na matrícula do professor."}),
+00095     \textcolor{comment}{## Mensagem de erro para um erro na biografia do professor.}
+00096     \textcolor{stringliteral}{'EXCEPTION\_INV\_PRF\_BS'} : \_(\textcolor{stringliteral}{u"Ocorreu um erro na biografia do professor."}),
+00097     \textcolor{comment}{## Mensagem de erro para um erro com o campus do professor.}
+00098     \textcolor{stringliteral}{'EXCEPTION\_INV\_PRF\_CP'} : \_(\textcolor{stringliteral}{u"Ocorreu um erro no campus do professor."}),
+00099     \textcolor{comment}{## Mensagem de erro para um erro com os cursos do professor.}
+00100     \textcolor{stringliteral}{'EXCEPTION\_INV\_PRF\_CS'} : \_(\textcolor{stringliteral}{u"Ocorreu um erro nos cursos do professor."}),
+00101     \textcolor{comment}{## Mensagem de erro para um erro com o avatar do professor.}
+00102     \textcolor{stringliteral}{'EXCEPTION\_INV\_PRF\_AV'} : \_(\textcolor{stringliteral}{u"Ocorreu um erro no avatar do professor."}),
+00103     \textcolor{comment}{## Mensagem de erro para um erro com o sexo do professor.}
+00104     \textcolor{stringliteral}{'EXCEPTION\_INV\_PRF\_SX'} : \_(\textcolor{stringliteral}{u"Ocorreu um erro no sexo do professor."}),
+00105     \textcolor{comment}{## Mensagem de erro para um e-mail de professor inválido}
+00106     \textcolor{stringliteral}{'EXCEPTION\_INV\_PRF\_ML'} : \_(\textcolor{stringliteral}{u"E-mail de professor inválido."}),
+00107 
+00108     \textcolor{comment}{## Mensagem de erro para um número de registro de estudante (matric) inválido.}
+00109     \textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_MT'} : \_(\textcolor{stringliteral}{u"Matricula de aluno inválida."}),
+00110     \textcolor{comment}{## Mensagem de erro para uma biografia de estudante inválida.}
+00111     \textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_BS'} : \_(\textcolor{stringliteral}{u"Biografia de aluno inválida."}),
+00112     \textcolor{comment}{## Mensagem de erro para um vampus de estudante inválido.}
+00113     \textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_CP'} : \_(\textcolor{stringliteral}{u"Campus de aluno inválido."}),
+00114     \textcolor{comment}{## Mensagem de erro para um curso de estudante inválido}
+00115     \textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_CO'} : \_(\textcolor{stringliteral}{u"Campo curso de aluno inválido."}),
+00116     \textcolor{comment}{## Mensagem de erro para um avatar de estudante inválido.}
+00117     \textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_AV'} : \_(\textcolor{stringliteral}{u"Avatar de aluno inválido."}),
+00118     \textcolor{comment}{## Mensagem de erro para um sexo de estudante inválido.}
+00119     \textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_SX'} : \_(\textcolor{stringliteral}{u"Sexo de aluno inválido."}),
+00120     \textcolor{comment}{## Mensagem de erro para um e-mail de aluno inválido}
+00121     \textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_ML'} : \_(\textcolor{stringliteral}{u"E-mail de aluno inválido."}),
+00122     \textcolor{comment}{## Mensagem de erro para notas de estudante em formato inválido.}
+00123     \textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_GR'} : \_(\textcolor{stringliteral}{u"Formato de notas do aluno inválidas."}),
+00124     \textcolor{comment}{## Mensagem de erro para interesses de estudante escritos em formato inválido.}
+00125     \textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_IN'} : \_(\textcolor{stringliteral}{u"Interesses do aluno em formato inválido."}),
+00126     \textcolor{comment}{## Mensagem de erro para um idioma selecionado inexistente.}
+00127     \textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_LN'} : \_(\textcolor{stringliteral}{u"O idioma selecionado não existe."}),
+00128 
+00129     \textcolor{comment}{## Mensagem de erro para um nome de curso inválido.}
+00130     \textcolor{stringliteral}{'EXCEPTION\_INV\_CRS\_NM'} : \_(\textcolor{stringliteral}{u"Nome do curso inválido."}),
+00131     \textcolor{comment}{## Mensagem de erro para um Id de curso inválido.}
+00132     \textcolor{stringliteral}{'EXCEPTION\_INV\_CRS\_ID'} : \_(\textcolor{stringliteral}{u"Id do curso inválido."}),
+00133     \textcolor{comment}{## Mensagem de erro para um curso de estudante inválido.}
+00134     \textcolor{stringliteral}{'EXCEPTION\_INV\_CRS\_ST'} : \_(\textcolor{stringliteral}{u"Aluno(s) do curso inválido(s)."}),
+00135     \textcolor{comment}{## Mensagem de erro para um módulo de curso inválido.}
+00136     \textcolor{stringliteral}{'EXCEPTION\_INV\_CRS\_MD'} : \_(\textcolor{stringliteral}{u"Módulo(s) do curso inválido(s)."}),
+00137 
+00138     \textcolor{comment}{## Mensagem de erro para um nome de módulo inválido.}
+00139     \textcolor{stringliteral}{'EXCEPTION\_INV\_MD\_NM'} : \_(\textcolor{stringliteral}{u"Nome de módulo inválido."}),
+00140     \textcolor{comment}{## Mensagem de erro para um Id de módulo inválido.}
+00141     \textcolor{stringliteral}{'EXCEPTION\_INV\_MD\_ID'} : \_(\textcolor{stringliteral}{u"Id do módulo inválido."}),
+00142     \textcolor{comment}{## Mensagem de erro para um tipo de lição inválido.}
+00143     \textcolor{stringliteral}{'EXCEPTION\_INV\_MD\_LT'} : \_(\textcolor{stringliteral}{u"Tipo de lição inválido."}),
+00144 
+00145     \textcolor{comment}{## Mensagem de erro para um nome de lição inválido.}
+00146     \textcolor{stringliteral}{'EXCEPTION\_INV\_LS\_NM'} : \_(\textcolor{stringliteral}{u"Nome da lição inválido."}),
+00147     \textcolor{comment}{## Mensagem de erro para um Id de lição inválido.}
+00148     \textcolor{stringliteral}{'EXCEPTION\_INV\_LS\_ID'} : \_(\textcolor{stringliteral}{u"Id da lição inválido."}),
+00149     \textcolor{comment}{## Mensagem de erro para um link de lição inválido.}
+00150     \textcolor{stringliteral}{'EXCEPTION\_INV\_LS\_LK'} : \_(\textcolor{stringliteral}{u"Link da lição inválido."}),
+00151     \textcolor{comment}{## Mensagem de erro para um tipo de exercício inválido.}
+00152     \textcolor{stringliteral}{'EXCEPTION\_INV\_LS\_ST'} : \_(\textcolor{stringliteral}{u"Tipo de exercício da lição inválido."}),
+00153 
+00154     \textcolor{comment}{## Mensagem de erro para um Id de exercício inválido.}
+00155     \textcolor{stringliteral}{'EXCEPTION\_INV\_EX\_ID'} : \_(\textcolor{stringliteral}{u"Id do exercício inválido."}),
+00156     \textcolor{comment}{## Mensagem de erro para um link de exercício inválido.}
+00157     \textcolor{stringliteral}{'EXCEPTION\_INV\_EX\_LK'} : \_(\textcolor{stringliteral}{u"Link do exercício inválido."}),
+00158     \textcolor{comment}{## Mensagem de erro para um tipo de exercício inválido.}
+00159     \textcolor{stringliteral}{'EXCEPTION\_INV\_EX\_ET'} : \_(\textcolor{stringliteral}{u"Tipo do exercício inválido."}),
+00160     \textcolor{comment}{## Mensagem de erro para um formato de exercício inválido.}
+00161     \textcolor{stringliteral}{'EXCEPTION\_INV\_EX\_FT'} : \_(\textcolor{stringliteral}{u"Formato do exercicio inválido."}),
+00162     \textcolor{comment}{## Mensagem de erro para itens de exercício inválidos.}
+00163     \textcolor{stringliteral}{'EXCEPTION\_INV\_EX\_IT'} : \_(\textcolor{stringliteral}{u"Itens do exercício inválidos."}),
 00164 
-00165     \textcolor{comment}{## Mensagem de erro para dados de form incorretos.}
-00166     \textcolor{stringliteral}{'EXCEPTION\_INV\_FRM'} : \_(\textcolor{stringliteral}{u"Dados incorretos"}),
-00167 
-00168     \textcolor{comment}{## Mensagem de erro padrão 403}
-00169     \textcolor{stringliteral}{'EXCEPTION\_403\_STD'} : \_(\textcolor{stringliteral}{u"Permissão de acesso negada."}),
-00170     \textcolor{comment}{## Mensagem de erro inesperado 404}
-00171     \textcolor{stringliteral}{'EXCEPTION\_404\_ERR'} : \_(\textcolor{stringliteral}{u"Ocorreu um erro inesperado. Favor tentar novamente."}),
-00172 
-00173     \textcolor{comment}{## Mensagem de erro de update em banco de dados}
-00174     \textcolor{stringliteral}{'EXCEPTION\_ERR\_DB\_U'}: \_(\textcolor{stringliteral}{u"Ocorreu um erro ao salvar seu dado. Favor tentar novamente."}),
-00175 
-00176     \textcolor{comment}{## Mensagem de erro de formulário}
-00177     \textcolor{stringliteral}{'ERROR\_FORM'}  : \_(\textcolor{stringliteral}{u"Ocorreu um problema ao carregar o formulário. Favor tentar novamente mais tarde."}),
-00178 
-00179     \textcolor{stringliteral}{'SUBMIT'} : \_(\textcolor{stringliteral}{u'Atualizar'}), 
-00180     \textcolor{stringliteral}{'USERNAME'} : \_(\textcolor{stringliteral}{u'Usuário:'}),
-00181     \textcolor{stringliteral}{'PASSWORD'} : \_(\textcolor{stringliteral}{u'Senha:'}),
-00182     \textcolor{stringliteral}{'ELO\_HOME'} : \_(\textcolor{stringliteral}{u'ELO - Página Inicial'}),
-00183     \textcolor{stringliteral}{'ELO\_PROFILE'} : \_(\textcolor{stringliteral}{u'ELO - Perfil'}),
-00184     \textcolor{stringliteral}{'ELO\_ADM'}: \_(\textcolor{stringliteral}{u'ELO - Administração'}),
-00185 
-00186     \textcolor{stringliteral}{'LANGUAGE'}: \_(\textcolor{stringliteral}{u'Linguagem'}),
-00187     \textcolor{stringliteral}{'ENGLISH'}: \_(\textcolor{stringliteral}{u'Inglês'}),
-00188     \textcolor{stringliteral}{'PORTUGUESE'}: \_(\textcolor{stringliteral}{u'Português'}),
-00189 
-00190     \textcolor{stringliteral}{'SEX'}: \_(\textcolor{stringliteral}{u'Sexo'}),
-00191     \textcolor{stringliteral}{'SEX\_MALE'}: \_(\textcolor{stringliteral}{u'Masculino'}),
-00192     \textcolor{stringliteral}{'SEX\_FEMALE'}: \_(\textcolor{stringliteral}{u'Feminino'}),
-00193 
-00194     \textcolor{stringliteral}{'MATRIC'}: \_(\textcolor{stringliteral}{u'Matrícula'}),
-00195     \textcolor{stringliteral}{'BIOS'} : \_(\textcolor{stringliteral}{u'Biografia'}),
-00196     \textcolor{stringliteral}{'INTERESTS'}: \_(\textcolor{stringliteral}{u'Interesses'}),
-00197     \textcolor{stringliteral}{'NAME'}: \_(\textcolor{stringliteral}{u'Nome'}),
-00198     \textcolor{stringliteral}{'EMAIL'}: \_(\textcolor{stringliteral}{u'Email'}),
-00199     \textcolor{stringliteral}{'AVATAR'}: \_(\textcolor{stringliteral}{u'Avatar'}),
-00200     \textcolor{stringliteral}{'CAMPUS'}: \_(\textcolor{stringliteral}{u'Campus'}),
-00201 
-00202     \textcolor{stringliteral}{'HOME'} : \_(\textcolor{stringliteral}{u'Principal'}),
-00203     \textcolor{stringliteral}{'LOGIN'} : \_(\textcolor{stringliteral}{u'Entrar'}),
-00204     \textcolor{stringliteral}{'LOGOUT'} : \_(\textcolor{stringliteral}{u'Sair'}),
-00205     \textcolor{stringliteral}{'PROFILE'} : \_(\textcolor{stringliteral}{u'Perfil'}),
-00206     \textcolor{stringliteral}{'ELO'} : \_(\textcolor{stringliteral}{u'ELO'}),
-00207 \}
+00165 
+00166     \textcolor{comment}{## Mensagem de erro para login inválido.}
+00167     \textcolor{stringliteral}{'EXCEPTION\_INV\_LOG'} : \_(\textcolor{stringliteral}{u"Login ou senha inválidos."}),
+00168 
+00169     \textcolor{comment}{## Mensagem de erro para dados de form incorretos.}
+00170     \textcolor{stringliteral}{'EXCEPTION\_INV\_FRM'} : \_(\textcolor{stringliteral}{u"Dados incorretos"}),
+00171 
+00172     \textcolor{comment}{## Mensagem de erro padrão 403}
+00173     \textcolor{stringliteral}{'EXCEPTION\_403\_STD'} : \_(\textcolor{stringliteral}{u"Permissão de acesso negada."}),
+00174     \textcolor{comment}{## Mensagem de erro inesperado 404}
+00175     \textcolor{stringliteral}{'EXCEPTION\_404\_ERR'} : \_(\textcolor{stringliteral}{u"Ocorreu um erro inesperado. Favor tentar novamente."}),
+00176 
+00177     \textcolor{comment}{## Mensagem de erro de update em banco de dados}
+00178     \textcolor{stringliteral}{'EXCEPTION\_ERR\_DB\_U'}: \_(\textcolor{stringliteral}{u"Ocorreu um erro ao salvar seu dado. Favor tentar novamente."}),
+00179 
+00180     \textcolor{comment}{## Mensagem de erro de formulário}
+00181     \textcolor{stringliteral}{'ERROR\_FORM'}  : \_(\textcolor{stringliteral}{u"Ocorreu um problema ao carregar o formulário. Favor tentar novamente mais tarde."}),
+00182     
+00183     \textcolor{stringliteral}{'ELO\_HOME'} : \_(\textcolor{stringliteral}{u'SALiE - Página Inicial'}),
+00184     \textcolor{stringliteral}{'ELO\_PROFILE'} : \_(\textcolor{stringliteral}{u'SALiE - Perfil'}),
+00185     \textcolor{stringliteral}{'ELO\_ADM'}: \_(\textcolor{stringliteral}{u'SALiE - Administração'}),
+00186 
+00187     \textcolor{stringliteral}{'LANGUAGE'}: \_(\textcolor{stringliteral}{u'Linguagem'}),
+00188     \textcolor{stringliteral}{'ENGLISH'}: \_(\textcolor{stringliteral}{u'Inglês'}),
+00189     \textcolor{stringliteral}{'PORTUGUESE'}: \_(\textcolor{stringliteral}{u'Português'}),
+00190 
+00191     \textcolor{stringliteral}{'SEX'}: \_(\textcolor{stringliteral}{u'Sexo'}),
+00192     \textcolor{stringliteral}{'SEX\_MALE'}: \_(\textcolor{stringliteral}{u'Masculino'}),
+00193     \textcolor{stringliteral}{'SEX\_FEMALE'}: \_(\textcolor{stringliteral}{u'Feminino'}),
+00194 
+00195     \textcolor{stringliteral}{'USERNAME'} : \_(\textcolor{stringliteral}{u'Usuário:'}),
+00196     \textcolor{stringliteral}{'PASSWORD'} : \_(\textcolor{stringliteral}{u'Senha:'}),
+00197     \textcolor{stringliteral}{'MATRIC'}: \_(\textcolor{stringliteral}{u'Matrícula'}),
+00198     \textcolor{stringliteral}{'BIOS'} : \_(\textcolor{stringliteral}{u'Biografia'}),
+00199     \textcolor{stringliteral}{'INTERESTS'}: \_(\textcolor{stringliteral}{u'Interesses'}),
+00200     \textcolor{stringliteral}{'NAME'}: \_(\textcolor{stringliteral}{u'Nome'}),
+00201     \textcolor{stringliteral}{'EMAIL'}: \_(\textcolor{stringliteral}{u'Email'}),
+00202     \textcolor{stringliteral}{'AVATAR'}: \_(\textcolor{stringliteral}{u'Avatar'}),
+00203     \textcolor{stringliteral}{'CAMPUS'}: \_(\textcolor{stringliteral}{u'Campus'}),
+00204 
+00205     \textcolor{stringliteral}{'HOME'} : \_(\textcolor{stringliteral}{u'Principal'}),
+00206     \textcolor{stringliteral}{'MENU'} : \_(\textcolor{stringliteral}{u'Menu'}),
+00207     \textcolor{stringliteral}{'LOGIN'} : \_(\textcolor{stringliteral}{u'Entrar'}),
+00208     \textcolor{stringliteral}{'LOGOUT'} : \_(\textcolor{stringliteral}{u'Sair'}),
+00209     \textcolor{stringliteral}{'PROFILE'} : \_(\textcolor{stringliteral}{u'Perfil'}),
+00210     \textcolor{stringliteral}{'ELO'} : \_(\textcolor{stringliteral}{u'SALiE'}),
+00211 
+00212     \textcolor{stringliteral}{'STUDENT'} : \_(\textcolor{stringliteral}{u'Aluno'}),
+00213     \textcolor{stringliteral}{'COURSE'} : \_(\textcolor{stringliteral}{u'Curso'}),
+00214     \textcolor{stringliteral}{'PROFESSOR'} : \_(\textcolor{stringliteral}{u'Professor'}),
+00215 
+00216     \textcolor{stringliteral}{'SUBMIT'} : \_(\textcolor{stringliteral}{u'Atualizar'}), 
+00217     \textcolor{stringliteral}{'REGISTER'} : \_(\textcolor{stringliteral}{u'Cadastrar'}),
+00218     \textcolor{stringliteral}{'SEARCH'} : \_(\textcolor{stringliteral}{u'Procurar'}),
+00219     \textcolor{stringliteral}{'DEL'} : \_(\textcolor{stringliteral}{u'Deletar'}),
+00220 
+00221     \textcolor{stringliteral}{'REGISTER\_STUDENT'} : \_(\textcolor{stringliteral}{u'Registrar Novo Aluno'}),
+00222     \textcolor{stringliteral}{'SUBMIT\_STUDENT'} : \_(\textcolor{stringliteral}{u'Atualizar dados de Aluno'}),
+00223     \textcolor{stringliteral}{'DEL\_STUDENT'} : \_(\textcolor{stringliteral}{u'Apagar Registro de Aluno'}),
+00224     
+00225     \textcolor{stringliteral}{'REGISTER\_COURSE'} : \_(\textcolor{stringliteral}{u'Registrar Novo Curso'}),
+00226     \textcolor{stringliteral}{'SUBMIT\_COURSE'} : \_(\textcolor{stringliteral}{u'Atualizar dados de Curso'}),
+00227     \textcolor{stringliteral}{'DEL\_COURSE'} : \_(\textcolor{stringliteral}{u'Apagar Registro de Curso'}),
+00228     
+00229     \textcolor{stringliteral}{'REGISTER\_PROFESSOR'} : \_(\textcolor{stringliteral}{u'Registrar Novo Professor'}),
+00230     \textcolor{stringliteral}{'SUBMIT\_PROFESSOR'} : \_(\textcolor{stringliteral}{u'Atualizar dados de Professor'}),
+00231     \textcolor{stringliteral}{'DEL\_PROFESSOR'} : \_(\textcolor{stringliteral}{u'Apagar Registro de Professor'}),
+00232 \}
 \end{DoxyCode}

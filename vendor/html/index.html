@@ -99,8 +99,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="title">LETproject Documentação</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h2>Conteúdo</h2>
-<h2>Index</h2>
+<div class="textblock"><h2>Index</h2>
 <ol type="1">
 <li>Definição</li>
 <li>Dados do projeto</li>
@@ -117,14 +116,15 @@ $(document).ready(function(){initNavTree('index.html','');});
 <ul>
 <li><b>LETproject (nome temporário)</b></li>
 <li><b><a class="el" href="da/d09/namespaceELO.html">ELO</a> (Ensino de Línguas Online) (nome temporário)</b></li>
+<li><b>SALiE (nome final)</b></li>
 </ul>
 <p>Orientador: <b>Professor Cláudio Correa e Castro Gonçalves</b></p>
 <p>Unidade Acadêmica / Departamento: <b>Instituto de Letras/IL - Departamento de Línguas Estrangeiras e Tradução/LET</b></p>
 <p>Alunos Envolvidos:</p>
 <ul>
 <li>Yurick Hauschild Caetano da Costa 12/0024136</li>
-<li>André Accioly Lima 12/0059908</li>
-<li>Diego Santos da Silva 11/0027892</li>
+<li>Dayanne Fernandes 13/0107191</li>
+<li>Bruna Luisa xx/xxxxxxx</li>
 </ul>
 <h3>3. Documentação</h3>
 <p>Toda a documentação do projeto pode ser encontrada na pasta doc/.</p>
@@ -137,7 +137,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <p></p>
 </blockquote>
 <h4>3.i. Doxyfile (html)</h4>
-<p>No intuito de simplificar a navegação dentro da documentação do projeto, utilizamos a ferramenta Doxygen, gerando, assim, um arquivo HTML que contém uma interface amigável. Este arquivo está contido em doc/html/ e para acessá-lo basta abrir o arquivo doc/html/index.html com o seu navegador.</p>
+<p>No intuito de simplificar a navegação dentro da documentação do projeto, utilizamos a ferramenta Doxygen, gerando, assim, um arquivo HTML que contém uma interface amigável, bem como um arquivo .tex capaz de gerar um pdf. Tanto o pdf quanto o html possuem as mesmas informações. Estes arquivos estão contidos em vendor e para acessá-los basta abrir o arquivo doc/html/index.html ou doc/latex/refman.pdf com o seu navegador ou visualizador de pdf, respectivamente.</p>
 <h3>4. Instalação e execução</h3>
 <p>Para executar o programa, siga as instruções abaixo.</p>
 <ol type="1">
@@ -145,14 +145,13 @@ $(document).ready(function(){initNavTree('index.html','');});
 <img src="http://i.imgur.com/kJtzWwf.jpg"  alt="example1"/>
 </div>
 </li>
-<li>Para instalar o python no Windows:</li>
+<li><p class="startli">Para instalar o python no Windows:</p>
+<p class="startli">Obs: Não desenvolvemos a plataforma em Windows, e não temos o hábito de testar neste ambiente. Então, caro usuário da microsoft, na ocasião de encontrar algum bug ocasionado por incompatibilidade, sintá-se convidado a abrir uma issue e nos avisar, para que o corrijamos o mais rápido possível. <a href="http://docs.python-guide.org/en/latest/starting/install/win/">Siga este tutorial</a>.</p>
+</li>
 <li>Para instalar o python no Linux: <blockquote class="doxtable">
 <p>OBS: As últimas versões do Ubuntu e Fedora já vêm com o python 2.7 e as últimas versões do RHEL e CentOS já vêm com o python 2.6.</p>
 <p></p>
 </blockquote>
-</li>
-</ol>
-<p><a href="http://python-distribute.org/distribute_setup.py">BAIXE O PYTHON SCRIPT AQUI, E EXECUTE</a>. Para executar, use no terminal <code>python distributte_setup.py</code></p>
 <ul>
 <li>Instale o pip: <code>$ easy_install pip</code></li>
 <li>Instale o virtualenv: <code>$ pip install virtualenv</code></li>
@@ -160,24 +159,26 @@ $(document).ready(function(){initNavTree('index.html','');});
 <li>Para executar o ambiente, rode: <code>$ source venv/bin/activate</code></li>
 <li>Para sair do ambiente: <code>$ deactivate</code></li>
 </ul>
-<p>Para instalar django no Windows:</p>
-<ul>
+</li>
+<li>Para instalar django no Windows:<ul>
 <li>Baixe <a href="https://www.djangoproject.com/download/1.6.2/tarball/">Download Django-1.6.2.tar.gz</a>. Então extraia o arquivo, inicie o DOS shell com permissão de administrador e execute o comando no diretório cujo nome inicie com "Django-": <code>$ python setup.py install</code></li>
 </ul>
-<p>Para instalar django no Ubuntu:</p>
-<ul>
-<li>Pelo pip: <code>$ pip install Django==1.6.2</code></li>
+</li>
+<li>Para instalar django no Ubuntu:<ul>
+<li>Pelo pip: <code>$ pip install Django==1.7</code></li>
 <li>"Manualmente":<ul>
 <li>Baixe <a href="https://www.djangoproject.com/download/1.6.2/tarball/">Download Django-1.6.2.tar.gz</a>. Então: <code>$ tar xzvf Django-1.6.2.tar.gz</code> <code>$ cd Django-1.6.2</code> <code>$ sudo python setup.py install</code> </li>
 </ul>
 </li>
 </ul>
+</li>
+</ol>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Gerado em Sexta, 22 de Agosto de 2014 17:35:23 para LETproject por
+    <li class="footer">Gerado em Terça, 21 de Outubro de 2014 13:48:48 para LETproject por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

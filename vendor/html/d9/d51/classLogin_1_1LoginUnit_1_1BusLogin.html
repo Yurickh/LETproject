@@ -154,7 +154,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descrição Detalhada</h2>
 <div class="textblock">
-<p>Definição na linha <a class="el" href="../../da/dc7/LoginUnit_8py_source.html#l00181">181</a> do arquivo <a class="el" href="../../da/dc7/LoginUnit_8py_source.html">LoginUnit.py</a>.</p>
+<p>Definição na linha <a class="el" href="../../da/dc7/LoginUnit_8py_source.html#l00194">194</a> do arquivo <a class="el" href="../../da/dc7/LoginUnit_8py_source.html">LoginUnit.py</a>.</p>
 </div><h2 class="groupheader">Métodos</h2>
 <a class="anchor" id="a23223ddd567bf874e6230efaf4912e98"></a>
 <div class="memitem">
@@ -186,13 +186,13 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definição na linha <a class="el" href="../../da/dc7/LoginUnit_8py_source.html#l00188">188</a> do arquivo <a class="el" href="../../da/dc7/LoginUnit_8py_source.html">LoginUnit.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00188"></a><span class="lineno"><a class="line" href="../../d9/d51/classLogin_1_1LoginUnit_1_1BusLogin.html#a23223ddd567bf874e6230efaf4912e98">  188</a></span>&#160;</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="keyword">def </span><a class="code" href="../../d9/d51/classLogin_1_1LoginUnit_1_1BusLogin.html#a23223ddd567bf874e6230efaf4912e98">getLang</a>(self, username, database):</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        ulang = self.pers.select(username.value, database)</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        <span class="keywordflow">return</span> ulang[<span class="stringliteral">&#39;language&#39;</span>]</div>
+<p>Definição na linha <a class="el" href="../../da/dc7/LoginUnit_8py_source.html#l00201">201</a> do arquivo <a class="el" href="../../da/dc7/LoginUnit_8py_source.html">LoginUnit.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00201"></a><span class="lineno"><a class="line" href="../../d9/d51/classLogin_1_1LoginUnit_1_1BusLogin.html#a23223ddd567bf874e6230efaf4912e98">  201</a></span>&#160;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="keyword">def </span><a class="code" href="../../d9/d51/classLogin_1_1LoginUnit_1_1BusLogin.html#a23223ddd567bf874e6230efaf4912e98">getLang</a>(self, username, database):</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        ulang = self.pers.select(username.value, database)</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        <span class="keywordflow">return</span> ulang[<span class="stringliteral">&#39;language&#39;</span>]</div>
 </div>
-<div class="ttc" id="classLogin_1_1LoginUnit_1_1BusLogin_html_a23223ddd567bf874e6230efaf4912e98"><div class="ttname"><a href="../../d9/d51/classLogin_1_1LoginUnit_1_1BusLogin.html#a23223ddd567bf874e6230efaf4912e98">Login.LoginUnit.BusLogin.getLang</a></div><div class="ttdeci">def getLang</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dc7/LoginUnit_8py_source.html#l00188">LoginUnit.py:188</a></div></div>
+<div class="ttc" id="classLogin_1_1LoginUnit_1_1BusLogin_html_a23223ddd567bf874e6230efaf4912e98"><div class="ttname"><a href="../../d9/d51/classLogin_1_1LoginUnit_1_1BusLogin.html#a23223ddd567bf874e6230efaf4912e98">Login.LoginUnit.BusLogin.getLang</a></div><div class="ttdeci">def getLang</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dc7/LoginUnit_8py_source.html#l00201">LoginUnit.py:201</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -232,14 +232,14 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definição na linha <a class="el" href="../../da/dc7/LoginUnit_8py_source.html#l00183">183</a> do arquivo <a class="el" href="../../da/dc7/LoginUnit_8py_source.html">LoginUnit.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00183"></a><span class="lineno"><a class="line" href="../../d9/d51/classLogin_1_1LoginUnit_1_1BusLogin.html#a2301425767b811697ce559801b955a58">  183</a></span>&#160;</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="keyword">def </span><a class="code" href="../../d9/d51/classLogin_1_1LoginUnit_1_1BusLogin.html#a2301425767b811697ce559801b955a58">validate</a>(self, username, password, database):</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        upass = self.pers.select(username.value, database)</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        <span class="keywordflow">if</span> <span class="keywordflow">not</span> upass <span class="keywordflow">or</span> upass[<span class="stringliteral">&#39;password&#39;</span>] != password.value:</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            <span class="keywordflow">raise</span> ValueError(lang.DICT[<span class="stringliteral">&#39;EXCEPTION_INV_LOG&#39;</span>])</div>
+<p>Definição na linha <a class="el" href="../../da/dc7/LoginUnit_8py_source.html#l00196">196</a> do arquivo <a class="el" href="../../da/dc7/LoginUnit_8py_source.html">LoginUnit.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00196"></a><span class="lineno"><a class="line" href="../../d9/d51/classLogin_1_1LoginUnit_1_1BusLogin.html#a2301425767b811697ce559801b955a58">  196</a></span>&#160;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <span class="keyword">def </span><a class="code" href="../../d9/d51/classLogin_1_1LoginUnit_1_1BusLogin.html#a2301425767b811697ce559801b955a58">validate</a>(self, username, password, database):</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        upass = self.pers.select(username.value, database)</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        <span class="keywordflow">if</span> <span class="keywordflow">not</span> upass <span class="keywordflow">or</span> upass[<span class="stringliteral">&#39;password&#39;</span>] != password.value:</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            <span class="keywordflow">raise</span> ValueError(lang.DICT[<span class="stringliteral">&#39;EXCEPTION_INV_LOG&#39;</span>])</div>
 </div>
-<div class="ttc" id="classLogin_1_1LoginUnit_1_1BusLogin_html_a2301425767b811697ce559801b955a58"><div class="ttname"><a href="../../d9/d51/classLogin_1_1LoginUnit_1_1BusLogin.html#a2301425767b811697ce559801b955a58">Login.LoginUnit.BusLogin.validate</a></div><div class="ttdeci">def validate</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dc7/LoginUnit_8py_source.html#l00183">LoginUnit.py:183</a></div></div>
+<div class="ttc" id="classLogin_1_1LoginUnit_1_1BusLogin_html_a2301425767b811697ce559801b955a58"><div class="ttname"><a href="../../d9/d51/classLogin_1_1LoginUnit_1_1BusLogin.html#a2301425767b811697ce559801b955a58">Login.LoginUnit.BusLogin.validate</a></div><div class="ttdeci">def validate</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dc7/LoginUnit_8py_source.html#l00196">LoginUnit.py:196</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -252,7 +252,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dc/d54/namespaceLogin.html">Login</a></li><li class="navelem"><a class="el" href="../../d1/dc4/namespaceLogin_1_1LoginUnit.html">LoginUnit</a></li><li class="navelem"><a class="el" href="../../d9/d51/classLogin_1_1LoginUnit_1_1BusLogin.html">BusLogin</a></li>
-    <li class="footer">Gerado em Sexta, 22 de Agosto de 2014 17:35:23 para LETproject por
+    <li class="footer">Gerado em Terça, 21 de Outubro de 2014 13:48:48 para LETproject por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

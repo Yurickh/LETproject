@@ -6,69 +6,98 @@
 \hypertarget{CourseUnit_8py_source_l00001}{}\hyperlink{namespaceCourse_1_1CourseUnit}{00001} \textcolor{comment}{#coding: utf-8}
 00002 
 00003 \textcolor{keyword}{from} abc \textcolor{keyword}{import}*
-00004 \textcolor{stringliteral}{""" Interface for the User Interface layer of the Course module.}
-00005 \textcolor{stringliteral}{    It is responsible for ...}
-00006 \textcolor{stringliteral}{"""}
-00007 
-\hypertarget{CourseUnit_8py_source_l00008}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse}{00008} \textcolor{keyword}{class }\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse}{IfUiCourse}:
-00009     \_\_metaclass\_\_ = ABCMeta
-00010 
-\hypertarget{CourseUnit_8py_source_l00011}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a2520bf9924cf4f583820ad9fac468fe2}{00011}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a2520bf9924cf4f583820ad9fac468fe2}{\_\_init\_\_}(self, bus):
-00012         \textcolor{keywordflow}{try}:
-\hypertarget{CourseUnit_8py_source_l00013}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a228fc709b99da3a7e6f5020bd07cee03}{00013}             self.\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a228fc709b99da3a7e6f5020bd07cee03}{bus} = bus
-00014         \textcolor{keywordflow}{except} TypeError \textcolor{keyword}{as} exc:
-00015             del self
-00016             \textcolor{keywordflow}{raise} exc
-00017 
-00018     @property
-\hypertarget{CourseUnit_8py_source_l00019}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a6d3c42a9777fe9dd395d9390aef47903}{00019}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a228fc709b99da3a7e6f5020bd07cee03}{bus}(self):
-00020         \textcolor{keywordflow}{return} self.\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_aa961f0720b3e194f935a29f6cd0bbbd5}{\_\_bus}
-00021 
-00022     @bus.setter
-\hypertarget{CourseUnit_8py_source_l00023}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a6d3c42a9777fe9dd395d9390aef47903}{00023}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a228fc709b99da3a7e6f5020bd07cee03}{bus}(self, value):
-00024         \textcolor{keywordflow}{if} isinstance(value, IfBusCourse):
-00025             self.\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_aa961f0720b3e194f935a29f6cd0bbbd5}{\_\_bus} = value
-00026         \textcolor{keywordflow}{else}:
-00027             \textcolor{keywordflow}{raise} TypeError(\textcolor{stringliteral}{"Expected IfBusCourse instance at UiCourse.\_\_bus. Received "} + str(type(value))
+00004 
+00005 \textcolor{keyword}{import} \hyperlink{namespaceELO_1_1locale_1_1index}{ELO.locale.index} \textcolor{keyword}{as} lang
+00006 
+00007 \textcolor{keyword}{from} django.shortcuts \textcolor{keyword}{import} render
+00008 \textcolor{keyword}{from} django.core.exceptions \textcolor{keyword}{import} PermissionDenied
+00009 
+\hypertarget{CourseUnit_8py_source_l00010}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse}{00010} \textcolor{keyword}{class }\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse}{IfUiCourse}:
+00011     \_\_metaclass\_\_ = ABCMeta
+00012 
+\hypertarget{CourseUnit_8py_source_l00013}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a2520bf9924cf4f583820ad9fac468fe2}{00013}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a2520bf9924cf4f583820ad9fac468fe2}{\_\_init\_\_}(self, bus):
+00014         \textcolor{keywordflow}{try}:
+\hypertarget{CourseUnit_8py_source_l00015}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a228fc709b99da3a7e6f5020bd07cee03}{00015}             self.\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a228fc709b99da3a7e6f5020bd07cee03}{bus} = bus
+00016         \textcolor{keywordflow}{except} TypeError \textcolor{keyword}{as} exc:
+00017             del self
+00018             \textcolor{keywordflow}{raise} exc
+00019 
+00020     @property
+\hypertarget{CourseUnit_8py_source_l00021}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a6d3c42a9777fe9dd395d9390aef47903}{00021}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a228fc709b99da3a7e6f5020bd07cee03}{bus}(self):
+00022         \textcolor{keywordflow}{return} self.\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_aa961f0720b3e194f935a29f6cd0bbbd5}{\_\_bus}
+00023 
+00024     @bus.setter
+\hypertarget{CourseUnit_8py_source_l00025}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a6d3c42a9777fe9dd395d9390aef47903}{00025}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a228fc709b99da3a7e6f5020bd07cee03}{bus}(self, value):
+00026         \textcolor{keywordflow}{if} isinstance(value, IfBusCourse):
+00027             self.\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_aa961f0720b3e194f935a29f6cd0bbbd5}{\_\_bus} = value
+00028         \textcolor{keywordflow}{else}:
+00029             \textcolor{keywordflow}{raise} TypeError(\textcolor{stringliteral}{"Expected IfBusCourse instance at UiCourse.\_\_bus. Received "} + str(type(value))
        + \textcolor{stringliteral}{" instead."})
-00028 
-00029     @bus.deleter
-\hypertarget{CourseUnit_8py_source_l00030}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a6d3c42a9777fe9dd395d9390aef47903}{00030}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a228fc709b99da3a7e6f5020bd07cee03}{bus}(self):
-00031         del self.\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_aa961f0720b3e194f935a29f6cd0bbbd5}{\_\_bus}
-00032 
-00033 
-\hypertarget{CourseUnit_8py_source_l00034}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse}{00034} \textcolor{keyword}{class }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse}{IfBusCourse}:
-00035     \_\_metaclass\_\_ = ABCMeta
-00036 
-00037     \textcolor{keyword}{def }\_\_init\_(self, pers):
-00038         \textcolor{keywordflow}{try}:
-\hypertarget{CourseUnit_8py_source_l00039}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{00039}             self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{pers} = pers
-00040         \textcolor{keywordflow}{except} TypeError \textcolor{keyword}{as} exc:
-00041             del self
-00042             \textcolor{keywordflow}{raise} exc
-00043 
-00044     @property
-\hypertarget{CourseUnit_8py_source_l00045}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_adf5702dec1a99bbb31936b7f1d425a40}{00045}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{pers}(self):
-00046         \textcolor{keywordflow}{return} self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a4d7664514162640c28bda49579b46ef0}{\_\_pers}
-00047     
-00048     @pers.setter
-\hypertarget{CourseUnit_8py_source_l00049}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_adf5702dec1a99bbb31936b7f1d425a40}{00049}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{pers}(self, value):
-00050         \textcolor{keywordflow}{if} isinstance(value, IfPersCourse):
-00051             self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a4d7664514162640c28bda49579b46ef0}{\_\_pers} = value
-00052         \textcolor{keywordflow}{else}:
-00053             \textcolor{keywordflow}{raise} TypeError(\textcolor{stringliteral}{"Expected IfPersCourse instance at BusCourse.\_\_pers. Received "} + str(type(
+00030 
+00031     @bus.deleter
+\hypertarget{CourseUnit_8py_source_l00032}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a6d3c42a9777fe9dd395d9390aef47903}{00032}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a228fc709b99da3a7e6f5020bd07cee03}{bus}(self):
+00033         del self.\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_aa961f0720b3e194f935a29f6cd0bbbd5}{\_\_bus}
+00034 
+00035     @abstractmethod
+\hypertarget{CourseUnit_8py_source_l00036}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a5b174a0ca1e8fec0bb322d518c6b9cbe}{00036}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a5b174a0ca1e8fec0bb322d518c6b9cbe}{run}(self, request, courseid): \textcolor{keyword}{pass}
+00037 
+00038 
+\hypertarget{CourseUnit_8py_source_l00039}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse}{00039} \textcolor{keyword}{class }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse}{IfBusCourse}:
+00040     \_\_metaclass\_\_ = ABCMeta
+00041 
+\hypertarget{CourseUnit_8py_source_l00042}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ad2920d0a7dcd1838f1220f644e8244e5}{00042}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ad2920d0a7dcd1838f1220f644e8244e5}{\_\_init\_\_}(self, pers):
+00043         \textcolor{keywordflow}{try}:
+\hypertarget{CourseUnit_8py_source_l00044}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{00044}             self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{pers} = pers
+00045         \textcolor{keywordflow}{except} TypeError \textcolor{keyword}{as} exc:
+00046             del self
+00047             \textcolor{keywordflow}{raise} exc
+00048 
+00049     @property
+\hypertarget{CourseUnit_8py_source_l00050}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_adf5702dec1a99bbb31936b7f1d425a40}{00050}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{pers}(self):
+00051         \textcolor{keywordflow}{return} self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a4d7664514162640c28bda49579b46ef0}{\_\_pers}
+00052     
+00053     @pers.setter
+\hypertarget{CourseUnit_8py_source_l00054}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_adf5702dec1a99bbb31936b7f1d425a40}{00054}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{pers}(self, value):
+00055         \textcolor{keywordflow}{if} isinstance(value, IfPersCourse):
+00056             self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a4d7664514162640c28bda49579b46ef0}{\_\_pers} = value
+00057         \textcolor{keywordflow}{else}:
+00058             \textcolor{keywordflow}{raise} TypeError(\textcolor{stringliteral}{"Expected IfPersCourse instance at BusCourse.\_\_pers. Received "} + str(type(
       value)) + \textcolor{stringliteral}{"instead."})
-00054 
-00055     @pers.deleter
-\hypertarget{CourseUnit_8py_source_l00056}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_adf5702dec1a99bbb31936b7f1d425a40}{00056}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{pers}(self):
-00057         del self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a4d7664514162640c28bda49579b46ef0}{\_\_pers}
-00058 
-\hypertarget{CourseUnit_8py_source_l00059}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfPersCourse}{00059} \textcolor{keyword}{class }\hyperlink{classCourse_1_1CourseUnit_1_1IfPersCourse}{IfPersCourse}: \textcolor{keyword}{pass}
-00060 
-00061 
-\hypertarget{CourseUnit_8py_source_l00062}{}\hyperlink{classCourse_1_1CourseUnit_1_1UiCourse}{00062} \textcolor{keyword}{class }\hyperlink{classCourse_1_1CourseUnit_1_1UiCourse}{UiCourse}(\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse}{IfUiCourse}):   \textcolor{keyword}{pass}
+00059 
+00060     @pers.deleter
+\hypertarget{CourseUnit_8py_source_l00061}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_adf5702dec1a99bbb31936b7f1d425a40}{00061}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{pers}(self):
+00062         del self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a4d7664514162640c28bda49579b46ef0}{\_\_pers}
 00063 
-\hypertarget{CourseUnit_8py_source_l00064}{}\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse}{00064} \textcolor{keyword}{class }\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse}{BusCourse}(\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse}{IfBusCourse}):   \textcolor{keyword}{pass}
-00065 
-\hypertarget{CourseUnit_8py_source_l00066}{}\hyperlink{classCourse_1_1CourseUnit_1_1PersCourse}{00066} \textcolor{keyword}{class }\hyperlink{classCourse_1_1CourseUnit_1_1PersCourse}{PersCourse}(\hyperlink{classCourse_1_1CourseUnit_1_1IfPersCourse}{IfPersCourse}):   \textcolor{keyword}{pass}
+00064     @abstractmethod
+\hypertarget{CourseUnit_8py_source_l00065}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a26af1b8d56c117b45a9ef3d1dcfbd3a9}{00065}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a26af1b8d56c117b45a9ef3d1dcfbd3a9}{getCourse}(self, user, courseid): \textcolor{keyword}{pass}
+00066 
+\hypertarget{CourseUnit_8py_source_l00067}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfPersCourse}{00067} \textcolor{keyword}{class }\hyperlink{classCourse_1_1CourseUnit_1_1IfPersCourse}{IfPersCourse}:
+00068 
+00069     @abstractmethod
+\hypertarget{CourseUnit_8py_source_l00070}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfPersCourse_adcd2e66255b773b6a196bafefdc851e8}{00070}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfPersCourse_adcd2e66255b773b6a196bafefdc851e8}{fetch}(id, db): \textcolor{keyword}{pass}
+00071 
+00072 
+\hypertarget{CourseUnit_8py_source_l00073}{}\hyperlink{classCourse_1_1CourseUnit_1_1UiCourse}{00073} \textcolor{keyword}{class }\hyperlink{classCourse_1_1CourseUnit_1_1UiCourse}{UiCourse}(\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse}{IfUiCourse}):
+00074 
+\hypertarget{CourseUnit_8py_source_l00075}{}\hyperlink{classCourse_1_1CourseUnit_1_1UiCourse_aaaf2b8229f2b774f12e719bc0e6f13cb}{00075}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1UiCourse_aaaf2b8229f2b774f12e719bc0e6f13cb}{run}(self, request, courseid):
+00076         
+00077         user = request.session[\textcolor{stringliteral}{'user'}]
+00078 
+00079         \textcolor{keywordflow}{if} request.method == \textcolor{stringliteral}{"GET"}:
+00080             \textcolor{keywordflow}{if} courseid \textcolor{keywordflow}{in} user[\textcolor{stringliteral}{'courses'}]:
+00081                 course = self.bus.getCourse(user, courseid)
+00082                 \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Course/frame.html"}, \{\textcolor{stringliteral}{'course'}:course\})
+00083             \textcolor{keywordflow}{else}:
+00084                 \textcolor{keywordflow}{raise} PermissionDenied(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_403\_STD"}])
+00085         
+00086 
+\hypertarget{CourseUnit_8py_source_l00087}{}\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse}{00087} \textcolor{keyword}{class }\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse}{BusCourse}(\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse}{IfBusCourse}):
+00088 
+\hypertarget{CourseUnit_8py_source_l00089}{}\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_ac7306e270597d7aac641d956f8e3f31f}{00089}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_ac7306e270597d7aac641d956f8e3f31f}{getCourse}(self, user, courseid):
+00090         \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+00091 
+\hypertarget{CourseUnit_8py_source_l00092}{}\hyperlink{classCourse_1_1CourseUnit_1_1PersCourse}{00092} \textcolor{keyword}{class }\hyperlink{classCourse_1_1CourseUnit_1_1PersCourse}{PersCourse}(\hyperlink{classCourse_1_1CourseUnit_1_1IfPersCourse}{IfPersCourse}):
+00093 
+\hypertarget{CourseUnit_8py_source_l00094}{}\hyperlink{classCourse_1_1CourseUnit_1_1PersCourse_a6e682e872daa8d3523015e1b4df76d0f}{00094}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1PersCourse_a6e682e872daa8d3523015e1b4df76d0f}{fetch}(id, db):
+00095         \textcolor{keywordflow}{return} \textcolor{keyword}{False}
 \end{DoxyCode}
