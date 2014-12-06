@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-22 18:21-0300\n"
+"POT-Creation-Date: 2014-09-30 15:39-0300\n"
 "PO-Revision-Date: 2014-06-24 19:05-0300\n"
 "Last-Translator: Yurick Hauschild <yurick.hauschild@gmail.com>\n"
 "Language-Team: LETproj <https://github.com/LETproj>\n"
@@ -315,86 +315,88 @@ msgid ""
 "tarde."
 msgstr "Form loader failed. Please try again later."
 
-# ############################################ INTERFACE ##
 #: locale/index.py:183
-msgid "Atualizar"
-msgstr "Submit"
+#, fuzzy
+msgid "SALiE - Página Inicial"
+msgstr "SALiE - Home"
 
 #: locale/index.py:184
-msgid "Usuário:"
-msgstr "User"
+#, fuzzy
+msgid "SALiE - Perfil"
+msgstr "SALiE - Profile"
 
 #: locale/index.py:185
-msgid "Senha:"
-msgstr "Password"
-
-#: locale/index.py:186
-msgid "ELO - Página Inicial"
-msgstr "ELO - Home"
+#, fuzzy
+msgid "SALiE - Administração"
+msgstr "SALiE - Management"
 
 #: locale/index.py:187
-msgid "ELO - Perfil"
-msgstr "ELO - Profile"
-
-#: locale/index.py:188
-msgid "ELO - Administração"
-msgstr "ELO - Adm"
-
-#: locale/index.py:190
 msgid "Linguagem"
 msgstr "Language"
 
-#: locale/index.py:191
+#: locale/index.py:188
 msgid "Inglês"
 msgstr "English"
 
-#: locale/index.py:192
+#: locale/index.py:189
 msgid "Português"
 msgstr "Portuguese"
 
-#: locale/index.py:194
+#: locale/index.py:191
 msgid "Sexo"
 msgstr "Sex"
 
-#: locale/index.py:195
+#: locale/index.py:192
 msgid "Masculino"
 msgstr "Male"
 
-#: locale/index.py:196
+#: locale/index.py:193
 msgid "Feminino"
 msgstr "Female"
 
-#: locale/index.py:198
+#: locale/index.py:195
+msgid "Usuário:"
+msgstr "User"
+
+#: locale/index.py:196
+msgid "Senha:"
+msgstr "Password"
+
+#: locale/index.py:197
 msgid "Matrícula"
 msgstr "Reg. Number"
 
-#: locale/index.py:199
+#: locale/index.py:198
 msgid "Biografia"
 msgstr "Bios"
 
-#: locale/index.py:200
+#: locale/index.py:199
 msgid "Interesses"
 msgstr "Interests"
 
-#: locale/index.py:201
+#: locale/index.py:200
 msgid "Nome"
 msgstr "Name"
 
-#: locale/index.py:202
+#: locale/index.py:201
 msgid "Email"
 msgstr "Email"
 
-#: locale/index.py:203
+#: locale/index.py:202
 msgid "Avatar"
 msgstr "Avatar"
 
-#: locale/index.py:204
+#: locale/index.py:203
 msgid "Campus"
 msgstr "Campus"
 
-#: locale/index.py:206
+#: locale/index.py:205
 msgid "Principal"
 msgstr "Main page"
+
+#: locale/index.py:206
+msgid "Menu"
+msgstr "Menu"
 
 #: locale/index.py:207
 msgid "Entrar"
@@ -409,5 +411,74 @@ msgid "Perfil"
 msgstr "Profile"
 
 #: locale/index.py:210
-msgid "ELO"
-msgstr "ELO"
+msgid "SALiE"
+msgstr "SALiE"
+
+#: locale/index.py:212
+msgid "Aluno"
+msgstr "Student"
+
+#: locale/index.py:213
+msgid "Curso"
+msgstr "Course"
+
+#: locale/index.py:214
+msgid "Professor"
+msgstr "Professor"
+
+# ############################################ INTERFACE ##
+#: locale/index.py:216
+msgid "Atualizar"
+msgstr "Submit"
+
+#: locale/index.py:217
+msgid "Cadastrar"
+msgstr "Register"
+
+#: locale/index.py:218
+msgid "Procurar"
+msgstr "Search"
+
+#: locale/index.py:219
+msgid "Deletar"
+msgstr "Delete"
+
+#: locale/index.py:221
+msgid "Registrar Novo Aluno"
+msgstr "Register new student"
+
+#: locale/index.py:222
+msgid "Atualizar dados de Aluno"
+msgstr "Update data from student"
+
+#: locale/index.py:223
+msgid "Apagar Registro de Aluno"
+msgstr "Clear record of student"
+
+#: locale/index.py:225
+msgid "Registrar Novo Curso"
+msgstr "Register new course"
+
+#: locale/index.py:226
+msgid "Atualizar dados de Curso"
+msgstr "Update data from course"
+
+#: locale/index.py:227
+msgid "Apagar Registro de Curso"
+msgstr "Clear record of course"
+
+#: locale/index.py:229
+#, fuzzy
+msgid "Registrar Novo Professor"
+msgstr "Register new course"
+
+#: locale/index.py:230
+msgid "Atualizar dados de Professor"
+msgstr "Update data from professor"
+
+#: locale/index.py:231
+msgid "Apagar Registro de Professor"
+msgstr "Clear record of professor"
+
+#~ msgid "ELO"
+#~ msgstr "ELO"

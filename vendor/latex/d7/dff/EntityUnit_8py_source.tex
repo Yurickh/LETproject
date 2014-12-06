@@ -5,713 +5,731 @@
 \begin{DoxyCode}
 \hypertarget{EntityUnit_8py_source_l00001}{}\hyperlink{namespaceELO_1_1EntityUnit}{00001} \textcolor{comment}{#coding: utf-8}
 00002 
-00003 \textcolor{comment}{## @package EntityUnit}
-00004 \textcolor{comment}{#   Arquivo contem as entidades do programa.}
-00005 \textcolor{comment}{#   Aqui encontra-se todo o código referentes as estruturas das entidades do}
-00006 \textcolor{comment}{#       programa.}
-00007 \textcolor{comment}{#   Entidades não posseuem métodos alêm de:'set', 'get' e 'del' para definir, }
-00008 \textcolor{comment}{#   acessar e deletar suas propriedades. }
-00009 
-00010 \textcolor{keyword}{from} BaseUnit \textcolor{keyword}{import} *
-00011 \textcolor{keyword}{from} abc \textcolor{keyword}{import} *
-00012 
-00013 \textcolor{keyword}{import} \hyperlink{namespaceELO_1_1locale_1_1index}{ELO.locale.index} \textcolor{keyword}{as} lang
+00003 \textcolor{comment}{## @file EntityUnit}
+00004 \textcolor{comment}{#   Arquivo que contém as entidades do sistema.}
+00005 \textcolor{comment}{#}
+00006 \textcolor{comment}{#   Entidades são classes compostas puramente por tipos básicos.}
+00007 \textcolor{comment}{#   Este arquivo provavelmente será deletado numa versão mais avançada}
+00008 \textcolor{comment}{#   do projeto, já que o desenvolvimento de entidades se mostrou inútil.}
+00009 \textcolor{comment}{#   Manteremos ela por hora para que sirva de guia no processo de construção}
+00010 \textcolor{comment}{#   dos modelos do sistema.}
+00011 
+00012 \textcolor{keyword}{from} BaseUnit \textcolor{keyword}{import} *
+00013 \textcolor{keyword}{from} abc \textcolor{keyword}{import} *
 00014 
-00015 \textcolor{comment}{## Definição das interfaces para classes de usuários.}
-00016 \textcolor{comment}{#   Inclui-se 'name' e 'password', propriedades concretas que serão}
-00017 \textcolor{comment}{#   passadas áquelas que delas derivam.}
-00018 \textcolor{comment}{#   Perceba  que um objeto 'User' nao pode ser instanciado e para que uma }
-00019 \textcolor{comment}{#   classe derivada seja instaciada, ela deve sobrepor a propriedade}
-00020 \textcolor{comment}{#   abstrata \_User\_\_instantiable.   }
-\hypertarget{EntityUnit_8py_source_l00021}{}\hyperlink{classELO_1_1EntityUnit_1_1User}{00021} \textcolor{keyword}{class }\hyperlink{classELO_1_1EntityUnit_1_1User}{User}:
-00022     
-00023     
-00024     \textcolor{comment}{## Especifica que uma classe é uma abstrata. Por isso, ela há de ser instanciada.}
-00025     \textcolor{comment}{#}
-00026     \_\_metaclass\_\_ = ABCMeta
-00027 
-00028     \textcolor{comment}{# Garante que um 'User' Jamais será criado. """}
-00029     \_\_instantiable = abstractproperty()
-00030 
-00031     @property
-\hypertarget{EntityUnit_8py_source_l00032}{}\hyperlink{classELO_1_1EntityUnit_1_1User_ad8e94293952f8018f67b59327900c429}{00032}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1User_ad8e94293952f8018f67b59327900c429}{name}(self):
-00033         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1User_aa6f53bbd88fba5b2a22a59329a74a6ce}{\_name}
-00034 
-00035     @property
-\hypertarget{EntityUnit_8py_source_l00036}{}\hyperlink{classELO_1_1EntityUnit_1_1User_a01ae16d257db991dd048c84dba5034c0}{00036}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1User_a01ae16d257db991dd048c84dba5034c0}{password}(self):
-00037         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1User_a084a787c085aa13221a2c3b08132a0b5}{\_password}
-00038 
-00039     @property
-\hypertarget{EntityUnit_8py_source_l00040}{}\hyperlink{classELO_1_1EntityUnit_1_1User_a96e14d87d9a761c3c71d47dec07e1598}{00040}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1User_a96e14d87d9a761c3c71d47dec07e1598}{lastLogin}(self):
-00041         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1User_aa5b3bcb28b8fa037bb80fde1cb22e222}{\_lastLogin}
-00042 
-00043     @name.setter
-\hypertarget{EntityUnit_8py_source_l00044}{}\hyperlink{classELO_1_1EntityUnit_1_1User_ad8e94293952f8018f67b59327900c429}{00044}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1User_ad8e94293952f8018f67b59327900c429}{name}(self, value):
-00045         \textcolor{keywordflow}{if} type(value) \textcolor{keywordflow}{is} Name:
-00046             self.\hyperlink{classELO_1_1EntityUnit_1_1User_aa6f53bbd88fba5b2a22a59329a74a6ce}{\_name} = value
-00047         \textcolor{keywordflow}{else}:
-00048             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_USR\_NM'}])
-00049 
-00050     @password.setter
-\hypertarget{EntityUnit_8py_source_l00051}{}\hyperlink{classELO_1_1EntityUnit_1_1User_a01ae16d257db991dd048c84dba5034c0}{00051}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1User_a01ae16d257db991dd048c84dba5034c0}{password}(self, password):
-00052         \textcolor{keywordflow}{if} type(password) \textcolor{keywordflow}{is} Password:
-00053             self.\hyperlink{classELO_1_1EntityUnit_1_1User_a084a787c085aa13221a2c3b08132a0b5}{\_password} = password
-00054         \textcolor{keywordflow}{else}:
-00055             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_USR\_PW'}])
-00056 
-00057     @lastLogin.setter
-\hypertarget{EntityUnit_8py_source_l00058}{}\hyperlink{classELO_1_1EntityUnit_1_1User_a96e14d87d9a761c3c71d47dec07e1598}{00058}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1User_a96e14d87d9a761c3c71d47dec07e1598}{lastLogin}(self, value):
-00059         \textcolor{keywordflow}{if} type(value) \textcolor{keywordflow}{is} Date:
-00060             self.\hyperlink{classELO_1_1EntityUnit_1_1User_aa5b3bcb28b8fa037bb80fde1cb22e222}{\_lastLogin} = value
-00061         \textcolor{keywordflow}{else}:
-00062             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_USR\_DT'}])
-00063 
-00064     @name.deleter
-\hypertarget{EntityUnit_8py_source_l00065}{}\hyperlink{classELO_1_1EntityUnit_1_1User_ad8e94293952f8018f67b59327900c429}{00065}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1User_ad8e94293952f8018f67b59327900c429}{name}(self):
-00066         del self.\hyperlink{classELO_1_1EntityUnit_1_1User_aa6f53bbd88fba5b2a22a59329a74a6ce}{\_name}
-00067 
-00068     @password.deleter
-\hypertarget{EntityUnit_8py_source_l00069}{}\hyperlink{classELO_1_1EntityUnit_1_1User_a01ae16d257db991dd048c84dba5034c0}{00069}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1User_a01ae16d257db991dd048c84dba5034c0}{password}(self):
-00070         del self.\hyperlink{classELO_1_1EntityUnit_1_1User_a084a787c085aa13221a2c3b08132a0b5}{\_password}
-00071 
-00072     @lastLogin.deleter
-\hypertarget{EntityUnit_8py_source_l00073}{}\hyperlink{classELO_1_1EntityUnit_1_1User_a96e14d87d9a761c3c71d47dec07e1598}{00073}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1User_a96e14d87d9a761c3c71d47dec07e1598}{lastLogin}(self):
-00074         del self.\hyperlink{classELO_1_1EntityUnit_1_1User_aa5b3bcb28b8fa037bb80fde1cb22e222}{\_lastLogin}
-00075 
-00076 \textcolor{comment}{## Administrador do sistema.}
-00077 \textcolor{comment}{#Eles controlam os processaos e o fluxo dos procedimentos no programa}
-00078 \textcolor{comment}{#Eles são os unicos com permições para criar e deletar cursos. Entretanto}
-00079 \textcolor{comment}{#não possuem permição para modificar cursos já criados. Ou seja, não têm }
-00080 \textcolor{comment}{#permição para interferir nos desencolvimento dos cursos.}
-\hypertarget{EntityUnit_8py_source_l00081}{}\hyperlink{classELO_1_1EntityUnit_1_1Adm}{00081} \textcolor{keyword}{class }\hyperlink{classELO_1_1EntityUnit_1_1Adm}{Adm}(\hyperlink{classELO_1_1EntityUnit_1_1User}{User}):
-00082     
-00083     \_User\_\_instantiable = \textcolor{keyword}{True}
-00084 
-\hypertarget{EntityUnit_8py_source_l00085}{}\hyperlink{classELO_1_1EntityUnit_1_1Adm_a01e2f40a6af7208831e2b35bf155dc9e}{00085}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Adm_a01e2f40a6af7208831e2b35bf155dc9e}{\_\_init\_\_}(self, name, password):
-00086         \textcolor{keywordflow}{try}:
-\hypertarget{EntityUnit_8py_source_l00087}{}\hyperlink{classELO_1_1EntityUnit_1_1Adm_a12f7aaf17dc6e036186e7757244cd12a}{00087}             self.\hyperlink{classELO_1_1EntityUnit_1_1Adm_a12f7aaf17dc6e036186e7757244cd12a}{name} = name
-\hypertarget{EntityUnit_8py_source_l00088}{}\hyperlink{classELO_1_1EntityUnit_1_1Adm_aed97c3f4efa1320ef99b3794b51f8e5e}{00088}             self.\hyperlink{classELO_1_1EntityUnit_1_1Adm_aed97c3f4efa1320ef99b3794b51f8e5e}{password} = password
-00089         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
-00090             del self
-00091             \textcolor{keywordflow}{raise} exc
-00092 
-00093 \textcolor{comment}{## Representação do Professor para o sistema.}
-00094 \textcolor{comment}{#Refere-se tanto a professores de fato, quanto a monitores.}
-00095 \textcolor{comment}{#Eles tem permição para montar cursos e modificar cursos.}
-00096 \textcolor{comment}{#Vale ressaltar que o professor NÃO pode criar cursos, apenas monta-los a partir}
-00097 \textcolor{comment}{#}
-\hypertarget{EntityUnit_8py_source_l00098}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor}{00098} \textcolor{keyword}{class }\hyperlink{classELO_1_1EntityUnit_1_1Professor}{Professor}(\hyperlink{classELO_1_1EntityUnit_1_1User}{User}):
-00099     \_User\_\_instantiable = \textcolor{keyword}{True}
-00100 
-\hypertarget{EntityUnit_8py_source_l00101}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_a9c5d85cebcb21faceb88528595762d8a}{00101}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_a9c5d85cebcb21faceb88528595762d8a}{\_\_init\_\_}(self, name, password, matric, bios, campus, courses, avatar, sex):
-00102         \textcolor{keywordflow}{try}:
-\hypertarget{EntityUnit_8py_source_l00103}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_ae85cc0fc9c64a277111a85e87efbe049}{00103}             self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_ae85cc0fc9c64a277111a85e87efbe049}{name} = name
-\hypertarget{EntityUnit_8py_source_l00104}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_af0810854479e9f9a806eb6bfe7468e60}{00104}             self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_af0810854479e9f9a806eb6bfe7468e60}{password} = password
-\hypertarget{EntityUnit_8py_source_l00105}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_afc64d3f1b0e7c88530c7ee62f67ef671}{00105}             self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_afc64d3f1b0e7c88530c7ee62f67ef671}{matric} = matric
-\hypertarget{EntityUnit_8py_source_l00106}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_a2e403e0bfc353dcdf9988140d61d5ca7}{00106}             self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_a2e403e0bfc353dcdf9988140d61d5ca7}{bios} = bios
-\hypertarget{EntityUnit_8py_source_l00107}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_ad95cfc8959dcb02a6afff422703d4dde}{00107}             self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_ad95cfc8959dcb02a6afff422703d4dde}{campus} = campus
-\hypertarget{EntityUnit_8py_source_l00108}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_a6eb0d2789bb8750fb275aca0f8bb74bb}{00108}             self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_a6eb0d2789bb8750fb275aca0f8bb74bb}{courses} = courses
-\hypertarget{EntityUnit_8py_source_l00109}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_a593a0636e87dcdd9ced2e6b7494a45dc}{00109}             self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_a593a0636e87dcdd9ced2e6b7494a45dc}{avatar} = avatar
-\hypertarget{EntityUnit_8py_source_l00110}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_ac049dc360c4af27037158e33577288e1}{00110}             self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_ac049dc360c4af27037158e33577288e1}{sex} = sex
-\hypertarget{EntityUnit_8py_source_l00111}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_a7c6f76f185515050334dc74a030043a7}{00111}             self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_a7c6f76f185515050334dc74a030043a7}{email} = email
-00112         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
-00113             del self
-00114             \textcolor{keywordflow}{raise} exc
-00115     @property
-\hypertarget{EntityUnit_8py_source_l00116}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_ab3f1db18ae629280f0476760411e1633}{00116}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_a7c6f76f185515050334dc74a030043a7}{email}(self):
-00117         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_abae16a367baea9816d97c6f799707146}{\_\_email}
-00118     @email.setter
-\hypertarget{EntityUnit_8py_source_l00119}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_ab3f1db18ae629280f0476760411e1633}{00119}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_a7c6f76f185515050334dc74a030043a7}{email}(self, value):
-00120         \textcolor{keywordflow}{if} type(value) \textcolor{keywordflow}{is} Mail:
-00121             self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_abae16a367baea9816d97c6f799707146}{\_\_email} = value 
-00122         \textcolor{keywordflow}{else} :
-00123             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_PRF\_ML'}])
-00124     @property
-\hypertarget{EntityUnit_8py_source_l00125}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_aeed7183438ff461d33bd0f7a9d179058}{00125}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_afc64d3f1b0e7c88530c7ee62f67ef671}{matric}(self):
-00126         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_afbb0340f5043535933ed6c2d0db6a359}{\_\_matric}
-00127 
-00128     @matric.setter
-\hypertarget{EntityUnit_8py_source_l00129}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_aeed7183438ff461d33bd0f7a9d179058}{00129}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_afc64d3f1b0e7c88530c7ee62f67ef671}{matric}(self, value):
-00130         \textcolor{keywordflow}{if} type(value) \textcolor{keywordflow}{is} Matric:
-00131             self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_afbb0340f5043535933ed6c2d0db6a359}{\_\_matric} = value
-00132         \textcolor{keywordflow}{else}:
-00133             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_PRF\_MT'}])
-00134     @matric.deleter
-\hypertarget{EntityUnit_8py_source_l00135}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_aeed7183438ff461d33bd0f7a9d179058}{00135}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_afc64d3f1b0e7c88530c7ee62f67ef671}{matric}(self):
-00136         del self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_afbb0340f5043535933ed6c2d0db6a359}{\_\_matric}
-00137 
-00138 
-00139     @property
-\hypertarget{EntityUnit_8py_source_l00140}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_a2972bd0f21f4ff0ebfb1cada717386ac}{00140}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_a2e403e0bfc353dcdf9988140d61d5ca7}{bios}(self):
-00141         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_a9f84f976c5d09f7c23aaf0299d754c8e}{\_\_bios}
-00142 
-00143     @bios.setter
-\hypertarget{EntityUnit_8py_source_l00144}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_a2972bd0f21f4ff0ebfb1cada717386ac}{00144}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_a2e403e0bfc353dcdf9988140d61d5ca7}{bios}(self, bios):
-00145         \textcolor{keywordflow}{if} type(bios) \textcolor{keywordflow}{is} PlainText:
-00146             self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_a9f84f976c5d09f7c23aaf0299d754c8e}{\_\_bios} = bios
-00147         \textcolor{keywordflow}{else}:
-00148             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_PRF\_BS'}])
-00149 
-00150     @bios.deleter
-\hypertarget{EntityUnit_8py_source_l00151}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_a2972bd0f21f4ff0ebfb1cada717386ac}{00151}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_a2e403e0bfc353dcdf9988140d61d5ca7}{bios}(self):
-00152         del self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_a9f84f976c5d09f7c23aaf0299d754c8e}{\_\_bios}
-00153 
-00154 
-00155     @property
-\hypertarget{EntityUnit_8py_source_l00156}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_a561d5ad5396226805832c6e4cef1bd10}{00156}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_ad95cfc8959dcb02a6afff422703d4dde}{campus}(self):
-00157         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_a43cc39358dd9e7f085731d788f03f25f}{\_\_campus}
-00158 
-00159     @campus.setter
-\hypertarget{EntityUnit_8py_source_l00160}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_a561d5ad5396226805832c6e4cef1bd10}{00160}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_ad95cfc8959dcb02a6afff422703d4dde}{campus}(self, campus):
-00161         \textcolor{keywordflow}{if} type(campus) \textcolor{keywordflow}{is} Campus:
-00162             self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_a43cc39358dd9e7f085731d788f03f25f}{\_\_campus} = campus
-00163         \textcolor{keywordflow}{else}:
-00164             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_PRF\_CP'}])
-00165 
-00166     @campus.deleter
-\hypertarget{EntityUnit_8py_source_l00167}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_a561d5ad5396226805832c6e4cef1bd10}{00167}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_ad95cfc8959dcb02a6afff422703d4dde}{campus}(self):
-00168         del self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_a43cc39358dd9e7f085731d788f03f25f}{\_\_campus}
-00169 
-00170 
-00171     @property
-\hypertarget{EntityUnit_8py_source_l00172}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_adad835563fb2eba52ed5015abaf8808f}{00172}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_a6eb0d2789bb8750fb275aca0f8bb74bb}{courses}(self):
-00173         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_a6b395ebc0386036d0481c74d72ceaf6b}{\_\_courses}
-00174 
-00175     @courses.setter
-\hypertarget{EntityUnit_8py_source_l00176}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_adad835563fb2eba52ed5015abaf8808f}{00176}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_a6eb0d2789bb8750fb275aca0f8bb74bb}{courses}(self, courses):
-00177         \textcolor{keywordflow}{if} type(courses) \textcolor{keywordflow}{is} list \textcolor{keywordflow}{and} (type(courses[0]) \textcolor{keywordflow}{is} Id \textcolor{keywordflow}{or} \textcolor{keywordflow}{not} courses):
-00178             self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_a6b395ebc0386036d0481c74d72ceaf6b}{\_\_courses} = courses
-00179         \textcolor{keywordflow}{else}:
-00180             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_PRF\_CS'}])
-00181 
-00182     @courses.deleter
-\hypertarget{EntityUnit_8py_source_l00183}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_adad835563fb2eba52ed5015abaf8808f}{00183}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_a6eb0d2789bb8750fb275aca0f8bb74bb}{courses}(self):
-00184         del self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_a6b395ebc0386036d0481c74d72ceaf6b}{\_\_courses}
-00185 
-00186 
-00187     @property
-\hypertarget{EntityUnit_8py_source_l00188}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_a158f4ccf788610ba580639216b621c5b}{00188}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_a593a0636e87dcdd9ced2e6b7494a45dc}{avatar}(self):
-00189         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_a5999cd182773d73f6b646c55dd94b7df}{\_\_avatar}
-00190 
-00191     @avatar.setter
-\hypertarget{EntityUnit_8py_source_l00192}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_a158f4ccf788610ba580639216b621c5b}{00192}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_a593a0636e87dcdd9ced2e6b7494a45dc}{avatar}(self, avatar):
-00193         \textcolor{keywordflow}{if} type(avatar) \textcolor{keywordflow}{is} Link:
-00194             self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_a5999cd182773d73f6b646c55dd94b7df}{\_\_avatar} = avatar
-00195         \textcolor{keywordflow}{else}:
-00196             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_PRF\_AV'}])
-00197 
-00198     @avatar.deleter
-\hypertarget{EntityUnit_8py_source_l00199}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_a158f4ccf788610ba580639216b621c5b}{00199}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_a593a0636e87dcdd9ced2e6b7494a45dc}{avatar}(self):
-00200         del self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_a5999cd182773d73f6b646c55dd94b7df}{\_\_avatar}
-00201 
-00202 
-00203     @property
-\hypertarget{EntityUnit_8py_source_l00204}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_a2244fa9a5f02a5845cc6c0686b2cf08a}{00204}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_ac049dc360c4af27037158e33577288e1}{sex}(self):
-00205         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_ad039f8756667f0f92ce17edf73a084fe}{\_\_sex}
-00206 
-00207     @sex.setter
-\hypertarget{EntityUnit_8py_source_l00208}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_a2244fa9a5f02a5845cc6c0686b2cf08a}{00208}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_ac049dc360c4af27037158e33577288e1}{sex}(self, sex):
-00209         \textcolor{keywordflow}{if} type(sex) \textcolor{keywordflow}{is} Sex:
-00210             self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_ad039f8756667f0f92ce17edf73a084fe}{\_\_sex} = sex
-00211         \textcolor{keywordflow}{else}:
-00212             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_PRF\_SX'}])
-00213 
-00214     @sex.deleter
-\hypertarget{EntityUnit_8py_source_l00215}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_a2244fa9a5f02a5845cc6c0686b2cf08a}{00215}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_ac049dc360c4af27037158e33577288e1}{sex}(self):
-00216         del self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_ad039f8756667f0f92ce17edf73a084fe}{\_\_sex}
-00217 
-00218 
-00219 \textcolor{comment}{##Por ultimo, mas não menos importante, o aluno.}
-00220 \textcolor{comment}{#Principal usuário desse software.}
-00221 \textcolor{comment}{#Alunos tem permição para atender a cursos e  resolver exercícios.}
-\hypertarget{EntityUnit_8py_source_l00222}{}\hyperlink{classELO_1_1EntityUnit_1_1Student}{00222} \textcolor{keyword}{class }\hyperlink{classELO_1_1EntityUnit_1_1Student}{Student}(\hyperlink{classELO_1_1EntityUnit_1_1User}{User}):
-00223     
-00224     \_User\_\_instantiable = \textcolor{keyword}{True}
-00225 
-\hypertarget{EntityUnit_8py_source_l00226}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a8412271826f20d21632dfe81c7305a4a}{00226}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a8412271826f20d21632dfe81c7305a4a}{\_\_init\_\_}(self, name, password, matric, bios, campus, courses, avatar, email, sex, grades, 
-      interests, language):
-00227         \textcolor{keywordflow}{try}:
-\hypertarget{EntityUnit_8py_source_l00228}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a33329ec1da0181f6305626b4444a8e0b}{00228}             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a33329ec1da0181f6305626b4444a8e0b}{name} = name
-\hypertarget{EntityUnit_8py_source_l00229}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a834cad492221bfe3f26e590666e13f9a}{00229}             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a834cad492221bfe3f26e590666e13f9a}{password} = password
-\hypertarget{EntityUnit_8py_source_l00230}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a7a58dc9ae8d071372ef2036a82fcb3ae}{00230}             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a7a58dc9ae8d071372ef2036a82fcb3ae}{matric} = matric
-\hypertarget{EntityUnit_8py_source_l00231}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a148e46f8d5bb2a3dedb9590edbb2471e}{00231}             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a148e46f8d5bb2a3dedb9590edbb2471e}{bios} = bios
-\hypertarget{EntityUnit_8py_source_l00232}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_aeff51011a4e35705fb6aefc54e1d4f35}{00232}             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_aeff51011a4e35705fb6aefc54e1d4f35}{campus} = campus
-\hypertarget{EntityUnit_8py_source_l00233}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a4fc13f8b92b03ab40b6f97e753109056}{00233}             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a4fc13f8b92b03ab40b6f97e753109056}{courses} = courses
-\hypertarget{EntityUnit_8py_source_l00234}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a63479fe42a5a5e1dffc988221a807a6a}{00234}             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a63479fe42a5a5e1dffc988221a807a6a}{avatar} = avatar
-\hypertarget{EntityUnit_8py_source_l00235}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_ac072120adf3ee4078fe3ef7f17e61a1f}{00235}             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_ac072120adf3ee4078fe3ef7f17e61a1f}{email} = email
-\hypertarget{EntityUnit_8py_source_l00236}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a5ca85c1d00044512e5dc3cfabac4ff9f}{00236}             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a5ca85c1d00044512e5dc3cfabac4ff9f}{sex} = sex
-\hypertarget{EntityUnit_8py_source_l00237}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a7ab2e46886024eced2bc61195dbc2008}{00237}             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a7ab2e46886024eced2bc61195dbc2008}{grades} = grades
-\hypertarget{EntityUnit_8py_source_l00238}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a8777212f16975f658ff8f75e47f2c554}{00238}             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a8777212f16975f658ff8f75e47f2c554}{interests} = interests
-\hypertarget{EntityUnit_8py_source_l00239}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_ad58a5d0f4e75b34e6c2b93ac05b59faf}{00239}             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_ad58a5d0f4e75b34e6c2b93ac05b59faf}{language} = language
-00240         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
-00241             del self
-00242             \textcolor{keywordflow}{raise} exc
+00015 \textcolor{keyword}{import} \hyperlink{namespaceELO_1_1locale_1_1index}{ELO.locale.index} \textcolor{keyword}{as} lang
+00016 
+00017 \textcolor{comment}{## Definição das interfaces para classes de usuários.}
+00018 \textcolor{comment}{#   Inclui-se 'name' e 'password', propriedades concretas que serão}
+00019 \textcolor{comment}{#   passadas áquelas que delas derivam.}
+00020 \textcolor{comment}{#   Perceba  que um objeto 'User' nao pode ser instanciado e para que uma }
+00021 \textcolor{comment}{#   classe derivada seja instaciada, ela deve sobrepor a propriedade}
+00022 \textcolor{comment}{#   abstrata \_User\_\_instantiable.   }
+\hypertarget{EntityUnit_8py_source_l00023}{}\hyperlink{classELO_1_1EntityUnit_1_1User}{00023} \textcolor{keyword}{class }\hyperlink{classELO_1_1EntityUnit_1_1User}{User}:
+00024     
+00025     
+00026     \textcolor{comment}{## Especifica que uma classe é uma abstrata. Por isso, ela há de ser instanciada.}
+00027     \textcolor{comment}{#}
+00028     \_\_metaclass\_\_ = ABCMeta
+00029 
+00030     \textcolor{comment}{# Garante que um 'User' Jamais será criado. """}
+00031     \_\_instantiable = abstractproperty()
+00032 
+00033     @property
+\hypertarget{EntityUnit_8py_source_l00034}{}\hyperlink{classELO_1_1EntityUnit_1_1User_ad8e94293952f8018f67b59327900c429}{00034}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1User_ad8e94293952f8018f67b59327900c429}{name}(self):
+00035         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1User_aa6f53bbd88fba5b2a22a59329a74a6ce}{\_name}
+00036 
+00037     @property
+\hypertarget{EntityUnit_8py_source_l00038}{}\hyperlink{classELO_1_1EntityUnit_1_1User_a01ae16d257db991dd048c84dba5034c0}{00038}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1User_a01ae16d257db991dd048c84dba5034c0}{password}(self):
+00039         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1User_a084a787c085aa13221a2c3b08132a0b5}{\_password}
+00040 
+00041     @property
+\hypertarget{EntityUnit_8py_source_l00042}{}\hyperlink{classELO_1_1EntityUnit_1_1User_a96e14d87d9a761c3c71d47dec07e1598}{00042}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1User_a96e14d87d9a761c3c71d47dec07e1598}{lastLogin}(self):
+00043         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1User_aa5b3bcb28b8fa037bb80fde1cb22e222}{\_lastLogin}
+00044 
+00045     @name.setter
+\hypertarget{EntityUnit_8py_source_l00046}{}\hyperlink{classELO_1_1EntityUnit_1_1User_ad8e94293952f8018f67b59327900c429}{00046}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1User_ad8e94293952f8018f67b59327900c429}{name}(self, value):
+00047         \textcolor{keywordflow}{if} type(value) \textcolor{keywordflow}{is} Name:
+00048             self.\hyperlink{classELO_1_1EntityUnit_1_1User_aa6f53bbd88fba5b2a22a59329a74a6ce}{\_name} = value
+00049         \textcolor{keywordflow}{else}:
+00050             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_USR\_NM'}])
+00051 
+00052     @password.setter
+\hypertarget{EntityUnit_8py_source_l00053}{}\hyperlink{classELO_1_1EntityUnit_1_1User_a01ae16d257db991dd048c84dba5034c0}{00053}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1User_a01ae16d257db991dd048c84dba5034c0}{password}(self, password):
+00054         \textcolor{keywordflow}{if} type(password) \textcolor{keywordflow}{is} Password:
+00055             self.\hyperlink{classELO_1_1EntityUnit_1_1User_a084a787c085aa13221a2c3b08132a0b5}{\_password} = password
+00056         \textcolor{keywordflow}{else}:
+00057             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_USR\_PW'}])
+00058 
+00059     @lastLogin.setter
+\hypertarget{EntityUnit_8py_source_l00060}{}\hyperlink{classELO_1_1EntityUnit_1_1User_a96e14d87d9a761c3c71d47dec07e1598}{00060}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1User_a96e14d87d9a761c3c71d47dec07e1598}{lastLogin}(self, value):
+00061         \textcolor{keywordflow}{if} type(value) \textcolor{keywordflow}{is} Date:
+00062             self.\hyperlink{classELO_1_1EntityUnit_1_1User_aa5b3bcb28b8fa037bb80fde1cb22e222}{\_lastLogin} = value
+00063         \textcolor{keywordflow}{else}:
+00064             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_USR\_DT'}])
+00065 
+00066     @name.deleter
+\hypertarget{EntityUnit_8py_source_l00067}{}\hyperlink{classELO_1_1EntityUnit_1_1User_ad8e94293952f8018f67b59327900c429}{00067}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1User_ad8e94293952f8018f67b59327900c429}{name}(self):
+00068         del self.\hyperlink{classELO_1_1EntityUnit_1_1User_aa6f53bbd88fba5b2a22a59329a74a6ce}{\_name}
+00069 
+00070     @password.deleter
+\hypertarget{EntityUnit_8py_source_l00071}{}\hyperlink{classELO_1_1EntityUnit_1_1User_a01ae16d257db991dd048c84dba5034c0}{00071}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1User_a01ae16d257db991dd048c84dba5034c0}{password}(self):
+00072         del self.\hyperlink{classELO_1_1EntityUnit_1_1User_a084a787c085aa13221a2c3b08132a0b5}{\_password}
+00073 
+00074     @lastLogin.deleter
+\hypertarget{EntityUnit_8py_source_l00075}{}\hyperlink{classELO_1_1EntityUnit_1_1User_a96e14d87d9a761c3c71d47dec07e1598}{00075}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1User_a96e14d87d9a761c3c71d47dec07e1598}{lastLogin}(self):
+00076         del self.\hyperlink{classELO_1_1EntityUnit_1_1User_aa5b3bcb28b8fa037bb80fde1cb22e222}{\_lastLogin}
+00077 
+00078 \textcolor{comment}{## Administrador do sistema.}
+00079 \textcolor{comment}{#   Eles controlam os processos e o fluxo dos procedimentos no programa.}
+00080 \textcolor{comment}{#   Eles são os únicos com permissões para criar e deletar cursos. Entretanto}
+00081 \textcolor{comment}{#   não possuem permissão para modificar cursos já criados. Ou seja, não têm }
+00082 \textcolor{comment}{#   permissão para interferir no desenvolvimento dos cursos.}
+\hypertarget{EntityUnit_8py_source_l00083}{}\hyperlink{classELO_1_1EntityUnit_1_1Adm}{00083} \textcolor{keyword}{class }\hyperlink{classELO_1_1EntityUnit_1_1Adm}{Adm}(\hyperlink{classELO_1_1EntityUnit_1_1User}{User}):
+00084     
+00085     \_User\_\_instantiable = \textcolor{keyword}{True}
+00086 
+\hypertarget{EntityUnit_8py_source_l00087}{}\hyperlink{classELO_1_1EntityUnit_1_1Adm_a01e2f40a6af7208831e2b35bf155dc9e}{00087}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Adm_a01e2f40a6af7208831e2b35bf155dc9e}{\_\_init\_\_}(self, name, password, language):
+00088         \textcolor{keywordflow}{try}:
+\hypertarget{EntityUnit_8py_source_l00089}{}\hyperlink{classELO_1_1EntityUnit_1_1Adm_a12f7aaf17dc6e036186e7757244cd12a}{00089}             self.\hyperlink{classELO_1_1EntityUnit_1_1Adm_a12f7aaf17dc6e036186e7757244cd12a}{name} = name
+\hypertarget{EntityUnit_8py_source_l00090}{}\hyperlink{classELO_1_1EntityUnit_1_1Adm_aed97c3f4efa1320ef99b3794b51f8e5e}{00090}             self.\hyperlink{classELO_1_1EntityUnit_1_1Adm_aed97c3f4efa1320ef99b3794b51f8e5e}{password} = password
+\hypertarget{EntityUnit_8py_source_l00091}{}\hyperlink{classELO_1_1EntityUnit_1_1Adm_a2d4b3c7bd74c828fa965f4d840ff7124}{00091}             self.\hyperlink{classELO_1_1EntityUnit_1_1Adm_a2d4b3c7bd74c828fa965f4d840ff7124}{language} = language
+00092         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00093             del self
+00094             \textcolor{keywordflow}{raise} exc
+00095         
+00096     @property
+\hypertarget{EntityUnit_8py_source_l00097}{}\hyperlink{classELO_1_1EntityUnit_1_1Adm_a32ced0b1c5c7dc5d5b931e568b9d2ece}{00097}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Adm_a32ced0b1c5c7dc5d5b931e568b9d2ece}{language}(self):
+00098         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Adm_abe86178cc170e616c4f0c57e3160ff6b}{\_\_language}
+00099 
+00100     @language.setter
+\hypertarget{EntityUnit_8py_source_l00101}{}\hyperlink{classELO_1_1EntityUnit_1_1Adm_a32ced0b1c5c7dc5d5b931e568b9d2ece}{00101}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Adm_a32ced0b1c5c7dc5d5b931e568b9d2ece}{language}(self, language):
+00102         \textcolor{keywordflow}{if} type(language) \textcolor{keywordflow}{is} Language:
+00103             self.\hyperlink{classELO_1_1EntityUnit_1_1Adm_abe86178cc170e616c4f0c57e3160ff6b}{\_\_language} = language
+00104         \textcolor{keywordflow}{else}:
+00105             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_LN'}])
+00106 
+00107     @language.deleter
+\hypertarget{EntityUnit_8py_source_l00108}{}\hyperlink{classELO_1_1EntityUnit_1_1Adm_a32ced0b1c5c7dc5d5b931e568b9d2ece}{00108}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Adm_a32ced0b1c5c7dc5d5b931e568b9d2ece}{language}():
+00109         del \_\_language
+00110 
+00111 \textcolor{comment}{## Representação do Professor para o sistema.}
+00112 \textcolor{comment}{#Refere-se tanto a professores de fato, quanto a monitores.}
+00113 \textcolor{comment}{#Eles tem permição para montar cursos e modificar cursos.}
+00114 \textcolor{comment}{#Vale ressaltar que o professor NÃO pode criar cursos, apenas monta-los a partir}
+00115 \textcolor{comment}{#}
+\hypertarget{EntityUnit_8py_source_l00116}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor}{00116} \textcolor{keyword}{class }\hyperlink{classELO_1_1EntityUnit_1_1Professor}{Professor}(\hyperlink{classELO_1_1EntityUnit_1_1User}{User}):
+00117     \_User\_\_instantiable = \textcolor{keyword}{True}
+00118 
+\hypertarget{EntityUnit_8py_source_l00119}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_a9c5d85cebcb21faceb88528595762d8a}{00119}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_a9c5d85cebcb21faceb88528595762d8a}{\_\_init\_\_}(self, name, password, matric, bios, campus, courses, avatar, sex):
+00120         \textcolor{keywordflow}{try}:
+\hypertarget{EntityUnit_8py_source_l00121}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_ae85cc0fc9c64a277111a85e87efbe049}{00121}             self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_ae85cc0fc9c64a277111a85e87efbe049}{name} = name
+\hypertarget{EntityUnit_8py_source_l00122}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_af0810854479e9f9a806eb6bfe7468e60}{00122}             self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_af0810854479e9f9a806eb6bfe7468e60}{password} = password
+\hypertarget{EntityUnit_8py_source_l00123}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_afc64d3f1b0e7c88530c7ee62f67ef671}{00123}             self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_afc64d3f1b0e7c88530c7ee62f67ef671}{matric} = matric
+\hypertarget{EntityUnit_8py_source_l00124}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_a2e403e0bfc353dcdf9988140d61d5ca7}{00124}             self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_a2e403e0bfc353dcdf9988140d61d5ca7}{bios} = bios
+\hypertarget{EntityUnit_8py_source_l00125}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_ad95cfc8959dcb02a6afff422703d4dde}{00125}             self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_ad95cfc8959dcb02a6afff422703d4dde}{campus} = campus
+\hypertarget{EntityUnit_8py_source_l00126}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_a6eb0d2789bb8750fb275aca0f8bb74bb}{00126}             self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_a6eb0d2789bb8750fb275aca0f8bb74bb}{courses} = courses
+\hypertarget{EntityUnit_8py_source_l00127}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_a593a0636e87dcdd9ced2e6b7494a45dc}{00127}             self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_a593a0636e87dcdd9ced2e6b7494a45dc}{avatar} = avatar
+\hypertarget{EntityUnit_8py_source_l00128}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_ac049dc360c4af27037158e33577288e1}{00128}             self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_ac049dc360c4af27037158e33577288e1}{sex} = sex
+\hypertarget{EntityUnit_8py_source_l00129}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_a7c6f76f185515050334dc74a030043a7}{00129}             self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_a7c6f76f185515050334dc74a030043a7}{email} = email
+00130         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00131             del self
+00132             \textcolor{keywordflow}{raise} exc
+00133     @property
+\hypertarget{EntityUnit_8py_source_l00134}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_ab3f1db18ae629280f0476760411e1633}{00134}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_a7c6f76f185515050334dc74a030043a7}{email}(self):
+00135         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_abae16a367baea9816d97c6f799707146}{\_\_email}
+00136     @email.setter
+\hypertarget{EntityUnit_8py_source_l00137}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_ab3f1db18ae629280f0476760411e1633}{00137}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_a7c6f76f185515050334dc74a030043a7}{email}(self, value):
+00138         \textcolor{keywordflow}{if} type(value) \textcolor{keywordflow}{is} Mail:
+00139             self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_abae16a367baea9816d97c6f799707146}{\_\_email} = value 
+00140         \textcolor{keywordflow}{else} :
+00141             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_PRF\_ML'}])
+00142     @property
+\hypertarget{EntityUnit_8py_source_l00143}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_aeed7183438ff461d33bd0f7a9d179058}{00143}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_afc64d3f1b0e7c88530c7ee62f67ef671}{matric}(self):
+00144         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_afbb0340f5043535933ed6c2d0db6a359}{\_\_matric}
+00145 
+00146     @matric.setter
+\hypertarget{EntityUnit_8py_source_l00147}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_aeed7183438ff461d33bd0f7a9d179058}{00147}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_afc64d3f1b0e7c88530c7ee62f67ef671}{matric}(self, value):
+00148         \textcolor{keywordflow}{if} type(value) \textcolor{keywordflow}{is} Matric:
+00149             self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_afbb0340f5043535933ed6c2d0db6a359}{\_\_matric} = value
+00150         \textcolor{keywordflow}{else}:
+00151             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_PRF\_MT'}])
+00152     @matric.deleter
+\hypertarget{EntityUnit_8py_source_l00153}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_aeed7183438ff461d33bd0f7a9d179058}{00153}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_afc64d3f1b0e7c88530c7ee62f67ef671}{matric}(self):
+00154         del self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_afbb0340f5043535933ed6c2d0db6a359}{\_\_matric}
+00155 
+00156 
+00157     @property
+\hypertarget{EntityUnit_8py_source_l00158}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_a2972bd0f21f4ff0ebfb1cada717386ac}{00158}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_a2e403e0bfc353dcdf9988140d61d5ca7}{bios}(self):
+00159         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_a9f84f976c5d09f7c23aaf0299d754c8e}{\_\_bios}
+00160 
+00161     @bios.setter
+\hypertarget{EntityUnit_8py_source_l00162}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_a2972bd0f21f4ff0ebfb1cada717386ac}{00162}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_a2e403e0bfc353dcdf9988140d61d5ca7}{bios}(self, bios):
+00163         \textcolor{keywordflow}{if} type(bios) \textcolor{keywordflow}{is} PlainText:
+00164             self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_a9f84f976c5d09f7c23aaf0299d754c8e}{\_\_bios} = bios
+00165         \textcolor{keywordflow}{else}:
+00166             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_PRF\_BS'}])
+00167 
+00168     @bios.deleter
+\hypertarget{EntityUnit_8py_source_l00169}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_a2972bd0f21f4ff0ebfb1cada717386ac}{00169}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_a2e403e0bfc353dcdf9988140d61d5ca7}{bios}(self):
+00170         del self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_a9f84f976c5d09f7c23aaf0299d754c8e}{\_\_bios}
+00171 
+00172 
+00173     @property
+\hypertarget{EntityUnit_8py_source_l00174}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_a561d5ad5396226805832c6e4cef1bd10}{00174}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_ad95cfc8959dcb02a6afff422703d4dde}{campus}(self):
+00175         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_a43cc39358dd9e7f085731d788f03f25f}{\_\_campus}
+00176 
+00177     @campus.setter
+\hypertarget{EntityUnit_8py_source_l00178}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_a561d5ad5396226805832c6e4cef1bd10}{00178}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_ad95cfc8959dcb02a6afff422703d4dde}{campus}(self, campus):
+00179         \textcolor{keywordflow}{if} type(campus) \textcolor{keywordflow}{is} Campus:
+00180             self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_a43cc39358dd9e7f085731d788f03f25f}{\_\_campus} = campus
+00181         \textcolor{keywordflow}{else}:
+00182             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_PRF\_CP'}])
+00183 
+00184     @campus.deleter
+\hypertarget{EntityUnit_8py_source_l00185}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_a561d5ad5396226805832c6e4cef1bd10}{00185}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_ad95cfc8959dcb02a6afff422703d4dde}{campus}(self):
+00186         del self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_a43cc39358dd9e7f085731d788f03f25f}{\_\_campus}
+00187 
+00188 
+00189     @property
+\hypertarget{EntityUnit_8py_source_l00190}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_adad835563fb2eba52ed5015abaf8808f}{00190}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_a6eb0d2789bb8750fb275aca0f8bb74bb}{courses}(self):
+00191         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_a6b395ebc0386036d0481c74d72ceaf6b}{\_\_courses}
+00192 
+00193     @courses.setter
+\hypertarget{EntityUnit_8py_source_l00194}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_adad835563fb2eba52ed5015abaf8808f}{00194}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_a6eb0d2789bb8750fb275aca0f8bb74bb}{courses}(self, courses):
+00195         \textcolor{keywordflow}{if} type(courses) \textcolor{keywordflow}{is} list \textcolor{keywordflow}{and} (type(courses[0]) \textcolor{keywordflow}{is} Id \textcolor{keywordflow}{or} \textcolor{keywordflow}{not} courses):
+00196             self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_a6b395ebc0386036d0481c74d72ceaf6b}{\_\_courses} = courses
+00197         \textcolor{keywordflow}{else}:
+00198             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_PRF\_CS'}])
+00199 
+00200     @courses.deleter
+\hypertarget{EntityUnit_8py_source_l00201}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_adad835563fb2eba52ed5015abaf8808f}{00201}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_a6eb0d2789bb8750fb275aca0f8bb74bb}{courses}(self):
+00202         del self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_a6b395ebc0386036d0481c74d72ceaf6b}{\_\_courses}
+00203 
+00204 
+00205     @property
+\hypertarget{EntityUnit_8py_source_l00206}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_a158f4ccf788610ba580639216b621c5b}{00206}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_a593a0636e87dcdd9ced2e6b7494a45dc}{avatar}(self):
+00207         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_a5999cd182773d73f6b646c55dd94b7df}{\_\_avatar}
+00208 
+00209     @avatar.setter
+\hypertarget{EntityUnit_8py_source_l00210}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_a158f4ccf788610ba580639216b621c5b}{00210}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_a593a0636e87dcdd9ced2e6b7494a45dc}{avatar}(self, avatar):
+00211         \textcolor{keywordflow}{if} type(avatar) \textcolor{keywordflow}{is} Link:
+00212             self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_a5999cd182773d73f6b646c55dd94b7df}{\_\_avatar} = avatar
+00213         \textcolor{keywordflow}{else}:
+00214             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_PRF\_AV'}])
+00215 
+00216     @avatar.deleter
+\hypertarget{EntityUnit_8py_source_l00217}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_a158f4ccf788610ba580639216b621c5b}{00217}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_a593a0636e87dcdd9ced2e6b7494a45dc}{avatar}(self):
+00218         del self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_a5999cd182773d73f6b646c55dd94b7df}{\_\_avatar}
+00219 
+00220 
+00221     @property
+\hypertarget{EntityUnit_8py_source_l00222}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_a2244fa9a5f02a5845cc6c0686b2cf08a}{00222}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_ac049dc360c4af27037158e33577288e1}{sex}(self):
+00223         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_ad039f8756667f0f92ce17edf73a084fe}{\_\_sex}
+00224 
+00225     @sex.setter
+\hypertarget{EntityUnit_8py_source_l00226}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_a2244fa9a5f02a5845cc6c0686b2cf08a}{00226}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_ac049dc360c4af27037158e33577288e1}{sex}(self, sex):
+00227         \textcolor{keywordflow}{if} type(sex) \textcolor{keywordflow}{is} Sex:
+00228             self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_ad039f8756667f0f92ce17edf73a084fe}{\_\_sex} = sex
+00229         \textcolor{keywordflow}{else}:
+00230             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_PRF\_SX'}])
+00231 
+00232     @sex.deleter
+\hypertarget{EntityUnit_8py_source_l00233}{}\hyperlink{classELO_1_1EntityUnit_1_1Professor_a2244fa9a5f02a5845cc6c0686b2cf08a}{00233}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Professor_ac049dc360c4af27037158e33577288e1}{sex}(self):
+00234         del self.\hyperlink{classELO_1_1EntityUnit_1_1Professor_ad039f8756667f0f92ce17edf73a084fe}{\_\_sex}
+00235 
+00236 
+00237 \textcolor{comment}{##Por ultimo, mas não menos importante, o aluno.}
+00238 \textcolor{comment}{#Principal usuário desse software.}
+00239 \textcolor{comment}{#Alunos tem permição para atender a cursos e  resolver exercícios.}
+\hypertarget{EntityUnit_8py_source_l00240}{}\hyperlink{classELO_1_1EntityUnit_1_1Student}{00240} \textcolor{keyword}{class }\hyperlink{classELO_1_1EntityUnit_1_1Student}{Student}(\hyperlink{classELO_1_1EntityUnit_1_1User}{User}):
+00241     
+00242     \_User\_\_instantiable = \textcolor{keyword}{True}
 00243 
-00244     @property
-\hypertarget{EntityUnit_8py_source_l00245}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a010987e0c79f2b3395a0eb8e415e8f48}{00245}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a7a58dc9ae8d071372ef2036a82fcb3ae}{matric}(self):
-00246         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a19ba7cc6ac6687989908d9404a574588}{\_\_matric}
-00247 
-00248     @matric.setter
-\hypertarget{EntityUnit_8py_source_l00249}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a010987e0c79f2b3395a0eb8e415e8f48}{00249}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a7a58dc9ae8d071372ef2036a82fcb3ae}{matric}(self, matric):
-00250         \textcolor{keywordflow}{if} type(matric) \textcolor{keywordflow}{is} Matric:
-00251             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a19ba7cc6ac6687989908d9404a574588}{\_\_matric} = matric
-00252         \textcolor{keywordflow}{else}:
-00253             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_MT'}])
-00254 
-00255     @matric.deleter
-\hypertarget{EntityUnit_8py_source_l00256}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a010987e0c79f2b3395a0eb8e415e8f48}{00256}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a7a58dc9ae8d071372ef2036a82fcb3ae}{matric}(self):
-00257         del \_\_matric
-00258 
-00259 
-00260     @property   
-\hypertarget{EntityUnit_8py_source_l00261}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a7428c9fbf91bc28ee039df54fbf613a3}{00261}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a148e46f8d5bb2a3dedb9590edbb2471e}{bios}(self):
-00262         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Student_ad9f330b05c8c698056afb87ee5995564}{\_\_bios}
-00263 
-00264     @bios.setter
-\hypertarget{EntityUnit_8py_source_l00265}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a7428c9fbf91bc28ee039df54fbf613a3}{00265}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a148e46f8d5bb2a3dedb9590edbb2471e}{bios}(self, bios):
-00266         \textcolor{keywordflow}{if} type(bios) \textcolor{keywordflow}{is} PlainText:
-00267             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_ad9f330b05c8c698056afb87ee5995564}{\_\_bios} = bios
-00268         \textcolor{keywordflow}{else}:
-00269             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_BS'}])
-00270 
-00271     @bios.deleter
-\hypertarget{EntityUnit_8py_source_l00272}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a7428c9fbf91bc28ee039df54fbf613a3}{00272}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a148e46f8d5bb2a3dedb9590edbb2471e}{bios}(self):
-00273         del \_\_bios
-00274 
-00275 
-00276     @property
-\hypertarget{EntityUnit_8py_source_l00277}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_ab4085f71869b2d0b5124f3f3ac216b2c}{00277}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_aeff51011a4e35705fb6aefc54e1d4f35}{campus}(self):
-00278         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a3a8e28a61de347011427df96094bc633}{\_\_campus}
-00279 
-00280     @campus.setter
-\hypertarget{EntityUnit_8py_source_l00281}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_ab4085f71869b2d0b5124f3f3ac216b2c}{00281}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_aeff51011a4e35705fb6aefc54e1d4f35}{campus}(self, campus):
-00282         \textcolor{keywordflow}{if} type(campus) \textcolor{keywordflow}{is} Campus:
-00283             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a3a8e28a61de347011427df96094bc633}{\_\_campus} = campus
-00284         \textcolor{keywordflow}{else}:
-00285             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_CP'}])
-00286 
-00287     @campus.deleter
-\hypertarget{EntityUnit_8py_source_l00288}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_ab4085f71869b2d0b5124f3f3ac216b2c}{00288}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_aeff51011a4e35705fb6aefc54e1d4f35}{campus}(self):
-00289         del \_\_campus
-00290 
-00291 
-00292     @property
-\hypertarget{EntityUnit_8py_source_l00293}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a80c6bab040d61102a1ddb1bc0ddaab38}{00293}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a4fc13f8b92b03ab40b6f97e753109056}{courses}(self):
-00294         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Student_ac88088a4e9d0e130d927a722d09be1fc}{\_\_courses}
-00295 
-00296     @courses.setter
-\hypertarget{EntityUnit_8py_source_l00297}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a80c6bab040d61102a1ddb1bc0ddaab38}{00297}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a4fc13f8b92b03ab40b6f97e753109056}{courses}(self, courses):
-00298         \textcolor{keywordflow}{if} (type(courses[0]) \textcolor{keywordflow}{is} Id \textcolor{keywordflow}{or} \textcolor{keywordflow}{not} courses) \textcolor{keywordflow}{and} type(courses) \textcolor{keywordflow}{is} list :
-00299             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_ac88088a4e9d0e130d927a722d09be1fc}{\_\_courses} = courses
-00300         \textcolor{keywordflow}{else}:
-00301             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_CO'}])
-00302 
-00303     @courses.deleter
-\hypertarget{EntityUnit_8py_source_l00304}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a80c6bab040d61102a1ddb1bc0ddaab38}{00304}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a4fc13f8b92b03ab40b6f97e753109056}{courses}(self):
-00305         del \_\_courses
-00306 
-00307 
-00308     @property
-\hypertarget{EntityUnit_8py_source_l00309}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_adcb290317bcd8aab23370b17c42d26fb}{00309}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a63479fe42a5a5e1dffc988221a807a6a}{avatar}(self):
-00310         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a10722c8fa4630f11fdfe6b037aefe97f}{\_\_avatar}
-00311 
-00312     @avatar.setter
-\hypertarget{EntityUnit_8py_source_l00313}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_adcb290317bcd8aab23370b17c42d26fb}{00313}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a63479fe42a5a5e1dffc988221a807a6a}{avatar}(self, avatar):
-00314         \textcolor{keywordflow}{if} type(avatar) \textcolor{keywordflow}{is} Link:
-00315             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a10722c8fa4630f11fdfe6b037aefe97f}{\_\_avatar} = avatar
-00316         \textcolor{keywordflow}{else}:
-00317             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_AV'}])
-00318 
-00319     @avatar.deleter
-\hypertarget{EntityUnit_8py_source_l00320}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_adcb290317bcd8aab23370b17c42d26fb}{00320}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a63479fe42a5a5e1dffc988221a807a6a}{avatar}(self):
-00321         del \_\_avatar
-00322 
-00323 
-00324     @property
-\hypertarget{EntityUnit_8py_source_l00325}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a358998b764eed85c81244ee43792f762}{00325}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a5ca85c1d00044512e5dc3cfabac4ff9f}{sex}(self):
-00326         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a5c0dff028cee83bbabe4d9e4b41db8ab}{\_\_sex}
-00327 
-00328     @sex.setter
-\hypertarget{EntityUnit_8py_source_l00329}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a358998b764eed85c81244ee43792f762}{00329}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a5ca85c1d00044512e5dc3cfabac4ff9f}{sex}(self, sex):
-00330         \textcolor{keywordflow}{if} type(sex) \textcolor{keywordflow}{is} Sex:
-00331             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a5c0dff028cee83bbabe4d9e4b41db8ab}{\_\_sex} = sex
-00332         \textcolor{keywordflow}{else}:
-00333             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_SX'}])
-00334 
-00335     @sex.deleter
-\hypertarget{EntityUnit_8py_source_l00336}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a358998b764eed85c81244ee43792f762}{00336}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a5ca85c1d00044512e5dc3cfabac4ff9f}{sex}(self):
-00337         del \_\_sex
-00338 
-00339 
-00340     @property
-\hypertarget{EntityUnit_8py_source_l00341}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a23a5b0c412a8dfb456555d4cf500d5d1}{00341}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_ac072120adf3ee4078fe3ef7f17e61a1f}{email}(self):
-00342         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Student_af1cbffd7a391232384731a384750428f}{\_\_email}
-00343 
-00344     @email.setter
-\hypertarget{EntityUnit_8py_source_l00345}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a23a5b0c412a8dfb456555d4cf500d5d1}{00345}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_ac072120adf3ee4078fe3ef7f17e61a1f}{email}(self, email):
-00346         \textcolor{keywordflow}{if} type(email) \textcolor{keywordflow}{is} Mail:
-00347             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_af1cbffd7a391232384731a384750428f}{\_\_email} = email
-00348         \textcolor{keywordflow}{else}:
-00349             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_ML'}])
-00350 
-00351     @email.deleter
-\hypertarget{EntityUnit_8py_source_l00352}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a23a5b0c412a8dfb456555d4cf500d5d1}{00352}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_ac072120adf3ee4078fe3ef7f17e61a1f}{email}(self):
-00353         del \_\_email
-00354 
-00355 
-00356     @property
-\hypertarget{EntityUnit_8py_source_l00357}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a94a418a7120679fe9562583343981046}{00357}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a7ab2e46886024eced2bc61195dbc2008}{grades}(self):
-00358         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Student_acf10de509e6ce4d747f38638239ccee1}{\_\_grades}
-00359 
-00360     @grades.setter
-\hypertarget{EntityUnit_8py_source_l00361}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a94a418a7120679fe9562583343981046}{00361}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a7ab2e46886024eced2bc61195dbc2008}{grades}(self, grades):
-00362         \textcolor{keywordflow}{if} type(grades) \textcolor{keywordflow}{is} dict \textcolor{keywordflow}{and} type(grades.values()[0]) \textcolor{keywordflow}{is} Grades:
-00363             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_acf10de509e6ce4d747f38638239ccee1}{\_\_grades} = grades
-00364         \textcolor{keywordflow}{else}:
-00365             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_GR'}])
-00366 
-00367     @grades.deleter
-\hypertarget{EntityUnit_8py_source_l00368}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a94a418a7120679fe9562583343981046}{00368}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a7ab2e46886024eced2bc61195dbc2008}{grades}(self):
-00369         del \_\_grades
-00370 
-00371 
-00372     @property
-\hypertarget{EntityUnit_8py_source_l00373}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a166d0213fb60a69c2b8dce7b0afc754d}{00373}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a8777212f16975f658ff8f75e47f2c554}{interests}(self):
-00374         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a122801fcd31fe08db2f2575b38e09242}{\_\_interests}
-00375 
-00376     @interests.setter
-\hypertarget{EntityUnit_8py_source_l00377}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a166d0213fb60a69c2b8dce7b0afc754d}{00377}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a8777212f16975f658ff8f75e47f2c554}{interests}(self, interests):
-00378         \textcolor{keywordflow}{if} type(interests) \textcolor{keywordflow}{is} PlainText:
-00379             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a122801fcd31fe08db2f2575b38e09242}{\_\_interests} = interests
-00380         \textcolor{keywordflow}{else}:
-00381             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_IN'}])
-00382 
-00383     @interests.deleter
-\hypertarget{EntityUnit_8py_source_l00384}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a166d0213fb60a69c2b8dce7b0afc754d}{00384}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a8777212f16975f658ff8f75e47f2c554}{interests}(self):
-00385         del \_\_interests
-00386 
-00387 
-00388     @property
-\hypertarget{EntityUnit_8py_source_l00389}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a410beeaf633ad5274bd8e471f285357c}{00389}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a410beeaf633ad5274bd8e471f285357c}{language}(self):
-00390         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Student_aec86fe5403c29d8b7354db1d81fca428}{\_\_language}
-00391 
-00392     @language.setter
-\hypertarget{EntityUnit_8py_source_l00393}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a410beeaf633ad5274bd8e471f285357c}{00393}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a410beeaf633ad5274bd8e471f285357c}{language}(self, language):
-00394         \textcolor{keywordflow}{if} type(language) \textcolor{keywordflow}{is} Language:
-00395             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_aec86fe5403c29d8b7354db1d81fca428}{\_\_language} = language
-00396         \textcolor{keywordflow}{else}:
-00397             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_LN'}])
-00398 
-00399     @language.deleter
-\hypertarget{EntityUnit_8py_source_l00400}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a410beeaf633ad5274bd8e471f285357c}{00400}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a410beeaf633ad5274bd8e471f285357c}{language}():
-00401         del \_\_language
-00402 
-00403 
-00404 \textcolor{comment}{## Um curos possui módulos, que por sua vez, contêm lições, e estas possuem}
-00405 \textcolor{comment}{#exercícios. "Courses" estão em um nivel mais alto do sistema de abstração.}
-00406 \textcolor{comment}{#Normalmente, a um professor será dado cursos vazios, e a partir destes }
-00407 \textcolor{comment}{#ele poderá criar sua dinámica letiva.}
-\hypertarget{EntityUnit_8py_source_l00408}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses}{00408} \textcolor{keyword}{class }\hyperlink{classELO_1_1EntityUnit_1_1Courses}{Courses}(object):
+\hypertarget{EntityUnit_8py_source_l00244}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a8412271826f20d21632dfe81c7305a4a}{00244}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a8412271826f20d21632dfe81c7305a4a}{\_\_init\_\_}(self, name, password, matric, bios, campus, courses, avatar, email, sex, grades, 
+      interests, language):
+00245         \textcolor{keywordflow}{try}:
+\hypertarget{EntityUnit_8py_source_l00246}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a33329ec1da0181f6305626b4444a8e0b}{00246}             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a33329ec1da0181f6305626b4444a8e0b}{name} = name
+\hypertarget{EntityUnit_8py_source_l00247}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a834cad492221bfe3f26e590666e13f9a}{00247}             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a834cad492221bfe3f26e590666e13f9a}{password} = password
+\hypertarget{EntityUnit_8py_source_l00248}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a7a58dc9ae8d071372ef2036a82fcb3ae}{00248}             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a7a58dc9ae8d071372ef2036a82fcb3ae}{matric} = matric
+\hypertarget{EntityUnit_8py_source_l00249}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a148e46f8d5bb2a3dedb9590edbb2471e}{00249}             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a148e46f8d5bb2a3dedb9590edbb2471e}{bios} = bios
+\hypertarget{EntityUnit_8py_source_l00250}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_aeff51011a4e35705fb6aefc54e1d4f35}{00250}             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_aeff51011a4e35705fb6aefc54e1d4f35}{campus} = campus
+\hypertarget{EntityUnit_8py_source_l00251}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a4fc13f8b92b03ab40b6f97e753109056}{00251}             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a4fc13f8b92b03ab40b6f97e753109056}{courses} = courses
+\hypertarget{EntityUnit_8py_source_l00252}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a63479fe42a5a5e1dffc988221a807a6a}{00252}             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a63479fe42a5a5e1dffc988221a807a6a}{avatar} = avatar
+\hypertarget{EntityUnit_8py_source_l00253}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_ac072120adf3ee4078fe3ef7f17e61a1f}{00253}             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_ac072120adf3ee4078fe3ef7f17e61a1f}{email} = email
+\hypertarget{EntityUnit_8py_source_l00254}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a5ca85c1d00044512e5dc3cfabac4ff9f}{00254}             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a5ca85c1d00044512e5dc3cfabac4ff9f}{sex} = sex
+\hypertarget{EntityUnit_8py_source_l00255}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a7ab2e46886024eced2bc61195dbc2008}{00255}             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a7ab2e46886024eced2bc61195dbc2008}{grades} = grades
+\hypertarget{EntityUnit_8py_source_l00256}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a8777212f16975f658ff8f75e47f2c554}{00256}             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a8777212f16975f658ff8f75e47f2c554}{interests} = interests
+\hypertarget{EntityUnit_8py_source_l00257}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_ad58a5d0f4e75b34e6c2b93ac05b59faf}{00257}             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_ad58a5d0f4e75b34e6c2b93ac05b59faf}{language} = language
+00258         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00259             del self
+00260             \textcolor{keywordflow}{raise} exc
+00261 
+00262     @property
+\hypertarget{EntityUnit_8py_source_l00263}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a010987e0c79f2b3395a0eb8e415e8f48}{00263}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a7a58dc9ae8d071372ef2036a82fcb3ae}{matric}(self):
+00264         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a19ba7cc6ac6687989908d9404a574588}{\_\_matric}
+00265 
+00266     @matric.setter
+\hypertarget{EntityUnit_8py_source_l00267}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a010987e0c79f2b3395a0eb8e415e8f48}{00267}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a7a58dc9ae8d071372ef2036a82fcb3ae}{matric}(self, matric):
+00268         \textcolor{keywordflow}{if} type(matric) \textcolor{keywordflow}{is} Matric:
+00269             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a19ba7cc6ac6687989908d9404a574588}{\_\_matric} = matric
+00270         \textcolor{keywordflow}{else}:
+00271             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_MT'}])
+00272 
+00273     @matric.deleter
+\hypertarget{EntityUnit_8py_source_l00274}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a010987e0c79f2b3395a0eb8e415e8f48}{00274}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a7a58dc9ae8d071372ef2036a82fcb3ae}{matric}(self):
+00275         del \_\_matric
+00276 
+00277 
+00278     @property   
+\hypertarget{EntityUnit_8py_source_l00279}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a7428c9fbf91bc28ee039df54fbf613a3}{00279}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a148e46f8d5bb2a3dedb9590edbb2471e}{bios}(self):
+00280         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Student_ad9f330b05c8c698056afb87ee5995564}{\_\_bios}
+00281 
+00282     @bios.setter
+\hypertarget{EntityUnit_8py_source_l00283}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a7428c9fbf91bc28ee039df54fbf613a3}{00283}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a148e46f8d5bb2a3dedb9590edbb2471e}{bios}(self, bios):
+00284         \textcolor{keywordflow}{if} type(bios) \textcolor{keywordflow}{is} PlainText:
+00285             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_ad9f330b05c8c698056afb87ee5995564}{\_\_bios} = bios
+00286         \textcolor{keywordflow}{else}:
+00287             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_BS'}])
+00288 
+00289     @bios.deleter
+\hypertarget{EntityUnit_8py_source_l00290}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a7428c9fbf91bc28ee039df54fbf613a3}{00290}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a148e46f8d5bb2a3dedb9590edbb2471e}{bios}(self):
+00291         del \_\_bios
+00292 
+00293 
+00294     @property
+\hypertarget{EntityUnit_8py_source_l00295}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_ab4085f71869b2d0b5124f3f3ac216b2c}{00295}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_aeff51011a4e35705fb6aefc54e1d4f35}{campus}(self):
+00296         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a3a8e28a61de347011427df96094bc633}{\_\_campus}
+00297 
+00298     @campus.setter
+\hypertarget{EntityUnit_8py_source_l00299}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_ab4085f71869b2d0b5124f3f3ac216b2c}{00299}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_aeff51011a4e35705fb6aefc54e1d4f35}{campus}(self, campus):
+00300         \textcolor{keywordflow}{if} type(campus) \textcolor{keywordflow}{is} Campus:
+00301             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a3a8e28a61de347011427df96094bc633}{\_\_campus} = campus
+00302         \textcolor{keywordflow}{else}:
+00303             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_CP'}])
+00304 
+00305     @campus.deleter
+\hypertarget{EntityUnit_8py_source_l00306}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_ab4085f71869b2d0b5124f3f3ac216b2c}{00306}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_aeff51011a4e35705fb6aefc54e1d4f35}{campus}(self):
+00307         del \_\_campus
+00308 
+00309 
+00310     @property
+\hypertarget{EntityUnit_8py_source_l00311}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a80c6bab040d61102a1ddb1bc0ddaab38}{00311}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a4fc13f8b92b03ab40b6f97e753109056}{courses}(self):
+00312         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Student_ac88088a4e9d0e130d927a722d09be1fc}{\_\_courses}
+00313 
+00314     @courses.setter
+\hypertarget{EntityUnit_8py_source_l00315}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a80c6bab040d61102a1ddb1bc0ddaab38}{00315}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a4fc13f8b92b03ab40b6f97e753109056}{courses}(self, courses):
+00316         \textcolor{keywordflow}{if} (type(courses[0]) \textcolor{keywordflow}{is} Id \textcolor{keywordflow}{or} \textcolor{keywordflow}{not} courses) \textcolor{keywordflow}{and} type(courses) \textcolor{keywordflow}{is} list :
+00317             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_ac88088a4e9d0e130d927a722d09be1fc}{\_\_courses} = courses
+00318         \textcolor{keywordflow}{else}:
+00319             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_CO'}])
+00320 
+00321     @courses.deleter
+\hypertarget{EntityUnit_8py_source_l00322}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a80c6bab040d61102a1ddb1bc0ddaab38}{00322}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a4fc13f8b92b03ab40b6f97e753109056}{courses}(self):
+00323         del \_\_courses
+00324 
+00325 
+00326     @property
+\hypertarget{EntityUnit_8py_source_l00327}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_adcb290317bcd8aab23370b17c42d26fb}{00327}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a63479fe42a5a5e1dffc988221a807a6a}{avatar}(self):
+00328         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a10722c8fa4630f11fdfe6b037aefe97f}{\_\_avatar}
+00329 
+00330     @avatar.setter
+\hypertarget{EntityUnit_8py_source_l00331}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_adcb290317bcd8aab23370b17c42d26fb}{00331}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a63479fe42a5a5e1dffc988221a807a6a}{avatar}(self, avatar):
+00332         \textcolor{keywordflow}{if} type(avatar) \textcolor{keywordflow}{is} Link:
+00333             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a10722c8fa4630f11fdfe6b037aefe97f}{\_\_avatar} = avatar
+00334         \textcolor{keywordflow}{else}:
+00335             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_AV'}])
+00336 
+00337     @avatar.deleter
+\hypertarget{EntityUnit_8py_source_l00338}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_adcb290317bcd8aab23370b17c42d26fb}{00338}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a63479fe42a5a5e1dffc988221a807a6a}{avatar}(self):
+00339         del \_\_avatar
+00340 
+00341 
+00342     @property
+\hypertarget{EntityUnit_8py_source_l00343}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a358998b764eed85c81244ee43792f762}{00343}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a5ca85c1d00044512e5dc3cfabac4ff9f}{sex}(self):
+00344         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a5c0dff028cee83bbabe4d9e4b41db8ab}{\_\_sex}
+00345 
+00346     @sex.setter
+\hypertarget{EntityUnit_8py_source_l00347}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a358998b764eed85c81244ee43792f762}{00347}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a5ca85c1d00044512e5dc3cfabac4ff9f}{sex}(self, sex):
+00348         \textcolor{keywordflow}{if} type(sex) \textcolor{keywordflow}{is} Sex:
+00349             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a5c0dff028cee83bbabe4d9e4b41db8ab}{\_\_sex} = sex
+00350         \textcolor{keywordflow}{else}:
+00351             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_SX'}])
+00352 
+00353     @sex.deleter
+\hypertarget{EntityUnit_8py_source_l00354}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a358998b764eed85c81244ee43792f762}{00354}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a5ca85c1d00044512e5dc3cfabac4ff9f}{sex}(self):
+00355         del \_\_sex
+00356 
+00357 
+00358     @property
+\hypertarget{EntityUnit_8py_source_l00359}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a23a5b0c412a8dfb456555d4cf500d5d1}{00359}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_ac072120adf3ee4078fe3ef7f17e61a1f}{email}(self):
+00360         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Student_af1cbffd7a391232384731a384750428f}{\_\_email}
+00361 
+00362     @email.setter
+\hypertarget{EntityUnit_8py_source_l00363}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a23a5b0c412a8dfb456555d4cf500d5d1}{00363}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_ac072120adf3ee4078fe3ef7f17e61a1f}{email}(self, email):
+00364         \textcolor{keywordflow}{if} type(email) \textcolor{keywordflow}{is} Mail:
+00365             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_af1cbffd7a391232384731a384750428f}{\_\_email} = email
+00366         \textcolor{keywordflow}{else}:
+00367             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_ML'}])
+00368 
+00369     @email.deleter
+\hypertarget{EntityUnit_8py_source_l00370}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a23a5b0c412a8dfb456555d4cf500d5d1}{00370}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_ac072120adf3ee4078fe3ef7f17e61a1f}{email}(self):
+00371         del \_\_email
+00372 
+00373 
+00374     @property
+\hypertarget{EntityUnit_8py_source_l00375}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a94a418a7120679fe9562583343981046}{00375}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a7ab2e46886024eced2bc61195dbc2008}{grades}(self):
+00376         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Student_acf10de509e6ce4d747f38638239ccee1}{\_\_grades}
+00377 
+00378     @grades.setter
+\hypertarget{EntityUnit_8py_source_l00379}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a94a418a7120679fe9562583343981046}{00379}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a7ab2e46886024eced2bc61195dbc2008}{grades}(self, grades):
+00380         \textcolor{keywordflow}{if} type(grades) \textcolor{keywordflow}{is} dict \textcolor{keywordflow}{and} type(grades.values()[0]) \textcolor{keywordflow}{is} Grades:
+00381             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_acf10de509e6ce4d747f38638239ccee1}{\_\_grades} = grades
+00382         \textcolor{keywordflow}{else}:
+00383             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_GR'}])
+00384 
+00385     @grades.deleter
+\hypertarget{EntityUnit_8py_source_l00386}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a94a418a7120679fe9562583343981046}{00386}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a7ab2e46886024eced2bc61195dbc2008}{grades}(self):
+00387         del \_\_grades
+00388 
+00389 
+00390     @property
+\hypertarget{EntityUnit_8py_source_l00391}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a166d0213fb60a69c2b8dce7b0afc754d}{00391}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a8777212f16975f658ff8f75e47f2c554}{interests}(self):
+00392         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a122801fcd31fe08db2f2575b38e09242}{\_\_interests}
+00393 
+00394     @interests.setter
+\hypertarget{EntityUnit_8py_source_l00395}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a166d0213fb60a69c2b8dce7b0afc754d}{00395}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a8777212f16975f658ff8f75e47f2c554}{interests}(self, interests):
+00396         \textcolor{keywordflow}{if} type(interests) \textcolor{keywordflow}{is} PlainText:
+00397             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_a122801fcd31fe08db2f2575b38e09242}{\_\_interests} = interests
+00398         \textcolor{keywordflow}{else}:
+00399             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_IN'}])
+00400 
+00401     @interests.deleter
+\hypertarget{EntityUnit_8py_source_l00402}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a166d0213fb60a69c2b8dce7b0afc754d}{00402}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a8777212f16975f658ff8f75e47f2c554}{interests}(self):
+00403         del \_\_interests
+00404 
+00405 
+00406     @property
+\hypertarget{EntityUnit_8py_source_l00407}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a410beeaf633ad5274bd8e471f285357c}{00407}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a410beeaf633ad5274bd8e471f285357c}{language}(self):
+00408         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Student_aec86fe5403c29d8b7354db1d81fca428}{\_\_language}
 00409 
-\hypertarget{EntityUnit_8py_source_l00410}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a8e8a964217e8e2b76c3ebd889ed8ae1e}{00410}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_a8e8a964217e8e2b76c3ebd889ed8ae1e}{\_\_init\_\_}(self, name, thisId, students, modules):
-00411         \textcolor{keywordflow}{try}:
-\hypertarget{EntityUnit_8py_source_l00412}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_aeb94f54ad74895834eb7627dd38e1c8e}{00412}             self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_aeb94f54ad74895834eb7627dd38e1c8e}{name} = name
-\hypertarget{EntityUnit_8py_source_l00413}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a283b817d129a8d15e3bce56b368a169d}{00413}             self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_a283b817d129a8d15e3bce56b368a169d}{thisId} = thisId
-\hypertarget{EntityUnit_8py_source_l00414}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_ac8e5e595ec895e03b088764d7506e735}{00414}             self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_ac8e5e595ec895e03b088764d7506e735}{students} = students
-\hypertarget{EntityUnit_8py_source_l00415}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a14bdc53eeb2a7fde8e926cbab6e5206f}{00415}             self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_a14bdc53eeb2a7fde8e926cbab6e5206f}{modules} = modules
-00416         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
-00417             del self
-00418             \textcolor{keywordflow}{raise} exc
-00419 
+00410     @language.setter
+\hypertarget{EntityUnit_8py_source_l00411}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a410beeaf633ad5274bd8e471f285357c}{00411}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a410beeaf633ad5274bd8e471f285357c}{language}(self, language):
+00412         \textcolor{keywordflow}{if} type(language) \textcolor{keywordflow}{is} Language:
+00413             self.\hyperlink{classELO_1_1EntityUnit_1_1Student_aec86fe5403c29d8b7354db1d81fca428}{\_\_language} = language
+00414         \textcolor{keywordflow}{else}:
+00415             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_STU\_LN'}])
+00416 
+00417     @language.deleter
+\hypertarget{EntityUnit_8py_source_l00418}{}\hyperlink{classELO_1_1EntityUnit_1_1Student_a410beeaf633ad5274bd8e471f285357c}{00418}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Student_a410beeaf633ad5274bd8e471f285357c}{language}():
+00419         del \_\_language
 00420 
-00421     @property       
-\hypertarget{EntityUnit_8py_source_l00422}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a7b502c0d94108e3c474e5a0e2842cc1d}{00422}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_aeb94f54ad74895834eb7627dd38e1c8e}{name}(self):
-00423         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_af420f44e6e282033f364731f9aae1eb2}{\_\_name}
-00424 
-00425     @name.setter
-\hypertarget{EntityUnit_8py_source_l00426}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a7b502c0d94108e3c474e5a0e2842cc1d}{00426}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_aeb94f54ad74895834eb7627dd38e1c8e}{name}(self, name):
-00427         \textcolor{keywordflow}{if} type(name) \textcolor{keywordflow}{is} Name:
-00428             self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_af420f44e6e282033f364731f9aae1eb2}{\_\_name} = name
-00429         \textcolor{keywordflow}{else}:
-00430             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_CRS\_NM'}])
-00431 
-00432     @property
-\hypertarget{EntityUnit_8py_source_l00433}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a079f341a80c13005aec8764266f5c2f2}{00433}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_a283b817d129a8d15e3bce56b368a169d}{thisId}(self):
-00434         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_aa1c0f9111efcfbf10c2114221a2dc9d4}{\_\_thisId}
-00435 
-00436     @thisId.setter
-\hypertarget{EntityUnit_8py_source_l00437}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a079f341a80c13005aec8764266f5c2f2}{00437}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_a283b817d129a8d15e3bce56b368a169d}{thisId}(self, thisId):
-00438         \textcolor{keywordflow}{if} type(thisId) \textcolor{keywordflow}{is} Id:
-00439             self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_aa1c0f9111efcfbf10c2114221a2dc9d4}{\_\_thisId} = thisId
-00440         \textcolor{keywordflow}{else}:
-00441             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_CRS\_ID'}])
+00421 
+00422 \textcolor{comment}{## Um curos possui módulos, que por sua vez, contêm lições, e estas possuem}
+00423 \textcolor{comment}{#exercícios. "Courses" estão em um nivel mais alto do sistema de abstração.}
+00424 \textcolor{comment}{#Normalmente, a um professor será dado cursos vazios, e a partir destes }
+00425 \textcolor{comment}{#ele poderá criar sua dinámica letiva.}
+\hypertarget{EntityUnit_8py_source_l00426}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses}{00426} \textcolor{keyword}{class }\hyperlink{classELO_1_1EntityUnit_1_1Courses}{Courses}(object):
+00427 
+\hypertarget{EntityUnit_8py_source_l00428}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a8e8a964217e8e2b76c3ebd889ed8ae1e}{00428}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_a8e8a964217e8e2b76c3ebd889ed8ae1e}{\_\_init\_\_}(self, name, thisId, students, modules):
+00429         \textcolor{keywordflow}{try}:
+\hypertarget{EntityUnit_8py_source_l00430}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_aeb94f54ad74895834eb7627dd38e1c8e}{00430}             self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_aeb94f54ad74895834eb7627dd38e1c8e}{name} = name
+\hypertarget{EntityUnit_8py_source_l00431}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a283b817d129a8d15e3bce56b368a169d}{00431}             self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_a283b817d129a8d15e3bce56b368a169d}{thisId} = thisId
+\hypertarget{EntityUnit_8py_source_l00432}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_ac8e5e595ec895e03b088764d7506e735}{00432}             self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_ac8e5e595ec895e03b088764d7506e735}{students} = students
+\hypertarget{EntityUnit_8py_source_l00433}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a14bdc53eeb2a7fde8e926cbab6e5206f}{00433}             self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_a14bdc53eeb2a7fde8e926cbab6e5206f}{modules} = modules
+00434         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00435             del self
+00436             \textcolor{keywordflow}{raise} exc
+00437 
+00438 
+00439     @property       
+\hypertarget{EntityUnit_8py_source_l00440}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a7b502c0d94108e3c474e5a0e2842cc1d}{00440}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_aeb94f54ad74895834eb7627dd38e1c8e}{name}(self):
+00441         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_af420f44e6e282033f364731f9aae1eb2}{\_\_name}
 00442 
-00443     @property
-\hypertarget{EntityUnit_8py_source_l00444}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_ab1a0895decc2986339e0ab148922ad61}{00444}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_ac8e5e595ec895e03b088764d7506e735}{students}(self):
-00445         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_a55a9d491608867ed4784a8fd435cf7b6}{\_\_students}
-00446 
-00447     @students.setter
-\hypertarget{EntityUnit_8py_source_l00448}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_ab1a0895decc2986339e0ab148922ad61}{00448}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_ac8e5e595ec895e03b088764d7506e735}{students}(self, students):
-00449         \textcolor{keywordflow}{if} type(students) \textcolor{keywordflow}{is} list \textcolor{keywordflow}{and} (type(students[0]) \textcolor{keywordflow}{is} Id \textcolor{keywordflow}{or} \textcolor{keywordflow}{not} students):
-00450             self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_a55a9d491608867ed4784a8fd435cf7b6}{\_\_students} = students
-00451         \textcolor{keywordflow}{else}:
-00452             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_CRS\_ST'}])
+00443     @name.setter
+\hypertarget{EntityUnit_8py_source_l00444}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a7b502c0d94108e3c474e5a0e2842cc1d}{00444}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_aeb94f54ad74895834eb7627dd38e1c8e}{name}(self, name):
+00445         \textcolor{keywordflow}{if} type(name) \textcolor{keywordflow}{is} Name:
+00446             self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_af420f44e6e282033f364731f9aae1eb2}{\_\_name} = name
+00447         \textcolor{keywordflow}{else}:
+00448             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_CRS\_NM'}])
+00449 
+00450     @property
+\hypertarget{EntityUnit_8py_source_l00451}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a079f341a80c13005aec8764266f5c2f2}{00451}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_a283b817d129a8d15e3bce56b368a169d}{thisId}(self):
+00452         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_aa1c0f9111efcfbf10c2114221a2dc9d4}{\_\_thisId}
 00453 
-00454     @property
-\hypertarget{EntityUnit_8py_source_l00455}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a5d791876c321c20f5a698273613d0d01}{00455}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_a14bdc53eeb2a7fde8e926cbab6e5206f}{modules}(self):
-00456         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_a32392ba6dc5a6619263af1d21de1d15d}{\_\_modules}      
-00457 
-00458     @modules.setter
-\hypertarget{EntityUnit_8py_source_l00459}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a5d791876c321c20f5a698273613d0d01}{00459}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_a14bdc53eeb2a7fde8e926cbab6e5206f}{modules}(self, modules):
-00460         \textcolor{keywordflow}{if} type(modules) \textcolor{keywordflow}{is} list \textcolor{keywordflow}{and} (type(modules[0]) \textcolor{keywordflow}{is} Id \textcolor{keywordflow}{or} \textcolor{keywordflow}{not} modules):
-00461             self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_a32392ba6dc5a6619263af1d21de1d15d}{\_\_modules} = modules
-00462         \textcolor{keywordflow}{else}:
-00463             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_CRS\_MD'}])
+00454     @thisId.setter
+\hypertarget{EntityUnit_8py_source_l00455}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a079f341a80c13005aec8764266f5c2f2}{00455}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_a283b817d129a8d15e3bce56b368a169d}{thisId}(self, thisId):
+00456         \textcolor{keywordflow}{if} type(thisId) \textcolor{keywordflow}{is} Id:
+00457             self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_aa1c0f9111efcfbf10c2114221a2dc9d4}{\_\_thisId} = thisId
+00458         \textcolor{keywordflow}{else}:
+00459             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_CRS\_ID'}])
+00460 
+00461     @property
+\hypertarget{EntityUnit_8py_source_l00462}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_ab1a0895decc2986339e0ab148922ad61}{00462}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_ac8e5e595ec895e03b088764d7506e735}{students}(self):
+00463         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_a55a9d491608867ed4784a8fd435cf7b6}{\_\_students}
 00464 
-00465     @name.deleter
-\hypertarget{EntityUnit_8py_source_l00466}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a7b502c0d94108e3c474e5a0e2842cc1d}{00466}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_aeb94f54ad74895834eb7627dd38e1c8e}{name}(self):
-00467         del \_\_name
-00468 
-00469     @thisId.deleter
-\hypertarget{EntityUnit_8py_source_l00470}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a079f341a80c13005aec8764266f5c2f2}{00470}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_a283b817d129a8d15e3bce56b368a169d}{thisId}(self):
-00471         del \_\_thisId
-00472 
-00473     @students.deleter
-\hypertarget{EntityUnit_8py_source_l00474}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_ab1a0895decc2986339e0ab148922ad61}{00474}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_ac8e5e595ec895e03b088764d7506e735}{students}(self):
-00475         del \_\_students
-00476 
-00477     @modules.deleter
-\hypertarget{EntityUnit_8py_source_l00478}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a5d791876c321c20f5a698273613d0d01}{00478}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_a14bdc53eeb2a7fde8e926cbab6e5206f}{modules}(self):
-00479         del \_\_modules
-00480 
-00481 \textcolor{comment}{## Módulos contêm lições.}
-00482 \textcolor{comment}{#São camadas intermediárias de abstração entre cursos e lições.}
-00483 \textcolor{comment}{#A conclusão de um módulo possibilita o engeço no seguinte. Como níveis em um }
-00484 \textcolor{comment}{#jogo. }
-\hypertarget{EntityUnit_8py_source_l00485}{}\hyperlink{classELO_1_1EntityUnit_1_1Module}{00485} \textcolor{keyword}{class }\hyperlink{classELO_1_1EntityUnit_1_1Module}{Module}(object):
-\hypertarget{EntityUnit_8py_source_l00486}{}\hyperlink{classELO_1_1EntityUnit_1_1Module_ae99b8d113f1b21fcac85063ba5599e35}{00486}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Module_ae99b8d113f1b21fcac85063ba5599e35}{\_\_init\_\_}(self, name, thisId, lessons):
-00487         \textcolor{keywordflow}{try}:
-\hypertarget{EntityUnit_8py_source_l00488}{}\hyperlink{classELO_1_1EntityUnit_1_1Module_a82adf3b2602714a4df5f0df535902854}{00488}             self.\hyperlink{classELO_1_1EntityUnit_1_1Module_a82adf3b2602714a4df5f0df535902854}{name} = name
-\hypertarget{EntityUnit_8py_source_l00489}{}\hyperlink{classELO_1_1EntityUnit_1_1Module_a02fe16e41dd435364cb9073a8a805e96}{00489}             self.\hyperlink{classELO_1_1EntityUnit_1_1Module_a02fe16e41dd435364cb9073a8a805e96}{thisId} = thisId
-\hypertarget{EntityUnit_8py_source_l00490}{}\hyperlink{classELO_1_1EntityUnit_1_1Module_a33eacfd2527f80841b87ccd73eb5fec0}{00490}             self.\hyperlink{classELO_1_1EntityUnit_1_1Module_a33eacfd2527f80841b87ccd73eb5fec0}{lessons} = lessons
-00491         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
-00492             del self
-00493             \textcolor{keywordflow}{raise} exc
+00465     @students.setter
+\hypertarget{EntityUnit_8py_source_l00466}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_ab1a0895decc2986339e0ab148922ad61}{00466}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_ac8e5e595ec895e03b088764d7506e735}{students}(self, students):
+00467         \textcolor{keywordflow}{if} type(students) \textcolor{keywordflow}{is} list \textcolor{keywordflow}{and} (type(students[0]) \textcolor{keywordflow}{is} Id \textcolor{keywordflow}{or} \textcolor{keywordflow}{not} students):
+00468             self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_a55a9d491608867ed4784a8fd435cf7b6}{\_\_students} = students
+00469         \textcolor{keywordflow}{else}:
+00470             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_CRS\_ST'}])
+00471 
+00472     @property
+\hypertarget{EntityUnit_8py_source_l00473}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a5d791876c321c20f5a698273613d0d01}{00473}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_a14bdc53eeb2a7fde8e926cbab6e5206f}{modules}(self):
+00474         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_a32392ba6dc5a6619263af1d21de1d15d}{\_\_modules}      
+00475 
+00476     @modules.setter
+\hypertarget{EntityUnit_8py_source_l00477}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a5d791876c321c20f5a698273613d0d01}{00477}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_a14bdc53eeb2a7fde8e926cbab6e5206f}{modules}(self, modules):
+00478         \textcolor{keywordflow}{if} type(modules) \textcolor{keywordflow}{is} list \textcolor{keywordflow}{and} (type(modules[0]) \textcolor{keywordflow}{is} Id \textcolor{keywordflow}{or} \textcolor{keywordflow}{not} modules):
+00479             self.\hyperlink{classELO_1_1EntityUnit_1_1Courses_a32392ba6dc5a6619263af1d21de1d15d}{\_\_modules} = modules
+00480         \textcolor{keywordflow}{else}:
+00481             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_CRS\_MD'}])
+00482 
+00483     @name.deleter
+\hypertarget{EntityUnit_8py_source_l00484}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a7b502c0d94108e3c474e5a0e2842cc1d}{00484}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_aeb94f54ad74895834eb7627dd38e1c8e}{name}(self):
+00485         del \_\_name
+00486 
+00487     @thisId.deleter
+\hypertarget{EntityUnit_8py_source_l00488}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a079f341a80c13005aec8764266f5c2f2}{00488}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_a283b817d129a8d15e3bce56b368a169d}{thisId}(self):
+00489         del \_\_thisId
+00490 
+00491     @students.deleter
+\hypertarget{EntityUnit_8py_source_l00492}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_ab1a0895decc2986339e0ab148922ad61}{00492}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_ac8e5e595ec895e03b088764d7506e735}{students}(self):
+00493         del \_\_students
 00494 
-00495     @property
-\hypertarget{EntityUnit_8py_source_l00496}{}\hyperlink{classELO_1_1EntityUnit_1_1Module_aacb77acc28005833928a7c6f971f44b5}{00496}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Module_a82adf3b2602714a4df5f0df535902854}{name}(self):
-00497         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Module_a286db3b5778d3bfc93cd0e4560617f80}{\_\_name}
+00495     @modules.deleter
+\hypertarget{EntityUnit_8py_source_l00496}{}\hyperlink{classELO_1_1EntityUnit_1_1Courses_a5d791876c321c20f5a698273613d0d01}{00496}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Courses_a14bdc53eeb2a7fde8e926cbab6e5206f}{modules}(self):
+00497         del \_\_modules
 00498 
-00499     @name.setter
-\hypertarget{EntityUnit_8py_source_l00500}{}\hyperlink{classELO_1_1EntityUnit_1_1Module_aacb77acc28005833928a7c6f971f44b5}{00500}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Module_a82adf3b2602714a4df5f0df535902854}{name}(self, name):
-00501         \textcolor{keywordflow}{if} type(name) \textcolor{keywordflow}{is} Name:
-00502             self.\hyperlink{classELO_1_1EntityUnit_1_1Module_a286db3b5778d3bfc93cd0e4560617f80}{\_\_name} = name
-00503         \textcolor{keywordflow}{else}:
-00504             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_MD\_NM'}])
-00505 
-00506     @name.deleter
-\hypertarget{EntityUnit_8py_source_l00507}{}\hyperlink{classELO_1_1EntityUnit_1_1Module_aacb77acc28005833928a7c6f971f44b5}{00507}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Module_a82adf3b2602714a4df5f0df535902854}{name}(self):
-00508         del self.\hyperlink{classELO_1_1EntityUnit_1_1Module_a286db3b5778d3bfc93cd0e4560617f80}{\_\_name}
-00509 
-00510 
-00511     @property
-\hypertarget{EntityUnit_8py_source_l00512}{}\hyperlink{classELO_1_1EntityUnit_1_1Module_a7833604c3c13e2fdc5f4bce8712c2118}{00512}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Module_a02fe16e41dd435364cb9073a8a805e96}{thisId}(self):
-00513         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Module_acbfbba7b325888f7714ceb8df1ff3488}{\_\_thisId}
-00514 
-00515     @thisId.setter
-\hypertarget{EntityUnit_8py_source_l00516}{}\hyperlink{classELO_1_1EntityUnit_1_1Module_a7833604c3c13e2fdc5f4bce8712c2118}{00516}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Module_a02fe16e41dd435364cb9073a8a805e96}{thisId}(self, thisId):
-00517         \textcolor{keywordflow}{if} type(thisId) \textcolor{keywordflow}{is} Id:
-00518             self.\hyperlink{classELO_1_1EntityUnit_1_1Module_acbfbba7b325888f7714ceb8df1ff3488}{\_\_thisId} = thisId
-00519         \textcolor{keywordflow}{else}:
-00520             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_MD\_ID'}])
-00521 
-00522     @thisId.deleter
-\hypertarget{EntityUnit_8py_source_l00523}{}\hyperlink{classELO_1_1EntityUnit_1_1Module_a7833604c3c13e2fdc5f4bce8712c2118}{00523}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Module_a02fe16e41dd435364cb9073a8a805e96}{thisId}(self, thisId):
-00524         del self.\hyperlink{classELO_1_1EntityUnit_1_1Module_acbfbba7b325888f7714ceb8df1ff3488}{\_\_thisId}
-00525 
-00526 
-00527     @property
-\hypertarget{EntityUnit_8py_source_l00528}{}\hyperlink{classELO_1_1EntityUnit_1_1Module_a4b12f83ecbf3722070716c9ca5adb80a}{00528}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Module_a33eacfd2527f80841b87ccd73eb5fec0}{lessons}(self):
-00529         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Module_a494b55ac9f4064be1411377a3a1a5a61}{\_\_lessons}
-00530 
-00531     @lessons.setter
-\hypertarget{EntityUnit_8py_source_l00532}{}\hyperlink{classELO_1_1EntityUnit_1_1Module_a4b12f83ecbf3722070716c9ca5adb80a}{00532}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Module_a33eacfd2527f80841b87ccd73eb5fec0}{lessons}(self, lessons):
-00533         \textcolor{keywordflow}{if} type(lessons) \textcolor{keywordflow}{is} list \textcolor{keywordflow}{and} (type(lessons[0]) \textcolor{keywordflow}{is} Id \textcolor{keywordflow}{or} \textcolor{keywordflow}{not} lessons):
-00534             self.\hyperlink{classELO_1_1EntityUnit_1_1Module_a494b55ac9f4064be1411377a3a1a5a61}{\_\_lessons} = lessons
-00535         \textcolor{keywordflow}{else}:
-00536             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_MD\_LT'}])
-00537 
-00538     @lessons.deleter
-\hypertarget{EntityUnit_8py_source_l00539}{}\hyperlink{classELO_1_1EntityUnit_1_1Module_a4b12f83ecbf3722070716c9ca5adb80a}{00539}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Module_a33eacfd2527f80841b87ccd73eb5fec0}{lessons}(self):
-00540         del self.\hyperlink{classELO_1_1EntityUnit_1_1Module_a494b55ac9f4064be1411377a3a1a5a61}{\_\_lessons}
-00541 
-00542 \textcolor{comment}{##Compõe a camada mais baixa de abstração do sistema}
-00543 \textcolor{comment}{#Lições são amplamente adaptáveis e customisáveis. Podem assumir o fotmato que }
-00544 \textcolor{comment}{#o professor desejar. Para isso deve-se lincar o Link do conteúdo a desejado.}
-00545 \textcolor{comment}{#Lições sempre contêm pelo menos 1 exercício.}
-\hypertarget{EntityUnit_8py_source_l00546}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson}{00546} \textcolor{keyword}{class }\hyperlink{classELO_1_1EntityUnit_1_1Lesson}{Lesson}(object):
-00547 
-\hypertarget{EntityUnit_8py_source_l00548}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a263c8aacf2bb8a0489283177c0091a67}{00548}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a263c8aacf2bb8a0489283177c0091a67}{\_\_init\_\_}(self, name, thisId, link, exercises):
-00549         \textcolor{keywordflow}{try}:
-\hypertarget{EntityUnit_8py_source_l00550}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a1ca164978817a007dbec8193caae96ff}{00550}             self.\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a1ca164978817a007dbec8193caae96ff}{name} = name
-\hypertarget{EntityUnit_8py_source_l00551}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a2ec9bd43b6b7ac7c7d00469c9f586271}{00551}             self.\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a2ec9bd43b6b7ac7c7d00469c9f586271}{thisId} = thisId
-\hypertarget{EntityUnit_8py_source_l00552}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a5288d46b77e4b0cfd382857ef1b82fba}{00552}             self.\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a5288d46b77e4b0cfd382857ef1b82fba}{link} = link
-\hypertarget{EntityUnit_8py_source_l00553}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a8d3db8bfbcfd47e9f7eef8f3bdc0ee3f}{00553}             self.\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a8d3db8bfbcfd47e9f7eef8f3bdc0ee3f}{exercises} = exercises
-00554         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
-00555             del self
-00556             \textcolor{keywordflow}{raise} exc
-00557 
-00558     @property
-\hypertarget{EntityUnit_8py_source_l00559}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a5af62a54f008a391543fd8fabf30edcf}{00559}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a1ca164978817a007dbec8193caae96ff}{name}(self):
-00560         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Lesson_ab571cec752391f5f9954f928e730490a}{\_\_name}
-00561 
-00562     @name.setter
-\hypertarget{EntityUnit_8py_source_l00563}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a5af62a54f008a391543fd8fabf30edcf}{00563}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a1ca164978817a007dbec8193caae96ff}{name}(self, name):
-00564         \textcolor{keywordflow}{if} type(name) \textcolor{keywordflow}{is} Name:
-00565             self.\hyperlink{classELO_1_1EntityUnit_1_1Lesson_ab571cec752391f5f9954f928e730490a}{\_\_name} = name
-00566         \textcolor{keywordflow}{else}:
-00567             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_LS\_NM'}])
-00568 
-00569     @name.deleter
-\hypertarget{EntityUnit_8py_source_l00570}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a5af62a54f008a391543fd8fabf30edcf}{00570}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a1ca164978817a007dbec8193caae96ff}{name}(self):
-00571         del self.\hyperlink{classELO_1_1EntityUnit_1_1Lesson_ab571cec752391f5f9954f928e730490a}{\_\_name}
-00572 
-00573     @property
-\hypertarget{EntityUnit_8py_source_l00574}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a1947d2d6413e7e94c8c524efe271af12}{00574}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a2ec9bd43b6b7ac7c7d00469c9f586271}{thisId}(self):
-00575         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a9bcefd31ae973d67b22b1854ce5f8a44}{\_\_thisId}
-00576 
-00577     @thisId.setter
-\hypertarget{EntityUnit_8py_source_l00578}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a1947d2d6413e7e94c8c524efe271af12}{00578}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a2ec9bd43b6b7ac7c7d00469c9f586271}{thisId}(self, thisId):
-00579         \textcolor{keywordflow}{if} type(thisId) \textcolor{keywordflow}{is} Id:
-00580             self.\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a9bcefd31ae973d67b22b1854ce5f8a44}{\_\_thisId} = thisId
-00581         \textcolor{keywordflow}{else}:
-00582             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_LS\_ID'}])
-00583 
-00584     @thisId.deleter
-\hypertarget{EntityUnit_8py_source_l00585}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a1947d2d6413e7e94c8c524efe271af12}{00585}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a2ec9bd43b6b7ac7c7d00469c9f586271}{thisId}(self):
-00586         del self.\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a9bcefd31ae973d67b22b1854ce5f8a44}{\_\_thisId}
-00587 
-00588     @property
-\hypertarget{EntityUnit_8py_source_l00589}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a8560623b79e4379c2ba74aaf678a4764}{00589}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a5288d46b77e4b0cfd382857ef1b82fba}{link}(self):
-00590         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a5593facfb1ff4dc1542a0eb6c394514f}{\_\_link}
-00591 
-00592     @link.setter
-\hypertarget{EntityUnit_8py_source_l00593}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a8560623b79e4379c2ba74aaf678a4764}{00593}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a5288d46b77e4b0cfd382857ef1b82fba}{link}(self, link):
-00594         \textcolor{keywordflow}{if} type(link) \textcolor{keywordflow}{is} Link:
-00595             self.\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a5593facfb1ff4dc1542a0eb6c394514f}{\_\_link} = link
-00596         \textcolor{keywordflow}{else}:
-00597             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_LS\_LK'}])
-00598 
-00599     @link.deleter
-\hypertarget{EntityUnit_8py_source_l00600}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a8560623b79e4379c2ba74aaf678a4764}{00600}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a5288d46b77e4b0cfd382857ef1b82fba}{link}(self):
-00601         del self.\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a5593facfb1ff4dc1542a0eb6c394514f}{\_\_link}
-00602 
-00603     @property
-\hypertarget{EntityUnit_8py_source_l00604}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a49ad3f9952188497a01afdd31db8000c}{00604}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a8d3db8bfbcfd47e9f7eef8f3bdc0ee3f}{exercises}(self):
-00605         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Lesson_ae3c617ed26be35205475221e020a2612}{\_\_exercises}
-00606 
-00607     @exercises.setter
-\hypertarget{EntityUnit_8py_source_l00608}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a49ad3f9952188497a01afdd31db8000c}{00608}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a8d3db8bfbcfd47e9f7eef8f3bdc0ee3f}{exercises}(self, exercises):
-00609         \textcolor{keywordflow}{if} type(exercises) \textcolor{keywordflow}{is} list \textcolor{keywordflow}{and} (type(exercises[0]) \textcolor{keywordflow}{is} Id \textcolor{keywordflow}{or} \textcolor{keywordflow}{not} exercises):
-00610             self.\hyperlink{classELO_1_1EntityUnit_1_1Lesson_ae3c617ed26be35205475221e020a2612}{\_\_exercises} = exercises
-00611         \textcolor{keywordflow}{else}:
-00612             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_LS\_ST'}])
-00613 
-00614     @exercises.deleter
-\hypertarget{EntityUnit_8py_source_l00615}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a49ad3f9952188497a01afdd31db8000c}{00615}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a8d3db8bfbcfd47e9f7eef8f3bdc0ee3f}{exercises}(self):
-00616         del self.\hyperlink{classELO_1_1EntityUnit_1_1Lesson_ae3c617ed26be35205475221e020a2612}{\_\_exercises}
-00617 
-00618 \textcolor{comment}{##Unidade básica de apresendisado. }
-00619 \textcolor{comment}{#Em cada lição haverão exercicios com o intuito de avaliar o desenpenho do aluno.}
-00620 \textcolor{comment}{#O rendimento do aluno em tais exercicios regerá a experiência do aluno no curos}
-\hypertarget{EntityUnit_8py_source_l00621}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise}{00621} \textcolor{keyword}{class }\hyperlink{classELO_1_1EntityUnit_1_1Exercise}{Exercise}(object):
-00622 
-\hypertarget{EntityUnit_8py_source_l00623}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a8e29c352a46fe192f7737bfa96d0e176}{00623}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a8e29c352a46fe192f7737bfa96d0e176}{\_\_init\_\_}(self, thisId, link, exType, exFormat, items):
-00624         \textcolor{keywordflow}{try}:
-\hypertarget{EntityUnit_8py_source_l00625}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a6277daccaa7fe96d8f0a287002cea07a}{00625}             self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a6277daccaa7fe96d8f0a287002cea07a}{thisId} = thisId
-\hypertarget{EntityUnit_8py_source_l00626}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a13a9382d9126f07ab380ea11df276ed8}{00626}             self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a13a9382d9126f07ab380ea11df276ed8}{link} = link
-\hypertarget{EntityUnit_8py_source_l00627}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_af982926b59b32980803f93f40b383d77}{00627}             self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_af982926b59b32980803f93f40b383d77}{exType} = exType
-\hypertarget{EntityUnit_8py_source_l00628}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a0d17db96aa0caa63df47795c50818e9f}{00628}             self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a0d17db96aa0caa63df47795c50818e9f}{exFormat} = exFormat
-\hypertarget{EntityUnit_8py_source_l00629}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a14ec766ff723672be49ea5c9438744c8}{00629}             self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a14ec766ff723672be49ea5c9438744c8}{items} = items
-00630         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
-00631             del self
-00632             \textcolor{keywordflow}{raise} exc
-00633 
-00634 
-00635     @property
-\hypertarget{EntityUnit_8py_source_l00636}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a16ee1a43f22c4d9f99f2a98fa02c016b}{00636}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a6277daccaa7fe96d8f0a287002cea07a}{thisId}(self):
-00637         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a2a42ad5ac0aa08817f42b93df586db65}{\_\_thisId}
-00638 
-00639     @thisId.setter
-\hypertarget{EntityUnit_8py_source_l00640}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a16ee1a43f22c4d9f99f2a98fa02c016b}{00640}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a6277daccaa7fe96d8f0a287002cea07a}{thisId}(self, thisId):
-00641         \textcolor{keywordflow}{if} type(thisId) \textcolor{keywordflow}{is} Id:
-00642             self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a2a42ad5ac0aa08817f42b93df586db65}{\_\_thisId} = thisId
-00643         \textcolor{keywordflow}{else}:
-00644             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_EX\_ID'}])
-00645 
-00646     @thisId.deleter
-\hypertarget{EntityUnit_8py_source_l00647}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a16ee1a43f22c4d9f99f2a98fa02c016b}{00647}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a6277daccaa7fe96d8f0a287002cea07a}{thisId}(self):
-00648         del self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a2a42ad5ac0aa08817f42b93df586db65}{\_\_thisId}
-00649 
-00650     @property
-\hypertarget{EntityUnit_8py_source_l00651}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a9a140c7c2c9e4b90d1f40acfed62efd0}{00651}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a13a9382d9126f07ab380ea11df276ed8}{link}(self):
-00652         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a679b539e6fbccc790cf0394ece9afb32}{\_\_link}
-00653 
-00654     @link.setter
-\hypertarget{EntityUnit_8py_source_l00655}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a9a140c7c2c9e4b90d1f40acfed62efd0}{00655}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a13a9382d9126f07ab380ea11df276ed8}{link}(self, link):
-00656         \textcolor{keywordflow}{if} type(link) \textcolor{keywordflow}{is} Link:
-00657             self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a679b539e6fbccc790cf0394ece9afb32}{\_\_link} = link
-00658         \textcolor{keywordflow}{else}:
-00659             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_EX\_LK'}])
-00660 
-00661     @link.deleter
-\hypertarget{EntityUnit_8py_source_l00662}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a9a140c7c2c9e4b90d1f40acfed62efd0}{00662}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a13a9382d9126f07ab380ea11df276ed8}{link}(self):
-00663         del self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a679b539e6fbccc790cf0394ece9afb32}{\_\_link}
-00664 
-00665     @property
-\hypertarget{EntityUnit_8py_source_l00666}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_aee62dc52d043fce780716fb395d88131}{00666}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Exercise_af982926b59b32980803f93f40b383d77}{exType}(self):
-00667         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a60c065017e139c43d8914b80e691607a}{\_\_exType}
-00668 
-00669     @exType.setter
-\hypertarget{EntityUnit_8py_source_l00670}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_aee62dc52d043fce780716fb395d88131}{00670}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Exercise_af982926b59b32980803f93f40b383d77}{exType}(self, exType):
-00671         \textcolor{keywordflow}{if} type(exType) \textcolor{keywordflow}{is} ExType:
-00672             self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a60c065017e139c43d8914b80e691607a}{\_\_exType} = exType
-00673         \textcolor{keywordflow}{else}:
-00674             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_EX\_ET'}])
-00675 
-00676     @exType.deleter
-\hypertarget{EntityUnit_8py_source_l00677}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_aee62dc52d043fce780716fb395d88131}{00677}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Exercise_af982926b59b32980803f93f40b383d77}{exType}(self):
-00678         del self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a60c065017e139c43d8914b80e691607a}{\_\_exType}
-00679 
-00680     @property
-\hypertarget{EntityUnit_8py_source_l00681}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a5c495ffe5e6e424c1e4754dd07c06bc7}{00681}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a0d17db96aa0caa63df47795c50818e9f}{exFormat}(self):
-00682         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a2fdf5b85bdcea36517aa31623d2d8af0}{\_\_exFormat}
-00683 
-00684     @exFormat.setter
-\hypertarget{EntityUnit_8py_source_l00685}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a5c495ffe5e6e424c1e4754dd07c06bc7}{00685}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a0d17db96aa0caa63df47795c50818e9f}{exFormat}(self, exFormat):
-00686         \textcolor{keywordflow}{if} type(exFormat) \textcolor{keywordflow}{is} Id:
-00687             self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a2fdf5b85bdcea36517aa31623d2d8af0}{\_\_exFormat} = exFormat
-00688         \textcolor{keywordflow}{else}:
-00689             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_EX\_FT'}])
-00690 
-00691     @exFormat.deleter
-\hypertarget{EntityUnit_8py_source_l00692}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a5c495ffe5e6e424c1e4754dd07c06bc7}{00692}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a0d17db96aa0caa63df47795c50818e9f}{exFormat}(self):
-00693         del self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a2fdf5b85bdcea36517aa31623d2d8af0}{\_\_exFormat}
-00694 
-00695     @property
-\hypertarget{EntityUnit_8py_source_l00696}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a7e95e4287551ac552687fa5d0acb6305}{00696}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a14ec766ff723672be49ea5c9438744c8}{items}(self):
-00697         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a8f763f2c67776f64b7eb90c3a83f2c91}{\_\_items}
-00698 
-00699     @items.setter
-\hypertarget{EntityUnit_8py_source_l00700}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a7e95e4287551ac552687fa5d0acb6305}{00700}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a14ec766ff723672be49ea5c9438744c8}{items}(self, items):
-00701         \textcolor{keywordflow}{if} type(items) \textcolor{keywordflow}{is} list \textcolor{keywordflow}{and} (type(items[0]) \textcolor{keywordflow}{is} Id \textcolor{keywordflow}{or} \textcolor{keywordflow}{not} items):
-00702             self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a8f763f2c67776f64b7eb90c3a83f2c91}{\_\_items} = items
-00703         \textcolor{keywordflow}{else}:
-00704             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_EX\_IT'}])
-00705 
-00706     @items.deleter
-\hypertarget{EntityUnit_8py_source_l00707}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a7e95e4287551ac552687fa5d0acb6305}{00707}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a14ec766ff723672be49ea5c9438744c8}{items}(self):
-00708         del self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a8f763f2c67776f64b7eb90c3a83f2c91}{\_\_items}
-00709 
-00710 \textcolor{comment}{#.}
+00499 \textcolor{comment}{## Módulos contêm lições.}
+00500 \textcolor{comment}{#São camadas intermediárias de abstração entre cursos e lições.}
+00501 \textcolor{comment}{#A conclusão de um módulo possibilita o engeço no seguinte. Como níveis em um }
+00502 \textcolor{comment}{#jogo. }
+\hypertarget{EntityUnit_8py_source_l00503}{}\hyperlink{classELO_1_1EntityUnit_1_1Module}{00503} \textcolor{keyword}{class }\hyperlink{classELO_1_1EntityUnit_1_1Module}{Module}(object):
+\hypertarget{EntityUnit_8py_source_l00504}{}\hyperlink{classELO_1_1EntityUnit_1_1Module_ae99b8d113f1b21fcac85063ba5599e35}{00504}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Module_ae99b8d113f1b21fcac85063ba5599e35}{\_\_init\_\_}(self, name, thisId, lessons):
+00505         \textcolor{keywordflow}{try}:
+\hypertarget{EntityUnit_8py_source_l00506}{}\hyperlink{classELO_1_1EntityUnit_1_1Module_a82adf3b2602714a4df5f0df535902854}{00506}             self.\hyperlink{classELO_1_1EntityUnit_1_1Module_a82adf3b2602714a4df5f0df535902854}{name} = name
+\hypertarget{EntityUnit_8py_source_l00507}{}\hyperlink{classELO_1_1EntityUnit_1_1Module_a02fe16e41dd435364cb9073a8a805e96}{00507}             self.\hyperlink{classELO_1_1EntityUnit_1_1Module_a02fe16e41dd435364cb9073a8a805e96}{thisId} = thisId
+\hypertarget{EntityUnit_8py_source_l00508}{}\hyperlink{classELO_1_1EntityUnit_1_1Module_a33eacfd2527f80841b87ccd73eb5fec0}{00508}             self.\hyperlink{classELO_1_1EntityUnit_1_1Module_a33eacfd2527f80841b87ccd73eb5fec0}{lessons} = lessons
+00509         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00510             del self
+00511             \textcolor{keywordflow}{raise} exc
+00512 
+00513     @property
+\hypertarget{EntityUnit_8py_source_l00514}{}\hyperlink{classELO_1_1EntityUnit_1_1Module_aacb77acc28005833928a7c6f971f44b5}{00514}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Module_a82adf3b2602714a4df5f0df535902854}{name}(self):
+00515         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Module_a286db3b5778d3bfc93cd0e4560617f80}{\_\_name}
+00516 
+00517     @name.setter
+\hypertarget{EntityUnit_8py_source_l00518}{}\hyperlink{classELO_1_1EntityUnit_1_1Module_aacb77acc28005833928a7c6f971f44b5}{00518}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Module_a82adf3b2602714a4df5f0df535902854}{name}(self, name):
+00519         \textcolor{keywordflow}{if} type(name) \textcolor{keywordflow}{is} Name:
+00520             self.\hyperlink{classELO_1_1EntityUnit_1_1Module_a286db3b5778d3bfc93cd0e4560617f80}{\_\_name} = name
+00521         \textcolor{keywordflow}{else}:
+00522             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_MD\_NM'}])
+00523 
+00524     @name.deleter
+\hypertarget{EntityUnit_8py_source_l00525}{}\hyperlink{classELO_1_1EntityUnit_1_1Module_aacb77acc28005833928a7c6f971f44b5}{00525}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Module_a82adf3b2602714a4df5f0df535902854}{name}(self):
+00526         del self.\hyperlink{classELO_1_1EntityUnit_1_1Module_a286db3b5778d3bfc93cd0e4560617f80}{\_\_name}
+00527 
+00528 
+00529     @property
+\hypertarget{EntityUnit_8py_source_l00530}{}\hyperlink{classELO_1_1EntityUnit_1_1Module_a7833604c3c13e2fdc5f4bce8712c2118}{00530}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Module_a02fe16e41dd435364cb9073a8a805e96}{thisId}(self):
+00531         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Module_acbfbba7b325888f7714ceb8df1ff3488}{\_\_thisId}
+00532 
+00533     @thisId.setter
+\hypertarget{EntityUnit_8py_source_l00534}{}\hyperlink{classELO_1_1EntityUnit_1_1Module_a7833604c3c13e2fdc5f4bce8712c2118}{00534}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Module_a02fe16e41dd435364cb9073a8a805e96}{thisId}(self, thisId):
+00535         \textcolor{keywordflow}{if} type(thisId) \textcolor{keywordflow}{is} Id:
+00536             self.\hyperlink{classELO_1_1EntityUnit_1_1Module_acbfbba7b325888f7714ceb8df1ff3488}{\_\_thisId} = thisId
+00537         \textcolor{keywordflow}{else}:
+00538             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_MD\_ID'}])
+00539 
+00540     @thisId.deleter
+\hypertarget{EntityUnit_8py_source_l00541}{}\hyperlink{classELO_1_1EntityUnit_1_1Module_a7833604c3c13e2fdc5f4bce8712c2118}{00541}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Module_a02fe16e41dd435364cb9073a8a805e96}{thisId}(self, thisId):
+00542         del self.\hyperlink{classELO_1_1EntityUnit_1_1Module_acbfbba7b325888f7714ceb8df1ff3488}{\_\_thisId}
+00543 
+00544 
+00545     @property
+\hypertarget{EntityUnit_8py_source_l00546}{}\hyperlink{classELO_1_1EntityUnit_1_1Module_a4b12f83ecbf3722070716c9ca5adb80a}{00546}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Module_a33eacfd2527f80841b87ccd73eb5fec0}{lessons}(self):
+00547         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Module_a494b55ac9f4064be1411377a3a1a5a61}{\_\_lessons}
+00548 
+00549     @lessons.setter
+\hypertarget{EntityUnit_8py_source_l00550}{}\hyperlink{classELO_1_1EntityUnit_1_1Module_a4b12f83ecbf3722070716c9ca5adb80a}{00550}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Module_a33eacfd2527f80841b87ccd73eb5fec0}{lessons}(self, lessons):
+00551         \textcolor{keywordflow}{if} type(lessons) \textcolor{keywordflow}{is} list \textcolor{keywordflow}{and} (type(lessons[0]) \textcolor{keywordflow}{is} Id \textcolor{keywordflow}{or} \textcolor{keywordflow}{not} lessons):
+00552             self.\hyperlink{classELO_1_1EntityUnit_1_1Module_a494b55ac9f4064be1411377a3a1a5a61}{\_\_lessons} = lessons
+00553         \textcolor{keywordflow}{else}:
+00554             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_MD\_LT'}])
+00555 
+00556     @lessons.deleter
+\hypertarget{EntityUnit_8py_source_l00557}{}\hyperlink{classELO_1_1EntityUnit_1_1Module_a4b12f83ecbf3722070716c9ca5adb80a}{00557}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Module_a33eacfd2527f80841b87ccd73eb5fec0}{lessons}(self):
+00558         del self.\hyperlink{classELO_1_1EntityUnit_1_1Module_a494b55ac9f4064be1411377a3a1a5a61}{\_\_lessons}
+00559 
+00560 \textcolor{comment}{##Compõe a camada mais baixa de abstração do sistema}
+00561 \textcolor{comment}{#Lições são amplamente adaptáveis e customisáveis. Podem assumir o fotmato que }
+00562 \textcolor{comment}{#o professor desejar. Para isso deve-se lincar o Link do conteúdo a desejado.}
+00563 \textcolor{comment}{#Lições sempre contêm pelo menos 1 exercício.}
+\hypertarget{EntityUnit_8py_source_l00564}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson}{00564} \textcolor{keyword}{class }\hyperlink{classELO_1_1EntityUnit_1_1Lesson}{Lesson}(object):
+00565 
+\hypertarget{EntityUnit_8py_source_l00566}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a263c8aacf2bb8a0489283177c0091a67}{00566}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a263c8aacf2bb8a0489283177c0091a67}{\_\_init\_\_}(self, name, thisId, link, exercises):
+00567         \textcolor{keywordflow}{try}:
+\hypertarget{EntityUnit_8py_source_l00568}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a1ca164978817a007dbec8193caae96ff}{00568}             self.\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a1ca164978817a007dbec8193caae96ff}{name} = name
+\hypertarget{EntityUnit_8py_source_l00569}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a2ec9bd43b6b7ac7c7d00469c9f586271}{00569}             self.\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a2ec9bd43b6b7ac7c7d00469c9f586271}{thisId} = thisId
+\hypertarget{EntityUnit_8py_source_l00570}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a5288d46b77e4b0cfd382857ef1b82fba}{00570}             self.\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a5288d46b77e4b0cfd382857ef1b82fba}{link} = link
+\hypertarget{EntityUnit_8py_source_l00571}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a8d3db8bfbcfd47e9f7eef8f3bdc0ee3f}{00571}             self.\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a8d3db8bfbcfd47e9f7eef8f3bdc0ee3f}{exercises} = exercises
+00572         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00573             del self
+00574             \textcolor{keywordflow}{raise} exc
+00575 
+00576     @property
+\hypertarget{EntityUnit_8py_source_l00577}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a5af62a54f008a391543fd8fabf30edcf}{00577}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a1ca164978817a007dbec8193caae96ff}{name}(self):
+00578         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Lesson_ab571cec752391f5f9954f928e730490a}{\_\_name}
+00579 
+00580     @name.setter
+\hypertarget{EntityUnit_8py_source_l00581}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a5af62a54f008a391543fd8fabf30edcf}{00581}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a1ca164978817a007dbec8193caae96ff}{name}(self, name):
+00582         \textcolor{keywordflow}{if} type(name) \textcolor{keywordflow}{is} Name:
+00583             self.\hyperlink{classELO_1_1EntityUnit_1_1Lesson_ab571cec752391f5f9954f928e730490a}{\_\_name} = name
+00584         \textcolor{keywordflow}{else}:
+00585             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_LS\_NM'}])
+00586 
+00587     @name.deleter
+\hypertarget{EntityUnit_8py_source_l00588}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a5af62a54f008a391543fd8fabf30edcf}{00588}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a1ca164978817a007dbec8193caae96ff}{name}(self):
+00589         del self.\hyperlink{classELO_1_1EntityUnit_1_1Lesson_ab571cec752391f5f9954f928e730490a}{\_\_name}
+00590 
+00591     @property
+\hypertarget{EntityUnit_8py_source_l00592}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a1947d2d6413e7e94c8c524efe271af12}{00592}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a2ec9bd43b6b7ac7c7d00469c9f586271}{thisId}(self):
+00593         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a9bcefd31ae973d67b22b1854ce5f8a44}{\_\_thisId}
+00594 
+00595     @thisId.setter
+\hypertarget{EntityUnit_8py_source_l00596}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a1947d2d6413e7e94c8c524efe271af12}{00596}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a2ec9bd43b6b7ac7c7d00469c9f586271}{thisId}(self, thisId):
+00597         \textcolor{keywordflow}{if} type(thisId) \textcolor{keywordflow}{is} Id:
+00598             self.\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a9bcefd31ae973d67b22b1854ce5f8a44}{\_\_thisId} = thisId
+00599         \textcolor{keywordflow}{else}:
+00600             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_LS\_ID'}])
+00601 
+00602     @thisId.deleter
+\hypertarget{EntityUnit_8py_source_l00603}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a1947d2d6413e7e94c8c524efe271af12}{00603}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a2ec9bd43b6b7ac7c7d00469c9f586271}{thisId}(self):
+00604         del self.\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a9bcefd31ae973d67b22b1854ce5f8a44}{\_\_thisId}
+00605 
+00606     @property
+\hypertarget{EntityUnit_8py_source_l00607}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a8560623b79e4379c2ba74aaf678a4764}{00607}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a5288d46b77e4b0cfd382857ef1b82fba}{link}(self):
+00608         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a5593facfb1ff4dc1542a0eb6c394514f}{\_\_link}
+00609 
+00610     @link.setter
+\hypertarget{EntityUnit_8py_source_l00611}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a8560623b79e4379c2ba74aaf678a4764}{00611}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a5288d46b77e4b0cfd382857ef1b82fba}{link}(self, link):
+00612         \textcolor{keywordflow}{if} type(link) \textcolor{keywordflow}{is} Link:
+00613             self.\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a5593facfb1ff4dc1542a0eb6c394514f}{\_\_link} = link
+00614         \textcolor{keywordflow}{else}:
+00615             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_LS\_LK'}])
+00616 
+00617     @link.deleter
+\hypertarget{EntityUnit_8py_source_l00618}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a8560623b79e4379c2ba74aaf678a4764}{00618}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a5288d46b77e4b0cfd382857ef1b82fba}{link}(self):
+00619         del self.\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a5593facfb1ff4dc1542a0eb6c394514f}{\_\_link}
+00620 
+00621     @property
+\hypertarget{EntityUnit_8py_source_l00622}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a49ad3f9952188497a01afdd31db8000c}{00622}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a8d3db8bfbcfd47e9f7eef8f3bdc0ee3f}{exercises}(self):
+00623         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Lesson_ae3c617ed26be35205475221e020a2612}{\_\_exercises}
+00624 
+00625     @exercises.setter
+\hypertarget{EntityUnit_8py_source_l00626}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a49ad3f9952188497a01afdd31db8000c}{00626}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a8d3db8bfbcfd47e9f7eef8f3bdc0ee3f}{exercises}(self, exercises):
+00627         \textcolor{keywordflow}{if} type(exercises) \textcolor{keywordflow}{is} list \textcolor{keywordflow}{and} (type(exercises[0]) \textcolor{keywordflow}{is} Id \textcolor{keywordflow}{or} \textcolor{keywordflow}{not} exercises):
+00628             self.\hyperlink{classELO_1_1EntityUnit_1_1Lesson_ae3c617ed26be35205475221e020a2612}{\_\_exercises} = exercises
+00629         \textcolor{keywordflow}{else}:
+00630             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_LS\_ST'}])
+00631 
+00632     @exercises.deleter
+\hypertarget{EntityUnit_8py_source_l00633}{}\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a49ad3f9952188497a01afdd31db8000c}{00633}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Lesson_a8d3db8bfbcfd47e9f7eef8f3bdc0ee3f}{exercises}(self):
+00634         del self.\hyperlink{classELO_1_1EntityUnit_1_1Lesson_ae3c617ed26be35205475221e020a2612}{\_\_exercises}
+00635 
+00636 \textcolor{comment}{##Unidade básica de apresendisado. }
+00637 \textcolor{comment}{#Em cada lição haverão exercicios com o intuito de avaliar o desenpenho do aluno.}
+00638 \textcolor{comment}{#O rendimento do aluno em tais exercicios regerá a experiência do aluno no curos}
+\hypertarget{EntityUnit_8py_source_l00639}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise}{00639} \textcolor{keyword}{class }\hyperlink{classELO_1_1EntityUnit_1_1Exercise}{Exercise}(object):
+00640 
+\hypertarget{EntityUnit_8py_source_l00641}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a8e29c352a46fe192f7737bfa96d0e176}{00641}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a8e29c352a46fe192f7737bfa96d0e176}{\_\_init\_\_}(self, thisId, link, exType, exFormat, items):
+00642         \textcolor{keywordflow}{try}:
+\hypertarget{EntityUnit_8py_source_l00643}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a6277daccaa7fe96d8f0a287002cea07a}{00643}             self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a6277daccaa7fe96d8f0a287002cea07a}{thisId} = thisId
+\hypertarget{EntityUnit_8py_source_l00644}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a13a9382d9126f07ab380ea11df276ed8}{00644}             self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a13a9382d9126f07ab380ea11df276ed8}{link} = link
+\hypertarget{EntityUnit_8py_source_l00645}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_af982926b59b32980803f93f40b383d77}{00645}             self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_af982926b59b32980803f93f40b383d77}{exType} = exType
+\hypertarget{EntityUnit_8py_source_l00646}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a0d17db96aa0caa63df47795c50818e9f}{00646}             self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a0d17db96aa0caa63df47795c50818e9f}{exFormat} = exFormat
+\hypertarget{EntityUnit_8py_source_l00647}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a14ec766ff723672be49ea5c9438744c8}{00647}             self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a14ec766ff723672be49ea5c9438744c8}{items} = items
+00648         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00649             del self
+00650             \textcolor{keywordflow}{raise} exc
+00651 
+00652 
+00653     @property
+\hypertarget{EntityUnit_8py_source_l00654}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a16ee1a43f22c4d9f99f2a98fa02c016b}{00654}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a6277daccaa7fe96d8f0a287002cea07a}{thisId}(self):
+00655         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a2a42ad5ac0aa08817f42b93df586db65}{\_\_thisId}
+00656 
+00657     @thisId.setter
+\hypertarget{EntityUnit_8py_source_l00658}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a16ee1a43f22c4d9f99f2a98fa02c016b}{00658}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a6277daccaa7fe96d8f0a287002cea07a}{thisId}(self, thisId):
+00659         \textcolor{keywordflow}{if} type(thisId) \textcolor{keywordflow}{is} Id:
+00660             self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a2a42ad5ac0aa08817f42b93df586db65}{\_\_thisId} = thisId
+00661         \textcolor{keywordflow}{else}:
+00662             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_EX\_ID'}])
+00663 
+00664     @thisId.deleter
+\hypertarget{EntityUnit_8py_source_l00665}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a16ee1a43f22c4d9f99f2a98fa02c016b}{00665}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a6277daccaa7fe96d8f0a287002cea07a}{thisId}(self):
+00666         del self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a2a42ad5ac0aa08817f42b93df586db65}{\_\_thisId}
+00667 
+00668     @property
+\hypertarget{EntityUnit_8py_source_l00669}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a9a140c7c2c9e4b90d1f40acfed62efd0}{00669}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a13a9382d9126f07ab380ea11df276ed8}{link}(self):
+00670         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a679b539e6fbccc790cf0394ece9afb32}{\_\_link}
+00671 
+00672     @link.setter
+\hypertarget{EntityUnit_8py_source_l00673}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a9a140c7c2c9e4b90d1f40acfed62efd0}{00673}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a13a9382d9126f07ab380ea11df276ed8}{link}(self, link):
+00674         \textcolor{keywordflow}{if} type(link) \textcolor{keywordflow}{is} Link:
+00675             self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a679b539e6fbccc790cf0394ece9afb32}{\_\_link} = link
+00676         \textcolor{keywordflow}{else}:
+00677             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_EX\_LK'}])
+00678 
+00679     @link.deleter
+\hypertarget{EntityUnit_8py_source_l00680}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a9a140c7c2c9e4b90d1f40acfed62efd0}{00680}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a13a9382d9126f07ab380ea11df276ed8}{link}(self):
+00681         del self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a679b539e6fbccc790cf0394ece9afb32}{\_\_link}
+00682 
+00683     @property
+\hypertarget{EntityUnit_8py_source_l00684}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_aee62dc52d043fce780716fb395d88131}{00684}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Exercise_af982926b59b32980803f93f40b383d77}{exType}(self):
+00685         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a60c065017e139c43d8914b80e691607a}{\_\_exType}
+00686 
+00687     @exType.setter
+\hypertarget{EntityUnit_8py_source_l00688}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_aee62dc52d043fce780716fb395d88131}{00688}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Exercise_af982926b59b32980803f93f40b383d77}{exType}(self, exType):
+00689         \textcolor{keywordflow}{if} type(exType) \textcolor{keywordflow}{is} ExType:
+00690             self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a60c065017e139c43d8914b80e691607a}{\_\_exType} = exType
+00691         \textcolor{keywordflow}{else}:
+00692             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_EX\_ET'}])
+00693 
+00694     @exType.deleter
+\hypertarget{EntityUnit_8py_source_l00695}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_aee62dc52d043fce780716fb395d88131}{00695}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Exercise_af982926b59b32980803f93f40b383d77}{exType}(self):
+00696         del self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a60c065017e139c43d8914b80e691607a}{\_\_exType}
+00697 
+00698     @property
+\hypertarget{EntityUnit_8py_source_l00699}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a5c495ffe5e6e424c1e4754dd07c06bc7}{00699}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a0d17db96aa0caa63df47795c50818e9f}{exFormat}(self):
+00700         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a2fdf5b85bdcea36517aa31623d2d8af0}{\_\_exFormat}
+00701 
+00702     @exFormat.setter
+\hypertarget{EntityUnit_8py_source_l00703}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a5c495ffe5e6e424c1e4754dd07c06bc7}{00703}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a0d17db96aa0caa63df47795c50818e9f}{exFormat}(self, exFormat):
+00704         \textcolor{keywordflow}{if} type(exFormat) \textcolor{keywordflow}{is} Id:
+00705             self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a2fdf5b85bdcea36517aa31623d2d8af0}{\_\_exFormat} = exFormat
+00706         \textcolor{keywordflow}{else}:
+00707             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_EX\_FT'}])
+00708 
+00709     @exFormat.deleter
+\hypertarget{EntityUnit_8py_source_l00710}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a5c495ffe5e6e424c1e4754dd07c06bc7}{00710}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a0d17db96aa0caa63df47795c50818e9f}{exFormat}(self):
+00711         del self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a2fdf5b85bdcea36517aa31623d2d8af0}{\_\_exFormat}
+00712 
+00713     @property
+\hypertarget{EntityUnit_8py_source_l00714}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a7e95e4287551ac552687fa5d0acb6305}{00714}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a14ec766ff723672be49ea5c9438744c8}{items}(self):
+00715         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a8f763f2c67776f64b7eb90c3a83f2c91}{\_\_items}
+00716 
+00717     @items.setter
+\hypertarget{EntityUnit_8py_source_l00718}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a7e95e4287551ac552687fa5d0acb6305}{00718}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a14ec766ff723672be49ea5c9438744c8}{items}(self, items):
+00719         \textcolor{keywordflow}{if} type(items) \textcolor{keywordflow}{is} list \textcolor{keywordflow}{and} (type(items[0]) \textcolor{keywordflow}{is} Id \textcolor{keywordflow}{or} \textcolor{keywordflow}{not} items):
+00720             self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a8f763f2c67776f64b7eb90c3a83f2c91}{\_\_items} = items
+00721         \textcolor{keywordflow}{else}:
+00722             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_EX\_IT'}])
+00723 
+00724     @items.deleter
+\hypertarget{EntityUnit_8py_source_l00725}{}\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a7e95e4287551ac552687fa5d0acb6305}{00725}     \textcolor{keyword}{def }\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a14ec766ff723672be49ea5c9438744c8}{items}(self):
+00726         del self.\hyperlink{classELO_1_1EntityUnit_1_1Exercise_a8f763f2c67776f64b7eb90c3a83f2c91}{\_\_items}
+00727 
+00728 \textcolor{comment}{#.}
 \end{DoxyCode}

@@ -54,7 +54,7 @@ USE_L10N = True
 USE_TZ = True
 
 LOCALE_PATHS = (
-    filepath('locale')
+    filepath('locale'),
 )
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
@@ -173,3 +173,5 @@ LOGGING = {
 TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
     'ELO.MainUnit.globalContext',
 )
+
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'

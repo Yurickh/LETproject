@@ -83,13 +83,17 @@ a.field
 	text-align:center;
 	position:absolute;
    	width:100%;
-   	height:50px;   
+   	height:100px;   
    	background:#000;
-	/*margin-left:auto;
-	margin-right:auto;
+}
+
+.footp
+{
+	position:fixed;
 	left:0px;
-	right:0px;
-	bottom:-10px;*/
+	bottom:0px;
+	height:71px;
+	width:100%;
 }
 
 .foot a

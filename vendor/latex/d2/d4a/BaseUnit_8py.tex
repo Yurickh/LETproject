@@ -10,7 +10,7 @@ Implementa os tipos básicos do programa.
 \begin{DoxyCompactItemize}
 \item 
 class \hyperlink{classELO_1_1BaseUnit_1_1IfBaseType}{E\-L\-O.\-Base\-Unit.\-If\-Base\-Type}
-\begin{DoxyCompactList}\small\item\em Interface para qualquer tipo básico (Base Type) pertencente ao projeto. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Interface para todos os tipos básicos. \end{DoxyCompactList}\item 
 class \hyperlink{classELO_1_1BaseUnit_1_1Password}{E\-L\-O.\-Base\-Unit.\-Password}
 \begin{DoxyCompactList}\small\item\em Classe container de senhas. \end{DoxyCompactList}\item 
 class \hyperlink{classELO_1_1BaseUnit_1_1Name}{E\-L\-O.\-Base\-Unit.\-Name}
@@ -45,7 +45,7 @@ class \hyperlink{classELO_1_1BaseUnit_1_1Date}{E\-L\-O.\-Base\-Unit.\-Date}
 
 
 \subsubsection{Descrição Detalhada}
-Cada classe deve conter o validator, que garante que os tipos básicos são compatíveis com o formato especificado nos requisitos. 
+Os tipos básicos são os blocos formadores do programa. Eles contêm informações atômicas como Nome, Senha ou Matrícula, e devem ser capazes de validá-\/los no momento de sua criação. Ou seja, caso o valor fornecido não esteja de acordo com as especificações, o tipo básico não é criado e lança uma exceção do tipo Value\-Error. 
 
 Definição no arquivo \hyperlink{BaseUnit_8py_source}{Base\-Unit.\-py}.
 

@@ -16,11 +16,12 @@ from Course.CourseUnit import *
 
 import ELO.locale.index as lang
 
-from models import Adm, Professor, Student
+from models import Adm, Professor, Student, God
 
 from django.core.exceptions import PermissionDenied
 from django.http import Http404
 from django.views.decorators.vary import vary_on_cookie
+from django.utils import translation
 
 ## Insere os objetos user e DICT em todas as renderizações de template.
 def globalContext(request):
@@ -44,7 +45,8 @@ class Factory:
 	@vary_on_cookie
 	def runHome(self, request, entity):
 		if 'user' in request.session.keys():
-			if request.session['user']['type'] == "Adm":
+			if (request.session['user']['type'] == "Adm" or 
+			   request.session['user']['type'] == "God"):
 				return self.runAdm(request)
 			else:
 				return self.runProfile(request, acctype='Home')
@@ -63,6 +65,8 @@ class Factory:
 
 		if entity == "Adm":
 			database = Adm
+ 		elif entity == "God":
+			database = God
 		elif entity == "Professor":
 			database = Professor
 		elif entity == "Student":
@@ -78,6 +82,7 @@ class Factory:
 	def runLogout(self, request):
 		if 'user' in request.session.keys():
 			del request.session['user']
+			del request.session[translation.LANGUAGE_SESSION_KEY]
 		return self.runLogin(request, "Student")
 
 	## Classe que executa a página inicial do módulo de Perfil.
@@ -121,26 +126,29 @@ class Factory:
 	def runAdm(self, request, action=None, model=None):
 		# Checa se usuario ja esta logado
 		if 'user' in request.session.keys():
-			if request.session['user']['type'] == 'Adm':
-				if ((action != None) and (model != None)):
-					return self.__ui.run(request, action, model)
-				elif not isinstance(self.__ui, IfUiAdm):
+			if(request.session['user']['type'] == 'Adm' or
+			   request.session['user']['type'] == 'God'):
+				if not isinstance(self.__ui, IfUiAdm):
 					self.__pers = PersAdm()
 					self.__bus = BusAdm(self.__pers)
 					self.__ui = UiAdm(self.__bus) 
+				
+				if action != None and model != None:
+					return self.__ui.run(request, action)
+				
 				return self.__ui.run(request)
-		
 		raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])
 
 	## Classe que executa o módulo de Curso.
 	# 	Define as camadas de persistência, negócio e apresentação de
 	#	curso.
 	@vary_on_cookie
-	def runCourse(self, request):
+	def runCourse(self, request, courseid):
 		if 'user' in request.session.keys():
 			if not self.__ui is IfUiCourse:
-				self.__per = PersAdm()
-				self.__bus = BusAdm(self.__pers)
-				self.__ui = UiAdm(self.__bus)
+				self.__per = PersCourse()
+				self.__bus = BusCourse(self.__pers)
+				self.__ui = UiCourse(self.__bus)
 
-			return self.__ui.run(request)
+			return self.__ui.run(request, courseid)
+		raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])

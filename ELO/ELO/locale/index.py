@@ -179,13 +179,10 @@ DICT = {
 
 	## Mensagem de erro de formulário
 	'ERROR_FORM'  : _(u"Ocorreu um problema ao carregar o formulário. Favor tentar novamente mais tarde."),
-
-	'SUBMIT' : _(u'Atualizar'), 
-	'USERNAME' : _(u'Usuário:'),
-	'PASSWORD' : _(u'Senha:'),
-	'ELO_HOME' : _(u'ELO - Página Inicial'),
-	'ELO_PROFILE' : _(u'ELO - Perfil'),
-	'ELO_ADM': _(u'ELO - Administração'),
+	
+	'ELO_HOME' : _(u'SALiE - Página Inicial'),
+	'ELO_PROFILE' : _(u'SALiE - Perfil'),
+	'ELO_ADM': _(u'SALiE - Administração'),
 
 	'LANGUAGE': _(u'Linguagem'),
 	'ENGLISH': _(u'Inglês'),
@@ -195,6 +192,8 @@ DICT = {
 	'SEX_MALE': _(u'Masculino'),
 	'SEX_FEMALE': _(u'Feminino'),
 
+	'USERNAME' : _(u'Usuário:'),
+	'PASSWORD' : _(u'Senha:'),
 	'MATRIC': _(u'Matrícula'),
 	'BIOS' : _(u'Biografia'),
 	'INTERESTS': _(u'Interesses'),
@@ -204,8 +203,30 @@ DICT = {
 	'CAMPUS': _(u'Campus'),
 
 	'HOME' : _(u'Principal'),
+	'MENU' : _(u'Menu'),
 	'LOGIN' : _(u'Entrar'),
 	'LOGOUT' : _(u'Sair'),
 	'PROFILE' : _(u'Perfil'),
-	'ELO' : _(u'ELO'),
+	'ELO' : _(u'SALiE'),
+
+	'STUDENT' : _(u'Aluno'),
+	'COURSE' : _(u'Curso'),
+	'PROFESSOR' : _(u'Professor'),
+
+	'SUBMIT' : _(u'Atualizar'), 
+	'REGISTER' : _(u'Cadastrar'),
+	'SEARCH' : _(u'Procurar'),
+	'DEL' : _(u'Deletar'),
+
+	'REGISTER_STUDENT' : _(u'Registrar Novo Aluno'),
+	'SUBMIT_STUDENT' : _(u'Atualizar dados de Aluno'),
+	'DEL_STUDENT' : _(u'Apagar Registro de Aluno'),
+	
+	'REGISTER_COURSE' : _(u'Registrar Novo Curso'),
+	'SUBMIT_COURSE' : _(u'Atualizar dados de Curso'),
+	'DEL_COURSE' : _(u'Apagar Registro de Curso'),
+	
+	'REGISTER_PROFESSOR' : _(u'Registrar Novo Professor'),
+	'SUBMIT_PROFESSOR' : _(u'Atualizar dados de Professor'),
+	'DEL_PROFESSOR' : _(u'Apagar Registro de Professor'),
 }

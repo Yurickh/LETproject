@@ -3,7 +3,7 @@
 }
 
 
-Camada de interface de usuário para o módulo de administração.  
+Camada de interface do Administrador para o módulo de Administração.  
 
 
 Diagrama de Hierarquia para Adm.\-Adm\-Unit.\-Ui\-Adm\-:\begin{figure}[H]
@@ -16,14 +16,14 @@ Diagrama de Hierarquia para Adm.\-Adm\-Unit.\-Ui\-Adm\-:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 def \hyperlink{classAdm_1_1AdmUnit_1_1UiAdm_a88df3b19b48d71b2c0fc0b4557c71416}{run}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em O método principal de qualquer classe de U\-I (User Interface). \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsubsection*{Additional Inherited Members}
 
 
 \subsubsection{Descrição Detalhada}
+Deve carregar o devido template, contendo campos onde será permitido a criação, edição e deleção de contas do tipo Estudante, Professor e Cursos. Caso seja feito o pedido de alteração em qualquer condição citada acima então será chamada uma caixa com formulários requisitando os devidos dados necessários de cada ação. 
 
-
-Definição na linha \hyperlink{AdmUnit_8py_source_l00074}{74} do arquivo \hyperlink{AdmUnit_8py_source}{Adm\-Unit.\-py}.
+Definição na linha \hyperlink{AdmUnit_8py_source_l00198}{198} do arquivo \hyperlink{AdmUnit_8py_source}{Adm\-Unit.\-py}.
 
 
 
@@ -33,18 +33,153 @@ Definição na linha \hyperlink{AdmUnit_8py_source_l00074}{74} do arquivo \hyper
 \paragraph[{run}]{\setlength{\rightskip}{0pt plus 5cm}def Adm.\-Adm\-Unit.\-Ui\-Adm.\-run (
 \begin{DoxyParamCaption}
 \item[{}]{self, }
-\item[{}]{request}
+\item[{}]{request, }
+\item[{}]{action = {\ttfamily None}, }
+\item[{}]{model = {\ttfamily None}}
 \end{DoxyParamCaption}
 )}}\label{classAdm_1_1AdmUnit_1_1UiAdm_a88df3b19b48d71b2c0fc0b4557c71416}
 
 
-Definição na linha \hyperlink{AdmUnit_8py_source_l00076}{76} do arquivo \hyperlink{AdmUnit_8py_source}{Adm\-Unit.\-py}.
+Definição na linha \hyperlink{AdmUnit_8py_source_l00201}{201} do arquivo \hyperlink{AdmUnit_8py_source}{Adm\-Unit.\-py}.
 
 
 \begin{DoxyCode}
-\hypertarget{classAdm_1_1AdmUnit_1_1UiAdm_l00076}{}\hyperlink{classAdm_1_1AdmUnit_1_1UiAdm_a88df3b19b48d71b2c0fc0b4557c71416}{00076} 
-00077     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1UiAdm_a88df3b19b48d71b2c0fc0b4557c71416}{run}(self, request):
-00078         \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Adm/home.html"})
+\hypertarget{classAdm_1_1AdmUnit_1_1UiAdm_l00201}{}\hyperlink{classAdm_1_1AdmUnit_1_1UiAdm_a88df3b19b48d71b2c0fc0b4557c71416}{00201} 
+00202     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1UiAdm_a88df3b19b48d71b2c0fc0b4557c71416}{run}(self, request, action=None, model=None):
+00203         \textcolor{comment}{## @if Verifica qual o propósito do submit.}
+00204         \textcolor{comment}{#   Caso seja POST, a requisição ocorre após a submissão de uma form,}
+00205         \textcolor{comment}{#       podendo ser ela de registro, edição ou deleção.}
+00206         \textcolor{comment}{#   Caso não seja e não ocorra a passagem dos campos de ação e modelo,}
+00207         \textcolor{comment}{#       a requisição há de ser um GET, para mostrar a página principal}
+00208         \textcolor{comment}{#       de Adm.}
+00209         \textcolor{comment}{#   Em último caso será a requisição do Javascript, denominada como }
+00210         \textcolor{comment}{#       AJAX, que irá solicitar em tempo de evento dos dialogs }
+00211         \textcolor{comment}{#       iniciados.}
+00212         \textcolor{comment}{#   Será passada informações para requisitar os forms adequados e }
+00213         \textcolor{comment}{#       informações do usuário procurado para uma possível edição ou }
+00214         \textcolor{comment}{#       deleção.}
+00215         \textcolor{keywordflow}{if} request.method == \textcolor{stringliteral}{"POST"}:
+00216 
+00217             \textcolor{comment}{#--------------------------sugestões do tio Yurick}
+00218             \textcolor{comment}{# sugestão de como fazer essa verificação, mas pode fazer do jeito}
+00219             \textcolor{comment}{# que preferir}
+00220 
+00221             \textcolor{keywordflow}{if} \textcolor{stringliteral}{'type'} \textcolor{keywordflow}{in} request.POST \textcolor{keywordflow}{and} request.POST[\textcolor{stringliteral}{'type'}] == \textcolor{stringliteral}{'info'}:
+00222                 \textcolor{keywordflow}{try}:
+00223                     \textcolor{comment}{# pus aqui só para não precisar mudar a assinatura da}
+00224                     \textcolor{comment}{# editAccounts, já que 'action' é um campo redudante}
+00225                     action = \textcolor{stringliteral}{"atualizar"}
+00226 
+00227                     form = AdmDelStu\_ProfForm(request.POST)
+00228                     \textcolor{keywordflow}{if} form.is\_valid():
+00229                         \textcolor{comment}{# aconselho usar um método diferente}
+00230                         \textcolor{comment}{# para recuperação de dados, bem como corrigir}
+00231                         \textcolor{comment}{# os argumentos redundantes}
+00232                         d\_user = self.bus.editAccounts(request.POST,
+00233                                                         action,
+00234                                                         Student,
+00235                                                         form)
+00236                         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} d\_user:
+00237                             \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{"TALVEZ ALGUMA MENSAGEM DE ERRO?"})
+00238 
+00239                         d\_user = dict(d\_user)
+00240 
+00241                         \textcolor{keywordflow}{return} render(request, 
+00242                                       \textcolor{stringliteral}{"Adm/info.html"}, 
+00243                                       \{\textcolor{stringliteral}{'data'}:d\_user\})
+00244                     \textcolor{keywordflow}{else}:
+00245                         \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_FRM'}])
+00246                 \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00247                     \textcolor{comment}{# falta criar algum suporte para mensagem de erro}
+00248                     \textcolor{keywordflow}{return} HttpResponseRedirect(\textcolor{stringliteral}{'/'})
+00249 
+00250             \textcolor{comment}{#-------------------------}
+00251 
+00252             \textcolor{keywordflow}{if} \textcolor{stringliteral}{"registrar"} \textcolor{keywordflow}{in} request.POST:
+00253                 \textcolor{keywordflow}{try}:
+00254                     \textcolor{comment}{# Coleta os forms adequados a partir da requisição POST.}
+00255                     form = AdmRegStu\_ProfForm(request.POST)
+00256 
+00257                     \textcolor{comment}{# Se form for adequado então é chamado o método de edição }
+00258                     \textcolor{comment}{#   de contas que irá comunicar-se com o banco de dados }
+00259                     \textcolor{comment}{#   depois de uma validação das informações passadas pelo}
+00260                     \textcolor{comment}{#   request.POST.}
+00261                     \textcolor{keywordflow}{if} form.is\_valid():
+00262                         self.bus.editAccounts(request.POST,action, Student, form)
+00263                     \textcolor{comment}{# Caso contrário irá surgir um erro de que há dados}
+00264                     \textcolor{comment}{#   incorretos.}
+00265                     \textcolor{keywordflow}{else}:
+00266                         \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_FRM'}])
+00267                 \textcolor{comment}{# Se houver qualquer problema referente as passagens dos forms }
+00268                 \textcolor{comment}{#   e conferência da validação dos mesmos então o }
+00269                 \textcolor{comment}{#   administrador será passado para a página inicial.}
+00270                 \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00271                     \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Adm/home.html"})
+00272             \textcolor{keywordflow}{elif} \textcolor{stringliteral}{"atualizar"} \textcolor{keywordflow}{in} request.POST:
+00273                 d\_user = self.bus.editAccounts(request.POST, \textcolor{stringliteral}{"atualizar"}, Student, form = \textcolor{keywordtype}{None})
+00274                 data = dict(d\_user)
+00275 
+00276                 \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Adm/info.html"}, \{\textcolor{stringliteral}{'data'} : data\})
+00277             
+00278             \textcolor{keywordflow}{elif} \textcolor{stringliteral}{"apagar"} \textcolor{keywordflow}{in} request.POST:
+00279                 d\_user = self.bus.editAccounts(request.POST, \textcolor{stringliteral}{"apagar"}, Student, form = \textcolor{keywordtype}{None})
+00280                 data = dict(d\_user)
+00281 
+00282                 \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Adm/info.html"}, \{\textcolor{stringliteral}{'data'} : data\})
+00283 
+00284             \textcolor{keywordflow}{elif} \textcolor{stringliteral}{"name"} \textcolor{keywordflow}{in} request.POST:
+00285                 form = NameForm(request.POST)
+00286                 field = \textcolor{stringliteral}{"name"}
+00287             \textcolor{keywordflow}{elif}  \textcolor{stringliteral}{"password"} \textcolor{keywordflow}{in} request.POST:
+00288                 form = PasswordForm(request.POST)
+00289                 field = \textcolor{stringliteral}{"password"}
+00290             \textcolor{keywordflow}{elif} \textcolor{stringliteral}{"language"} \textcolor{keywordflow}{in} request.POST:
+00291                 form = LanguageForm(request.POST)
+00292                 field = \textcolor{stringliteral}{"language"}
+00293             \textcolor{keywordflow}{elif} \textcolor{stringliteral}{"sex"} \textcolor{keywordflow}{in} request.POST:
+00294                 form = SexForm(request.POST)
+00295                 field = \textcolor{stringliteral}{"sex"}
+00296             \textcolor{keywordflow}{elif} \textcolor{stringliteral}{"bios"} \textcolor{keywordflow}{in} request.POST:
+00297                 form = BiosForm(request.POST)
+00298                 field = \textcolor{stringliteral}{"bios"}
+00299             \textcolor{keywordflow}{elif} \textcolor{stringliteral}{"interests"} \textcolor{keywordflow}{in} request.POST:
+00300                 form = InterestsForm(request.POST)
+00301                 field = \textcolor{stringliteral}{"interests"}
+00302             \textcolor{keywordflow}{elif} \textcolor{stringliteral}{"avatar"} \textcolor{keywordflow}{in} request.POST:
+00303                 form = AvatarForm(request.POST, request.FILES)
+00304                 field = \textcolor{stringliteral}{"avatar"}
+00305             \textcolor{keywordflow}{else}:
+00306                 \textcolor{comment}{#raise ValueError(lang.DICT['EXCEPTION\_INV\_FRM'])}
+00307                 \textcolor{keywordflow}{return} HttpResponseRedirect(\textcolor{stringliteral}{'/'})
+00308             \textcolor{keywordflow}{if} form.is\_valid():
+00309                 self.bus.editAccounts(request.POST, field, Student, form)
+00310                 request.session.modified = \textcolor{keyword}{True}                
+00311 
+00312             \textcolor{comment}{# Após a coleta da requisição o administrador será retornado à página inicial de controle.}
+00313             \textcolor{keywordflow}{return} HttpResponseRedirect(\textcolor{stringliteral}{'/'})
+00314 
+00315         \textcolor{comment}{# Quando a requisição for de GET então é retornado para a página principal.                        
+                         }
+00316         \textcolor{keywordflow}{else}:
+00317             \textcolor{comment}{# Chamada normal de GET.}
+00318             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} (action \textcolor{keywordflow}{or} model):
+00319                 \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Adm/home.html"})
+00320             \textcolor{comment}{# Caso contrário, no caso de requisições do tipo AJAX, }
+00321             \textcolor{comment}{#   irá ser repassado forms adequados ao pedido ou será feito}
+00322             \textcolor{comment}{#   buscas de dados do usuário requisitado.}
+00323             \textcolor{keywordflow}{else}:
+00324                 \textcolor{keywordflow}{if} action == \textcolor{stringliteral}{"reg"}:
+00325                     form = AdmRegStu\_ProfForm()
+00326                 \textcolor{keywordflow}{elif} action == \textcolor{stringliteral}{"att"} \textcolor{keywordflow}{or} action == \textcolor{stringliteral}{"del"}:
+00327                     form = AdmDelStu\_ProfForm()
+00328                 \textcolor{keywordflow}{else}:
+00329                     form = lang.DICT[\textcolor{stringliteral}{"ERROR\_FORM"}]
+00330                 \textcolor{keywordflow}{return} render(request, \textcolor{stringliteral}{"Adm/edit.html"}, \{\textcolor{stringliteral}{'form'}: form,
+00331                                                          \textcolor{stringliteral}{'action'} : action,
+00332                                                         \})
+00333 
+00334 
+00335 
 
 \end{DoxyCode}
 
