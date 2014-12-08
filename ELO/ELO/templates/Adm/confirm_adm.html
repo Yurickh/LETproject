@@ -13,21 +13,19 @@
 {% endblock %}
 
 {% block body %}
-	<form id = "reg_form" action="" method="post" >
+	<form id="reg2_form" action="" method="post" >
 
 		Deseja confirmar esta ação?
 
-		{{ form }}
-
-		{{ req }}
+		{{ form2 }}
 
 		{% csrf_token %}
 
-		<button type="submit">Confirm action</button>
 
 	</form>
 
 	<div class="dialog"></div>
+	<div class="in_dialog"></div>
 	<div class="dialogConf"></div>
 
 {% endblock %}

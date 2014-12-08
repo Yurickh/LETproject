@@ -14,8 +14,7 @@
 		 id = "reg_form" {% endif %} action="" method="post" >
 
 		{{ form }}<br /> 
-		{% if action == "reg" %} <input type="hidden" name="model" 
-								value="{{ model }}"> {% endif %}
+		
 		{% csrf_token %}
 
 		<input type="submit" name="{{ action }}" {% if action == "reg" %} 

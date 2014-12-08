@@ -322,13 +322,13 @@ class UiAdm(IfUiAdm):
                             # Formulário de confirmação de senha de Administrador
                             form2 = ConfAdmForm()
                             return render(request, "Adm/confirm_adm.html", 
-                                        {'form': form2, 'req': request.POST, })
+                                        {'form2': form2, 'req': request.POST, })
                         else:
                             self.bus.regAccount(request, form)
                             exc = ""
                     else:
                         raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
-
+ 
 
                 # Se houver qualquer problema referente as passagens dos forms 
                 # e conferência da validação dos mesmos então o 
@@ -504,55 +504,60 @@ class UiAdm(IfUiAdm):
                 #
                 #   Caso contrário, é passado para a página renderizada erro
                 #   de formulário.   
-                if action == 'reg' or action == 'att' or action == 'srcdel' or action == 'insert':
-                    if action == "reg":
-                        if model == "Student" or model == "Professor":
-                            form = RegUserForm()
-                        elif model == "Course":
-                            form = RegCourForm()
-                        else:   
-                            raise ValueError(lang.DICT['ERROR_MODEL'])
-                    elif action == "att" or action == "srcdel":
-                        if model == "Student" or model == "Professor":
-                            form = SrcUserForm()
-                        elif model == "Course":
-                            form = SrcCourForm()
-                        else:
-                            raise ValueError(lang.DICT['ERROR_MODEL'])
-                    elif action == "insert":
-                        form = SrcCourForm()
-                    else:
-                        form = lang.DICT["ERROR_FORM"]
+                if action == "reg":
+                    if model == "Student" or model == "Professor":
+                        form = RegUserForm()
+                    elif model == "Course":
+                        form = RegCourForm()
+                    else:   
+                        raise ValueError(lang.DICT['ERROR_MODEL'])
 
                     return render(request, "Adm/edit.html", {'form': form,
                                                              'action' : action,
                                                              'model' : model,
                                                             })
-                else:
-                    if action == "username":
-                        action = "name"
-                        form = NameForm()
-                    elif action == "password":
-                        form = PasswordForm()
-                    elif action == "language":
-                        form = LanguageForm()
-                        print form
-                    elif action == "sex":
-                        form = SexForm()
-                    elif action == "bios":
-                        form = BiosForm()
-                    elif action == "interests":
-                        form = InterestsForm()
-                    elif action == "avatar":
-                        form = AvatarForm()
+                elif action == "att" or action == "srcdel":
+                    if model == "Student" or model == "Professor":
+                        form = SrcUserForm()
+                    elif model == "Course":
+                        form = SrcCourForm()
                     else:
-                        form = lang.DICT["ERROR_FORM"]
-                        err = True 
+                        raise ValueError(lang.DICT['ERROR_MODEL'])
 
-                    return render(request, "Adm/edit_field.html", {'form': form,
-                                                                 'ff': action,
-                                                                 'err': err,
-                                                                })
+                    return render(request, "Adm/edit.html", {'form': form,
+                                                             'action' : action,
+                                                             'model' : model,
+                                                            })
+                elif action == "insert":
+                    form = SrcCourForm()
+                    return render(request, "Adm/edit.html", {'form': form,
+                                                             'action' : action,
+                                                             'model' : model,
+                                                            })
+                elif action == "username":
+                    action = "name"
+                    form = NameForm()
+                elif action == "password":
+                    form = PasswordForm()
+                elif action == "language":
+                    form = LanguageForm()
+                    print form
+                elif action == "sex":
+                    form = SexForm()
+                elif action == "bios":
+                    form = BiosForm()
+                elif action == "interests":
+                    form = InterestsForm()
+                elif action == "avatar":
+                    form = AvatarForm()
+                else:
+                    form = lang.DICT["ERROR_FORM"]
+                    err = True 
+
+                return render(request, "Adm/edit_field.html", {'form': form,
+                                                             'ff': action,
+                                                             'err': err,
+                                                            })
             
 
 ## Camada de negócio para o módulo de administração.

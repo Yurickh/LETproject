@@ -65,7 +65,7 @@ $(document).ready(function(){
 		umail = data.slice(data.indexOf("&userEmail=")+11, data.indexOf("&userPassword="));
 		// convert %40 to @, since serialize transformed @ to %40
 		umail = decodeURIComponent(umail);
-		upass = data.slice(data.indexOf("&userPassword=")+14, data.indexOf("&model="));
+		upass = data.slice(data.indexOf("&userPassword=")+14, data.indexOf("&csrfmiddlewaretoken="));
 		model = $("div[id^='model_']").attr("id").slice(6);
 		crsf = data.slice(data.indexOf("&csrfmiddlewaretoken=")+21);
 		

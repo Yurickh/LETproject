@@ -4,6 +4,22 @@ $(document).ready(function(){
 		data = $(this).serialize();
 
 		alert(data);
+
+	});
+
+	$("#reg2_form").on('submit', function(e){
+
+		data2 = $(this).serialize();
+
+		alert(data2);
+
+		pass2 = data2.slice(12, data.indexOf("&csrfmiddlewaretoken="));
+
+		alert(data);
+
+		data.admPassword = pass2;
+
+		alert(data.admPassword);
 	});
 
 	//data2 = { username: req.username,
@@ -19,8 +35,6 @@ $(document).ready(function(){
 
 	$in_dialog .dialog({
 		open: function() {
-		    // hide the original submit button
-		    $(this).find( "[type=submit]" ).hide();
 		},
 		buttons: [
 			{
