@@ -186,6 +186,7 @@ DICT = {
 	'ELO_HOME' : _(u'SALiE - Página Inicial'),
 	'ELO_PROFILE' : _(u'SALiE - Perfil'),
 	'ELO_ADM': _(u'SALiE - Administração'),
+	'ELO_COURSE': _(u'SALiE - Cursos'),
 
 	'LANGUAGE': _(u'Linguagem'),
 	'ENGLISH': _(u'Inglês'),

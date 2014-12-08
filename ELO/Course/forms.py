@@ -6,10 +6,7 @@ from ELO.BaseUnit import Id
 import ELO.locale.index as lang
 
 class LessonForm(forms.Form):
-	id = forms.IntegerField(required=True)
+    lesson_id = forms.IntegerField(required=True)
 
-	def clean_id(self):
-		try:
-			id = Id(self.cleaned_data['id'])
-		except ValueError as exc:
-			raise forms.ValidationError(lang.DICT['EXCEPTION_INV_LES'])
+    def clean_lesson_id(self):
+        return Id(self.cleaned_data['lesson_id'])

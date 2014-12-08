@@ -66,6 +66,11 @@ html, body,.content { height: 100%; }
     width: 50%;
 }
 
+div[class^='lesson_']
+{
+    cursor: pointer;
+}
+
 #complete
 {
     color: green;

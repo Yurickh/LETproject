@@ -1,4 +1,4 @@
-{% extends "includes/wrapper.html" %}
+{% extends "includes/wrapper.html" %}first
 {% load staticfiles %}
 
 {% block title %}{{ DICT.ELO_COURSE }}{% endblock %}
@@ -38,11 +38,7 @@
         
     </div>
     <div id="container">
-        <center>
-            <div id="lesson_ctn">
-                <img id="bkg_img" src="{{ MEDIA_URL }}images/cham_rel.png"/>
-            </div>
-        </center>
+        {% include 'Course/general/assync_std.html' %}
     </div>
     <div id="bottomer">
         <center>

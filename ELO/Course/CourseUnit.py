@@ -11,6 +11,7 @@ from Course.forms import LessonForm
 from django.shortcuts import render
 from django.core.exceptions import PermissionDenied
 from django.http import Http404
+from django.forms import ValidationError
 
 class IfUiCourse:
 	__metaclass__ = ABCMeta
@@ -104,17 +105,16 @@ class UiCourse(IfUiCourse):
 			lesson_form = LessonForm(request.POST)
 			try:
 				if lesson_form.is_valid():
-					lessonid = lesson_form.cleaned_data['id']
+					lessonid = lesson_form.cleaned_data['lesson_id']
 					if self.bus.isLessonRight(lessonid, user):
 						lesson = self.bus.getLesson(user, lessonid)
 						return render(request, 
-									  "Course/general/assync_lesson.html",
-									  {'lesson': lesson})
+									  "Course/lessons/" + lesson.url)
 					else:
 						raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])
 				else:
 					raise ValueError(lang.DICT['EXCEPTION_INV_LES'])
-			except (ValueError, ValidationError) as exc:
+			except ValueError as exc:
 				return render(request, "Course/general/assync_std.html",
 						{'error': exc})
 				
