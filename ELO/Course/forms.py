@@ -7,6 +7,10 @@ import ELO.locale.index as lang
 
 class LessonForm(forms.Form):
     lesson_id = forms.IntegerField(required=True)
+    slide_number = forms.IntegerField(required=True)
 
     def clean_lesson_id(self):
         return Id(self.cleaned_data['lesson_id'])
+
+    def clean_slide_number(self):
+        return Id(self.cleaned_data['slide_number'])

@@ -13,6 +13,9 @@ from django.core.exceptions import PermissionDenied
 from django.http import Http404
 from django.forms import ValidationError
 
+LESSONS_URL = 'Course/lessons/'
+GENERAL_URL = 'Course/general/'
+
 class IfUiCourse:
 	__metaclass__ = ABCMeta
 
@@ -67,6 +70,9 @@ class IfBusCourse:
 	def pers(self):
 		del self.__pers
 
+	@abstractmethod
+	def isLessonRight(self, user, lesson_id): pass
+
 	## Método que recupera uma lista dos módulos ou lições.
 	#
 	#	@arg user		Objeto usuário, como no contido no cookie user.
@@ -97,7 +103,7 @@ class UiCourse(IfUiCourse):
 			if courseid:
 				if courseid in map(lambda x: x["id"], user["courses"]):
 					course = self.bus.getCourse(user, courseid)
-					return render(request, "Course/general/frame.html", 
+					return render(request, GENERAL_URL + "frame.html", 
 						{'course':course})
 				else:
 					raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])
@@ -106,20 +112,26 @@ class UiCourse(IfUiCourse):
 			try:
 				if lesson_form.is_valid():
 					lessonid = lesson_form.cleaned_data['lesson_id']
-					if self.bus.isLessonRight(lessonid, user):
-						lesson = self.bus.getLesson(user, lessonid)
-						return render(request, 
-									  "Course/lessons/" + lesson.url)
+					slidenumber = lesson_form.cleaned_data['slide_number']
+					if self.bus.isLessonRight(user, lessonid):
+						lesson = self.bus.getLesson(user, lessonid.value)
+						url = LESSONS_URL + lesson['url']
+						url = url + "/" + str(slidenumber.value) + ".html"
+						return render(request, url)
 					else:
 						raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])
 				else:
 					raise ValueError(lang.DICT['EXCEPTION_INV_LES'])
 			except ValueError as exc:
-				return render(request, "Course/general/assync_std.html",
+				return render(request, GENERAL_URL + "assync_std.html",
 						{'error': exc})
 				
 
 class BusCourse(IfBusCourse):
+
+	def isLessonRight(self, user, lesson_id):
+		print user
+		return True
 
 	def getCompleted(self, user, accesstype):
 		userid = self.pers.getid('NAME', user['name'], Student)
@@ -160,7 +172,12 @@ class BusCourse(IfBusCourse):
 
 	def getLesson(self, user, lessonid):
 		lessondata = self.pers.fetch(lessonid, Lesson)
-		lessonlink = lessondata['LINK'][0]
+
+		lesson = {}
+		lesson['url'] = lessondata['LINK'][0]
+		lesson['name'] = lessondata['NAME'][0]
+
+		return lesson
 
 
 class PersCourse(IfPersCourse):

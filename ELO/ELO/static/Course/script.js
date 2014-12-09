@@ -14,8 +14,9 @@ $(document).ready(function(){
 	$("div[class^='lesson_']").click(function(){
 		less_id = $(this).attr("class").slice(7);
 
-		$('#lesson_ctn').load("/assync/lesson/", 
+		$('#container').load("/assync/lesson/", 
             {'lesson_id':less_id, 
+             'slide_number': 0,
              'csrfmiddlewaretoken': $.cookie('csrftoken')});
 	});
 });
