@@ -13,7 +13,7 @@ $(document).ready(function(){
 			data = { courMatric: uname,
 					 csrfmiddlewaretoken: crsf,
 					 model: model,
-					 action: action
+					 act: action
 					};
 		}
 		else{
@@ -43,7 +43,7 @@ $(document).ready(function(){
 		data = { courMatric: umatric,
 				 csrfmiddlewaretoken: crsf,
 				 model: model,
-				 action: action
+				 act: action
 			   };
 
 		$in_dialog.load("/assync/adm-course/"+action+"/"+model+"/", data,
@@ -53,13 +53,39 @@ $(document).ready(function(){
 
 	});
 
-	//$("#reg_form").on('submit', function(e){
-	//	e.preventDefault();
-	//	$dialog.dialog('close');
-	//
-	//	data = $(this).serialize();
-	//	alert(data);
+	$("#reg_form").on('submit', function(e){
+		e.preventDefault();
+		$dialog.dialog('close');
 
+		data = $(this).serialize();
+		uname = data.slice(9, data.indexOf("&userMatric="));
+		umatric = data.slice(data.indexOf("&userMatric=")+12, data.indexOf("&userCampus="));
+		ucampus = data.slice(data.indexOf("&userCampus=")+12, data.indexOf("&userSex="));
+		usex = data.slice(data.indexOf("&userSex=")+9, data.indexOf("&userEmail="));
+		umail = data.slice(data.indexOf("&userEmail=")+11, data.indexOf("&userPassword="));
+		// convert %40 to @, since serialize transformed @ to %40
+		umail = decodeURIComponent(umail);
+		upass = data.slice(data.indexOf("&userPassword=")+14, data.indexOf("&csrfmiddlewaretoken="));
+		model = $("div[id^='model_']").attr("id").slice(6);
+		crsf = data.slice(data.indexOf("&csrfmiddlewaretoken=")+21);
+		
 
-	//});
+		data = { username: uname,
+				 userMatric: umatric,
+				 userCampus: ucampus,
+				 userSex: usex,
+				 userEmail: umail,
+				 userPassword: upass,
+				 model: model,
+				 act: action,
+				 csrfmiddlewaretoken: crsf
+			   };
+
+		$in_dialog.load("/assync/adm-info/", data, function(){ 
+			$in_dialog.dialog('open');
+		});
+		
+		
+	});
+
 });

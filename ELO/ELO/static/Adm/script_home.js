@@ -100,7 +100,7 @@ $(document).ready(function(){
 
 			model = $(this).attr("id").slice(4);
 
-			$dialog.load("/assync/adm-edit/"+action+"/"+model+"/", function(){
+			$dialog.load("/assync/adm-course/"+action+"/"+model+"/", function(){
 				$dialog.dialog('open');
 			});
 		}

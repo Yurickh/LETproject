@@ -7,18 +7,25 @@
 			type="text/css"
 			href="{% static 'Adm/styles.css' %}" />
 
+	<script src="{% static 'Adm/script_conf.js' %}">
+	</script>
+
 {% endblock %}
 
 {% block body %}
-	{% if conf %}
-		<h1>Deseja confirmar esta ação?</h1>
+	<form id="reg2_form" action="" method="post" >
 
-		<button>Sim</button>
+		Deseja confirmar esta ação?
 
-		<button>Não</button>
-	{% endif %}
-	{% if conf != None %}
-		<h1>Não foi possível registrar.</h1>
-	{% endif %}
+		{{ form2 }}
+
+		{% csrf_token %}
+
+
+	</form>
+
+	<div class="dialog"></div>
+	<div class="in_dialog"></div>
+	<div class="dialogConf"></div>
 
 {% endblock %}
