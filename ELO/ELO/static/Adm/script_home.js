@@ -1,7 +1,6 @@
 $(document).ready(function(){
 
-	//	Características do Dialog.
-	$dialog = $(".dialog").dialog({
+	dialog_setttings = {
 		autoOpen: false,
 		show: {
 			effect: "blind",
@@ -14,52 +13,19 @@ $(document).ready(function(){
 		modal: true,
 		resizable: false,
 
-	});
+	};
 
 	//	Características do Dialog.
-	$in_dialog = $(".inner_dialog").dialog({
-		autoOpen: false,
-		show: {
-			effect: "blind",
-			duration: 1
-		},
-		hide: {
-			effect: "blind",
-			duration: 1
-		},
-		modal: true,
-		resizable: false,
-	});
+	$dialog = $(".dialog").dialog(dialog_settings);
 
 	//	Características do Dialog.
-	$in2_dialog = $(".inner2_dialog").dialog({
-		autoOpen: false,
-		show: {
-			effect: "blind",
-			duration: 1
-		},
-		hide: {
-			effect: "blind",
-			duration: 1
-		},
-		modal: true,
-		resizable: false,
-	});
+	$in_dialog = $(".inner_dialog").dialog(dialog_settings);
 
 	//	Características do Dialog.
-	$in3_dialog = $(".inner3_dialog").dialog({
-		autoOpen: false,
-		show: {
-			effect: "blind",
-			duration: 1
-		},
-		hide: {
-			effect: "blind",
-			duration: 1
-		},
-		modal: true,
-		resizable: false,
-	});
+	$in2_dialog = $(".inner2_dialog").dialog(dialog_settings);
+
+	//	Características do Dialog.
+	$in3_dialog = $(".inner3_dialog").dialog(dialog_settings);
 
 	//	Cria o evento de abertura dos formulários de registro, edição ou deleção
 	//		após clicar em qualquer button da home da Administração.
