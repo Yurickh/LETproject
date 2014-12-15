@@ -1,5 +1,20 @@
 $(document).ready(function(){
 
+    $info = {'id': 0, 'slide':0};
+
+    function loadLesson(less_id, slide)
+    {
+        $c = $('#container');
+        $c.load("/assync/lesson/", 
+            {'lesson_id':less_id, 
+             'slide_number': slide,
+             'csrfmiddlewaretoken': $.cookie('csrftoken')}, 
+                function(responseTxt, txtStatus, req){
+                    $info.id = less_id;
+                    $info.slide = slide;
+            });
+    }
+
     // Lesson Listing
 
     $accordion = $("#module_accordion").accordion({
@@ -14,9 +29,15 @@ $(document).ready(function(){
 	$("div[class^='lesson_']").click(function(){
 		less_id = $(this).attr("class").slice(7);
 
-		$('#container').load("/assync/lesson/", 
-            {'lesson_id':less_id, 
-             'slide_number': 0,
-             'csrfmiddlewaretoken': $.cookie('csrftoken')});
+		loadLesson(less_id, 0);
 	});
+
+    $("#l_bt_f").click(function(){
+        loadLesson($info.id, $info.slide+1); 
+    });
+
+    $("#l_bt_b").click(function(){
+        if($info.slide > 0)
+            loadLesson($info.id, $info.slide-1);
+    });
 });
