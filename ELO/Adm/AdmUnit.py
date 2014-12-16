@@ -140,7 +140,7 @@ class IfBusAdm:
     #   @arg    form    Valores dos campos para edição validados.
     #
     @abstractmethod
-    def attAccount(self, request, field, form): pass
+    def attAccount(self, request, field, form, model): pass
 
     ## Deleta uma conta no database.
     #   Podendo ser esta uma conta de Estudante, Professor ou um Curso.
@@ -386,7 +386,7 @@ class UiAdm(IfUiAdm):
                 # Dicionario com informações do usuário procurado pelo Adm.
                 dUser = {}
                 
-                action = request.POST['action']
+                action = request.POST['act']
                 model = request.POST['model']
                 csrf = request.POST['csrfmiddlewaretoken']
 
@@ -412,7 +412,6 @@ class UiAdm(IfUiAdm):
                             # Força a ter uma estruturação correta de dicionário.
                             dUser = dict(dUser)
                         except ValueError as exc:
-                            request.session.modified = True
                             return render(request, "Adm/err.html", {'error': exc })
 
                             ## @if Confere se dicionário de informações de usuário
@@ -423,7 +422,6 @@ class UiAdm(IfUiAdm):
                             if not dUser:
                                 raise ValueError(lang.DICT['EXCEPTION_INV_USR_NM'])
                         
-                        request.session.modified = True
                         # Renderiza uma página assíncrona de informação da
                         # conta requisitada.
                         return render(request, "Adm/info.html", {'data':dUser, 
@@ -440,23 +438,23 @@ class UiAdm(IfUiAdm):
                 except ValueError as exc:
                     return render(request, "Adm/home.html", {'error': exc })
 
-            if request.POST['action'] == 'del':
+            elif request.POST['act'] == 'del':
                 result = self.bus.delAccount(request)
                 return render(request, "Adm/home.html", {'result': result })
 
             else:
-                print request.POST
+                print request
                 try:
-                    if "username" in request.POST:
+                    if request.POST['act'] == "username":
                         form = NameForm(request.POST)
                         field = "name"
-                    if  "password" in request.POST:
+                    if request.POST['act'] == "password":
                         form = PasswordForm(request.POST)
                         field = "password"
-                    elif "language" in request.POST:
+                    elif request.POST['act'] == "language":
                         form = LanguageForm(request.POST)
                         field = "language"
-                    elif "sex" in request.POST:
+                    elif request.POST['act'] == "sex":
                         form = SexForm(request.POST)
                         field = "sex"
                     elif "bios" in request.POST:
@@ -472,14 +470,13 @@ class UiAdm(IfUiAdm):
                         raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
 
                         if form.is_valid():
-                            self.bus.attAccount(request, field, form)
-                            request.session.modified = True
+                            self.bus.attAccount(request, field, form, 
+                                                request.POST['model'])
                         else:
                             raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
                 except ValueError as exc:
                     return render(request, "Adm/home.html", {'error': exc })
 
-            request.session.modified = True
             # Após a coleta da requisição o administrador será retornado à 
             # página inicial de controle.
             return HttpResponseRedirect('/')
@@ -488,7 +485,6 @@ class UiAdm(IfUiAdm):
             if not (action or model):
                 result = ""
                 error = ""
-                request.session.modified = True
                 return render(request, "Adm/home.html", {'error': error,
                                                         'result': result, })
 
@@ -633,7 +629,7 @@ class BusAdm(IfBusAdm):
             # no banco de dados (Persistência).
             self.pers.data_in(dict_data, db)
         
-    def attAccount(self, request, field, form): 
+    def attAccount(self, request, field, form, model): 
         if field == "name":
             fpw = form.cleaned_data['password'].value
             if fpw != user['password']:
@@ -659,9 +655,9 @@ class BusAdm(IfBusAdm):
             newdata = form.cleaned_data['newdata'].value
 
         try:
-            if user['type'] == 'Student' and field != 'avatar':
+            if model == 'Student' and field != 'avatar':
                 self.pers.update(user['name'], field, newdata, Student)
-            elif user['type'] == 'Professor' and field != 'avatar':
+            elif model == 'Professor' and field != 'avatar':
                 self.pers.update(user['name'], field, newdata, Professor)
         except ValueError as exc:
             raise ValueError(lang.DICT['EXCEPTION_ERR_DB_U'])

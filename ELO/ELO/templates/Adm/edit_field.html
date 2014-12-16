@@ -6,10 +6,6 @@
 	<link	rel="stylesheet"
 			type="text/css"
 			href="{% static 'vendor/select2/select2.css' %}" />
-	<script src="{% static 'Profile/script_select2.js' %}"></script>
-	<link	rel="stylesheet"
-			type="text/css"
-			href="{% static 'Profile/styles_select2.css' %}" />
 {% endblock %}
 
 {% block body %}
@@ -24,7 +20,7 @@
 
 			{% endfor %}
 			{% csrf_token %}
-			<input type="submit" name="{{ ff }}" value="{{ DICT.SUBMIT }}" />
+			<input type="submit" name="act" value="{{ ff }}" />
 		</form>
 	{% endif %}
 {% endblock %}

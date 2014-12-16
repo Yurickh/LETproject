@@ -16,50 +16,11 @@ $(document).ready(function(){
 
 	});
 
-	//	Características do Dialog.
-	$in_dialog = $(".inner_dialog").dialog({
-		autoOpen: false,
-		show: {
-			effect: "blind",
-			duration: 1
-		},
-		hide: {
-			effect: "blind",
-			duration: 1
-		},
-		modal: true,
-		resizable: false,
-	});
+	$in_dialog = $dialog;
 
-	//	Características do Dialog.
-	$in2_dialog = $(".inner2_dialog").dialog({
-		autoOpen: false,
-		show: {
-			effect: "blind",
-			duration: 1
-		},
-		hide: {
-			effect: "blind",
-			duration: 1
-		},
-		modal: true,
-		resizable: false,
-	});
+	$in2_dialog = $dialog;
 
-	//	Características do Dialog.
-	$in3_dialog = $(".inner3_dialog").dialog({
-		autoOpen: false,
-		show: {
-			effect: "blind",
-			duration: 1
-		},
-		hide: {
-			effect: "blind",
-			duration: 1
-		},
-		modal: true,
-		resizable: false,
-	});
+	$in3_dialog = $dialog;
 
 	//	Cria o evento de abertura dos formulários de registro, edição ou deleção
 	//		após clicar em qualquer button da home da Administração.
