@@ -141,6 +141,7 @@ class Module(models.Model):
 #	LINK:		Caminho de arquivo para o html a ser parseado.\n
 #	EXERCISES:	Lista de ínteiros que representam os exercícios associados
 #					à lição correspondente.\n
+#	SLIDES: 	Número de slides que a lição possui.\n
 class Lesson(models.Model):
 	identity = models.IntegerField()
 	field = models.CharField(max_length=32)

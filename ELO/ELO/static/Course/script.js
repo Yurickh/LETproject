@@ -9,9 +9,9 @@ $(document).ready(function(){
             {'lesson_id':less_id, 
              'slide_number': slide,
              'csrfmiddlewaretoken': $.cookie('csrftoken')}, 
-                function(responseTxt, txtStatus, req){
-                    $info.id = less_id;
-                    $info.slide = slide;
+                function(){
+                        $info.id = less_id;
+                        $info.slide = slide;
             });
     }
 

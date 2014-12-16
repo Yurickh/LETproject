@@ -70,8 +70,6 @@ class IfBusCourse:
 	def pers(self):
 		del self.__pers
 
-	@abstractmethod
-	def isLessonRight(self, user, lesson_id, slidenumber): pass
 
 	## Método que recupera uma lista dos módulos ou lições.
 	#
@@ -113,13 +111,15 @@ class UiCourse(IfUiCourse):
 				if lesson_form.is_valid():
 					lessonid = lesson_form.cleaned_data['lesson_id']
 					slidenumber = lesson_form.cleaned_data['slide_number']
-					if self.bus.isLessonRight(user, lessonid, slidenumber):
-						lesson = self.bus.getLesson(user, lessonid.value)
-						url = LESSONS_URL + lesson['url']
-						url = url + "/" + str(slidenumber.value) + ".html"
-						return render(request, url)
-					else:
+
+					lesson = self.bus.getLesson(user, lessonid.value)
+
+					if(slidenumber.value >= lesson['slides']):
 						raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])
+
+					url = LESSONS_URL + lesson['url']
+					url = url + "/" + str(slidenumber.value) + ".html"
+					return render(request, url)
 				else:
 					raise ValueError(lang.DICT['EXCEPTION_INV_LES'])
 			except ValueError as exc:
@@ -128,11 +128,6 @@ class UiCourse(IfUiCourse):
 				
 
 class BusCourse(IfBusCourse):
-
-	def isLessonRight(self, user, lesson_id, slidenumber):
-		#TODO: implementar o isLessonRight
-
-		return True
 
 
 	def getCompleted(self, user, accesstype):
@@ -178,6 +173,7 @@ class BusCourse(IfBusCourse):
 		lesson = {}
 		lesson['url'] = lessondata['LINK'][0]
 		lesson['name'] = lessondata['NAME'][0]
+		lesson['slides'] = lessondata['SLIDES'][0]
 
 		return lesson
 
