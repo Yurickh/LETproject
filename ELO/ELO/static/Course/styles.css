@@ -1,24 +1,83 @@
-#parent { height: 100%; }
+html, body,.content { height: 100%; }
 
 #topper
 {
-    background-color: blue;
-    width: 100%;
-    height: 14%;
+    background-color: #909090;
+    width: 79%;
+    height: 10%;
+    position: relative;
+    float: left;
 }
 
 #left_bar
 {
-    background-color: red;
-    width: 15%;
-    float: left;
+    background-color: #E3E3E3;
+    width: 20%;
     height: 75%;
+    position: relative;
+    float: left;
+}
+
+.ui-
+{
+    width: 100%;
+    height: 100%;
 }
 
 #container
 {
-    background-color: green;
-    width: 85%;
+    width: 79%;
     float: left;
-    height: 75%;
+    height: 62%;
+    position: relative;
+    float: left;
+    background-color: #aaaaaa;
+    overflow: scroll;
+}
+
+#bottomer
+{
+    position: relative;
+    float: left;
+    height: 3%;
+    width: 79%;
+    background-color: #909090;
+}
+
+#lesson_ctn
+{
+    width: 100%;
+    height: 100%;
+    background-color: #aaaaaa;
+    position: absolute;
+}
+
+#lesson_ctn img
+{
+    height: 90%;
+}
+
+#c_bt
+{
+    width:5%;
+}
+
+#bkg_img
+{
+    width: 50%;
+}
+
+div[class^='lesson_']
+{
+    cursor: pointer;
+}
+
+#complete
+{
+    color: green;
+}
+
+#incomplete
+{
+    color:red;
 }

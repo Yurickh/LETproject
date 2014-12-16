@@ -1,4 +1,4 @@
-	{% extends "includes/wrapper.html" %}
+{% extends "includes/wrapper.html" %}
 {% load staticfiles %}
 
 {% block title %} {{ DICT.ELO_HOME }} {% endblock %}
@@ -11,6 +11,7 @@
 
 {% block content %}	
 	<div id="topper">
+
 		<div id="profile-ph">
 			<img id="avatar-ph" src="{{ MEDIA_URL}}{{ user.avatar }}" />
 			<div id="p_info">
@@ -22,14 +23,16 @@
 			</div>
 		</div>
 	</div>
-
 	<div id="bottomer">
 		<div id="p_courses">
-			<ul>
-			{% for course in user.courses %}
-				<li>{{ course }}</li>
-			{% endfor %}
-			</ul>
+			{% if user.type == 'Student' %}
+				{% for course in user.courses %}
+					<a href="/course/{{ course.id }}/">
+						{{ course.name }}: 
+						<progress value="{{ course.completion }}" max="100"></progress>
+					</a>
+				{% endfor %}
+			{% endif %}
 		</div>
 	</div>
 {% endblock %}

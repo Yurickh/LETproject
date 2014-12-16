@@ -1,0 +1,12 @@
+{% extends "includes/assync_wrapper.html" %}
+{% load staticfiles %}
+
+{% block body %}
+    <form action="" method="post" id="exercise_form" >
+
+        Everyday I'm {{ form.blank_line }} !<br />
+        {% csrf_token %}
+        <input type="submit" value="{{ DICT.SUBMIT }}" />
+    </form>
+
+{% endfor %}

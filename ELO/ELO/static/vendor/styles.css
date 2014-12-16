@@ -1,3 +1,8 @@
+
+/**Arquivo folha de estilos de css**/
+
+/***HEAD***/
+/*Logo ELO no header*/
 /** Arquivo folha de estilos de css. */
 
 /* ARQUIVO includes/wrapper.html */
@@ -24,6 +29,7 @@ body
 	padding-left:20px;
 }
 
+/*Texto dos links no header*/
 /* Menu principal */
 .mainMenu
 {
@@ -45,26 +51,62 @@ body
 	padding-right:20px;
 	padding-top:5px;
 }
-
+/*Links do header(Login,home,profile)*/
 a.field
 {	
 	text-decoration:none;
 }
-
+/*Cor dos links quando o mouse se posiciona sobre eles*/
 .field:hover
 {
 	color: #67B6FF;
 }
+/*Texto do head*/
+.mainMenu
+{
+	position: fixed;
+	top:5px;
+	right:10px;
+	width:100%;
+}
+/*Barra do head*/
+.menuTab
+{	
+	text-align:left;
+	background-color: black;
+	position:fixed ;
+	top:0px;
+	width:100%;
+	height:35px;
+	
+}
 
+/***CONTENT***/
+/*Cor da mensagem de erro*/
+.error
+{
+	color: #dd1150;
+}
+/*Texto dos conteúdos da página(infos)*/
 /* Conteúdo do site */
+
 .content
 {
-	text-align: left;
+	text-align: right;
 	color: #331156;
 	margin-top: 1cm;
 	height:100%;
 	padding:10px;
-	padding-bottom:-1000px;	
+	overflow:auto;
+  	padding-bottom:50px; /* this needs to be bigger than footer height*/	
+}
+body
+{
+	background:#E3E3E3;
+	margin:10;
+	padding:0;	
+	padding-bottom:30px;
+	min-height:100%;
 }
 
 /* FIM-ARQUIVO wrapper */
@@ -74,12 +116,32 @@ a.field
 	color: #dd1150;
 }
 
-.dados{
-	text-align: right;
-	margin-top: 0.2cm;
+.firstAcess
+{
+	color:gray;
 }
 
-.foot{
+/*Forms da page de login*/
+.ffield
+{
+	text-align: center;
+	margin-top: 0.2cm;
+	margin-bottom:10px;
+}
+
+/***FOOT***/
+/*Barra de footer*/
+.foot
+{	
+	right:0;
+	left:0;
+	clear:both;
+   	width:100%;
+   	height:50px;
+	margin-top: -50px; /* negative value of footer height */   
+	margin:auto;
+	position:fixed;
+	bottom:0;
 	padding-top:10px;
 	padding-bottom:10px;
 	text-align:center;
@@ -98,6 +160,7 @@ a.field
 	width:100%;
 }
 
+
 .foot a
 {
 	text-decoration:none;
@@ -108,21 +171,7 @@ a.field
 	color: white;
 }
 
-.firstAcess{
-	color:gray;
-}
-
-.ffield
+#logo
 {
-	margin-top: 0.2cm;
-	margin-bottom:10px;
+	height: 50px;
 }
-
-.manipular ul{
-	margin-top:50px;
-}
-
-.manipular li{
-	margin-top:10px;
-}
-

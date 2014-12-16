@@ -21,6 +21,8 @@ from models import Adm, Professor, Student, God
 from django.core.exceptions import PermissionDenied
 from django.http import Http404
 from django.views.decorators.vary import vary_on_cookie
+from django.views.decorators.csrf import csrf_protect
+from django.utils.decorators import method_decorator
 from django.utils import translation
 
 ## Insere os objetos user e DICT em todas as renderizações de template.
@@ -42,7 +44,8 @@ class Factory:
 	## Classe que redireciona para a devida home.
 	#	Caso o usuário já esteja devidamente logado, redireciona para o
 	#	profile, caso contrário, vai para a página de login.
-	@vary_on_cookie
+	@method_decorator(vary_on_cookie)
+	@method_decorator(csrf_protect)
 	def runHome(self, request, entity):
 		if 'user' in request.session.keys():
 			if (request.session['user']['type'] == "Adm" or 
@@ -56,7 +59,8 @@ class Factory:
 	## Classe que executa o módulo de login.
 	# 	Define as camadas de persistência, negócio de login e
 	#	apresentação e verifica o tipo de usuário.
-	@vary_on_cookie
+	@method_decorator(vary_on_cookie)
+	@method_decorator(csrf_protect)
 	def runLogin(self, request, entity):
 		if not isinstance(self.__ui, IfUiLogin):
 			self.__pers = PersLogin()
@@ -94,7 +98,8 @@ class Factory:
 	#						edição. Caso a chamada seja assíncrona, retorna a
 	#						form de edição do campo específico.
 	#					"Home": Acessa o Perfil resumido, a home do site em si.
-	@vary_on_cookie
+	@method_decorator(vary_on_cookie)
+	@method_decorator(csrf_protect)
 	def runProfile(self, request, acctype, field=None):
 		if 'user' in request.session.keys(): # is user logged?
 			user_type = request.session['user']['type']
@@ -122,7 +127,8 @@ class Factory:
 	## Classe que executa o módulo de Administração.
 	# 	Define as camadas de persinstência, negócio e apresentação de
 	#	administração.
-	@vary_on_cookie
+	@method_decorator(vary_on_cookie)
+	@method_decorator(csrf_protect)
 	def runAdm(self, request, action=None, model=None):
 		#	Checa se usuario ja esta logado.
 		if 'user' in request.session.keys():
@@ -147,8 +153,9 @@ class Factory:
 	## Classe que executa o módulo de Curso.
 	# 	Define as camadas de persistência, negócio e apresentação de
 	#	curso.
-	@vary_on_cookie
-	def runCourse(self, request, courseid):
+	@method_decorator(vary_on_cookie)
+	@method_decorator(csrf_protect)
+	def runCourse(self, request, courseid=None):
 		if 'user' in request.session.keys():
 			if not self.__ui is IfUiCourse:
 				self.__pers = PersCourse()
@@ -156,4 +163,5 @@ class Factory:
 				self.__ui = UiCourse(self.__bus)
 
 			return self.__ui.run(request, courseid)
+		print 'runCourse(' +str(self)+','+str(request)+',courseid='+str(courseid)
 		raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])

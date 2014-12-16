@@ -1,5 +1,7 @@
 #coding: utf-8
 
+from __future__ import division
+
 ## @file ProfileUnit.py
 #   Este arquivo é responsável pelo armazenamento de todas as camadas 
 # correspondentes ao módulo de perfil. 
@@ -19,7 +21,7 @@ from abc import *
 
 import ELO.index as lang
 
-from ELO.models import Student, Professor
+from ELO.models import Student, Professor, Courses
 from Profile.forms import (
     NameForm, 
     PasswordForm,
@@ -196,6 +198,7 @@ class UiFullProfile(IfUiProfile):
     __viewable = [
                     'email',
                     'campus',
+
                     'matric'
                     ]
 
@@ -271,8 +274,7 @@ class UiFullProfile(IfUiProfile):
                                                         form )
                     request.session.modified = True
                 else:
-                    raise ValueError(lang.DICT['EXCEPTION_INV_FRM'] + 
-                        ":" + form.errors)
+                    raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
 
             except ValueError as exc:
                 data = self.__makeData(get_user())
@@ -325,7 +327,6 @@ class BusProfile(IfBusProfile):
 
     def refreshUser(self, request):
         user = request.session['user']
-        db = None
 
         if user['type'] == 'Student':
             db = Student
@@ -335,7 +336,7 @@ class BusProfile(IfBusProfile):
         fs = self.pers.fetch(user['name'], db)
         fd = dict(fs)
         request.session['django_language'] = fd['language']
-        return dict(user.items()+ self.pers.fetch(user['name'], db))
+        return dict(user.items() + fs)
 
     def editField(self, request, field, form):
         user = request.session['user']
@@ -411,18 +412,50 @@ class PersProfile(IfPersProfile):
                     ('matric',      sf('MATRIC')),
                     ('bios',        sf('BIOS')),
                     ('campus',      sf('CAMPUS')),
-                    ('courses',     sf('COURSE')),
                     ('avatar',      sf('AVATAR')),
                     ('email',       sf('EMAIL')),
                     ('sex',         sf('SEX')),
                     ('language',    sf('LANGUAGE')),
             ]
 
+            sfc = sf('COURSE') # select field courses
+
             if database is Student:
                 fetchset = fetchset + [     
                     ('grades',      sf('GRADE')),
-                    ('interests',   sf('INTEREST')),
+                    ('interests',   sf('INTEREST'))
                 ]
+
+                lc = [] # List of courses
+                
+                for c in sfc:
+                    # Select Field for Modules Completed
+                    sfmc = sf('MODULE_COMPLETED')
+                    # Modules contidos neste Course
+                    mods = map(lambda x: x.value, 
+                               Courses.objects.filter(identity=c,
+                                                      field='MODULE'))
+                    
+                    # Modules Completed for this Course
+                    mcftc = []
+
+                    for mc in sfmc:
+                        if mc in mods:
+                            mcftc = mcftc + [mc]
+
+                    # Get number of modules completed
+                    mcftc = len(mcftc)
+                    # Get number of modules in this course
+                    nmod = len(mods)
+
+                    cname = Courses.objects.get(identity=c, field='NAME').value
+                    lc = lc + [{'name':cname, 
+                                 'id':c, 
+                                 'completion': mcftc*100/nmod}]
+
+                sfc = lc
+
+            fetchset = fetchset + [('courses', sfc)]
 
         except database.DoesNotExist as exc:
             fetchset = []

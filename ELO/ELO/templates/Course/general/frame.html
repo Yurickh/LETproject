@@ -1,0 +1,52 @@
+{% extends "includes/wrapper.html" %}first
+{% load staticfiles %}
+
+{% block title %}{{ DICT.ELO_COURSE }}{% endblock %}
+
+{% block head %}
+    <script src="{% static 'Course/script.js' %}"></script>
+    <link   rel="stylesheet"
+            type="text/css"
+            href="{% static 'Course/styles.css' %}" />
+{% endblock %}
+
+{% block content %}
+    <div id="left_bar">
+        <div id="module_accordion">
+        {% for module in course.MODULE %}
+            <h3><div id=
+                    {% if module.complete or lesson.complete %}
+                        "complete"
+                    {% else %}
+                        "incomplete"
+                    {% endif %}>{{ module.name }}</h3>
+            <div>
+                {% for lesson in module.lessons %}
+                    <div class="lesson_{{ lesson.id }}" id=
+                    {% if module.complete or lesson.complete %}
+                        "complete"
+                    {% else %}
+                        "incomplete"
+                    {% endif %}>
+                    {{ lesson.name }}</div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+    <div id="topper">
+        
+    </div>
+    <div id="container">
+        {% include 'Course/general/assync_std.html' %}
+        {# #l_info_(lesson number); .(slide number) #}
+    </div>
+    <div id="bottomer">
+        <center>
+                    <button id="l_bt_b">&lt;</button>
+                    <button id="l_bt_f">&gt;</button>
+        </center>
+    </div>
+    <br />
+
+{% endblock %}
