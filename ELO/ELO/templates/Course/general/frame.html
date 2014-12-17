@@ -15,7 +15,7 @@
         <div id="module_accordion">
         {% for module in course.MODULE %}
             <h3><div id=
-                    {% if module.complete or lesson.complete %}
+                    {% if module.complete %}
                         "complete"
                     {% else %}
                         "incomplete"
@@ -23,10 +23,14 @@
             <div>
                 {% for lesson in module.lessons %}
                     <div class="lesson_{{ lesson.id }}" id=
-                    {% if module.complete or lesson.complete %}
+                    {% if lesson.complete %}
                         "complete"
                     {% else %}
-                        "incomplete"
+                        {% if lesson.unlocked %}
+                            "unlock"
+                        {% else %}
+                            "incomplete"
+                        {% endif %}
                     {% endif %}>
                     {{ lesson.name }}</div>
                 {% endfor %}
@@ -43,7 +47,7 @@
     </div>
     <div id="bottomer">
         <center>
-                    <button id="l_bt_b">&lt;</button>
+                    <button id="l_bt_b" disabled>&lt;</button>
                     <button id="l_bt_f">&gt;</button>
         </center>
     </div>

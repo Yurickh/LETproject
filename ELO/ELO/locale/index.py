@@ -180,6 +180,9 @@ DICT = {
 	## Mensagem de erro de update em banco de dados
 	'EXCEPTION_ERR_DB_U': _(u"Ocorreu um erro ao salvar seu dado. Favor tentar novamente."),
 
+	## Mensagem de erro para Lição não disponível
+	'EXCEPTION_INV_LS_W': _(u"A lição requisitada não está disponível."),
+
 	## Mensagem de erro de formulário
 	'ERROR_FORM'  : _(u"Ocorreu um problema ao carregar o formulário. Favor tentar novamente mais tarde."),
 	

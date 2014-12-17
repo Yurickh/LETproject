@@ -104,22 +104,33 @@ class UiCourse(IfUiCourse):
 					return render(request, GENERAL_URL + "frame.html", 
 						{'course':course})
 				else:
-					raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])
+					ld = lang.DICT
+					raise PermissionDenied(ld["EXCEPTION_403_STD"])
 		elif request.method == "POST":
 			lesson_form = LessonForm(request.POST)
 			try:
 				if lesson_form.is_valid():
 					lessonid = lesson_form.cleaned_data['lesson_id']
-					slidenumber = lesson_form.cleaned_data['slide_number']
+					lessonid = lessonid.value
+					slidenum = lesson_form.cleaned_data['slide_number']
+					slidenum = slidenum.value
 
-					lesson = self.bus.getLesson(user, lessonid.value)
+					gc = self.bus.getCompleted
 
-					if(slidenumber.value >= lesson['slides']):
+					if unicode(lessonid) not in gc(user, 'LOCK') and\
+					   unicode(lessonid) not in gc(user, 'LESSON'):
+							ld = lang.DICT
+							raise PermissionDenied(ld["EXCEPTION_403_STD"])
+						
+
+					lesson = self.bus.getLesson(user, lessonid)
+
+					if slidenum >= lesson['slides']:
 						raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])
 
 					url = LESSONS_URL + lesson['url']
-					url = url + "/" + str(slidenumber.value) + ".html"
-					return render(request, url)
+					url = url + "/" + str(slidenum) + ".html"
+					return render(request, url, { 'max': lesson['slides'] })
 				else:
 					raise ValueError(lang.DICT['EXCEPTION_INV_LES'])
 			except ValueError as exc:
@@ -139,6 +150,7 @@ class BusCourse(IfBusCourse):
 	def getCourse(self, user, courseid):
 		compmlist = self.getCompleted(user, 'MODULE')
 		compllist = self.getCompleted(user, 'LESSON')
+		ulocklist = self.getCompleted(user, 'LOCK')
 		coursedata = self.pers.fetch(courseid, Courses)
 		modulelist = []
 		
@@ -151,9 +163,11 @@ class BusCourse(IfBusCourse):
 			for lessonid in sfm['LESSON']:
 				lessoname = self.pers.fetch(lessonid, Lesson)['NAME']
 				lessoncomplete = True if lessonid in compllist else False
+				lessonunlocked = True if lessonid in ulocklist else False
 				lessonlist = lessonlist + [{'id': lessonid,
 											'name':lessoname[0],
-										    'complete':lessoncomplete }]
+										    'complete':lessoncomplete,
+											'unlocked':lessonunlocked }]
 
 			modulelist = modulelist + [{'id': 		moduleid,
 										'name': 	modulename,
@@ -168,6 +182,7 @@ class BusCourse(IfBusCourse):
 		return coursedata
 
 	def getLesson(self, user, lessonid):
+
 		lessondata = self.pers.fetch(lessonid, Lesson)
 
 		lesson = {}

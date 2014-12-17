@@ -79,5 +79,11 @@ div[class^='lesson_']
 
 #incomplete
 {
+    cursor: normal;
     color:red;
+}
+
+#unlock
+{
+    color: orange;
 }
