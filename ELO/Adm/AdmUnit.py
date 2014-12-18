@@ -16,7 +16,7 @@
 
 from abc import *
 
-import ELO.index as lang
+import ELO.locale.index as lang
 
 from ELO.models import Adm, Student, Professor, Courses, God, Identities
 
@@ -386,57 +386,90 @@ class UiAdm(IfUiAdm):
                 # Dicionario com informações do usuário procurado pelo Adm.
                 dUser = {}
                 
-                action = request.POST['act']
-                model = request.POST['model']
-                csrf = request.POST['csrfmiddlewaretoken']
+                if action == None:
+                    action = request.POST['act']
+                    model = request.POST['model']
+                    csrf = request.POST['csrfmiddlewaretoken']
 
-                try:
-                    if model == "Course":
-                        # Coleta os forms de busca a partir da requisição POST.
-                        form = SrcCourForm(request.POST)
+
+                    try:
+                        if model == "Course":
+                            # Coleta os forms de busca a partir da requisição POST.
+                            form = SrcCourForm(request.POST)
+                        else:
+                            form = SrcUserForm(request.POST)
+
+                        ## @if Confere se form de busca é valido.
+                        #
+                        #   Se form for adequado então é chamado o método 
+                        #   de procura de contas que irá comunicar-se 
+                        #   com o banco de dados depois da validação das 
+                        #   informações passadas pelo request.POST.
+                        #
+                        #   Caso contrário, é lançada exceção de erro referente à
+                        #   form inválido.
+                        if form.is_valid():
+                            try:
+                                dUser = self.bus.fetchAccount(request)
+                                # Força a ter uma estruturação correta de dicionário.
+                                dUser = dict(dUser)
+                            except ValueError as exc:
+                                return render(request, "Adm/err.html", {'error': exc })
+
+                                ## @if Confere se dicionário de informações de usuário
+                                #       ainda continua nulo.
+                                #
+                                #   Caso esteja nulo então é lançado excessão de conta
+                                #   inexistente.
+                                if not dUser:
+                                    raise ValueError(lang.DICT['EXCEPTION_INV_USR_NM'])
+                            
+                            # Renderiza uma página assíncrona de informação da
+                            # conta requisitada.
+                            return render(request, "Adm/info.html", {'data':dUser, 
+                                                            'action': action,
+                                                            'model' : model,
+                                                            'csrf' : csrf, 
+                                                            })
+                        else:
+                            raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
+
+                    # Se houver qualquer problema referente as passagens dos forms 
+                    # e conferência da validação dos mesmos então o 
+                    # administrador será passado para a página inicial.
+                    except ValueError as exc:
+                        return render(request, "Adm/home.html", {'error': exc })
+                else:
+                    model = request.POST['model']
+                    csrf = request.POST['csrfmiddlewaretoken']
+                    uname = request.POST['username']
+
+                    if action == "username":
+                        action = "name"
+                        form = NameForm()
+                    elif action == "password":
+                        form = PasswordForm()
+                    elif action == "language":
+                        form = LanguageForm()
+                        print form
+                    elif action == "sex":
+                        form = SexForm()
+                    elif action == "bios":
+                        form = BiosForm()
+                    elif action == "interests":
+                        form = InterestsForm()
+                    elif action == "avatar":
+                        form = AvatarForm()
                     else:
-                        form = SrcUserForm(request.POST)
+                        form = lang.DICT["ERROR_FORM"]
+                        err = True 
 
-                    ## @if Confere se form de busca é valido.
-                    #
-                    #   Se form for adequado então é chamado o método 
-                    #   de procura de contas que irá comunicar-se 
-                    #   com o banco de dados depois da validação das 
-                    #   informações passadas pelo request.POST.
-                    #
-                    #   Caso contrário, é lançada exceção de erro referente à
-                    #   form inválido.
-                    if form.is_valid():
-                        try:
-                            dUser = self.bus.fetchAccount(request)
-                            # Força a ter uma estruturação correta de dicionário.
-                            dUser = dict(dUser)
-                        except ValueError as exc:
-                            return render(request, "Adm/err.html", {'error': exc })
-
-                            ## @if Confere se dicionário de informações de usuário
-                            #       ainda continua nulo.
-                            #
-                            #   Caso esteja nulo então é lançado excessão de conta
-                            #   inexistente.
-                            if not dUser:
-                                raise ValueError(lang.DICT['EXCEPTION_INV_USR_NM'])
-                        
-                        # Renderiza uma página assíncrona de informação da
-                        # conta requisitada.
-                        return render(request, "Adm/info.html", {'data':dUser, 
-                                                        'action': action,
-                                                        'model' : model,
-                                                        'csrf' : csrf, 
-                                                        })
-                    else:
-                        raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
-
-                # Se houver qualquer problema referente as passagens dos forms 
-                # e conferência da validação dos mesmos então o 
-                # administrador será passado para a página inicial.
-                except ValueError as exc:
-                    return render(request, "Adm/home.html", {'error': exc })
+                    return render(request, "Adm/edit_field.html", {'form': form,
+                                                                 'action': action,
+                                                                 'model' : model,
+                                                                 'uname' : uname,
+                                                                 'err': err,
+                                                                })
 
             elif request.POST['act'] == 'del':
                 result = self.bus.delAccount(request)
@@ -530,30 +563,7 @@ class UiAdm(IfUiAdm):
                                                              'action' : action,
                                                              'model' : model,
                                                             })
-                elif action == "username":
-                    action = "name"
-                    form = NameForm()
-                elif action == "password":
-                    form = PasswordForm()
-                elif action == "language":
-                    form = LanguageForm()
-                    print form
-                elif action == "sex":
-                    form = SexForm()
-                elif action == "bios":
-                    form = BiosForm()
-                elif action == "interests":
-                    form = InterestsForm()
-                elif action == "avatar":
-                    form = AvatarForm()
-                else:
-                    form = lang.DICT["ERROR_FORM"]
-                    err = True 
-
-                return render(request, "Adm/edit_field.html", {'form': form,
-                                                             'ff': action,
-                                                             'err': err,
-                                                            })
+                
             
 
 ## Camada de negócio para o módulo de administração.
