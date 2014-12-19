@@ -30,6 +30,8 @@ $(document).ready(function(){
 		less_id = $(this).attr("class").slice(7);
 
 		loadLesson(less_id, 0);
+        $("#l_bt_f").removeAttr("disabled");
+        $("#l_bt_b").attr("disabled", "disabled");
 	});
 
     $("#l_bt_f").click(function(){
