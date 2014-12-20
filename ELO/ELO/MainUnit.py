@@ -142,7 +142,7 @@ class Factory:
 					self.__ui = UiAdm(self.__bus) 		
 				#	Passa a ação a ser efetuada e o devido modelo a ser
 				#		alterado para a run da Factory de Adm.
-				if action != None and model != None:
+				if action != None or model != None:
 					return self.__ui.run(request, action, model)
 				
 				return self.__ui.run(request)

@@ -1,0 +1,65 @@
+{% extends "includes/wrapper.html" %}
+{% load staticfiles %}
+
+{% block title %} {{ DICT.ELO_ADM }} {% endblock %}
+
+{% block head %}
+	<script src="{% static 'Adm/script_home.js' %}"></script>
+
+	<link 	rel="stylesheet"
+			type="text/css"
+			href="{% static 'Adm/styles.css' %}" />
+			
+	<link 	rel="stylesheet"
+			href="{% static 'Adm/icons/css/font-awesome.min.css' %}" />
+
+	<link 	rel="stylesheet"
+			type="text/css"
+			href="{% static 'Adm/table_styles.css' %}" />
+
+
+{% endblock %}
+
+{% block content %}
+	<nav>
+		<ul class="menu">
+			<div id ="Student"><li><a href="student/adm">Students</a></li></div>
+			<div id ="Professor"><li><a href="">Professors</a></li></div>
+			<div id ="Courses"><li><a href="">Courses</a></li></div>
+			<div id ="Log"><li><a href="">Log</a></li></div>
+			<div id ="Graphs"><li><a href="">Graphs</a></li></div>
+			<div id ="Documentatin"><li><a href="">Documentation</a></li></div>
+		</ul>
+	</nav>
+
+	<div id="link-home"><a href="">Home</a></div>
+	<h2 title="model-title">Students</h2>
+	<div class="icon-search"><i class="fa fa-search"></i></div>
+	<div class="search-box">
+		<form method="get">
+			<input type="text" placeholder="Name" name="Name">
+			<input type="submit" value="Search">
+		</form>
+	</div>
+	<br /><br /><br /><br />
+	<table class="table">
+		<tr>
+			<td>Name</td>
+			<td>Registration</td> 
+			<td>E-mail</td>
+		</tr>
+		<tr>
+			<td>Day</td>
+			<td>130107191</td>
+			<td>dayannefernandesc@gmail.com</td>
+		</tr>
+		<tr>
+			<td>Yuki</td>
+			<td>00000312</td> 
+			<td>yuki@gmail.com</td> 
+		</tr>
+	</table>
+
+	<div class="dialog"></div>
+
+{% endblock %}

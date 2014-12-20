@@ -516,6 +516,7 @@ class UiAdm(IfUiAdm):
                                          
         else:
             if not (action or model):
+                print action
                 result = ""
                 error = ""
                 return render(request, "Adm/home.html", {'error': error,
@@ -563,6 +564,10 @@ class UiAdm(IfUiAdm):
                                                              'action' : action,
                                                              'model' : model,
                                                             })
+
+                if action == "adm":
+                    return render(request, "Adm/adm_stu.html");
+
                 
             
 
