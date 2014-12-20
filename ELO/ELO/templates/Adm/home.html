@@ -14,47 +14,22 @@
 {% endblock %}
 
 {% block content %}
-
-<h3>{{ DICT.MENU }}</h3>
 	{{ error }}
 	{{ result }}
 
-	<div id="container">
-		<div id="left" class="p-left">
-			<div style="padding-left:70px"><h2>{{ DICT.STUDENT }}</h2></div>
-			  	<button id="reg_Student"
-						class="button">{{ DICT.REGISTER_STUDENT }}</button>
-				<button id="att_Student"
-						class="button">{{ DICT.SUBMIT_STUDENT }}</button>
-				<button id="srcdel_Student"
-						class="button">{{ DICT.DEL_STUDENT }}</button>
-		</div>
-		<div id="center">
-	  		<div style="padding-left:70px"><h2>{{ DICT.PROFESSOR }}</h2></div>
-		  	<button id="reg_Professor"
-					class="button">{{ DICT.REGISTER_PROFESSOR }}</button>
-			<button id="att_Professor"
-					class="button">{{ DICT.SUBMIT_PROFESSOR }}</button>
-			<button id="srcdel_Professor"
-					class="button">{{ DICT.DEL_PROFESSOR }}</button>
-		</div>
-	  	<div id="right" class="p-right">
-	  		<div style="padding-left:55px"><h2>{{ DICT.COURSE }}</h2></div>
-		  	<button id="reg_Course"
-					class="button">{{ DICT.REGISTER_COURSE }}</button>
-			<button id="att_Course"
-					class="button">{{ DICT.SUBMIT_COURSE }}</button>
-			<button id="srcdel_Course"
-					class="button">{{ DICT.DEL_COURSE }}</button>
-			<button id="insert_Course"
-					class="button">{{ DICT.INSERT_COURSE }}</button>
-		</div>
+	<nav>
+		<ul class="menu">
+			<div id ="Student"><li><a href="#">Students</a></li></div>
+			<div id ="Professor"><li><a href="#">Professors</a></li></div>
+			<div id ="Courses"><li><a href="#">Courses</a></li></div>
+			<div id ="Log"><li><a href="#">Log</a></li></div>
+			<div id ="Graphs"><li><a href="#">Graphs</a></li></div>
+			<div id ="Documentatin"><li><a href="#">Documentation</a></li></div>
+		</ul>
+	</nav>
 
-	</div> 
+	<h2>Welcome, Adm o/.</h2>
 
 	<div class="dialog"></div>
-	<div class="inner_dialog"></div>
-	<div class="inner2_dialog"></div>
-	<div class="inner3_dialog"></div>
 
 {% endblock %}

@@ -22,6 +22,15 @@ $(document).ready(function(){
 
 	$in3_dialog = $dialog;
 
+	$("#Student").click(function(){
+		// Title of the dialog
+		$dialog.dialog("option", "title", "Student");
+
+		$dialog.load("/assync/adm-edit/"+"reg"+"/"+"Student"+"/", function(){
+				$dialog.dialog('open');
+			});
+	});
+
 	//	Cria o evento de abertura dos formulários de registro, edição ou deleção
 	//		após clicar em qualquer button da home da Administração.
 	$("button").click(function(){
