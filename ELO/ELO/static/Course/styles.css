@@ -32,6 +32,7 @@ html, body,.content { height: 100%; }
     position: relative;
     float: left;
     background-color: #aaaaaa;
+    overflow: scroll;
 }
 
 #bottomer
@@ -64,4 +65,19 @@ html, body,.content { height: 100%; }
 #bkg_img
 {
     width: 50%;
+}
+
+div[class^='lesson_']
+{
+    cursor: pointer;
+}
+
+#complete
+{
+    color: green;
+}
+
+#incomplete
+{
+    color:red;
 }

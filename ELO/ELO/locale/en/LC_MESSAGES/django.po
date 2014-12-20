@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-04 13:28-0200\n"
+"POT-Creation-Date: 2014-11-30 14:22-0200\n"
 "PO-Revision-Date: 2014-06-24 19:05-0300\n"
 "Last-Translator: Yurick Hauschild <yurick.hauschild@gmail.com>\n"
 "Language-Team: LETproj <https://github.com/LETproj>\n"
@@ -293,189 +293,190 @@ msgstr "Incorrect username or password."
 msgid "Dados incorretos"
 msgstr "Incorrect form data."
 
-# ############################################ ERROS GERAIS ##
 #: index.py:173
+msgid "Id de lição inválido"
+msgstr "Invalid lesson Id."
+
+# ############################################ ERROS GERAIS ##
+#: index.py:176
 msgid "Permissão de acesso negada."
 msgstr "Permission denied."
 
-#: index.py:175
+#: index.py:178
 msgid "Ocorreu um erro inesperado. Favor tentar novamente."
 msgstr "Unexpected error. Please, try again."
 
-#: index.py:178
+#: index.py:181
 msgid "Ocorreu um erro ao salvar seu dado. Favor tentar novamente."
 msgstr ""
 "An error ocurred while we were trying to update your data. Please, try again "
 "later."
 
-#: index.py:181
+#: index.py:184
 msgid ""
 "Ocorreu um problema ao carregar o formulário. Favor tentar novamente mais "
 "tarde."
 msgstr "Form loader failed. Please try again later."
 
-#: index.py:183
+#: index.py:186
 msgid "SALiE - Página Inicial"
 msgstr "SALiE - Home"
 
-#: index.py:184
+#: index.py:187
 msgid "SALiE - Perfil"
 msgstr "SALiE - Profile"
 
-#: index.py:185
+#: index.py:188
 msgid "SALiE - Administração"
 msgstr "SALiE - Management"
 
-#: index.py:187
+#: index.py:190
 msgid "Linguagem"
 msgstr "Language"
 
-#: index.py:188
+#: index.py:191
 msgid "Inglês"
 msgstr "English"
 
-#: index.py:189
+#: index.py:192
 msgid "Português"
 msgstr "Portuguese"
 
-#: index.py:191
+#: index.py:194
 msgid "Sexo"
 msgstr "Sex"
 
-#: index.py:192
+#: index.py:195
 msgid "Masculino"
 msgstr "Male"
 
-#: index.py:193
+#: index.py:196
 msgid "Feminino"
 msgstr "Female"
 
-#: index.py:195
+#: index.py:198
 msgid "Usuário:"
 msgstr "User"
 
-#: index.py:196
+#: index.py:199
 msgid "Senha:"
 msgstr "Password"
 
-#: index.py:197
+#: index.py:200
 msgid "Matrícula"
 msgstr "Reg. Number"
 
-#: index.py:198
+#: index.py:201
 msgid "Biografia"
 msgstr "Bios"
 
-#: index.py:199
+#: index.py:202
 msgid "Interesses"
 msgstr "Interests"
 
-#: index.py:200
+#: index.py:203
 msgid "Nome"
 msgstr "Name"
 
-#: index.py:201
+#: index.py:204
 msgid "Email"
 msgstr "Email"
 
-#: index.py:202
+#: index.py:205
 msgid "Avatar"
 msgstr "Avatar"
 
-#: index.py:203
+#: index.py:206
 msgid "Campus"
 msgstr "Campus"
 
-#: index.py:205
+#: index.py:208
 msgid "Principal"
 msgstr "Main page"
 
-#: index.py:206
+#: index.py:209
 msgid "Menu"
 msgstr "Menu"
 
-#: index.py:207
+#: index.py:210
 msgid "Entrar"
 msgstr "Login"
 
-#: index.py:208
+#: index.py:211
 msgid "Sair"
 msgstr "Logout"
 
-#: index.py:209
+#: index.py:212
 msgid "Perfil"
 msgstr "Profile"
 
-#: index.py:210
+#: index.py:213
 msgid "SALiE"
 msgstr "SALiE"
 
-#: index.py:212
+#: index.py:215
 msgid "Aluno"
 msgstr "Student"
 
-#: index.py:213
+#: index.py:216
 msgid "Curso"
 msgstr "Course"
 
-#: index.py:214
+#: index.py:217
 msgid "Professor"
 msgstr "Professor"
 
 # ############################################ INTERFACE ##
-#: index.py:216
+#: index.py:219
 msgid "Atualizar"
 msgstr "Submit"
 
-#: index.py:217
+#: index.py:220
 msgid "Cadastrar"
 msgstr "Register"
 
-#: index.py:218
+#: index.py:221
 msgid "Procurar"
 msgstr "Search"
 
-#: index.py:219
+#: index.py:222
 msgid "Deletar"
 msgstr "Delete"
 
-#: index.py:221
+#: index.py:224
 msgid "Registrar Novo Aluno"
 msgstr "Register new student"
 
-#: index.py:222
+#: index.py:225
 msgid "Atualizar dados de Aluno"
 msgstr "Update data from student"
 
-#: index.py:223
+#: index.py:226
 msgid "Apagar Registro de Aluno"
 msgstr "Clear record of student"
 
-#: index.py:225
+#: index.py:228
 msgid "Registrar Novo Curso"
 msgstr "Register new course"
 
-#: index.py:226
+#: index.py:229
 msgid "Atualizar dados de Curso"
 msgstr "Update data from course"
 
-#: index.py:227
+#: index.py:230
 msgid "Apagar Registro de Curso"
 msgstr "Clear record of course"
 
-#: index.py:228
-msgid "Editar alunos e professores inscritos no Curso"
-msgstr "Edit students and teachers registered in the Course"
-
-#: index.py:230
+#: index.py:232
+#, fuzzy
 msgid "Registrar Novo Professor"
 msgstr "Register new course"
 
-#: index.py:231
+#: index.py:233
 msgid "Atualizar dados de Professor"
 msgstr "Update data from professor"
 
-#: index.py:232
+#: index.py:234
 msgid "Apagar Registro de Professor"
 msgstr "Clear record of professor"
 

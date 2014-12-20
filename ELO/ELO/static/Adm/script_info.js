@@ -8,9 +8,9 @@ $(document).ready(function(){
 		action = $(this).attr("id").slice(0,3);
 		model = $(this).attr("id").slice(4);
 		csrf = $("div[id^='csrf_']").attr("id").slice(5);
+		uname = $("div[id^='username_']").attr("id").slice(9);
 
 		if (model == "Course"){
-			uname = $("div[id^='username_']").attr("id").slice(9);
 
 			data = { courMatric: uname,
 					 csrfmiddlewaretoken: crsf,
@@ -19,7 +19,7 @@ $(document).ready(function(){
 					};
 		}
 		else{
-			uname = $("div[id^='username_']").attr("id").slice(9);
+			
 
 			data = { username: uname,
 					 csrfmiddlewaretoken: crsf,
@@ -37,8 +37,17 @@ $(document).ready(function(){
 
 		model = $(this).attr("id").slice(5);
 		field = $(this).attr("field");
+		csrf = $("div[id^='csrf_']").attr("id").slice(5);
+		uname = $("div[id^='username_']").attr("id").slice(9);
 
-		$in2_dialog.load("assync/edit-field-adm/"+field+"/"+model+"/", function(){
+		data = { username: uname,
+				 csrfmiddlewaretoken: crsf,
+				 model: model,
+				 act: action
+				};
+
+		$in2_dialog.load("assync/edit-field-adm/"+field+"/"+model+"/", data,
+						function(){
 			$in2_dialog.dialog('open');
 		});
 

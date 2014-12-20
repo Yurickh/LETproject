@@ -1,1 +1,0 @@
-/home/let/Don't fear the reaper../LETproject/ELO/ELO/locale/index.py

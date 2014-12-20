@@ -6,25 +6,28 @@
 	<link	rel="stylesheet"
 			type="text/css"
 			href="{% static 'vendor/select2/select2.css' %}" />
-	<script src="{% static 'Profile/script_select2.js' %}"></script>
-	<link	rel="stylesheet"
-			type="text/css"
-			href="{% static 'Profile/styles_select2.css' %}" />
+	<script src="{% static 'Adm/script_edit_field.js' %}">
+	</script>
 {% endblock %}
 
 {% block body %}
 	{% if err %}
 		{{ form }}
 	{% else %}
-		<form action="" method="post" id="{{ ff }}_form" 
-			{% if ff == "avatar" %} enctype="multipart/form-data"> <img src="{{ MEDIA_URL }}{{ user.avatar }}" /{% endif %}>
+		<form action="" method="post" id="{{ data.action }}_form" 
+			{% if data.action == "avatar" %} enctype="multipart/form-data"> <img src="{{ MEDIA_URL }}{{ user.avatar }}" /{% endif %}>
 			{% for field in form %}
 				
 				{{ field }}<br />
 
 			{% endfor %}
-			{% csrf_token %}
-			<input type="submit" name="{{ ff }}" value="{{ DICT.SUBMIT }}" />
+			<input type="submit" name="{{ data.action }}" value="Editar" />
 		</form>
+
+		<div class="dialog"></div>
+		<div id="model_{{ data.model }}"></div>
+		<div id="username_{{ data.uname }}"></div>
+		<div id="csrf_{{ data.csrfmiddlewaretoken }}"></div>
+
 	{% endif %}
 {% endblock %}

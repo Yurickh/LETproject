@@ -12,7 +12,7 @@
 from BaseUnit import *
 from abc import *
 
-import ELO.index as lang
+import ELO.locale.index as lang
 
 ## Definição das interfaces para classes de usuários.
 #	Inclui-se 'name' e 'password', propriedades concretas que serão

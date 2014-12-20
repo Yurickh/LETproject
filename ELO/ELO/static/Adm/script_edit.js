@@ -22,7 +22,7 @@ $(document).ready(function(){
 			data = { username: uname,
 					 csrfmiddlewaretoken: crsf,
 					 model: model,
-					 action: action
+					 act: action
 					};
 		}
 

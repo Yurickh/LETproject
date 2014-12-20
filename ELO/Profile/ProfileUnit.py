@@ -426,20 +426,32 @@ class PersProfile(IfPersProfile):
                     ('interests',   sf('INTEREST'))
                 ]
 
-                sfmc = sf('MODULE_COMPLETED') # Set Fetch for modules completed
                 lc = [] # List of courses
                 
                 for c in sfc:
-                    nmod = Courses.objects.filter(identity=c,
-                                                  field='MODULE').count()
+                    # Select Field for Modules Completed
+                    sfmc = sf('MODULE_COMPLETED')
+                    # Modules contidos neste Course
+                    mods = map(lambda x: x.value, 
+                               Courses.objects.filter(identity=c,
+                                                      field='MODULE'))
+                    
+                    # Modules Completed for this Course
+                    mcftc = []
+
+                    for mc in sfmc:
+                        if mc in mods:
+                            mcftc = mcftc + [mc]
 
                     # Get number of modules completed
-                    sfmc = 1 if not sfmc is list else sfmc.length()
+                    mcftc = len(mcftc)
+                    # Get number of modules in this course
+                    nmod = len(mods)
 
                     cname = Courses.objects.get(identity=c, field='NAME').value
                     lc = lc + [{'name':cname, 
                                  'id':c, 
-                                 'completion': sfmc*100/nmod}]
+                                 'completion': mcftc*100/nmod}]
 
                 sfc = lc
 

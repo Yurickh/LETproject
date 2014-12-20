@@ -125,7 +125,7 @@ class BiosForm(forms.Form):
 #	Capaz de modificar a lista de interesses do jovem usuário.
 #	Talvez venhamos a utilizar isso mais para frente.
 class InterestsForm(forms.Form):
-	newdata		= forms.CharField(required=False, widget=forms.HiddenInput(attrs={'style':'width:90%;'}))
+	newdata		= forms.CharField(required=False)
 
 	def clean_newdata(self):
 		try:

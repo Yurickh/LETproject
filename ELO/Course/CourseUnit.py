@@ -4,10 +4,17 @@ from abc import*
 
 import ELO.locale.index as lang
 
-from ELO.models import Courses, Module, Lesson
+from ELO.models import Courses, Module, Lesson, Student
+
+from Course.forms import LessonForm
 
 from django.shortcuts import render
 from django.core.exceptions import PermissionDenied
+from django.http import Http404
+from django.forms import ValidationError
+
+LESSONS_URL = 'Course/lessons/'
+GENERAL_URL = 'Course/general/'
 
 class IfUiCourse:
 	__metaclass__ = ABCMeta
@@ -35,7 +42,7 @@ class IfUiCourse:
 		del self.__bus
 
 	@abstractmethod
-	def run(self, request, courseid): pass
+	def run(self, request, courseid=None): pass
 
 
 class IfBusCourse:
@@ -64,32 +71,79 @@ class IfBusCourse:
 		del self.__pers
 
 	@abstractmethod
+	def isLessonRight(self, user, lesson_id, slidenumber): pass
+
+	## Método que recupera uma lista dos módulos ou lições.
+	#
+	#	@arg user		Objeto usuário, como no contido no cookie user.
+	#
+	#	@arg accesstype	String contendo "MODULE" ou "LESSON"
+	@abstractmethod
+	def getCompleted(self, user, accesstype): pass
+
+	@abstractmethod
 	def getCourse(self, user, courseid): pass
 
 class IfPersCourse:
 
 	@abstractmethod
-	def fetch(id, db): pass
+	def getid(self, field, value, db): pass
+
+	@abstractmethod
+	def fetch(self, id, db): pass
 
 
 class UiCourse(IfUiCourse):
 
-	def run(self, request, courseid):
+	def run(self, request, courseid=None):
 		
 		user = request.session['user']
 
 		if request.method == "GET":
-			if courseid in map(lambda x: x["id"], user["courses"]):
-				course = self.bus.getCourse(user, courseid)
-				return render(request, "Course/general/frame.html", 
-					{'course':course})
-			else:
-				raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])
-		
+			if courseid:
+				if courseid in map(lambda x: x["id"], user["courses"]):
+					course = self.bus.getCourse(user, courseid)
+					return render(request, GENERAL_URL + "frame.html", 
+						{'course':course})
+				else:
+					raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])
+		elif request.method == "POST":
+			lesson_form = LessonForm(request.POST)
+			try:
+				if lesson_form.is_valid():
+					lessonid = lesson_form.cleaned_data['lesson_id']
+					slidenumber = lesson_form.cleaned_data['slide_number']
+					if self.bus.isLessonRight(user, lessonid, slidenumber):
+						lesson = self.bus.getLesson(user, lessonid.value)
+						url = LESSONS_URL + lesson['url']
+						url = url + "/" + str(slidenumber.value) + ".html"
+						return render(request, url)
+					else:
+						raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])
+				else:
+					raise ValueError(lang.DICT['EXCEPTION_INV_LES'])
+			except ValueError as exc:
+				return render(request, GENERAL_URL + "assync_std.html",
+						{'error': exc})
+				
 
 class BusCourse(IfBusCourse):
 
+	def isLessonRight(self, user, lesson_id, slidenumber):
+		#TODO: implementar o isLessonRight
+
+		return True
+
+
+	def getCompleted(self, user, accesstype):
+		userid = self.pers.getid('NAME', user['name'], Student)
+		userdata = self.pers.fetch(userid, Student)
+
+		return userdata.get(accesstype + '_COMPLETED', [])
+
 	def getCourse(self, user, courseid):
+		compmlist = self.getCompleted(user, 'MODULE')
+		compllist = self.getCompleted(user, 'LESSON')
 		coursedata = self.pers.fetch(courseid, Courses)
 		modulelist = []
 		
@@ -101,18 +155,38 @@ class BusCourse(IfBusCourse):
 
 			for lessonid in sfm['LESSON']:
 				lessoname = self.pers.fetch(lessonid, Lesson)['NAME']
-				lessonlist = lessonlist + lessoname
+				lessoncomplete = True if lessonid in compllist else False
+				lessonlist = lessonlist + [{'id': lessonid,
+											'name':lessoname[0],
+										    'complete':lessoncomplete }]
 
 			modulelist = modulelist + [{'id': 		moduleid,
 										'name': 	modulename,
 										'lessons':	lessonlist,
+										'complete':True \
+											if moduleid in compmlist \
+											else False
 									  }]
 		
 		coursedata['MODULE'] = sorted(modulelist, key=lambda x: x['id'])
 
 		return coursedata
-		
+
+	def getLesson(self, user, lessonid):
+		lessondata = self.pers.fetch(lessonid, Lesson)
+
+		lesson = {}
+		lesson['url'] = lessondata['LINK'][0]
+		lesson['name'] = lessondata['NAME'][0]
+
+		return lesson
+
+
 class PersCourse(IfPersCourse):
+
+	def getid(self, field, value, db):
+		model_data = db.objects.get(field=field, value=value)
+		return model_data.identity
 
 	def fetch(self, id, db):
 		model_data = db.objects.filter(identity=id)
