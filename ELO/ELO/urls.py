@@ -47,8 +47,6 @@ urlpatterns = patterns('',
 	url(r'^logout/?$', factory.runLogout),
 	## URL da pagina de cursos.
 	url(r'^course/(?P<courseid>\d+)/?$', factory.runCourse),
-	## URL da pagina de administracao.
-	url(r'^adm/?$', factory.runAdm),
 	## URL da página assíncrona de edição de estudante, professor ou curso.
 	url(r'^assync/adm-edit/(?P<action>\w{3,7})/(?P<model>\w{3,9})/?$', 
 		factory.runAdm),
@@ -67,7 +65,7 @@ urlpatterns = patterns('',
 	## URL para confirmar alguma ação.
 	url(r'^assync/adm-conf/(?P<action>\w{3,7})/?$', factory.runAdm),
 	url(r'^assync/lesson/?$', factory.runCourse),
-	url(r'^student/(?P<action>\w{3,7})/?$', factory.runAdm),
+	url(r'^adm/(?P<model>\w{3,10})/(?P<username>\w{0,32})?$', factory.runAdm),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()

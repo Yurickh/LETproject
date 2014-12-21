@@ -85,7 +85,7 @@ class IfUiAdm:
     #   O método run() permite à Factory dar o controle do programa 
     #   ao módulo de Administração.
     @abstractmethod
-    def run(self, request, action=None, model=None): pass
+    def run(self, request, model=None, username=None): pass
 
 ## Interface para a camada de negócio do módulo de Administração.
 #   É responsável pela validação dos dados submetidos através do 
@@ -152,7 +152,7 @@ class IfBusAdm:
     #
     #   @return data    Dados da conta procurada.
     @abstractmethod
-    def fetchAccount(self, request): pass
+    def fetchAccount(self, model, username): pass
 
     ## Verifica os últimos eventos realizados pelo Administrador.
     #@abstractmethod
@@ -254,7 +254,7 @@ class IfPersAdm:
 #   requisitando os devidos dados necessários de cada ação.
 class UiAdm(IfUiAdm): 
 
-    def run(self, request, action=None, model=None):
+    def run(self, request, model=None, username=None):
         ## @if Verifica qual o propósito do submit.
         #
         #   Caso seja POST, a requisição ocorre após a submissão de uma form,
@@ -515,15 +515,13 @@ class UiAdm(IfUiAdm):
             return HttpResponseRedirect('/')
                                          
         else:
-            if not (action or model):
-                print action
+            if not (model or username):
                 result = ""
                 error = ""
                 return render(request, "Adm/home.html", {'error': error,
                                                         'result': result, })
 
             else:
-                err = False
                 ## @if Confere qual a ação requisitada.
                 #
                 #   Caso for uma ação de registro então é passado os forms de
@@ -534,7 +532,7 @@ class UiAdm(IfUiAdm):
                 #
                 #   Caso contrário, é passado para a página renderizada erro
                 #   de formulário.   
-                if action == "reg":
+                if model == "reg":
                     if model == "Student" or model == "Professor":
                         form = RegUserForm()
                     elif model == "Course":
@@ -546,7 +544,7 @@ class UiAdm(IfUiAdm):
                                                              'action' : action,
                                                              'model' : model,
                                                             })
-                elif action == "att" or action == "srcdel":
+                elif model == "att" or model == "srcdel":
                     if model == "Student" or model == "Professor":
                         form = SrcUserForm()
                     elif model == "Course":
@@ -555,18 +553,43 @@ class UiAdm(IfUiAdm):
                         raise ValueError(lang.DICT['ERROR_MODEL'])
 
                     return render(request, "Adm/edit.html", {'form': form,
-                                                             'action' : action,
+                                                             'action' : model,
                                                              'model' : model,
                                                             })
-                elif action == "insert":
+                elif model == "insert":
                     form = SrcCourForm()
                     return render(request, "Adm/edit.html", {'form': form,
                                                              'action' : action,
                                                              'model' : model,
                                                             })
 
-                if action == "adm":
-                    return render(request, "Adm/adm_stu.html");
+                if model == "student":
+                    if username:
+                        form = SrcUserForm(username)
+                        try:
+                            if form.is_valid():
+                                dUser = self.bus.fetchAccount(request)
+                                # Força a ter uma estruturação correta de dicionário.
+                                dUser = dict(dUser)
+
+                                return render(request, "Adm/adm_stu.html", 
+                                            {'form': form, 'data':dUser, })
+                            else:
+                                raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
+
+                        except ValueError as exc:
+                            return render(request, "Adm/adm_stu.html", 
+                                            {'err': exc, })
+                        
+                    else:
+                        form = SrcUserForm()
+                        data = {'NAME':'Dayanne', 'MATRIC' : '1123123', 'EMAIL': 'dasfasfas', 'SEX':'F'}
+                        return render(request, "Adm/adm_stu.html", 
+                                        {'form': form, 'data': data,})
+                        
+                    
+
+                   
 
                 
             
@@ -704,12 +727,9 @@ class BusAdm(IfBusAdm):
 
         return data
 
-    def fetchAccount(self, request):
+    def fetchAccount(self, model, username):
         #  Inicializa modelo como nulo.
         db = None
-
-        # Força modelo da conta passado pela requisição a ser uma String.
-        model = str(request.POST['model'])
 
         ## @if Confere qual o modelo da conta procurado.
         #
@@ -740,7 +760,7 @@ class BusAdm(IfBusAdm):
         if db == Courses:
             data = self.pers.fetchCour(str(request.POST['courMatric']), db)  
         else:
-            data = self.pers.fetchUser(str(request.POST['username']), db) 
+            data = self.pers.fetchUser(username, db) 
     
 
         ## @if Confere se foi retornado algo do banco de dados.

@@ -129,7 +129,7 @@ class Factory:
 	#	administração.
 	@method_decorator(vary_on_cookie)
 	@method_decorator(csrf_protect)
-	def runAdm(self, request, action=None, model=None):
+	def runAdm(self, request, model=None, username=None):
 		#	Checa se usuario ja esta logado.
 		if 'user' in request.session.keys():
 			#	Checa se usuário é um Administrador ou Super Administrador.
@@ -142,8 +142,8 @@ class Factory:
 					self.__ui = UiAdm(self.__bus) 		
 				#	Passa a ação a ser efetuada e o devido modelo a ser
 				#		alterado para a run da Factory de Adm.
-				if action != None or model != None:
-					return self.__ui.run(request, action, model)
+				if model != None or username != None:
+					return self.__ui.run(request, model, username)
 				
 				return self.__ui.run(request)
 		#	Caso o  usuário não esteja logado ou não seja Administrador,

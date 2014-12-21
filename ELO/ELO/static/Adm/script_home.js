@@ -22,10 +22,9 @@ $(document).ready(function(){
 
 	$in3_dialog = $dialog;
 
-	//$("#Student").click(function(){
-	//	action = "adm";
-	//	$.get("student/"+action+"/");
-	//});
+	$("#Student").click(function(){
+		$(".container").load("/adm/student");
+	});
 
 	//	Cria o evento de abertura dos formulários de registro, edição ou deleção
 	//		após clicar em qualquer button da home da Administração.

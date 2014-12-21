@@ -95,7 +95,9 @@ class RegUserForm(forms.Form):
 ## Classe para o formulário de pesquisa de aluno, professor ou administrador.
 #	O administrador insere o nome do usuario a ser pesquisado.
 class SrcUserForm(forms.Form): 
-	username = forms.CharField(max_length = 32, label = "Nome:", required=True)
+	username = forms.CharField(max_length = 32, label = "", required=True,
+								widget=forms.TextInput(
+								attrs={'placeholder':"Name"}))
 	
 	## Verifica se a formatação do nome do usuário está correta.
 	#	Caso esteja, retorna o nome, caso contrário, lança uma excessão.
@@ -180,7 +182,8 @@ class RegUserCourForm(forms.Form):
 #	O administrador insere a matrícula do curso a ser pesquisado.
 class SrcCourForm(forms.Form):
 	courMatric = forms.IntegerField(label = "Código da Disciplina", 
-								required =True)
+								required =True, widget=forms.TextInput(
+									attrs={'placeholder':"Number"}))
 
 	## Verifica se a formatação da matrícula do curso está correta.
 	#	Caso esteja, retorna a matrícula, caso contrário, lança uma excessão.
