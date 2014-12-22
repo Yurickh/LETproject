@@ -27,7 +27,7 @@ $(document).ready(function(){
 	});
 
 	//	Cria o evento de abertura dos formulários de registro, edição ou deleção
-	//		após clicar em qualquer button da home da Administração.
+	/*		após clicar em qualquer button da home da Administração.
 	$("button").click(function(){
 
 		//	Coleta o título do button clicado na home de Adm.
@@ -70,6 +70,6 @@ $(document).ready(function(){
 			});
 		}
 	});
-
+*/
 
 });
