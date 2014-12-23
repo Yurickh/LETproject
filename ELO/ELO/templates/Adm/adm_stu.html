@@ -14,37 +14,35 @@
 			href="{% static 'Adm/icons/css/font-awesome.min.css' %}" />
 {% endblock %}
 
-{% if err %}
-	{{ err }}
-{% endif %}
-
 {% block body %}
-<div id="link-home"><a href="">Home</a></div>
-<h2 title="model-title">Students</h2>
-<div class="icon-search"><i class="fa fa-search"></i></div>
-<div class="search-box">
-	<form id="stu_search "method="get">
-		{{ form }}
-		<input type="submit" value="Search">
-	</form>
-</div>
-<br /><br /><br /><br />
-<table class="table">
-	<tr>
-		<td>Name</td>
-		<td>Registration</td> 
-		<td>E-mail</td>
-	</tr>
-	<tr>
-	{% if data|not_None %}
-		{% for field, value in data.items %}
-			{% if field|table_student %}
-				<td>{{ value }}</td>
-				hey
-			{% endif %}
-		{% endfor %}
-		hai
+	{% if err %}
+		{{ err }}
 	{% endif %}
-	</tr>
-</table>
+
+	<div id="link-home"><a href="">Home</a></div>
+	<h2 title="model-title">Students</h2>
+	<div class="icon-search"><i class="fa fa-search"></i></div>
+	<div class="search-box">
+		<form id="stu_search "method="get">
+			{{ form }}
+			<input type="submit" value="Search">
+		</form>
+	</div>
+	<br /><br /><br /><br />
+	<table class="table">
+		<tr>
+			<td>Name</td>
+			<td>Registration</td> 
+			<td>E-mail</td>
+		</tr>
+		<tr>
+		{% if data|not_None %}
+			{% for field, value in data.items %}
+				{% if field|table_student %}
+					<td>{{ value }}</td>
+				{% endif %}
+			{% endfor %}
+		{% endif %}
+		</tr>
+	</table>
 {% endblock %}
