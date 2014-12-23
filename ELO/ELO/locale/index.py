@@ -5,6 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 
 ## @file Arquivo que carrega as strings que devem ser traduzidas.
+#	Aqui ficam todas as macros do sistema. Evite utilizar hard-coded text.
 
 available_langs = dict(settings.LANGUAGES).keys()
 
