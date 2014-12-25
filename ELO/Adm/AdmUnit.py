@@ -126,13 +126,15 @@ class IfBusAdm:
     def pers(self):
         del self.__pers
 
+    @abstractmethod
+    def allAccounts(self, model): pass
+
     ## Cria uma conta no database.
     #   Podendo ser esta uma conta de Estudante, Professor ou um Curso.
     #   
     #   @arg    form    Valores dos campos para registro validados.
     #
-    @abstractmethod
-    def regAccount(self, request): pass
+    
    
     ## Edita dados de um conta no database.
     #   Podendo ser estes de uma conta de Estudante, Professor ou um Curso.  
@@ -244,6 +246,9 @@ class IfPersAdm:
     #   @return fetchset    Lista com tuplas dos campos e valores do curso.
     @abstractmethod
     def fetchCour(self, courMatric, database): pass
+
+    @abstractmethod
+    def fetchAll(self, database): pass
 
 ## Camada de interface do Administrador para o módulo de Administração.
 #   Deve carregar o devido template, contendo campos onde será
@@ -583,7 +588,8 @@ class UiAdm(IfUiAdm):
                         
                     else:
                         form = SrcUserForm()
-                        data = {'NAME':'Dayanne', 'MATRIC' : '1123123', 'EMAIL': 'dasfasfas', 'SEX':'F'}
+                        data = self.bus.allAccounts(model)
+                        print data
                         return render(request, "Adm/adm_stu.html", 
                                         {'form': form, 'data': data,})
                         
@@ -600,6 +606,28 @@ class UiAdm(IfUiAdm):
 #   inserido, atualizado ou deletado dados sobre uma determinada
 #   conta, podendo ser esta de um Estudante, Professor ou de um Curso.
 class BusAdm(IfBusAdm): 
+
+    def allAccounts(self, model):
+        db = None
+
+        ## @if Confere qual o modelo da conta procurado.
+        #
+        #   Caso seja Estudante, Professor ou Curso, o modelo antes passado 
+        #      como string é alocado em uma variável temporária como objeto.
+        #   
+        #   Caso o contrário, irá emitir excessão de modelo inválido.
+        if model == "student":
+            db = Student
+        elif model == "professor":
+            db = Professor
+        elif model == "course":
+            db = Courses 
+        else:
+            raise ValueError(lang.DICT['ERROR_MODEL'])
+
+        data = self.pers.fetchAll(db) 
+
+        return data
 
     def regAccount(self, request):
         # Inicia o dicionário dict_data. 
@@ -951,38 +979,6 @@ class PersAdm(IfPersAdm):
 
             return True
 
-
-    ## Seleciona campo a partir da identidade do usuário.
-    #   Podendo ser estes de uma conta de Estudante, Professor ou um Curso.  
-    #
-    #   @arg    uid         Identidade de uma conta.
-    #
-    #   @arg    field       Objeto modelo sobre o qual a consulta será
-    #                       realizada. 
-    #
-    #   @arg    database    Modelo de uma conta.   
-    #
-    #   @return ret         Valor do campo de alguma conta.
-    def __select_field(self, uid, field, database):
-        ##  Tenta coletar o valor de algum campo pelo user id.
-        #
-        # Caso seja encontrado valores múltiplos é mostrado na tela
-        #   os valores encontrados.
-        # Caso algum dado nao exista no banco de dados 
-        #   entao a variável de retorno recebe um valor nulo.
-        try:
-            ret = database.objects.get(identity=uid, field=field)
-            ret = ret.value
-
-        except database.MultipleObjectsReturned:
-            ret = map(lambda x: x.value, database.objects.filter(
-                    identity=uid, field=field))
-
-        except database.DoesNotExist:
-            ret = None 
-
-        return ret
-
     def fetchUser(self, username, database):
 
         try:
@@ -1044,4 +1040,59 @@ class PersAdm(IfPersAdm):
 
         return fetchset
 
+    ## Seleciona campo a partir da identidade do usuário.
+    #   Podendo ser estes de uma conta de Estudante, Professor ou um Curso.  
+    #
+    #   @arg    uid         Identidade de uma conta.
+    #
+    #   @arg    field       Objeto modelo sobre o qual a consulta será
+    #                       realizada. 
+    #
+    #   @arg    database    Modelo de uma conta.   
+    #
+    #   @return ret         Valor do campo de alguma conta.
+    def __select_field(self, uid, field, database):
+        ##  Tenta coletar o valor de algum campo pelo user id.
+        #
+        # Caso seja encontrado valores múltiplos é mostrado na tela
+        #   os valores encontrados.
+        # Caso algum dado nao exista no banco de dados 
+        #   entao a variável de retorno recebe um valor nulo.
+        try:
+            ret = database.objects.get(identity=uid, field=field)
+            ret = ret.value
+
+        except database.MultipleObjectsReturned:
+            ret = map(lambda x: x.value, database.objects.filter(
+                    identity=uid, field=field))
+
+        except database.DoesNotExist:
+            ret = None 
+
+        return ret
+
+    def fetchAll(self, database):
+        al = []
+
+        try:
+            lastid = database.objects.order_by('-identity')[0]
+
+            for uid in range(1,lastid.identity+1):
+                print uid
+                sf = lambda x: self.__select_field(uid, x, database)
+
+                fetchdict = {
+                        'NAME':     sf('NAME'),
+                        'MATRIC':   sf('MATRIC'),
+                        'EMAIL':    sf('EMAIL'),
+                }
+
+                al.append(fetchdict)
+
+        except database.DoesNotExist as exc:
+            al = []
+        except database.MultipleObjectsReturned as exc:
+            raise ValueError(exc)
+
+        return al
 

@@ -35,14 +35,14 @@
 			<td>Registration</td> 
 			<td>E-mail</td>
 		</tr>
-		<tr>
-		{% if data|not_None %}
-			{% for field, value in data.items %}
-				{% if field|table_student %}
+		{% if data %}
+			{% for item in data %}
+				<tr>
+				{% for field, value in item.items %}
 					<td>{{ value }}</td>
-				{% endif %}
+				{% endfor %}
+				</tr>
 			{% endfor %}
 		{% endif %}
-		</tr>
 	</table>
 {% endblock %}
