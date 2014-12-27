@@ -65,7 +65,7 @@ urlpatterns = patterns('',
 	## URL para confirmar alguma ação.
 	url(r'^assync/adm-conf/(?P<action>\w{3,7})/?$', factory.runAdm),
 	url(r'^assync/lesson/?$', factory.runCourse),
-	url(r'^adm/(?P<model>\w{3,10})/(?P<username>\w{0,32})?$', factory.runAdm),
+	url(r'^adm/(?P<model>\w{3,12})/(?P<username>\w{0,32})?$', factory.runAdm),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()

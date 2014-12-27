@@ -154,7 +154,7 @@ class IfBusAdm:
     #
     #   @return data    Dados da conta procurada.
     @abstractmethod
-    def fetchAccount(self, model, username): pass
+    def fetchAccount(self, request, model): pass
 
     ## Verifica os últimos eventos realizados pelo Administrador.
     #@abstractmethod
@@ -275,47 +275,33 @@ class UiAdm(IfUiAdm):
         #   adequados e informações do usuário procurado para uma possível
         #   edição ou deleção.
         if request.method == "POST":
-          
-                                         
-        else: #request.method == "GET"
-            if not (model or username):
-                result = ""
-                error = ""
-                return render(request, "Adm/home.html", {'error': error,
-                                                        'result': result, })
+            form = SrcUserForm(request.POST)
+            try:
+                if form.is_valid():
+                    form = SrcUserForm()
+                    dUser = self.bus.fetchAccount(request, model)
 
-            else: #request.method == "AJAX"
+                    ordUser = [{'NAME':dUser[0]['NAME'], 'MATRIC':
+                                dUser[0]['MATRIC'], 'EMAIL':dUser[0]['EMAIL']}]
+                    return render(request, "Adm/adm_stu.html", 
+                                {'form': form, 'data':ordUser, 'model':model,})
+                else:
+                    raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
 
-                if model == "student":
-                    if username:
-                        form = SrcUserForm(username)
-                        try:
-                            if form.is_valid():
-                                dUser = self.bus.fetchAccount(request)
-                                # Força a ter uma estruturação correta de dicionário.
-                                dUser = dict(dUser)
+            except ValueError as exc:
+                return render(request, "Adm/adm_stu.html", 
+                                {'form': form,'err': exc, })
 
-                                return render(request, "Adm/adm_stu.html", 
-                                            {'form': form, 'data':dUser, })
-                            else:
-                                raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
 
-                        except ValueError as exc:
-                            return render(request, "Adm/adm_stu.html", 
-                                            {'err': exc, })
-                        
-                    else:
-                        form = SrcUserForm()
-                        data = self.bus.allAccounts(model)
-                        return render(request, "Adm/adm_stu.html", 
-                                        {'form': form, 'data': data,})
-                        
+        elif not (model or username): #request.method == "GET"
+            return render(request, "Adm/home.html")
+        else: #request.method == "AJAX"
+            if model == "students":
+                form = SrcUserForm()
+                data = self.bus.allAccounts(model)
+                return render(request, "Adm/adm_stu.html", 
+                                {'form': form, 'data': data, 'model':model,})
                     
-
-                   
-
-                
-            
 
 ## Camada de negócio para o módulo de administração.
 #   Deve ser capaz de manipular os dados do sistema,
@@ -333,11 +319,11 @@ class BusAdm(IfBusAdm):
         #      como string é alocado em uma variável temporária como objeto.
         #   
         #   Caso o contrário, irá emitir excessão de modelo inválido.
-        if model == "student":
+        if model == "students":
             db = Student
-        elif model == "professor":
+        elif model == "professors":
             db = Professor
-        elif model == "course":
+        elif model == "courses":
             db = Courses 
         else:
             raise ValueError(lang.DICT['ERROR_MODEL'])
@@ -472,7 +458,7 @@ class BusAdm(IfBusAdm):
 
         return data
 
-    def fetchAccount(self, model, username):
+    def fetchAccount(self, request, model):
         #  Inicializa modelo como nulo.
         db = None
 
@@ -485,11 +471,11 @@ class BusAdm(IfBusAdm):
         #   Caso seja Curso este é alocado em uma variável temporária.   
         #   
         #   Caso contrário, irá emitir excessão de modelo inválido.
-        if model == "Student":
+        if model == "students":
             db = Student
-        elif model == "Professor":
+        elif model == "professors":
             db = Professor
-        elif model == "Course":
+        elif model == "courses":
             db = Courses 
         else:
             raise ValueError(lang.DICT['ERROR_MODEL'])
@@ -505,7 +491,7 @@ class BusAdm(IfBusAdm):
         if db == Courses:
             data = self.pers.fetchCour(str(request.POST['courMatric']), db)  
         else:
-            data = self.pers.fetchUser(username, db) 
+            data = self.pers.fetchUser(str(request.POST['username']), db) 
     
 
         ## @if Confere se foi retornado algo do banco de dados.
@@ -697,6 +683,7 @@ class PersAdm(IfPersAdm):
             return True
 
     def fetchUser(self, username, database):
+        acc = []
 
         try:
             uid = database.objects.get(field='NAME',value=username)
@@ -704,33 +691,35 @@ class PersAdm(IfPersAdm):
 
             sf = lambda x: self.__select_field(uid, x, database)
 
-            fetchset = [
-                    ('username',    sf('NAME')),
-                    ('password',    sf('PASSWORD')),
-                    ('matric',      sf('MATRIC')),
-                    ('bios',        sf('BIOS')),
-                    ('campus',      sf('CAMPUS')),
-                    ('courses',     sf('COURSE')),
-                    ('avatar',      sf('AVATAR')),
-                    ('email',       sf('EMAIL')),
-                    ('sex',         sf('SEX')),
-            ]
+            fetchdict = {
+                    'NAME' :        sf('NAME'),
+                    'PASSWORD' :    sf('PASSWORD'),
+                    'COURSES' :     sf('COURSE'),
+                    'AVATAR' :      sf('AVATAR'),
+                    'EMAIL' :       sf('EMAIL'),
+                    'MATRIC' :      sf('MATRIC'),
+                    'BIOS' :        sf('BIOS'),
+                    'CAMPUS' :      sf('CAMPUS'),
+                    'SEX' :         sf('SEX'),
+            }
 
             if database is Student:
-                fetchset = fetchset + [     
-                    ('grades',      sf('GRADE')),
-                    ('interests',   sf('INTEREST')),
-                    ('language',    sf('LANGUAGE')),
-                ]
+                fetchdict['GRADES'] = sf('GRADE')
+                fetchdict['INTERESTS'] = sf('INTEREST')
+                fetchdict['LANGUAGE'] = sf('LANGUAGE')
+
+            acc.append(fetchdict)
 
         except database.DoesNotExist as exc:
-            fetchset = []
+            acc = []
         except database.MultipleObjectsReturned as exc:
             raise ValueError(exc)
 
-        return fetchset
+        return acc
 
     def fetchCour(self, courMatric, database):
+        acc = []
+
         ## Tenta coletar a identidade do curso pela matrícula.
         #
         #   Caso curso não exista então lista de retorno é retornada sem
@@ -743,19 +732,21 @@ class PersAdm(IfPersAdm):
 
             # Coleta os valores dos campos de Professor responsável pelo curso
             # e o nome determinado à ele.
-            fetchset = [
-                ('courMatric', sf('MATRIC')),
-                ('professor',   sf('PROFESSOR')),
-                ('name',        sf('NAME')),
-                ('students',     sf('STUDENTS')),
-        	]
+            fetchdict = {
+                'courMatric' :  sf('MATRIC'),
+                'professor' :   sf('PROFESSOR'),
+                'name' :        sf('NAME'),
+                'students' :    sf('STUDENTS'),
+        	}
+
+            acc.append(fetchdict)
 
         except database.DoesNotExist as exc:
-            fetchset = []
+            acc = []
         except database.MultipleObjectsReturned as exc:
             raise ValueError(exc)
 
-        return fetchset
+        return acc
 
     ## Seleciona campo a partir da identidade do usuário.
     #   Podendo ser estes de uma conta de Estudante, Professor ou um Curso.  

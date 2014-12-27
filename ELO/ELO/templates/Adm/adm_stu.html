@@ -5,6 +5,7 @@
 
 {% block head %}
 	<script src="{% static 'Adm/script_home.js' %}"></script>
+	<script src="{% static 'Adm/script_student.js' %}"></script>
 
 	<link 	rel="stylesheet" type="text/css"
 			href="{% static 'Adm/styles.css' %}" />
@@ -15,20 +16,21 @@
 {% endblock %}
 
 {% block body %}
-	{% if err %}
-		{{ err }}
-	{% endif %}
-
 	<div id="link-home"><a href="">Home</a></div>
-	<h2 title="model-title">Students</h2>
+	<h2 title="model-title" id="mod_{{ model }}">{{ model }}</h2>
 	<div class="icon-search"><i class="fa fa-search"></i></div>
 	<div class="search-box">
-		<form id="stu_search "method="get">
+		<form id="acc_search" action="" method="post">
 			{{ form }}
+			{% csrf_token %}
 			<input type="submit" value="Search">
 		</form>
 	</div>
-	<br /><br /><br /><br />
+	<br /><br />
+	{% if err %}
+		<div id="error">{{ err }}</div>
+	{% endif %}
+	<br /><br />
 	<table class="table">
 		<tr>
 			<td>Name</td>
@@ -39,7 +41,9 @@
 			{% for item in data %}
 				<tr>
 				{% for field, value in item.items %}
-					<td>{{ value }}</td>
+					{% if field|table_student %}
+						<td>{{ value }}</td>
+					{% endif %}
 				{% endfor %}
 				</tr>
 			{% endfor %}
