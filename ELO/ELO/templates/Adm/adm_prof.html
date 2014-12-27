@@ -34,14 +34,13 @@
 	<table class="table">
 		<tr>
 			<td>Name</td>
-			<td>Registration</td> 
 			<td>E-mail</td>
 		</tr>
 		{% if data %}
 			{% for item in data %}
 				<tr>
 				{% for field, value in item.items %}
-					{% if field|table_student %}
+					{% if field|table_professor %}
 						<td>{{ value }}</td>
 					{% endif %}
 				{% endfor %}

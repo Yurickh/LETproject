@@ -275,22 +275,59 @@ class UiAdm(IfUiAdm):
         #   adequados e informações do usuário procurado para uma possível
         #   edição ou deleção.
         if request.method == "POST":
-            form = SrcUserForm(request.POST)
-            try:
-                if form.is_valid():
-                    form = SrcUserForm()
-                    dUser = self.bus.fetchAccount(request, model)
+            if request.POST['model'] == "students":
+                form = SrcUserForm(request.POST)
+                try:
+                    if form.is_valid():
+                        form = SrcUserForm()
+                        dUser = self.bus.fetchAccount(request, model)
 
-                    ordUser = [{'NAME':dUser[0]['NAME'], 'MATRIC':
-                                dUser[0]['MATRIC'], 'EMAIL':dUser[0]['EMAIL']}]
+                        ordUser = [{'NAME':dUser[0]['NAME'], 'MATRIC':
+                                    dUser[0]['MATRIC'], 'EMAIL':dUser[0]['EMAIL']}]
+                        return render(request, "Adm/adm_stu.html", 
+                                    {'form': form, 'data':ordUser, 'model':model,})
+                    else:
+                        raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
+
+                except ValueError as exc:
                     return render(request, "Adm/adm_stu.html", 
-                                {'form': form, 'data':ordUser, 'model':model,})
-                else:
-                    raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
+                                    {'form': form,'err': exc, })
+            elif request.POST['model'] == "professors":
+                form = SrcUserForm(request.POST)
+                try:
+                    if form.is_valid():
+                        form = SrcUserForm()
+                        dUser = self.bus.fetchAccount(request, model)
 
-            except ValueError as exc:
-                return render(request, "Adm/adm_stu.html", 
-                                {'form': form,'err': exc, })
+                        ordUser = [{'NAME':dUser[0]['NAME'],
+                                    'EMAIL':dUser[0]['EMAIL']}]
+                        return render(request, "Adm/adm_prof.html", 
+                                    {'form': form, 'data':ordUser, 'model':model,})
+                    else:
+                        raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
+
+                except ValueError as exc:
+                    return render(request, "Adm/adm_stu.html", 
+                                    {'form': form,'err': exc, })
+            elif request.POST['model'] == "courses":
+                form = SrcCourForm(request.POST)
+                try:
+                    if form.is_valid():
+                        form = SrcCourForm
+                        dUser = self.bus.fetchAccount(request, model)
+
+                        ordUser = [{'NAME':dUser[0]['NAME'], 'COURMATRIC':
+                                    dUser[0]['COURMATRIC'], 'PROFESSOR':
+                                    dUser[0]['PROFESSOR']}]
+                        return render(request, "Adm/adm_cour.html", 
+                                    {'form': form, 'data':ordUser, 
+                                    'model':model,})
+                    else:
+                        raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
+
+                except ValueError as exc:
+                    return render(request, "Adm/adm_cour.html", 
+                                    {'form': form,'err': exc, })
 
 
         elif not (model or username): #request.method == "GET"
@@ -301,6 +338,17 @@ class UiAdm(IfUiAdm):
                 data = self.bus.allAccounts(model)
                 return render(request, "Adm/adm_stu.html", 
                                 {'form': form, 'data': data, 'model':model,})
+            elif model == "professors":
+                form = SrcUserForm()
+                data = self.bus.allAccounts(model)
+                return render(request, "Adm/adm_prof.html", 
+                                {'form': form, 'data': data, 'model':model,})
+            elif model == "courses":
+                form = SrcCourForm
+                data = self.bus.allAccounts(model)
+                return render(request, "Adm/adm_cour.html", 
+                                {'form': form, 'data': data, 'model':model,})
+
                     
 
 ## Camada de negócio para o módulo de administração.
@@ -733,15 +781,15 @@ class PersAdm(IfPersAdm):
             # Coleta os valores dos campos de Professor responsável pelo curso
             # e o nome determinado à ele.
             fetchdict = {
-                'courMatric' :  sf('MATRIC'),
-                'professor' :   sf('PROFESSOR'),
-                'name' :        sf('NAME'),
-                'students' :    sf('STUDENTS'),
+                'COURMATRIC' :  sf('MATRIC'),
+                'PROFESSOR' :   sf('PROFESSOR'),
+                'NAME' :        sf('NAME'),
+                'STUDENTS' :    sf('STUDENTS'),
         	}
 
             acc.append(fetchdict)
 
-        except database.DoesNotExist as exc:
+        except database.DoesNotExist:
             acc = []
         except database.MultipleObjectsReturned as exc:
             raise ValueError(exc)
@@ -796,7 +844,7 @@ class PersAdm(IfPersAdm):
 
                 al.append(fetchdict)
 
-        except database.DoesNotExist as exc:
+        except database.DoesNotExist and IndexError:
             al = []
         except database.MultipleObjectsReturned as exc:
             raise ValueError(exc)
