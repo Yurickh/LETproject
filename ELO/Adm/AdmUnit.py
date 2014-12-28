@@ -291,7 +291,8 @@ class UiAdm(IfUiAdm):
 
                 except ValueError as exc:
                     return render(request, "Adm/adm_stu.html", 
-                                    {'form': form,'err': exc, })
+                                    {'form': form,'err': exc, 
+                                     'model': 'students' })
             elif request.POST['model'] == "professors":
                 form = SrcUserForm(request.POST)
                 try:
@@ -650,7 +651,6 @@ class PersAdm(IfPersAdm):
             try:
                 # Coleta a partir do ID do curso a lista do campo
                 # que deseja atualizar.
-                print field
                 data = database.objects.get(identity=uid, field=field.upper())
                 # Nova informação é colocada no tipo que deseja atualizar.
                 data.value = newdata
