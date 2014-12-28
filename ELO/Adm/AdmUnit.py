@@ -275,6 +275,7 @@ class UiAdm(IfUiAdm):
         #   adequados e informações do usuário procurado para uma possível
         #   edição ou deleção.
         if request.method == "POST":
+            print request.POST
             if request.POST['model'] == "students":
                 form = SrcUserForm(request.POST)
                 try:
@@ -284,14 +285,18 @@ class UiAdm(IfUiAdm):
 
                         ordUser = [{'NAME':dUser[0]['NAME'], 'MATRIC':
                                     dUser[0]['MATRIC'], 'EMAIL':dUser[0]['EMAIL']}]
+                        print "success0"
                         return render(request, "Adm/adm_stu.html", 
                                     {'form': form, 'data':ordUser, 'model':model,})
                     else:
+                        print "valueError0"
                         raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
 
                 except ValueError as exc:
+                    print "valueError1"
                     return render(request, "Adm/adm_stu.html", 
-                                    {'form': form,'err': exc, })
+                                    {'form': form,'err': exc, 
+                                     'model': 'students' })
             elif request.POST['model'] == "professors":
                 form = SrcUserForm(request.POST)
                 try:
@@ -307,6 +312,7 @@ class UiAdm(IfUiAdm):
                         raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
 
                 except ValueError as exc:
+                    print "valueError2"
                     return render(request, "Adm/adm_stu.html", 
                                     {'form': form,'err': exc, })
             elif request.POST['model'] == "courses":

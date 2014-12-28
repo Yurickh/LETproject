@@ -7,11 +7,11 @@ $(document).ready(function(){
 		var postData = $(this).serializeArray();
 
 		$.each( postData, function( i, pD ) {
-      			result[pD.name] = pD.value;
-	      	});
+  			result[pD.name] = pD.value;
+      	});
 	
-	      	model = $("h2[id^='mod_']").attr("id").slice(4);
-	      	result["model"] = model;
+      	model = $("h2[id^='mod_']").attr("id").slice(4);
+      	result["model"] = model;
 
 		$(".container").load("adm/"+model+"/", result);
 	});
