@@ -7,13 +7,13 @@ var searchData=
   ['sex',['Sex',['../dd/d8a/classELO_1_1BaseUnit_1_1Sex.html',1,'ELO::BaseUnit']]],
   ['sexform',['SexForm',['../d1/dea/classProfile_1_1forms_1_1SexForm.html',1,'Profile::forms']]],
   ['simpletest',['SimpleTest',['../d7/d71/classBuilding_1_1tests_1_1SimpleTest.html',1,'Building::tests']]],
-  ['simpletest',['SimpleTest',['../dc/dd5/classCourse_1_1tests_1_1SimpleTest.html',1,'Course::tests']]],
   ['site_5fid',['SITE_ID',['../df/d5b/namespaceELO_1_1settings.html#a31328123344da3768e97b0ac61c342de',1,'ELO::settings']]],
+  ['slide_5fnumber',['slide_number',['../db/d84/classCourse_1_1forms_1_1LessonForm.html#ad030e96bd25bff769cce537955b318d1',1,'Course::forms::LessonForm']]],
   ['static_5froot',['STATIC_ROOT',['../df/d5b/namespaceELO_1_1settings.html#ae5539527ada0171fc602c561493398f4',1,'ELO::settings']]],
   ['static_5furl',['STATIC_URL',['../df/d5b/namespaceELO_1_1settings.html#a408323f388e22737eedf90471a3809a4',1,'ELO::settings']]],
   ['staticfiles_5fdirs',['STATICFILES_DIRS',['../df/d5b/namespaceELO_1_1settings.html#aa2272e7a822b45c2101e4f5a958e22a6',1,'ELO::settings']]],
   ['staticfiles_5ffinders',['STATICFILES_FINDERS',['../df/d5b/namespaceELO_1_1settings.html#a3e4decd51fab7bd5bdbdb12aac13b70a',1,'ELO::settings']]],
-  ['student',['Student',['../d0/dc8/classELO_1_1models_1_1Student.html',1,'ELO::models']]],
   ['student',['Student',['../dd/d1d/classELO_1_1EntityUnit_1_1Student.html',1,'ELO::EntityUnit']]],
+  ['student',['Student',['../d0/dc8/classELO_1_1models_1_1Student.html',1,'ELO::models']]],
   ['students',['students',['../d2/dc4/classELO_1_1EntityUnit_1_1Courses.html#ac8e5e595ec895e03b088764d7506e735',1,'ELO.EntityUnit.Courses.students()'],['../d2/dc4/classELO_1_1EntityUnit_1_1Courses.html#ab1a0895decc2986339e0ab148922ad61',1,'ELO.EntityUnit.Courses.students'],['../d2/dc4/classELO_1_1EntityUnit_1_1Courses.html#ab1a0895decc2986339e0ab148922ad61',1,'ELO.EntityUnit.Courses.students'],['../d2/dc4/classELO_1_1EntityUnit_1_1Courses.html#ab1a0895decc2986339e0ab148922ad61',1,'ELO.EntityUnit.Courses.students']]]
 ];

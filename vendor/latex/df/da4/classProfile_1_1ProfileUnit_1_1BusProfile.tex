@@ -25,7 +25,7 @@ def \hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile_a5c116d007081ffefcc1c45
 \subsubsection{Descrição Detalhada}
 Deve ser capaz de manipular os dados de usuário, seja no sentido de atualizá-\/los ou modificá-\/los de alguma forma. 
 
-Definição na linha \hyperlink{ProfileUnit_8py_source_l00324}{324} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
+Definição na linha \hyperlink{ProfileUnit_8py_source_l00325}{325} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
 
 
 
@@ -99,14 +99,13 @@ Definição na linha \hyperlink{ProfileUnit_8py_source_l00340}{340} do arquivo \
 )}}\label{classProfile_1_1ProfileUnit_1_1BusProfile_a87c3d0374f709af7904656938eafd6d3}
 
 
-Definição na linha \hyperlink{ProfileUnit_8py_source_l00326}{326} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
+Definição na linha \hyperlink{ProfileUnit_8py_source_l00327}{327} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
 
 
 \begin{DoxyCode}
-\hypertarget{classProfile_1_1ProfileUnit_1_1BusProfile_l00326}{}\hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile_a87c3d0374f709af7904656938eafd6d3}{00326} 
-00327     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile_a87c3d0374f709af7904656938eafd6d3}{refreshUser}(self, request):
-00328         user = request.session[\textcolor{stringliteral}{'user'}]
-00329         db = \textcolor{keywordtype}{None}
+\hypertarget{classProfile_1_1ProfileUnit_1_1BusProfile_l00327}{}\hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile_a87c3d0374f709af7904656938eafd6d3}{00327} 
+00328     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile_a87c3d0374f709af7904656938eafd6d3}{refreshUser}(self, request):
+00329         user = request.session[\textcolor{stringliteral}{'user'}]
 00330 
 00331         \textcolor{keywordflow}{if} user[\textcolor{stringliteral}{'type'}] == \textcolor{stringliteral}{'Student'}:
 00332             db = Student
@@ -116,7 +115,7 @@ Definição na linha \hyperlink{ProfileUnit_8py_source_l00326}{326} do arquivo \
 00336         fs = self.pers.fetch(user[\textcolor{stringliteral}{'name'}], db)
 00337         fd = dict(fs)
 00338         request.session[\textcolor{stringliteral}{'django\_language'}] = fd[\textcolor{stringliteral}{'language'}]
-00339         \textcolor{keywordflow}{return} dict(user.items()+ self.pers.fetch(user[\textcolor{stringliteral}{'name'}], db))
+00339         \textcolor{keywordflow}{return} dict(user.items() + fs)
 
 \end{DoxyCode}
 

@@ -57,7 +57,8 @@
 00052         factory.runAdm),
 00053     url(\textcolor{stringliteral}{r'^assync/adm-info/?$'}, factory.runAdm),
 00054     url(\textcolor{stringliteral}{r'^assync/edit-field/(?P<field>\(\backslash\)w\{3,9\})/?$'}, factory.runAdm),
-00055 ) + static(settings.MEDIA\_URL, document\_root=settings.MEDIA\_ROOT)
-00056 
-00057 urlpatterns += staticfiles\_urlpatterns()
+00055     url(\textcolor{stringliteral}{r'^assync/lesson/?$'}, factory.runCourse),
+00056 ) + static(settings.MEDIA\_URL, document\_root=settings.MEDIA\_ROOT)
+00057 
+00058 urlpatterns += staticfiles\_urlpatterns()
 \end{DoxyCode}
