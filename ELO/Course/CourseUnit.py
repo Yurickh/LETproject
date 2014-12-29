@@ -152,11 +152,21 @@ class IfBusCourse:
     @abstractmethod
     def getLesson(self, lessonid): pass
 
+    ## Método que cria e formata um objeto que representa um exercício.
+    #
+    #   @arg ex_url     Objeto Link()-compatível que leva ao exercício.
+    #
+    #   @return         Retorna um objeto exercício.
+    @abstractmethod
+    def createExercise(self, ex_url): pass
+
 
 ## Interface da camada de Persistência para o módulo de Curso.
 #   Deve ser capaz de acessar de forma transparente o banco de dados.
 #   Deve também ser a única forma de acessar tais dados dentro deste módulo.
 class IfPersCourse:
+
+    retrieve = lambda s,x,y,z: None
 
     ## Método que recupera o Id() de um objeto.
     #
@@ -229,6 +239,9 @@ class UiCourse(IfUiCourse):
                         url = EXERCISES_URL + exercise_url + ".html"
 
                         exercise = self.bus.createExercise(exercise_url)
+
+                        return render(request, url, { 'max': maxslides,
+                                                      'exercise': exercise })
                 else:
                     raise ValueError(lang.DICT['EXCEPTION_INV_LES'])
             except ValueError as exc:
@@ -240,8 +253,7 @@ class BusCourse(IfBusCourse):
 
 
     def getCompleted(self, user, accesstype):
-        userid = self.pers.getid('NAME', user['name'], Student)
-        userdata = self.pers.fetch(userid, Student)
+        userdata = self.pers.retrieve('NAME', user['name'], Student)
 
         return userdata.get(accesstype + '_COMPLETED', [])
 
@@ -297,8 +309,26 @@ class BusCourse(IfBusCourse):
 
         return lesson
 
+    def createExercise(self, ex_url):
+
+        ex_data = self.pers.retrieve('LINK', ex_url, Exercise)
+
+        return ex_data
+
 
 class PersCourse(IfPersCourse):
+
+    ## Pseudométodo que faz a chamada dos métodos atômicos desta camada.
+    #
+    #   @arg    s   self
+    #
+    #   @arg    x   field   Nome do campo a ser filtrado.
+    #
+    #   @arg    y   value   Valor que deve haver no campo.
+    #
+    #   @arg    z   dbase   Objeto do modelo a ser utilizado.
+    #                           Deve ser importado de ELO.models.
+    retrieve=lambda s,x,y,z:PersCourse.fetch(s,PersCourse.getid(s,x,y,z),z)
 
     def getid(self, field, value, db):
         model_data = db.objects.get(field=field, value=value)
