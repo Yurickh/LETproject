@@ -376,7 +376,10 @@ class BusAdm(IfBusAdm):
         else:
             raise ValueError(lang.DICT['ERROR_MODEL'])
 
-        data = self.pers.fetchAll(db) 
+        if db == Courses:
+            data = self.pers.fetchAllCour(db) 
+        else:
+            data = self.pers.fetchAllUser(db)
 
         return data
 
@@ -827,7 +830,7 @@ class PersAdm(IfPersAdm):
 
         return ret
 
-    def fetchAll(self, database):
+    def fetchAllUser(self, database):
         al = []
 
         try:
@@ -840,6 +843,30 @@ class PersAdm(IfPersAdm):
                         'NAME':     sf('NAME'),
                         'MATRIC':   sf('MATRIC'),
                         'EMAIL':    sf('EMAIL'),
+                }
+
+                al.append(fetchdict)
+
+        except database.DoesNotExist and IndexError:
+            al = []
+        except database.MultipleObjectsReturned as exc:
+            raise ValueError(exc)
+
+        return al
+
+    def fetchAllCour(self, database):
+        al = []
+
+        try:
+            lastid = database.objects.order_by('-identity')[0]
+
+            for uid in range(1,lastid.identity+1):
+                sf = lambda x: self.__select_field(uid, x, database)
+
+                fetchdict = {
+                        'NAME':     sf('NAME'),
+                        'COURMATRIC':   sf('COURMATRIC'),
+                        'PROFESSOR':    sf('PROFESSOR'),
                 }
 
                 al.append(fetchdict)
