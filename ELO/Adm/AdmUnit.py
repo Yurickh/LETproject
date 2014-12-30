@@ -248,7 +248,10 @@ class IfPersAdm:
     def fetchCour(self, courMatric, database): pass
 
     @abstractmethod
-    def fetchAll(self, database): pass
+    def fetchAllUser(self, database): pass
+
+    @abstractmethod
+    def fetchAllCour(self, database): pass
 
 ## Camada de interface do Administrador para o módulo de Administração.
 #   Deve carregar o devido template, contendo campos onde será
@@ -275,17 +278,19 @@ class UiAdm(IfUiAdm):
         #   adequados e informações do usuário procurado para uma possível
         #   edição ou deleção.
         if request.method == "POST":
-            if request.POST['model'] == "students":
+            if model == "students":
                 form = SrcUserForm(request.POST)
                 try:
                     if form.is_valid():
-                        form = SrcUserForm()
+                        form2 = SrcUserForm()
                         dUser = self.bus.fetchAccount(request, model)
 
                         ordUser = [{'NAME':dUser[0]['NAME'], 'MATRIC':
-                                    dUser[0]['MATRIC'], 'EMAIL':dUser[0]['EMAIL']}]
+                                    dUser[0]['MATRIC'], 'EMAIL':
+                                    dUser[0]['EMAIL']}]
                         return render(request, "Adm/adm_stu.html", 
-                                    {'form': form, 'data':ordUser, 'model':model,})
+                                    {'form': form2, 'data':ordUser, 
+                                    'model':model,})
                     else:
                         raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
 
@@ -293,42 +298,45 @@ class UiAdm(IfUiAdm):
                     return render(request, "Adm/adm_stu.html", 
                                     {'form': form,'err': exc, 
                                      'model': 'students' })
-            elif request.POST['model'] == "professors":
+            elif model == "professors":
                 form = SrcUserForm(request.POST)
                 try:
                     if form.is_valid():
-                        form = SrcUserForm()
+                        form2 = SrcUserForm()
                         dUser = self.bus.fetchAccount(request, model)
 
                         ordUser = [{'NAME':dUser[0]['NAME'],
                                     'EMAIL':dUser[0]['EMAIL']}]
                         return render(request, "Adm/adm_prof.html", 
-                                    {'form': form, 'data':ordUser, 'model':model,})
+                                    {'form': form2, 'data':ordUser, 
+                                    'model':model,})
                     else:
                         raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
 
                 except ValueError as exc:
                     return render(request, "Adm/adm_stu.html", 
-                                    {'form': form,'err': exc, })
-            elif request.POST['model'] == "courses":
+                                    {'form': form,'err': exc, 
+                                    'model': 'professors' })
+            elif model == "courses":
                 form = SrcCourForm(request.POST)
                 try:
                     if form.is_valid():
-                        form = SrcCourForm
+                        form2 = SrcCourForm
                         dUser = self.bus.fetchAccount(request, model)
 
                         ordUser = [{'NAME':dUser[0]['NAME'], 'COURMATRIC':
                                     dUser[0]['COURMATRIC'], 'PROFESSOR':
                                     dUser[0]['PROFESSOR']}]
                         return render(request, "Adm/adm_cour.html", 
-                                    {'form': form, 'data':ordUser, 
+                                    {'form': form2, 'data':ordUser, 
                                     'model':model,})
                     else:
                         raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
 
                 except ValueError as exc:
                     return render(request, "Adm/adm_cour.html", 
-                                    {'form': form,'err': exc, })
+                                    {'form': form,'err': exc, 
+                                    'model': 'courses' })
 
 
         elif not (model or username): #request.method == "GET"
@@ -349,6 +357,11 @@ class UiAdm(IfUiAdm):
                 data = self.bus.allAccounts(model)
                 return render(request, "Adm/adm_cour.html", 
                                 {'form': form, 'data': data, 'model':model,})
+            elif model == "newstudents":
+                form = RegUserForm
+                model = model[3:]
+                return render(request, "Adm/new_acc.html",  {'form': form,
+                    'model':model,})
 
                     
 
@@ -864,7 +877,7 @@ class PersAdm(IfPersAdm):
                 sf = lambda x: self.__select_field(uid, x, database)
 
                 fetchdict = {
-                        'NAME':     sf('NAME'),
+                        'NAME':         sf('NAME'),
                         'COURMATRIC':   sf('COURMATRIC'),
                         'PROFESSOR':    sf('PROFESSOR'),
                 }

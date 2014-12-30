@@ -55,17 +55,14 @@ urlpatterns = patterns('',
 	## URL para mostrar assincronamente a edição de um campo de perfil.
 	#	Requisitado pelo Administrador.
 	url(r'^assync/edit-field-adm/(?P<action>\w{3,9})/(?P<model>\w{5,7})/?$', factory.runAdm),
-	## URL da página assíncrona que abre Dialog de inserção de Estudantes e
-	#	Professores em algum determinado curso.
-	url(r'^assync/adm-course/(?P<action>\w{3,7})/(?P<model>\w{5,7})/?$', 
-		factory.runAdm),
 	## URL para mostrar assincronamente a deleção de uma conta.
 	#	Requisitado pelo Administrador.
 	url(r'^assync/adm-del/?$', factory.runAdm),
 	## URL para confirmar alguma ação.
 	url(r'^assync/adm-conf/(?P<action>\w{3,7})/?$', factory.runAdm),
 	url(r'^assync/lesson/?$', factory.runCourse),
-	url(r'^adm/(?P<model>\w{3,12})/(?P<username>\w{0,32})?$', factory.runAdm),
+	url(r'^adm/(?P<model>\w{3,25})/(?P<username>\w{0,32})?$', factory.runAdm),
+	url(r'^adm/register?$', factory.runAdm),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()
