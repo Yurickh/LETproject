@@ -166,7 +166,17 @@ class IfBusCourse:
 #   Deve também ser a única forma de acessar tais dados dentro deste módulo.
 class IfPersCourse:
 
-    retrieve = lambda s,x,y,z: None
+    ## Pseudométodo que faz a chamada dos métodos atômicos desta camada.
+    #
+    #   @arg    s   self
+    #
+    #   @arg    x   field   Nome do campo a ser filtrado.
+    #
+    #   @arg    y   value   Valor que deve haver no campo.
+    #
+    #   @arg    z   dbase   Objeto do modelo a ser utilizado.
+    #                           Deve ser importado de ELO.models.
+    retrieve=lambda s,x,y,z: s.fetch(s.getid(x, y, z), z)
 
     ## Método que recupera o Id() de um objeto.
     #
@@ -317,18 +327,6 @@ class BusCourse(IfBusCourse):
 
 
 class PersCourse(IfPersCourse):
-
-    ## Pseudométodo que faz a chamada dos métodos atômicos desta camada.
-    #
-    #   @arg    s   self
-    #
-    #   @arg    x   field   Nome do campo a ser filtrado.
-    #
-    #   @arg    y   value   Valor que deve haver no campo.
-    #
-    #   @arg    z   dbase   Objeto do modelo a ser utilizado.
-    #                           Deve ser importado de ELO.models.
-    retrieve=lambda s,x,y,z:PersCourse.fetch(s,PersCourse.getid(s,x,y,z),z)
 
     def getid(self, field, value, db):
         model_data = db.objects.get(field=field, value=value)
