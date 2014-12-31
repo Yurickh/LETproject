@@ -160,6 +160,16 @@ class IfBusCourse:
     @abstractmethod
     def createExercise(self, ex_url): pass
 
+    ## Método que corrige um exercício.
+    #
+    #   @arg ex_url     Objeto Link()-compatível que leva ao exercício.
+    #
+    #   @arg answer     Resposta fornecida pelo usuário.
+    #
+    #   @return         Booleano: true significa certo e false, errado.
+    @abstractmethod
+    def correctExercise(self, ex_url, answer): pass
+
 
 ## Interface da camada de Persistência para o módulo de Curso.
 #   Deve ser capaz de acessar de forma transparente o banco de dados.
@@ -323,7 +333,27 @@ class BusCourse(IfBusCourse):
 
         ex_data = self.pers.retrieve('LINK', ex_url, Exercise)
 
-        return ex_data
+        exercise = {}
+
+        if int(ex_data['TYPE'][0]) == 1:
+            options = []
+            i="1"
+            while "ITEM_" + i in ex_data:
+                options.append(ex_data["ITEM_" + i][0])
+                i = str(int(i)+1)
+
+            exercise['options'] = options
+            exercise['url'] = ex_url
+
+        return exercise
+
+    def correctExercise(self, ex_url, answer):
+        
+        ex_data = self.pers.retrieve('LINK', ex_url, Exercise)
+
+        ## TODO: Verificar tipos de exercícios no momento da correção
+
+        return True if answer == ex_data['CORRECT'][0] else False
 
 
 class PersCourse(IfPersCourse):
