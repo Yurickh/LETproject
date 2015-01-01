@@ -134,7 +134,8 @@ class IfBusAdm:
     #   
     #   @arg    form    Valores dos campos para registro validados.
     #
-    
+    @abstractmethod
+    def regAccount(self, request, form): pass
    
     ## Edita dados de um conta no database.
     #   Podendo ser estes de uma conta de Estudante, Professor ou um Curso.  
@@ -279,25 +280,45 @@ class UiAdm(IfUiAdm):
         #   edição ou deleção.
         if request.method == "POST":
             if model == "students":
-                form = SrcUserForm(request.POST)
+                new_form_search = SrcUserForm()
                 try:
-                    if form.is_valid():
-                        form2 = SrcUserForm()
-                        dUser = self.bus.fetchAccount(request, model)
+                    if request.POST['act'] == "search":
+                        user_form = SrcUserForm(request.POST)
 
-                        ordUser = [{'NAME':dUser[0]['NAME'], 'MATRIC':
-                                    dUser[0]['MATRIC'], 'EMAIL':
-                                    dUser[0]['EMAIL']}]
-                        return render(request, "Adm/adm_stu.html", 
-                                    {'form': form2, 'data':ordUser, 
-                                    'model':model,})
-                    else:
-                        raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
+                        if user_form.is_valid():
+                        
+                            dUser = self.bus.fetchAccount(request, model)
+
+                            ordUser = [{'NAME':dUser[0]['NAME'], 'MATRIC':
+                                        dUser[0]['MATRIC'], 'EMAIL':
+                                        dUser[0]['EMAIL']}]
+
+                            return render(request, "Adm/adm_stu.html", 
+                                        {'form': new_form_search, 'data':ordUser, 
+                                        'model':model,})
+                        else:
+                            raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
+
+                    elif request.POST['act'] == "reg":
+                        user_form = RegUserForm(request.POST)
+
+                        if user_form.is_valid():
+
+                            self.bus.regAccount(request, user_form)
+
+                            data = self.bus.allAccounts(model)
+
+                            return render(request, "Adm/adm_stu.html", 
+                                        {'form': new_form_search, 'data':data, 
+                                        'model':model})
+                        else:
+                            raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
 
                 except ValueError as exc:
-                    return render(request, "Adm/adm_stu.html", 
-                                    {'form': form,'err': exc, 
-                                     'model': 'students' })
+                     return render(request, "Adm/adm_stu.html", 
+                                {'form': new_form_search, 'err': exc, 
+                                'model': 'students'})
+
             elif model == "professors":
                 form = SrcUserForm(request.POST)
                 try:
@@ -353,12 +374,12 @@ class UiAdm(IfUiAdm):
                 return render(request, "Adm/adm_prof.html", 
                                 {'form': form, 'data': data, 'model':model,})
             elif model == "courses":
-                form = SrcCourForm
+                form = SrcCourForm()
                 data = self.bus.allAccounts(model)
                 return render(request, "Adm/adm_cour.html", 
                                 {'form': form, 'data': data, 'model':model,})
             elif model == "newstudents":
-                form = RegUserForm
+                form = RegUserForm()
                 model = model[3:]
                 return render(request, "Adm/new_acc.html",  {'form': form,
                     'model':model,})
@@ -397,7 +418,7 @@ class BusAdm(IfBusAdm):
 
         return data
 
-    def regAccount(self, request):
+    def regAccount(self, request, form):
         # Inicia o dicionário dict_data. 
         #   Será utilizado para informar os campos e dados para registro
         #   do usuário.
@@ -423,8 +444,7 @@ class BusAdm(IfBusAdm):
             # repassado para inserção no banco de dados 
             # posteriormente.
             if newField in database_fields:
-                dict_data[newField] = form.cleaned_data[
-                                            field].value
+                dict_data[newField] = form.cleaned_data[field].value
 
         ## Verifica qual e o tipo do modelo requisitado para inserção 
         #   de nova conta.
@@ -435,11 +455,11 @@ class BusAdm(IfBusAdm):
 
         model = str(request.POST['model'])
 
-        if model == "Student":
+        if model == "students":
             db = Student
-        elif model == "Professor":
+        elif model == "professors":
             db = Professor
-        elif model == "Course":
+        elif model == "courses":
             db = Courses 
         else:
             raise ValueError(lang.DICT['ERROR_MODEL'])
@@ -462,6 +482,8 @@ class BusAdm(IfBusAdm):
             # o modelo de conta requisitado para criação destas informações 
             # no banco de dados (Persistência).
             self.pers.data_in(dict_data, db)
+        else:
+            raise ValueError("Usuário já existe.")
         
     def attAccount(self, request, field, form, model): 
         if field == "name":

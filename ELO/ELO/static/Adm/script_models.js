@@ -12,6 +12,7 @@ $(document).ready(function(){
 	
       	model = $("h2[id^='mod_']").attr("id").slice(4);
       	result["model"] = model;
+      	result["act"] = "search"
 
 		$(".container").load("adm/"+model+"/", result);
 	});
@@ -33,9 +34,9 @@ $(document).ready(function(){
 	
       	model = $("h2[id^='mod_']").attr("id").slice(4);
       	result["model"] = model;
-      	result["action"] = "reg";
+      	result["act"] = "reg";
 
-		$load("adm/register",result);
+		$(".container").load("adm/"+model+"/register",result);
 	});
 	
 });
