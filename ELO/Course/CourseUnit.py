@@ -18,7 +18,7 @@ import ELO.locale.index as lang
 
 from ELO.models import Courses, Module, Lesson, Exercise, Student
 
-from Course.forms import LessonForm
+from Course.forms import LessonForm, Exercise1Form
 
 from django.shortcuts import render
 from django.core.exceptions import PermissionDenied
@@ -333,17 +333,17 @@ class BusCourse(IfBusCourse):
 
         ex_data = self.pers.retrieve('LINK', ex_url, Exercise)
 
-        exercise = {}
-
         if int(ex_data['TYPE'][0]) == 1:
+            exercise = Exercise1Form()
             options = []
             i="1"
             while "ITEM_" + i in ex_data:
-                options.append(ex_data["ITEM_" + i][0])
+                options.append((int(i),ex_data["ITEM_" + i][0]))
                 i = str(int(i)+1)
 
-            exercise['options'] = options
-            exercise['url'] = ex_url
+            exercise.fields['options'].choices = options
+
+        ## TODO: Verificar tipos de exercícios no momento da criação
 
         return exercise
 
