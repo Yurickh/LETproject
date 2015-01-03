@@ -47,19 +47,6 @@ urlpatterns = patterns('',
 	url(r'^logout/?$', factory.runLogout),
 	## URL da pagina de cursos.
 	url(r'^course/(?P<courseid>\d+)/?$', factory.runCourse),
-	## URL da página assíncrona de edição de estudante, professor ou curso.
-	url(r'^assync/adm-edit/(?P<action>\w{3,7})/(?P<model>\w{3,9})/?$', 
-		factory.runAdm),
-	## URL da página assíncrona que informa os dados de um usuário requisitado.
-	url(r'^assync/adm-info/?$', factory.runAdm),
-	## URL para mostrar assincronamente a edição de um campo de perfil.
-	#	Requisitado pelo Administrador.
-	url(r'^assync/edit-field-adm/(?P<action>\w{3,9})/(?P<model>\w{5,7})/?$', factory.runAdm),
-	## URL para mostrar assincronamente a deleção de uma conta.
-	#	Requisitado pelo Administrador.
-	url(r'^assync/adm-del/?$', factory.runAdm),
-	## URL para confirmar alguma ação.
-	url(r'^assync/adm-conf/(?P<action>\w{3,7})/?$', factory.runAdm),
 	url(r'^assync/lesson/?$', factory.runCourse),
 	url(r'^adm/(?P<model>\w{3,25})/(?P<username>\w{0,32})?$', factory.runAdm),
 	url(r'^adm/(?P<model>\w{3,25})/register?$', factory.runAdm),

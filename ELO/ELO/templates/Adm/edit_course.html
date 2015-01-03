@@ -21,32 +21,6 @@
 			   value="{{ DICT.REGISTER }}"  /> 
 
 	</form>
-
-	{% for i, j in data.items %}
-		{% if i == "students" %}
-		STUDENTS<br/>
-			{% for k in j %}
-				{% if k != "[" and k != "]" and k != "," %}
-					{{ k }}
-				{% endif %}
-				{% if k == ',' %}
-					<br/>
-				{% endif %}
-			{% endfor %}<br/>
-		{% elif i == "professor" %}
-		PROFESSORS<br/>
-			{% for k in j %}
-				{% if k != "[" and k != "]" and k != "," %}
-					{{ k }}
-				{% endif %}
-				{% if k == ',' %}
-					<br/>
-				{% endif %}
-			{% endfor %}
-		{% endif %}
-	{% endfor %}<br/>
-
-
 	<button id="refresh">Atualizar</button>
 
 	<div class="dialog"></div>

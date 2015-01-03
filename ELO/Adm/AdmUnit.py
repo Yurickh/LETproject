@@ -533,39 +533,6 @@ class BusAdm(IfBusAdm):
         else:
             raise ValueError("Usuário já existe.")
         
-    def attAccount(self, request, field, form, model): 
-        if field == "name":
-            fpw = form.cleaned_data['password'].value
-            if fpw != user['password']:
-                raise ValueError(lang.DICT['EXCEPTION_INV_PW_F'])
-            newdata = form.cleaned_data['newdata'].value
-        elif field == "password":
-            npw = form.cleaned_data['newdata'].value
-            rpw = form.cleaned_data['rp_newdata'].value
-            opw = form.cleaned_data['old_password'].value
-            if npw != rpw:
-                raise ValueError(lang.DICT['EXCEPTION_INV_PW_R'])
-            if opw != user['password']:
-                raise ValueError(lang.DICt['EXCEPTION_INV_PW_F'])
-            newdata = npw
-        elif field == "language":
-            newdata = form.cleaned_data['newdata']
-        elif field == "avatar":
-            addr = settings.MEDIA_ROOT + u"/" + user['avatar']
-            with open(addr, "wb") as destination:
-                    for chunk in request.FILES['newdata'].chunks():
-                        destination.write(chunk)
-        else:
-            newdata = form.cleaned_data['newdata'].value
-
-        try:
-            if model == 'Student' and field != 'avatar':
-                self.pers.update(user['name'], field, newdata, Student)
-            elif model == 'Professor' and field != 'avatar':
-                self.pers.update(user['name'], field, newdata, Professor)
-        except ValueError as exc:
-            raise ValueError(lang.DICT['EXCEPTION_ERR_DB_U'])
-        
     def delAccount(self, request):
         
         db = None
