@@ -31,7 +31,7 @@ class ExerciseToken(template.Node):
 		try:
 			if not exercise:
 				exercise_node = context['exercise']
-			else
+			else:
 				exercise_node = self.exercise.render(context)
 
 			if exercise_node['type'] == ExerciseType.MultipleChoice:
