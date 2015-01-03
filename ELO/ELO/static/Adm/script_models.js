@@ -17,7 +17,7 @@ $(document).ready(function(){
 		$(".container").load("adm/"+model+"/", result);
 	});
 
-	$("#new_stu").click(function(){
+	$("#new_acc").click(function(){
 		model = $("h2[id^='mod_']").attr("id").slice(4);
 		$(".container").load("adm/new"+model+"/");
 	});

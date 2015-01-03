@@ -139,6 +139,7 @@ INSTALLED_APPS = (
 	'Adm',
 	'Course',
 	'Building',
+    'django_tables2',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -172,6 +173,7 @@ LOGGING = {
 
 TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
     'ELO.MainUnit.globalContext',
+    'django.core.context_processors.request',
 )
 
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'

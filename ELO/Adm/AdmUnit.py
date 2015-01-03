@@ -320,43 +320,83 @@ class UiAdm(IfUiAdm):
                                 'model': 'students'})
 
             elif model == "professors":
-                form = SrcUserForm(request.POST)
+                new_form_search = SrcUserForm()
                 try:
-                    if form.is_valid():
-                        form2 = SrcUserForm()
-                        dUser = self.bus.fetchAccount(request, model)
+                    if request.POST['act'] == "search":
+                        user_form = SrcUserForm(request.POST)
+                        
+                        if user_form.is_valid():
 
-                        ordUser = [{'NAME':dUser[0]['NAME'],
-                                    'EMAIL':dUser[0]['EMAIL']}]
-                        return render(request, "Adm/adm_prof.html", 
-                                    {'form': form2, 'data':ordUser, 
-                                    'model':model,})
-                    else:
-                        raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
+                            dUser = self.bus.fetchAccount(request, model)
+
+                            ordUser = [{'NAME':dUser[0]['NAME'],
+                                        'EMAIL':dUser[0]['EMAIL']}]
+
+                            return render(request, "Adm/adm_prof.html", 
+                                       {'form': new_form_search, 'data':ordUser, 
+                                        'model':model,})
+                        else:
+                            raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
+
+                    elif request.POST['act'] == "reg":
+                        user_form = RegUserForm(request.POST)
+
+                        if user_form.is_valid():
+
+                            self.bus.regAccount(request, user_form)
+
+                            data = self.bus.allAccounts(model)
+
+                            return render(request, "Adm/adm_prof.html", 
+                                        {'form': new_form_search, 'data':data, 
+                                        'model':model})
+                        else:
+                            raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
+
 
                 except ValueError as exc:
-                    return render(request, "Adm/adm_stu.html", 
-                                    {'form': form,'err': exc, 
+                    return render(request, "Adm/adm_prof.html", 
+                                    {'form': new_form_search,'err': exc, 
                                     'model': 'professors' })
             elif model == "courses":
-                form = SrcCourForm(request.POST)
+                new_form_search = SrcCourForm()
                 try:
-                    if form.is_valid():
-                        form2 = SrcCourForm
-                        dUser = self.bus.fetchAccount(request, model)
+                    if request.POST['act'] == "search":
+                        cour_form = SrcCourForm(request.POST)
+                        
+                        if cour_form.is_valid():
+                            dUser = self.bus.fetchAccount(request, model)
 
-                        ordUser = [{'NAME':dUser[0]['NAME'], 'COURMATRIC':
-                                    dUser[0]['COURMATRIC'], 'PROFESSOR':
-                                    dUser[0]['PROFESSOR']}]
-                        return render(request, "Adm/adm_cour.html", 
-                                    {'form': form2, 'data':ordUser, 
-                                    'model':model,})
-                    else:
-                        raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
+                            ordUser = [{'NAME':dUser[0]['NAME'], 'COURMATRIC':
+                                        dUser[0]['COURMATRIC'], 'PROFESSOR':
+                                        dUser[0]['PROFESSOR']}]
+
+                            print ordUser
+
+                            return render(request, "Adm/adm_cour.html", 
+                                        {'form': new_form_search, 'data':ordUser, 
+                                        'model':model,})
+                        else:
+                            raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
+
+                    elif request.POST['act'] == "reg":
+                        cour_form = RegCourForm(request.POST)
+
+                        if cour_form.is_valid():
+
+                            self.bus.regAccount(request, cour_form)
+
+                            data = self.bus.allAccounts(model)
+
+                            return render(request, "Adm/adm_cour.html", 
+                                        {'form': new_form_search, 'data':data, 
+                                        'model':model})
+                        else:
+                            raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
 
                 except ValueError as exc:
                     return render(request, "Adm/adm_cour.html", 
-                                    {'form': form,'err': exc, 
+                                    {'form':  new_form_search,'err': exc, 
                                     'model': 'courses' })
 
 
@@ -365,7 +405,8 @@ class UiAdm(IfUiAdm):
         else: #request.method == "AJAX"
             if model == "students":
                 form = SrcUserForm()
-                data = self.bus.allAccounts(model)
+                data = Student.objects.all()
+                #data = self.bus.allAccounts(model)
                 return render(request, "Adm/adm_stu.html", 
                                 {'form': form, 'data': data, 'model':model,})
             elif model == "professors":
@@ -378,8 +419,13 @@ class UiAdm(IfUiAdm):
                 data = self.bus.allAccounts(model)
                 return render(request, "Adm/adm_cour.html", 
                                 {'form': form, 'data': data, 'model':model,})
-            elif model == "newstudents":
+            elif model == "newstudents" or model == "newprofessors":
                 form = RegUserForm()
+                model = model[3:]
+                return render(request, "Adm/new_acc.html",  {'form': form,
+                    'model':model,})
+            elif model == "newcourses":
+                form = RegCourForm()
                 model = model[3:]
                 return render(request, "Adm/new_acc.html",  {'form': form,
                     'model':model,})
@@ -470,12 +516,14 @@ class BusAdm(IfBusAdm):
         #       
         #   Caso não for do modelo de Curso então é adionado a linguagem
         #   com valor default de Português.
-        if model != "Course":
+        if model != "courses":
             # Escolhe uma linguagem padrão para cadastro do usuário 
             # recente.
             dict_data['LANGUAGE'] = 'pt-br'
 
-        result = self.pers.fetchUser(request.POST['username'], db)
+            result = self.pers.fetchUser(request.POST['username'], db)
+        else:
+            result = self.pers.fetchCour(request.POST['courMatric'], db)
 
         if not result:
             # É passado o dicionário de campos e valores do novo registro, e
