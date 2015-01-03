@@ -18,20 +18,15 @@ import ELO.locale.index as lang
 
 from ELO.models import Courses, Module, Lesson, Exercise, Student
 
-from Course.forms import LessonForm, MultipleChoiceExercise
+from Course.forms import LessonForm
+from Course.macros import LESSONS_URL, GENERAL_URL, EXERCISES_URL, ExerciseType
 
+from django.middleware import csrf
 from django.shortcuts import render
 from django.core.exceptions import PermissionDenied
 from django.http import Http404
 from django.forms import ValidationError
 from django import template
-
-##Macro responsável por armazenar a URL relativa dos templates de lições.
-LESSONS_URL = 'Course/lessons/'
-##Macro responsável por armazenar a URL relativa dos templates gerais do curso.
-GENERAL_URL = 'Course/general/'
-##Macro responsável por armazenar a URL relativa dos templates de exercícios.
-EXERCISES_URL = 'Course/exercises/'
 
 ## Interface da camada de Apresentação do módulo de Curso.
 #   É responsável pelo devido processamento do frame de curso; seleção de
@@ -156,10 +151,12 @@ class IfBusCourse:
     ## Método que cria e formata um objeto que representa um exercício.
     #
     #   @arg ex_url     Objeto Link()-compatível que leva ao exercício.
+    #   
+    #   @arg request    Objeto request fornecido pelo navegador.
     #
     #   @return         Retorna um objeto exercício.
     @abstractmethod
-    def createExercise(self, ex_url): pass
+    def createExercise(self, request, ex_url): pass
 
     ## Método que corrige um exercício.
     #
@@ -221,17 +218,21 @@ class UiCourse(IfUiCourse):
             if courseid:
                 if courseid in map(lambda x: x["id"], user["courses"]):
                     course = self.bus.getCourse(user, courseid)
-                    return render(request, GENERAL_URL + "frame.html", 
+                    return render(request, GENERAL_URL("frame.html"), 
                         {'course':course})
                 else:
                     ld = lang.DICT
                     raise PermissionDenied(ld["EXCEPTION_403_STD"])
+            else:   
+                raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])
+
         elif request.method == "POST":
             lesson_form = LessonForm(request.POST)
             try:
                 if lesson_form.is_valid():
                     lessonid = lesson_form.cleaned_data['lesson_id']
                     lessonid = lessonid.value
+
                     slidenum = lesson_form.cleaned_data['slide_number']
                     slidenum = slidenum.value
 
@@ -251,22 +252,23 @@ class UiCourse(IfUiCourse):
                         raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])
 
                     if slidenum < lesson['slides']:
-                        url = LESSONS_URL + lesson['url'] + "/" + str(slidenum) + ".html"
+                        lurl = lesson['url']
+                        url = LESSONS_URL(lurl + "/" + str(slidenum) + ".html")
 
                         return render(request, url, { 'max': maxslides })
                     else:
                         exercise_id = slidenum - lesson['slides']
                         exercise_url = lesson['exercises'][exercise_id]
-                        url = EXERCISES_URL + exercise_url + ".html"
+                        url = EXERCISES_URL(exercise_url + ".html")
 
-                        exercise = self.bus.createExercise(exercise_url)
+                        exercise=self.bus.createExercise(request, exercise_url)
 
                         return render(request, url, { 'max': maxslides,
-                                                      'exercise_content': exercise })
+                                                      'ex_content': exercise })
                 else:
                     raise ValueError(lang.DICT['EXCEPTION_INV_LES'])
             except ValueError as exc:
-                return render(request, GENERAL_URL + "assync_std.html",
+                return render(request, GENERAL_URL("assync_std.html"),
                         {'error': exc})
                 
 
@@ -330,21 +332,22 @@ class BusCourse(IfBusCourse):
 
         return lesson
 
-    def createExercise(self, ex_url):
+    def createExercise(self, request, ex_url):
 
         ex_data = self.pers.retrieve('LINK', ex_url, Exercise)
 
-        exercise = ""
+        exercise = {'url': ex_url, 
+                    'type': int(ex_data['TYPE'][0]),
+                    'csrf': csrf.get_token(request)}
 
-        if int(ex_data['TYPE'][0]) == 1:
-            exercise = MultipleChoiceExercise()
+        if int(ex_data['TYPE'][0]) == ExerciseType.MultipleChoice:
             options = []
             i="1"
             while "ITEM_" + i in ex_data:
                 options.append((int(i),ex_data["ITEM_" + i][0]))
                 i = str(int(i)+1)
 
-            exercise.fields['options'].choices = options
+            exercise['options'] = options
 
         ## TODO: Verificar tipos de exercícios no momento da criação
 

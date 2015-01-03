@@ -2,6 +2,9 @@
 
 from django import template
 
+from Course.forms import MultipleChoiceExercise
+from Course.macros import ExerciseType, FORM_WRAPPER
+
 import ELO.locale.index as lang
 
 register = template.Library()
@@ -24,9 +27,13 @@ class ExerciseToken(template.Node):
 		try:
 			exercise_node = self.exercise_token.resolve(context)
 
-			print exercise_node
+			if exercise_node['type'] == ExerciseType.MultipleChoice:
+				exercise = MultipleChoiceExercise()
+				exercise.fields['options'].choices = exercise_node['options']
+			else:
+				exercise = ''
 
-			return 'exercicio aqui :P'
+			return FORM_WRAPPER(exercise, exercise_node['csrf'])
 			
 		except template.VariableDoesNotExist:
 			return ''
