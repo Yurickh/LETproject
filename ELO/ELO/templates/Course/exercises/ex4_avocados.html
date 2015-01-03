@@ -1,5 +1,6 @@
 {% extends "includes/assync_wrapper.html" %}
 {% load staticfiles %}
+{% load exercises %}
 
 {% block body %}
 
@@ -7,6 +8,6 @@
 
     What avocados are?
 
-	{{ exercise }}
+	{% exercise exercise_content %}
 
 {% endblock %}

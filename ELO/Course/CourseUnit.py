@@ -24,6 +24,7 @@ from django.shortcuts import render
 from django.core.exceptions import PermissionDenied
 from django.http import Http404
 from django.forms import ValidationError
+from django import template
 
 ##Macro responsável por armazenar a URL relativa dos templates de lições.
 LESSONS_URL = 'Course/lessons/'
@@ -261,7 +262,7 @@ class UiCourse(IfUiCourse):
                         exercise = self.bus.createExercise(exercise_url)
 
                         return render(request, url, { 'max': maxslides,
-                                                      'exercise': exercise })
+                                                      'exercise_content': exercise })
                 else:
                     raise ValueError(lang.DICT['EXCEPTION_INV_LES'])
             except ValueError as exc:
@@ -332,6 +333,8 @@ class BusCourse(IfBusCourse):
     def createExercise(self, ex_url):
 
         ex_data = self.pers.retrieve('LINK', ex_url, Exercise)
+
+        exercise = ""
 
         if int(ex_data['TYPE'][0]) == 1:
             exercise = MultipleChoiceExercise()
