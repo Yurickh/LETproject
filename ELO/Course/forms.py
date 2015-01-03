@@ -21,3 +21,15 @@ class MultipleChoiceExercise(forms.Form):
 
     def clean_options(self):
         return dict(options)
+
+class FillTheBlankExercise(forms.Form):
+    blank = forms.CharField(required = True)
+
+    def clean_blank(self):
+        return PlainText(blank).value
+
+class UnscrambleExercise(forms.Form):
+    bloat = forms.CharField(required = True)
+
+    def clean_bloat(self):
+        return bloat.split()

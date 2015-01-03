@@ -2,7 +2,7 @@
 
 ## @file macros.py
 #
-#	Arquivo contendo todas as macros utilizadas no módulo de Cursos.
+#   Arquivo contendo todas as macros utilizadas no módulo de Cursos.
 
 import ELO.locale.index as lang
 
@@ -22,4 +22,8 @@ FORM_WRAPPER = lambda x,y: '<form>' + str(x) + '<input type="hidden" name="csrfm
 
 ## Macro responsável por mapear tipos de exercícios com seus respectivos ids 
 class ExerciseType:
-    MultipleChoice = 1
+    MultipleChoice  = 1
+    FillTheBlank    = 2
+    CrossWords      = 3
+    Unscramble      = 4
+    DragAndDrop     = 5

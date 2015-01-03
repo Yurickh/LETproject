@@ -13,6 +13,7 @@
 # lição/módulo) se tiver obtido uma pontuação mínima na lição/módulo anterior.
 
 from abc import*
+from random import shuffle
 
 import ELO.locale.index as lang
 
@@ -264,7 +265,7 @@ class UiCourse(IfUiCourse):
                         exercise=self.bus.createExercise(request, exercise_url)
 
                         return render(request, url, { 'max': maxslides,
-                                                      'ex_content': exercise })
+                                                      'exercise': exercise })
                 else:
                     raise ValueError(lang.DICT['EXCEPTION_INV_LES'])
             except ValueError as exc:
@@ -340,16 +341,34 @@ class BusCourse(IfBusCourse):
                     'type': int(ex_data['TYPE'][0]),
                     'csrf': csrf.get_token(request)}
 
-        if int(ex_data['TYPE'][0]) == ExerciseType.MultipleChoice:
+        exerciseType = int(ex_data['TYPE'][0])
+
+        if exerciseType == ExerciseType.MultipleChoice:
             options = []
-            i="1"
+            i = "1"
             while "ITEM_" + i in ex_data:
                 options.append((int(i),ex_data["ITEM_" + i][0]))
                 i = str(int(i)+1)
 
             exercise['options'] = options
 
-        ## TODO: Verificar tipos de exercícios no momento da criação
+        elif exerciseType == ExerciseType.FillTheBlank:
+            pass # nothing to do here
+
+        elif exerciseType == ExerciseType.Unscramble:
+            words = []
+            i = "1"
+            while "WORD_" + i in ex_data:
+                words.append((int(i), ex_data["WORD_" + i][0]))
+                i = str(int(i)+1)
+
+            exercise['words'] = shuffle(words)
+
+        elif exerciseType == ExerciseType.CrossWords:
+            pass # Not sure what to put here yet
+
+        elif exerciseType == ExerciseType.DragAndDrop:
+            pass # Not sure what to put here yet
 
         return exercise
 

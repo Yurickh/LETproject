@@ -12,24 +12,48 @@ register = template.Library()
 @register.tag
 def exercise(parser, token):
 	try:
-		tname, exerc = token.split_contents()
+		tname = token.split_contents()
 	except ValueError:
 		exc_msg = lang.DICT['TEMPLATE_TAG_MA'] % token.contents.split()[0]
 		raise template.TemplateSyntaxError(exc_msg)
-	return ExerciseToken(exerc)
+	return ExerciseToken()
 
 class ExerciseToken(template.Node):
-	
-	def __init__(self, exercise_token):
-		self.exercise_token = template.Variable(exercise_token)
+
+	exercise = None
+
+	def __init__(self, exercise):
+		self.exercise = exercise
+
+	def __init__(self): pass
 
 	def render(self, context):
 		try:
-			exercise_node = self.exercise_token.resolve(context)
+			if not exercise:
+				exercise_node = context['exercise']
+			else
+				exercise_node = self.exercise.render(context)
 
 			if exercise_node['type'] == ExerciseType.MultipleChoice:
 				exercise = MultipleChoiceExercise()
 				exercise.fields['options'].choices = exercise_node['options']
+
+			elif exercise_node['type'] == ExerciseType.FillTheBlank:
+				exercise = FillTheBlankExercise()
+
+			elif exercise_node['type'] == ExerciseType.CrossWords:
+				exercise = CrossWordsExercise()
+				# something goes here, probably
+
+			elif exercise_node['type'] == ExerciseType.Unscramble:
+				exercise = UnscrambleExercise()
+				init_str = " ".join(exercise_node['words'])
+				exercise.fields['bloat'].initial = init_str
+
+			elif exercise_node['type'] == ExerciseType.DragAndDrop:
+				exercise = DragAndDropExercise()
+				# something goes here, probably
+
 			else:
 				exercise = ''
 
