@@ -1,0 +1,8 @@
+#coding: utf-8
+
+from django import template
+
+import ELO.locale.index as lang
+
+def do_exercises(parser, token):
+	# shit goes here

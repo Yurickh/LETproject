@@ -24,6 +24,9 @@ from django.views.decorators.vary import vary_on_cookie
 from django.views.decorators.csrf import csrf_protect
 from django.utils.decorators import method_decorator
 from django.utils import translation
+from django import template
+
+register = template.Library()
 
 ## Insere os objetos user e DICT em todas as renderizações de template.
 def globalContext(request):

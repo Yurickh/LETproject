@@ -15,7 +15,7 @@ class LessonForm(forms.Form):
     def clean_slide_number(self):
         return Id(self.cleaned_data['slide_number'])
 
-class Exercise1Form(forms.Form):
+class MultipleChoiceExercise(forms.Form):
     options = forms.ChoiceField(widget   = forms.RadioSelect, 
                                 required = True)
 
