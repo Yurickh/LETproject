@@ -11,54 +11,66 @@ register = template.Library()
 
 @register.tag
 def exercise(parser, token):
-	try:
-		tname = token.split_contents()
-	except ValueError:
-		exc_msg = lang.DICT['TEMPLATE_TAG_MA'] % token.contents.split()[0]
-		raise template.TemplateSyntaxError(exc_msg)
-	return ExerciseToken()
+    try:
+        tname = token.split_contents()
+    except ValueError:
+        try:
+            tname, exer = token.split_contents()
+        except ValueError:
+            exc_msg = lang.DICT['TEMPLATE_TAG_MA'] % token.contents.split()[0]
+            raise template.TemplateSyntaxError(exc_msg)
+        else:
+            return ExerciseToken(exer)
+    return ExerciseToken()
 
 class ExerciseToken(template.Node):
 
-	exercise = None
+    exercise = None
 
-	def __init__(self, exercise):
-		self.exercise = exercise
+    def __init__(self, exercise):
+        self.exercise = exercise
 
-	def __init__(self): pass
+    def __init__(self): pass
 
-	def render(self, context):
-		try:
-			if not exercise:
-				exercise_node = context['exercise']
-			else:
-				exercise_node = self.exercise.render(context)
+    def render(self, context):
+        try:
+            if not exercise:
+                exercise_node = context['exercise']
+            else:
+                exercise_node = self.exercise.render(context)
+        except template.VariableDoesNotExist:
+            if not self.exercise[0] == self.exercise[-1] and\
+               self.exercise[0] in ["'", '"']:
+                    return ""
+            else:
+                enunciation = self.exercise[1:-1].split("%_")
+                if len(enunciation) < 2:
+                    enunciation.append("")
+        else
+            enunciation = ["",""]
 
-			if exercise_node['type'] == ExerciseType.MultipleChoice:
-				exercise = MultipleChoiceExercise()
-				exercise.fields['options'].choices = exercise_node['options']
+        if exercise_node['type'] == ExerciseType.MultipleChoice:
+            exercise = MultipleChoiceExercise()
+            exercise.fields['options'].choices = exercise_node['options']
 
-			elif exercise_node['type'] == ExerciseType.FillTheBlank:
-				exercise = FillTheBlankExercise()
+        elif exercise_node['type'] == ExerciseType.FillTheBlank:
+            exercise = FillTheBlankExercise()
 
-			elif exercise_node['type'] == ExerciseType.CrossWords:
-				exercise = CrossWordsExercise()
-				init_str = "_".join(exercise_node['words'])
-				exercise.fields['bloat'].initial = init_str
+        elif exercise_node['type'] == ExerciseType.CrossWords:
+            exercise = CrossWordsExercise()
+            init_str = "_".join(exercise_node['words'])
+            exercise.fields['bloat'].initial = init_str
 
-			elif exercise_node['type'] == ExerciseType.Unscramble:
-				exercise = UnscrambleExercise()
-				init_str = " ".join(exercise_node['words'])
-				exercise.fields['bloat'].initial = init_str
+        elif exercise_node['type'] == ExerciseType.Unscramble:
+            exercise = UnscrambleExercise()
+            init_str = " ".join(exercise_node['words'])
+            exercise.fields['bloat'].initial = init_str
 
-			elif exercise_node['type'] == ExerciseType.DragAndDrop:
-				exercise = DragAndDropExercise()
-				# something goes here, probably
+        elif exercise_node['type'] == ExerciseType.DragAndDrop:
+            exercise = DragAndDropExercise()
+            # something goes here, probably
 
-			else:
-				exercise = ''
+        else:
+            exercise = ''
 
-			return FORM_WRAPPER(exercise, exercise_node['csrf'])
-			
-		except template.VariableDoesNotExist:
-			return ''
+        return FORM_WRAPPER(exercise, exercise_node['csrf'], enunciation)
