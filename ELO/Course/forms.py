@@ -42,7 +42,7 @@ class CrossWordExercise(forms.Form):
         retList = []
 
         for word in wordList:
-            x,y,s,d,w = word.split()
-            retList.append(" ".join([x,y,s,d]))
+            x,y,d,w = word.split()
+            retList.append(" ".join([x,y,d,w]))
 
         return retList

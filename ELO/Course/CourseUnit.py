@@ -368,11 +368,11 @@ class BusCourse(IfBusCourse):
             wordList = []
             
             for word in ex_data.["WORD"]:
-                x,y,s,d,w = word.split()
+                x,y,d,w = word.split()
                 wordlist.append({'x':x,
                                  'y':y,
-                                 'size':s,
-                                 'direction':d, })
+                                 'direction':d,
+                                 'size':str(len(w)),})
 
             exercise['words'] = wordList
 
