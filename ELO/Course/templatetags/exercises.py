@@ -12,23 +12,44 @@ register = template.Library()
 @register.tag
 def exercise(parser, token):
     try:
+        ## {% exercise %} behaviour
         tname = token.split_contents()
+        return ExerciseToken()
+    except ValueError: pass
+
+    try:
+        ## {% exercise exer_name %} or {% exercise "enunciation" %} behaviour
+        tname, tok = token.split_contents()
+        return ExerciseToken(tok)
+    except ValueError: pass
+
+    exc_msg = lang.DICT['TEMPLATE_TAG_MA'] % token.contents.split()[0]
+
+    try:
+        ## {% exercise exer_name "enunciation" %} behaviour
+        tname, exerciseName, formatString = token.split_contents()
     except ValueError:
-        try:
-            tname, exer = token.split_contents()
-        except ValueError:
-            exc_msg = lang.DICT['TEMPLATE_TAG_MA'] % token.contents.split()[0]
+        raise template.TemplateSyntaxError(exc_msg)
+    else:
+        if formatString[0]!=formatString[-1] or formatString not in ["'",'"']:
             raise template.TemplateSyntaxError(exc_msg)
         else:
-            return ExerciseToken(exer)
-    return ExerciseToken()
+            return ExerciseToken(exerciseName, formatString[1:-1])
 
 class ExerciseToken(template.Node):
 
     exercise = None
+    formatString = None
 
-    def __init__(self, exercise):
+    def __init__(self, exercise, formatString):
         self.exercise = exercise
+        self.formatString = formatString
+
+    def __init__(self, token):
+        if token[0] == token[-1] and token[0] in ["'", '"']:
+            self.formatString = token[1:-1]
+        else:
+            self.exercise = token
 
     def __init__(self): pass
 

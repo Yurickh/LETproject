@@ -188,7 +188,7 @@ DICT = {
 	'ERROR_FORM'  : _(u"Ocorreu um problema ao carregar o formulário. Favor tentar novamente mais tarde."),
 
 	## Mensagem de erro para número incorreto de argumentos numa template tag
-	'TEMPLATE_TAG_MA': _(u"A tag %r não deve conter argumentos."),
+	'TEMPLATE_TAG_MA': _(u"Má utilização da tag %r. Favor reverificar a documentação."),
 	
 	'ELO_HOME' : _(u'SALiE - Página Inicial'),
 	'ELO_PROFILE' : _(u'SALiE - Perfil'),
