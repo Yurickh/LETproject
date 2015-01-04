@@ -365,7 +365,16 @@ class BusCourse(IfBusCourse):
             exercise['words'] = shuffle(words)
 
         elif exerciseType == ExerciseType.CrossWords:
-            pass # Not sure what to put here yet
+            wordList = []
+            
+            for word in ex_data.["WORD"]:
+                x,y,s,d,w = word.split()
+                wordlist.append({'x':x,
+                                 'y':y,
+                                 'size':s,
+                                 'direction':d, })
+
+            exercise['words'] = wordList
 
         elif exerciseType == ExerciseType.DragAndDrop:
             pass # Not sure what to put here yet

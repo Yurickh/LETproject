@@ -43,7 +43,8 @@ class ExerciseToken(template.Node):
 
 			elif exercise_node['type'] == ExerciseType.CrossWords:
 				exercise = CrossWordsExercise()
-				# something goes here, probably
+				init_str = "_".join(exercise_node['words'])
+				exercise.fields['bloat'].initial = init_str
 
 			elif exercise_node['type'] == ExerciseType.Unscramble:
 				exercise = UnscrambleExercise()

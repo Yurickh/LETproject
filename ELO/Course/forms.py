@@ -20,16 +20,29 @@ class MultipleChoiceExercise(forms.Form):
                                 required = True)
 
     def clean_options(self):
-        return dict(options)
+        return dict(self.cleaned_data['options'])
 
 class FillTheBlankExercise(forms.Form):
     blank = forms.CharField(required = True)
 
     def clean_blank(self):
-        return PlainText(blank).value
+        return PlainText(self.cleaned_data['blank']).value
 
 class UnscrambleExercise(forms.Form):
     bloat = forms.CharField(required = True)
 
     def clean_bloat(self):
-        return bloat.split()
+        return self.cleaned_data['bloat'].split()
+
+class CrossWordExercise(forms.Form):
+    bloat = forms.CharField(required = True)
+
+    def clean_bloat(self):
+        wordList = self.cleaned_data['bloat'].split('_')
+        retList = []
+
+        for word in wordList:
+            x,y,s,d,w = word.split()
+            retList.append(" ".join([x,y,s,d]))
+
+        return retList
