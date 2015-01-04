@@ -43,11 +43,11 @@ class ExerciseToken(template.Node):
 
     def __init__(self, exercise, formatString):
         self.exercise = exercise
-        self.formatString = formatString
+        self.formatString = formatString.split("%_")
 
     def __init__(self, token):
         if token[0] == token[-1] and token[0] in ["'", '"']:
-            self.formatString = token[1:-1]
+            self.formatString = token[1:-1].split("%_")
         else:
             self.exercise = token
 
@@ -55,43 +55,43 @@ class ExerciseToken(template.Node):
 
     def render(self, context):
         try:
-            if not exercise:
-                exercise_node = context['exercise']
+            if not self.exercise:
+                exerciseNode = context['exercise']
             else:
-                exercise_node = self.exercise.render(context)
+                exerciseNode = self.exercise.render(context)
+
+            if not self.formatString:
+                self.formatString = ["", ""]
+            elif len(self.formatString < 2):
+                self.formatString.append("")
+
+            if exerciseNode['type'] == ExerciseType.MultipleChoice:
+                exercise = MultipleChoiceExercise()
+                exercise.fields['options'].choices = exerciseNode['options']
+
+            elif exerciseNode['type'] == ExerciseType.FillTheBlank:
+                exercise = FillTheBlankExercise()
+
+            elif exerciseNode['type'] == ExerciseType.CrossWords:
+                exercise = CrossWordsExercise()
+                init_str = "_".join(exerciseNode['words'])
+                exercise.fields['bloat'].initial = init_str
+
+            elif exerciseNode['type'] == ExerciseType.Unscramble:
+                exercise = UnscrambleExercise()
+                init_str = " ".join(exerciseNode['words'])
+                exercise.fields['bloat'].initial = init_str
+
+            elif exerciseNode['type'] == ExerciseType.DragAndDrop:
+                exercise = DragAndDropExercise()
+                # something goes here, probably
+
+            else:
+                exercise = ''
+
+            return FORM_WRAPPER(exercise, 
+                                exerciseNode['csrf'], 
+                                self.formatString))
+
         except template.VariableDoesNotExist:
-            if not self.exercise[0] == self.exercise[-1] and\
-               self.exercise[0] in ["'", '"']:
-                    return ""
-            else:
-                enunciation = self.exercise[1:-1].split("%_")
-                if len(enunciation) < 2:
-                    enunciation.append("")
-        else
-            enunciation = ["",""]
-
-        if exercise_node['type'] == ExerciseType.MultipleChoice:
-            exercise = MultipleChoiceExercise()
-            exercise.fields['options'].choices = exercise_node['options']
-
-        elif exercise_node['type'] == ExerciseType.FillTheBlank:
-            exercise = FillTheBlankExercise()
-
-        elif exercise_node['type'] == ExerciseType.CrossWords:
-            exercise = CrossWordsExercise()
-            init_str = "_".join(exercise_node['words'])
-            exercise.fields['bloat'].initial = init_str
-
-        elif exercise_node['type'] == ExerciseType.Unscramble:
-            exercise = UnscrambleExercise()
-            init_str = " ".join(exercise_node['words'])
-            exercise.fields['bloat'].initial = init_str
-
-        elif exercise_node['type'] == ExerciseType.DragAndDrop:
-            exercise = DragAndDropExercise()
-            # something goes here, probably
-
-        else:
-            exercise = ''
-
-        return FORM_WRAPPER(exercise, exercise_node['csrf'], enunciation)
+            return ""
