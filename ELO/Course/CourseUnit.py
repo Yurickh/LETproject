@@ -367,7 +367,7 @@ class BusCourse(IfBusCourse):
         elif exerciseType == ExerciseType.CrossWords:
             wordList = []
             
-            for word in ex_data.["WORD"]:
+            for word in ex_data["WORD"]:
                 x,y,d,w = word.split()
                 wordlist.append({'x':x,
                                  'y':y,
@@ -379,7 +379,7 @@ class BusCourse(IfBusCourse):
         elif exerciseType == ExerciseType.DragAndDrop:
             pass # Not sure what to put here yet
 
-        return exercise
+        return type("Exercise", (), exercise)
 
     def correctExercise(self, ex_url, answer):
         
