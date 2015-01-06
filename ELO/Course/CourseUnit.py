@@ -384,10 +384,25 @@ class BusCourse(IfBusCourse):
     def correctExercise(self, ex_url, answer):
         
         ex_data = self.pers.retrieve('LINK', ex_url, Exercise)
+        exerciseType = int(ex_data['TYPE'][0])
 
-        ## TODO: Verificar tipos de exercícios no momento da correção
+        if exerciseType == ExerciseType.MultipleChoice:
+            return True if answer == ex_data['CORRECT'][0] else False
 
-        return True if answer == ex_data['CORRECT'][0] else False
+        elif exerciseType == ExerciseType.FillTheBlank:
+            return True if answer in ex_data['CORRECT'] else False
+
+        elif exerciseType == ExerciseType.Unscramble:
+            ## TODO: Verificar corretude
+            return True if answer == ex_data['CORRECT'][0] else False
+
+        elif exerciseType == ExerciseType.CrossWords:
+            # TODO: something
+
+        elif exerciseType == ExerciseType.DragAndDrop:
+            # TODO: Lotsa things
+
+        else: return False
 
 
 class PersCourse(IfPersCourse):
