@@ -2,12 +2,12 @@
 {% load staticfiles %}
 
 {% block body %}
-	{% for field, value in data.items %}
-		{{ field }}: {{ value }}<br />
-			<button id="edit_{{ field }}"
-					title="{{ value }}"
-					>Edit</button><br /><br />
-	{% endfor %}
+    {% for field, value in data.items %}
+        {{ field }}: {{ value }}<br />
+            <button id="edit_{{ field }}"
+                    title="{{ value }}"
+                    >Edit</button><br /><br />
+    {% endfor %}
 {% endblock %}
 
 

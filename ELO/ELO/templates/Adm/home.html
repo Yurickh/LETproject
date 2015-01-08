@@ -4,11 +4,11 @@
 {% block title %} {{ DICT.ELO_ADM }} {% endblock %}
 
 {% block head %}
-	<script src="{% static 'Adm/script_home.js' %}"></script>
+    <script src="{% static 'Adm/script_home.js' %}"></script>
 
-	<link 	rel="stylesheet"
-			type="text/css"
-			href="{% static 'Adm/styles.css' %}" />
+    <link   rel="stylesheet"
+            type="text/css"
+            href="{% static 'Adm/styles.css' %}" />
 
 
 {% endblock %}
@@ -16,38 +16,38 @@
 {% block content %}
 
 <h3>{{ DICT.MENU }}</h3>
-	<div id="container">
-		<div id="left" class="p-left">
-			<div style="padding-left:70px"><h2>{{ DICT.STUDENT }}</h2></div>
-			  	<button id="reg_Student"
-						class="button">{{ DICT.REGISTER_STUDENT }}</button>
-				<button id="att_Student"
-						title=""
-						class="button">{{ DICT.SUBMIT_STUDENT }}</button>
-				<button id="del_Student"
-						class="button">{{ DICT.DEL_STUDENT }}</button>
-		</div>
-	  	<div id="center">
-	  		<div style="padding-left:70px"><h2>{{ DICT.COURSE }}</h2></div>
-		  	<button id="reg_Professor"
-					class="button">{{ DICT.REGISTER_COURSE }}</button>
-			<button id="att_Professor"
-					class="button">{{ DICT.SUBMIT_COURSE }}</button>
-			<button id="del_Professor"
-					class="button">{{ DICT.DEL_COURSE }}</button>
-		</div>
-	  	<div id="right" class="p-right">
-	  		<div style="padding-left:55px"><h2>{{ DICT.PROFESSOR }}</h2></div>
-		  	<button id="reg_Course"
-					class="button">{{ DICT.REGISTER_PROFESSOR }}</button>
-			<button id="att_Course"
-					class="button">{{ DICT.SUBMIT_PROFESSOR }}</button>
-			<button id="del_Course"
-					class="button">{{ DICT.DEL_PROFESSOR }}</button>
-		</div>
-	</div>
+    <div id="container">
+        <div id="left" class="p-left">
+            <div style="padding-left:70px"><h2>{{ DICT.STUDENT }}</h2></div>
+                <button id="reg_Student"
+                        class="button">{{ DICT.REGISTER_STUDENT }}</button>
+                <button id="att_Student"
+                        title=""
+                        class="button">{{ DICT.SUBMIT_STUDENT }}</button>
+                <button id="del_Student"
+                        class="button">{{ DICT.DEL_STUDENT }}</button>
+        </div>
+        <div id="center">
+            <div style="padding-left:70px"><h2>{{ DICT.COURSE }}</h2></div>
+            <button id="reg_Professor"
+                    class="button">{{ DICT.REGISTER_COURSE }}</button>
+            <button id="att_Professor"
+                    class="button">{{ DICT.SUBMIT_COURSE }}</button>
+            <button id="del_Professor"
+                    class="button">{{ DICT.DEL_COURSE }}</button>
+        </div>
+        <div id="right" class="p-right">
+            <div style="padding-left:55px"><h2>{{ DICT.PROFESSOR }}</h2></div>
+            <button id="reg_Course"
+                    class="button">{{ DICT.REGISTER_PROFESSOR }}</button>
+            <button id="att_Course"
+                    class="button">{{ DICT.SUBMIT_PROFESSOR }}</button>
+            <button id="del_Course"
+                    class="button">{{ DICT.DEL_PROFESSOR }}</button>
+        </div>
+    </div>
 
-	<div class="dialog"></div>
-	<div class="inner_dialog"></div>
+    <div class="dialog"></div>
+    <div class="inner_dialog"></div>
 
 {% endblock %}

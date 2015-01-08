@@ -1,44 +1,44 @@
 #profile-ph /*ph = placeholder */
 {
-	border: 2px solid black;
-	background-color: black;
-	position: relative;
-	float: left;
-	width: 50%;
+    border: 2px solid black;
+    background-color: black;
+    position: relative;
+    float: left;
+    width: 50%;
 }
 
 #avatar-ph
 {
-	margin-top: 1em;
-	margin-left: 1em;
-	margin-bottom: 1em;
-	width: 15em;
-	border: 1px solid black;
-	float: left;
+    margin-top: 1em;
+    margin-left: 1em;
+    margin-bottom: 1em;
+    width: 15em;
+    border: 1px solid black;
+    float: left;
 }
 
 #p_info, #p_info ul
 {
-	color: white;
-	list-style-type: none;
-	text-align: center;
-	margin-right: 2em;
+    color: white;
+    list-style-type: none;
+    text-align: center;
+    margin-right: 2em;
 }
 
 .dialog
 {
-	font-size: 15px;
-	text-align: center;
+    font-size: 15px;
+    text-align: center;
 }
 
 
 .dialog ul
 {
-	list-style-type: none;
-	text-align: left;
+    list-style-type: none;
+    text-align: left;
 }
 
 #topper
 {
-	height: 50%;
+    height: 50%;
 }
