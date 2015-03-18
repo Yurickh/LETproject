@@ -12,6 +12,7 @@ $(document).ready(function(){
                 function(){
                         $info.id = less_id;
                         $info.slide = slide;
+
             });
     }
 
@@ -23,6 +24,8 @@ $(document).ready(function(){
                 },
         heightStyle: 'fill'
     });
+
+    $accordion.accordion("refresh");
 
     // Lesson Loading
 

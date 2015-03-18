@@ -396,10 +396,10 @@ class BusCourse(IfBusCourse):
             ## TODO: Verificar corretude
             return True if answer == ex_data['CORRECT'][0] else False
 
-        elif exerciseType == ExerciseType.CrossWords:
+        elif exerciseType == ExerciseType.CrossWords: pass
             # TODO: something
 
-        elif exerciseType == ExerciseType.DragAndDrop:
+        elif exerciseType == ExerciseType.DragAndDrop: pass
             # TODO: Lotsa things
 
         else: return False
