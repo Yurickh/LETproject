@@ -12,7 +12,7 @@
 
 from django import template
 
-from Course.forms import MultipleChoiceExercise
+from Course.forms import *
 from Course.macros import ExerciseType, FORM_WRAPPER
 
 import ELO.locale.index as lang
@@ -29,7 +29,10 @@ register = template.Library()
 # form de exercício no template, independentemente do seu tipo.
 @register.tag
 def exercise(parser, token):
-    ## @try
+
+    toklist = token.split_contents()
+
+    ## @if
     #   Responsável pelo processamento no caso do usuário utilizar a tag
     # {% exercise %}.
     #
@@ -37,12 +40,10 @@ def exercise(parser, token):
     #   Utilize esta tag caso você tenha uma variável no contexto chamada
     #   "exercise" (sem aspas) que contenha o objeto retornado pelo método
     #   IfBusCourse.createExercise().
-    try:
-        tname = token.split_contents()
+    if len(toklist) == 1:
         return ExerciseToken()
-    except ValueError: pass
 
-    ## @try
+    ## @if
     #   Responsável pelo processamento no caso do usuário utilizar as tags
     # {% exercise arg1 %} ou {% exercise "arg1" %}.
     #
@@ -61,15 +62,14 @@ def exercise(parser, token):
     # dentro da form de exercício. É mais utilizado para exercícios do tipo
     # ExerciseType.FillTheBlank. Os campos de input serão inseridos no lugar
     # do %_.
-    try:
-        tname, tok = token.split_contents()
-        return ExerciseToken(tok)
-    except ValueError: pass
+    if len(toklist) == 2:
+        print "TOKEN: ", toklist[1]
+        return ExerciseToken.halfTag(toklist[1])
 
     ## Mensagem de erro para quantidade inapropriada de argumentos para a tag.
     exc_msg = lang.DICT['TEMPLATE_TAG_MA'] % token.contents.split()[0]
 
-    ## @try
+    ## @if
     #   Responsável pelo processamento no caso do usuário utilizar a tag
     # {% exercise arg1 "arg2" %}
     #
@@ -86,16 +86,17 @@ def exercise(parser, token):
     # dentro da form de exercício. É mais utilizado para exercícios do tipo
     # ExerciseType.FillTheBlank. Os campos de input serão inseridos no lugar
     # do %_.
-    try:
-        tname, exerciseName, formatString = token.split_contents()
-    except ValueError:
-        raise template.TemplateSyntaxError(exc_msg)
-    else:
+    if len(toklist) == 3:
+
+        exerciseName = toklist[1]
+        formatString = toklist[2]
+
         if formatString[0]!=formatString[-1] or formatString not in ["'",'"']:
             raise template.TemplateSyntaxError(exc_msg)
         else:
-            return ExerciseToken(exerciseName, formatString[1:-1])
-
+            return ExerciseToken.completeTag(exerciseName, formatString[1:-1])
+    else:
+        raise template.TemplateSyntaxError(exc_msg)
 
 ## Classe do tipo Node responsável pela renderização da tag {% exercise %}.
 class ExerciseToken(template.Node):
@@ -105,17 +106,23 @@ class ExerciseToken(template.Node):
 
     ## Construtor chamado no caso da criação ser feita através da tag
     #   {% exercise arg1 "arg2" %}.
-    def __init__(self, exercise, formatString):
-        self.exercise = exercise
-        self.formatString = formatString.split("%_")
+    @classmethod
+    def completeTag(cls, exercise, formatString):
+        ex = cls()
+        ex.exercise = exercise
+        ex.formatString = formatString.split("%_")
+        return ex
 
     ## Construtor chamado no caso da criação ser feita através da tag
     #   {% exercise arg1 %} ou {% exercise "arg1" %}.
-    def __init__(self, token):
+    @classmethod
+    def halfTag(cls, token):
+        ex = cls()
         if token[0] == token[-1] and token[0] in ["'", '"']:
-            self.formatString = token[1:-1].split("%_")
+            ex.formatString = token[1:-1].split("%_")
         else:
-            self.exercise = token
+            ex.exercise = token
+        return ex
 
     ## Construtor chamado no caso da criação ser feita através da tag
     #   {% exercise %}
@@ -131,7 +138,7 @@ class ExerciseToken(template.Node):
 
             if not self.formatString:
                 self.formatString = ["", ""]
-            elif len(self.formatString < 2):
+            elif len(self.formatString) < 2:
                 self.formatString.append("")
 
             if exerciseNode.type == ExerciseType.MultipleChoice:
@@ -157,6 +164,9 @@ class ExerciseToken(template.Node):
 
             else:
                 exercise = ''
+
+            print exercise
+            print self.formatString
 
             return FORM_WRAPPER(exercise, 
                                 exerciseNode.csrf, 
