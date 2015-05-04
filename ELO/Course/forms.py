@@ -17,25 +17,26 @@ class LessonForm(forms.Form):
 
 class MultipleChoiceExercise(forms.Form):
     options = forms.ChoiceField(widget   = forms.RadioSelect, 
-                                required = True)
+                                required = True,
+                                label = "")
 
     def clean_options(self):
         return dict(self.cleaned_data['options'])
 
 class FillTheBlankExercise(forms.Form):
-    blank = forms.CharField(required = True)
+    blank = forms.CharField(required = True, label="")
 
     def clean_blank(self):
         return PlainText(self.cleaned_data['blank']).value
 
 class UnscrambleExercise(forms.Form):
-    bloat = forms.CharField(required = True)
+    bloat = forms.CharField(required = True, label="")
 
     def clean_bloat(self):
         return self.cleaned_data['bloat'].split()
 
 class CrossWordExercise(forms.Form):
-    bloat = forms.CharField(required = True)
+    bloat = forms.CharField(required = True, label="")
 
     def clean_bloat(self):
         wordList = self.cleaned_data['bloat'].split('_')

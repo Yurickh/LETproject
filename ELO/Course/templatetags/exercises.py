@@ -63,7 +63,6 @@ def exercise(parser, token):
     # ExerciseType.FillTheBlank. Os campos de input serão inseridos no lugar
     # do %_.
     if len(toklist) == 2:
-        print "TOKEN: ", toklist[1]
         return ExerciseToken.halfTag(toklist[1])
 
     ## Mensagem de erro para quantidade inapropriada de argumentos para a tag.
@@ -105,6 +104,10 @@ class ExerciseToken(template.Node):
     formatString = None
 
     ## Construtor chamado no caso da criação ser feita através da tag
+    #   {% exercise %}
+    def __init__(self): pass
+
+    ## Construtor chamado no caso da criação ser feita através da tag
     #   {% exercise arg1 "arg2" %}.
     @classmethod
     def completeTag(cls, exercise, formatString):
@@ -124,17 +127,13 @@ class ExerciseToken(template.Node):
             ex.exercise = token
         return ex
 
-    ## Construtor chamado no caso da criação ser feita através da tag
-    #   {% exercise %}
-    def __init__(self): pass
-
     ## Método chamado pelo Django para a renderização do nó no contexto.
     def render(self, context):
         try:
             if not self.exercise:
                 exerciseNode = context['exercise']
             else:
-                exerciseNode = self.exercise.render(context)
+                exerciseNode = self.exercise.resolve(context)
 
             if not self.formatString:
                 self.formatString = ["", ""]
