@@ -223,7 +223,6 @@ class PersLogin(IfPersLogin):
             username = usr.username
             upass = usr.password
         else:
-
             try:
                 uid = database.objects.get(value=username, field='NAME')
                 uid = uid.identity
@@ -241,5 +240,6 @@ class PersLogin(IfPersLogin):
                     return False
             else:
                 ulang = settings.LANGUAGE_CODE
+
 
         return { 'name': username, 'password': upass, 'language': ulang }
