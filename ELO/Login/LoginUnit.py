@@ -15,7 +15,7 @@ from django.template import Template, Context
 from django.utils import translation
 from django import forms
 
-from ELO.models import Student, Adm, Professor
+from ELO.models import Student, Adm, Professor, God
 from ELO.BaseUnit import Name, Password
 from Login.forms import LoginForm
 
@@ -182,7 +182,7 @@ class UiLogin(IfUiLogin):
 			elif database.__name__ == "Adm":
 				target = "364fd8cdc3a35a89b7be75bc9d10ebea"
 			elif database.__name__ == "God":
-				target = "e50b058759a52eda8a507687887186e5"
+				target = "e50b058759a52eda8a507687887186e5" 
 			else:
 				target = ""
 
@@ -214,14 +214,17 @@ class PersLogin(IfPersLogin):
 
 		if database.__name__ == "God":
 			try:
-				usr = database.objects.get()
+				uname = database.objects.get(field='NAME')
+				upass = database.objects.get(field='PASSWORD')
 			except database.DoesNotExist:
 				return False
 			except database.MultipleObjectsReturned:
+				raise ValueError("Foram encontrados dois deuses, \
+								um deles precisa ser eliminado pois o sistema é monoteísta!")
 				return False
 
-			username = usr.username
-			upass = usr.password
+			username = uname.value
+			upass = upass.value
 		else:
 
 			try:

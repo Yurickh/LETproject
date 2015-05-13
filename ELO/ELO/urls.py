@@ -48,8 +48,9 @@ urlpatterns = patterns('',
 	## URL da pagina de cursos.
 	url(r'^course/(?P<courseid>\d+)/?$', factory.runCourse),
 	url(r'^assync/lesson/?$', factory.runCourse),
-	url(r'^adm/(?P<model>\w{3,25})/(?P<username>\w{0,32})?$', factory.runAdm),
-	url(r'^adm/(?P<model>\w{3,25})/register?$', factory.runAdm),
+	url(r'^adm/(?P<model>\w{3,25})/(?P<action>\w{0,9})/?$', factory.runAdm),
+	url(r'^adm/(?P<model>\w{3,25})/(?P<username>\w{0,9})/searchacc?$', factory.runAdm),
+	url(r'^adm/(?P<model>\w{3,25})/(?P<username>\w{0,32})/(?P<action>\w{0,9})/?$', factory.runAdm),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()

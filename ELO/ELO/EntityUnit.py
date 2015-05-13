@@ -84,11 +84,12 @@ class Adm(User):
 	
 	_User__instantiable = True
 
-	def __init__(self, name, password, language):
+	def __init__(self, name, password, language, email):
 		try:
 			self.name = name
 			self.password = password
 			self.language = language
+			self.email = email
 		except ValueError as exc:
 			del self
 			raise exc
@@ -108,11 +109,20 @@ class Adm(User):
 	def language():
 		del __language
 
+	@property
+	def email(self):
+		return self.__email
+	@email.setter
+	def email(self, value):
+		if type(value) is Mail:
+			self.__email = value 
+		else :
+			raise ValueError(lang.DICT['EXCEPTION_INV_PRF_ML'])
+
 ## Representação do Professor para o sistema.
-#Refere-se tanto a professores de fato, quanto a monitores.
+#Refere-se tanto aos professores.
 #Eles tem permição para montar cursos e modificar cursos.
-#Vale ressaltar que o professor NÃO pode criar cursos, apenas monta-los a partir
-#
+#Vale ressaltar que o professor NÃO pode criar cursos, apenas monta-los.
 class Professor(User):
 	_User__instantiable = True
 
@@ -233,6 +243,115 @@ class Professor(User):
 	def sex(self):
 		del self.__sex
 
+## Representação do Tutor para o sistema.
+# Refere-se aos monitores de um curso.
+# Eles tem permição para adionar materias a um curso já montado, e só
+# podem editar os conteúdos que os próprios adicionarem.
+class Tutor(User):
+	_User__instantiable = True
+
+	def __init__(self, name, password, bios, campus, courses, avatar, sex):
+		try:
+			self.name = name
+			self.password = password
+			self.bios = bios
+			self.campus = campus
+			self.courses = courses
+			self.avatar = avatar
+			self.sex = sex
+			self.email = email
+		except ValueError as exc:
+			del self
+			raise exc
+	@property
+	def email(self):
+		return self.__email
+	@email.setter
+	def email(self, value):
+		if type(value) is Mail:
+			self.__email = value 
+		else :
+			raise ValueError(lang.DICT['EXCEPTION_INV_PRF_ML'])
+
+	@property
+	def bios(self):
+		return self.__bios
+
+	@bios.setter
+	def bios(self, bios):
+		if type(bios) is PlainText:
+			self.__bios = bios
+		else:
+			raise ValueError(lang.DICT['EXCEPTION_INV_PRF_BS'])
+
+	@bios.deleter
+	def bios(self):
+		del self.__bios
+
+
+	@property
+	def campus(self):
+		return self.__campus
+
+	@campus.setter
+	def campus(self, campus):
+		if type(campus) is Campus:
+			self.__campus = campus
+		else:
+			raise ValueError(lang.DICT['EXCEPTION_INV_PRF_CP'])
+
+	@campus.deleter
+	def campus(self):
+		del self.__campus
+
+
+	@property
+	def courses(self):
+		return self.__courses
+
+	@courses.setter
+	def courses(self, courses):
+		if type(courses) is list and (type(courses[0]) is Id or not courses):
+			self.__courses = courses
+		else:
+			raise ValueError(lang.DICT['EXCEPTION_INV_PRF_CS'])
+
+	@courses.deleter
+	def courses(self):
+		del self.__courses
+
+
+	@property
+	def avatar(self):
+		return self.__avatar
+
+	@avatar.setter
+	def avatar(self, avatar):
+		if type(avatar) is Link:
+			self.__avatar = avatar
+		else:
+			raise ValueError(lang.DICT['EXCEPTION_INV_PRF_AV'])
+
+	@avatar.deleter
+	def avatar(self):
+		del self.__avatar
+
+
+	@property
+	def sex(self):
+		return self.__sex
+
+	@sex.setter
+	def sex(self, sex):
+		if type(sex) is Sex:
+			self.__sex = sex
+		else:
+			raise ValueError(lang.DICT['EXCEPTION_INV_PRF_SX'])
+
+	@sex.deleter
+	def sex(self):
+		del self.__sex
+
 
 ##Por ultimo, mas não menos importante, o aluno.
 #Principal usuário desse software.
@@ -241,7 +360,8 @@ class Student(User):
 	
 	_User__instantiable = True
 
-	def __init__(self, name, password, matric, bios, campus, courses, avatar, email, sex, grades, interests, language):
+	def __init__(self, name, password, matric, bios, campus, courses, avatar, 
+				email, sex, grades, interests, language):
 		try:
 			self.name = name
 			self.password = password

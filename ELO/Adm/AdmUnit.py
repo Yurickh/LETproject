@@ -1,9 +1,9 @@
 #coding: utf-8
 
 ## TODO:
-#   Colocar permissões de Adm e God diferenciadas.
-#   Implementar confirmação de senha do Adm após qualquer ação realizada.
 #   Implementar log de eventos que o Adm ou God realizar.
+#   Conf. com senha adm para todas ações.
+#   Courses visualizar alunos.
 
 ## @file AdmUnit.py
 #   Este arquivo é responsável pelo armazenamento de todas as camadas 
@@ -18,14 +18,23 @@ from abc import *
 
 import ELO.locale.index as lang
 
-from ELO.models import Adm, Student, Professor, Courses, God, Identities
+import django_tables2 as tables
+from django_tables2   import RequestConfig
+
+from ELO.models import Adm, Student, Professor, Tutor, Courses, God, Identities
 
 from forms import (
     RegUserForm,
+    RegAdmForm,
     SrcUserForm,
     ConfAdmForm,
     RegCourForm,
-    SrcCourForm)
+    SrcCourForm,
+    EditUserForm,
+    EditCourForm,
+    EditAdmForm)
+
+from tables_models import StudentTable, ProfessorTable, CoursesTable
 
 from Profile.forms import (
     NameForm, 
@@ -41,6 +50,23 @@ from django.conf import settings
 from django.http import HttpResponseRedirect
 from django import forms
 
+HOME_ACCOUNTS = 'Adm/adm_accounts.html'
+NEW_ACCOUNTS = "Adm/new_acc.html"
+EDIT_ACCOUNTS = "Adm/edit_acc.html"
+DEL_ACCOUNT = "Adm/del_acc.html"
+STUDENTS = 'students'
+PROFESSORS = 'professors'
+TUTORS = 'tutors'
+COURSES = 'courses'
+ADM = 'adms'
+GOD = 'God'
+SEARCH = 'search'
+REGISTER = 'register'
+DELETE = 'delete'
+EDIT = 'edit'
+NAME = 'nome'
+POST = 'POST'
+ACTION = 'act'
 
 ## Interface para a camada de apresentação de Usuário do módulo de Adm.
 #   É responsável pelo carregamento do template correto e processa os dados
@@ -85,7 +111,7 @@ class IfUiAdm:
     #   O método run() permite à Factory dar o controle do programa 
     #   ao módulo de Administração.
     @abstractmethod
-    def run(self, request, model=None, username=None): pass
+    def run(self, request, model=None, username=None, action=None): pass
 
 ## Interface para a camada de negócio do módulo de Administração.
 #   É responsável pela validação dos dados submetidos através do 
@@ -136,26 +162,21 @@ class IfBusAdm:
     #
     @abstractmethod
     def regAccount(self, request, form): pass
-   
-    ## Edita dados de um conta no database.
-    #   Podendo ser estes de uma conta de Estudante, Professor ou um Curso.  
-    #
-    #   @arg    form    Valores dos campos para edição validados.
-    #
-    @abstractmethod
-    def attAccount(self, request, field, form, model): pass
 
     ## Deleta uma conta no database.
     #   Podendo ser esta uma conta de Estudante, Professor ou um Curso.
     @abstractmethod
     def delAccount(self, request): pass
 
+    @abstractmethod
+    def editAccount(self, request): pass
+
     ## Procura conta do database.
     #   Podendo ser esta uma conta de Estudante, Professor ou um Curso.
     #
     #   @return data    Dados da conta procurada.
     @abstractmethod
-    def fetchAccount(self, request, model): pass
+    def fetchAccount(self, model, request=None, accountid=None): pass
 
     ## Verifica os últimos eventos realizados pelo Administrador.
     #@abstractmethod
@@ -176,33 +197,7 @@ class IfPersAdm:
     #   @arg    database    Objeto modelo sobre o qual a inserção será
     #                       realizada (Estudante, Professor, Curso). 
     @abstractmethod
-    def data_in(self, dict_field_value, database): pass
-
-    ## Insere Estudantes ou Professores em algum Curso.
-    #
-    #   @arg    course_id   Matrícula do Curso que irá receber as inserções.
-    #
-    #   @arg    user_id     Matrícula do Usuário que será inserido.
-    #
-    #   @arg    model       Modelo do usuário que será inserido no Curso.
-    @abstractmethod
-    def insert_User(self, course_id, user_id, model): pass
-
-    ## Método que atualiza os dados de uma conta fornecida.
-    #   No caso de campos multivalorados, adiciona uma nova entrada.
-    #   Caso contrário, substitui a entrada anterior.
-    #   É necessário a senha do administrador para que
-    #   essa operação possa ser executada.
-    #
-    #   @arg    username    Nome do usuário sobre o qual a consulta será
-    #                       realizada.
-    #   @arg    field       Campo a ser atualizado.
-    #
-    #   @arg    newdata     Dado a ser atualizado.
-    #
-    #   @arg    database    Objeto de modelo que será utilizado.
-    @abstractmethod
-    def update(self, username, field, newdata, database): pass
+    def dataIn(self, dict_field_value, database): pass
 
     ## Método que deleta os dados de uma conta fornecida.
     #   É necessário a senha do administrador para que
@@ -213,7 +208,7 @@ class IfPersAdm:
     #   @arg    database    Objeto modelo sobre o qual a consulta será
     #                       realizada.
     @abstractmethod
-    def fetch_del_User(self, username, database): pass
+    def fetchDelUser(self, username, database): pass
 
     ## Método que deleta os dados de um curso fornecida.
     #   É necessário a senha do administrador para que
@@ -224,7 +219,7 @@ class IfPersAdm:
     #   @arg    database    Objeto modelo sobre o qual a consulta será
     #                       realizada.
     @abstractmethod
-    def fetch_del_Cour(self, courMatric, database): pass
+    def fetchDelCour(self, courMatric, database): pass
 
     ##  Função que recupera todos os dados de um usuário pesquisado.
     #
@@ -254,6 +249,12 @@ class IfPersAdm:
     @abstractmethod
     def fetchAllCour(self, database): pass
 
+    @abstractmethod
+    def editUser(self, request, database): pass
+
+    @abstractmethod
+    def editCour(self, request, database): pass
+
 ## Camada de interface do Administrador para o módulo de Administração.
 #   Deve carregar o devido template, contendo campos onde será
 #   permitido a criação, edição e deleção de contas do tipo Estudante,
@@ -263,7 +264,20 @@ class IfPersAdm:
 #   requisitando os devidos dados necessários de cada ação.
 class UiAdm(IfUiAdm): 
 
-    def run(self, request, model=None, username=None):
+    def __make_table(self, model, data, order=None):
+        if model == STUDENTS:
+            table = StudentTable(data)
+        elif model == PROFESSORS or model == TUTORS or model == ADM:
+            table = ProfessorTable(data)
+        elif model == COURSES:
+            table = CoursesTable(data)
+
+        if order:
+            table.order_by = order
+
+        return table
+
+    def run(self, request, model=None, username=None, action=None):
         ## @if Verifica qual o propósito do submit.
         #
         #   Caso seja POST, a requisição ocorre após a submissão de uma form,
@@ -278,158 +292,164 @@ class UiAdm(IfUiAdm):
         #   iniciados. Será passada informações para requisitar os forms
         #   adequados e informações do usuário procurado para uma possível
         #   edição ou deleção.
-        if request.method == "POST":
-            if model == "students":
-                new_form_search = SrcUserForm()
-                try:
-                    if request.POST['act'] == "search":
-                        user_form = SrcUserForm(request.POST)
+        if request.method == POST:
+            if model == COURSES:
+                form_search = SrcCourForm()
+            else:
+                form_search = SrcUserForm()
 
-                        if user_form.is_valid():
-                        
-                            dUser = self.bus.fetchAccount(request, model)
+            data = None
+            exc = False
+            try:
+                if model == ADM and request.session['user']['type'] != GOD:
+                    raise ValueError(lang.DICT['ERROR_MODEL'])
 
-                            ordUser = [{'NAME':dUser[0]['NAME'], 'MATRIC':
-                                        dUser[0]['MATRIC'], 'EMAIL':
-                                        dUser[0]['EMAIL']}]
+                if ACTION in request.POST:
+                    if action == SEARCH:
+                        if model == COURSES:
+                            search_form = SrcCourForm(request.POST)
+                        else:
+                            search_form = SrcUserForm(request.POST)
 
-                            return render(request, "Adm/adm_stu.html", 
-                                        {'form': new_form_search, 'data':ordUser, 
-                                        'model':model,})
+                        if search_form.is_valid():
+
+                            dacc = self.bus.fetchAccount(model, request)
+
+                            data = [{'NAME':dacc[0]['NAME']}]
+
+                            if model != COURSES:
+                                data[0]['EMAIL'] = dacc[0]['EMAIL']
+
+                                if model == STUDENTS:
+                                    data[0]['MATRIC'] = dacc[0]['MATRIC']
+                            else:
+                                data[0]['COURMATRIC'] = dacc[0]['COURMATRIC']
+                                data[0]['PROFESSOR'] = dacc[0]['PROFESSOR']
+                            print data
                         else:
                             raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
 
-                    elif request.POST['act'] == "reg":
-                        user_form = RegUserForm(request.POST)
+                    elif action == REGISTER:
+                        if model == COURSES:
+                            reg_form = RegCourForm(request.POST)
+                        elif model == ADM:
+                            reg_form = RegAdmForm(request.POST)
+                        else:
+                            reg_form = RegUserForm(request.POST)
 
-                        if user_form.is_valid():
-
-                            self.bus.regAccount(request, user_form)
-
-                            data = self.bus.allAccounts(model)
-
-                            return render(request, "Adm/adm_stu.html", 
-                                        {'form': new_form_search, 'data':data, 
-                                        'model':model})
+                        if reg_form.is_valid():
+                            self.bus.regAccount(request, reg_form)
                         else:
                             raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
 
-                except ValueError as exc:
-                     return render(request, "Adm/adm_stu.html", 
-                                {'form': new_form_search, 'err': exc, 
-                                'model': 'students'})
+                    elif action == DELETE:
+                        if model == COURSES:
+                            delete_form = SrcCourForm(request.POST)
+                        else:
+                            delete_form = SrcUserForm(request.POST)
 
-            elif model == "professors":
-                new_form_search = SrcUserForm()
-                try:
-                    if request.POST['act'] == "search":
-                        user_form = SrcUserForm(request.POST)
-                        
-                        if user_form.is_valid():
-
-                            dUser = self.bus.fetchAccount(request, model)
-
-                            ordUser = [{'NAME':dUser[0]['NAME'],
-                                        'EMAIL':dUser[0]['EMAIL']}]
-
-                            return render(request, "Adm/adm_prof.html", 
-                                       {'form': new_form_search, 'data':ordUser, 
-                                        'model':model,})
+                        if delete_form.is_valid():
+                            self.bus.delAccount(request)
                         else:
                             raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
 
-                    elif request.POST['act'] == "reg":
-                        user_form = RegUserForm(request.POST)
+                    elif action == EDIT:
+                        if model == COURSES:
+                            edit_form = EditCourForm(request.POST)
+                        elif model == ADM:
+                            edit_form = EditAdmForm(request.POST)
+                        else:
+                            edit_form = EditUserForm(request.POST)
 
-                        if user_form.is_valid():
-
-                            self.bus.regAccount(request, user_form)
-
-                            data = self.bus.allAccounts(model)
-
-                            return render(request, "Adm/adm_prof.html", 
-                                        {'form': new_form_search, 'data':data, 
-                                        'model':model})
+                        if edit_form.is_valid():
+                            self.bus.editAccount(request)                            
                         else:
                             raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
+                    else:
+                        raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
 
+            except ValueError as exce:
+                exc = exce
 
-                except ValueError as exc:
-                    return render(request, "Adm/adm_prof.html", 
-                                    {'form': new_form_search,'err': exc, 
-                                    'model': 'professors' })
-            elif model == "courses":
-                new_form_search = SrcCourForm()
-                try:
-                    if request.POST['act'] == "search":
-                        cour_form = SrcCourForm(request.POST)
-                        
-                        if cour_form.is_valid():
-                            dUser = self.bus.fetchAccount(request, model)
+            if not data:
+                data = self.bus.allAccounts(model)
 
-                            ordUser = [{'NAME':dUser[0]['NAME'], 'COURMATRIC':
-                                        dUser[0]['COURMATRIC'], 'PROFESSOR':
-                                        dUser[0]['PROFESSOR']}]
+            table = self.__make_table(model, data, NAME)
+            RequestConfig(request, paginate={"per_page": 
+                                            25}).configure(table)
 
-                            print ordUser
-
-                            return render(request, "Adm/adm_cour.html", 
-                                        {'form': new_form_search, 'data':ordUser, 
-                                        'model':model,})
-                        else:
-                            raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
-
-                    elif request.POST['act'] == "reg":
-                        cour_form = RegCourForm(request.POST)
-
-                        if cour_form.is_valid():
-
-                            self.bus.regAccount(request, cour_form)
-
-                            data = self.bus.allAccounts(model)
-
-                            return render(request, "Adm/adm_cour.html", 
-                                        {'form': new_form_search, 'data':data, 
-                                        'model':model})
-                        else:
-                            raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
-
-                except ValueError as exc:
-                    return render(request, "Adm/adm_cour.html", 
-                                    {'form':  new_form_search,'err': exc, 
-                                    'model': 'courses' })
+            return render(request, HOME_ACCOUNTS, 
+                        {'form': form_search, 'data':table, 'err': exc,
+                        'model':model,})
 
 
         elif not (model or username): #request.method == "GET"
-            return render(request, "Adm/home.html")
+            return render(request, "Adm/home.html", {"role": \
+                                            request.session['user']['type']})
         else: #request.method == "AJAX"
-            if model == "students":
-                form = SrcUserForm()
-                data = Student.objects.all()
-                #data = self.bus.allAccounts(model)
-                return render(request, "Adm/adm_stu.html", 
-                                {'form': form, 'data': data, 'model':model,})
-            elif model == "professors":
-                form = SrcUserForm()
-                data = self.bus.allAccounts(model)
-                return render(request, "Adm/adm_prof.html", 
-                                {'form': form, 'data': data, 'model':model,})
-            elif model == "courses":
-                form = SrcCourForm()
-                data = self.bus.allAccounts(model)
-                return render(request, "Adm/adm_cour.html", 
-                                {'form': form, 'data': data, 'model':model,})
-            elif model == "newstudents" or model == "newprofessors":
-                form = RegUserForm()
-                model = model[3:]
-                return render(request, "Adm/new_acc.html",  {'form': form,
-                    'model':model,})
-            elif model == "newcourses":
-                form = RegCourForm()
-                model = model[3:]
-                return render(request, "Adm/new_acc.html",  {'form': form,
-                    'model':model,})
+            model1 = model[0]
+            model3 = model[3:]
+            exc = False
 
+            if model1 == "s":
+                model = model3
+                URL = HOME_ACCOUNTS
+
+                if model == COURSES:
+                    form = SrcCourForm()
+                else:
+                    form = SrcUserForm()        
+
+            elif model1 == "n":
+                model = model3
+                URL = NEW_ACCOUNTS
+
+                if model ==COURSES:
+                    form = RegCourForm()
+                elif model == ADM:
+                    form = RegAdmForm()
+                else:
+                    form = RegUserForm()                
+
+            elif model1 == "d":
+                model = model3
+                URL = DEL_ACCOUNT
+
+                if model == COURSES:
+                    form = SrcCourForm()
+                else:
+                    form = SrcUserForm()
+
+            elif model1 == "e":
+                model = model[4:]
+                URL = EDIT_ACCOUNTS
+                acc = self.bus.fetchAccount(model, None, username)
+
+                if model == COURSES:
+                    form = EditCourForm(initial = \
+                                        {'courMatric':acc[0]['COURMATRIC'], 
+                                        'courName':acc[0]['NAME'],
+                                        'courProfessor': acc[0]['PROFESSOR']})
+                elif model == ADM:
+                    form = EditAdmForm(initial = {'username':acc[0]['NAME'], 
+                                                'userEmail': acc[0]['EMAIL']})
+                else:
+                    form = EditUserForm(initial = {'username':acc[0]['NAME'], 
+                                                'userMatric':acc[0]['MATRIC'],
+                                                'userCampus': acc[0]['CAMPUS'], 
+                                                'userSex': acc[0]['SEX'], 
+                                                'userEmail': acc[0]['EMAIL']})
+            else:
+                URL = HOME_ACCOUNTS
+                exc = True
+            
+            data = self.bus.allAccounts(model)
+            table = self.__make_table(model, data, NAME)
+            RequestConfig(request, paginate={"per_page": 25}).configure(table)
+
+            return render(request, URL, 
+                        {'form': form, 'data': table, 'err': exc,
+                         'model':model,})
                     
 
 ## Camada de negócio para o módulo de administração.
@@ -439,23 +459,26 @@ class UiAdm(IfUiAdm):
 #   conta, podendo ser esta de um Estudante, Professor ou de um Curso.
 class BusAdm(IfBusAdm): 
 
-    def allAccounts(self, model):
-        db = None
-
-        ## @if Confere qual o modelo da conta procurado.
-        #
-        #   Caso seja Estudante, Professor ou Curso, o modelo antes passado 
-        #      como string é alocado em uma variável temporária como objeto.
-        #   
-        #   Caso o contrário, irá emitir excessão de modelo inválido.
-        if model == "students":
+    def __check_db(self, model):
+        if model == STUDENTS:
             db = Student
-        elif model == "professors":
+        elif model == PROFESSORS:
             db = Professor
-        elif model == "courses":
+        elif model == TUTORS:
+            db = Tutor
+        elif model == COURSES:
             db = Courses 
+        elif model == ADM:
+            db = Adm
         else:
+            db = None
             raise ValueError(lang.DICT['ERROR_MODEL'])
+
+        return db
+
+
+    def allAccounts(self, model):
+        db = self.__check_db(model)
 
         if db == Courses:
             data = self.pers.fetchAllCour(db) 
@@ -497,26 +520,17 @@ class BusAdm(IfBusAdm):
         #    
         #   Caso a requisição venha com outro modelo não especificado nos
         #   condicionais então é emitido erro.
-        db = None
 
         model = str(request.POST['model'])
 
-        if model == "students":
-            db = Student
-        elif model == "professors":
-            db = Professor
-        elif model == "courses":
-            db = Courses 
-        else:
-            raise ValueError(lang.DICT['ERROR_MODEL'])
-
+        db = self.__check_db(model)
 
         ## @if Verifica se a requisição pede outro modelo diferente de 
         #       Curso.
         #       
         #   Caso não for do modelo de Curso então é adionado a linguagem
         #   com valor default de Português.
-        if model != "courses":
+        if model != COURSES:
             # Escolhe uma linguagem padrão para cadastro do usuário 
             # recente.
             dict_data['LANGUAGE'] = 'pt-br'
@@ -529,71 +543,65 @@ class BusAdm(IfBusAdm):
             # É passado o dicionário de campos e valores do novo registro, e
             # o modelo de conta requisitado para criação destas informações 
             # no banco de dados (Persistência).
-            self.pers.data_in(dict_data, db)
+            self.pers.dataIn(dict_data, db)
         else:
             raise ValueError("Usuário já existe.")
         
     def delAccount(self, request):
-        
-        db = None
 
         model = str(request.POST['model'])
 
-        if model == "Student":
-            db = Student
-        elif model == "Professor":
-            db = Professor
-        elif model == "Course":
-            db = Courses 
-        else:
-            raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
+        db = self.__check_db(model)
 
         try:
-
             if db == Courses:
-                data = self.pers.fetch_del_Cour(str(request.POST['courMatric']), db)  
+                data = self.pers.fetchDelCour(str(request.POST['courMatric']), db)  
             else:
-                data = self.pers.fetch_del_User(request.POST['username'], db) 
+                data = self.pers.fetchDelUser(request.POST['username'], db) 
 
         except ValueError as exc:
             raise ValueError(exc)
 
         return data
 
-    def fetchAccount(self, request, model):
-        #  Inicializa modelo como nulo.
-        db = None
+    def editAccount(self, request):
 
-        ## @if Confere qual o modelo da conta procurado.
-        #
-        #   Caso seja Estudante este é alocado em uma variável temporária.
-        #
-        #   Caso seja Professor este é alocado em uma variável temporária.
-        #
-        #   Caso seja Curso este é alocado em uma variável temporária.   
-        #   
-        #   Caso contrário, irá emitir excessão de modelo inválido.
-        if model == "students":
-            db = Student
-        elif model == "professors":
-            db = Professor
-        elif model == "courses":
-            db = Courses 
+        model = str(request.POST['model'])
+
+        db = self.__check_db(model)
+
+        try:
+            if db == Courses:
+                data = self.pers.editCour(request.POST, db)
+            else:
+                data = self.pers.editUser(request.POST, db) 
+
+        except ValueError as exc:
+            raise ValueError(exc)
+
+        return data
+
+    def fetchAccount(self, model, request=None, accountid=None):
+        db = self.__check_db(model)
+
+
+        if accountid == None:
+            ## @if Confere se o modelo da Conta é um Curso.
+            #
+            #   Caso seja um curso é necessário passar a matrícula do Curso 
+            #   como chave de busca de informações.
+            #
+            #   Caso contrário, é passado o username da conta de Estudante ou 
+            #   de Professor.
+            if db == Courses:
+                data = self.pers.fetchCour(str(request.POST['courMatric']), db)  
+            else:
+                data = self.pers.fetchUser(str(request.POST['username']), db)
         else:
-            raise ValueError(lang.DICT['ERROR_MODEL'])
-
-
-        ## @if Confere se o modelo da Conta é um Curso.
-        #
-        #   Caso seja um curso é necessário passar a matrícula do Curso 
-        #   como chave de busca de informações.
-        #
-        #   Caso contrário, é passado o username da conta de Estudante ou 
-        #   de Professor.
-        if db == Courses:
-            data = self.pers.fetchCour(str(request.POST['courMatric']), db)  
-        else:
-            data = self.pers.fetchUser(str(request.POST['username']), db) 
+            if db == Courses:
+                data = self.pers.fetchCour(accountid, db)  
+            else:
+                data = self.pers.fetchUser(accountid, db)
     
 
         ## @if Confere se foi retornado algo do banco de dados.
@@ -608,7 +616,62 @@ class BusAdm(IfBusAdm):
 
 class PersAdm(IfPersAdm):
 
-    def data_in(self, dict_field_value, database):
+    ## Seleciona campo a partir da identidade do usuário.
+    #   Podendo ser estes de uma conta de Estudante, Professor ou um Curso.  
+    #
+    #   @arg    uid         Identidade de uma conta.
+    #
+    #   @arg    field       Objeto modelo sobre o qual a consulta será
+    #                       realizada. 
+    #
+    #   @arg    database    Modelo de uma conta.   
+    #
+    #   @return ret         Valor do campo de alguma conta.
+    def __select_field(self, uid, field, database):
+        ##  Tenta coletar o valor de algum campo pelo user id.
+        #
+        # Caso seja encontrado valores múltiplos é mostrado na tela
+        #   os valores encontrados.
+        # Caso algum dado nao exista no banco de dados 
+        #   entao a variável de retorno recebe um valor nulo.
+        try:
+            ret = database.objects.get(identity=uid, field=field)
+            ret = ret.value
+
+        except database.MultipleObjectsReturned:
+            ret = map(lambda x: x.value, database.objects.filter(
+                    identity=uid, field=field))
+
+        except database.DoesNotExist:
+            ret = None 
+
+        return ret
+
+    def __change_field_value(self, uid, field, value, database):
+        ##  Tenta coletar o valor de algum campo pelo user id.
+        #
+        # Caso seja encontrado valores múltiplos é mostrado na tela
+        #   os valores encontrados.
+        # Caso algum dado nao exista no banco de dados 
+        #   entao a variável de retorno recebe um valor nulo.
+        try:
+            ret = database.objects.get(identity=uid, field=field)
+            ret.value = value
+
+        except database.DoesNotExist:
+            data = database(identity=uid, field=field, 
+                                value=value)
+
+            data.save()
+
+        except ( database.DoesNotExist, 
+                 database.MultipleObjectsReturned ) as exc:
+            raise ValueError(exc)
+
+        else:
+            ret.save()
+
+    def dataIn(self, dict_field_value, database):
         # Coleta identidades ordenadas do modelo requisitado.
         catch = Identities.objects.filter(
             model=database.__name__).order_by('identity')
@@ -638,88 +701,7 @@ class PersAdm(IfPersAdm):
             # Salva os novos dados no database.
             data.save()
 
-    def insert_User(self, course_id , user_id, model):
-        ##  Tenta coletar a identidade do Curso pela matrícula.
-        #
-        # Caso não exista ou seja encontrado valores múltiplos, 
-        #   é emitido erro.
-        try:
-            # Filtra o database pela matrícula do Curso.
-            uid = Courses.objects.get(field='MATRIC',value=course_id)
-            # Coleta a ID do Curso encontrado.
-            uid = uid.identity
-
-            ## Tenta coletar a lista de Estudantes ou Professores de algum 
-            #   Curso.
-            #
-            # Caso seja encontrado valores múltiplos então é emitido erro.
-            #
-            # Caso lista de Estudantes ou Professores não exista então
-            # novo valor é iniciado como primeiro item da lista.
-            try:
-                # Coleta a partir do ID do curso a lista de Estudantes ou 
-                # Professores existentes no Curso.
-                data = Courses.objects.get(identity=uid, field=model.upper())
-                # Transforma lista unicode para formato de lista padrão.
-                new_data = eval(data.value)
-                # Adiciona ao final da lista um novo valor de Estudante ou
-                # Professor.
-                new_data.append(user_id)
-                # Retorna lista com novo valor à lista do Curso direcionado.
-                data.value = new_data
-
-            except ( Courses.MultipleObjectsReturned ) as exc:
-                raise ValueError(exc)
-
-            except ( Courses.DoesNotExist ) as exc:
-                new_list = []
-                new_list.append(user_id)
-                data = Courses(identity=uid, field=model.upper(), 
-                                value=new_list)
-            # Salva os novos dados no database. 
-            data.save()
-
-        except ( Courses.DoesNotExist, 
-                 Courses.MultipleObjectsReturned ) as exc:
-            raise ValueError(exc)
-
-
-
-    def update(self, username, field, newdata, database): 
-        ##  Tenta coletar a identidade da conta pelo nome determinado a ela.
-        #
-        # Caso não exista ou seja encontrado valores múltiplos , é
-        #   emitido erro.
-        try:
-            # Filtra o database pelo nome do usuario.
-            uid = database.objects.get(field='NAME', value=username)
-            # Coleta a ID do usuário encontrado.
-            uid = uid.identity
-
-            ## Para o caso de COURSEs, GRADEs ou INTERESTs.
-            if field[-1] == 's':
-                if field[-2] == 'e' or field[-2] == 't':
-                    field = field[:-1]
-                
-            try:
-                # Coleta a partir do ID do curso a lista do campo
-                # que deseja atualizar.
-                data = database.objects.get(identity=uid, field=field.upper())
-                # Nova informação é colocada no tipo que deseja atualizar.
-                data.value = newdata
-            # Caso o novo valor a ser colocado já exista então este 
-            # continua o mesmo.
-            except database.DoesNotExist:
-                data = database(identity=uid, field=field.upper(), 
-                                value=newdata)
-            # Salva os novos dados no database.
-            data.save()
-
-        except ( database.DoesNotExist, 
-                 database.MultipleObjectsReturned ) as exc:
-            raise ValueError(exc)
-
-    def fetch_del_User(self, username, database):
+    def fetchDelUser(self, username, database):
         # Tenta procurar se o username existe no banco de dados.
         # Caso não exista, é emitido um erro.
         try:
@@ -751,7 +733,7 @@ class PersAdm(IfPersAdm):
 
             return True
 
-    def fetch_del_Cour(self, courMatric, database):
+    def fetchDelCour(self, courMatric, database):
         # Tenta procurar se o username existe no banco de dados.
         # Caso não exista, é emitido um erro.
         try:
@@ -849,37 +831,6 @@ class PersAdm(IfPersAdm):
 
         return acc
 
-    ## Seleciona campo a partir da identidade do usuário.
-    #   Podendo ser estes de uma conta de Estudante, Professor ou um Curso.  
-    #
-    #   @arg    uid         Identidade de uma conta.
-    #
-    #   @arg    field       Objeto modelo sobre o qual a consulta será
-    #                       realizada. 
-    #
-    #   @arg    database    Modelo de uma conta.   
-    #
-    #   @return ret         Valor do campo de alguma conta.
-    def __select_field(self, uid, field, database):
-        ##  Tenta coletar o valor de algum campo pelo user id.
-        #
-        # Caso seja encontrado valores múltiplos é mostrado na tela
-        #   os valores encontrados.
-        # Caso algum dado nao exista no banco de dados 
-        #   entao a variável de retorno recebe um valor nulo.
-        try:
-            ret = database.objects.get(identity=uid, field=field)
-            ret = ret.value
-
-        except database.MultipleObjectsReturned:
-            ret = map(lambda x: x.value, database.objects.filter(
-                    identity=uid, field=field))
-
-        except database.DoesNotExist:
-            ret = None 
-
-        return ret
-
     def fetchAllUser(self, database):
         al = []
 
@@ -915,7 +866,7 @@ class PersAdm(IfPersAdm):
 
                 fetchdict = {
                         'NAME':         sf('NAME'),
-                        'COURMATRIC':   sf('COURMATRIC'),
+                        'COURMATRIC':   sf('MATRIC'),
                         'PROFESSOR':    sf('PROFESSOR'),
                 }
 
@@ -928,3 +879,59 @@ class PersAdm(IfPersAdm):
 
         return al
 
+    def editUser(self, request, database):
+        # Tenta procurar se o username existe no banco de dados.
+        # Caso não exista, é emitido um erro.
+        try:
+            # Filtra o database pelo nome do usuario.
+            uid = database.objects.get(field='NAME',value=request['username'])
+            # Coleta a ID do usuário
+            uid = uid.identity
+
+        # Caso usuário não exista, então é retornado para o Business
+        # que não foi encontrado.
+        except (database.DoesNotExist, database.MultipleObjectsReturned) as exc: 
+            raise ValueError(exc)
+                
+        # Tenta filtrar os dados de um ID.
+        # Caso não exista, é emitido um erro.
+        try:   
+            sf = lambda x, y: self.__change_field_value(uid, x, y, database)
+
+            sf('EMAIL', request['userEmail'])
+
+            if database != Adm:
+                sf('MATRIC', request['userMatric'])
+                sf('CAMPUS', request['userCampus'])
+                sf('SEX', request['userSex'])
+       
+        except (database.DoesNotExist, 
+            database.MultipleObjectsReturned) as exc: 
+            raise ValueError(exc)
+
+    def editCour(self, request, database):
+        # Tenta procurar se o username existe no banco de dados.
+        # Caso não exista, é emitido um erro.
+        try:
+            # Filtra o database pelo nome do usuario.
+            uid = database.objects.get(field='MATRIC',value=request['courMatric'])
+            # Coleta a ID do usuário
+            uid = uid.identity
+
+        # Caso usuário não exista, então é retornado para o Business
+        # que não foi encontrado.
+        except (database.DoesNotExist, database.MultipleObjectsReturned) as exc: 
+            raise ValueError(exc)
+                
+        # Tenta filtrar os dados de um ID.
+        # Caso não exista, é emitido um erro.
+        try:   
+            sf = lambda x, y: self.__change_field_value(uid, x, y, database)
+
+            sf('MATRIC', request['courMatric'])
+            sf('PROFESSOR', request['courProfessor'])
+            sf('NAME', request['courName'])
+       
+        except (database.DoesNotExist, 
+            database.MultipleObjectsReturned) as exc: 
+            raise ValueError(exc)

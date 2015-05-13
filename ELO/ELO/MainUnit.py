@@ -16,7 +16,7 @@ from Course.CourseUnit import *
 
 import ELO.locale.index as lang
 
-from models import Adm, Professor, Student, God
+from models import Adm, Professor, Student, God, Tutor
 
 from django.core.exceptions import PermissionDenied
 from django.http import Http404
@@ -73,6 +73,8 @@ class Factory:
 			database = God
 		elif entity == "Professor":
 			database = Professor
+		elif entity == "Tutor":
+			database = Tutor
 		elif entity == "Student":
 			database = Student
 		else:
@@ -129,7 +131,7 @@ class Factory:
 	#	administração.
 	@method_decorator(vary_on_cookie)
 	@method_decorator(csrf_protect)
-	def runAdm(self, request, model=None, username=None):
+	def runAdm(self, request, model=None, username=None, action=None):
 		#	Checa se usuario ja esta logado.
 		if 'user' in request.session.keys():
 			#	Checa se usuário é um Administrador ou Super Administrador.
@@ -142,8 +144,8 @@ class Factory:
 					self.__ui = UiAdm(self.__bus) 		
 				#	Passa a ação a ser efetuada e o devido modelo a ser
 				#		alterado para a run da Factory de Adm.
-				if model != None or username != None:
-					return self.__ui.run(request, model, username)
+				if model != None or username != None or action != None:
+					return self.__ui.run(request, model, username, action)
 				
 				return self.__ui.run(request)
 		#	Caso o  usuário não esteja logado ou não seja Administrador,

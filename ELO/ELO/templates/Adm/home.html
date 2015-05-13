@@ -19,7 +19,12 @@
 	</div>
 
 	<div class="container">	
-		<h2>Welcome, Adm o/.</h2>
+		<br /><br />
+		{% if err %}
+			<div id="error">{{ err }}</div>
+		{% endif %}
+		<br /><br />
+		<h2>SALiE</h2>
 	</div>
 
 {% endblock %}

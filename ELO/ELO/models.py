@@ -47,7 +47,7 @@ from django.db import models
 class Student(models.Model):
 	identity = models.IntegerField()
 	field = models.CharField(max_length=32)
-	value = models.TextField()
+	value = models.TextField(verbose_name='Nome')
 
 	## Retorna os valores do aluno correspondente ao Id no banco de dados.
 	def __unicode__(self):
@@ -75,7 +75,7 @@ class Adm(models.Model):
 #	MATRIC:		Inteiro que representa o número de registro do professor.\n
 #	BIOS:		Descrição detalhada do perfil do professor.\n
 #	CAMPUS:		Inteiro que representa a identity do campus de atuação do
-#					professor. (ver modelo Campus)\n
+#					tutor. (ver modelo Campus)\n
 #	COURSE:		Lista de inteiros que representam os cursos associados ao
 #					professor em questão. (ver modelo Course)\n
 #	AVATAR:		Caminho completo do avatar do usuário.\n
@@ -89,16 +89,37 @@ class Professor(models.Model):
 	def __unicode__(self):
 		return u'%d : %s = %s' % (self.identity, self.field, self.value)
 
+## Classe que define o modelo de tutor.
+# 	Colunas já implementadas:
+#
+#	NAME:		Identifica o nome do Tutor.\n
+#	PASSWORD:	Contém a hash da senha de acesso do tutor.\n
+#	BIOS:		Descrição detalhada do perfil do tutor.\n
+#	CAMPUS:		Inteiro que representa a identidade do campus de atuação do
+#					tutor. (ver modelo Campus)\n
+#	COURSE:		Lista de inteiros que representam os cursos associados ao
+#					tutor em questão. (ver modelo Course)\n
+#	AVATAR:		Caminho completo do avatar do usuário.\n
+#	SEX:		Caractere que representa o sexo do usuário. Varia entre M/F.\n
+class Tutor(models.Model):
+	identity = models.IntegerField()
+	field = models.CharField(max_length=32)
+	value = models.TextField()
+
+	## Retorna os valores do professor correspondente ao Id no banco de dados.
+	def __unicode__(self):
+		return u'%d : %s = %s' % (self.identity, self.field, self.value)
+
 ## Classe que define o modelo de deus.
 #	Esta tabela sempre conterá apenas uma entrada, ou seja, este sistema é
 #		monoteísta.
 class God(models.Model):
-	username = models.CharField(max_length=32)
-	password = models.TextField()
+	identity = models.IntegerField()
+	field = models.CharField(max_length=32)
+	value = models.TextField()
 
 	def __unicode__(self):
-		return u'\nusername: %s\n password: %s' % (self.username, 
-													   self.password)
+		return u'%d : %s = %s' % (self.identity, self.field, self.value)	
 
 ## Classe que define o modelo de Curso.
 #	Colunas já implementadas:

@@ -25,7 +25,7 @@ $(document).ready(function(){
 	$("div[id^='mod_']").click(function(){
 		model = $(this).attr("id").slice(4);
 
-		$(".container").load("/adm/"+model);
+		$(".container").load("/adm/src"+model+"/");
 	});
 
 });

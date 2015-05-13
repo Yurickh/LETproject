@@ -208,6 +208,7 @@ INSERT INTO "ELO_adm" VALUES(2,1,'PASSWORD','dafb7bb68af379c6c391ff9e4f2d1bbe');
 INSERT INTO "ELO_adm" VALUES(3,1,'LANGUAGE','en');
 INSERT INTO "ELO_adm" VALUES(4,2,'NAME','Yurick');
 INSERT INTO "ELO_adm" VALUES(5,2,'PASSWORD','b0f1646252f4434be3ef74e7ab6ac177');
+
 CREATE TABLE "ELO_professor" (
     "id" integer NOT NULL PRIMARY KEY,
     "identity" integer NOT NULL,
@@ -224,9 +225,11 @@ INSERT INTO "django_migrations" VALUES(2,'sessions','0001_initial','2014-10-03 2
 
 CREATE TABLE "ELO_god" (
     "id" integer NOT NULL PRIMARY KEY AUTOINCREMENT,
-    "username" varchar(32) NOT NULL,
-    "password" text NOT NULL
+    "identity" integer NOT NULL,
+    "field" varchar(32) NOT NULL,
+    "value" text NOT NULL
 );
+
 CREATE TABLE "ELO_courses" (
     "id" integer NOT NULL PRIMARY KEY AUTOINCREMENT,
     "identity" integer NOT NULL,

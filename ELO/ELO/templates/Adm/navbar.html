@@ -2,6 +2,10 @@
 	<div id ="mod_students"><li><a>Students</a></li></div>
 	<div id ="mod_professors"><li><a>Professors</a></li></div>
 	<div id ="mod_courses"><li><a>Courses</a></li></div>
+	<div id ="mod_tutors"><li><a>Tutors</a></li></div>
+	{% if role == "God" %}
+		<div id ="mod_adms"><li><a>Adms</a></li></div>
+	{% endif %}	
 	<div id ="mod_log"><li><a>Log</a></li></div>
 	<div id ="mod_graphs"><li><a>Graphs</a></li></div>
 	<div id ="mod_documentatin"><li><a>Documentation</a></li></div>
