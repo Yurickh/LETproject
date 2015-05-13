@@ -8,6 +8,7 @@ var hierarchy =
       [ "Adm.forms.AdmRegStu_ProfForm", "d5/d88/classAdm_1_1forms_1_1AdmRegStu__ProfForm.html", null ],
       [ "Adm.forms.AdmSrcCourForm", "de/d02/classAdm_1_1forms_1_1AdmSrcCourForm.html", null ],
       [ "Adm.forms.confAdm", "d2/db2/classAdm_1_1forms_1_1confAdm.html", null ],
+      [ "Course.forms.LessonForm", "db/d84/classCourse_1_1forms_1_1LessonForm.html", null ],
       [ "Login.forms.LoginForm", "d0/db9/classLogin_1_1forms_1_1LoginForm.html", null ],
       [ "Profile.forms.AvatarForm", "da/da4/classProfile_1_1forms_1_1AvatarForm.html", null ],
       [ "Profile.forms.BiosForm", "d7/d1e/classProfile_1_1forms_1_1BiosForm.html", null ],
@@ -91,7 +92,6 @@ var hierarchy =
       [ "ELO.EntityUnit.Student", "dd/d1d/classELO_1_1EntityUnit_1_1Student.html", null ]
     ] ],
     [ "TestCase", null, [
-      [ "Building.tests.SimpleTest", "d7/d71/classBuilding_1_1tests_1_1SimpleTest.html", null ],
-      [ "Course.tests.SimpleTest", "dc/dd5/classCourse_1_1tests_1_1SimpleTest.html", null ]
+      [ "Building.tests.SimpleTest", "d7/d71/classBuilding_1_1tests_1_1SimpleTest.html", null ]
     ] ]
 ];

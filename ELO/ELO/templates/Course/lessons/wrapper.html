@@ -1,0 +1,8 @@
+{% extends "includes/assync_wrapper.html" %}
+{% load staticfiles %}
+
+{% block body %}
+<div class="maxslides_{{ max }}">
+    {% block slide %}{% endblock %}
+</div>
+{% endblock %}

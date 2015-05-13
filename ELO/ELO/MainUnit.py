@@ -1,11 +1,11 @@
 #coding: utf-8
 
 ## @file MainUnit.py
-#	Arquivo responsável pela devida execução e estruturação do programa.
+#   Arquivo responsável pela devida execução e estruturação do programa.
 #
-#	Aqui reside a Factory, a classe que deve montar a estrutura do resto
-#	do programa, para que ele execute da forma correta, bem como outros
-#	blocos fundamentais para o funcionamento do sistema como um todo.
+#   Aqui reside a Factory, a classe que deve montar a estrutura do resto
+#   do programa, para que ele execute da forma correta, bem como outros
+#   blocos fundamentais para o funcionamento do sistema como um todo.
 
 from abc import *
 
@@ -24,18 +24,21 @@ from django.views.decorators.vary import vary_on_cookie
 from django.views.decorators.csrf import csrf_protect
 from django.utils.decorators import method_decorator
 from django.utils import translation
+from django import template
+
+register = template.Library()
 
 ## Insere os objetos user e DICT em todas as renderizações de template.
 def globalContext(request):
-	_sess = request.session
-	return {
-			'user': _sess['user'] if ('user' in _sess.keys()) else False,
-			'DICT': lang.DICT,
-		}
+    _sess = request.session
+    return {
+            'user': _sess['user'] if ('user' in _sess.keys()) else False,
+            'DICT': lang.DICT,
+        }
 
 ## Classe factory.
-#	Responsável pela construção e controle de fluxo de todo o programa. 
-# 	Tudo é criado a partir dela.
+#   Responsável pela construção e controle de fluxo de todo o programa. 
+#   Tudo é criado a partir dela.
 class Factory:
 	__ui = None
 	__bus = None
@@ -167,3 +170,4 @@ class Factory:
 			return self.__ui.run(request, courseid)
 		print 'runCourse(' +str(self)+','+str(request)+',courseid='+str(courseid)
 		raise PermissionDenied(lang.DICT["EXCEPTION_403_STD"])
+		

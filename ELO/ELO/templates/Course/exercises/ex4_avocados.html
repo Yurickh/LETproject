@@ -1,14 +1,13 @@
 {% extends "includes/assync_wrapper.html" %}
 {% load staticfiles %}
+{% load exercises %}
 
 {% block body %}
 
-    <center><img src="http://www.medicalnewstoday.com/images/articles/270/270406/avocados.jpg" /></center>
+    <center><img width="100" src="http://www.medicalnewstoday.com/images/articles/270/270406/avocados.jpg" /></center>
 
     What avocados are?
 
-    {% for option in options %}
-        {{ option.icon }}) {{ option.value }}
-    {% endfor %}
+    {% exercise %}
 
-{% endfor %}
+{% endblock %}

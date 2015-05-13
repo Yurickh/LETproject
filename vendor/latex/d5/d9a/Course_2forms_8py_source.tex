@@ -1,0 +1,22 @@
+\hypertarget{Course_2forms_8py}{\subsection{forms.\-py}
+\label{Course_2forms_8py}\index{E\-L\-O/\-Course/forms.\-py@{E\-L\-O/\-Course/forms.\-py}}
+}
+
+\begin{DoxyCode}
+\hypertarget{Course_2forms_8py_source_l00001}{}\hyperlink{namespaceCourse_1_1forms}{00001} \textcolor{comment}{#coding: utf-8}
+00002 
+00003 \textcolor{keyword}{from} django \textcolor{keyword}{import} forms
+00004 \textcolor{keyword}{from} \hyperlink{namespaceELO_1_1BaseUnit}{ELO.BaseUnit} \textcolor{keyword}{import} Id
+00005 
+00006 \textcolor{keyword}{import} \hyperlink{namespaceELO_1_1locale_1_1index}{ELO.locale.index} \textcolor{keyword}{as} lang
+00007 
+\hypertarget{Course_2forms_8py_source_l00008}{}\hyperlink{classCourse_1_1forms_1_1LessonForm}{00008} \textcolor{keyword}{class }\hyperlink{classCourse_1_1forms_1_1LessonForm}{LessonForm}(forms.Form):
+\hypertarget{Course_2forms_8py_source_l00009}{}\hyperlink{classCourse_1_1forms_1_1LessonForm_a0ed8ca8dc81ac7498c83df4a5735ce04}{00009}     lesson\_id = forms.IntegerField(required=\textcolor{keyword}{True})
+\hypertarget{Course_2forms_8py_source_l00010}{}\hyperlink{classCourse_1_1forms_1_1LessonForm_ad030e96bd25bff769cce537955b318d1}{00010}     slide\_number = forms.IntegerField(required=\textcolor{keyword}{True})
+00011 
+\hypertarget{Course_2forms_8py_source_l00012}{}\hyperlink{classCourse_1_1forms_1_1LessonForm_ad33e136f4ab11e780c0c1d1267769ab7}{00012}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1forms_1_1LessonForm_ad33e136f4ab11e780c0c1d1267769ab7}{clean\_lesson\_id}(self):
+00013         \textcolor{keywordflow}{return} \hyperlink{classELO_1_1BaseUnit_1_1Id}{Id}(self.cleaned\_data[\textcolor{stringliteral}{'lesson\_id'}])
+00014 
+\hypertarget{Course_2forms_8py_source_l00015}{}\hyperlink{classCourse_1_1forms_1_1LessonForm_acc15a807e96d131c1c839ee28da158de}{00015}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1forms_1_1LessonForm_acc15a807e96d131c1c839ee28da158de}{clean\_slide\_number}(self):
+00016         \textcolor{keywordflow}{return} \hyperlink{classELO_1_1BaseUnit_1_1Id}{Id}(self.cleaned\_data[\textcolor{stringliteral}{'slide\_number'}])
+\end{DoxyCode}

@@ -27,5 +27,4 @@ $(document).ready(function(){
 
 		$(".container").load("/adm/src"+model+"/");
 	});
-
 });

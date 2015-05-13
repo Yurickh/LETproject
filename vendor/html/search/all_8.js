@@ -16,6 +16,7 @@ var searchData=
   ['ifuilogin',['IfUiLogin',['../d9/d56/classLogin_1_1LoginUnit_1_1IfUiLogin.html',1,'Login::LoginUnit']]],
   ['ifuiprofile',['IfUiProfile',['../dc/d25/classProfile_1_1ProfileUnit_1_1IfUiProfile.html',1,'Profile::ProfileUnit']]],
   ['index_2epy',['index.py',['../db/d7b/index_8py.html',1,'']]],
+  ['index_2epy',['index.py',['../d7/d2a/locale_2index_8py.html',1,'']]],
   ['installed_5fapps',['INSTALLED_APPS',['../df/d5b/namespaceELO_1_1settings.html#a1a4752075da59d93477195bcc3fc4765',1,'ELO::settings']]],
   ['interests',['interests',['../dd/d1d/classELO_1_1EntityUnit_1_1Student.html#a8777212f16975f658ff8f75e47f2c554',1,'ELO.EntityUnit.Student.interests()'],['../dd/d1d/classELO_1_1EntityUnit_1_1Student.html#a166d0213fb60a69c2b8dce7b0afc754d',1,'ELO.EntityUnit.Student.interests'],['../dd/d1d/classELO_1_1EntityUnit_1_1Student.html#a166d0213fb60a69c2b8dce7b0afc754d',1,'ELO.EntityUnit.Student.interests'],['../dd/d1d/classELO_1_1EntityUnit_1_1Student.html#a166d0213fb60a69c2b8dce7b0afc754d',1,'ELO.EntityUnit.Student.interests']]],
   ['interestsform',['InterestsForm',['../d4/d5e/classProfile_1_1forms_1_1InterestsForm.html',1,'Profile::forms']]],

@@ -2,41 +2,41 @@
 
 <div class="mainMenu">
 
-	<a href="/">
-		<div class="banner">
-			<div id="logo">
-				<a href="/">
-					<img src="{{ MEDIA_URL }}images/SalieColorido.jpg" border="0" alt="Salie Logo" width="50" height="50"/>
-				</a>
-			</div>
-		</div>
-	</a>
-	
-	{% if user %}
-	<a href="/logout">
-		<div class="field">
-			{{ DICT.LOGOUT }}
-		</div>
-	</a>
+    <a href="/">
+        <div class="banner">
+            <div id="logo">
+                <a href="/">
+                    <img src="{{ MEDIA_URL }}images/SalieColorido.jpg" border="0" alt="Salie Logo" width="50" height="50"/>
+                </a>
+            </div>
+        </div>
+    </a>
+    
+    {% if user %}
+    <a href="/logout">
+        <div class="field">
+            {{ DICT.LOGOUT }}
+        </div>
+    </a>
 
-	<a href="/profile">
-		<div class="field">
-			{{ user.name }}
-		</div>
-	</a>
+    <a href="/profile">
+        <div class="field">
+            {{ user.name }}
+        </div>
+    </a>
 
-	<a href="/">
-		<div class="field">
-		{{ DICT.HOME }}
-		</div>
-	</a>
+    <a href="/">
+        <div class="field">
+        {{ DICT.HOME }}
+        </div>
+    </a>
 
-	{% else %}
-	<a href="/">
-		<div class="field">
-		{{ DICT.LOGIN }}
-		</div>
-	</a>
+    {% else %}
+    <a href="/">
+        <div class="field">
+        {{ DICT.LOGIN }}
+        </div>
+    </a>
 
 {% endif %}
 </div>

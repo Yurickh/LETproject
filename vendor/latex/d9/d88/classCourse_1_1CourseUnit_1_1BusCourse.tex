@@ -10,7 +10,11 @@ Diagrama de Hierarquia para Course.\-Course\-Unit.\-Bus\-Course\-:\begin{figure}
 \subsubsection*{Métodos Públicos}
 \begin{DoxyCompactItemize}
 \item 
+def \hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_ae10471abc4ea6bdaa2e0a6ebc1069889}{get\-Completed}
+\item 
 def \hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_ac7306e270597d7aac641d956f8e3f31f}{get\-Course}
+\item 
+def \hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_ac7325f4b22028b3885d52d14af3a12cf}{get\-Lesson}
 \end{DoxyCompactItemize}
 \subsubsection*{Additional Inherited Members}
 
@@ -18,11 +22,34 @@ def \hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_ac7306e270597d7aac641d956f
 \subsubsection{Descrição Detalhada}
 
 
-Definição na linha \hyperlink{CourseUnit_8py_source_l00087}{87} do arquivo \hyperlink{CourseUnit_8py_source}{Course\-Unit.\-py}.
+Definição na linha \hyperlink{CourseUnit_8py_source_l00230}{230} do arquivo \hyperlink{CourseUnit_8py_source}{Course\-Unit.\-py}.
 
 
 
 \subsubsection{Métodos}
+\hypertarget{classCourse_1_1CourseUnit_1_1BusCourse_ae10471abc4ea6bdaa2e0a6ebc1069889}{\index{Course\-::\-Course\-Unit\-::\-Bus\-Course@{Course\-::\-Course\-Unit\-::\-Bus\-Course}!get\-Completed@{get\-Completed}}
+\index{get\-Completed@{get\-Completed}!Course::CourseUnit::BusCourse@{Course\-::\-Course\-Unit\-::\-Bus\-Course}}
+\paragraph[{get\-Completed}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\-Course\-Unit.\-Bus\-Course.\-get\-Completed (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{user, }
+\item[{}]{accesstype}
+\end{DoxyParamCaption}
+)}}\label{classCourse_1_1CourseUnit_1_1BusCourse_ae10471abc4ea6bdaa2e0a6ebc1069889}
+
+
+Definição na linha \hyperlink{CourseUnit_8py_source_l00233}{233} do arquivo \hyperlink{CourseUnit_8py_source}{Course\-Unit.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classCourse_1_1CourseUnit_1_1BusCourse_l00233}{}\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_ae10471abc4ea6bdaa2e0a6ebc1069889}{00233} 
+00234     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_ae10471abc4ea6bdaa2e0a6ebc1069889}{getCompleted}(self, user, accesstype):
+00235         userid = self.pers.getid(\textcolor{stringliteral}{'NAME'}, user[\textcolor{stringliteral}{'name'}], Student)
+00236         userdata = self.pers.fetch(userid, Student)
+00237 
+00238         \textcolor{keywordflow}{return} userdata.get(accesstype + \textcolor{stringliteral}{'\_COMPLETED'}, [])
+
+\end{DoxyCode}
 \hypertarget{classCourse_1_1CourseUnit_1_1BusCourse_ac7306e270597d7aac641d956f8e3f31f}{\index{Course\-::\-Course\-Unit\-::\-Bus\-Course@{Course\-::\-Course\-Unit\-::\-Bus\-Course}!get\-Course@{get\-Course}}
 \index{get\-Course@{get\-Course}!Course::CourseUnit::BusCourse@{Course\-::\-Course\-Unit\-::\-Bus\-Course}}
 \paragraph[{get\-Course}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\-Course\-Unit.\-Bus\-Course.\-get\-Course (
@@ -34,13 +61,78 @@ Definição na linha \hyperlink{CourseUnit_8py_source_l00087}{87} do arquivo \hy
 )}}\label{classCourse_1_1CourseUnit_1_1BusCourse_ac7306e270597d7aac641d956f8e3f31f}
 
 
-Definição na linha \hyperlink{CourseUnit_8py_source_l00089}{89} do arquivo \hyperlink{CourseUnit_8py_source}{Course\-Unit.\-py}.
+Definição na linha \hyperlink{CourseUnit_8py_source_l00239}{239} do arquivo \hyperlink{CourseUnit_8py_source}{Course\-Unit.\-py}.
+
+
+
+Referências \hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ae83d657f3a281dd8a9ade3e7a9db0659}{Course.\-Course\-Unit.\-If\-Bus\-Course.\-get\-Completed()}.
 
 
 \begin{DoxyCode}
-\hypertarget{classCourse_1_1CourseUnit_1_1BusCourse_l00089}{}\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_ac7306e270597d7aac641d956f8e3f31f}{00089} 
-00090     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_ac7306e270597d7aac641d956f8e3f31f}{getCourse}(self, user, courseid):
-00091         \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+\hypertarget{classCourse_1_1CourseUnit_1_1BusCourse_l00239}{}\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_ac7306e270597d7aac641d956f8e3f31f}{00239} 
+00240     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_ac7306e270597d7aac641d956f8e3f31f}{getCourse}(self, user, courseid):
+00241         compmlist = self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ae83d657f3a281dd8a9ade3e7a9db0659}{getCompleted}(user, \textcolor{stringliteral}{'MODULE'})
+00242         compllist = self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ae83d657f3a281dd8a9ade3e7a9db0659}{getCompleted}(user, \textcolor{stringliteral}{'LESSON'})
+00243         ulocklist = self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ae83d657f3a281dd8a9ade3e7a9db0659}{getCompleted}(user, \textcolor{stringliteral}{'LOCK'})
+00244         coursedata = self.pers.fetch(courseid, Courses)
+00245         modulelist = []
+00246         
+00247         \textcolor{keywordflow}{for} moduleid \textcolor{keywordflow}{in} coursedata[\textcolor{stringliteral}{'MODULE'}]:
+00248             sfm = self.pers.fetch(moduleid, Module)
+00249             modulename = sfm[\textcolor{stringliteral}{'NAME'}][0]
+00250 
+00251             lessonlist = []
+00252 
+00253             \textcolor{keywordflow}{for} lessonid \textcolor{keywordflow}{in} sfm[\textcolor{stringliteral}{'LESSON'}]:
+00254                 lessoname = self.pers.fetch(lessonid, Lesson)[\textcolor{stringliteral}{'NAME'}]
+00255                 lessoncomplete = \textcolor{keyword}{True} \textcolor{keywordflow}{if} lessonid \textcolor{keywordflow}{in} compllist \textcolor{keywordflow}{else} \textcolor{keyword}{False}
+00256                 lessonunlocked = \textcolor{keyword}{True} \textcolor{keywordflow}{if} lessonid \textcolor{keywordflow}{in} ulocklist \textcolor{keywordflow}{else} \textcolor{keyword}{False}
+00257                 lessonlist = lessonlist + [\{\textcolor{stringliteral}{'id'}: lessonid,
+00258                                             \textcolor{stringliteral}{'name'}:lessoname[0],
+00259                                             \textcolor{stringliteral}{'complete'}:lessoncomplete,
+00260                                             \textcolor{stringliteral}{'unlocked'}:lessonunlocked \}]
+00261 
+00262             modulelist = modulelist + [\{\textcolor{stringliteral}{'id'}:       moduleid,
+00263                                         \textcolor{stringliteral}{'name'}:     modulename,
+00264                                         \textcolor{stringliteral}{'lessons'}:  lessonlist,
+00265                                         \textcolor{stringliteral}{'complete'}:\textcolor{keyword}{True} \(\backslash\)
+00266                                             \textcolor{keywordflow}{if} moduleid \textcolor{keywordflow}{in} compmlist \(\backslash\)
+00267                                             \textcolor{keywordflow}{else} \textcolor{keyword}{False}
+00268                                       \}]
+00269         
+00270         coursedata[\textcolor{stringliteral}{'MODULE'}] = sorted(modulelist, key=\textcolor{keyword}{lambda} x: x[\textcolor{stringliteral}{'id'}])
+00271 
+00272         \textcolor{keywordflow}{return} coursedata
+
+\end{DoxyCode}
+\hypertarget{classCourse_1_1CourseUnit_1_1BusCourse_ac7325f4b22028b3885d52d14af3a12cf}{\index{Course\-::\-Course\-Unit\-::\-Bus\-Course@{Course\-::\-Course\-Unit\-::\-Bus\-Course}!get\-Lesson@{get\-Lesson}}
+\index{get\-Lesson@{get\-Lesson}!Course::CourseUnit::BusCourse@{Course\-::\-Course\-Unit\-::\-Bus\-Course}}
+\paragraph[{get\-Lesson}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\-Course\-Unit.\-Bus\-Course.\-get\-Lesson (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{user, }
+\item[{}]{lessonid}
+\end{DoxyParamCaption}
+)}}\label{classCourse_1_1CourseUnit_1_1BusCourse_ac7325f4b22028b3885d52d14af3a12cf}
+
+
+Definição na linha \hyperlink{CourseUnit_8py_source_l00273}{273} do arquivo \hyperlink{CourseUnit_8py_source}{Course\-Unit.\-py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classCourse_1_1CourseUnit_1_1BusCourse_l00273}{}\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_ac7325f4b22028b3885d52d14af3a12cf}{00273} 
+00274     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_ac7325f4b22028b3885d52d14af3a12cf}{getLesson}(self, user, lessonid):
+00275 
+00276         lessondata = self.pers.fetch(lessonid, Lesson)
+00277 
+00278         lesson = \{\}
+00279         lesson[\textcolor{stringliteral}{'url'}] = lessondata[\textcolor{stringliteral}{'LINK'}][0]
+00280         lesson[\textcolor{stringliteral}{'name'}] = lessondata[\textcolor{stringliteral}{'NAME'}][0]
+00281         lesson[\textcolor{stringliteral}{'slides'}] = lessondata[\textcolor{stringliteral}{'SLIDES'}][0]
+00282         lesson[\textcolor{stringliteral}{'exercises'}] = lessondata[\textcolor{stringliteral}{'EXERCISE'}]
+00283 
+00284         \textcolor{keywordflow}{return} lesson
+00285 
 
 \end{DoxyCode}
 

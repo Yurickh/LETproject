@@ -2,25 +2,25 @@
 {% load staticfiles %}
 
 {% block head %}
-	<script src="{% static 'vendor/select2/select2.min.js' %}"></script>
-	<link	rel="stylesheet"
-			type="text/css"
-			href="{% static 'vendor/select2/select2.css' %}" />
+    <script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+    <link   rel="stylesheet"
+            type="text/css"
+            href="{% static 'vendor/select2/select2.css' %}" />
 {% endblock %}
 
 {% block body %}
-	{% if err %}
-		{{ form }}
-	{% else %}
-		 <form action="" method="post" id="{{ ff }}_form" 
-			{% if ff == "avatar" %} enctype="multipart/form-data"> <img src="{{ MEDIA_URL }}{{ user.avatar }}" /{% endif %}>
-			{% for field in form %}
-				
-				{{ field }}<br />
+    {% if err %}
+        {{ form }}
+    {% else %}
+         <form action="" method="post" id="{{ ff }}_form" 
+            {% if ff == "avatar" %} enctype="multipart/form-data"> <img src="{{ MEDIA_URL }}{{ user.avatar }}" /{% endif %}>
+            {% for field in form %}
+                
+                {{ field }}<br />
 
-			{% endfor %}
-			{% csrf_token %}
-			<input type="submit" name="{{ ff }}" value="{{ DICT.SUBMIT }}" />
-		</form>
-	{% endif %}
+            {% endfor %}
+            {% csrf_token %}
+            <input type="submit" name="{{ ff }}" value="{{ DICT.SUBMIT }}" />
+        </form>
+    {% endif %}
 {% endblock %}

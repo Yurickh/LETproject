@@ -38,8 +38,10 @@ INSERT INTO "django_session" VALUES('6lc9yginwe6t74lp6gvxdzlb6r03bq7c','OWNhMjI5
 INSERT INTO "django_session" VALUES('u2mkf6kbwrlgxn3b7ildlob3wbv0kd8a','MDkxZWUzOGI4Zjg0YzdhZDI3NTFiOGJiOTVjOTUxYjI1ZWY3MzdlOTp7ImRqYW5nb19sYW5ndWFnZSI6ImVuIiwidXNlciI6eyJpbnRlcmVzdHMiOiJBYmFjYXRlcyxFdSxWb2NcdTAwZWEsWm9ib21hZm9vIiwibmFtZSI6IkFuZHJlIiwibGFuZ3VhZ2UiOiJlbiIsImJpb3MiOiJJcyB0aGlzIHJlYWwgbGlmZT9cclxuT3IganVzdCBmYW50YSBzZWE/IEVzY3JldmF+IiwiY2FtcHVzIjoiMCIsInNleCI6Ik0iLCJjb3Vyc2VzIjpbIkFiYWNhdGUiLCJ0aWpvbG8iXSwiZ3JhZGVzIjpudWxsLCJhdmF0YXIiOiJhdmF0YXIvMS5wbmciLCJwYXNzd29yZCI6Ijg0ZDFjZmQ0YTFlMGFhMmRjZDdiNjc1NGEzNjI0NzQ3IiwidHlwZSI6IlN0dWRlbnQiLCJlbWFpbCI6IiIsIm1hdHJpYyI6IjAifX0=','2014-08-28 18:50:49.486293');
 INSERT INTO "django_session" VALUES('02pthi3zvzfhdwtm2q0ayeiayb1yfwoc','MDhlMWZkNjA3MmYxNjQ0YWZkOWI2YWQyMGNjMzU2N2Y5OGRmZDVjODp7Il9sYW5ndWFnZSI6ImVuIiwiZGphbmdvX2xhbmd1YWdlIjoiZW4iLCJ1c2VyIjp7ImludGVyZXN0cyI6Ill1cmljayx2b2NcdTAwZWEsQWJhY2F0ZXMiLCJuYW1lIjoiQW5kcmUiLCJsYW5ndWFnZSI6ImVuIiwiY291cnNlcyI6WyJBYmFjYXRlIiwidGlqb2xvIl0sInNleCI6Ik0iLCJlbWFpbCI6IiIsImJpb3MiOiJJcyB0aGlzIHJlYWwgbGlmZT9cclxuT3IganVzdCBmYW50YSBzZWE/IEVzY3JldmF+IiwiZ3JhZGVzIjpudWxsLCJhdmF0YXIiOiJhdmF0YXIvMS5wbmciLCJwYXNzd29yZCI6Ijg0ZDFjZmQ0YTFlMGFhMmRjZDdiNjc1NGEzNjI0NzQ3IiwidHlwZSI6IlN0dWRlbnQiLCJjYW1wdXMiOiIwIiwibWF0cmljIjoiMCJ9fQ==','2014-10-31 02:16:19.158310');
 INSERT INTO "django_session" VALUES('qx82gg8azdbbi8sb0ukb085y4tejjhvz','YzE2ZjQxZThmMTI4NzUzMTU2N2RjZDFiNjQ2NjBiNmY1M2MyZDg3Yzp7fQ==','2014-12-11 14:18:58.560515');
-INSERT INTO "django_session" VALUES('fbu5iaihzuoswowsi0stxems3gwk2c0z','YTBiZjBmNzVmNGI1Mjk0MGZkZDZiY2IwMjdhZDlkMjU0N2Q0YzExYjp7Il9sYW5ndWFnZSI6ImVuIiwiZGphbmdvX2xhbmd1YWdlIjoiZW4iLCJ1c2VyIjp7ImludGVyZXN0cyI6Ill1cmljayx2b2NcdTAwZWEsQWJhY2F0ZXMiLCJuYW1lIjoiQW5kcmUiLCJsYW5ndWFnZSI6ImVuIiwiY291cnNlcyI6W3siY29tcGxldGlvbiI6NTAuMCwibmFtZSI6InRlc3Rjb3Vyc2UiLCJpZCI6IjEifV0sInNleCI6Ik0iLCJlbWFpbCI6IiIsImJpb3MiOiJJcyB0aGlzIHJlYWwgbGlmZT9cbk9yIGp1c3QgZmFudGEgc2VhPyBFc2NyZXZhfiIsImdyYWRlcyI6bnVsbCwiYXZhdGFyIjoiYXZhdGFyLzIucG5nIiwicGFzc3dvcmQiOiI4NGQxY2ZkNGExZTBhYTJkY2Q3YjY3NTRhMzYyNDc0NyIsInR5cGUiOiJTdHVkZW50IiwiY2FtcHVzIjoiMCIsIm1hdHJpYyI6IjAifX0=','2014-12-11 16:03:13.024650');
+INSERT INTO "django_session" VALUES('fbu5iaihzuoswowsi0stxems3gwk2c0z','YTBiZjBmNzVmNGI1Mjk0MGZkZDZiY2IwMjdhZDlkMjU0N2Q0YzExYjp7Il9sYW5ndWFnZSI6ImVuIiwiZGphbmdvX2xhbmd1YWdlIjoiZW4iLCJ1c2VyIjp7ImludGVyZXN0cyI6Ill1cmljayx2b2NcdTAwZWEsQWJhY2F0ZXMiLCJuYW1lIjoiQW5kcmUiLCJsYW5ndWFnZSI6ImVuIiwiY291cnNlcyI6W3siY29tcGxldGlvbiI6NTAuMCwibmFtZSI6InRlc3Rjb3Vyc2UiLCJpZCI6IjEifV0sInNleCI6Ik0iLCJlbWFpbCI6IiIsImJpb3MiOiJJcyB0aGlzIHJlYWwgbGlmZT9cbk9yIGp1c3QgZmFudGEgc2VhPyBFc2NyZXZhfiIsImdyYWRlcyI6bnVsbCwiYXZhdGFyIjoiYXZhdGFyLzIucG5nIiwicGFzc3dvcmQiOiI4NGQxY2ZkNGExZTBhYTJkY2Q3YjY3NTRhMzYyNDc0NyIsInR5cGUiOiJTdHVkZW50IiwiY2FtcHVzIjoiMCIsIm1hdHJpYyI6IjAifX0=','2014-12-29 15:38:47.813036');
 INSERT INTO "django_session" VALUES('meshnco32hqc9phwwhx55ytxcrs915ct','YTBiZjBmNzVmNGI1Mjk0MGZkZDZiY2IwMjdhZDlkMjU0N2Q0YzExYjp7Il9sYW5ndWFnZSI6ImVuIiwiZGphbmdvX2xhbmd1YWdlIjoiZW4iLCJ1c2VyIjp7ImludGVyZXN0cyI6Ill1cmljayx2b2NcdTAwZWEsQWJhY2F0ZXMiLCJuYW1lIjoiQW5kcmUiLCJsYW5ndWFnZSI6ImVuIiwiY291cnNlcyI6W3siY29tcGxldGlvbiI6NTAuMCwibmFtZSI6InRlc3Rjb3Vyc2UiLCJpZCI6IjEifV0sInNleCI6Ik0iLCJlbWFpbCI6IiIsImJpb3MiOiJJcyB0aGlzIHJlYWwgbGlmZT9cbk9yIGp1c3QgZmFudGEgc2VhPyBFc2NyZXZhfiIsImdyYWRlcyI6bnVsbCwiYXZhdGFyIjoiYXZhdGFyLzIucG5nIiwicGFzc3dvcmQiOiI4NGQxY2ZkNGExZTBhYTJkY2Q3YjY3NTRhMzYyNDc0NyIsInR5cGUiOiJTdHVkZW50IiwiY2FtcHVzIjoiMCIsIm1hdHJpYyI6IjAifX0=','2014-12-13 16:11:13.161669');
+INSERT INTO "django_session" VALUES('vna5jaf7buzd3rski9h7alfjtp6zpjwk','YTBiZjBmNzVmNGI1Mjk0MGZkZDZiY2IwMjdhZDlkMjU0N2Q0YzExYjp7Il9sYW5ndWFnZSI6ImVuIiwiZGphbmdvX2xhbmd1YWdlIjoiZW4iLCJ1c2VyIjp7ImludGVyZXN0cyI6Ill1cmljayx2b2NcdTAwZWEsQWJhY2F0ZXMiLCJuYW1lIjoiQW5kcmUiLCJsYW5ndWFnZSI6ImVuIiwiY291cnNlcyI6W3siY29tcGxldGlvbiI6NTAuMCwibmFtZSI6InRlc3Rjb3Vyc2UiLCJpZCI6IjEifV0sInNleCI6Ik0iLCJlbWFpbCI6IiIsImJpb3MiOiJJcyB0aGlzIHJlYWwgbGlmZT9cbk9yIGp1c3QgZmFudGEgc2VhPyBFc2NyZXZhfiIsImdyYWRlcyI6bnVsbCwiYXZhdGFyIjoiYXZhdGFyLzIucG5nIiwicGFzc3dvcmQiOiI4NGQxY2ZkNGExZTBhYTJkY2Q3YjY3NTRhMzYyNDc0NyIsInR5cGUiOiJTdHVkZW50IiwiY2FtcHVzIjoiMCIsIm1hdHJpYyI6IjAifX0=','2014-12-31 17:25:30.256209');
+INSERT INTO "django_session" VALUES('cjwbdlqiggfnojqd948kmi3k9ep1aln7','NDYzZDJlYzQyZDFiMDVhYTRhNDBmZWMwMmNmMGQxMjdhMzdkM2JjOTp7Il9sYW5ndWFnZSI6ImVuIiwidXNlciI6eyJuYW1lIjoiWXVyaWNrIiwibGFuZ3VhZ2UiOiJlbiIsImNvdXJzZXMiOm51bGwsInNleCI6bnVsbCwiZW1haWwiOm51bGwsImJpb3MiOm51bGwsImF2YXRhciI6bnVsbCwicGFzc3dvcmQiOiJiMGYxNjQ2MjUyZjQ0MzRiZTNlZjc0ZTdhYjZhYzE3NyIsInR5cGUiOiJQcm9mZXNzb3IiLCJjYW1wdXMiOm51bGwsIm1hdHJpYyI6bnVsbH0sImRqYW5nb19sYW5ndWFnZSI6ImVuIn0=','2015-05-21 21:28:23.588632');
 CREATE TABLE "auth_permission" (
     "id" integer NOT NULL PRIMARY KEY,
     "name" varchar(50) NOT NULL,
@@ -156,46 +158,22 @@ CREATE TABLE "ELO_student" (
     "value" text NOT NULL
 );
 
-INSERT INTO "ELO_student" VALUES(1,1,'PASSWORD','dafb7bb68af379c6c391ff9e4f2d1bbe');
-INSERT INTO "ELO_student" VALUES(2,1,'NAME','Day');
-INSERT INTO "ELO_student" VALUES(3,1,'LANGUAGE','en');
-INSERT INTO "ELO_student" VALUES(46,1,'INTEREST','oi,something,other');
-INSERT INTO "ELO_student" VALUES(47,2,'NAME','Dayof');
-INSERT INTO "ELO_student" VALUES(48,2,'LANGUAGE','pt-br');
-INSERT INTO "ELO_student" VALUES(49,2,'SEX','F');
-INSERT INTO "ELO_student" VALUES(50,2,'EMAIL','dayof@gmail.com');
-INSERT INTO "ELO_student" VALUES(51,2,'CAMPUS','15987532');
-INSERT INTO "ELO_student" VALUES(52,2,'MATRIC','123456789');
-INSERT INTO "ELO_student" VALUES(53,3,'NAME','Outrapessoa');
-INSERT INTO "ELO_student" VALUES(54,3,'LANGUAGE','pt-br');
-INSERT INTO "ELO_student" VALUES(55,3,'SEX','F');
-INSERT INTO "ELO_student" VALUES(56,3,'EMAIL','another@hotmail.com');
-INSERT INTO "ELO_student" VALUES(57,3,'CAMPUS','3543434');
-INSERT INTO "ELO_student" VALUES(58,3,'MATRIC','54634');
-INSERT INTO "ELO_student" VALUES(59,4,'NAME','Outrapessoa');
-INSERT INTO "ELO_student" VALUES(60,4,'LANGUAGE','pt-br');
-INSERT INTO "ELO_student" VALUES(61,4,'SEX','F');
-INSERT INTO "ELO_student" VALUES(62,4,'EMAIL','another@hotmail.com');
-INSERT INTO "ELO_student" VALUES(63,4,'CAMPUS','3543434');
-INSERT INTO "ELO_student" VALUES(64,4,'MATRIC','54634');
-INSERT INTO "ELO_student" VALUES(71,6,'NAME','Hikari');
-INSERT INTO "ELO_student" VALUES(72,6,'LANGUAGE','pt-br');
-INSERT INTO "ELO_student" VALUES(73,6,'SEX','F');
-INSERT INTO "ELO_student" VALUES(74,6,'EMAIL','nope@gmail.com');
-INSERT INTO "ELO_student" VALUES(75,6,'CAMPUS','363543');
-INSERT INTO "ELO_student" VALUES(76,6,'MATRIC','54544');
-INSERT INTO "ELO_student" VALUES(77,7,'NAME','Whatfuck');
-INSERT INTO "ELO_student" VALUES(78,7,'LANGUAGE','pt-br');
-INSERT INTO "ELO_student" VALUES(79,7,'SEX','M');
-INSERT INTO "ELO_student" VALUES(80,7,'EMAIL','whats@nope.com');
-INSERT INTO "ELO_student" VALUES(81,7,'CAMPUS','544465');
-INSERT INTO "ELO_student" VALUES(82,7,'MATRIC','54546');
-INSERT INTO "ELO_student" VALUES(83,8,'NAME','Whooo');
-INSERT INTO "ELO_student" VALUES(84,8,'LANGUAGE','pt-br');
-INSERT INTO "ELO_student" VALUES(85,8,'SEX','F');
-INSERT INTO "ELO_student" VALUES(86,8,'EMAIL','whoooo@ahhh.com');
-INSERT INTO "ELO_student" VALUES(87,8,'CAMPUS','35435454');
-INSERT INTO "ELO_student" VALUES(88,8,'MATRIC','3135454');
+INSERT INTO "ELO_student" VALUES(1,1,'NAME','Andre');
+INSERT INTO "ELO_student" VALUES(2,1,'PASSWORD','84d1cfd4a1e0aa2dcd7b6754a3624747');
+INSERT INTO "ELO_student" VALUES(3,1,'BIOS','Is this real life?
+Or just fanta sea? Escreva~');
+INSERT INTO "ELO_student" VALUES(4,1,'MATRIC','0');
+INSERT INTO "ELO_student" VALUES(5,1,'CAMPUS','0');
+INSERT INTO "ELO_student" VALUES(6,1,'AVATAR','avatar/2.png');
+INSERT INTO "ELO_student" VALUES(7,1,'EMAIL','');
+INSERT INTO "ELO_student" VALUES(8,1,'SEX','M');
+INSERT INTO "ELO_student" VALUES(9,1,'INTEREST','Yurick,você,Abacates');
+INSERT INTO "ELO_student" VALUES(10,1,'LANGUAGE','en');
+INSERT INTO "ELO_student" VALUES(11,1,'COURSE','1');
+INSERT INTO "ELO_student" VALUES(12,1,'MODULE_COMPLETED','2');
+INSERT INTO "ELO_student" VALUES(13,1,'LOCK_COMPLETED','4');
+INSERT INTO "ELO_student" VALUES(14,1,'LESSON_COMPLETED','1');
+INSERT INTO "ELO_student" VALUES(15,1,'LOCK_COMPLETED','2');
 
 CREATE TABLE "ELO_adm" (
     "id" integer NOT NULL PRIMARY KEY,
@@ -219,6 +197,11 @@ CREATE TABLE "ELO_professor" (
 INSERT INTO "ELO_professor" VALUES(1,1,'NAME','Dayof');
 INSERT INTO "ELO_professor" VALUES(2,1,'PASSWORD','dafb7bb68af379c6c391ff9e4f2d1bbe');
 INSERT INTO "ELO_professor" VALUES(3,1,'LANGUAGE','en');
+
+INSERT INTO "ELO_professor" VALUES(3,1,'NAME','Yurick');
+INSERT INTO "ELO_professor" VALUES(4,1,'PASSWORD','b0f1646252f4434be3ef74e7ab6ac177');
+INSERT INTO "ELO_professor" VALUES(5,1,'LANGUAGE','en');
+
 CREATE TABLE "django_migrations" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "app" varchar(255) NOT NULL, "name" varchar(255) NOT NULL, "applied" datetime NOT NULL);
 INSERT INTO "django_migrations" VALUES(1,'contenttypes','0001_initial','2014-10-03 21:10:53.126238');
 INSERT INTO "django_migrations" VALUES(2,'sessions','0001_initial','2014-10-03 21:10:53.222176');
@@ -279,6 +262,10 @@ INSERT INTO "ELO_lesson" VALUES(8,3,'NAME','About Onions');
 INSERT INTO "ELO_lesson" VALUES(9,3,'LINK','less3_about_onions');
 INSERT INTO "ELO_lesson" VALUES(10,4,'NAME','About Bears');
 INSERT INTO "ELO_lesson" VALUES(11,4,'LINK','less4_about_bears');
+INSERT INTO "ELO_lesson" VALUES(12,1,'SLIDES','4');
+INSERT INTO "ELO_lesson" VALUES(13,2,'SLIDES','3');
+INSERT INTO "ELO_lesson" VALUES(14,3,'SLIDES','0');
+INSERT INTO "ELO_lesson" VALUES(15,4,'SLIDES','0');
 CREATE TABLE "ELO_exercise" (
     "id" integer NOT NULL PRIMARY KEY AUTOINCREMENT,
     "identity" integer NOT NULL,
@@ -329,7 +316,7 @@ DELETE FROM sqlite_sequence;
 INSERT INTO "sqlite_sequence" VALUES('django_migrations',2);
 INSERT INTO "sqlite_sequence" VALUES('ELO_courses',5);
 INSERT INTO "sqlite_sequence" VALUES('ELO_module',9);
-INSERT INTO "sqlite_sequence" VALUES('ELO_lesson',11);
+INSERT INTO "sqlite_sequence" VALUES('ELO_lesson',15);
 INSERT INTO "sqlite_sequence" VALUES('ELO_exercise',38);
 CREATE INDEX "django_session_b7b81f0c" ON "django_session" ("expire_date");
 COMMIT;

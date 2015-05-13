@@ -1,22 +1,22 @@
 #coding: utf-8
 
 ## @file urls.py
-#	Arquivo responsável pelo processo de reconhecimento da URL requisitada
-#	e correspondente chamada da função da Factory (ver MainUnit.py).
+#   Arquivo responsável pelo processo de reconhecimento da URL requisitada
+#   e correspondente chamada da função da Factory (ver MainUnit.py).
 #
-#	Cada pattern dentro do urlpatterns deve ter o formato:
+#   Cada pattern dentro do urlpatterns deve ter o formato:
 #
-#		url(r'REGEX', VIEW),
+#       url(r'REGEX', VIEW),
 #
-#	onde REGEX é a expressão regular que será utilizada para identificar
-#	a URL, e VIEW o método correspondente que será chamado para processar
-#	a requisição.
+#   onde REGEX é a expressão regular que será utilizada para identificar
+#   a URL, e VIEW o método correspondente que será chamado para processar
+#   a requisição.
 #
-#	É importante ressaltar que o método view deverá retornar obrigatoriamente
-#	um objeto do tipo HttpResponse.
+#   É importante ressaltar que o método view deverá retornar obrigatoriamente
+#   um objeto do tipo HttpResponse.
 #
-#	Dentro do projeto, todas as views são chamadas de dentro da Factory.
-#	Para mais informações, leia a documentação do MainUnit.py.
+#   Dentro do projeto, todas as views são chamadas de dentro da Factory.
+#   Para mais informações, leia a documentação do MainUnit.py.
 
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -51,6 +51,7 @@ urlpatterns = patterns('',
 	url(r'^adm/(?P<model>\w{3,25})/(?P<action>\w{0,9})/?$', factory.runAdm),
 	url(r'^adm/(?P<model>\w{3,25})/(?P<username>\w{0,9})/searchacc?$', factory.runAdm),
 	url(r'^adm/(?P<model>\w{3,25})/(?P<username>\w{0,32})/(?P<action>\w{0,9})/?$', factory.runAdm),
+    url(r'^assync/lesson/?$', factory.runCourse),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()

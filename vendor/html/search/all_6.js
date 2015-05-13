@@ -7,7 +7,8 @@ var searchData=
   ['fetchfield',['fetchField',['../d2/dec/classProfile_1_1ProfileUnit_1_1IfPersProfile.html#aaa886f8741f0b2ca562968cf9a688aa7',1,'Profile.ProfileUnit.IfPersProfile.fetchField()'],['../d7/dec/classProfile_1_1ProfileUnit_1_1PersProfile.html#a68ab67bed74c46b72216e256af8f6711',1,'Profile.ProfileUnit.PersProfile.fetchField()']]],
   ['field',['field',['../d0/dc8/classELO_1_1models_1_1Student.html#a893ec9b2ece5c6b829fce5e5a7c1d576',1,'ELO.models.Student.field()'],['../df/d5e/classELO_1_1models_1_1Adm.html#ae1af4ca22491b1cfe9cb0a7acefaa71e',1,'ELO.models.Adm.field()'],['../d5/d93/classELO_1_1models_1_1Professor.html#aaf0638dbb44d27f5acadeed376afafa1',1,'ELO.models.Professor.field()'],['../dd/dd9/classELO_1_1models_1_1Courses.html#a0ecbb317d4d82d5630b7a16a1df1711d',1,'ELO.models.Courses.field()'],['../d1/d5d/classELO_1_1models_1_1Module.html#ad05ba106a7012cd72877fe21e8639e2d',1,'ELO.models.Module.field()'],['../d0/da3/classELO_1_1models_1_1Lesson.html#a1657c9c36e8d9c58d86c272e2339e7b1',1,'ELO.models.Lesson.field()'],['../d3/da8/classELO_1_1models_1_1Exercise.html#a4567f8aa62747a0eabb1c89ab18ec1ce',1,'ELO.models.Exercise.field()']]],
   ['filepath',['filepath',['../df/d5b/namespaceELO_1_1settings.html#a7730264ddd478343e0f282f36d4a5ab4',1,'ELO::settings']]],
-  ['forms_2epy',['forms.py',['../df/d87/Adm_2forms_8py.html',1,'']]],
   ['forms_2epy',['forms.py',['../d7/d13/Profile_2forms_8py.html',1,'']]],
-  ['forms_2epy',['forms.py',['../db/dd7/Login_2forms_8py.html',1,'']]]
+  ['forms_2epy',['forms.py',['../db/dd7/Login_2forms_8py.html',1,'']]],
+  ['forms_2epy',['forms.py',['../df/d87/Adm_2forms_8py.html',1,'']]],
+  ['forms_2epy',['forms.py',['../d5/d9a/Course_2forms_8py.html',1,'']]]
 ];

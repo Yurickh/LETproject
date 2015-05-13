@@ -198,8 +198,7 @@ class UiFullProfile(IfUiProfile):
     __viewable = [
                     'email',
                     'campus',
-
-                    'matric'
+                    'matric',
                     ]
 
     def __init__(self, bus):

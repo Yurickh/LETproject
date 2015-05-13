@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    $info = {'id': 0, 'slide':0};
+    $info = {'id': -1, 'slide':-1};
 
     function loadLesson(less_id, slide)
     {
@@ -9,9 +9,10 @@ $(document).ready(function(){
             {'lesson_id':less_id, 
              'slide_number': slide,
              'csrfmiddlewaretoken': $.cookie('csrftoken')}, 
-                function(responseTxt, txtStatus, req){
-                    $info.id = less_id;
-                    $info.slide = slide;
+                function(){
+                        $info.id = less_id;
+                        $info.slide = slide;
+
             });
     }
 
@@ -24,20 +25,47 @@ $(document).ready(function(){
         heightStyle: 'fill'
     });
 
+    $accordion.accordion("refresh");
+
     // Lesson Loading
 
 	$("div[class^='lesson_']").click(function(){
 		less_id = $(this).attr("class").slice(7);
 
 		loadLesson(less_id, 0);
+        $("#l_bt_f").removeAttr("disabled");
+        $("#l_bt_b").attr("disabled", "disabled");
 	});
 
     $("#l_bt_f").click(function(){
-        loadLesson($info.id, $info.slide+1); 
+        if($info.id == -1) return;
+        maxslides = $("div[class^='maxslides_']").attr("class").slice(10);
+        if($info.slide < maxslides-2)
+        {
+            $("#l_bt_b").removeAttr("disabled");
+            loadLesson($info.id, $info.slide+1);
+        }
+        else if($info.slide == maxslides-2)
+        {
+            loadLesson($info.id, $info.slide+1);
+            $(this).attr('disabled', 'disabled');
+        }
+        else
+            $(this).attr('disabled', 'disabled');
     });
 
     $("#l_bt_b").click(function(){
-        if($info.slide > 0)
+        if($info.slide > 1)
+        {
+            $("#l_bt_f").removeAttr("disabled");
             loadLesson($info.id, $info.slide-1);
+        }
+        else if($info.slide == 1)
+        {
+            loadLesson($info.id, 0);
+            $(this).attr('disabled', 'disabled');
+        }
+        else
+            $(this).attr('disabled', 'disabled');
     });
 });
