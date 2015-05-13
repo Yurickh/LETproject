@@ -59,12 +59,12 @@ class Student(models.Model):
 #   NAME:       Identifica o nome do Administrador.\n
 #   PASSWORD:   Contém a hash da senha do administrador.
 class Adm(models.Model):
-    identity = models.IntegerField()
-    field = models.CharField(max_length=32)
-    value = models.TextField()
+	identity = models.IntegerField()
+	field = models.CharField(max_length=32)
+	value = models.TextField()
 
 	## Retorna os valores do administrador correspondente ao Id no banco de dados.
-	def __unicode__(self):
+	def __unicode__(self): 
 		return u'%d : %s = %s' % (self.identity, self.field, self.value)
 
 ## Classe que define o modelo de professor.
@@ -81,9 +81,9 @@ class Adm(models.Model):
 #   AVATAR:     Caminho completo do avatar do usuário.\n
 #   SEX:        Caractere que representa o sexo do usuário. Varia entre M/F.\n
 class Professor(models.Model):
-    identity = models.IntegerField()
-    field = models.CharField(max_length=32)
-    value = models.TextField()
+	identity = models.IntegerField()
+	field = models.CharField(max_length=32)
+	value = models.TextField()
 
 	## Retorna os valores do professor correspondente ao Id no banco de dados.
 	def __unicode__(self):
@@ -130,9 +130,9 @@ class God(models.Model):
 #                   curso em questão. (ver modelo Student).\n
 #   MODULES:    Lista de inteiros que identificam os módulos contidos no curso.
 class Courses(models.Model):
-    identity = models.IntegerField()
-    field = models.CharField(max_length=32)
-    value = models.TextField()
+	identity = models.IntegerField()
+	field = models.CharField(max_length=32)
+	value = models.TextField()
 
 	def __unicode__(self):
 		return u'%d : %s = %s' % (self.identity, self.field, self.value)
@@ -147,9 +147,9 @@ class Courses(models.Model):
 #   LESSONS:    Lista de inteiros que identificam as lições contidas dentro
 #                   dos módulos.
 class Module(models.Model):
-    identity = models.IntegerField()
-    field = models.CharField(max_length=32)
-    value = models.TextField()
+	identity = models.IntegerField()
+	field = models.CharField(max_length=32)
+	value = models.TextField()
 
 	def __unicode__(self):
 		return u'%d : %s = %s' % (self.identity, self.field, self.value)
@@ -164,9 +164,9 @@ class Module(models.Model):
 #                   à lição correspondente.\n
 #   SLIDES:     Número de slides que a lição possui.\n
 class Lesson(models.Model):
-    identity = models.IntegerField()
-    field = models.CharField(max_length=32)
-    value = models.TextField()
+	identity = models.IntegerField()
+	field = models.CharField(max_length=32)
+	value = models.TextField()
 
 	def __unicode__(self):
 		return u'%d : %s = %s' % (self.identity, self.field, self.value)
@@ -180,9 +180,9 @@ class Lesson(models.Model):
 #   EXFORMAT:   Formato do exercício a ser tratado.\n
 #   ITEMS:      Lista de items.\n
 class Exercise(models.Model):
-    identity = models.IntegerField()
-    field = models.CharField(max_length=32)
-    value = models.TextField()
+	identity = models.IntegerField()
+	field = models.CharField(max_length=32)
+	value = models.TextField()
 
 	def __unicode__(self):
 		return u'%d : %s = %s' % (self.identity, self.field, self.value)

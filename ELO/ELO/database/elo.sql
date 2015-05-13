@@ -206,13 +206,6 @@ CREATE TABLE "django_migrations" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMEN
 INSERT INTO "django_migrations" VALUES(1,'contenttypes','0001_initial','2014-10-03 21:10:53.126238');
 INSERT INTO "django_migrations" VALUES(2,'sessions','0001_initial','2014-10-03 21:10:53.222176');
 
-CREATE TABLE "ELO_god" (
-    "id" integer NOT NULL PRIMARY KEY AUTOINCREMENT,
-    "identity" integer NOT NULL,
-    "field" varchar(32) NOT NULL,
-    "value" text NOT NULL
-);
-
 CREATE TABLE "ELO_courses" (
     "id" integer NOT NULL PRIMARY KEY AUTOINCREMENT,
     "identity" integer NOT NULL,
