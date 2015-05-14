@@ -278,6 +278,8 @@ class UiAdm(IfUiAdm):
         return table
 
     def run(self, request, model=None, username=None, action=None):
+        conf = ConfAdmForm()
+
         ## @if Verifica qual o propósito do submit.
         #
         #   Caso seja POST, a requisição ocorre após a submissão de uma form,
@@ -365,6 +367,19 @@ class UiAdm(IfUiAdm):
                             self.bus.editAccount(request)                            
                         else:
                             raise ValueError(lang.DICT['EXCEPTION_INV_FRM'])
+
+                    elif action == "conf":
+                        feedback = False
+                        return render(request, URL, {'conf': conf, 
+                                                    'feedback': feedback,})    
+                    elif action == "conf2":
+                        feedback = False
+                        conf_form = ConfAdmForm(request.POST)
+
+                        if conf_form.is_valid():
+                            feedback = True
+                        
+                        return render(request, URL, {'feedback': feedback,})    
                     else:
                         raise ValueError(lang.DICT['EXCEPTION_404_ERR'])
 
@@ -439,17 +454,23 @@ class UiAdm(IfUiAdm):
                                                 'userCampus': acc[0]['CAMPUS'], 
                                                 'userSex': acc[0]['SEX'], 
                                                 'userEmail': acc[0]['EMAIL']})
+            elif model1 == "c":
+                URL = "Adm/conf_action.html"
+                print model1
+                return render(request, URL, {'conf': conf,})
+
             else:
                 URL = HOME_ACCOUNTS
                 exc = True
             
+            print model
             data = self.bus.allAccounts(model)
             table = self.__make_table(model, data, NAME)
             RequestConfig(request, paginate={"per_page": 25}).configure(table)
 
             return render(request, URL, 
                         {'form': form, 'data': table, 'err': exc,
-                         'model':model,})
+                         'model':model, 'conf': conf,})
                     
 
 ## Camada de negócio para o módulo de administração.
@@ -472,7 +493,8 @@ class BusAdm(IfBusAdm):
             db = Adm
         else:
             db = None
-            raise ValueError(lang.DICT['ERROR_MODEL'])
+            # fazer lang.dict
+            raise ValueError("Modelo incorreto.")
 
         return db
 
