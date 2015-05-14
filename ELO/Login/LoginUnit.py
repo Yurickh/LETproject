@@ -147,6 +147,8 @@ class UiLogin(IfUiLogin):
             except ValueError as exc:
                 if database.__name__ == "Professor":
                     target = "proflogin"
+                elif database.__name__ == "Tutor":
+                    target = "tutorlogin"
                 elif database.__name__ == "Adm":
                     target = "364fd8cdc3a35a89b7be75bc9d10ebea"
                 elif database.__name__ == "God":
@@ -180,6 +182,8 @@ class UiLogin(IfUiLogin):
                 target = ""
             if database.__name__ == "Professor":
                 target = "proflogin"
+            elif database.__name__ == "Tutor":
+                target = "tutorlogin"
             elif database.__name__ == "Adm":
                 target = "364fd8cdc3a35a89b7be75bc9d10ebea"
             elif database.__name__ == "God":

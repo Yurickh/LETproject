@@ -109,7 +109,7 @@ class Tutor(models.Model):
 	## Retorna os valores do professor correspondente ao Id no banco de dados.
 	def __unicode__(self):
 		return u'%d : %s = %s' % (self.identity, self.field, self.value)
-
+		
 ## Classe que define o modelo de deus.
 #   Esta tabela sempre conterá apenas uma entrada, ou seja, este sistema é
 #       monoteísta.
