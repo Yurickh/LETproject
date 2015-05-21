@@ -1,12 +1,11 @@
-\hypertarget{classProfile_1_1ProfileUnit_1_1BusProfile}{\subsection{Referência da Classe Profile.\-Profile\-Unit.\-Bus\-Profile}
-\label{classProfile_1_1ProfileUnit_1_1BusProfile}\index{Profile.\-Profile\-Unit.\-Bus\-Profile@{Profile.\-Profile\-Unit.\-Bus\-Profile}}
-}
+\hypertarget{classProfile_1_1ProfileUnit_1_1BusProfile}{}\subsection{Referência da Classe Profile.\+Profile\+Unit.\+Bus\+Profile}
+\label{classProfile_1_1ProfileUnit_1_1BusProfile}\index{Profile.\+Profile\+Unit.\+Bus\+Profile@{Profile.\+Profile\+Unit.\+Bus\+Profile}}
 
 
 Camada de negócio para perfil.  
 
 
-Diagrama de Hierarquia para Profile.\-Profile\-Unit.\-Bus\-Profile\-:\begin{figure}[H]
+Diagrama de Hierarquia para Profile.\+Profile\+Unit.\+Bus\+Profile\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.000000cm]{df/da4/classProfile_1_1ProfileUnit_1_1BusProfile}
@@ -15,111 +14,109 @@ Diagrama de Hierarquia para Profile.\-Profile\-Unit.\-Bus\-Profile\-:\begin{figu
 \subsubsection*{Métodos Públicos}
 \begin{DoxyCompactItemize}
 \item 
-def \hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile_a87c3d0374f709af7904656938eafd6d3}{refresh\-User}
+def \hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile_ace81426164b30cfa2871e6093052934d}{refresh\+User} (self, request)
 \item 
-def \hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile_a5c116d007081ffefcc1c45cd34c88e10}{edit\-Field}
+def \hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile_a61886054c405cb4d8ccca925dcfbf399}{edit\+Field} (self, request, field, form)
 \end{DoxyCompactItemize}
-\subsubsection*{Additional Inherited Members}
+\subsubsection*{Outros membros herdados}
 
 
 \subsubsection{Descrição Detalhada}
 Deve ser capaz de manipular os dados de usuário, seja no sentido de atualizá-\/los ou modificá-\/los de alguma forma. 
 
-Definição na linha \hyperlink{ProfileUnit_8py_source_l00325}{325} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
+Definição na linha \hyperlink{ProfileUnit_8py_source_l00325}{325} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\+Unit.\+py}.
 
 
 
 \subsubsection{Métodos}
-\hypertarget{classProfile_1_1ProfileUnit_1_1BusProfile_a5c116d007081ffefcc1c45cd34c88e10}{\index{Profile\-::\-Profile\-Unit\-::\-Bus\-Profile@{Profile\-::\-Profile\-Unit\-::\-Bus\-Profile}!edit\-Field@{edit\-Field}}
-\index{edit\-Field@{edit\-Field}!Profile::ProfileUnit::BusProfile@{Profile\-::\-Profile\-Unit\-::\-Bus\-Profile}}
-\paragraph[{edit\-Field}]{\setlength{\rightskip}{0pt plus 5cm}def Profile.\-Profile\-Unit.\-Bus\-Profile.\-edit\-Field (
+\hypertarget{classProfile_1_1ProfileUnit_1_1BusProfile_a61886054c405cb4d8ccca925dcfbf399}{}\index{Profile\+::\+Profile\+Unit\+::\+Bus\+Profile@{Profile\+::\+Profile\+Unit\+::\+Bus\+Profile}!edit\+Field@{edit\+Field}}
+\index{edit\+Field@{edit\+Field}!Profile\+::\+Profile\+Unit\+::\+Bus\+Profile@{Profile\+::\+Profile\+Unit\+::\+Bus\+Profile}}
+\paragraph[{edit\+Field}]{\setlength{\rightskip}{0pt plus 5cm}def Profile.\+Profile\+Unit.\+Bus\+Profile.\+edit\+Field (
 \begin{DoxyParamCaption}
 \item[{}]{self, }
 \item[{}]{request, }
 \item[{}]{field, }
 \item[{}]{form}
 \end{DoxyParamCaption}
-)}}\label{classProfile_1_1ProfileUnit_1_1BusProfile_a5c116d007081ffefcc1c45cd34c88e10}
+)}\label{classProfile_1_1ProfileUnit_1_1BusProfile_a61886054c405cb4d8ccca925dcfbf399}
 
 
-Definição na linha \hyperlink{ProfileUnit_8py_source_l00340}{340} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
+Definição na linha \hyperlink{ProfileUnit_8py_source_l00340}{340} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\+Unit.\+py}.
 
 
 \begin{DoxyCode}
-\hypertarget{classProfile_1_1ProfileUnit_1_1BusProfile_l00340}{}\hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile_a5c116d007081ffefcc1c45cd34c88e10}{00340} 
-00341     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile_a5c116d007081ffefcc1c45cd34c88e10}{editField}(self, request, field, form):
-00342         user = request.session[\textcolor{stringliteral}{'user'}]
-00343         \textcolor{keywordflow}{if} field == \textcolor{stringliteral}{"name"}:
-00344             fpw = form.cleaned\_data[\textcolor{stringliteral}{'password'}].value
-00345             \textcolor{keywordflow}{if} fpw != user[\textcolor{stringliteral}{'password'}]:
-00346                 \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_PW\_F'}])
-00347             newdata = form.cleaned\_data[\textcolor{stringliteral}{'newdata'}].value
-00348         \textcolor{keywordflow}{elif} field == \textcolor{stringliteral}{"password"}:
-00349             npw = form.cleaned\_data[\textcolor{stringliteral}{'newdata'}].value
-00350             rpw = form.cleaned\_data[\textcolor{stringliteral}{'rp\_newdata'}].value
-00351             opw = form.cleaned\_data[\textcolor{stringliteral}{'old\_password'}].value
-00352             \textcolor{keywordflow}{if} npw != rpw:
-00353                 \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_PW\_R'}])
-00354             \textcolor{keywordflow}{if} opw != user[\textcolor{stringliteral}{'password'}]:
-00355                 \textcolor{keywordflow}{raise} ValueError(lang.DICt[\textcolor{stringliteral}{'EXCEPTION\_INV\_PW\_F'}])
-00356             newdata = npw
-00357         \textcolor{keywordflow}{elif} field == \textcolor{stringliteral}{"language"}:
-00358             newdata = form.cleaned\_data[\textcolor{stringliteral}{'newdata'}]
-00359         \textcolor{keywordflow}{elif} field == \textcolor{stringliteral}{"avatar"}:
-00360             addr = settings.MEDIA\_ROOT + \textcolor{stringliteral}{u"/"} + user[\textcolor{stringliteral}{'avatar'}]
-00361             with open(addr, \textcolor{stringliteral}{"wb"}) \textcolor{keyword}{as} destination:
-00362                     \textcolor{keywordflow}{for} chunk \textcolor{keywordflow}{in} request.FILES[\textcolor{stringliteral}{'newdata'}].chunks():
-00363                         destination.write(chunk)
-00364         \textcolor{keywordflow}{else}:
-00365             newdata = form.cleaned\_data[\textcolor{stringliteral}{'newdata'}].value
-00366 
-00367         \textcolor{keywordflow}{try}:
-00368             \textcolor{keywordflow}{if} user[\textcolor{stringliteral}{'type'}] == \textcolor{stringliteral}{'Student'} \textcolor{keywordflow}{and} field != \textcolor{stringliteral}{'avatar'}:
-00369                 self.pers.update(user[\textcolor{stringliteral}{'name'}], field, newdata, Student)
-00370             \textcolor{keywordflow}{elif} user[\textcolor{stringliteral}{'type'}] == \textcolor{stringliteral}{'Professor'} \textcolor{keywordflow}{and} field != \textcolor{stringliteral}{'avatar'}:
-00371                 self.pers.update(user[\textcolor{stringliteral}{'name'}], field, newdata, Professor)
-00372         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
-00373             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_ERR\_DB\_U'}])
-00374         \textcolor{keywordflow}{else}:
-00375             \textcolor{keywordflow}{if} field == \textcolor{stringliteral}{"language"}:
-00376                 request.session[\textcolor{stringliteral}{'django\_language'}] = newdata
-00377         \textcolor{keywordflow}{if} field == \textcolor{stringliteral}{'avatar'}:
-00378             \textcolor{keywordflow}{return} user[\textcolor{stringliteral}{'avatar'}]
-00379         \textcolor{keywordflow}{else}:
-00380             \textcolor{keywordflow}{return} newdata
-
+\hypertarget{classProfile_1_1ProfileUnit_1_1BusProfile_l00340}{}\hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile_a61886054c405cb4d8ccca925dcfbf399}{00340}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile_a61886054c405cb4d8ccca925dcfbf399}{editField}(self, request, field, form):
+00341         user = request.session[\textcolor{stringliteral}{'user'}]
+00342         \textcolor{keywordflow}{if} field == \textcolor{stringliteral}{"name"}:
+00343             fpw = form.cleaned\_data[\textcolor{stringliteral}{'password'}].value
+00344             \textcolor{keywordflow}{if} fpw != user[\textcolor{stringliteral}{'password'}]:
+00345                 \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_PW\_F'}])
+00346             newdata = form.cleaned\_data[\textcolor{stringliteral}{'newdata'}].value
+00347         \textcolor{keywordflow}{elif} field == \textcolor{stringliteral}{"password"}:
+00348             npw = form.cleaned\_data[\textcolor{stringliteral}{'newdata'}].value
+00349             rpw = form.cleaned\_data[\textcolor{stringliteral}{'rp\_newdata'}].value
+00350             opw = form.cleaned\_data[\textcolor{stringliteral}{'old\_password'}].value
+00351             \textcolor{keywordflow}{if} npw != rpw:
+00352                 \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_PW\_R'}])
+00353             \textcolor{keywordflow}{if} opw != user[\textcolor{stringliteral}{'password'}]:
+00354                 \textcolor{keywordflow}{raise} ValueError(lang.DICt[\textcolor{stringliteral}{'EXCEPTION\_INV\_PW\_F'}])
+00355             newdata = npw
+00356         \textcolor{keywordflow}{elif} field == \textcolor{stringliteral}{"language"}:
+00357             newdata = form.cleaned\_data[\textcolor{stringliteral}{'newdata'}]
+00358         \textcolor{keywordflow}{elif} field == \textcolor{stringliteral}{"avatar"}:
+00359             addr = settings.MEDIA\_ROOT + \textcolor{stringliteral}{u"/"} + user[\textcolor{stringliteral}{'avatar'}]
+00360             with open(addr, \textcolor{stringliteral}{"wb"}) \textcolor{keyword}{as} destination:
+00361                     \textcolor{keywordflow}{for} chunk \textcolor{keywordflow}{in} request.FILES[\textcolor{stringliteral}{'newdata'}].chunks():
+00362                         destination.write(chunk)
+00363         \textcolor{keywordflow}{else}:
+00364             newdata = form.cleaned\_data[\textcolor{stringliteral}{'newdata'}].value
+00365 
+00366         \textcolor{keywordflow}{try}:
+00367             \textcolor{keywordflow}{if} user[\textcolor{stringliteral}{'type'}] == \textcolor{stringliteral}{'Student'} \textcolor{keywordflow}{and} field != \textcolor{stringliteral}{'avatar'}:
+00368                 self.pers.update(user[\textcolor{stringliteral}{'name'}], field, newdata, Student)
+00369             \textcolor{keywordflow}{elif} user[\textcolor{stringliteral}{'type'}] == \textcolor{stringliteral}{'Professor'} \textcolor{keywordflow}{and} field != \textcolor{stringliteral}{'avatar'}:
+00370                 self.pers.update(user[\textcolor{stringliteral}{'name'}], field, newdata, Professor)
+00371         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00372             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_ERR\_DB\_U'}])
+00373         \textcolor{keywordflow}{else}:
+00374             \textcolor{keywordflow}{if} field == \textcolor{stringliteral}{"language"}:
+00375                 request.session[\textcolor{stringliteral}{'django\_language'}] = newdata
+00376         \textcolor{keywordflow}{if} field == \textcolor{stringliteral}{'avatar'}:
+00377             \textcolor{keywordflow}{return} user[\textcolor{stringliteral}{'avatar'}]
+00378         \textcolor{keywordflow}{else}:
+00379             \textcolor{keywordflow}{return} newdata
+00380 
 \end{DoxyCode}
-\hypertarget{classProfile_1_1ProfileUnit_1_1BusProfile_a87c3d0374f709af7904656938eafd6d3}{\index{Profile\-::\-Profile\-Unit\-::\-Bus\-Profile@{Profile\-::\-Profile\-Unit\-::\-Bus\-Profile}!refresh\-User@{refresh\-User}}
-\index{refresh\-User@{refresh\-User}!Profile::ProfileUnit::BusProfile@{Profile\-::\-Profile\-Unit\-::\-Bus\-Profile}}
-\paragraph[{refresh\-User}]{\setlength{\rightskip}{0pt plus 5cm}def Profile.\-Profile\-Unit.\-Bus\-Profile.\-refresh\-User (
+\hypertarget{classProfile_1_1ProfileUnit_1_1BusProfile_ace81426164b30cfa2871e6093052934d}{}\index{Profile\+::\+Profile\+Unit\+::\+Bus\+Profile@{Profile\+::\+Profile\+Unit\+::\+Bus\+Profile}!refresh\+User@{refresh\+User}}
+\index{refresh\+User@{refresh\+User}!Profile\+::\+Profile\+Unit\+::\+Bus\+Profile@{Profile\+::\+Profile\+Unit\+::\+Bus\+Profile}}
+\paragraph[{refresh\+User}]{\setlength{\rightskip}{0pt plus 5cm}def Profile.\+Profile\+Unit.\+Bus\+Profile.\+refresh\+User (
 \begin{DoxyParamCaption}
 \item[{}]{self, }
 \item[{}]{request}
 \end{DoxyParamCaption}
-)}}\label{classProfile_1_1ProfileUnit_1_1BusProfile_a87c3d0374f709af7904656938eafd6d3}
+)}\label{classProfile_1_1ProfileUnit_1_1BusProfile_ace81426164b30cfa2871e6093052934d}
 
 
-Definição na linha \hyperlink{ProfileUnit_8py_source_l00327}{327} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\-Unit.\-py}.
+Definição na linha \hyperlink{ProfileUnit_8py_source_l00327}{327} do arquivo \hyperlink{ProfileUnit_8py_source}{Profile\+Unit.\+py}.
 
 
 \begin{DoxyCode}
-\hypertarget{classProfile_1_1ProfileUnit_1_1BusProfile_l00327}{}\hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile_a87c3d0374f709af7904656938eafd6d3}{00327} 
-00328     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile_a87c3d0374f709af7904656938eafd6d3}{refreshUser}(self, request):
-00329         user = request.session[\textcolor{stringliteral}{'user'}]
-00330 
-00331         \textcolor{keywordflow}{if} user[\textcolor{stringliteral}{'type'}] == \textcolor{stringliteral}{'Student'}:
-00332             db = Student
-00333         \textcolor{keywordflow}{elif} user[\textcolor{stringliteral}{'type'}] == \textcolor{stringliteral}{'Professor'}:
-00334             db = Professor
-00335 
-00336         fs = self.pers.fetch(user[\textcolor{stringliteral}{'name'}], db)
-00337         fd = dict(fs)
-00338         request.session[\textcolor{stringliteral}{'django\_language'}] = fd[\textcolor{stringliteral}{'language'}]
-00339         \textcolor{keywordflow}{return} dict(user.items() + fs)
-
+\hypertarget{classProfile_1_1ProfileUnit_1_1BusProfile_l00327}{}\hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile_ace81426164b30cfa2871e6093052934d}{00327}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1ProfileUnit_1_1BusProfile_ace81426164b30cfa2871e6093052934d}{refreshUser}(self, request):
+00328         user = request.session[\textcolor{stringliteral}{'user'}]
+00329 
+00330         \textcolor{keywordflow}{if} user[\textcolor{stringliteral}{'type'}] == \textcolor{stringliteral}{'Student'}:
+00331             db = Student
+00332         \textcolor{keywordflow}{elif} user[\textcolor{stringliteral}{'type'}] == \textcolor{stringliteral}{'Professor'}:
+00333             db = Professor
+00334 
+00335         fs = self.pers.fetch(user[\textcolor{stringliteral}{'name'}], db)
+00336         fd = dict(fs)
+00337         request.session[\textcolor{stringliteral}{'django\_language'}] = fd[\textcolor{stringliteral}{'language'}]
+00338         \textcolor{keywordflow}{return} dict(user.items() + fs)
+00339 
 \end{DoxyCode}
 
 
-A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}
+A documentação para esta classe foi gerada a partir do seguinte arquivo\+:\begin{DoxyCompactItemize}
 \item 
-E\-L\-O/\-Profile/\hyperlink{ProfileUnit_8py}{Profile\-Unit.\-py}\end{DoxyCompactItemize}
+E\+L\+O/\+Profile/\hyperlink{ProfileUnit_8py}{Profile\+Unit.\+py}\end{DoxyCompactItemize}

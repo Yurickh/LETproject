@@ -1,5 +1,6 @@
 var hierarchy =
 [
+    [ "Course.macros.ExerciseType", "d1/d5b/classCourse_1_1macros_1_1ExerciseType.html", null ],
     [ "ELO.MainUnit.Factory", "d1/dc6/classELO_1_1MainUnit_1_1Factory.html", null ],
     [ "Form", null, [
       [ "Adm.forms.AdmDelCourForm", "da/d13/classAdm_1_1forms_1_1AdmDelCourForm.html", null ],
@@ -8,7 +9,11 @@ var hierarchy =
       [ "Adm.forms.AdmRegStu_ProfForm", "d5/d88/classAdm_1_1forms_1_1AdmRegStu__ProfForm.html", null ],
       [ "Adm.forms.AdmSrcCourForm", "de/d02/classAdm_1_1forms_1_1AdmSrcCourForm.html", null ],
       [ "Adm.forms.confAdm", "d2/db2/classAdm_1_1forms_1_1confAdm.html", null ],
+      [ "Course.forms.CrossWordExercise", "d1/dc6/classCourse_1_1forms_1_1CrossWordExercise.html", null ],
+      [ "Course.forms.FillTheBlankExercise", "d2/dfe/classCourse_1_1forms_1_1FillTheBlankExercise.html", null ],
       [ "Course.forms.LessonForm", "db/d84/classCourse_1_1forms_1_1LessonForm.html", null ],
+      [ "Course.forms.MultipleChoiceExercise", "d7/d12/classCourse_1_1forms_1_1MultipleChoiceExercise.html", null ],
+      [ "Course.forms.UnscrambleExercise", "d5/d9e/classCourse_1_1forms_1_1UnscrambleExercise.html", null ],
       [ "Login.forms.LoginForm", "d0/db9/classLogin_1_1forms_1_1LoginForm.html", null ],
       [ "Profile.forms.AvatarForm", "da/da4/classProfile_1_1forms_1_1AvatarForm.html", null ],
       [ "Profile.forms.BiosForm", "d7/d1e/classProfile_1_1forms_1_1BiosForm.html", null ],
@@ -79,6 +84,9 @@ var hierarchy =
       [ "ELO.models.Module", "d1/d5d/classELO_1_1models_1_1Module.html", null ],
       [ "ELO.models.Professor", "d5/d93/classELO_1_1models_1_1Professor.html", null ],
       [ "ELO.models.Student", "d0/dc8/classELO_1_1models_1_1Student.html", null ]
+    ] ],
+    [ "Node", null, [
+      [ "Course.templatetags.exercises.ExerciseToken", "dc/d8f/classCourse_1_1templatetags_1_1exercises_1_1ExerciseToken.html", null ]
     ] ],
     [ "object", null, [
       [ "ELO.EntityUnit.Courses", "d2/dc4/classELO_1_1EntityUnit_1_1Courses.html", null ],

@@ -1,6 +1,5 @@
-\hypertarget{AdmUnit_8py}{\subsection{Adm\-Unit.\-py}
-\label{AdmUnit_8py}\index{E\-L\-O/\-Adm/\-Adm\-Unit.\-py@{E\-L\-O/\-Adm/\-Adm\-Unit.\-py}}
-}
+\hypertarget{AdmUnit_8py_source}{}\subsection{Adm\+Unit.\+py}
+\label{AdmUnit_8py_source}\index{E\+L\+O/\+Adm/\+Adm\+Unit.\+py@{E\+L\+O/\+Adm/\+Adm\+Unit.\+py}}
 
 \begin{DoxyCode}
 \hypertarget{AdmUnit_8py_source_l00001}{}\hyperlink{namespaceAdm_1_1AdmUnit}{00001} \textcolor{comment}{#coding: utf-8}
@@ -48,7 +47,7 @@
 00043     
 00044     \textcolor{comment}{# Construtor da classe.}
 00045     \textcolor{comment}{#   Força a criação da camada subjacente.}
-\hypertarget{AdmUnit_8py_source_l00046}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_ab37924016cd115531c85439dc82f5ea3}{00046}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_ab37924016cd115531c85439dc82f5ea3}{\_\_init\_\_}(self, bus):
+\hypertarget{AdmUnit_8py_source_l00046}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_a971d8248262cb673fcbb104fa416f5ba}{00046}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_a971d8248262cb673fcbb104fa416f5ba}{\_\_init\_\_}(self, bus):
 00047         \textcolor{keywordflow}{try}:
 \hypertarget{AdmUnit_8py_source_l00048}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_a604bb1c41014e85eee44db64a79a7fcc}{00048}             self.\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_a604bb1c41014e85eee44db64a79a7fcc}{bus} = bus
 00049         \textcolor{keywordflow}{except} TypeError \textcolor{keyword}{as} exc:
@@ -60,14 +59,14 @@
 00055     \textcolor{comment}{#   UiAdm, ou seja, uma camada de UI nunca existirá sem uma camada}
 00056     \textcolor{comment}{#   de Bus suportando-a.}
 00057     @property
-\hypertarget{AdmUnit_8py_source_l00058}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_a4863c3ebab6e5fac647ab32415153470}{00058}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_a604bb1c41014e85eee44db64a79a7fcc}{bus}(self):
+\hypertarget{AdmUnit_8py_source_l00058}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_a6846282d9a13a62cfe54639b6ee121f8}{00058}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_a604bb1c41014e85eee44db64a79a7fcc}{bus}(self):
 00059         \textcolor{keywordflow}{return} self.\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_adf49041050fd2ce5fef85b0698f331e5}{\_\_bus}
 00060 
 00061     \textcolor{comment}{## Checa se o objeto recebido é uma instância do Business.}
 00062     \textcolor{comment}{#   Caso contrário, ele emite um erro de tipo, explicitando}
 00063     \textcolor{comment}{#   qual tipo do objeto que foi recebido.}
 00064     @bus.setter
-\hypertarget{AdmUnit_8py_source_l00065}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_a4863c3ebab6e5fac647ab32415153470}{00065}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_a604bb1c41014e85eee44db64a79a7fcc}{bus}(self, value):
+\hypertarget{AdmUnit_8py_source_l00065}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_a7fd2fe0a69d29fe49668381ae5cb4e08}{00065}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_a604bb1c41014e85eee44db64a79a7fcc}{bus}(self, value):
 00066         \textcolor{keywordflow}{if} isinstance(value, IfBusAdm):
 00067             self.\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_adf49041050fd2ce5fef85b0698f331e5}{\_\_bus} = value
 00068         \textcolor{keywordflow}{else}:
@@ -76,7 +75,7 @@
 00071 
 00072     \textcolor{comment}{## Método de deleção do objeto que representa a camada de negócio.}
 00073     @bus.deleter
-\hypertarget{AdmUnit_8py_source_l00074}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_a4863c3ebab6e5fac647ab32415153470}{00074}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_a604bb1c41014e85eee44db64a79a7fcc}{bus}(self):
+\hypertarget{AdmUnit_8py_source_l00074}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_a6846282d9a13a62cfe54639b6ee121f8}{00074}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_a604bb1c41014e85eee44db64a79a7fcc}{bus}(self):
 00075         del self.\hyperlink{classAdm_1_1AdmUnit_1_1IfUiAdm_adf49041050fd2ce5fef85b0698f331e5}{\_\_bus}
 00076 
 00077     \textcolor{comment}{## O método principal de qualquer classe de UI (User Interface).}
@@ -93,7 +92,7 @@
 00088 
 00089     \textcolor{comment}{## Construtor da classe.}
 00090     \textcolor{comment}{#   Força a criação da camada subjacente.}
-\hypertarget{AdmUnit_8py_source_l00091}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_abe924f0f983b1fe97ca466907d35c834}{00091}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_abe924f0f983b1fe97ca466907d35c834}{\_\_init\_\_}(self, pers):
+\hypertarget{AdmUnit_8py_source_l00091}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a9d8de1bb17559a720c87dcbf7bafa5bd}{00091}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a9d8de1bb17559a720c87dcbf7bafa5bd}{\_\_init\_\_}(self, pers):
 00092         \textcolor{keywordflow}{try}:
 \hypertarget{AdmUnit_8py_source_l00093}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a95ea8f39fbbcddf44822e1614c712bfe}{00093}             self.\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a95ea8f39fbbcddf44822e1614c712bfe}{pers} = pers
 00094         \textcolor{keywordflow}{except} TypeError \textcolor{keyword}{as} exc:
@@ -105,14 +104,14 @@
 00100     \textcolor{comment}{#   BusAdm, ou seja, uma camada de Bus nunca existirá sem uma camada}
 00101     \textcolor{comment}{#   de Pers suportando-a.}
 00102     @property
-\hypertarget{AdmUnit_8py_source_l00103}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a31857b146085382c8d778ae90cd46c6f}{00103}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a95ea8f39fbbcddf44822e1614c712bfe}{pers}(self):
+\hypertarget{AdmUnit_8py_source_l00103}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a58f07186cfb366e305adbbd4f7fd2b72}{00103}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a95ea8f39fbbcddf44822e1614c712bfe}{pers}(self):
 00104         \textcolor{keywordflow}{return} self.\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a52e9179e1047122bc667c1afa377c82c}{\_\_pers}
 00105 
 00106     \textcolor{comment}{## Checa se o objeto recebido é uma instância da Persistência.}
 00107     \textcolor{comment}{#   Caso contrário, ele emite um erro de tipo, explicitando}
 00108     \textcolor{comment}{#   qual tipo do objeto que foi recebido.}
 00109     @pers.setter
-\hypertarget{AdmUnit_8py_source_l00110}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a31857b146085382c8d778ae90cd46c6f}{00110}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a95ea8f39fbbcddf44822e1614c712bfe}{pers}(self, value):
+\hypertarget{AdmUnit_8py_source_l00110}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a0022f3706dcdb0d5c2795daafc2478df}{00110}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a95ea8f39fbbcddf44822e1614c712bfe}{pers}(self, value):
 00111         \textcolor{keywordflow}{if} isinstance(value, IfPersAdm):
 00112             self.\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a52e9179e1047122bc667c1afa377c82c}{\_\_pers} = value
 00113         \textcolor{keywordflow}{else}:
@@ -121,7 +120,7 @@
 00116 
 00117     \textcolor{comment}{## Método de deleção do objeto que representa a camada de persistência.}
 00118     @pers.deleter   
-\hypertarget{AdmUnit_8py_source_l00119}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a31857b146085382c8d778ae90cd46c6f}{00119}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a95ea8f39fbbcddf44822e1614c712bfe}{pers}(self):
+\hypertarget{AdmUnit_8py_source_l00119}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a58f07186cfb366e305adbbd4f7fd2b72}{00119}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a95ea8f39fbbcddf44822e1614c712bfe}{pers}(self):
 00120         del self.\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a52e9179e1047122bc667c1afa377c82c}{\_\_pers}
 00121 
 00122     \textcolor{comment}{## Edita dados de um conta no database.}
@@ -131,7 +130,7 @@
 00126     \textcolor{comment}{#}
 00127     \textcolor{comment}{#   @arg form       Objeto form que contém os dados.}
 00128     @abstractmethod
-\hypertarget{AdmUnit_8py_source_l00129}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a4dd3605edbfe5fdc729fdeceec5ab879}{00129}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a4dd3605edbfe5fdc729fdeceec5ab879}{editAccounts}(self, dict\_field\_value, action, database, form): \textcolor{keyword}{pass}
+\hypertarget{AdmUnit_8py_source_l00129}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a01c6dd1137af994627462fab498b56e7}{00129}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfBusAdm_a01c6dd1137af994627462fab498b56e7}{editAccounts}(self, dict\_field\_value, action, database, form): \textcolor{keyword}{pass}
 00130 
 00131     \textcolor{comment}{## Verifica os últimos eventos realizados pelo Administrador.}
 00132     \textcolor{comment}{#@abstractmethod}
@@ -152,7 +151,7 @@
 00147     \textcolor{comment}{#   @arg    database    Objeto modelo sobre o qual a inserção será}
 00148     \textcolor{comment}{#                       realizada (Estudante, Professor, Curso). }
 00149     @abstractmethod
-\hypertarget{AdmUnit_8py_source_l00150}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfPersAdm_a42e24568a80eac498b0bc7a29b0b11ac}{00150}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfPersAdm_a42e24568a80eac498b0bc7a29b0b11ac}{data\_in}(self, dict\_field\_value, database): \textcolor{keyword}{pass}
+\hypertarget{AdmUnit_8py_source_l00150}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfPersAdm_abf01de08eb9d6517cdcb44321ea12ce7}{00150}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfPersAdm_abf01de08eb9d6517cdcb44321ea12ce7}{data\_in}(self, dict\_field\_value, database): \textcolor{keyword}{pass}
 00151 
 00152     \textcolor{comment}{## Método que atualiza os dados de uma conta fornecida.}
 00153     \textcolor{comment}{#   No caso de campos multivalorados, adiciona uma nova entrada.}
@@ -168,7 +167,7 @@
 00163     \textcolor{comment}{#}
 00164     \textcolor{comment}{#   @arg    database    Objeto de modelo que será utilizado.}
 00165     @abstractmethod
-\hypertarget{AdmUnit_8py_source_l00166}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfPersAdm_aafad401f6000d8b27a33af9b461e4f0a}{00166}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfPersAdm_aafad401f6000d8b27a33af9b461e4f0a}{update}(self, username, field, newdata, database): \textcolor{keyword}{pass}
+\hypertarget{AdmUnit_8py_source_l00166}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfPersAdm_a34acb7c8c60b0e90429cfbcc28424852}{00166}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfPersAdm_a34acb7c8c60b0e90429cfbcc28424852}{update}(self, username, field, newdata, database): \textcolor{keyword}{pass}
 00167 
 00168     \textcolor{comment}{## Método que deleta os dados de uma conta fornecida.}
 00169     \textcolor{comment}{#   É necessário a senha do administrador para que}
@@ -179,7 +178,7 @@
 00174     \textcolor{comment}{#   @arg    database    Objeto modelo sobre o qual a consulta será}
 00175     \textcolor{comment}{#                       realizada.}
 00176     @abstractmethod
-\hypertarget{AdmUnit_8py_source_l00177}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfPersAdm_a341a3ec120277ad9638e2c1bd0f8a56f}{00177}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfPersAdm_a341a3ec120277ad9638e2c1bd0f8a56f}{fetch\_del}(self, username, database): \textcolor{keyword}{pass}
+\hypertarget{AdmUnit_8py_source_l00177}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfPersAdm_a6e9771c86560ed5b7d38fbf6bd40cec8}{00177}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfPersAdm_a6e9771c86560ed5b7d38fbf6bd40cec8}{fetch\_del}(self, username, database): \textcolor{keyword}{pass}
 00178 
 00179     \textcolor{comment}{##  Função que recupera todos os dados do usuário.}
 00180     \textcolor{comment}{#       Percorre o banco de dados e recupera todos os dados do usuário}
@@ -190,7 +189,7 @@
 00185     \textcolor{comment}{#   @arg    database    Objeto modelo sobre o qual a consulta será}
 00186     \textcolor{comment}{#                       realizada.}
 00187     @abstractmethod
-\hypertarget{AdmUnit_8py_source_l00188}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfPersAdm_a7870c402c99499af2952e0820bc6c7a3}{00188}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfPersAdm_a7870c402c99499af2952e0820bc6c7a3}{fetch}(self, username, database): \textcolor{keyword}{pass}
+\hypertarget{AdmUnit_8py_source_l00188}{}\hyperlink{classAdm_1_1AdmUnit_1_1IfPersAdm_ac439faae9802d9828eee269548ff2661}{00188}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1IfPersAdm_ac439faae9802d9828eee269548ff2661}{fetch}(self, username, database): \textcolor{keyword}{pass}
 00189 
 00190 
 00191 \textcolor{comment}{## Camada de interface do Administrador para o módulo de Administração.}
@@ -348,7 +347,7 @@
 00342 
 00343     \textcolor{comment}{## Edita dados de um conta no database.}
 00344     \textcolor{comment}{#   Podendo ser este de uma conta de Estudante, Professor ou um Curso.}
-\hypertarget{AdmUnit_8py_source_l00345}{}\hyperlink{classAdm_1_1AdmUnit_1_1BusAdm_a0650e636805d049ce37fae5b0ac132e0}{00345}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1BusAdm_a0650e636805d049ce37fae5b0ac132e0}{editAccounts}(self, dict\_field\_value, action, database, form):
+\hypertarget{AdmUnit_8py_source_l00345}{}\hyperlink{classAdm_1_1AdmUnit_1_1BusAdm_a54984f999b27cdce51914ed05cd7cb42}{00345}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1BusAdm_a54984f999b27cdce51914ed05cd7cb42}{editAccounts}(self, dict\_field\_value, action, database, form):
 00346         
 00347         \textcolor{comment}{# Inicia o dicionário dict\_data.}
 00348         \textcolor{comment}{#   Será utilizado para informar os campos e dados para registro do usuário.}
@@ -425,7 +424,7 @@
 \hypertarget{AdmUnit_8py_source_l00419}{}\hyperlink{classAdm_1_1AdmUnit_1_1PersAdm}{00419} \textcolor{keyword}{class }\hyperlink{classAdm_1_1AdmUnit_1_1PersAdm}{PersAdm}(\hyperlink{classAdm_1_1AdmUnit_1_1IfPersAdm}{IfPersAdm}):
 00420 
 00421     \textcolor{comment}{## Insere os dados do registro de contas no banco de dados.}
-\hypertarget{AdmUnit_8py_source_l00422}{}\hyperlink{classAdm_1_1AdmUnit_1_1PersAdm_aef8c5933d2de37ac9b210a6b4ea7db5f}{00422}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1PersAdm_aef8c5933d2de37ac9b210a6b4ea7db5f}{data\_in}(self, dict\_field\_value, database):
+\hypertarget{AdmUnit_8py_source_l00422}{}\hyperlink{classAdm_1_1AdmUnit_1_1PersAdm_ab9b66eb770103a270de417a6b936ad21}{00422}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1PersAdm_ab9b66eb770103a270de417a6b936ad21}{data\_in}(self, dict\_field\_value, database):
 00423         \textcolor{comment}{# Tenta coletar o último id inserido.}
 00424         \textcolor{comment}{# Caso não tenha ocorrido nenhum registro de contas então}
 00425         \textcolor{comment}{# é atribuído o valor inicial como '1'}
@@ -446,7 +445,7 @@
 00440             data.save()
 00441 
 00442     \textcolor{comment}{## Método que atualiza os dados de uma conta fornecida.}
-\hypertarget{AdmUnit_8py_source_l00443}{}\hyperlink{classAdm_1_1AdmUnit_1_1PersAdm_a3d9372eca5d134e3c2125c40bf2147a3}{00443}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1PersAdm_a3d9372eca5d134e3c2125c40bf2147a3}{update}(self, username, field, newdata, database): 
+\hypertarget{AdmUnit_8py_source_l00443}{}\hyperlink{classAdm_1_1AdmUnit_1_1PersAdm_a65d586fd8aaf0a9f2f7c609405721dff}{00443}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1PersAdm_a65d586fd8aaf0a9f2f7c609405721dff}{update}(self, username, field, newdata, database): 
 00444         \textcolor{comment}{# Tenta procurar se o username existe no banco de dados.}
 00445         \textcolor{comment}{# Caso não exista, é emitido um erro.}
 00446         \textcolor{keywordflow}{try}:
@@ -472,7 +471,7 @@
 00466             \textcolor{keywordflow}{raise} ValueError(exc)
 00467 
 00468     \textcolor{comment}{## Método que deleta os dados de uma conta fornecida.}
-\hypertarget{AdmUnit_8py_source_l00469}{}\hyperlink{classAdm_1_1AdmUnit_1_1PersAdm_aa02d44b8f34bebc0e82133fd54da0c37}{00469}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1PersAdm_aa02d44b8f34bebc0e82133fd54da0c37}{fetch\_del}(self, username, database):
+\hypertarget{AdmUnit_8py_source_l00469}{}\hyperlink{classAdm_1_1AdmUnit_1_1PersAdm_a2b5453709dfc3b1c6e5f9f85dc61d228}{00469}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1PersAdm_a2b5453709dfc3b1c6e5f9f85dc61d228}{fetch\_del}(self, username, database):
 00470         \textcolor{comment}{# Tenta procurar se o username existe no banco de dados.}
 00471         \textcolor{comment}{# Caso não exista, é emitido um erro.}
 00472         \textcolor{keywordflow}{try}:
@@ -514,13 +513,13 @@
 00508         \textcolor{keywordflow}{return} ret
 00509 
 00510     \textcolor{comment}{##  Função que recupera todos os dados do usuário.}
-\hypertarget{AdmUnit_8py_source_l00511}{}\hyperlink{classAdm_1_1AdmUnit_1_1PersAdm_a021e43040d51fa147a42018ced240a84}{00511}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1PersAdm_a021e43040d51fa147a42018ced240a84}{fetch}(self, username, database):
+\hypertarget{AdmUnit_8py_source_l00511}{}\hyperlink{classAdm_1_1AdmUnit_1_1PersAdm_a0813f79d2ef26ab014c21f4ae2217045}{00511}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1AdmUnit_1_1PersAdm_a0813f79d2ef26ab014c21f4ae2217045}{fetch}(self, username, database):
 00512 
 00513         \textcolor{keywordflow}{try}:
 00514             uid = database.objects.get(field=\textcolor{stringliteral}{'NAME'},value=username)
 00515             uid = uid.identity
 00516 
-00517             sf = \textcolor{keyword}{lambda} x: self.\hyperlink{classAdm_1_1AdmUnit_1_1PersAdm_a2e5fd44c72dfc852a0b44b9b4ca566f9}{\_\_select\_field}(uid, x, database)
+00517             sf = \textcolor{keyword}{lambda} x: self.\hyperlink{classAdm_1_1AdmUnit_1_1PersAdm_aa30c5e73f6bfa1c525007624caebaaa3}{\_\_select\_field}(uid, x, database)
 00518 
 00519             fetchset = [
 00520                     (\textcolor{stringliteral}{'password'},    sf(\textcolor{stringliteral}{'PASSWORD'})),

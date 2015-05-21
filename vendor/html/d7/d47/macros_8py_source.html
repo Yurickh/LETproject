@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>LETproject: Código-Fonte de ELO/Course/macros.py</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">LETproject
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Página&#160;Principal</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namespaces</span></a></li>
+      <li><a href="../../annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Arquivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="../../search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Busca" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Lista&#160;de&#160;Arquivos</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('d7/d47/macros_8py_source.html','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">macros.py</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d7/d47/macros_8py.html">Vá para a documentação deste arquivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="../../da/d07/namespaceCourse_1_1macros.html">    1</a></span>&#160;<span class="comment">#coding: utf-8</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">## @file macros.py</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">#</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">#   Arquivo contendo todas as macros utilizadas no módulo de Cursos.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">import</span> <a class="code" href="../../d7/de8/namespaceELO_1_1locale_1_1index.html">ELO.locale.index</a> <span class="keyword">as</span> lang</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">from</span> django.utils.encoding <span class="keyword">import</span> force_unicode</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">## Macro responsável por armazenar a URL relativa dos templates de lições</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="../../da/d07/namespaceCourse_1_1macros.html#a4473a418de016b59cce33b13440e469b">   12</a></span>&#160;LESSONS_URL = <span class="keyword">lambda</span> x=<span class="stringliteral">&quot;&quot;</span>: <span class="stringliteral">&#39;Course/lessons/&#39;</span> + str(x)</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">## Macro responsável por armazenar a URL relativa dos templates gerais do curso</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="../../da/d07/namespaceCourse_1_1macros.html#a9a69c2455c0c121b1c01960629575d7e">   15</a></span>&#160;GENERAL_URL = <span class="keyword">lambda</span> x=<span class="stringliteral">&quot;&quot;</span>: <span class="stringliteral">&#39;Course/general/&#39;</span> + str(x)</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">## Macro responsável por armazenar a URL relativa dos templates de exercícios</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="../../da/d07/namespaceCourse_1_1macros.html#ac1cf8b3a78128ab6a3bac4f6be9fabbd">   18</a></span>&#160;EXERCISES_URL = <span class="keyword">lambda</span> x=<span class="stringliteral">&quot;&quot;</span>: <span class="stringliteral">&#39;Course/exercises/&#39;</span> + str(x)</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">## Macro responsável por envolver o HTML fornecido por tags de &lt;form&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="../../da/d07/namespaceCourse_1_1macros.html#a39e2016892066b4da954490ccc32533e">   21</a></span>&#160;FORM_WRAPPER = <span class="keyword">lambda</span> x,y,z: <span class="stringliteral">&#39;&lt;form&gt;&#39;</span> + z[0] + <span class="stringliteral">&quot; &quot;</span> + str(x) + <span class="stringliteral">&quot; &quot;</span> + z[1] + <span class="stringliteral">&#39;&lt;input type=&quot;hidden&quot; name=&quot;csrfmiddlewaretoken&quot; value=&quot;&#39;</span> + str(y) + <span class="stringliteral">&#39;&quot; /&gt;&lt;input type=&quot;submit&quot; value=&quot;&#39;</span> + force_unicode(lang.DICT[<span class="stringliteral">&#39;SUBMIT&#39;</span>]) + <span class="stringliteral">&#39;&quot; /&gt;&lt;/form&gt;&#39;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">## Macro responsável por mapear tipos de exercícios com seus respectivos ids </span></div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="../../d1/d5b/classCourse_1_1macros_1_1ExerciseType.html">   24</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d1/d5b/classCourse_1_1macros_1_1ExerciseType.html">ExerciseType</a>:</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="../../d1/d5b/classCourse_1_1macros_1_1ExerciseType.html#a0ad70d05309ba8aacd0a808e20089a9f">   26</a></span>&#160;    MultipleChoice  = 1</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="../../d1/d5b/classCourse_1_1macros_1_1ExerciseType.html#a5e880e89e6942b6cc6da78e9443aaabf">   27</a></span>&#160;    FillTheBlank    = 2</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="../../d1/d5b/classCourse_1_1macros_1_1ExerciseType.html#a3717c38ca7f35c859d7d6759d456a0c9">   28</a></span>&#160;    CrossWords      = 3</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="../../d1/d5b/classCourse_1_1macros_1_1ExerciseType.html#a5d5313adddb807b0cac94f5da44af978">   29</a></span>&#160;    Unscramble      = 4</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    DragAndDrop     = 5</div>
+<div class="ttc" id="classCourse_1_1macros_1_1ExerciseType_html"><div class="ttname"><a href="../../d1/d5b/classCourse_1_1macros_1_1ExerciseType.html">Course.macros.ExerciseType</a></div><div class="ttdoc">Macro responsável por mapear tipos de exercícios com seus respectivos ids. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d47/macros_8py_source.html#l00024">macros.py:24</a></div></div>
+<div class="ttc" id="namespaceELO_1_1locale_1_1index_html"><div class="ttname"><a href="../../d7/de8/namespaceELO_1_1locale_1_1index.html">ELO.locale.index</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2a/locale_2index_8py_source.html#l00001">index.py:1</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_56c8f39a95ad3669bc9ec7ac8ec99225.html">ELO</a></li><li class="navelem"><a class="el" href="../../dir_45721cb7e3106fb11c6f10a0f3196440.html">Course</a></li><li class="navelem"><a class="el" href="../../d7/d47/macros_8py.html">macros.py</a></li>
+    <li class="footer">Gerado em Quinta, 21 de Maio de 2015 15:13:31 para LETproject por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

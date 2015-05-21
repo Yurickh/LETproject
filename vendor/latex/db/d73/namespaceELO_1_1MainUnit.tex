@@ -1,6 +1,5 @@
-\hypertarget{namespaceELO_1_1MainUnit}{\subsection{Refência do Namespace E\-L\-O.\-Main\-Unit}
-\label{namespaceELO_1_1MainUnit}\index{E\-L\-O.\-Main\-Unit@{E\-L\-O.\-Main\-Unit}}
-}
+\hypertarget{namespaceELO_1_1MainUnit}{}\subsection{Refência do Namespace E\+L\+O.\+Main\+Unit}
+\label{namespaceELO_1_1MainUnit}\index{E\+L\+O.\+Main\+Unit@{E\+L\+O.\+Main\+Unit}}
 \subsubsection*{Componentes}
 \begin{DoxyCompactItemize}
 \item 
@@ -9,30 +8,44 @@ class \hyperlink{classELO_1_1MainUnit_1_1Factory}{Factory}
 \subsubsection*{Funções}
 \begin{DoxyCompactItemize}
 \item 
-def \hyperlink{namespaceELO_1_1MainUnit_a021ebb0ec94aea9dca4014a7218ec38d}{global\-Context}
-\begin{DoxyCompactList}\small\item\em Insere os objetos user e D\-I\-C\-T em todas as renderizações de template. \end{DoxyCompactList}\end{DoxyCompactItemize}
+def \hyperlink{namespaceELO_1_1MainUnit_a9a93b85d475fc34f726b09b8649be247}{global\+Context} (request)
+\begin{DoxyCompactList}\small\item\em Insere os objetos user e D\+I\+C\+T em todas as renderizações de template. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Variáveis}
+\begin{DoxyCompactItemize}
+\item 
+tuple \hyperlink{namespaceELO_1_1MainUnit_ac11441626deff8b14faad131d56cc790}{register} = template.\+Library()
+\end{DoxyCompactItemize}
 
 
 \subsubsection{Funções}
-\hypertarget{namespaceELO_1_1MainUnit_a021ebb0ec94aea9dca4014a7218ec38d}{\index{E\-L\-O\-::\-Main\-Unit@{E\-L\-O\-::\-Main\-Unit}!global\-Context@{global\-Context}}
-\index{global\-Context@{global\-Context}!ELO::MainUnit@{E\-L\-O\-::\-Main\-Unit}}
-\paragraph[{global\-Context}]{\setlength{\rightskip}{0pt plus 5cm}def E\-L\-O.\-Main\-Unit.\-global\-Context (
+\hypertarget{namespaceELO_1_1MainUnit_a9a93b85d475fc34f726b09b8649be247}{}\index{E\+L\+O\+::\+Main\+Unit@{E\+L\+O\+::\+Main\+Unit}!global\+Context@{global\+Context}}
+\index{global\+Context@{global\+Context}!E\+L\+O\+::\+Main\+Unit@{E\+L\+O\+::\+Main\+Unit}}
+\paragraph[{global\+Context}]{\setlength{\rightskip}{0pt plus 5cm}def E\+L\+O.\+Main\+Unit.\+global\+Context (
 \begin{DoxyParamCaption}
 \item[{}]{request}
 \end{DoxyParamCaption}
-)}}\label{namespaceELO_1_1MainUnit_a021ebb0ec94aea9dca4014a7218ec38d}
+)}\label{namespaceELO_1_1MainUnit_a9a93b85d475fc34f726b09b8649be247}
 
 
-Definição na linha \hyperlink{MainUnit_8py_source_l00029}{29} do arquivo \hyperlink{MainUnit_8py_source}{Main\-Unit.\-py}.
+Definição na linha \hyperlink{MainUnit_8py_source_l00032}{32} do arquivo \hyperlink{MainUnit_8py_source}{Main\+Unit.\+py}.
 
 
 \begin{DoxyCode}
-\hypertarget{namespaceELO_1_1MainUnit_l00029}{}\hyperlink{namespaceELO_1_1MainUnit_a021ebb0ec94aea9dca4014a7218ec38d}{00029} 
-00030 \textcolor{keyword}{def }\hyperlink{namespaceELO_1_1MainUnit_a021ebb0ec94aea9dca4014a7218ec38d}{globalContext}(request):
-00031     \_sess = request.session
-00032     \textcolor{keywordflow}{return} \{
-00033             \textcolor{stringliteral}{'user'}: \_sess[\textcolor{stringliteral}{'user'}] \textcolor{keywordflow}{if} (\textcolor{stringliteral}{'user'} \textcolor{keywordflow}{in} \_sess.keys()) \textcolor{keywordflow}{else} \textcolor{keyword}{False},
-00034             \textcolor{stringliteral}{'DICT'}: lang.DICT,
-00035         \}
-
+\hypertarget{namespaceELO_1_1MainUnit_l00032}{}\hyperlink{namespaceELO_1_1MainUnit_a9a93b85d475fc34f726b09b8649be247}{00032} \textcolor{keyword}{def }\hyperlink{namespaceELO_1_1MainUnit_a9a93b85d475fc34f726b09b8649be247}{globalContext}(request):
+00033     \_sess = request.session
+00034     \textcolor{keywordflow}{return} \{
+00035             \textcolor{stringliteral}{'user'}: \_sess[\textcolor{stringliteral}{'user'}] \textcolor{keywordflow}{if} (\textcolor{stringliteral}{'user'} \textcolor{keywordflow}{in} \_sess.keys()) \textcolor{keywordflow}{else} \textcolor{keyword}{False},
+00036             \textcolor{stringliteral}{'DICT'}: lang.DICT,
+00037         \}
+00038 
 \end{DoxyCode}
+
+
+\subsubsection{Variáveis}
+\hypertarget{namespaceELO_1_1MainUnit_ac11441626deff8b14faad131d56cc790}{}\index{E\+L\+O\+::\+Main\+Unit@{E\+L\+O\+::\+Main\+Unit}!register@{register}}
+\index{register@{register}!E\+L\+O\+::\+Main\+Unit@{E\+L\+O\+::\+Main\+Unit}}
+\paragraph[{register}]{\setlength{\rightskip}{0pt plus 5cm}tuple E\+L\+O.\+Main\+Unit.\+register = template.\+Library()}\label{namespaceELO_1_1MainUnit_ac11441626deff8b14faad131d56cc790}
+
+
+Definição na linha \hyperlink{MainUnit_8py_source_l00029}{29} do arquivo \hyperlink{MainUnit_8py_source}{Main\+Unit.\+py}.
+

@@ -1,11 +1,11 @@
 var classAdm_1_1forms_1_1AdmRegStu__ProfForm =
 [
-    [ "clean_userCampus", "d5/d88/classAdm_1_1forms_1_1AdmRegStu__ProfForm.html#aaef53dc13585bd4111c6af2e7d37beb8", null ],
-    [ "clean_userEmail", "d5/d88/classAdm_1_1forms_1_1AdmRegStu__ProfForm.html#ad536dd1ac5f2f78cbee94bfcc9c12e8e", null ],
-    [ "clean_userMatric", "d5/d88/classAdm_1_1forms_1_1AdmRegStu__ProfForm.html#a1af070695c9fa22eed6d77684cf4625f", null ],
-    [ "clean_userName", "d5/d88/classAdm_1_1forms_1_1AdmRegStu__ProfForm.html#a9e03034d573c6875f0fa14a34cbfb62f", null ],
-    [ "clean_userPass", "d5/d88/classAdm_1_1forms_1_1AdmRegStu__ProfForm.html#a8d8e75e4acd91204d62ae15f9b40e48f", null ],
-    [ "clean_userSex", "d5/d88/classAdm_1_1forms_1_1AdmRegStu__ProfForm.html#a4f5e5eaaec2bd840dbd7f42789f6653f", null ],
+    [ "clean_userCampus", "d5/d88/classAdm_1_1forms_1_1AdmRegStu__ProfForm.html#a74730a46efbdfcd4365717fce26b295a", null ],
+    [ "clean_userEmail", "d5/d88/classAdm_1_1forms_1_1AdmRegStu__ProfForm.html#a2175e6df2259bcca182c3eb54cef065e", null ],
+    [ "clean_userMatric", "d5/d88/classAdm_1_1forms_1_1AdmRegStu__ProfForm.html#a86cae645930f3c11640abea65fcd1322", null ],
+    [ "clean_userName", "d5/d88/classAdm_1_1forms_1_1AdmRegStu__ProfForm.html#a509b621082b91a521578a8c11f19b993", null ],
+    [ "clean_userPass", "d5/d88/classAdm_1_1forms_1_1AdmRegStu__ProfForm.html#a4ad4a629f7a34d7657b6d308616f5696", null ],
+    [ "clean_userSex", "d5/d88/classAdm_1_1forms_1_1AdmRegStu__ProfForm.html#ac2623ef3e23567b9916798efd37846aa", null ],
     [ "userCampus", "d5/d88/classAdm_1_1forms_1_1AdmRegStu__ProfForm.html#a885786ae8be597f051f8e3ff65ddb02d", null ],
     [ "userEmail", "d5/d88/classAdm_1_1forms_1_1AdmRegStu__ProfForm.html#a97ccca87a1c1c3a223e13d51e8196ef4", null ],
     [ "userMatric", "d5/d88/classAdm_1_1forms_1_1AdmRegStu__ProfForm.html#a8cd50b9437effd2fecd6e4c66c307e41", null ],

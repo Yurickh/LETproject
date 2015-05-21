@@ -1,6 +1,5 @@
-\hypertarget{Adm_2forms_8py}{\subsection{forms.\-py}
-\label{Adm_2forms_8py}\index{E\-L\-O/\-Adm/forms.\-py@{E\-L\-O/\-Adm/forms.\-py}}
-}
+\hypertarget{Adm_2forms_8py_source}{}\subsection{forms.\+py}
+\label{Adm_2forms_8py_source}\index{E\+L\+O/\+Adm/forms.\+py@{E\+L\+O/\+Adm/forms.\+py}}
 
 \begin{DoxyCode}
 \hypertarget{Adm_2forms_8py_source_l00001}{}\hyperlink{namespaceAdm_1_1forms}{00001} \textcolor{comment}{#coding: utf-8}
@@ -39,35 +38,35 @@
 00032     
 00033     \textcolor{comment}{## Verifica se a formatação do nome de aluno está correta.}
 00034     \textcolor{comment}{#   Caso esteja, retorna o nome, caso contrário, lança uma excessão.}
-\hypertarget{Adm_2forms_8py_source_l00035}{}\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a9e03034d573c6875f0fa14a34cbfb62f}{00035}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a9e03034d573c6875f0fa14a34cbfb62f}{clean\_userName}(self):
+\hypertarget{Adm_2forms_8py_source_l00035}{}\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a509b621082b91a521578a8c11f19b993}{00035}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a509b621082b91a521578a8c11f19b993}{clean\_userName}(self):
 00036         \textcolor{keywordflow}{try}:
 00037             name = Name(self.cleaned\_data[\textcolor{stringliteral}{'userName'}])
 00038         \textcolor{keywordflow}{except} ValueError:
 00039             \textcolor{keywordflow}{raise} forms.ValidationError(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_INV\_LOG"}])
 00040         \textcolor{keywordflow}{return} name
 00041 
-\hypertarget{Adm_2forms_8py_source_l00042}{}\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a1af070695c9fa22eed6d77684cf4625f}{00042}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a1af070695c9fa22eed6d77684cf4625f}{clean\_userMatric}(self):
+\hypertarget{Adm_2forms_8py_source_l00042}{}\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a86cae645930f3c11640abea65fcd1322}{00042}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a86cae645930f3c11640abea65fcd1322}{clean\_userMatric}(self):
 00043         \textcolor{keywordflow}{try}:
 00044             matric = Matric(self.cleaned\_data[\textcolor{stringliteral}{"userMatric"}])
 00045         \textcolor{keywordflow}{except} ValueError:
 00046             \textcolor{keywordflow}{raise} forms.ValidationError(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_INV\_STU\_MT"}])
 00047         \textcolor{keywordflow}{return} matric
 00048 
-\hypertarget{Adm_2forms_8py_source_l00049}{}\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_aaef53dc13585bd4111c6af2e7d37beb8}{00049}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_aaef53dc13585bd4111c6af2e7d37beb8}{clean\_userCampus}(self):
+\hypertarget{Adm_2forms_8py_source_l00049}{}\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a74730a46efbdfcd4365717fce26b295a}{00049}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a74730a46efbdfcd4365717fce26b295a}{clean\_userCampus}(self):
 00050         \textcolor{keywordflow}{try}:
 00051             campus = Campus(self.cleaned\_data[\textcolor{stringliteral}{"userCampus"}])
 00052         \textcolor{keywordflow}{except} ValueError:
 00053             \textcolor{keywordflow}{raise} forms.ValidationError(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_INV\_STU\_CP"}])
 00054         \textcolor{keywordflow}{return} campus
 00055 
-\hypertarget{Adm_2forms_8py_source_l00056}{}\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a4f5e5eaaec2bd840dbd7f42789f6653f}{00056}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a4f5e5eaaec2bd840dbd7f42789f6653f}{clean\_userSex}(self):
+\hypertarget{Adm_2forms_8py_source_l00056}{}\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_ac2623ef3e23567b9916798efd37846aa}{00056}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_ac2623ef3e23567b9916798efd37846aa}{clean\_userSex}(self):
 00057         \textcolor{keywordflow}{try}:
 00058             sex = Sex(self.cleaned\_data[\textcolor{stringliteral}{"userSex"}])
 00059         \textcolor{keywordflow}{except} ValueError:
 00060             \textcolor{keywordflow}{raise} forms.ValidationError(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_INV\_STU\_SX"}])
 00061         \textcolor{keywordflow}{return} sex
 00062 
-\hypertarget{Adm_2forms_8py_source_l00063}{}\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_ad536dd1ac5f2f78cbee94bfcc9c12e8e}{00063}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_ad536dd1ac5f2f78cbee94bfcc9c12e8e}{clean\_userEmail}(self):
+\hypertarget{Adm_2forms_8py_source_l00063}{}\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a2175e6df2259bcca182c3eb54cef065e}{00063}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a2175e6df2259bcca182c3eb54cef065e}{clean\_userEmail}(self):
 00064         \textcolor{keywordflow}{try}:
 00065             email = Mail(self.cleaned\_data[\textcolor{stringliteral}{"userEmail"}])
 00066         \textcolor{keywordflow}{except} ValueError:
@@ -77,7 +76,7 @@
 00070     
 00071     \textcolor{comment}{## Verifica se a formatação da senha de aluno está correta.}
 00072     \textcolor{comment}{#   Caso esteja, retorna a senha, caso contrário, lança uma excessão.}
-\hypertarget{Adm_2forms_8py_source_l00073}{}\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a8d8e75e4acd91204d62ae15f9b40e48f}{00073}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a8d8e75e4acd91204d62ae15f9b40e48f}{clean\_userPass}(self):
+\hypertarget{Adm_2forms_8py_source_l00073}{}\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a4ad4a629f7a34d7657b6d308616f5696}{00073}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmRegStu__ProfForm_a4ad4a629f7a34d7657b6d308616f5696}{clean\_userPass}(self):
 00074         \textcolor{keywordflow}{try}:
 00075             password = Password(self.cleaned\_data[\textcolor{stringliteral}{'userPass'}])
 00076         \textcolor{keywordflow}{except} ValueError:
@@ -88,7 +87,7 @@
 \hypertarget{Adm_2forms_8py_source_l00081}{}\hyperlink{classAdm_1_1forms_1_1AdmDelStu__ProfForm}{00081} \textcolor{keyword}{class }\hyperlink{classAdm_1_1forms_1_1AdmDelStu__ProfForm}{AdmDelStu\_ProfForm}(forms.Form): 
 \hypertarget{Adm_2forms_8py_source_l00082}{}\hyperlink{classAdm_1_1forms_1_1AdmDelStu__ProfForm_a780eaf9b2d36cd160f6e574fe9023452}{00082}     username = forms.CharField(max\_length = 32, label = \textcolor{stringliteral}{"Nome:"}, required=\textcolor{keyword}{True})
 00083     
-\hypertarget{Adm_2forms_8py_source_l00084}{}\hyperlink{classAdm_1_1forms_1_1AdmDelStu__ProfForm_af247df629a728f32b413307930dc2748}{00084}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmDelStu__ProfForm_af247df629a728f32b413307930dc2748}{clean\_userName}(self):
+\hypertarget{Adm_2forms_8py_source_l00084}{}\hyperlink{classAdm_1_1forms_1_1AdmDelStu__ProfForm_a94e95abce2216b75e0ddb9ddfdfef5c9}{00084}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmDelStu__ProfForm_a94e95abce2216b75e0ddb9ddfdfef5c9}{clean\_userName}(self):
 00085         \textcolor{keywordflow}{try}:
 00086             name = Name(self.cleaned\_data[\textcolor{stringliteral}{"username"}])
 00087         \textcolor{keywordflow}{except} ValueError:
@@ -100,7 +99,7 @@
 00093 
 00094     \textcolor{comment}{## Verifica se a formatação da senha do administrador está correta.}
 00095     \textcolor{comment}{#   Caso esteja, retorna a senha, caso contrário, lança uma excessão.}
-\hypertarget{Adm_2forms_8py_source_l00096}{}\hyperlink{classAdm_1_1forms_1_1confAdm_ab5a399d0326bd135a123c5aa7a49cc29}{00096}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1confAdm_ab5a399d0326bd135a123c5aa7a49cc29}{clean\_admPass}(self):
+\hypertarget{Adm_2forms_8py_source_l00096}{}\hyperlink{classAdm_1_1forms_1_1confAdm_adb8ab8c61b8bc45b32c975d54f5b9ae0}{00096}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1confAdm_adb8ab8c61b8bc45b32c975d54f5b9ae0}{clean\_admPass}(self):
 00097         \textcolor{keywordflow}{try}:
 00098             password = Password(self.cleaned\_data[\textcolor{stringliteral}{'admPass'}])
 00099         \textcolor{keywordflow}{except} ValueError:
@@ -113,21 +112,21 @@
 \hypertarget{Adm_2forms_8py_source_l00106}{}\hyperlink{classAdm_1_1forms_1_1AdmRegCourForm_a6fcfad36a149364899dc7c95f239691f}{00106}     courProfessor = forms.CharField( max\_length = 32, label = \textcolor{stringliteral}{"Nome do Professor da Disciplina"}, required =
        \textcolor{stringliteral}{"True"})
 00107        
-\hypertarget{Adm_2forms_8py_source_l00108}{}\hyperlink{classAdm_1_1forms_1_1AdmRegCourForm_a9f46a4ae30627a99585378bb8cf7931f}{00108}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmRegCourForm_a9f46a4ae30627a99585378bb8cf7931f}{clean\_courMatric}(self):
+\hypertarget{Adm_2forms_8py_source_l00108}{}\hyperlink{classAdm_1_1forms_1_1AdmRegCourForm_af3ca03aa2519663ae34da3fc0b50f0c2}{00108}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmRegCourForm_af3ca03aa2519663ae34da3fc0b50f0c2}{clean\_courMatric}(self):
 00109         \textcolor{keywordflow}{try}:
 00110             matric = Matric(self.cleaned\_data[\textcolor{stringliteral}{"courMatric"}])
 00111         \textcolor{keywordflow}{except} ValueError:
 00112             \textcolor{keywordflow}{raise} forms.ValidationError(\textcolor{stringliteral}{"Código da Disciplina inválido."})
 00113         \textcolor{keywordflow}{return} matric
 00114 
-\hypertarget{Adm_2forms_8py_source_l00115}{}\hyperlink{classAdm_1_1forms_1_1AdmRegCourForm_a44ddd3e1d929aeb8f8ba24392ff913db}{00115}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmRegCourForm_a44ddd3e1d929aeb8f8ba24392ff913db}{clean\_courName}(self):
+\hypertarget{Adm_2forms_8py_source_l00115}{}\hyperlink{classAdm_1_1forms_1_1AdmRegCourForm_aeb652e7a2dcd9a7d38ce6f6626533a22}{00115}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmRegCourForm_aeb652e7a2dcd9a7d38ce6f6626533a22}{clean\_courName}(self):
 00116         \textcolor{keywordflow}{try}:
 00117             name = Name(self.cleaned\_data[\textcolor{stringliteral}{"courName"}])
 00118         \textcolor{keywordflow}{except} ValueError:
 00119             \textcolor{keywordflow}{raise} forms.ValidationError(\textcolor{stringliteral}{"Nome de Disciplina Inválido"})
 00120         \textcolor{keywordflow}{return} professor
 00121 
-\hypertarget{Adm_2forms_8py_source_l00122}{}\hyperlink{classAdm_1_1forms_1_1AdmRegCourForm_ad8ef9f5e19392d2f1d3688ca0db794e2}{00122}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmRegCourForm_ad8ef9f5e19392d2f1d3688ca0db794e2}{clean\_courProfessor}(self):
+\hypertarget{Adm_2forms_8py_source_l00122}{}\hyperlink{classAdm_1_1forms_1_1AdmRegCourForm_adbe479c6c4b7fa2d51b67b4c6223398f}{00122}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmRegCourForm_adbe479c6c4b7fa2d51b67b4c6223398f}{clean\_courProfessor}(self):
 00123         \textcolor{keywordflow}{try}:
 00124             professor = Name(self.cleaned\_data[\textcolor{stringliteral}{"courProfessor"}])
 00125         \textcolor{keywordflow}{except} ValueError:
@@ -138,7 +137,7 @@
 \hypertarget{Adm_2forms_8py_source_l00130}{}\hyperlink{classAdm_1_1forms_1_1AdmSrcCourForm}{00130} \textcolor{keyword}{class }\hyperlink{classAdm_1_1forms_1_1AdmSrcCourForm}{AdmSrcCourForm}(forms.Form):
 \hypertarget{Adm_2forms_8py_source_l00131}{}\hyperlink{classAdm_1_1forms_1_1AdmSrcCourForm_ad1687195ebe49268ac1cccbcaab2cd83}{00131}     courMatric = forms.IntegerField(label = \textcolor{stringliteral}{"Código da Disciplina"}, required =\textcolor{stringliteral}{"True"})
 00132 
-\hypertarget{Adm_2forms_8py_source_l00133}{}\hyperlink{classAdm_1_1forms_1_1AdmSrcCourForm_a8684781005b67d50c8a7dc53709d2c24}{00133}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmSrcCourForm_a8684781005b67d50c8a7dc53709d2c24}{clean\_courMatric}(self):
+\hypertarget{Adm_2forms_8py_source_l00133}{}\hyperlink{classAdm_1_1forms_1_1AdmSrcCourForm_a65d37d8a99e8ff4ed69e2f62268810af}{00133}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmSrcCourForm_a65d37d8a99e8ff4ed69e2f62268810af}{clean\_courMatric}(self):
 00134         \textcolor{keywordflow}{try}:
 00135             courMatric = Matric(self.cleaned\_data[\textcolor{stringliteral}{"courMatric"}])
 00136         \textcolor{keywordflow}{except} ValueError:
@@ -148,7 +147,7 @@
 \hypertarget{Adm_2forms_8py_source_l00140}{}\hyperlink{classAdm_1_1forms_1_1AdmDelCourForm}{00140} \textcolor{keyword}{class }\hyperlink{classAdm_1_1forms_1_1AdmDelCourForm}{AdmDelCourForm}(forms.Form): 
 \hypertarget{Adm_2forms_8py_source_l00141}{}\hyperlink{classAdm_1_1forms_1_1AdmDelCourForm_a8ed2bcde12e5bb321960517b3c653b2f}{00141}     courMatric = forms.IntegerField(label = \textcolor{stringliteral}{"Código da Disciplina"}, required =\textcolor{stringliteral}{"True"})
 00142 
-\hypertarget{Adm_2forms_8py_source_l00143}{}\hyperlink{classAdm_1_1forms_1_1AdmDelCourForm_aea58507d923f08b75d0c2f5898c162f7}{00143}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmDelCourForm_aea58507d923f08b75d0c2f5898c162f7}{clean\_courMatric}(self):
+\hypertarget{Adm_2forms_8py_source_l00143}{}\hyperlink{classAdm_1_1forms_1_1AdmDelCourForm_a29bd1262c5a7db10cbecdc8ba44da63b}{00143}     \textcolor{keyword}{def }\hyperlink{classAdm_1_1forms_1_1AdmDelCourForm_a29bd1262c5a7db10cbecdc8ba44da63b}{clean\_courMatric}(self):
 00144         \textcolor{keywordflow}{try}:
 00145             courMatric = Matric(self.cleaned\_data[\textcolor{stringliteral}{"courMatric"}])
 00146         \textcolor{keywordflow}{except} ValueError:

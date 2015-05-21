@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['unscramble',['Unscramble',['../d1/d5b/classCourse_1_1macros_1_1ExerciseType.html#a5d5313adddb807b0cac94f5da44af978',1,'Course::macros::ExerciseType']]],
   ['urlpatterns',['urlpatterns',['../dd/de1/namespaceELO_1_1urls.html#a3451f093ed6ab05c006fd0d1cdba836d',1,'ELO::urls']]],
   ['use_5fi18n',['USE_I18N',['../df/d5b/namespaceELO_1_1settings.html#a2d03ced1be44b9d7937bdbc870474ffe',1,'ELO::settings']]],
   ['use_5fl10n',['USE_L10N',['../df/d5b/namespaceELO_1_1settings.html#a863197f2699808509a4c32b38c16eb44',1,'ELO::settings']]],

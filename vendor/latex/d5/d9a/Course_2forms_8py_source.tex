@@ -1,6 +1,5 @@
-\hypertarget{Course_2forms_8py}{\subsection{forms.\-py}
-\label{Course_2forms_8py}\index{E\-L\-O/\-Course/forms.\-py@{E\-L\-O/\-Course/forms.\-py}}
-}
+\hypertarget{Course_2forms_8py_source}{}\subsection{forms.\+py}
+\label{Course_2forms_8py_source}\index{E\+L\+O/\+Course/forms.\+py@{E\+L\+O/\+Course/forms.\+py}}
 
 \begin{DoxyCode}
 \hypertarget{Course_2forms_8py_source_l00001}{}\hyperlink{namespaceCourse_1_1forms}{00001} \textcolor{comment}{#coding: utf-8}
@@ -14,9 +13,42 @@
 \hypertarget{Course_2forms_8py_source_l00009}{}\hyperlink{classCourse_1_1forms_1_1LessonForm_a0ed8ca8dc81ac7498c83df4a5735ce04}{00009}     lesson\_id = forms.IntegerField(required=\textcolor{keyword}{True})
 \hypertarget{Course_2forms_8py_source_l00010}{}\hyperlink{classCourse_1_1forms_1_1LessonForm_ad030e96bd25bff769cce537955b318d1}{00010}     slide\_number = forms.IntegerField(required=\textcolor{keyword}{True})
 00011 
-\hypertarget{Course_2forms_8py_source_l00012}{}\hyperlink{classCourse_1_1forms_1_1LessonForm_ad33e136f4ab11e780c0c1d1267769ab7}{00012}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1forms_1_1LessonForm_ad33e136f4ab11e780c0c1d1267769ab7}{clean\_lesson\_id}(self):
+\hypertarget{Course_2forms_8py_source_l00012}{}\hyperlink{classCourse_1_1forms_1_1LessonForm_a5e1afca616ce7fc80701a3df092325af}{00012}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1forms_1_1LessonForm_a5e1afca616ce7fc80701a3df092325af}{clean\_lesson\_id}(self):
 00013         \textcolor{keywordflow}{return} \hyperlink{classELO_1_1BaseUnit_1_1Id}{Id}(self.cleaned\_data[\textcolor{stringliteral}{'lesson\_id'}])
 00014 
-\hypertarget{Course_2forms_8py_source_l00015}{}\hyperlink{classCourse_1_1forms_1_1LessonForm_acc15a807e96d131c1c839ee28da158de}{00015}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1forms_1_1LessonForm_acc15a807e96d131c1c839ee28da158de}{clean\_slide\_number}(self):
+\hypertarget{Course_2forms_8py_source_l00015}{}\hyperlink{classCourse_1_1forms_1_1LessonForm_ae1d45c4578bfd73ae6b0f0b3f52ce8da}{00015}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1forms_1_1LessonForm_ae1d45c4578bfd73ae6b0f0b3f52ce8da}{clean\_slide\_number}(self):
 00016         \textcolor{keywordflow}{return} \hyperlink{classELO_1_1BaseUnit_1_1Id}{Id}(self.cleaned\_data[\textcolor{stringliteral}{'slide\_number'}])
+00017 
+\hypertarget{Course_2forms_8py_source_l00018}{}\hyperlink{classCourse_1_1forms_1_1MultipleChoiceExercise}{00018} \textcolor{keyword}{class }\hyperlink{classCourse_1_1forms_1_1MultipleChoiceExercise}{MultipleChoiceExercise}(forms.Form):
+\hypertarget{Course_2forms_8py_source_l00019}{}\hyperlink{classCourse_1_1forms_1_1MultipleChoiceExercise_ade3f98a45467f7f977fb82712df21575}{00019}     options = forms.ChoiceField(widget   = forms.RadioSelect, 
+00020                                 required = \textcolor{keyword}{True},
+00021                                 label = \textcolor{stringliteral}{""})
+00022 
+\hypertarget{Course_2forms_8py_source_l00023}{}\hyperlink{classCourse_1_1forms_1_1MultipleChoiceExercise_afb5041d90dbba78dff5039cd23fec44b}{00023}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1forms_1_1MultipleChoiceExercise_afb5041d90dbba78dff5039cd23fec44b}{clean\_options}(self):
+00024         \textcolor{keywordflow}{return} dict(self.cleaned\_data[\textcolor{stringliteral}{'options'}])
+00025 
+\hypertarget{Course_2forms_8py_source_l00026}{}\hyperlink{classCourse_1_1forms_1_1FillTheBlankExercise}{00026} \textcolor{keyword}{class }\hyperlink{classCourse_1_1forms_1_1FillTheBlankExercise}{FillTheBlankExercise}(forms.Form):
+\hypertarget{Course_2forms_8py_source_l00027}{}\hyperlink{classCourse_1_1forms_1_1FillTheBlankExercise_a581787b24c05ae5b24bc635b7ae10a41}{00027}     blank = forms.CharField(required = \textcolor{keyword}{True}, label=\textcolor{stringliteral}{""})
+00028 
+\hypertarget{Course_2forms_8py_source_l00029}{}\hyperlink{classCourse_1_1forms_1_1FillTheBlankExercise_afd580feb9780a2776dab839180b9dfc9}{00029}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1forms_1_1FillTheBlankExercise_afd580feb9780a2776dab839180b9dfc9}{clean\_blank}(self):
+00030         \textcolor{keywordflow}{return} PlainText(self.cleaned\_data[\textcolor{stringliteral}{'blank'}]).value
+00031 
+\hypertarget{Course_2forms_8py_source_l00032}{}\hyperlink{classCourse_1_1forms_1_1UnscrambleExercise}{00032} \textcolor{keyword}{class }\hyperlink{classCourse_1_1forms_1_1UnscrambleExercise}{UnscrambleExercise}(forms.Form):
+\hypertarget{Course_2forms_8py_source_l00033}{}\hyperlink{classCourse_1_1forms_1_1UnscrambleExercise_abff263e494816cb4477ee0f0727d3e65}{00033}     bloat = forms.CharField(required = \textcolor{keyword}{True}, label=\textcolor{stringliteral}{""})
+00034 
+\hypertarget{Course_2forms_8py_source_l00035}{}\hyperlink{classCourse_1_1forms_1_1UnscrambleExercise_affc5b0db18f92e1da41c9adf85bbb69a}{00035}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1forms_1_1UnscrambleExercise_affc5b0db18f92e1da41c9adf85bbb69a}{clean\_bloat}(self):
+00036         \textcolor{keywordflow}{return} self.cleaned\_data[\textcolor{stringliteral}{'bloat'}].split()
+00037 
+\hypertarget{Course_2forms_8py_source_l00038}{}\hyperlink{classCourse_1_1forms_1_1CrossWordExercise}{00038} \textcolor{keyword}{class }\hyperlink{classCourse_1_1forms_1_1CrossWordExercise}{CrossWordExercise}(forms.Form):
+\hypertarget{Course_2forms_8py_source_l00039}{}\hyperlink{classCourse_1_1forms_1_1CrossWordExercise_aa9c9a8c4547386d9e9d9830289e8bd9e}{00039}     bloat = forms.CharField(required = \textcolor{keyword}{True}, label=\textcolor{stringliteral}{""})
+00040 
+\hypertarget{Course_2forms_8py_source_l00041}{}\hyperlink{classCourse_1_1forms_1_1CrossWordExercise_a2e3c06f2bc9b11dd04df1da8825f777b}{00041}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1forms_1_1CrossWordExercise_a2e3c06f2bc9b11dd04df1da8825f777b}{clean\_bloat}(self):
+00042         wordList = self.cleaned\_data[\textcolor{stringliteral}{'bloat'}].split(\textcolor{stringliteral}{'\_'})
+00043         retList = []
+00044 
+00045         \textcolor{keywordflow}{for} word \textcolor{keywordflow}{in} wordList:
+00046             x,y,d,w = word.split()
+00047             retList.append(\textcolor{stringliteral}{" "}.join([x,y,d,w]))
+00048 
+00049         \textcolor{keywordflow}{return} retList
 \end{DoxyCode}

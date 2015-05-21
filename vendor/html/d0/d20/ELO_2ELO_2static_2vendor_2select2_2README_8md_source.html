@@ -3,22 +3,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.6"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
 <title>LETproject: Código-Fonte de ELO/ELO/static/vendor/select2/README.md</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
 <link href="../../navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
 <script type="text/javascript" src="../../navtree.js"></script>
 <script type="text/javascript">
   $(document).ready(initResizable);
   $(window).load(resizeHeight);
 </script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
 <script type="text/javascript">
-  $(document).ready(function() { searchBox.OnSelectItem(0); });
+  $(document).ready(function() { init_search(); });
 </script>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css" />
 </head>
@@ -37,7 +39,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Gerado por Doxygen 1.8.6 -->
+<!-- Gerado por Doxygen 1.8.9.1 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
 </script>
@@ -90,7 +92,7 @@ $(document).ready(function(){initNavTree('d0/d20/ELO_2ELO_2static_2vendor_2selec
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variáveis</a></div>
+</div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -107,9 +109,9 @@ $(document).ready(function(){initNavTree('d0/d20/ELO_2ELO_2static_2vendor_2selec
 <a href="../../d0/d20/ELO_2ELO_2static_2vendor_2select2_2README_8md.html">Vá para a documentação deste arquivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;Select2</div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;=======</div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;Select2 is a jQuery-based replacement <span class="keywordflow">for</span> select boxes. It supports searching, remote data sets, and infinite scrolling of results.</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;Select2 is a jQuery-based replacement for select boxes. It supports searching, remote data sets, and infinite scrolling of results.</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;To <span class="keyword">get</span> started, checkout examples and documentation at http:<span class="comment">//ivaynberg.github.com/select2</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;To get started, checkout examples and documentation at http://ivaynberg.github.com/select2</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;Use cases</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;---------</div>
@@ -117,11 +119,11 @@ $(document).ready(function(){initNavTree('d0/d20/ELO_2ELO_2static_2vendor_2selec
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;* Enhancing native selects with search.</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;* Enhancing native selects with a better multi-select interface.</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;* Loading data from JavaScript: easily load items via ajax and have them searchable.</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;* Nesting optgroups: native selects only support one level of nested. Select2 does not have <span class="keyword">this</span> restriction.</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;* Tagging: ability to add <span class="keyword">new</span> items on the fly.</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;* Nesting optgroups: native selects only support one level of nested. Select2 does not have this restriction.</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;* Tagging: ability to add new items on the fly.</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;* Working with large, remote datasets: ability to partially load a dataset based on the search term.</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;* Paging of large datasets: easy support <span class="keywordflow">for</span> loading more pages when the results are scrolled to the end.</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;* Templating: support <span class="keywordflow">for</span> custom rendering of results and selections.</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;* Paging of large datasets: easy support for loading more pages when the results are scrolled to the end.</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;* Templating: support for custom rendering of results and selections.</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;Browser compatibility</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;---------------------</div>
@@ -133,30 +135,30 @@ $(document).ready(function(){initNavTree('d0/d20/ELO_2ELO_2static_2vendor_2selec
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;Usage</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;-----</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;You can source Select2 directly from a [CDN like JSDliver](http:<span class="comment">//www.jsdelivr.com/#!select2), [download it from this GitHub repo](https://github.com/ivaynberg/select2/tags), or use one of the integrations below.</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;You can source Select2 directly from a [CDN like JSDliver](http://www.jsdelivr.com/#!select2), [download it from this GitHub repo](https://github.com/ivaynberg/select2/tags), or use one of the integrations below.</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;Integrations</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;------------</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;* [Wicket-Select2](https:<span class="comment">//github.com/ivaynberg/wicket-select2) (Java / [Apache Wicket](http://wicket.apache.org))</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;* [select2-rails](https:<span class="comment">//github.com/argerim/select2-rails) (Ruby on Rails)</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;* [AngularUI](http:<span class="comment">//angular-ui.github.com/#directives-select2) ([AngularJS](angularjs.org))</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;* [Django](https:<span class="comment">//github.com/applegrew/django-select2)</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;* [Symfony](https:<span class="comment">//github.com/19Gerhard85/sfSelect2WidgetsPlugin)</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;* [Symfony2](https:<span class="comment">//github.com/avocode/FormExtensions)</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;* [Bootstrap 2](https:<span class="comment">//github.com/t0m/select2-bootstrap-css) and [Bootstrap 3](https://github.com/t0m/select2-bootstrap-css/tree/bootstrap3) (CSS skins)</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;* [Meteor](https:<span class="comment">//github.com/nate-strauser/meteor-select2) (modern reactive JavaScript framework; + [Bootstrap 3 skin](https://github.com/esperadomedia/meteor-select2-bootstrap3-css/))</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;* [Meteor](https:<span class="comment">//jquery-select2.meteor.com)</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;* [Yii 2.x](http:<span class="comment">//demos.krajee.com/widgets#select2)</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;* [Yii 1.x](https:<span class="comment">//github.com/tonybolzan/yii-select2)</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;* [AtmosphereJS](https:<span class="comment">//atmospherejs.com/package/jquery-select2)</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;* [Wicket-Select2](https://github.com/ivaynberg/wicket-select2) (Java / [Apache Wicket](http://wicket.apache.org))</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;* [select2-rails](https://github.com/argerim/select2-rails) (Ruby on Rails)</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;* [AngularUI](http://angular-ui.github.com/#directives-select2) ([AngularJS](angularjs.org))</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;* [Django](https://github.com/applegrew/django-select2)</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;* [Symfony](https://github.com/19Gerhard85/sfSelect2WidgetsPlugin)</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;* [Symfony2](https://github.com/avocode/FormExtensions)</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;* [Bootstrap 2](https://github.com/t0m/select2-bootstrap-css) and [Bootstrap 3](https://github.com/t0m/select2-bootstrap-css/tree/bootstrap3) (CSS skins)</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;* [Meteor](https://github.com/nate-strauser/meteor-select2) (modern reactive JavaScript framework; + [Bootstrap 3 skin](https://github.com/esperadomedia/meteor-select2-bootstrap3-css/))</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;* [Meteor](https://jquery-select2.meteor.com)</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;* [Yii 2.x](http://demos.krajee.com/widgets#select2)</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;* [Yii 1.x](https://github.com/tonybolzan/yii-select2)</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;* [AtmosphereJS](https://atmospherejs.com/package/jquery-select2)</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">### Example Integrations</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;* [Knockout.js](https:<span class="comment">//github.com/ivaynberg/select2/wiki/Knockout.js-Integration)</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;* [Socket.IO](https:<span class="comment">//github.com/ivaynberg/select2/wiki/Socket.IO-Integration)</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;* [PHP](https:<span class="comment">//github.com/ivaynberg/select2/wiki/PHP-Example)</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;* [.Net MVC] (https:<span class="comment">//github.com/ivaynberg/select2/wiki/.Net-MVC-Example)</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;### Example Integrations</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;* [Knockout.js](https://github.com/ivaynberg/select2/wiki/Knockout.js-Integration)</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;* [Socket.IO](https://github.com/ivaynberg/select2/wiki/Socket.IO-Integration)</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;* [PHP](https://github.com/ivaynberg/select2/wiki/PHP-Example)</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;* [.Net MVC] (https://github.com/ivaynberg/select2/wiki/.Net-MVC-Example)</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;Internationalization (i18n)</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;---------------------------</div>
@@ -172,7 +174,7 @@ $(document).ready(function(){initNavTree('d0/d20/ELO_2ELO_2static_2vendor_2selec
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;Have a bug? Please create an issue here on GitHub!</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;https:<span class="comment">//github.com/ivaynberg/select2/issues</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;https://github.com/ivaynberg/select2/issues</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;Mailing list</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;------------</div>
@@ -181,7 +183,7 @@ $(document).ready(function(){initNavTree('d0/d20/ELO_2ELO_2static_2vendor_2selec
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;select2@googlegroups.com</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;https:<span class="comment">//groups.google.com/d/forum/select2</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;https://groups.google.com/d/forum/select2</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;Copyright and license</div>
@@ -196,8 +198,8 @@ $(document).ready(function(){initNavTree('d0/d20/ELO_2ELO_2static_2vendor_2selec
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;You may obtain a copy of the Apache License and the GPL License in the LICENSE file, or at:</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;http:<span class="comment">//www.apache.org/licenses/LICENSE-2.0</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;http:<span class="comment">//www.gnu.org/licenses/gpl-2.0.html</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;http://www.apache.org/licenses/LICENSE-2.0</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;http://www.gnu.org/licenses/gpl-2.0.html</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;Unless required by applicable law or agreed to in writing, software distributed under the Apache License</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;or the GPL License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,</div>
@@ -209,9 +211,9 @@ $(document).ready(function(){initNavTree('d0/d20/ELO_2ELO_2static_2vendor_2selec
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../d0/d20/ELO_2ELO_2static_2vendor_2select2_2README_8md.html">README.md</a></li>
-    <li class="footer">Gerado em Domingo, 28 de Dezembro de 2014 13:28:55 para LETproject por
+    <li class="footer">Gerado em Quinta, 21 de Maio de 2015 15:13:31 para LETproject por
     <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>
 </div>
 </body>

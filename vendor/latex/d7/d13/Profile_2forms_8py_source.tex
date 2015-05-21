@@ -1,6 +1,5 @@
-\hypertarget{Profile_2forms_8py}{\subsection{forms.\-py}
-\label{Profile_2forms_8py}\index{E\-L\-O/\-Profile/forms.\-py@{E\-L\-O/\-Profile/forms.\-py}}
-}
+\hypertarget{Profile_2forms_8py_source}{}\subsection{forms.\+py}
+\label{Profile_2forms_8py_source}\index{E\+L\+O/\+Profile/forms.\+py@{E\+L\+O/\+Profile/forms.\+py}}
 
 \begin{DoxyCode}
 \hypertarget{Profile_2forms_8py_source_l00001}{}\hyperlink{namespaceProfile_1_1forms}{00001} \textcolor{comment}{#coding: utf-8}
@@ -29,14 +28,14 @@
 \hypertarget{Profile_2forms_8py_source_l00024}{}\hyperlink{classProfile_1_1forms_1_1NameForm_a6ebfb316b263c162dd3895b1da149eda}{00024}     newdata     = forms.CharField(max\_length=32)
 \hypertarget{Profile_2forms_8py_source_l00025}{}\hyperlink{classProfile_1_1forms_1_1NameForm_a5a6959db0132c607a56f9cda75769ecf}{00025}     password    = forms.CharField(widget=forms.PasswordInput)
 00026 
-\hypertarget{Profile_2forms_8py_source_l00027}{}\hyperlink{classProfile_1_1forms_1_1NameForm_a4e324f8cfc90a67d56802f66ce48c4ca}{00027}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1NameForm_a4e324f8cfc90a67d56802f66ce48c4ca}{clean\_newdata}(self):
+\hypertarget{Profile_2forms_8py_source_l00027}{}\hyperlink{classProfile_1_1forms_1_1NameForm_a3feb3d340b4c8b18b55bcfa0a91758c1}{00027}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1NameForm_a3feb3d340b4c8b18b55bcfa0a91758c1}{clean\_newdata}(self):
 00028         \textcolor{keywordflow}{try}:
 00029             name = Name(self.cleaned\_data[\textcolor{stringliteral}{'newdata'}])
 00030         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
 00031             \textcolor{keywordflow}{raise} forms.ValidationError(exc)
 00032         \textcolor{keywordflow}{return} name
 00033 
-\hypertarget{Profile_2forms_8py_source_l00034}{}\hyperlink{classProfile_1_1forms_1_1NameForm_a681fa28036a241632b8688d436f04a49}{00034}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1NameForm_a681fa28036a241632b8688d436f04a49}{clean\_password}(self):
+\hypertarget{Profile_2forms_8py_source_l00034}{}\hyperlink{classProfile_1_1forms_1_1NameForm_aa4cc0c75c2f47602302780502b7c20a0}{00034}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1NameForm_aa4cc0c75c2f47602302780502b7c20a0}{clean\_password}(self):
 00035         \textcolor{keywordflow}{try}:
 00036             pw = Password(self.cleaned\_data[\textcolor{stringliteral}{'password'}])
 00037         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
@@ -52,21 +51,21 @@
 \hypertarget{Profile_2forms_8py_source_l00047}{}\hyperlink{classProfile_1_1forms_1_1PasswordForm_a7560db05a7e3dfebdd4e95385192b2ad}{00047}     rp\_newdata  = forms.CharField(widget=forms.PasswordInput)
 \hypertarget{Profile_2forms_8py_source_l00048}{}\hyperlink{classProfile_1_1forms_1_1PasswordForm_a71438e4977095210067fd7d2f4cf551c}{00048}     old\_password= forms.CharField(widget=forms.PasswordInput)
 00049 
-\hypertarget{Profile_2forms_8py_source_l00050}{}\hyperlink{classProfile_1_1forms_1_1PasswordForm_ac839e515eabe5449bcc3409b4c0fdf94}{00050}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1PasswordForm_ac839e515eabe5449bcc3409b4c0fdf94}{clean\_newdata}(self):
+\hypertarget{Profile_2forms_8py_source_l00050}{}\hyperlink{classProfile_1_1forms_1_1PasswordForm_a83f03b77492109e21511fa9e97c475ba}{00050}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1PasswordForm_a83f03b77492109e21511fa9e97c475ba}{clean\_newdata}(self):
 00051         \textcolor{keywordflow}{try}:
 00052             n\_pw = Password(self.cleaned\_data[\textcolor{stringliteral}{'newdata'}])
 00053         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
 00054             \textcolor{keywordflow}{raise} forms.ValidationError(exc)
 00055         \textcolor{keywordflow}{return} n\_pw
 00056 
-\hypertarget{Profile_2forms_8py_source_l00057}{}\hyperlink{classProfile_1_1forms_1_1PasswordForm_a85fda85a8da4e4b60f55156e57d53c32}{00057}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1PasswordForm_a85fda85a8da4e4b60f55156e57d53c32}{clean\_rp\_newdata}(self):
+\hypertarget{Profile_2forms_8py_source_l00057}{}\hyperlink{classProfile_1_1forms_1_1PasswordForm_aca8f863d0640235058984375c3ff5491}{00057}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1PasswordForm_aca8f863d0640235058984375c3ff5491}{clean\_rp\_newdata}(self):
 00058         \textcolor{keywordflow}{try}:
 00059             r\_pw = Password(self.cleaned\_data[\textcolor{stringliteral}{'rp\_newdata'}])
 00060         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
 00061             \textcolor{keywordflow}{raise} forms.ValidationError(exc)
 00062         \textcolor{keywordflow}{return} r\_pw
 00063 
-\hypertarget{Profile_2forms_8py_source_l00064}{}\hyperlink{classProfile_1_1forms_1_1PasswordForm_a9c88c8978bb731ff8c73666b2c742695}{00064}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1PasswordForm_a9c88c8978bb731ff8c73666b2c742695}{clean\_old\_password}(self):
+\hypertarget{Profile_2forms_8py_source_l00064}{}\hyperlink{classProfile_1_1forms_1_1PasswordForm_a77c66c38e78db4ec954c483b50c05f13}{00064}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1PasswordForm_a77c66c38e78db4ec954c483b50c05f13}{clean\_old\_password}(self):
 00065         \textcolor{keywordflow}{try}:
 00066             o\_pw = Password(self.cleaned\_data[\textcolor{stringliteral}{'old\_password'}])
 00067         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
@@ -84,7 +83,7 @@
 00079                                             (\textcolor{stringliteral}{'en'}, lang.DICT[\textcolor{stringliteral}{'ENGLISH'}])
 00080                                                 ])
 00081 
-\hypertarget{Profile_2forms_8py_source_l00082}{}\hyperlink{classProfile_1_1forms_1_1LanguageForm_ab875693b567fc65f8e96af446a4cf78b}{00082}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1LanguageForm_ab875693b567fc65f8e96af446a4cf78b}{clean\_newdata}(self):
+\hypertarget{Profile_2forms_8py_source_l00082}{}\hyperlink{classProfile_1_1forms_1_1LanguageForm_aa293b46190ebac68d0d410406e83c01c}{00082}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1LanguageForm_aa293b46190ebac68d0d410406e83c01c}{clean\_newdata}(self):
 00083         newlang = self.cleaned\_data[\textcolor{stringliteral}{'newdata'}]
 00084         \textcolor{keywordflow}{if} newlang \textcolor{keywordflow}{in} lang.available\_langs:
 00085             \textcolor{keywordflow}{return} newlang
@@ -104,7 +103,7 @@
 00099                                             (\textcolor{stringliteral}{'M'}, lang.DICT[\textcolor{stringliteral}{'SEX\_MALE'}])
 00100                                                 ])
 00101 
-\hypertarget{Profile_2forms_8py_source_l00102}{}\hyperlink{classProfile_1_1forms_1_1SexForm_a23eb3376f64c41fbfa57b1b78ed2a38b}{00102}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1SexForm_a23eb3376f64c41fbfa57b1b78ed2a38b}{clean\_newdata}(self):
+\hypertarget{Profile_2forms_8py_source_l00102}{}\hyperlink{classProfile_1_1forms_1_1SexForm_ac9ef4da0a6773535d0e94e332d20f9c3}{00102}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1SexForm_ac9ef4da0a6773535d0e94e332d20f9c3}{clean\_newdata}(self):
 00103         \textcolor{keywordflow}{try}:
 00104             ns = Sex(self.cleaned\_data[\textcolor{stringliteral}{'newdata'}])
 00105         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
@@ -118,7 +117,7 @@
 \hypertarget{Profile_2forms_8py_source_l00113}{}\hyperlink{classProfile_1_1forms_1_1BiosForm}{00113} \textcolor{keyword}{class }\hyperlink{classProfile_1_1forms_1_1BiosForm}{BiosForm}(forms.Form):
 \hypertarget{Profile_2forms_8py_source_l00114}{}\hyperlink{classProfile_1_1forms_1_1BiosForm_a2862b20c24bac9aa5dc896925a2cb3d6}{00114}     newdata     = forms.CharField(required=\textcolor{keyword}{False}, widget=forms.Textarea(attrs=\{\textcolor{stringliteral}{'style'}:\textcolor{stringliteral}{'width:90%;'}\}))
 00115 
-\hypertarget{Profile_2forms_8py_source_l00116}{}\hyperlink{classProfile_1_1forms_1_1BiosForm_a10f21ed8d7cb888f0aa35618087c86af}{00116}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1BiosForm_a10f21ed8d7cb888f0aa35618087c86af}{clean\_newdata}(self):
+\hypertarget{Profile_2forms_8py_source_l00116}{}\hyperlink{classProfile_1_1forms_1_1BiosForm_a678979ab443eaac9e008a140c903d703}{00116}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1BiosForm_a678979ab443eaac9e008a140c903d703}{clean\_newdata}(self):
 00117         \textcolor{keywordflow}{try}:
 00118             nb = PlainText(self.cleaned\_data[\textcolor{stringliteral}{'newdata'}])
 00119         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
@@ -131,7 +130,7 @@
 \hypertarget{Profile_2forms_8py_source_l00126}{}\hyperlink{classProfile_1_1forms_1_1InterestsForm}{00126} \textcolor{keyword}{class }\hyperlink{classProfile_1_1forms_1_1InterestsForm}{InterestsForm}(forms.Form):
 \hypertarget{Profile_2forms_8py_source_l00127}{}\hyperlink{classProfile_1_1forms_1_1InterestsForm_ad400f3a7b43e71bd7772fa85e2961ff0}{00127}     newdata     = forms.CharField(required=\textcolor{keyword}{False})
 00128 
-\hypertarget{Profile_2forms_8py_source_l00129}{}\hyperlink{classProfile_1_1forms_1_1InterestsForm_a6422167036a926576b18570db4da5117}{00129}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1InterestsForm_a6422167036a926576b18570db4da5117}{clean\_newdata}(self):
+\hypertarget{Profile_2forms_8py_source_l00129}{}\hyperlink{classProfile_1_1forms_1_1InterestsForm_a8938f38e00f554ec578ce7c39431ed08}{00129}     \textcolor{keyword}{def }\hyperlink{classProfile_1_1forms_1_1InterestsForm_a8938f38e00f554ec578ce7c39431ed08}{clean\_newdata}(self):
 00130         \textcolor{keywordflow}{try}:
 00131             ni = PlainText(self.cleaned\_data[\textcolor{stringliteral}{'newdata'}])
 00132         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:

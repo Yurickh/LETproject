@@ -1,6 +1,5 @@
-\hypertarget{Login_2forms_8py}{\subsection{forms.\-py}
-\label{Login_2forms_8py}\index{E\-L\-O/\-Login/forms.\-py@{E\-L\-O/\-Login/forms.\-py}}
-}
+\hypertarget{Login_2forms_8py_source}{}\subsection{forms.\+py}
+\label{Login_2forms_8py_source}\index{E\+L\+O/\+Login/forms.\+py@{E\+L\+O/\+Login/forms.\+py}}
 
 \begin{DoxyCode}
 \hypertarget{Login_2forms_8py_source_l00001}{}\hyperlink{namespaceLogin_1_1forms}{00001} \textcolor{comment}{#coding: utf-8}
@@ -23,7 +22,7 @@
 00018     
 00019     \textcolor{comment}{## Verifica se a formatação do nome está correta.}
 00020     \textcolor{comment}{# Caso esteja, retorna o nome, caso contrário, lança uma excessão.}
-\hypertarget{Login_2forms_8py_source_l00021}{}\hyperlink{classLogin_1_1forms_1_1LoginForm_a411400c2fe891080a2ccb332dd0117bf}{00021}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1forms_1_1LoginForm_a411400c2fe891080a2ccb332dd0117bf}{clean\_username}(self):
+\hypertarget{Login_2forms_8py_source_l00021}{}\hyperlink{classLogin_1_1forms_1_1LoginForm_a23e2651502381fa3a98d416fbb1a0527}{00021}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1forms_1_1LoginForm_a23e2651502381fa3a98d416fbb1a0527}{clean\_username}(self):
 00022         \textcolor{keywordflow}{try}:
 00023             name = \hyperlink{classELO_1_1BaseUnit_1_1Name}{Name}(self.cleaned\_data[\textcolor{stringliteral}{'username'}])
 00024         \textcolor{keywordflow}{except} ValueError:
@@ -32,7 +31,7 @@
 00027 
 00028     \textcolor{comment}{## Verifica se a formatação do password está correta.}
 00029     \textcolor{comment}{# Caso esteja, retorna o password, caso contrário, lança uma excessão.}
-\hypertarget{Login_2forms_8py_source_l00030}{}\hyperlink{classLogin_1_1forms_1_1LoginForm_a693547dba5ad5addb8f0540711441713}{00030}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1forms_1_1LoginForm_a693547dba5ad5addb8f0540711441713}{clean\_password}(self):
+\hypertarget{Login_2forms_8py_source_l00030}{}\hyperlink{classLogin_1_1forms_1_1LoginForm_ab3bf974521ccb331a02ca80ff62c8794}{00030}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1forms_1_1LoginForm_ab3bf974521ccb331a02ca80ff62c8794}{clean\_password}(self):
 00031         \textcolor{keywordflow}{try}:
 00032             pw = \hyperlink{classELO_1_1BaseUnit_1_1Password}{Password}(self.cleaned\_data[\textcolor{stringliteral}{'password'}])
 00033         \textcolor{keywordflow}{except} ValueError:

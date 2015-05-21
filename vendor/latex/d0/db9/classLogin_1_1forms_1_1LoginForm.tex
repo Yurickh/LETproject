@@ -1,12 +1,11 @@
-\hypertarget{classLogin_1_1forms_1_1LoginForm}{\subsection{Referência da Classe Login.\-forms.\-Login\-Form}
-\label{classLogin_1_1forms_1_1LoginForm}\index{Login.\-forms.\-Login\-Form@{Login.\-forms.\-Login\-Form}}
-}
+\hypertarget{classLogin_1_1forms_1_1LoginForm}{}\subsection{Referência da Classe Login.\+forms.\+Login\+Form}
+\label{classLogin_1_1forms_1_1LoginForm}\index{Login.\+forms.\+Login\+Form@{Login.\+forms.\+Login\+Form}}
 
 
 Classe de formulário para o fomulário de \hyperlink{namespaceLogin}{Login}.  
 
 
-Diagrama de Hierarquia para Login.\-forms.\-Login\-Form\-:\begin{figure}[H]
+Diagrama de Hierarquia para Login.\+forms.\+Login\+Form\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.000000cm]{d0/db9/classLogin_1_1forms_1_1LoginForm}
@@ -15,89 +14,87 @@ Diagrama de Hierarquia para Login.\-forms.\-Login\-Form\-:\begin{figure}[H]
 \subsubsection*{Métodos Públicos}
 \begin{DoxyCompactItemize}
 \item 
-def \hyperlink{classLogin_1_1forms_1_1LoginForm_a411400c2fe891080a2ccb332dd0117bf}{clean\-\_\-username}
+def \hyperlink{classLogin_1_1forms_1_1LoginForm_a23e2651502381fa3a98d416fbb1a0527}{clean\+\_\+username} (self)
 \begin{DoxyCompactList}\small\item\em Verifica se a formatação do nome está correta. \end{DoxyCompactList}\item 
-def \hyperlink{classLogin_1_1forms_1_1LoginForm_a693547dba5ad5addb8f0540711441713}{clean\-\_\-password}
+def \hyperlink{classLogin_1_1forms_1_1LoginForm_ab3bf974521ccb331a02ca80ff62c8794}{clean\+\_\+password} (self)
 \begin{DoxyCompactList}\small\item\em Verifica se a formatação do password está correta. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsubsection*{Atributos Estáticos Públicos}
 \begin{DoxyCompactItemize}
 \item 
-tuple \hyperlink{classLogin_1_1forms_1_1LoginForm_af3766bb4ea8cabdf57ad77214b7545fd}{username} = forms.\-Char\-Field(max\-\_\-length = 32)
+tuple \hyperlink{classLogin_1_1forms_1_1LoginForm_af3766bb4ea8cabdf57ad77214b7545fd}{username} = forms.\+Char\+Field(max\+\_\+length = 32)
 \item 
-tuple \hyperlink{classLogin_1_1forms_1_1LoginForm_a23e321f790e9c7bfc3e9abf767826a2d}{password} = forms.\-Char\-Field(widget = forms.\-Password\-Input)
+tuple \hyperlink{classLogin_1_1forms_1_1LoginForm_a23e321f790e9c7bfc3e9abf767826a2d}{password} = forms.\+Char\+Field(widget = forms.\+Password\+Input)
 \end{DoxyCompactItemize}
 
 
 \subsubsection{Descrição Detalhada}
-Recebe o username e o password e passa para a \hyperlink{namespaceLogin_1_1LoginUnit}{Login\-Unit} para ser validado. 
+Recebe o username e o password e passa para a \hyperlink{namespaceLogin_1_1LoginUnit}{Login\+Unit} para ser validado. 
 
-Definição na linha \hyperlink{Login_2forms_8py_source_l00014}{14} do arquivo \hyperlink{Login_2forms_8py_source}{forms.\-py}.
+Definição na linha \hyperlink{Login_2forms_8py_source_l00014}{14} do arquivo \hyperlink{Login_2forms_8py_source}{forms.\+py}.
 
 
 
 \subsubsection{Métodos}
-\hypertarget{classLogin_1_1forms_1_1LoginForm_a693547dba5ad5addb8f0540711441713}{\index{Login\-::forms\-::\-Login\-Form@{Login\-::forms\-::\-Login\-Form}!clean\-\_\-password@{clean\-\_\-password}}
-\index{clean\-\_\-password@{clean\-\_\-password}!Login::forms::LoginForm@{Login\-::forms\-::\-Login\-Form}}
-\paragraph[{clean\-\_\-password}]{\setlength{\rightskip}{0pt plus 5cm}def Login.\-forms.\-Login\-Form.\-clean\-\_\-password (
+\hypertarget{classLogin_1_1forms_1_1LoginForm_ab3bf974521ccb331a02ca80ff62c8794}{}\index{Login\+::forms\+::\+Login\+Form@{Login\+::forms\+::\+Login\+Form}!clean\+\_\+password@{clean\+\_\+password}}
+\index{clean\+\_\+password@{clean\+\_\+password}!Login\+::forms\+::\+Login\+Form@{Login\+::forms\+::\+Login\+Form}}
+\paragraph[{clean\+\_\+password}]{\setlength{\rightskip}{0pt plus 5cm}def Login.\+forms.\+Login\+Form.\+clean\+\_\+password (
 \begin{DoxyParamCaption}
 \item[{}]{self}
 \end{DoxyParamCaption}
-)}}\label{classLogin_1_1forms_1_1LoginForm_a693547dba5ad5addb8f0540711441713}
+)}\label{classLogin_1_1forms_1_1LoginForm_ab3bf974521ccb331a02ca80ff62c8794}
 Caso esteja, retorna o password, caso contrário, lança uma excessão. 
 
-Definição na linha \hyperlink{Login_2forms_8py_source_l00030}{30} do arquivo \hyperlink{Login_2forms_8py_source}{forms.\-py}.
+Definição na linha \hyperlink{Login_2forms_8py_source_l00030}{30} do arquivo \hyperlink{Login_2forms_8py_source}{forms.\+py}.
 
 
 \begin{DoxyCode}
-\hypertarget{classLogin_1_1forms_1_1LoginForm_l00030}{}\hyperlink{classLogin_1_1forms_1_1LoginForm_a693547dba5ad5addb8f0540711441713}{00030} 
-00031     \textcolor{keyword}{def }\hyperlink{classLogin_1_1forms_1_1LoginForm_a693547dba5ad5addb8f0540711441713}{clean\_password}(self):
-00032         \textcolor{keywordflow}{try}:
-00033             pw = \hyperlink{classELO_1_1BaseUnit_1_1Password}{Password}(self.cleaned\_data[\textcolor{stringliteral}{'password'}])
-00034         \textcolor{keywordflow}{except} ValueError:
-00035             \textcolor{keywordflow}{raise} forms.ValidationError(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_INV\_LOG"}])
-00036         \textcolor{keywordflow}{return} pw
-\end{DoxyCode}
-\hypertarget{classLogin_1_1forms_1_1LoginForm_a411400c2fe891080a2ccb332dd0117bf}{\index{Login\-::forms\-::\-Login\-Form@{Login\-::forms\-::\-Login\-Form}!clean\-\_\-username@{clean\-\_\-username}}
-\index{clean\-\_\-username@{clean\-\_\-username}!Login::forms::LoginForm@{Login\-::forms\-::\-Login\-Form}}
-\paragraph[{clean\-\_\-username}]{\setlength{\rightskip}{0pt plus 5cm}def Login.\-forms.\-Login\-Form.\-clean\-\_\-username (
+\hypertarget{classLogin_1_1forms_1_1LoginForm_l00030}{}\hyperlink{classLogin_1_1forms_1_1LoginForm_ab3bf974521ccb331a02ca80ff62c8794}{00030}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1forms_1_1LoginForm_ab3bf974521ccb331a02ca80ff62c8794}{clean\_password}(self):
+00031         \textcolor{keywordflow}{try}:
+00032             pw = \hyperlink{classELO_1_1BaseUnit_1_1Password}{Password}(self.cleaned\_data[\textcolor{stringliteral}{'password'}])
+00033         \textcolor{keywordflow}{except} ValueError:
+00034             \textcolor{keywordflow}{raise} forms.ValidationError(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_INV\_LOG"}])
+00035         \textcolor{keywordflow}{return} pw
+00036 \end{DoxyCode}
+\hypertarget{classLogin_1_1forms_1_1LoginForm_a23e2651502381fa3a98d416fbb1a0527}{}\index{Login\+::forms\+::\+Login\+Form@{Login\+::forms\+::\+Login\+Form}!clean\+\_\+username@{clean\+\_\+username}}
+\index{clean\+\_\+username@{clean\+\_\+username}!Login\+::forms\+::\+Login\+Form@{Login\+::forms\+::\+Login\+Form}}
+\paragraph[{clean\+\_\+username}]{\setlength{\rightskip}{0pt plus 5cm}def Login.\+forms.\+Login\+Form.\+clean\+\_\+username (
 \begin{DoxyParamCaption}
 \item[{}]{self}
 \end{DoxyParamCaption}
-)}}\label{classLogin_1_1forms_1_1LoginForm_a411400c2fe891080a2ccb332dd0117bf}
+)}\label{classLogin_1_1forms_1_1LoginForm_a23e2651502381fa3a98d416fbb1a0527}
 Caso esteja, retorna o nome, caso contrário, lança uma excessão. 
 
-Definição na linha \hyperlink{Login_2forms_8py_source_l00021}{21} do arquivo \hyperlink{Login_2forms_8py_source}{forms.\-py}.
+Definição na linha \hyperlink{Login_2forms_8py_source_l00021}{21} do arquivo \hyperlink{Login_2forms_8py_source}{forms.\+py}.
 
 
 \begin{DoxyCode}
-\hypertarget{classLogin_1_1forms_1_1LoginForm_l00021}{}\hyperlink{classLogin_1_1forms_1_1LoginForm_a411400c2fe891080a2ccb332dd0117bf}{00021} 
-00022     \textcolor{keyword}{def }\hyperlink{classLogin_1_1forms_1_1LoginForm_a411400c2fe891080a2ccb332dd0117bf}{clean\_username}(self):
-00023         \textcolor{keywordflow}{try}:
-00024             name = \hyperlink{classELO_1_1BaseUnit_1_1Name}{Name}(self.cleaned\_data[\textcolor{stringliteral}{'username'}])
-00025         \textcolor{keywordflow}{except} ValueError:
-00026             \textcolor{keywordflow}{raise} forms.ValidationError(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_INV\_LOG"}])
-00027         \textcolor{keywordflow}{return} name
-
+\hypertarget{classLogin_1_1forms_1_1LoginForm_l00021}{}\hyperlink{classLogin_1_1forms_1_1LoginForm_a23e2651502381fa3a98d416fbb1a0527}{00021}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1forms_1_1LoginForm_a23e2651502381fa3a98d416fbb1a0527}{clean\_username}(self):
+00022         \textcolor{keywordflow}{try}:
+00023             name = \hyperlink{classELO_1_1BaseUnit_1_1Name}{Name}(self.cleaned\_data[\textcolor{stringliteral}{'username'}])
+00024         \textcolor{keywordflow}{except} ValueError:
+00025             \textcolor{keywordflow}{raise} forms.ValidationError(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_INV\_LOG"}])
+00026         \textcolor{keywordflow}{return} name
+00027 
 \end{DoxyCode}
 
 
 \subsubsection{Atributos}
-\hypertarget{classLogin_1_1forms_1_1LoginForm_a23e321f790e9c7bfc3e9abf767826a2d}{\index{Login\-::forms\-::\-Login\-Form@{Login\-::forms\-::\-Login\-Form}!password@{password}}
-\index{password@{password}!Login::forms::LoginForm@{Login\-::forms\-::\-Login\-Form}}
-\paragraph[{password}]{\setlength{\rightskip}{0pt plus 5cm}tuple Login.\-forms.\-Login\-Form.\-password = forms.\-Char\-Field(widget = forms.\-Password\-Input)\hspace{0.3cm}{\ttfamily [static]}}}\label{classLogin_1_1forms_1_1LoginForm_a23e321f790e9c7bfc3e9abf767826a2d}
+\hypertarget{classLogin_1_1forms_1_1LoginForm_a23e321f790e9c7bfc3e9abf767826a2d}{}\index{Login\+::forms\+::\+Login\+Form@{Login\+::forms\+::\+Login\+Form}!password@{password}}
+\index{password@{password}!Login\+::forms\+::\+Login\+Form@{Login\+::forms\+::\+Login\+Form}}
+\paragraph[{password}]{\setlength{\rightskip}{0pt plus 5cm}tuple Login.\+forms.\+Login\+Form.\+password = forms.\+Char\+Field(widget = forms.\+Password\+Input)\hspace{0.3cm}{\ttfamily [static]}}\label{classLogin_1_1forms_1_1LoginForm_a23e321f790e9c7bfc3e9abf767826a2d}
 
 
-Definição na linha \hyperlink{Login_2forms_8py_source_l00016}{16} do arquivo \hyperlink{Login_2forms_8py_source}{forms.\-py}.
+Definição na linha \hyperlink{Login_2forms_8py_source_l00016}{16} do arquivo \hyperlink{Login_2forms_8py_source}{forms.\+py}.
 
-\hypertarget{classLogin_1_1forms_1_1LoginForm_af3766bb4ea8cabdf57ad77214b7545fd}{\index{Login\-::forms\-::\-Login\-Form@{Login\-::forms\-::\-Login\-Form}!username@{username}}
-\index{username@{username}!Login::forms::LoginForm@{Login\-::forms\-::\-Login\-Form}}
-\paragraph[{username}]{\setlength{\rightskip}{0pt plus 5cm}tuple Login.\-forms.\-Login\-Form.\-username = forms.\-Char\-Field(max\-\_\-length = 32)\hspace{0.3cm}{\ttfamily [static]}}}\label{classLogin_1_1forms_1_1LoginForm_af3766bb4ea8cabdf57ad77214b7545fd}
-
-
-Definição na linha \hyperlink{Login_2forms_8py_source_l00015}{15} do arquivo \hyperlink{Login_2forms_8py_source}{forms.\-py}.
+\hypertarget{classLogin_1_1forms_1_1LoginForm_af3766bb4ea8cabdf57ad77214b7545fd}{}\index{Login\+::forms\+::\+Login\+Form@{Login\+::forms\+::\+Login\+Form}!username@{username}}
+\index{username@{username}!Login\+::forms\+::\+Login\+Form@{Login\+::forms\+::\+Login\+Form}}
+\paragraph[{username}]{\setlength{\rightskip}{0pt plus 5cm}tuple Login.\+forms.\+Login\+Form.\+username = forms.\+Char\+Field(max\+\_\+length = 32)\hspace{0.3cm}{\ttfamily [static]}}\label{classLogin_1_1forms_1_1LoginForm_af3766bb4ea8cabdf57ad77214b7545fd}
 
 
+Definição na linha \hyperlink{Login_2forms_8py_source_l00015}{15} do arquivo \hyperlink{Login_2forms_8py_source}{forms.\+py}.
 
-A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}
+
+
+A documentação para esta classe foi gerada a partir do seguinte arquivo\+:\begin{DoxyCompactItemize}
 \item 
-E\-L\-O/\-Login/\hyperlink{Login_2forms_8py}{forms.\-py}\end{DoxyCompactItemize}
+E\+L\+O/\+Login/\hyperlink{Login_2forms_8py}{forms.\+py}\end{DoxyCompactItemize}

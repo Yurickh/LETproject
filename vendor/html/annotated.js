@@ -5,6 +5,5 @@ var annotated =
     [ "Course", "dd/df0/namespaceCourse.html", "dd/df0/namespaceCourse" ],
     [ "ELO", "da/d09/namespaceELO.html", "da/d09/namespaceELO" ],
     [ "Login", "dc/d54/namespaceLogin.html", "dc/d54/namespaceLogin" ],
-    [ "manage", "da/df4/namespacemanage.html", null ],
     [ "Profile", "d8/dc2/namespaceProfile.html", "d8/dc2/namespaceProfile" ]
 ];

@@ -1,7 +1,6 @@
-\hypertarget{classCourse_1_1CourseUnit_1_1PersCourse}{\subsection{Referência da Classe Course.\-Course\-Unit.\-Pers\-Course}
-\label{classCourse_1_1CourseUnit_1_1PersCourse}\index{Course.\-Course\-Unit.\-Pers\-Course@{Course.\-Course\-Unit.\-Pers\-Course}}
-}
-Diagrama de Hierarquia para Course.\-Course\-Unit.\-Pers\-Course\-:\begin{figure}[H]
+\hypertarget{classCourse_1_1CourseUnit_1_1PersCourse}{}\subsection{Referência da Classe Course.\+Course\+Unit.\+Pers\+Course}
+\label{classCourse_1_1CourseUnit_1_1PersCourse}\index{Course.\+Course\+Unit.\+Pers\+Course@{Course.\+Course\+Unit.\+Pers\+Course}}
+Diagrama de Hierarquia para Course.\+Course\+Unit.\+Pers\+Course\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.000000cm]{d1/d75/classCourse_1_1CourseUnit_1_1PersCourse}
@@ -10,73 +9,72 @@ Diagrama de Hierarquia para Course.\-Course\-Unit.\-Pers\-Course\-:\begin{figure
 \subsubsection*{Métodos Públicos}
 \begin{DoxyCompactItemize}
 \item 
-def \hyperlink{classCourse_1_1CourseUnit_1_1PersCourse_afd977895923c6be1d49e47b9db2ddf21}{getid}
+def \hyperlink{classCourse_1_1CourseUnit_1_1PersCourse_acfe23f8591380715d02d815193b30ca5}{getid} (self, field, value, db)
 \item 
-def \hyperlink{classCourse_1_1CourseUnit_1_1PersCourse_a6e682e872daa8d3523015e1b4df76d0f}{fetch}
+def \hyperlink{classCourse_1_1CourseUnit_1_1PersCourse_ad80c75d03ace40dd77b2e7a8b9964dd9}{fetch} (self, id, db)
 \end{DoxyCompactItemize}
+\subsubsection*{Outros membros herdados}
 
 
 \subsubsection{Descrição Detalhada}
 
 
-Definição na linha \hyperlink{CourseUnit_8py_source_l00286}{286} do arquivo \hyperlink{CourseUnit_8py_source}{Course\-Unit.\-py}.
+Definição na linha \hyperlink{CourseUnit_8py_source_l00408}{408} do arquivo \hyperlink{CourseUnit_8py_source}{Course\+Unit.\+py}.
 
 
 
 \subsubsection{Métodos}
-\hypertarget{classCourse_1_1CourseUnit_1_1PersCourse_a6e682e872daa8d3523015e1b4df76d0f}{\index{Course\-::\-Course\-Unit\-::\-Pers\-Course@{Course\-::\-Course\-Unit\-::\-Pers\-Course}!fetch@{fetch}}
-\index{fetch@{fetch}!Course::CourseUnit::PersCourse@{Course\-::\-Course\-Unit\-::\-Pers\-Course}}
-\paragraph[{fetch}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\-Course\-Unit.\-Pers\-Course.\-fetch (
+\hypertarget{classCourse_1_1CourseUnit_1_1PersCourse_ad80c75d03ace40dd77b2e7a8b9964dd9}{}\index{Course\+::\+Course\+Unit\+::\+Pers\+Course@{Course\+::\+Course\+Unit\+::\+Pers\+Course}!fetch@{fetch}}
+\index{fetch@{fetch}!Course\+::\+Course\+Unit\+::\+Pers\+Course@{Course\+::\+Course\+Unit\+::\+Pers\+Course}}
+\paragraph[{fetch}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\+Course\+Unit.\+Pers\+Course.\+fetch (
 \begin{DoxyParamCaption}
 \item[{}]{self, }
 \item[{}]{id, }
 \item[{}]{db}
 \end{DoxyParamCaption}
-)}}\label{classCourse_1_1CourseUnit_1_1PersCourse_a6e682e872daa8d3523015e1b4df76d0f}
+)}\label{classCourse_1_1CourseUnit_1_1PersCourse_ad80c75d03ace40dd77b2e7a8b9964dd9}
 
 
-Definição na linha \hyperlink{CourseUnit_8py_source_l00292}{292} do arquivo \hyperlink{CourseUnit_8py_source}{Course\-Unit.\-py}.
+Definição na linha \hyperlink{CourseUnit_8py_source_l00414}{414} do arquivo \hyperlink{CourseUnit_8py_source}{Course\+Unit.\+py}.
 
 
 \begin{DoxyCode}
-\hypertarget{classCourse_1_1CourseUnit_1_1PersCourse_l00292}{}\hyperlink{classCourse_1_1CourseUnit_1_1PersCourse_a6e682e872daa8d3523015e1b4df76d0f}{00292} 
-00293     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1PersCourse_a6e682e872daa8d3523015e1b4df76d0f}{fetch}(self, id, db):
-00294         model\_data = db.objects.filter(identity=id)
-00295         format\_data = \{\}
-00296 
-00297         \textcolor{comment}{## @for}
-00298         \textcolor{comment}{#   Cria um dicionário de listas, no fomato:}
-00299         \textcolor{comment}{#}
-00300         \textcolor{comment}{#   CAMPO\_NO\_BANCO\_DE\_DADOS => [ VALOR\_1, VALOR\_2 ... VALOR\_N ]}
-00301         \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} model\_data.values():
-00302             format\_data[i[\textcolor{stringliteral}{'field'}]]=format\_data.get(i[\textcolor{stringliteral}{'field'}],[])+[i[\textcolor{stringliteral}{'value'}]]
-00303 
-00304         \textcolor{keywordflow}{return} format\_data
-\end{DoxyCode}
-\hypertarget{classCourse_1_1CourseUnit_1_1PersCourse_afd977895923c6be1d49e47b9db2ddf21}{\index{Course\-::\-Course\-Unit\-::\-Pers\-Course@{Course\-::\-Course\-Unit\-::\-Pers\-Course}!getid@{getid}}
-\index{getid@{getid}!Course::CourseUnit::PersCourse@{Course\-::\-Course\-Unit\-::\-Pers\-Course}}
-\paragraph[{getid}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\-Course\-Unit.\-Pers\-Course.\-getid (
+\hypertarget{classCourse_1_1CourseUnit_1_1PersCourse_l00414}{}\hyperlink{classCourse_1_1CourseUnit_1_1PersCourse_ad80c75d03ace40dd77b2e7a8b9964dd9}{00414}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1PersCourse_ad80c75d03ace40dd77b2e7a8b9964dd9}{fetch}(self, id, db):
+00415         model\_data = db.objects.filter(identity=id)
+00416         format\_data = \{\}
+00417 
+00418         \textcolor{comment}{## @for}
+00419         \textcolor{comment}{#   Cria um dicionário de listas, no fomato:}
+00420         \textcolor{comment}{#}
+00421         \textcolor{comment}{#   CAMPO\_NO\_BANCO\_DE\_DADOS => [ VALOR\_1, VALOR\_2 ... VALOR\_N ]}
+00422         \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} model\_data.values():
+00423             format\_data[i[\textcolor{stringliteral}{'field'}]]=format\_data.get(i[\textcolor{stringliteral}{'field'}],[])+[i[\textcolor{stringliteral}{'value'}]]
+00424 
+00425         \textcolor{keywordflow}{return} format\_data
+00426 \end{DoxyCode}
+\hypertarget{classCourse_1_1CourseUnit_1_1PersCourse_acfe23f8591380715d02d815193b30ca5}{}\index{Course\+::\+Course\+Unit\+::\+Pers\+Course@{Course\+::\+Course\+Unit\+::\+Pers\+Course}!getid@{getid}}
+\index{getid@{getid}!Course\+::\+Course\+Unit\+::\+Pers\+Course@{Course\+::\+Course\+Unit\+::\+Pers\+Course}}
+\paragraph[{getid}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\+Course\+Unit.\+Pers\+Course.\+getid (
 \begin{DoxyParamCaption}
 \item[{}]{self, }
 \item[{}]{field, }
 \item[{}]{value, }
 \item[{}]{db}
 \end{DoxyParamCaption}
-)}}\label{classCourse_1_1CourseUnit_1_1PersCourse_afd977895923c6be1d49e47b9db2ddf21}
+)}\label{classCourse_1_1CourseUnit_1_1PersCourse_acfe23f8591380715d02d815193b30ca5}
 
 
-Definição na linha \hyperlink{CourseUnit_8py_source_l00288}{288} do arquivo \hyperlink{CourseUnit_8py_source}{Course\-Unit.\-py}.
+Definição na linha \hyperlink{CourseUnit_8py_source_l00410}{410} do arquivo \hyperlink{CourseUnit_8py_source}{Course\+Unit.\+py}.
 
 
 \begin{DoxyCode}
-\hypertarget{classCourse_1_1CourseUnit_1_1PersCourse_l00288}{}\hyperlink{classCourse_1_1CourseUnit_1_1PersCourse_afd977895923c6be1d49e47b9db2ddf21}{00288} 
-00289     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1PersCourse_afd977895923c6be1d49e47b9db2ddf21}{getid}(self, field, value, db):
-00290         model\_data = db.objects.get(field=field, value=value)
-00291         \textcolor{keywordflow}{return} model\_data.identity
-
+\hypertarget{classCourse_1_1CourseUnit_1_1PersCourse_l00410}{}\hyperlink{classCourse_1_1CourseUnit_1_1PersCourse_acfe23f8591380715d02d815193b30ca5}{00410}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1PersCourse_acfe23f8591380715d02d815193b30ca5}{getid}(self, field, value, db):
+00411         model\_data = db.objects.get(field=field, value=value)
+00412         \textcolor{keywordflow}{return} model\_data.identity
+00413 
 \end{DoxyCode}
 
 
-A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}
+A documentação para esta classe foi gerada a partir do seguinte arquivo\+:\begin{DoxyCompactItemize}
 \item 
-E\-L\-O/\-Course/\hyperlink{CourseUnit_8py}{Course\-Unit.\-py}\end{DoxyCompactItemize}
+E\+L\+O/\+Course/\hyperlink{CourseUnit_8py}{Course\+Unit.\+py}\end{DoxyCompactItemize}

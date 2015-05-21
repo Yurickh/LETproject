@@ -1,0 +1,37 @@
+\hypertarget{macros_8py_source}{}\subsection{macros.\+py}
+\label{macros_8py_source}\index{E\+L\+O/\+Course/macros.\+py@{E\+L\+O/\+Course/macros.\+py}}
+
+\begin{DoxyCode}
+\hypertarget{macros_8py_source_l00001}{}\hyperlink{namespaceCourse_1_1macros}{00001} \textcolor{comment}{#coding: utf-8}
+00002 
+00003 \textcolor{comment}{## @file macros.py}
+00004 \textcolor{comment}{#}
+00005 \textcolor{comment}{#   Arquivo contendo todas as macros utilizadas no módulo de Cursos.}
+00006 
+00007 \textcolor{keyword}{import} \hyperlink{namespaceELO_1_1locale_1_1index}{ELO.locale.index} \textcolor{keyword}{as} lang
+00008 
+00009 \textcolor{keyword}{from} django.utils.encoding \textcolor{keyword}{import} force\_unicode
+00010 
+00011 \textcolor{comment}{## Macro responsável por armazenar a URL relativa dos templates de lições}
+\hypertarget{macros_8py_source_l00012}{}\hyperlink{namespaceCourse_1_1macros_a4473a418de016b59cce33b13440e469b}{00012} LESSONS\_URL = \textcolor{keyword}{lambda} x=\textcolor{stringliteral}{""}: \textcolor{stringliteral}{'Course/lessons/'} + str(x)
+00013 
+00014 \textcolor{comment}{## Macro responsável por armazenar a URL relativa dos templates gerais do curso}
+\hypertarget{macros_8py_source_l00015}{}\hyperlink{namespaceCourse_1_1macros_a9a69c2455c0c121b1c01960629575d7e}{00015} GENERAL\_URL = \textcolor{keyword}{lambda} x=\textcolor{stringliteral}{""}: \textcolor{stringliteral}{'Course/general/'} + str(x)
+00016 
+00017 \textcolor{comment}{## Macro responsável por armazenar a URL relativa dos templates de exercícios}
+\hypertarget{macros_8py_source_l00018}{}\hyperlink{namespaceCourse_1_1macros_ac1cf8b3a78128ab6a3bac4f6be9fabbd}{00018} EXERCISES\_URL = \textcolor{keyword}{lambda} x=\textcolor{stringliteral}{""}: \textcolor{stringliteral}{'Course/exercises/'} + str(x)
+00019 
+00020 \textcolor{comment}{## Macro responsável por envolver o HTML fornecido por tags de <form>}
+\hypertarget{macros_8py_source_l00021}{}\hyperlink{namespaceCourse_1_1macros_a39e2016892066b4da954490ccc32533e}{00021} FORM\_WRAPPER = \textcolor{keyword}{lambda} x,y,z: \textcolor{stringliteral}{'<form>'} + z[0] + \textcolor{stringliteral}{" "} + str(x) + \textcolor{stringliteral}{" "} + z[1] + \textcolor{stringliteral}{'<input type="hidden" name="
+      csrfmiddlewaretoken" value="'} + str(y) + \textcolor{stringliteral}{'" /><input type="submit" value="'} + force\_unicode(lang.DICT[\textcolor{stringliteral}{'SUBMIT'}])
+       + \textcolor{stringliteral}{'" /></form>'}
+00022 
+00023 \textcolor{comment}{## Macro responsável por mapear tipos de exercícios com seus respectivos ids }
+\hypertarget{macros_8py_source_l00024}{}\hyperlink{classCourse_1_1macros_1_1ExerciseType}{00024} \textcolor{keyword}{class }\hyperlink{classCourse_1_1macros_1_1ExerciseType}{ExerciseType}:
+00025 
+\hypertarget{macros_8py_source_l00026}{}\hyperlink{classCourse_1_1macros_1_1ExerciseType_a0ad70d05309ba8aacd0a808e20089a9f}{00026}     MultipleChoice  = 1
+\hypertarget{macros_8py_source_l00027}{}\hyperlink{classCourse_1_1macros_1_1ExerciseType_a5e880e89e6942b6cc6da78e9443aaabf}{00027}     FillTheBlank    = 2
+\hypertarget{macros_8py_source_l00028}{}\hyperlink{classCourse_1_1macros_1_1ExerciseType_a3717c38ca7f35c859d7d6759d456a0c9}{00028}     CrossWords      = 3
+\hypertarget{macros_8py_source_l00029}{}\hyperlink{classCourse_1_1macros_1_1ExerciseType_a5d5313adddb807b0cac94f5da44af978}{00029}     Unscramble      = 4
+00030     DragAndDrop     = 5
+\end{DoxyCode}

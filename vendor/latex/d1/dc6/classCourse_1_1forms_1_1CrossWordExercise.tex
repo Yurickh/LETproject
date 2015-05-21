@@ -1,0 +1,66 @@
+\hypertarget{classCourse_1_1forms_1_1CrossWordExercise}{}\subsection{Referência da Classe Course.\+forms.\+Cross\+Word\+Exercise}
+\label{classCourse_1_1forms_1_1CrossWordExercise}\index{Course.\+forms.\+Cross\+Word\+Exercise@{Course.\+forms.\+Cross\+Word\+Exercise}}
+Diagrama de Hierarquia para Course.\+forms.\+Cross\+Word\+Exercise\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d1/dc6/classCourse_1_1forms_1_1CrossWordExercise}
+\end{center}
+\end{figure}
+\subsubsection*{Métodos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classCourse_1_1forms_1_1CrossWordExercise_a2e3c06f2bc9b11dd04df1da8825f777b}{clean\+\_\+bloat} (self)
+\end{DoxyCompactItemize}
+\subsubsection*{Atributos Estáticos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+tuple \hyperlink{classCourse_1_1forms_1_1CrossWordExercise_aa9c9a8c4547386d9e9d9830289e8bd9e}{bloat} = forms.\+Char\+Field(required = True, label=\char`\"{}\char`\"{})
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Descrição Detalhada}
+
+
+Definição na linha \hyperlink{Course_2forms_8py_source_l00038}{38} do arquivo \hyperlink{Course_2forms_8py_source}{forms.\+py}.
+
+
+
+\subsubsection{Métodos}
+\hypertarget{classCourse_1_1forms_1_1CrossWordExercise_a2e3c06f2bc9b11dd04df1da8825f777b}{}\index{Course\+::forms\+::\+Cross\+Word\+Exercise@{Course\+::forms\+::\+Cross\+Word\+Exercise}!clean\+\_\+bloat@{clean\+\_\+bloat}}
+\index{clean\+\_\+bloat@{clean\+\_\+bloat}!Course\+::forms\+::\+Cross\+Word\+Exercise@{Course\+::forms\+::\+Cross\+Word\+Exercise}}
+\paragraph[{clean\+\_\+bloat}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\+forms.\+Cross\+Word\+Exercise.\+clean\+\_\+bloat (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}\label{classCourse_1_1forms_1_1CrossWordExercise_a2e3c06f2bc9b11dd04df1da8825f777b}
+
+
+Definição na linha \hyperlink{Course_2forms_8py_source_l00041}{41} do arquivo \hyperlink{Course_2forms_8py_source}{forms.\+py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classCourse_1_1forms_1_1CrossWordExercise_l00041}{}\hyperlink{classCourse_1_1forms_1_1CrossWordExercise_a2e3c06f2bc9b11dd04df1da8825f777b}{00041}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1forms_1_1CrossWordExercise_a2e3c06f2bc9b11dd04df1da8825f777b}{clean\_bloat}(self):
+00042         wordList = self.cleaned\_data[\textcolor{stringliteral}{'bloat'}].split(\textcolor{stringliteral}{'\_'})
+00043         retList = []
+00044 
+00045         \textcolor{keywordflow}{for} word \textcolor{keywordflow}{in} wordList:
+00046             x,y,d,w = word.split()
+00047             retList.append(\textcolor{stringliteral}{" "}.join([x,y,d,w]))
+00048 
+00049         \textcolor{keywordflow}{return} retList
+00050 \end{DoxyCode}
+
+
+\subsubsection{Atributos}
+\hypertarget{classCourse_1_1forms_1_1CrossWordExercise_aa9c9a8c4547386d9e9d9830289e8bd9e}{}\index{Course\+::forms\+::\+Cross\+Word\+Exercise@{Course\+::forms\+::\+Cross\+Word\+Exercise}!bloat@{bloat}}
+\index{bloat@{bloat}!Course\+::forms\+::\+Cross\+Word\+Exercise@{Course\+::forms\+::\+Cross\+Word\+Exercise}}
+\paragraph[{bloat}]{\setlength{\rightskip}{0pt plus 5cm}tuple Course.\+forms.\+Cross\+Word\+Exercise.\+bloat = forms.\+Char\+Field(required = True, label=\char`\"{}\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}\label{classCourse_1_1forms_1_1CrossWordExercise_aa9c9a8c4547386d9e9d9830289e8bd9e}
+
+
+Definição na linha \hyperlink{Course_2forms_8py_source_l00039}{39} do arquivo \hyperlink{Course_2forms_8py_source}{forms.\+py}.
+
+
+
+A documentação para esta classe foi gerada a partir do seguinte arquivo\+:\begin{DoxyCompactItemize}
+\item 
+E\+L\+O/\+Course/\hyperlink{Course_2forms_8py}{forms.\+py}\end{DoxyCompactItemize}

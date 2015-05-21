@@ -1,6 +1,5 @@
-\hypertarget{BaseUnit_8py}{\subsection{Base\-Unit.\-py}
-\label{BaseUnit_8py}\index{E\-L\-O/\-E\-L\-O/\-Base\-Unit.\-py@{E\-L\-O/\-E\-L\-O/\-Base\-Unit.\-py}}
-}
+\hypertarget{BaseUnit_8py_source}{}\subsection{Base\+Unit.\+py}
+\label{BaseUnit_8py_source}\index{E\+L\+O/\+E\+L\+O/\+Base\+Unit.\+py@{E\+L\+O/\+E\+L\+O/\+Base\+Unit.\+py}}
 
 \begin{DoxyCode}
 \hypertarget{BaseUnit_8py_source_l00001}{}\hyperlink{namespaceELO_1_1BaseUnit}{00001} \textcolor{comment}{#coding: utf-8}
@@ -40,7 +39,7 @@
 00035     \textcolor{comment}{## Método que retorna o valor contido no tipo básico.}
 00036     \textcolor{comment}{#   Método GET.}
 00037     @property
-\hypertarget{BaseUnit_8py_source_l00038}{}\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{00038}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{value}(self):
+\hypertarget{BaseUnit_8py_source_l00038}{}\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a2534c3548a8e5991dde0a64b4f0b542b}{00038}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a2534c3548a8e5991dde0a64b4f0b542b}{value}(self):
 00039         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value}
 00040 
 00041     \textcolor{comment}{## Método que fixa e valida o conteúdo do tipo básico.}
@@ -48,14 +47,14 @@
 00043     \textcolor{comment}{#}
 00044     \textcolor{comment}{#   @arg aux Recebe o valor que será validado.}
 00045     @value.setter
-\hypertarget{BaseUnit_8py_source_l00046}{}\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{00046}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{value}(self, aux):
-00047         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(aux)
+\hypertarget{BaseUnit_8py_source_l00046}{}\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_af9e438002f812334ca436deec3078c6f}{00046}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a2534c3548a8e5991dde0a64b4f0b542b}{value}(self, aux):
+00047         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_acf84c5906a39b605a23ab68c4ca1dd19}{\_validate}(aux)
 00048         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value} = aux
 00049 
 00050     \textcolor{comment}{## Método que deleta o conteúdo do tipo básico.}
 00051     \textcolor{comment}{#   Método DEL.}
 00052     @value.deleter
-\hypertarget{BaseUnit_8py_source_l00053}{}\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{00053}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{value}(self):
+\hypertarget{BaseUnit_8py_source_l00053}{}\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a2534c3548a8e5991dde0a64b4f0b542b}{00053}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a2534c3548a8e5991dde0a64b4f0b542b}{value}(self):
 00054         del self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value}
 00055 
 00056     \textcolor{comment}{## Define que toda classe derivada terá um método \_validate.}
@@ -67,10 +66,10 @@
 00062     \textcolor{comment}{#   comparados através dos operadores >, <, >=, <=, == ou !=.}
 00063     \textcolor{comment}{#}
 00064     \textcolor{comment}{#   @return Retornos predefinidos do próprio python.}
-\hypertarget{BaseUnit_8py_source_l00065}{}\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a69c338f6f1574bd3524e9d59ebc17a7c}{00065}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a69c338f6f1574bd3524e9d59ebc17a7c}{\_\_cmp\_\_}(self, other):
-00066         \textcolor{keywordflow}{if} other.value == self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{value}:
+\hypertarget{BaseUnit_8py_source_l00065}{}\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a22d6f30c4d9504a9c20d0ff5a538544d}{00065}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a22d6f30c4d9504a9c20d0ff5a538544d}{\_\_cmp\_\_}(self, other):
+00066         \textcolor{keywordflow}{if} other.value == self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a2534c3548a8e5991dde0a64b4f0b542b}{value}:
 00067             \textcolor{keywordflow}{return} 0
-00068         \textcolor{keywordflow}{elif} other.value > self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ae4974528321f9314afd17c3da0e9d676}{value}:
+00068         \textcolor{keywordflow}{elif} other.value > self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a2534c3548a8e5991dde0a64b4f0b542b}{value}:
 00069             \textcolor{keywordflow}{return} 1
 00070         \textcolor{keywordflow}{else}:
 00071             \textcolor{keywordflow}{return} -1
@@ -89,9 +88,9 @@
 00084     \textcolor{comment}{#   @exception  ValueError  Exceção lançada no caso do}
 00085     \textcolor{comment}{#                           valor de entrada não passar pelos}
 00086     \textcolor{comment}{#                           critérios do método \_validate().}
-\hypertarget{BaseUnit_8py_source_l00087}{}\hyperlink{classELO_1_1BaseUnit_1_1Password_a01568369a90b21117ba3beb05cbf9dfe}{00087}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Password_a01568369a90b21117ba3beb05cbf9dfe}{\_\_init\_\_}(self, value):
+\hypertarget{BaseUnit_8py_source_l00087}{}\hyperlink{classELO_1_1BaseUnit_1_1Password_a106b381037a9e99506db3f910eca1276}{00087}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Password_a106b381037a9e99506db3f910eca1276}{\_\_init\_\_}(self, value):
 00088         \textcolor{keywordflow}{try}:
-00089             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(value)
+00089             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_acf84c5906a39b605a23ab68c4ca1dd19}{\_validate}(value)
 00090         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
 00091             del self
 00092             \textcolor{keywordflow}{raise} exc
@@ -111,7 +110,7 @@
 00106             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_PW\_S'}])
 00107 
 00108     @property
-\hypertarget{BaseUnit_8py_source_l00109}{}\hyperlink{classELO_1_1BaseUnit_1_1Password_a42dcd63788a2eed3780c39f368356546}{00109}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Password_a42dcd63788a2eed3780c39f368356546}{value}(self):
+\hypertarget{BaseUnit_8py_source_l00109}{}\hyperlink{classELO_1_1BaseUnit_1_1Password_a6fc2a1e298a82e38701e8bf236a06d0e}{00109}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Password_a6fc2a1e298a82e38701e8bf236a06d0e}{value}(self):
 00110         \textcolor{keywordflow}{return} self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value}
 00111 
 00112     \textcolor{comment}{## Método setter específico de password.}
@@ -120,8 +119,8 @@
 00115     \textcolor{comment}{#}
 00116     \textcolor{comment}{#   @arg value String a ser validada e encriptada.}
 00117     @value.setter
-\hypertarget{BaseUnit_8py_source_l00118}{}\hyperlink{classELO_1_1BaseUnit_1_1Password_a42dcd63788a2eed3780c39f368356546}{00118}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Password_a42dcd63788a2eed3780c39f368356546}{value}(self, value):
-00119         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(value)
+\hypertarget{BaseUnit_8py_source_l00118}{}\hyperlink{classELO_1_1BaseUnit_1_1Password_ad755afa2fa3666d80e5ddb046e612254}{00118}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Password_a6fc2a1e298a82e38701e8bf236a06d0e}{value}(self, value):
+00119         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_acf84c5906a39b605a23ab68c4ca1dd19}{\_validate}(value)
 00120         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value} = hashlib.sha256(value).hexdigest()
 00121         self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value} = hashlib.md5(self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_ad05d9d377fc4b99743c022cc8f6019d7}{\_value}).hexdigest()
 00122 
@@ -137,9 +136,9 @@
 00132     \textcolor{comment}{#   falha.}
 00133     \textcolor{comment}{#}
 00134     \textcolor{comment}{#   @arg value String a ser armazenada.}
-\hypertarget{BaseUnit_8py_source_l00135}{}\hyperlink{classELO_1_1BaseUnit_1_1Name_ad73fdab6426635b79b4447ac53c10279}{00135}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Name_ad73fdab6426635b79b4447ac53c10279}{\_\_init\_\_}(self, value):
+\hypertarget{BaseUnit_8py_source_l00135}{}\hyperlink{classELO_1_1BaseUnit_1_1Name_aaf1d0873e339b23b588a539d0aa6acaf}{00135}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Name_aaf1d0873e339b23b588a539d0aa6acaf}{\_\_init\_\_}(self, value):
 00136         \textcolor{keywordflow}{try}:
-00137             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(value)
+00137             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_acf84c5906a39b605a23ab68c4ca1dd19}{\_validate}(value)
 00138         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
 00139             del self
 00140             \textcolor{keywordflow}{raise} exc
@@ -177,9 +176,9 @@
 00172     \textcolor{comment}{#   valor inválido.}
 00173     \textcolor{comment}{#}
 00174     \textcolor{comment}{#   @arg value Número inteiro a ser armazenado no tipo básico.}
-\hypertarget{BaseUnit_8py_source_l00175}{}\hyperlink{classELO_1_1BaseUnit_1_1Matric_a050299f6e8d99a530a4598270b93b8d9}{00175}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Matric_a050299f6e8d99a530a4598270b93b8d9}{\_\_init\_\_}(self, value):
+\hypertarget{BaseUnit_8py_source_l00175}{}\hyperlink{classELO_1_1BaseUnit_1_1Matric_afc0a80bb206f5c6259901d9b817ec751}{00175}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Matric_afc0a80bb206f5c6259901d9b817ec751}{\_\_init\_\_}(self, value):
 00176         \textcolor{keywordflow}{try}:
-00177             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(value)
+00177             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_acf84c5906a39b605a23ab68c4ca1dd19}{\_validate}(value)
 00178         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
 00179             del self
 00180             \textcolor{keywordflow}{raise} exc
@@ -214,10 +213,10 @@
 00209     \textcolor{comment}{#   conteúdo inválido.}
 00210     \textcolor{comment}{#}
 00211     \textcolor{comment}{#   @arg value String a ser validada e armazenada.}
-\hypertarget{BaseUnit_8py_source_l00212}{}\hyperlink{classELO_1_1BaseUnit_1_1PlainText_a2cd4f19585b5e8e8279f8052307d031f}{00212}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1PlainText_a2cd4f19585b5e8e8279f8052307d031f}{\_\_init\_\_}(self, value):
+\hypertarget{BaseUnit_8py_source_l00212}{}\hyperlink{classELO_1_1BaseUnit_1_1PlainText_a7abd53e71b4a59f484fdd94d7b26eac4}{00212}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1PlainText_a7abd53e71b4a59f484fdd94d7b26eac4}{\_\_init\_\_}(self, value):
 00213 
 00214         \textcolor{keywordflow}{try}:
-00215             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(value)
+00215             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_acf84c5906a39b605a23ab68c4ca1dd19}{\_validate}(value)
 00216         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
 00217             del self
 00218             \textcolor{keywordflow}{raise} exc
@@ -246,9 +245,9 @@
 00241     \textcolor{comment}{#   conteúdo inválido.}
 00242     \textcolor{comment}{#}
 00243     \textcolor{comment}{#   @arg value Inteiro a ser armazenado.}
-\hypertarget{BaseUnit_8py_source_l00244}{}\hyperlink{classELO_1_1BaseUnit_1_1Campus_abd800984df4eb26836d305682d84dfa9}{00244}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Campus_abd800984df4eb26836d305682d84dfa9}{\_\_init\_\_}(self, value):
+\hypertarget{BaseUnit_8py_source_l00244}{}\hyperlink{classELO_1_1BaseUnit_1_1Campus_ac16ebb4409f821d7787fe9127306b1d0}{00244}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Campus_ac16ebb4409f821d7787fe9127306b1d0}{\_\_init\_\_}(self, value):
 00245         \textcolor{keywordflow}{try}:
-00246             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(value)
+00246             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_acf84c5906a39b605a23ab68c4ca1dd19}{\_validate}(value)
 00247         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
 00248             del self
 00249             \textcolor{keywordflow}{raise} exc
@@ -284,9 +283,9 @@
 00279     \textcolor{comment}{#}
 00280     \textcolor{comment}{#   @exception  ValueError  Exceção lançada para advertir}
 00281     \textcolor{comment}{#                           que value está inválido.}
-\hypertarget{BaseUnit_8py_source_l00282}{}\hyperlink{classELO_1_1BaseUnit_1_1Sex_a2a5214adaf2a657f70cd8cf579e420b5}{00282}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Sex_a2a5214adaf2a657f70cd8cf579e420b5}{\_\_init\_\_}(self, value):
+\hypertarget{BaseUnit_8py_source_l00282}{}\hyperlink{classELO_1_1BaseUnit_1_1Sex_a731f457d4e4ad3073497385ccd05ed80}{00282}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Sex_a731f457d4e4ad3073497385ccd05ed80}{\_\_init\_\_}(self, value):
 00283         \textcolor{keywordflow}{try}:
-00284             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(value)
+00284             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_acf84c5906a39b605a23ab68c4ca1dd19}{\_validate}(value)
 00285         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
 00286             del self
 00287             \textcolor{keywordflow}{raise} exc
@@ -317,9 +316,9 @@
 00312     \textcolor{comment}{#}
 00313     \textcolor{comment}{#   @exception  ValueError  Exceção lançada no caso da}
 00314     \textcolor{comment}{#                           invalidez de value.}
-\hypertarget{BaseUnit_8py_source_l00315}{}\hyperlink{classELO_1_1BaseUnit_1_1Link_a0c2308097022f21fc0ded45af15e9172}{00315}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Link_a0c2308097022f21fc0ded45af15e9172}{\_\_init\_\_}(self, value):
+\hypertarget{BaseUnit_8py_source_l00315}{}\hyperlink{classELO_1_1BaseUnit_1_1Link_a5351bce524252fdd1288bea6821756db}{00315}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Link_a5351bce524252fdd1288bea6821756db}{\_\_init\_\_}(self, value):
 00316         \textcolor{keywordflow}{try}:
-00317             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(value)
+00317             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_acf84c5906a39b605a23ab68c4ca1dd19}{\_validate}(value)
 00318         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
 00319             del self
 00320             \textcolor{keywordflow}{raise} exc
@@ -358,9 +357,9 @@
 00353     \textcolor{comment}{#   @exception  ValueError  Exceção lançada no caso de}
 00354     \textcolor{comment}{#                           value não atender as}
 00355     \textcolor{comment}{#                           especificações do sistema.}
-\hypertarget{BaseUnit_8py_source_l00356}{}\hyperlink{classELO_1_1BaseUnit_1_1Grades_af948e06e9c08a7d99da82eae5f851839}{00356}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Grades_af948e06e9c08a7d99da82eae5f851839}{\_\_init\_\_}(self, value):
+\hypertarget{BaseUnit_8py_source_l00356}{}\hyperlink{classELO_1_1BaseUnit_1_1Grades_acf3b3d08a543e7a8084f8ddd3c577c88}{00356}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Grades_acf3b3d08a543e7a8084f8ddd3c577c88}{\_\_init\_\_}(self, value):
 00357         \textcolor{keywordflow}{try}:
-00358             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(value)
+00358             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_acf84c5906a39b605a23ab68c4ca1dd19}{\_validate}(value)
 00359         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
 00360             del self
 00361             \textcolor{keywordflow}{raise} exc
@@ -399,9 +398,9 @@
 00394     \textcolor{comment}{#}
 00395     \textcolor{comment}{#   @exception  ValueError  Exceção lançada no caso do}
 00396     \textcolor{comment}{#                           valor passado não ser válido.}
-\hypertarget{BaseUnit_8py_source_l00397}{}\hyperlink{classELO_1_1BaseUnit_1_1Mail_a7b9e31959dacc8c25ecae3e9bc0321aa}{00397}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Mail_a7b9e31959dacc8c25ecae3e9bc0321aa}{\_\_init\_\_}(self, value):
+\hypertarget{BaseUnit_8py_source_l00397}{}\hyperlink{classELO_1_1BaseUnit_1_1Mail_a1a03bcc4d4ad5612c96614308b582fc0}{00397}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Mail_a1a03bcc4d4ad5612c96614308b582fc0}{\_\_init\_\_}(self, value):
 00398         \textcolor{keywordflow}{try}:
-00399             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(value)
+00399             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_acf84c5906a39b605a23ab68c4ca1dd19}{\_validate}(value)
 00400         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
 00401             del self
 00402             \textcolor{keywordflow}{raise} exc
@@ -448,9 +447,9 @@
 00443     \textcolor{comment}{#}
 00444     \textcolor{comment}{#   @exception  ValueError  Será lançada no caso do valor}
 00445     \textcolor{comment}{#                           de entrada ser inválido.}
-\hypertarget{BaseUnit_8py_source_l00446}{}\hyperlink{classELO_1_1BaseUnit_1_1ExType_aca9932deaf8fe247d16ce17909d3dfbf}{00446}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1ExType_aca9932deaf8fe247d16ce17909d3dfbf}{\_\_init\_\_}(self, value):
+\hypertarget{BaseUnit_8py_source_l00446}{}\hyperlink{classELO_1_1BaseUnit_1_1ExType_ae1e5e0b555574e9f8514c0571720ae83}{00446}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1ExType_ae1e5e0b555574e9f8514c0571720ae83}{\_\_init\_\_}(self, value):
 00447         \textcolor{keywordflow}{try}:
-00448             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(value)
+00448             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_acf84c5906a39b605a23ab68c4ca1dd19}{\_validate}(value)
 00449         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
 00450             del self
 00451             \textcolor{keywordflow}{raise} exc
@@ -487,9 +486,9 @@
 00482     \textcolor{comment}{#   @exception  ValueError  Será lançada no caso de value}
 00483     \textcolor{comment}{#                           não corresponder aos requisitos}
 00484     \textcolor{comment}{#                           do sistema.}
-\hypertarget{BaseUnit_8py_source_l00485}{}\hyperlink{classELO_1_1BaseUnit_1_1Id_adc3e24ef020fb79dda540cdbec85b7a8}{00485}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Id_adc3e24ef020fb79dda540cdbec85b7a8}{\_\_init\_\_}(self, value):
+\hypertarget{BaseUnit_8py_source_l00485}{}\hyperlink{classELO_1_1BaseUnit_1_1Id_a18230150421f9ecc584239526cd9acc9}{00485}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Id_a18230150421f9ecc584239526cd9acc9}{\_\_init\_\_}(self, value):
 00486         \textcolor{keywordflow}{try}:
-00487             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(value)
+00487             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_acf84c5906a39b605a23ab68c4ca1dd19}{\_validate}(value)
 00488         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
 00489             del self
 00490             \textcolor{keywordflow}{raise} exc
@@ -525,9 +524,9 @@
 00520     \textcolor{comment}{#   @exception  ValueError  Exceção a ser lançada no caso}
 00521     \textcolor{comment}{#                           de value não corresponder às}
 00522     \textcolor{comment}{#                           expectativas.}
-\hypertarget{BaseUnit_8py_source_l00523}{}\hyperlink{classELO_1_1BaseUnit_1_1Language_a0b717ad014a17f87cbe20caf5be56fb8}{00523}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Language_a0b717ad014a17f87cbe20caf5be56fb8}{\_\_init\_\_}(self, value):
+\hypertarget{BaseUnit_8py_source_l00523}{}\hyperlink{classELO_1_1BaseUnit_1_1Language_a14a17f80e86f12e135cb33d05efbf502}{00523}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Language_a14a17f80e86f12e135cb33d05efbf502}{\_\_init\_\_}(self, value):
 00524         \textcolor{keywordflow}{try}:
-00525             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(value)
+00525             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_acf84c5906a39b605a23ab68c4ca1dd19}{\_validate}(value)
 00526         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
 00527             del self
 00528             \textcolor{keywordflow}{raise} exc
@@ -566,12 +565,12 @@
 00561     \textcolor{comment}{#}
 00562     \textcolor{comment}{#   @exception  ValueError  Exceção a ser lançada caso a}
 00563     \textcolor{comment}{#                           data seja inválida.}
-\hypertarget{BaseUnit_8py_source_l00564}{}\hyperlink{classELO_1_1BaseUnit_1_1Date_a97d924fa5f1b2a1d8afbdbfe17b6a852}{00564}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Date_a97d924fa5f1b2a1d8afbdbfe17b6a852}{\_\_init\_\_}(self, day, month, year):
+\hypertarget{BaseUnit_8py_source_l00564}{}\hyperlink{classELO_1_1BaseUnit_1_1Date_a816a4b72fd768bd6150fa785159b5803}{00564}     \textcolor{keyword}{def }\hyperlink{classELO_1_1BaseUnit_1_1Date_a816a4b72fd768bd6150fa785159b5803}{\_\_init\_\_}(self, day, month, year):
 00565         \textcolor{keywordflow}{try}:
 00566             value[\textcolor{stringliteral}{'day'}] = day
 00567             value[\textcolor{stringliteral}{'month'}] = month
 00568             value[\textcolor{stringliteral}{'year'}] = year
-00569             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_a11c68b128a7069e27c1c2fcb782269ea}{\_validate}(value)
+00569             self.\hyperlink{classELO_1_1BaseUnit_1_1IfBaseType_acf84c5906a39b605a23ab68c4ca1dd19}{\_validate}(value)
 00570         \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
 00571             del self
 00572             \textcolor{keywordflow}{raise} exc

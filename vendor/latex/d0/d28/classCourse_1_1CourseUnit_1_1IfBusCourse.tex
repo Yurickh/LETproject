@@ -1,12 +1,11 @@
-\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse}{\subsection{Referência da Classe Course.\-Course\-Unit.\-If\-Bus\-Course}
-\label{classCourse_1_1CourseUnit_1_1IfBusCourse}\index{Course.\-Course\-Unit.\-If\-Bus\-Course@{Course.\-Course\-Unit.\-If\-Bus\-Course}}
-}
+\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse}{}\subsection{Referência da Classe Course.\+Course\+Unit.\+If\+Bus\+Course}
+\label{classCourse_1_1CourseUnit_1_1IfBusCourse}\index{Course.\+Course\+Unit.\+If\+Bus\+Course@{Course.\+Course\+Unit.\+If\+Bus\+Course}}
 
 
 Interface da camada de Negócio do módulo de Curso.  
 
 
-Diagrama de Hierarquia para Course.\-Course\-Unit.\-If\-Bus\-Course\-:\begin{figure}[H]
+Diagrama de Hierarquia para Course.\+Course\+Unit.\+If\+Bus\+Course\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.000000cm]{d0/d28/classCourse_1_1CourseUnit_1_1IfBusCourse}
@@ -15,20 +14,24 @@ Diagrama de Hierarquia para Course.\-Course\-Unit.\-If\-Bus\-Course\-:\begin{fig
 \subsubsection*{Métodos Públicos}
 \begin{DoxyCompactItemize}
 \item 
-def \hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ad2920d0a7dcd1838f1220f644e8244e5}{\-\_\-\-\_\-init\-\_\-\-\_\-}
+def \hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a8bcb71202e7d221f7a8cc4265f09158e}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{pers})
 \begin{DoxyCompactList}\small\item\em Garante a criação da camada subjacente. \end{DoxyCompactList}\item 
-def \hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_adf5702dec1a99bbb31936b7f1d425a40}{pers}
+def \hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a7942e9a93e317a21a876f1c0ee851c0d}{pers} (self)
 \item 
-def \hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_adf5702dec1a99bbb31936b7f1d425a40}{pers}
+def \hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a4fcbdd85c4800dcb00b234bad4ee13f5}{pers} (self, value)
 \item 
-def \hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_adf5702dec1a99bbb31936b7f1d425a40}{pers}
+def \hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a7942e9a93e317a21a876f1c0ee851c0d}{pers} (self)
 \item 
-def \hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ae83d657f3a281dd8a9ade3e7a9db0659}{get\-Completed}
+def \hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_af764ac539a72d830490a80e4d70f567a}{get\+Completed} (self, user, accesstype)
 \begin{DoxyCompactList}\small\item\em Método que recupera uma lista dos módulos ou lições. \end{DoxyCompactList}\item 
-def \hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a26af1b8d56c117b45a9ef3d1dcfbd3a9}{get\-Course}
+def \hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a35ae9c09ba977c6f37f97e204ac137cd}{get\+Course} (self, user, courseid)
 \begin{DoxyCompactList}\small\item\em Método que recupera um objeto que representa um curso. \end{DoxyCompactList}\item 
-def \hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a62f1a9a39f82736721c32ffaac16798c}{get\-Lesson}
-\begin{DoxyCompactList}\small\item\em Método que recupera um objeto que representa uma lição. \end{DoxyCompactList}\end{DoxyCompactItemize}
+def \hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a528e12ea84cb348f2c349613ed62f586}{get\+Lesson} (self, lessonid)
+\begin{DoxyCompactList}\small\item\em Método que recupera um objeto que representa uma lição. \end{DoxyCompactList}\item 
+def \hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a1467691a3312e00b43e92c30456d226f}{create\+Exercise} (self, request, ex\+\_\+url)
+\begin{DoxyCompactList}\small\item\em Método que cria e formata um objeto que representa um exercício. \end{DoxyCompactList}\item 
+def \hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a2dab60981cdb691f1b95b5ed4a4022d8}{correct\+Exercise} (self, ex\+\_\+url, answer)
+\begin{DoxyCompactList}\small\item\em Método que corrige um exercício. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsubsection*{Atributos Públicos}
 \begin{DoxyCompactItemize}
 \item 
@@ -39,220 +42,260 @@ def \hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a62f1a9a39f82736721c32ff
 \subsubsection{Descrição Detalhada}
 É responsável pelo processamento inteligente dos dados, validação e recuperação de dados. Esta camada é a interface necessária de comunicação entre a camada de apresentação -\/ o usuário -\/ e a camada de persistência -\/ o servidor. 
 
-Definição na linha \hyperlink{CourseUnit_8py_source_l00082}{82} do arquivo \hyperlink{CourseUnit_8py_source}{Course\-Unit.\-py}.
+Definição na linha \hyperlink{CourseUnit_8py_source_l00081}{81} do arquivo \hyperlink{CourseUnit_8py_source}{Course\+Unit.\+py}.
 
 
 
 \subsubsection{Construtores \& Destrutores}
-\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_ad2920d0a7dcd1838f1220f644e8244e5}{\index{Course\-::\-Course\-Unit\-::\-If\-Bus\-Course@{Course\-::\-Course\-Unit\-::\-If\-Bus\-Course}!\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}}
-\index{\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}!Course::CourseUnit::IfBusCourse@{Course\-::\-Course\-Unit\-::\-If\-Bus\-Course}}
-\paragraph[{\-\_\-\-\_\-init\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\-Course\-Unit.\-If\-Bus\-Course.\-\_\-\-\_\-init\-\_\-\-\_\- (
+\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_a8bcb71202e7d221f7a8cc4265f09158e}{}\index{Course\+::\+Course\+Unit\+::\+If\+Bus\+Course@{Course\+::\+Course\+Unit\+::\+If\+Bus\+Course}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!Course\+::\+Course\+Unit\+::\+If\+Bus\+Course@{Course\+::\+Course\+Unit\+::\+If\+Bus\+Course}}
+\paragraph[{\+\_\+\+\_\+init\+\_\+\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\+Course\+Unit.\+If\+Bus\+Course.\+\_\+\+\_\+init\+\_\+\+\_\+ (
 \begin{DoxyParamCaption}
 \item[{}]{self, }
 \item[{}]{pers}
 \end{DoxyParamCaption}
-)}}\label{classCourse_1_1CourseUnit_1_1IfBusCourse_ad2920d0a7dcd1838f1220f644e8244e5}
+)}\label{classCourse_1_1CourseUnit_1_1IfBusCourse_a8bcb71202e7d221f7a8cc4265f09158e}
 
 
-Definição na linha \hyperlink{CourseUnit_8py_source_l00086}{86} do arquivo \hyperlink{CourseUnit_8py_source}{Course\-Unit.\-py}.
+Definição na linha \hyperlink{CourseUnit_8py_source_l00085}{85} do arquivo \hyperlink{CourseUnit_8py_source}{Course\+Unit.\+py}.
 
 
 \begin{DoxyCode}
-\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_l00086}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ad2920d0a7dcd1838f1220f644e8244e5}{00086} 
-00087     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ad2920d0a7dcd1838f1220f644e8244e5}{\_\_init\_\_}(self, pers):
-\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_l00088}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{00088}         \textcolor{keywordflow}{try}:
-00089             self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{pers} = pers
-00090         \textcolor{keywordflow}{except} TypeError \textcolor{keyword}{as} exc:
-00091             del self
-00092             \textcolor{keywordflow}{raise} exc
-
+\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_l00085}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a8bcb71202e7d221f7a8cc4265f09158e}{00085}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a8bcb71202e7d221f7a8cc4265f09158e}{\_\_init\_\_}(self, pers):
+00086         \textcolor{keywordflow}{try}:
+\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_l00087}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{00087}             self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{pers} = pers
+00088         \textcolor{keywordflow}{except} TypeError \textcolor{keyword}{as} exc:
+00089             del self
+00090             \textcolor{keywordflow}{raise} exc
+00091 
 \end{DoxyCode}
 
 
 \subsubsection{Métodos}
-\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_ae83d657f3a281dd8a9ade3e7a9db0659}{\index{Course\-::\-Course\-Unit\-::\-If\-Bus\-Course@{Course\-::\-Course\-Unit\-::\-If\-Bus\-Course}!get\-Completed@{get\-Completed}}
-\index{get\-Completed@{get\-Completed}!Course::CourseUnit::IfBusCourse@{Course\-::\-Course\-Unit\-::\-If\-Bus\-Course}}
-\paragraph[{get\-Completed}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\-Course\-Unit.\-If\-Bus\-Course.\-get\-Completed (
+\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_a2dab60981cdb691f1b95b5ed4a4022d8}{}\index{Course\+::\+Course\+Unit\+::\+If\+Bus\+Course@{Course\+::\+Course\+Unit\+::\+If\+Bus\+Course}!correct\+Exercise@{correct\+Exercise}}
+\index{correct\+Exercise@{correct\+Exercise}!Course\+::\+Course\+Unit\+::\+If\+Bus\+Course@{Course\+::\+Course\+Unit\+::\+If\+Bus\+Course}}
+\paragraph[{correct\+Exercise}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\+Course\+Unit.\+If\+Bus\+Course.\+correct\+Exercise (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{ex\+\_\+url, }
+\item[{}]{answer}
+\end{DoxyParamCaption}
+)}\label{classCourse_1_1CourseUnit_1_1IfBusCourse_a2dab60981cdb691f1b95b5ed4a4022d8}
+\begin{DoxyItemize}
+\item ex\+\_\+url Objeto Link()-\/compatível que leva ao exercício.\end{DoxyItemize}
+\begin{DoxyItemize}
+\item answer Resposta fornecida pelo usuário.\end{DoxyItemize}
+\begin{DoxyReturn}{Retorna}
+Booleano\+: true significa certo e false, errado. 
+\end{DoxyReturn}
+
+
+Definição na linha \hyperlink{CourseUnit_8py_source_l00170}{170} do arquivo \hyperlink{CourseUnit_8py_source}{Course\+Unit.\+py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_l00170}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a2dab60981cdb691f1b95b5ed4a4022d8}{00170}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a2dab60981cdb691f1b95b5ed4a4022d8}{correctExercise}(self, ex\_url, answer): \textcolor{keyword}{pass}
+00171 
+00172 
+\end{DoxyCode}
+\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_a1467691a3312e00b43e92c30456d226f}{}\index{Course\+::\+Course\+Unit\+::\+If\+Bus\+Course@{Course\+::\+Course\+Unit\+::\+If\+Bus\+Course}!create\+Exercise@{create\+Exercise}}
+\index{create\+Exercise@{create\+Exercise}!Course\+::\+Course\+Unit\+::\+If\+Bus\+Course@{Course\+::\+Course\+Unit\+::\+If\+Bus\+Course}}
+\paragraph[{create\+Exercise}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\+Course\+Unit.\+If\+Bus\+Course.\+create\+Exercise (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{request, }
+\item[{}]{ex\+\_\+url}
+\end{DoxyParamCaption}
+)}\label{classCourse_1_1CourseUnit_1_1IfBusCourse_a1467691a3312e00b43e92c30456d226f}
+\begin{DoxyItemize}
+\item ex\+\_\+url Objeto Link()-\/compatível que leva ao exercício.\end{DoxyItemize}
+\begin{DoxyItemize}
+\item request Objeto request fornecido pelo navegador.\end{DoxyItemize}
+\begin{DoxyReturn}{Retorna}
+Retorna um objeto exercício. 
+\end{DoxyReturn}
+
+
+Definição na linha \hyperlink{CourseUnit_8py_source_l00160}{160} do arquivo \hyperlink{CourseUnit_8py_source}{Course\+Unit.\+py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_l00160}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a1467691a3312e00b43e92c30456d226f}{00160}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a1467691a3312e00b43e92c30456d226f}{createExercise}(self, request, ex\_url): \textcolor{keyword}{pass}
+00161 
+\end{DoxyCode}
+\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_af764ac539a72d830490a80e4d70f567a}{}\index{Course\+::\+Course\+Unit\+::\+If\+Bus\+Course@{Course\+::\+Course\+Unit\+::\+If\+Bus\+Course}!get\+Completed@{get\+Completed}}
+\index{get\+Completed@{get\+Completed}!Course\+::\+Course\+Unit\+::\+If\+Bus\+Course@{Course\+::\+Course\+Unit\+::\+If\+Bus\+Course}}
+\paragraph[{get\+Completed}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\+Course\+Unit.\+If\+Bus\+Course.\+get\+Completed (
 \begin{DoxyParamCaption}
 \item[{}]{self, }
 \item[{}]{user, }
 \item[{}]{accesstype}
 \end{DoxyParamCaption}
-)}}\label{classCourse_1_1CourseUnit_1_1IfBusCourse_ae83d657f3a281dd8a9ade3e7a9db0659}
+)}\label{classCourse_1_1CourseUnit_1_1IfBusCourse_af764ac539a72d830490a80e4d70f567a}
 \begin{DoxyItemize}
 \item user Objeto usuário, como no contido no cookie user.\end{DoxyItemize}
 \begin{DoxyItemize}
-\item accesstype String contendo \char`\"{}\-M\-O\-D\-U\-L\-E\char`\"{}, \char`\"{}\-L\-O\-C\-K\char`\"{} ou \char`\"{}\-L\-E\-S\-S\-O\-N\char`\"{}\end{DoxyItemize}
+\item accesstype String contendo \char`\"{}\+M\+O\+D\+U\+L\+E\char`\"{}, \char`\"{}\+L\+O\+C\+K\char`\"{} ou \char`\"{}\+L\+E\+S\+S\+O\+N\char`\"{}\end{DoxyItemize}
 \begin{DoxyReturn}{Retorna}
-Lista contendo todas os módulos cadastrados, lições destravadas ou cadastrados para o usuário 'user', variando sob o argumento accesstype. 
+Lista contendo todas os módulos cadastrados, lições destravadas ou cadastrados para o usuário \textquotesingle{}user\textquotesingle{}, variando sob o argumento accesstype. 
 \end{DoxyReturn}
 
 
-Definição na linha \hyperlink{CourseUnit_8py_source_l00120}{120} do arquivo \hyperlink{CourseUnit_8py_source}{Course\-Unit.\-py}.
+Definição na linha \hyperlink{CourseUnit_8py_source_l00119}{119} do arquivo \hyperlink{CourseUnit_8py_source}{Course\+Unit.\+py}.
 
 
 
-Referenciado por \hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_ac7306e270597d7aac641d956f8e3f31f}{Course.\-Course\-Unit.\-Bus\-Course.\-get\-Course()}.
+Referenciado por \hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_a924028d96b633d7810b60699af5502ee}{Course.\+Course\+Unit.\+Bus\+Course.\+get\+Course()}.
 
 
 \begin{DoxyCode}
-\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_l00120}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ae83d657f3a281dd8a9ade3e7a9db0659}{00120} 
-00121     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ae83d657f3a281dd8a9ade3e7a9db0659}{getCompleted}(self, user, accesstype): \textcolor{keyword}{pass}
-
+\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_l00119}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_af764ac539a72d830490a80e4d70f567a}{00119}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_af764ac539a72d830490a80e4d70f567a}{getCompleted}(self, user, accesstype): \textcolor{keyword}{pass}
+00120 
 \end{DoxyCode}
-\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_a26af1b8d56c117b45a9ef3d1dcfbd3a9}{\index{Course\-::\-Course\-Unit\-::\-If\-Bus\-Course@{Course\-::\-Course\-Unit\-::\-If\-Bus\-Course}!get\-Course@{get\-Course}}
-\index{get\-Course@{get\-Course}!Course::CourseUnit::IfBusCourse@{Course\-::\-Course\-Unit\-::\-If\-Bus\-Course}}
-\paragraph[{get\-Course}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\-Course\-Unit.\-If\-Bus\-Course.\-get\-Course (
+\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_a35ae9c09ba977c6f37f97e204ac137cd}{}\index{Course\+::\+Course\+Unit\+::\+If\+Bus\+Course@{Course\+::\+Course\+Unit\+::\+If\+Bus\+Course}!get\+Course@{get\+Course}}
+\index{get\+Course@{get\+Course}!Course\+::\+Course\+Unit\+::\+If\+Bus\+Course@{Course\+::\+Course\+Unit\+::\+If\+Bus\+Course}}
+\paragraph[{get\+Course}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\+Course\+Unit.\+If\+Bus\+Course.\+get\+Course (
 \begin{DoxyParamCaption}
 \item[{}]{self, }
 \item[{}]{user, }
 \item[{}]{courseid}
 \end{DoxyParamCaption}
-)}}\label{classCourse_1_1CourseUnit_1_1IfBusCourse_a26af1b8d56c117b45a9ef3d1dcfbd3a9}
+)}\label{classCourse_1_1CourseUnit_1_1IfBusCourse_a35ae9c09ba977c6f37f97e204ac137cd}
 \begin{DoxyItemize}
 \item user Objeto usuário, como no contido no cookie user.\end{DoxyItemize}
 \begin{DoxyItemize}
 \item courseid Identificador do curso. Deve ser um inteiro de acordo com o padrão de Id().\end{DoxyItemize}
 \begin{DoxyReturn}{Retorna}
-Retorna um objeto curso com os seguintes atributos\-:
+Retorna um objeto curso com os seguintes atributos\+:
 \begin{DoxyItemize}
-\item N\-A\-M\-E \-: Identifica o nome do curso;
-\item I\-D \-: Identifica univocamente o curso;
-\item S\-T\-U\-D\-E\-N\-T\-S\-: Lista de Ids de alunos cadastrados;
-\item M\-O\-D\-U\-L\-E\-S \-: Lista de dicionários que representam cada um dos módulos. 
+\item N\+A\+M\+E \+: Identifica o nome do curso;
+\item I\+D \+: Identifica univocamente o curso;
+\item S\+T\+U\+D\+E\+N\+T\+S\+: Lista de Ids de alunos cadastrados;
+\item M\+O\+D\+U\+L\+E\+S \+: Lista de dicionários que representam cada um dos módulos. 
 \end{DoxyItemize}
 \end{DoxyReturn}
 
 
-Definição na linha \hyperlink{CourseUnit_8py_source_l00136}{136} do arquivo \hyperlink{CourseUnit_8py_source}{Course\-Unit.\-py}.
+Definição na linha \hyperlink{CourseUnit_8py_source_l00135}{135} do arquivo \hyperlink{CourseUnit_8py_source}{Course\+Unit.\+py}.
 
 
 \begin{DoxyCode}
-\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_l00136}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a26af1b8d56c117b45a9ef3d1dcfbd3a9}{00136} 
-00137     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a26af1b8d56c117b45a9ef3d1dcfbd3a9}{getCourse}(self, user, courseid): \textcolor{keyword}{pass}
-
+\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_l00135}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a35ae9c09ba977c6f37f97e204ac137cd}{00135}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a35ae9c09ba977c6f37f97e204ac137cd}{getCourse}(self, user, courseid): \textcolor{keyword}{pass}
+00136 
 \end{DoxyCode}
-\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_a62f1a9a39f82736721c32ffaac16798c}{\index{Course\-::\-Course\-Unit\-::\-If\-Bus\-Course@{Course\-::\-Course\-Unit\-::\-If\-Bus\-Course}!get\-Lesson@{get\-Lesson}}
-\index{get\-Lesson@{get\-Lesson}!Course::CourseUnit::IfBusCourse@{Course\-::\-Course\-Unit\-::\-If\-Bus\-Course}}
-\paragraph[{get\-Lesson}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\-Course\-Unit.\-If\-Bus\-Course.\-get\-Lesson (
+\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_a528e12ea84cb348f2c349613ed62f586}{}\index{Course\+::\+Course\+Unit\+::\+If\+Bus\+Course@{Course\+::\+Course\+Unit\+::\+If\+Bus\+Course}!get\+Lesson@{get\+Lesson}}
+\index{get\+Lesson@{get\+Lesson}!Course\+::\+Course\+Unit\+::\+If\+Bus\+Course@{Course\+::\+Course\+Unit\+::\+If\+Bus\+Course}}
+\paragraph[{get\+Lesson}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\+Course\+Unit.\+If\+Bus\+Course.\+get\+Lesson (
 \begin{DoxyParamCaption}
 \item[{}]{self, }
-\item[{}]{user, }
 \item[{}]{lessonid}
 \end{DoxyParamCaption}
-)}}\label{classCourse_1_1CourseUnit_1_1IfBusCourse_a62f1a9a39f82736721c32ffaac16798c}
-\begin{DoxyItemize}
-\item user Objeto usuário, como no contido no cookie user.\end{DoxyItemize}
+)}\label{classCourse_1_1CourseUnit_1_1IfBusCourse_a528e12ea84cb348f2c349613ed62f586}
 \begin{DoxyItemize}
 \item lessonid Identificador do curso. Deve ser um inteiro de acordo com o padrão de Id().\end{DoxyItemize}
 \begin{DoxyReturn}{Retorna}
-Retorna um objeto lição, com os seguintes atributos\-:
+Retorna um objeto lição, com os seguintes atributos\+:
 \begin{DoxyItemize}
-\item url \-: Caminho para a lição a partir de E\-L\-O/templates/\-Course/lessons/;
-\item name \-: Nome da lição;
-\item slides \-: Número de slides da lição em questão;
-\item exercises \-: Lista de ids de exercícios que a lição possui. 
+\item url \+: Caminho para a lição a partir de E\+L\+O/templates/\+Course/lessons/;
+\item name \+: Nome da lição;
+\item slides \+: Número de slides da lição em questão;
+\item exercises \+: Lista de ids de exercícios que a lição possui. 
 \end{DoxyItemize}
 \end{DoxyReturn}
 
 
-Definição na linha \hyperlink{CourseUnit_8py_source_l00153}{153} do arquivo \hyperlink{CourseUnit_8py_source}{Course\-Unit.\-py}.
+Definição na linha \hyperlink{CourseUnit_8py_source_l00150}{150} do arquivo \hyperlink{CourseUnit_8py_source}{Course\+Unit.\+py}.
 
 
 \begin{DoxyCode}
-\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_l00153}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a62f1a9a39f82736721c32ffaac16798c}{00153} 
-00154     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a62f1a9a39f82736721c32ffaac16798c}{getLesson}(self, user, lessonid): \textcolor{keyword}{pass}
-00155 
-
+\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_l00150}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a528e12ea84cb348f2c349613ed62f586}{00150}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a528e12ea84cb348f2c349613ed62f586}{getLesson}(self, lessonid): \textcolor{keyword}{pass}
+00151 
 \end{DoxyCode}
-\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_adf5702dec1a99bbb31936b7f1d425a40}{\index{Course\-::\-Course\-Unit\-::\-If\-Bus\-Course@{Course\-::\-Course\-Unit\-::\-If\-Bus\-Course}!pers@{pers}}
-\index{pers@{pers}!Course::CourseUnit::IfBusCourse@{Course\-::\-Course\-Unit\-::\-If\-Bus\-Course}}
-\paragraph[{pers}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\-Course\-Unit.\-If\-Bus\-Course.\-pers (
+\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_a7942e9a93e317a21a876f1c0ee851c0d}{}\index{Course\+::\+Course\+Unit\+::\+If\+Bus\+Course@{Course\+::\+Course\+Unit\+::\+If\+Bus\+Course}!pers@{pers}}
+\index{pers@{pers}!Course\+::\+Course\+Unit\+::\+If\+Bus\+Course@{Course\+::\+Course\+Unit\+::\+If\+Bus\+Course}}
+\paragraph[{pers}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\+Course\+Unit.\+If\+Bus\+Course.\+pers (
 \begin{DoxyParamCaption}
 \item[{}]{self}
 \end{DoxyParamCaption}
-)}}\label{classCourse_1_1CourseUnit_1_1IfBusCourse_adf5702dec1a99bbb31936b7f1d425a40}
+)}\label{classCourse_1_1CourseUnit_1_1IfBusCourse_a7942e9a93e317a21a876f1c0ee851c0d}
 
 
-Definição na linha \hyperlink{CourseUnit_8py_source_l00094}{94} do arquivo \hyperlink{CourseUnit_8py_source}{Course\-Unit.\-py}.
+Definição na linha \hyperlink{CourseUnit_8py_source_l00093}{93} do arquivo \hyperlink{CourseUnit_8py_source}{Course\+Unit.\+py}.
 
 
 
-Referências \hyperlink{CourseUnit_8py_source_l00100}{Course.\-Course\-Unit.\-If\-Bus\-Course.\-\_\-\-\_\-pers}, \hyperlink{AdmUnit_8py_source_l00112}{Adm.\-Adm\-Unit.\-If\-Bus\-Adm.\-\_\-\-\_\-pers} e \hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{Course.\-Course\-Unit.\-If\-Bus\-Course.\-pers}.
+Referências \hyperlink{CourseUnit_8py_source_l00099}{Course.\+Course\+Unit.\+If\+Bus\+Course.\+\_\+\+\_\+pers}, \hyperlink{AdmUnit_8py_source_l00112}{Adm.\+Adm\+Unit.\+If\+Bus\+Adm.\+\_\+\+\_\+pers} e \hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{Course.\+Course\+Unit.\+If\+Bus\+Course.\+pers}.
 
 
 \begin{DoxyCode}
-\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_l00094}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_adf5702dec1a99bbb31936b7f1d425a40}{00094} 
-00095     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{pers}(self):
-00096         \textcolor{keywordflow}{return} self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a4d7664514162640c28bda49579b46ef0}{\_\_pers}
-    
+\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_l00093}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a7942e9a93e317a21a876f1c0ee851c0d}{00093}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{pers}(self):
+00094         \textcolor{keywordflow}{return} self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a4d7664514162640c28bda49579b46ef0}{\_\_pers}
+00095     
 \end{DoxyCode}
-\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_adf5702dec1a99bbb31936b7f1d425a40}{\index{Course\-::\-Course\-Unit\-::\-If\-Bus\-Course@{Course\-::\-Course\-Unit\-::\-If\-Bus\-Course}!pers@{pers}}
-\index{pers@{pers}!Course::CourseUnit::IfBusCourse@{Course\-::\-Course\-Unit\-::\-If\-Bus\-Course}}
-\paragraph[{pers}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\-Course\-Unit.\-If\-Bus\-Course.\-pers (
+\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_a4fcbdd85c4800dcb00b234bad4ee13f5}{}\index{Course\+::\+Course\+Unit\+::\+If\+Bus\+Course@{Course\+::\+Course\+Unit\+::\+If\+Bus\+Course}!pers@{pers}}
+\index{pers@{pers}!Course\+::\+Course\+Unit\+::\+If\+Bus\+Course@{Course\+::\+Course\+Unit\+::\+If\+Bus\+Course}}
+\paragraph[{pers}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\+Course\+Unit.\+If\+Bus\+Course.\+pers (
 \begin{DoxyParamCaption}
 \item[{}]{self, }
 \item[{}]{value}
 \end{DoxyParamCaption}
-)}}\label{classCourse_1_1CourseUnit_1_1IfBusCourse_adf5702dec1a99bbb31936b7f1d425a40}
+)}\label{classCourse_1_1CourseUnit_1_1IfBusCourse_a4fcbdd85c4800dcb00b234bad4ee13f5}
 
 
-Definição na linha \hyperlink{CourseUnit_8py_source_l00098}{98} do arquivo \hyperlink{CourseUnit_8py_source}{Course\-Unit.\-py}.
+Definição na linha \hyperlink{CourseUnit_8py_source_l00097}{97} do arquivo \hyperlink{CourseUnit_8py_source}{Course\+Unit.\+py}.
 
 
 
-Referências \hyperlink{CourseUnit_8py_source_l00100}{Course.\-Course\-Unit.\-If\-Bus\-Course.\-\_\-\-\_\-pers}, \hyperlink{AdmUnit_8py_source_l00112}{Adm.\-Adm\-Unit.\-If\-Bus\-Adm.\-\_\-\-\_\-pers} e \hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{Course.\-Course\-Unit.\-If\-Bus\-Course.\-pers}.
+Referências \hyperlink{CourseUnit_8py_source_l00099}{Course.\+Course\+Unit.\+If\+Bus\+Course.\+\_\+\+\_\+pers}, \hyperlink{AdmUnit_8py_source_l00112}{Adm.\+Adm\+Unit.\+If\+Bus\+Adm.\+\_\+\+\_\+pers} e \hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{Course.\+Course\+Unit.\+If\+Bus\+Course.\+pers}.
 
 
 \begin{DoxyCode}
-\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_l00098}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_adf5702dec1a99bbb31936b7f1d425a40}{00098} 
-00099     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{pers}(self, value):
-00100         \textcolor{keywordflow}{if} isinstance(value, IfPersCourse):
-00101             self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a4d7664514162640c28bda49579b46ef0}{\_\_pers} = value
-00102         \textcolor{keywordflow}{else}:
-00103             \textcolor{keywordflow}{raise} TypeError(\textcolor{stringliteral}{"Expected IfPersCourse instance at BusCourse.\_\_pers. Received "} + str(type(
+\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_l00097}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a4fcbdd85c4800dcb00b234bad4ee13f5}{00097}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{pers}(self, value):
+00098         \textcolor{keywordflow}{if} isinstance(value, IfPersCourse):
+00099             self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a4d7664514162640c28bda49579b46ef0}{\_\_pers} = value
+00100         \textcolor{keywordflow}{else}:
+00101             \textcolor{keywordflow}{raise} TypeError(\textcolor{stringliteral}{"Expected IfPersCourse instance at BusCourse.\_\_pers. Received "} + str(type(
       value)) + \textcolor{stringliteral}{"instead."})
-
+00102 
 \end{DoxyCode}
-\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_adf5702dec1a99bbb31936b7f1d425a40}{\index{Course\-::\-Course\-Unit\-::\-If\-Bus\-Course@{Course\-::\-Course\-Unit\-::\-If\-Bus\-Course}!pers@{pers}}
-\index{pers@{pers}!Course::CourseUnit::IfBusCourse@{Course\-::\-Course\-Unit\-::\-If\-Bus\-Course}}
-\paragraph[{pers}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\-Course\-Unit.\-If\-Bus\-Course.\-pers (
+\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_a7942e9a93e317a21a876f1c0ee851c0d}{}\index{Course\+::\+Course\+Unit\+::\+If\+Bus\+Course@{Course\+::\+Course\+Unit\+::\+If\+Bus\+Course}!pers@{pers}}
+\index{pers@{pers}!Course\+::\+Course\+Unit\+::\+If\+Bus\+Course@{Course\+::\+Course\+Unit\+::\+If\+Bus\+Course}}
+\paragraph[{pers}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\+Course\+Unit.\+If\+Bus\+Course.\+pers (
 \begin{DoxyParamCaption}
 \item[{}]{self}
 \end{DoxyParamCaption}
-)}}\label{classCourse_1_1CourseUnit_1_1IfBusCourse_adf5702dec1a99bbb31936b7f1d425a40}
+)}\label{classCourse_1_1CourseUnit_1_1IfBusCourse_a7942e9a93e317a21a876f1c0ee851c0d}
 
 
-Definição na linha \hyperlink{CourseUnit_8py_source_l00105}{105} do arquivo \hyperlink{CourseUnit_8py_source}{Course\-Unit.\-py}.
+Definição na linha \hyperlink{CourseUnit_8py_source_l00104}{104} do arquivo \hyperlink{CourseUnit_8py_source}{Course\+Unit.\+py}.
 
 
 
-Referências \hyperlink{CourseUnit_8py_source_l00100}{Course.\-Course\-Unit.\-If\-Bus\-Course.\-\_\-\-\_\-pers}, \hyperlink{AdmUnit_8py_source_l00112}{Adm.\-Adm\-Unit.\-If\-Bus\-Adm.\-\_\-\-\_\-pers} e \hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{Course.\-Course\-Unit.\-If\-Bus\-Course.\-pers}.
+Referências \hyperlink{CourseUnit_8py_source_l00099}{Course.\+Course\+Unit.\+If\+Bus\+Course.\+\_\+\+\_\+pers}, \hyperlink{AdmUnit_8py_source_l00112}{Adm.\+Adm\+Unit.\+If\+Bus\+Adm.\+\_\+\+\_\+pers} e \hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{Course.\+Course\+Unit.\+If\+Bus\+Course.\+pers}.
 
 
 \begin{DoxyCode}
-\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_l00105}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_adf5702dec1a99bbb31936b7f1d425a40}{00105} 
-00106     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{pers}(self):
-00107         del self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a4d7664514162640c28bda49579b46ef0}{\_\_pers}
-00108 
-
+\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_l00104}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a7942e9a93e317a21a876f1c0ee851c0d}{00104}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{pers}(self):
+00105         del self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a4d7664514162640c28bda49579b46ef0}{\_\_pers}
+00106 
+00107 
 \end{DoxyCode}
 
 
 \subsubsection{Atributos}
-\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{\index{Course\-::\-Course\-Unit\-::\-If\-Bus\-Course@{Course\-::\-Course\-Unit\-::\-If\-Bus\-Course}!pers@{pers}}
-\index{pers@{pers}!Course::CourseUnit::IfBusCourse@{Course\-::\-Course\-Unit\-::\-If\-Bus\-Course}}
-\paragraph[{pers}]{\setlength{\rightskip}{0pt plus 5cm}Course.\-Course\-Unit.\-If\-Bus\-Course.\-pers}}\label{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}
+\hypertarget{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{}\index{Course\+::\+Course\+Unit\+::\+If\+Bus\+Course@{Course\+::\+Course\+Unit\+::\+If\+Bus\+Course}!pers@{pers}}
+\index{pers@{pers}!Course\+::\+Course\+Unit\+::\+If\+Bus\+Course@{Course\+::\+Course\+Unit\+::\+If\+Bus\+Course}}
+\paragraph[{pers}]{\setlength{\rightskip}{0pt plus 5cm}Course.\+Course\+Unit.\+If\+Bus\+Course.\+pers}\label{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}
 
 
-Definição na linha \hyperlink{CourseUnit_8py_source_l00088}{88} do arquivo \hyperlink{CourseUnit_8py_source}{Course\-Unit.\-py}.
-
-
-
-Referenciado por \hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_adf5702dec1a99bbb31936b7f1d425a40}{Course.\-Course\-Unit.\-If\-Bus\-Course.\-pers()}.
+Definição na linha \hyperlink{CourseUnit_8py_source_l00087}{87} do arquivo \hyperlink{CourseUnit_8py_source}{Course\+Unit.\+py}.
 
 
 
-A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}
+Referenciado por \hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a7942e9a93e317a21a876f1c0ee851c0d}{Course.\+Course\+Unit.\+If\+Bus\+Course.\+pers()}.
+
+
+
+A documentação para esta classe foi gerada a partir do seguinte arquivo\+:\begin{DoxyCompactItemize}
 \item 
-E\-L\-O/\-Course/\hyperlink{CourseUnit_8py}{Course\-Unit.\-py}\end{DoxyCompactItemize}
+E\+L\+O/\+Course/\hyperlink{CourseUnit_8py}{Course\+Unit.\+py}\end{DoxyCompactItemize}

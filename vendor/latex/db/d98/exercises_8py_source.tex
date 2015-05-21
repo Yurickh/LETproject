@@ -1,0 +1,180 @@
+\hypertarget{exercises_8py_source}{}\subsection{exercises.\+py}
+\label{exercises_8py_source}\index{E\+L\+O/\+Course/templatetags/exercises.\+py@{E\+L\+O/\+Course/templatetags/exercises.\+py}}
+
+\begin{DoxyCode}
+\hypertarget{exercises_8py_source_l00001}{}\hyperlink{namespaceCourse_1_1templatetags_1_1exercises}{00001} \textcolor{comment}{#coding: utf-8}
+00002 
+00003 \textcolor{comment}{## @file exercises.py}
+00004 \textcolor{comment}{#   Este é o arquivo de cria a template tag \{% exercise %\}.}
+00005 \textcolor{comment}{#}
+00006 \textcolor{comment}{#   Ele é responsável por definir o funcionamento e o comportamento da tag}
+00007 \textcolor{comment}{# perante todas as suas 4 diferentes utilizações.}
+00008 \textcolor{comment}{#   O processo de renderização de um template dentro do Django compreende}
+00009 \textcolor{comment}{# dois processos; no primeiro, as template e html tags são traduzidas em nodes}
+00010 \textcolor{comment}{# que, no segundo processo, voltam a se tornar o html correspondente à página}
+00011 \textcolor{comment}{# final.}
+00012 
+00013 \textcolor{keyword}{from} django \textcolor{keyword}{import} template
+00014 
+00015 \textcolor{keyword}{from} \hyperlink{namespaceCourse_1_1forms}{Course.forms} \textcolor{keyword}{import} *
+00016 \textcolor{keyword}{from} \hyperlink{namespaceCourse_1_1macros}{Course.macros} \textcolor{keyword}{import} ExerciseType, FORM\_WRAPPER
+00017 
+00018 \textcolor{keyword}{import} \hyperlink{namespaceELO_1_1locale_1_1index}{ELO.locale.index} \textcolor{keyword}{as} lang
+00019 
+00020 \textcolor{comment}{## Variável necessária para inicializar tags e filters dentro do Django.}
+\hypertarget{exercises_8py_source_l00021}{}\hyperlink{namespaceCourse_1_1templatetags_1_1exercises_a69bf3f5149bab102a018136707f13e10}{00021} register = template.Library()
+00022 
+00023 \textcolor{comment}{## Função chamada no momento da inserção do tag no template.}
+00024 \textcolor{comment}{#}
+00025 \textcolor{comment}{#   Essa função é a responsável por preparar o node do template no momento}
+00026 \textcolor{comment}{# da compilação do arquivo html. Para mais informações, ler documentação}
+00027 \textcolor{comment}{# do arquivo exercises.py.}
+00028 \textcolor{comment}{#   No caso da tag \{% exercise %\}, ela deve ser responsável por preparar uma}
+00029 \textcolor{comment}{# form de exercício no template, independentemente do seu tipo.}
+00030 @register.tag
+\hypertarget{exercises_8py_source_l00031}{}\hyperlink{namespaceCourse_1_1templatetags_1_1exercises_a8c8aa0687de6cfe821c8acaecafba711}{00031} \textcolor{keyword}{def }\hyperlink{namespaceCourse_1_1templatetags_1_1exercises_a8c8aa0687de6cfe821c8acaecafba711}{exercise}(parser, token):
+00032 
+00033     toklist = token.split\_contents()
+00034 
+00035     \textcolor{comment}{## @if}
+00036     \textcolor{comment}{#   Responsável pelo processamento no caso do usuário utilizar a tag}
+00037     \textcolor{comment}{# \{% exercise %\}.}
+00038     \textcolor{comment}{#}
+00039     \textcolor{comment}{#   Nesse caso, a tag não irá passar argumentos adicionais para o Node.}
+00040     \textcolor{comment}{#   Utilize esta tag caso você tenha uma variável no contexto chamada}
+00041     \textcolor{comment}{#   "exercise" (sem aspas) que contenha o objeto retornado pelo método}
+00042     \textcolor{comment}{#   IfBusCourse.createExercise().}
+00043     \textcolor{keywordflow}{if} len(toklist) == 1:
+00044         \textcolor{keywordflow}{return} \hyperlink{classCourse_1_1templatetags_1_1exercises_1_1ExerciseToken}{ExerciseToken}()
+00045 
+00046     \textcolor{comment}{## @if}
+00047     \textcolor{comment}{#   Responsável pelo processamento no caso do usuário utilizar as tags}
+00048     \textcolor{comment}{# \{% exercise arg1 %\} ou \{% exercise "arg1" %\}.}
+00049     \textcolor{comment}{#}
+00050     \textcolor{comment}{#   Nesse caso, a tag passará exatamente um argumento para o Node.}
+00051     \textcolor{comment}{#}
+00052     \textcolor{comment}{#   Utilize a tag \{% exercise arg1 %\} quando arg1 for um objeto no seu}
+00053     \textcolor{comment}{# contexto retornado pelo método IfBusCourse.createExercise().}
+00054     \textcolor{comment}{#}
+00055     \textcolor{comment}{#   Utilize a tag \{% exercise "arg1" %\} quando arg1 for uma string de}
+00056     \textcolor{comment}{# formatação válida.}
+00057     \textcolor{comment}{#   Strings de formatação válidas para essa tag são strings do tipo:}
+00058     \textcolor{comment}{#       *[%\_[*]]}
+00059     \textcolor{comment}{#   Ou seja, são strings simples, ou duas strings separadas pela string}
+00060     \textcolor{comment}{# de escape '%\_'.}
+00061     \textcolor{comment}{#   Essa string de formatação serve para adicionar um anunciado}
+00062     \textcolor{comment}{# dentro da form de exercício. É mais utilizado para exercícios do tipo}
+00063     \textcolor{comment}{# ExerciseType.FillTheBlank. Os campos de input serão inseridos no lugar}
+00064     \textcolor{comment}{# do %\_.}
+00065     \textcolor{keywordflow}{if} len(toklist) == 2:
+00066         \textcolor{keywordflow}{return} ExerciseToken.halfTag(toklist[1])
+00067 
+00068     \textcolor{comment}{## Mensagem de erro para quantidade inapropriada de argumentos para a tag.}
+00069     exc\_msg = lang.DICT[\textcolor{stringliteral}{'TEMPLATE\_TAG\_MA'}] % token.contents.split()[0]
+00070 
+00071     \textcolor{comment}{## @if}
+00072     \textcolor{comment}{#   Responsável pelo processamento no caso do usuário utilizar a tag}
+00073     \textcolor{comment}{# \{% exercise arg1 "arg2" %\}}
+00074     \textcolor{comment}{#}
+00075     \textcolor{comment}{#   Nesse caso, a tag passará exatamente dois argumentos para o Node.}
+00076     \textcolor{comment}{#}
+00077     \textcolor{comment}{#   Utilize esta tag caso arg1 for um objeto no seu contexto retornado pelo}
+00078     \textcolor{comment}{# método IfBusCourse.createExercise() e arg2 for uma string de formatação}
+00079     \textcolor{comment}{# válida.}
+00080     \textcolor{comment}{#   Strings de formatação válidas para essa tag são strings do tipo:}
+00081     \textcolor{comment}{#       *[%\_[*]]}
+00082     \textcolor{comment}{#   Ou seja, são strings simples, ou duas strings separadas pela string}
+00083     \textcolor{comment}{# de escape '%\_'.}
+00084     \textcolor{comment}{#   Essa string de formatação serve para adicionar um anunciado}
+00085     \textcolor{comment}{# dentro da form de exercício. É mais utilizado para exercícios do tipo}
+00086     \textcolor{comment}{# ExerciseType.FillTheBlank. Os campos de input serão inseridos no lugar}
+00087     \textcolor{comment}{# do %\_.}
+00088     \textcolor{keywordflow}{if} len(toklist) == 3:
+00089 
+00090         exerciseName = toklist[1]
+00091         formatString = toklist[2]
+00092 
+00093         \textcolor{keywordflow}{if} formatString[0]!=formatString[-1] \textcolor{keywordflow}{or} formatString \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} [\textcolor{stringliteral}{"'"},\textcolor{stringliteral}{'"'}]:
+00094             \textcolor{keywordflow}{raise} template.TemplateSyntaxError(exc\_msg)
+00095         \textcolor{keywordflow}{else}:
+00096             \textcolor{keywordflow}{return} ExerciseToken.completeTag(exerciseName, formatString[1:-1])
+00097     \textcolor{keywordflow}{else}:
+00098         \textcolor{keywordflow}{raise} template.TemplateSyntaxError(exc\_msg)
+00099 
+00100 \textcolor{comment}{## Classe do tipo Node responsável pela renderização da tag \{% exercise %\}.}
+\hypertarget{exercises_8py_source_l00101}{}\hyperlink{classCourse_1_1templatetags_1_1exercises_1_1ExerciseToken}{00101} \textcolor{keyword}{class }\hyperlink{classCourse_1_1templatetags_1_1exercises_1_1ExerciseToken}{ExerciseToken}(template.Node):
+00102 
+\hypertarget{exercises_8py_source_l00103}{}\hyperlink{classCourse_1_1templatetags_1_1exercises_1_1ExerciseToken_a7051cf9758ec633ad62d57161d73c852}{00103}     exercise = \textcolor{keywordtype}{None}
+\hypertarget{exercises_8py_source_l00104}{}\hyperlink{classCourse_1_1templatetags_1_1exercises_1_1ExerciseToken_ae15b200ce6e26966169799ea67b67bcd}{00104}     formatString = \textcolor{keywordtype}{None}
+00105 
+00106     \textcolor{comment}{## Construtor chamado no caso da criação ser feita através da tag}
+00107     \textcolor{comment}{#   \{% exercise %\}}
+\hypertarget{exercises_8py_source_l00108}{}\hyperlink{classCourse_1_1templatetags_1_1exercises_1_1ExerciseToken_af86633b72541f29c7672473931c6725b}{00108}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1templatetags_1_1exercises_1_1ExerciseToken_af86633b72541f29c7672473931c6725b}{\_\_init\_\_}(self): \textcolor{keyword}{pass}
+00109 
+00110     \textcolor{comment}{## Construtor chamado no caso da criação ser feita através da tag}
+00111     \textcolor{comment}{#   \{% exercise arg1 "arg2" %\}.}
+00112     @classmethod
+\hypertarget{exercises_8py_source_l00113}{}\hyperlink{classCourse_1_1templatetags_1_1exercises_1_1ExerciseToken_a090f58f2ed560ef73c1a859ed1a7c8e3}{00113}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1templatetags_1_1exercises_1_1ExerciseToken_a090f58f2ed560ef73c1a859ed1a7c8e3}{completeTag}(cls, exercise, formatString):
+00114         ex = cls()
+00115         ex.exercise = exercise
+00116         ex.formatString = formatString.split(\textcolor{stringliteral}{"%\_"})
+00117         \textcolor{keywordflow}{return} ex
+00118 
+00119     \textcolor{comment}{## Construtor chamado no caso da criação ser feita através da tag}
+00120     \textcolor{comment}{#   \{% exercise arg1 %\} ou \{% exercise "arg1" %\}.}
+00121     @classmethod
+\hypertarget{exercises_8py_source_l00122}{}\hyperlink{classCourse_1_1templatetags_1_1exercises_1_1ExerciseToken_a09add50afe0ff8c688c555da566137d7}{00122}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1templatetags_1_1exercises_1_1ExerciseToken_a09add50afe0ff8c688c555da566137d7}{halfTag}(cls, token):
+00123         ex = cls()
+00124         \textcolor{keywordflow}{if} token[0] == token[-1] \textcolor{keywordflow}{and} token[0] \textcolor{keywordflow}{in} [\textcolor{stringliteral}{"'"}, \textcolor{stringliteral}{'"'}]:
+00125             ex.formatString = token[1:-1].split(\textcolor{stringliteral}{"%\_"})
+00126         \textcolor{keywordflow}{else}:
+00127             ex.exercise = token
+00128         \textcolor{keywordflow}{return} ex
+00129 
+00130     \textcolor{comment}{## Método chamado pelo Django para a renderização do nó no contexto.}
+\hypertarget{exercises_8py_source_l00131}{}\hyperlink{classCourse_1_1templatetags_1_1exercises_1_1ExerciseToken_af53c156486c9175af84cd003285aa95e}{00131}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1templatetags_1_1exercises_1_1ExerciseToken_af53c156486c9175af84cd003285aa95e}{render}(self, context):
+00132         \textcolor{keywordflow}{try}:
+00133             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.\hyperlink{classCourse_1_1templatetags_1_1exercises_1_1ExerciseToken_a7051cf9758ec633ad62d57161d73c852}{exercise}:
+00134                 exerciseNode = context[\textcolor{stringliteral}{'exercise'}]
+00135             \textcolor{keywordflow}{else}:
+00136                 exerciseNode = self.exercise.resolve(context)
+00137 
+00138             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.\hyperlink{classCourse_1_1templatetags_1_1exercises_1_1ExerciseToken_ae15b200ce6e26966169799ea67b67bcd}{formatString}:
+00139                 self.\hyperlink{classCourse_1_1templatetags_1_1exercises_1_1ExerciseToken_ae15b200ce6e26966169799ea67b67bcd}{formatString} = [\textcolor{stringliteral}{""}, \textcolor{stringliteral}{""}]
+00140             \textcolor{keywordflow}{elif} len(self.\hyperlink{classCourse_1_1templatetags_1_1exercises_1_1ExerciseToken_ae15b200ce6e26966169799ea67b67bcd}{formatString}) < 2:
+00141                 self.formatString.append(\textcolor{stringliteral}{""})
+00142 
+00143             \textcolor{keywordflow}{if} exerciseNode.type == ExerciseType.MultipleChoice:
+00144                 exercise = \hyperlink{classCourse_1_1forms_1_1MultipleChoiceExercise}{MultipleChoiceExercise}()
+00145                 exercise.fields[\textcolor{stringliteral}{'options'}].choices = exerciseNode.options
+00146 
+00147             \textcolor{keywordflow}{elif} exerciseNode.type == ExerciseType.FillTheBlank:
+00148                 exercise = \hyperlink{classCourse_1_1forms_1_1FillTheBlankExercise}{FillTheBlankExercise}()
+00149 
+00150             \textcolor{keywordflow}{elif} exerciseNode.type == ExerciseType.CrossWords:
+00151                 exercise = CrossWordsExercise()
+00152                 init\_str = \textcolor{stringliteral}{"\_"}.join(exerciseNode.words)
+00153                 exercise.fields[\textcolor{stringliteral}{'bloat'}].initial = init\_str
+00154 
+00155             \textcolor{keywordflow}{elif} exerciseNode.type == ExerciseType.Unscramble:
+00156                 exercise = \hyperlink{classCourse_1_1forms_1_1UnscrambleExercise}{UnscrambleExercise}()
+00157                 init\_str = \textcolor{stringliteral}{" "}.join(exerciseNode.words)
+00158                 exercise.fields[\textcolor{stringliteral}{'bloat'}].initial = init\_str
+00159 
+00160             \textcolor{keywordflow}{elif} exerciseNode.type == ExerciseType.DragAndDrop:
+00161                 exercise = DragAndDropExercise()
+00162                 \textcolor{comment}{# something goes here, probably}
+00163 
+00164             \textcolor{keywordflow}{else}:
+00165                 exercise = \textcolor{stringliteral}{''}
+00166 
+00167             \textcolor{keywordflow}{print} exercise
+00168             \textcolor{keywordflow}{print} self.\hyperlink{classCourse_1_1templatetags_1_1exercises_1_1ExerciseToken_ae15b200ce6e26966169799ea67b67bcd}{formatString}
+00169 
+00170             \textcolor{keywordflow}{return} \hyperlink{namespaceCourse_1_1macros_a39e2016892066b4da954490ccc32533e}{FORM\_WRAPPER}(exercise, 
+00171                                 exerciseNode.csrf, 
+00172                                 self.\hyperlink{classCourse_1_1templatetags_1_1exercises_1_1ExerciseToken_ae15b200ce6e26966169799ea67b67bcd}{formatString})
+00173 
+00174         \textcolor{keywordflow}{except} template.VariableDoesNotExist:
+00175             \textcolor{keywordflow}{return} \textcolor{stringliteral}{""}
+\end{DoxyCode}

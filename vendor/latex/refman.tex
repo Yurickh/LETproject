@@ -1,21 +1,24 @@
 \documentclass[twoside]{article}
 
 % Packages required by doxygen
+\usepackage{fixltx2e}
 \usepackage{calc}
 \usepackage{doxygen}
+\usepackage[export]{adjustbox} % also loads graphicx
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
 \usepackage{makeidx}
 \usepackage{multicol}
 \usepackage{multirow}
+\PassOptionsToPackage{warn}{textcomp}
 \usepackage{textcomp}
+\usepackage[nointegrals]{wasysym}
 \usepackage[table]{xcolor}
 
 % NLS support packages
 \usepackage[brazil]{babel}
 % Font selection
 \usepackage[T1]{fontenc}
-\usepackage{mathptmx}
 \usepackage[scaled=.90]{helvet}
 \usepackage{courier}
 \usepackage{amssymb}
@@ -29,6 +32,7 @@
   \fontseries{bc}\selectfont%
   \color{darkgray}%
 }
+\newcommand{\+}{\discretionary{\mbox{\scriptsize$\hookleftarrow$}}{}{}}
 
 % Page & text layout
 \usepackage{geometry}
@@ -69,8 +73,8 @@
 \fancyhead[RO]{\fancyplain{}{\bfseries\thepage}}
 \fancyfoot[LE]{\fancyplain{}{}}
 \fancyfoot[CE]{\fancyplain{}{}}
-\fancyfoot[RE]{\fancyplain{}{\bfseries\scriptsize Gerado em Domingo, 28 de Dezembro de 2014 13\-:29\-:15 para L\-E\-Tproject por Doxygen }}
-\fancyfoot[LO]{\fancyplain{}{\bfseries\scriptsize Gerado em Domingo, 28 de Dezembro de 2014 13\-:29\-:15 para L\-E\-Tproject por Doxygen }}
+\fancyfoot[RE]{\fancyplain{}{\bfseries\scriptsize Gerado em Quinta, 21 de Maio de 2015 15\+:13\+:32 para L\+E\+Tproject por Doxygen }}
+\fancyfoot[LO]{\fancyplain{}{\bfseries\scriptsize Gerado em Quinta, 21 de Maio de 2015 15\+:13\+:32 para L\+E\+Tproject por Doxygen }}
 \fancyfoot[CO]{\fancyplain{}{}}
 \fancyfoot[RO]{\fancyplain{}{}}
 \renewcommand{\footrulewidth}{0.4pt}
@@ -110,16 +114,20 @@
 \begin{document}
 
 % Titlepage & ToC
-\hypersetup{pageanchor=false}
+\hypersetup{pageanchor=false,
+             bookmarks=true,
+             bookmarksnumbered=true,
+             pdfencoding=unicode
+            }
 \pagenumbering{roman}
 \begin{titlepage}
 \vspace*{7cm}
 \begin{center}%
-{\Large L\-E\-Tproject }\\
+{\Large L\+E\+Tproject }\\
 \vspace*{1cm}
-{\large Gerado por Doxygen 1.8.6}\\
+{\large Gerado por Doxygen 1.8.9.1}\\
 \vspace*{0.5cm}
-{\small Domingo, 28 de Dezembro de 2014 13:29:15}\\
+{\small Quinta, 21 de Maio de 2015 15:13:32}\\
 \end{center}
 \end{titlepage}
 \tableofcontents
@@ -149,6 +157,9 @@
 \input{dd/df0/namespaceCourse}
 \input{df/d57/namespaceCourse_1_1CourseUnit}
 \input{d2/da3/namespaceCourse_1_1forms}
+\input{da/d07/namespaceCourse_1_1macros}
+\input{d0/d97/namespaceCourse_1_1templatetags}
+\input{df/d7e/namespaceCourse_1_1templatetags_1_1exercises}
 \input{da/d09/namespaceELO}
 \input{dc/d21/namespaceELO_1_1BaseUnit}
 \input{d2/d07/namespaceELO_1_1EntityUnit}
@@ -185,11 +196,15 @@
 \input{d2/db2/classAdm_1_1forms_1_1confAdm}
 \input{d2/dc4/classELO_1_1EntityUnit_1_1Courses}
 \input{dd/dd9/classELO_1_1models_1_1Courses}
+\input{d1/dc6/classCourse_1_1forms_1_1CrossWordExercise}
 \input{d2/d74/classELO_1_1BaseUnit_1_1Date}
 \input{d5/d6a/classELO_1_1EntityUnit_1_1Exercise}
 \input{d3/da8/classELO_1_1models_1_1Exercise}
+\input{dc/d8f/classCourse_1_1templatetags_1_1exercises_1_1ExerciseToken}
+\input{d1/d5b/classCourse_1_1macros_1_1ExerciseType}
 \input{de/d96/classELO_1_1BaseUnit_1_1ExType}
 \input{d1/dc6/classELO_1_1MainUnit_1_1Factory}
+\input{d2/dfe/classCourse_1_1forms_1_1FillTheBlankExercise}
 \input{d2/d8b/classELO_1_1models_1_1God}
 \input{dc/d3a/classELO_1_1BaseUnit_1_1Grades}
 \input{d7/dca/classELO_1_1BaseUnit_1_1Id}
@@ -218,6 +233,7 @@
 \input{d6/db2/classELO_1_1BaseUnit_1_1Matric}
 \input{d1/d5d/classELO_1_1models_1_1Module}
 \input{db/de8/classELO_1_1EntityUnit_1_1Module}
+\input{d7/d12/classCourse_1_1forms_1_1MultipleChoiceExercise}
 \input{d9/dff/classELO_1_1BaseUnit_1_1Name}
 \input{d6/d33/classProfile_1_1forms_1_1NameForm}
 \input{d4/df5/classELO_1_1BaseUnit_1_1Password}
@@ -227,18 +243,19 @@
 \input{d5/dfc/classLogin_1_1LoginUnit_1_1PersLogin}
 \input{d7/dec/classProfile_1_1ProfileUnit_1_1PersProfile}
 \input{d4/d2d/classELO_1_1BaseUnit_1_1PlainText}
-\input{d5/df1/classELO_1_1EntityUnit_1_1Professor}
 \input{d5/d93/classELO_1_1models_1_1Professor}
+\input{d5/df1/classELO_1_1EntityUnit_1_1Professor}
 \input{dd/d8a/classELO_1_1BaseUnit_1_1Sex}
 \input{d1/dea/classProfile_1_1forms_1_1SexForm}
 \input{d7/d71/classBuilding_1_1tests_1_1SimpleTest}
-\input{dd/d1d/classELO_1_1EntityUnit_1_1Student}
 \input{d0/dc8/classELO_1_1models_1_1Student}
+\input{dd/d1d/classELO_1_1EntityUnit_1_1Student}
 \input{d4/dde/classAdm_1_1AdmUnit_1_1UiAdm}
 \input{d1/dbb/classCourse_1_1CourseUnit_1_1UiCourse}
 \input{db/d57/classProfile_1_1ProfileUnit_1_1UiFullProfile}
 \input{db/dcf/classProfile_1_1ProfileUnit_1_1UiHomeProfile}
 \input{de/da8/classLogin_1_1LoginUnit_1_1UiLogin}
+\input{d5/d9e/classCourse_1_1forms_1_1UnscrambleExercise}
 \input{dd/d09/classELO_1_1EntityUnit_1_1User}
 \section{Arquivos}
 \input{d6/d3f/Adm_2____init_____8py}
@@ -247,6 +264,8 @@
 \input{d4/d2f/Building_2____init_____8py_source}
 \input{d3/d0f/Course_2____init_____8py}
 \input{d3/d0f/Course_2____init_____8py_source}
+\input{da/d20/Course_2templatetags_2____init_____8py}
+\input{da/d20/Course_2templatetags_2____init_____8py_source}
 \input{d1/da8/ELO_2____init_____8py}
 \input{d1/da8/ELO_2____init_____8py_source}
 \input{d2/df7/ELO_2locale_2____init_____8py}
@@ -277,6 +296,10 @@
 \input{db/d1e/views_8py_source}
 \input{de/d1e/CourseUnit_8py}
 \input{de/d1e/CourseUnit_8py_source}
+\input{d7/d47/macros_8py}
+\input{d7/d47/macros_8py_source}
+\input{db/d98/exercises_8py}
+\input{db/d98/exercises_8py_source}
 \input{d2/d4a/BaseUnit_8py}
 \input{d2/d4a/BaseUnit_8py_source}
 \input{d7/dff/EntityUnit_8py}
@@ -318,6 +341,7 @@
 % Index
 \newpage
 \phantomsection
+\clearemptydoublepage
 \addcontentsline{toc}{section}{Índice}
 \printindex
 

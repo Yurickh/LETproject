@@ -3,22 +3,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.6"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
 <title>LETproject: Referência da Classe ELO.models.Student</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
 <link href="../../navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
 <script type="text/javascript" src="../../navtree.js"></script>
 <script type="text/javascript">
   $(document).ready(initResizable);
   $(window).load(resizeHeight);
 </script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
 <script type="text/javascript">
-  $(document).ready(function() { searchBox.OnSelectItem(0); });
+  $(document).ready(function() { init_search(); });
 </script>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css" />
 </head>
@@ -37,7 +39,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Gerado por Doxygen 1.8.6 -->
+<!-- Gerado por Doxygen 1.8.9.1 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
 </script>
@@ -92,7 +94,7 @@ $(document).ready(function(){initNavTree('d0/dc8/classELO_1_1models_1_1Student.h
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variáveis</a></div>
+</div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -124,9 +126,9 @@ Diagrama de Hierarquia para ELO.models.Student:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos Públicos</h2></td></tr>
-<tr class="memitem:a2f51785c1beb3b45269a8678d97ec783"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/dc8/classELO_1_1models_1_1Student.html#a2f51785c1beb3b45269a8678d97ec783">__unicode__</a></td></tr>
-<tr class="memdesc:a2f51785c1beb3b45269a8678d97ec783"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna os valores do aluno correspondente ao Id no banco de dados.  <a href="#a2f51785c1beb3b45269a8678d97ec783">Mais...</a><br/></td></tr>
-<tr class="separator:a2f51785c1beb3b45269a8678d97ec783"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed993e386d125c955def72680b441dd1"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/dc8/classELO_1_1models_1_1Student.html#aed993e386d125c955def72680b441dd1">__unicode__</a> (self)</td></tr>
+<tr class="memdesc:aed993e386d125c955def72680b441dd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna os valores do aluno correspondente ao Id no banco de dados.  <a href="#aed993e386d125c955def72680b441dd1">Mais...</a><br /></td></tr>
+<tr class="separator:aed993e386d125c955def72680b441dd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Atributos Estáticos Públicos</h2></td></tr>
@@ -139,21 +141,21 @@ Atributos Estáticos Públicos</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descrição Detalhada</h2>
 <div class="textblock"><p>Colunas já implementadas:</p>
-<p>NAME: Identifica o nome do estudante.<br/>
- PASSWORD: Contém a hash da senha do estudante.<br/>
- BIOS: Biografia do estudante.<br/>
- MATRIC: Inteiro que representa a matrícula do estudante.<br/>
- CAMPUS: Número inteiro que representa a identity de um Campus. (ver modelo Campus)<br/>
- AVATAR: Caminho completo do avatar do usuário.<br/>
- EMAIL: Email utilizado pelo estudante.<br/>
- SEX: Caractere que representa o sexo do usuário. Varia entre M/F.<br/>
- INTEREST: Lista de strings que representam o interesse do usuário.<br/>
- LANGUAGE: Código da linguagem preferida do usuário.<br/>
+<p>NAME: Identifica o nome do estudante.<br />
+ PASSWORD: Contém a hash da senha do estudante.<br />
+ BIOS: Biografia do estudante.<br />
+ MATRIC: Inteiro que representa a matrícula do estudante.<br />
+ CAMPUS: Número inteiro que representa a identity de um Campus. (ver modelo Campus)<br />
+ AVATAR: Caminho completo do avatar do usuário.<br />
+ EMAIL: Email utilizado pelo estudante.<br />
+ SEX: Caractere que representa o sexo do usuário. Varia entre M/F.<br />
+ INTEREST: Lista de strings que representam o interesse do usuário.<br />
+ LANGUAGE: Código da linguagem preferida do usuário.<br />
  COURSE: Lista de inteiros que representam identities de Cursos. (ver modelo <a class="el" href="../../dd/df0/namespaceCourse.html">Course</a>) </p>
 
 <p>Definição na linha <a class="el" href="../../d1/d1c/ELO_2models_8py_source.html#l00047">47</a> do arquivo <a class="el" href="../../d1/d1c/ELO_2models_8py_source.html">models.py</a>.</p>
 </div><h2 class="groupheader">Métodos</h2>
-<a class="anchor" id="a2f51785c1beb3b45269a8678d97ec783"></a>
+<a class="anchor" id="aed993e386d125c955def72680b441dd1"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -170,14 +172,13 @@ Atributos Estáticos Públicos</h2></td></tr>
 <p>Definição na linha <a class="el" href="../../d1/d1c/ELO_2models_8py_source.html#l00053">53</a> do arquivo <a class="el" href="../../d1/d1c/ELO_2models_8py_source.html">models.py</a>.</p>
 
 <p>Referências <a class="el" href="../../d0/dc8/classELO_1_1models_1_1Student.html#a893ec9b2ece5c6b829fce5e5a7c1d576">ELO.models.Student.field</a>, <a class="el" href="../../d0/dc8/classELO_1_1models_1_1Student.html#a20a7789a2b0f5b7d0c98453dcf38bc4e">ELO.models.Student.identity</a> e <a class="el" href="../../d0/dc8/classELO_1_1models_1_1Student.html#a201226779dce6e064cb16bd92ed016e2">ELO.models.Student.value</a>.</p>
-<div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="../../d0/dc8/classELO_1_1models_1_1Student.html#a2f51785c1beb3b45269a8678d97ec783">   53</a></span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">def </span><a class="code" href="../../d0/dc8/classELO_1_1models_1_1Student.html#a2f51785c1beb3b45269a8678d97ec783">__unicode__</a>(self):</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">u&#39;%s : %s = %s&#39;</span> % (str(self.<a class="code" href="../../d0/dc8/classELO_1_1models_1_1Student.html#a20a7789a2b0f5b7d0c98453dcf38bc4e">identity</a>), self.<a class="code" href="../../d0/dc8/classELO_1_1models_1_1Student.html#a893ec9b2ece5c6b829fce5e5a7c1d576">field</a>, self.<a class="code" href="../../d0/dc8/classELO_1_1models_1_1Student.html#a201226779dce6e064cb16bd92ed016e2">value</a>)</div>
-</div>
+<div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="../../d0/dc8/classELO_1_1models_1_1Student.html#aed993e386d125c955def72680b441dd1">   53</a></span>&#160;    <span class="keyword">def </span><a class="code" href="../../d0/dc8/classELO_1_1models_1_1Student.html#aed993e386d125c955def72680b441dd1">__unicode__</a>(self):</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">u&#39;%s : %s = %s&#39;</span> % (str(self.<a class="code" href="../../d0/dc8/classELO_1_1models_1_1Student.html#a20a7789a2b0f5b7d0c98453dcf38bc4e">identity</a>), self.<a class="code" href="../../d0/dc8/classELO_1_1models_1_1Student.html#a893ec9b2ece5c6b829fce5e5a7c1d576">field</a>, self.<a class="code" href="../../d0/dc8/classELO_1_1models_1_1Student.html#a201226779dce6e064cb16bd92ed016e2">value</a>)</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
 <div class="ttc" id="classELO_1_1models_1_1Student_html_a20a7789a2b0f5b7d0c98453dcf38bc4e"><div class="ttname"><a href="../../d0/dc8/classELO_1_1models_1_1Student.html#a20a7789a2b0f5b7d0c98453dcf38bc4e">ELO.models.Student.identity</a></div><div class="ttdeci">tuple identity</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d1c/ELO_2models_8py_source.html#l00048">models.py:48</a></div></div>
 <div class="ttc" id="classELO_1_1models_1_1Student_html_a201226779dce6e064cb16bd92ed016e2"><div class="ttname"><a href="../../d0/dc8/classELO_1_1models_1_1Student.html#a201226779dce6e064cb16bd92ed016e2">ELO.models.Student.value</a></div><div class="ttdeci">tuple value</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d1c/ELO_2models_8py_source.html#l00050">models.py:50</a></div></div>
+<div class="ttc" id="classELO_1_1models_1_1Student_html_aed993e386d125c955def72680b441dd1"><div class="ttname"><a href="../../d0/dc8/classELO_1_1models_1_1Student.html#aed993e386d125c955def72680b441dd1">ELO.models.Student.__unicode__</a></div><div class="ttdeci">def __unicode__(self)</div><div class="ttdoc">Retorna os valores do aluno correspondente ao Id no banco de dados. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d1c/ELO_2models_8py_source.html#l00053">models.py:53</a></div></div>
 <div class="ttc" id="classELO_1_1models_1_1Student_html_a893ec9b2ece5c6b829fce5e5a7c1d576"><div class="ttname"><a href="../../d0/dc8/classELO_1_1models_1_1Student.html#a893ec9b2ece5c6b829fce5e5a7c1d576">ELO.models.Student.field</a></div><div class="ttdeci">tuple field</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d1c/ELO_2models_8py_source.html#l00049">models.py:49</a></div></div>
-<div class="ttc" id="classELO_1_1models_1_1Student_html_a2f51785c1beb3b45269a8678d97ec783"><div class="ttname"><a href="../../d0/dc8/classELO_1_1models_1_1Student.html#a2f51785c1beb3b45269a8678d97ec783">ELO.models.Student.__unicode__</a></div><div class="ttdeci">def __unicode__</div><div class="ttdoc">Retorna os valores do aluno correspondente ao Id no banco de dados. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d1c/ELO_2models_8py_source.html#l00053">models.py:53</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -202,7 +203,7 @@ Atributos Estáticos Públicos</h2></td></tr>
 
 <p>Definição na linha <a class="el" href="../../d1/d1c/ELO_2models_8py_source.html#l00049">49</a> do arquivo <a class="el" href="../../d1/d1c/ELO_2models_8py_source.html">models.py</a>.</p>
 
-<p>Referenciado por <a class="el" href="../../d0/dc8/classELO_1_1models_1_1Student.html#a2f51785c1beb3b45269a8678d97ec783">ELO.models.Student.__unicode__()</a>, <a class="el" href="../../df/d5e/classELO_1_1models_1_1Adm.html#a3541c3ae12b8d2da3f44ac6be00a23e6">ELO.models.Adm.__unicode__()</a>, <a class="el" href="../../d5/d93/classELO_1_1models_1_1Professor.html#aefc9d63d429e19ec3487a7879879f29d">ELO.models.Professor.__unicode__()</a>, <a class="el" href="../../dd/dd9/classELO_1_1models_1_1Courses.html#a8926a37152be8d4fc3e0ba6af200f871">ELO.models.Courses.__unicode__()</a>, <a class="el" href="../../d1/d5d/classELO_1_1models_1_1Module.html#a1b54aa7a5e8dac090dea0926eca5550d">ELO.models.Module.__unicode__()</a>, <a class="el" href="../../d0/da3/classELO_1_1models_1_1Lesson.html#a3d9f0295dbe1ed5c74668d6c0876f97c">ELO.models.Lesson.__unicode__()</a> e <a class="el" href="../../d3/da8/classELO_1_1models_1_1Exercise.html#af3e991e5610cec815a2c3260ec6aae0b">ELO.models.Exercise.__unicode__()</a>.</p>
+<p>Referenciado por <a class="el" href="../../d0/dc8/classELO_1_1models_1_1Student.html#aed993e386d125c955def72680b441dd1">ELO.models.Student.__unicode__()</a>, <a class="el" href="../../df/d5e/classELO_1_1models_1_1Adm.html#a321eaeaced2b6423fd23ad9d0401808e">ELO.models.Adm.__unicode__()</a>, <a class="el" href="../../d5/d93/classELO_1_1models_1_1Professor.html#a8c0714e4a283c139c0d7aed94a498a7b">ELO.models.Professor.__unicode__()</a>, <a class="el" href="../../dd/dd9/classELO_1_1models_1_1Courses.html#a8676cba71b99ab2ba60726b9b5e33825">ELO.models.Courses.__unicode__()</a>, <a class="el" href="../../d1/d5d/classELO_1_1models_1_1Module.html#a8fc9fadf09fa7b3bbcfea69ebe25d278">ELO.models.Module.__unicode__()</a>, <a class="el" href="../../d0/da3/classELO_1_1models_1_1Lesson.html#a53e265de97c6b73f262f62a80f9ca994">ELO.models.Lesson.__unicode__()</a> e <a class="el" href="../../d3/da8/classELO_1_1models_1_1Exercise.html#a23f81c66e4d6bc5a4582d74d191f5117">ELO.models.Exercise.__unicode__()</a>.</p>
 
 </div>
 </div>
@@ -226,7 +227,7 @@ Atributos Estáticos Públicos</h2></td></tr>
 
 <p>Definição na linha <a class="el" href="../../d1/d1c/ELO_2models_8py_source.html#l00048">48</a> do arquivo <a class="el" href="../../d1/d1c/ELO_2models_8py_source.html">models.py</a>.</p>
 
-<p>Referenciado por <a class="el" href="../../d0/dc8/classELO_1_1models_1_1Student.html#a2f51785c1beb3b45269a8678d97ec783">ELO.models.Student.__unicode__()</a>, <a class="el" href="../../df/d5e/classELO_1_1models_1_1Adm.html#a3541c3ae12b8d2da3f44ac6be00a23e6">ELO.models.Adm.__unicode__()</a>, <a class="el" href="../../d5/d93/classELO_1_1models_1_1Professor.html#aefc9d63d429e19ec3487a7879879f29d">ELO.models.Professor.__unicode__()</a>, <a class="el" href="../../dd/dd9/classELO_1_1models_1_1Courses.html#a8926a37152be8d4fc3e0ba6af200f871">ELO.models.Courses.__unicode__()</a>, <a class="el" href="../../d1/d5d/classELO_1_1models_1_1Module.html#a1b54aa7a5e8dac090dea0926eca5550d">ELO.models.Module.__unicode__()</a>, <a class="el" href="../../d0/da3/classELO_1_1models_1_1Lesson.html#a3d9f0295dbe1ed5c74668d6c0876f97c">ELO.models.Lesson.__unicode__()</a> e <a class="el" href="../../d3/da8/classELO_1_1models_1_1Exercise.html#af3e991e5610cec815a2c3260ec6aae0b">ELO.models.Exercise.__unicode__()</a>.</p>
+<p>Referenciado por <a class="el" href="../../d0/dc8/classELO_1_1models_1_1Student.html#aed993e386d125c955def72680b441dd1">ELO.models.Student.__unicode__()</a>, <a class="el" href="../../df/d5e/classELO_1_1models_1_1Adm.html#a321eaeaced2b6423fd23ad9d0401808e">ELO.models.Adm.__unicode__()</a>, <a class="el" href="../../d5/d93/classELO_1_1models_1_1Professor.html#a8c0714e4a283c139c0d7aed94a498a7b">ELO.models.Professor.__unicode__()</a>, <a class="el" href="../../dd/dd9/classELO_1_1models_1_1Courses.html#a8676cba71b99ab2ba60726b9b5e33825">ELO.models.Courses.__unicode__()</a>, <a class="el" href="../../d1/d5d/classELO_1_1models_1_1Module.html#a8fc9fadf09fa7b3bbcfea69ebe25d278">ELO.models.Module.__unicode__()</a>, <a class="el" href="../../d0/da3/classELO_1_1models_1_1Lesson.html#a53e265de97c6b73f262f62a80f9ca994">ELO.models.Lesson.__unicode__()</a> e <a class="el" href="../../d3/da8/classELO_1_1models_1_1Exercise.html#a23f81c66e4d6bc5a4582d74d191f5117">ELO.models.Exercise.__unicode__()</a>.</p>
 
 </div>
 </div>
@@ -250,7 +251,7 @@ Atributos Estáticos Públicos</h2></td></tr>
 
 <p>Definição na linha <a class="el" href="../../d1/d1c/ELO_2models_8py_source.html#l00050">50</a> do arquivo <a class="el" href="../../d1/d1c/ELO_2models_8py_source.html">models.py</a>.</p>
 
-<p>Referenciado por <a class="el" href="../../d7/d79/classELO_1_1BaseUnit_1_1IfBaseType.html#a69c338f6f1574bd3524e9d59ebc17a7c">ELO.BaseUnit.IfBaseType.__cmp__()</a>, <a class="el" href="../../d0/dc8/classELO_1_1models_1_1Student.html#a2f51785c1beb3b45269a8678d97ec783">ELO.models.Student.__unicode__()</a>, <a class="el" href="../../df/d5e/classELO_1_1models_1_1Adm.html#a3541c3ae12b8d2da3f44ac6be00a23e6">ELO.models.Adm.__unicode__()</a>, <a class="el" href="../../d5/d93/classELO_1_1models_1_1Professor.html#aefc9d63d429e19ec3487a7879879f29d">ELO.models.Professor.__unicode__()</a>, <a class="el" href="../../dd/dd9/classELO_1_1models_1_1Courses.html#a8926a37152be8d4fc3e0ba6af200f871">ELO.models.Courses.__unicode__()</a>, <a class="el" href="../../d1/d5d/classELO_1_1models_1_1Module.html#a1b54aa7a5e8dac090dea0926eca5550d">ELO.models.Module.__unicode__()</a>, <a class="el" href="../../d0/da3/classELO_1_1models_1_1Lesson.html#a3d9f0295dbe1ed5c74668d6c0876f97c">ELO.models.Lesson.__unicode__()</a> e <a class="el" href="../../d3/da8/classELO_1_1models_1_1Exercise.html#af3e991e5610cec815a2c3260ec6aae0b">ELO.models.Exercise.__unicode__()</a>.</p>
+<p>Referenciado por <a class="el" href="../../d7/d79/classELO_1_1BaseUnit_1_1IfBaseType.html#a22d6f30c4d9504a9c20d0ff5a538544d">ELO.BaseUnit.IfBaseType.__cmp__()</a>, <a class="el" href="../../d0/dc8/classELO_1_1models_1_1Student.html#aed993e386d125c955def72680b441dd1">ELO.models.Student.__unicode__()</a>, <a class="el" href="../../df/d5e/classELO_1_1models_1_1Adm.html#a321eaeaced2b6423fd23ad9d0401808e">ELO.models.Adm.__unicode__()</a>, <a class="el" href="../../d5/d93/classELO_1_1models_1_1Professor.html#a8c0714e4a283c139c0d7aed94a498a7b">ELO.models.Professor.__unicode__()</a>, <a class="el" href="../../dd/dd9/classELO_1_1models_1_1Courses.html#a8676cba71b99ab2ba60726b9b5e33825">ELO.models.Courses.__unicode__()</a>, <a class="el" href="../../d1/d5d/classELO_1_1models_1_1Module.html#a8fc9fadf09fa7b3bbcfea69ebe25d278">ELO.models.Module.__unicode__()</a>, <a class="el" href="../../d0/da3/classELO_1_1models_1_1Lesson.html#a53e265de97c6b73f262f62a80f9ca994">ELO.models.Lesson.__unicode__()</a> e <a class="el" href="../../d3/da8/classELO_1_1models_1_1Exercise.html#a23f81c66e4d6bc5a4582d74d191f5117">ELO.models.Exercise.__unicode__()</a>.</p>
 
 </div>
 </div>
@@ -263,9 +264,9 @@ Atributos Estáticos Públicos</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../da/d09/namespaceELO.html">ELO</a></li><li class="navelem"><a class="el" href="../../d8/d93/namespaceELO_1_1models.html">models</a></li><li class="navelem"><a class="el" href="../../d0/dc8/classELO_1_1models_1_1Student.html">Student</a></li>
-    <li class="footer">Gerado em Domingo, 28 de Dezembro de 2014 13:29:08 para LETproject por
+    <li class="footer">Gerado em Quinta, 21 de Maio de 2015 15:13:32 para LETproject por
     <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>
 </div>
 </body>

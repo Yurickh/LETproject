@@ -1,6 +1,5 @@
-\hypertarget{LoginUnit_8py}{\subsection{Login\-Unit.\-py}
-\label{LoginUnit_8py}\index{E\-L\-O/\-Login/\-Login\-Unit.\-py@{E\-L\-O/\-Login/\-Login\-Unit.\-py}}
-}
+\hypertarget{LoginUnit_8py_source}{}\subsection{Login\+Unit.\+py}
+\label{LoginUnit_8py_source}\index{E\+L\+O/\+Login/\+Login\+Unit.\+py@{E\+L\+O/\+Login/\+Login\+Unit.\+py}}
 
 \begin{DoxyCode}
 \hypertarget{LoginUnit_8py_source_l00001}{}\hyperlink{namespaceLogin_1_1LoginUnit}{00001} \textcolor{comment}{#coding: utf-8}
@@ -33,7 +32,7 @@
 00028     \textcolor{comment}{## Força a criação da camada subjacente}
 00029     \_\_metaclass\_\_ = ABCMeta
 00030 
-\hypertarget{LoginUnit_8py_source_l00031}{}\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_a2afcef7056181566ac0e801ad8094ece}{00031}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_a2afcef7056181566ac0e801ad8094ece}{\_\_init\_\_}(self, bus):
+\hypertarget{LoginUnit_8py_source_l00031}{}\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_aae35610e0613da11d8fcdd3d0aa20c52}{00031}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_aae35610e0613da11d8fcdd3d0aa20c52}{\_\_init\_\_}(self, bus):
 00032         \textcolor{keywordflow}{try}:
 \hypertarget{LoginUnit_8py_source_l00033}{}\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_af6823ae4c77d340c2341932d8f338753}{00033}             self.\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_af6823ae4c77d340c2341932d8f338753}{bus} = bus
 00034         \textcolor{keywordflow}{except} TypeError \textcolor{keyword}{as} exc:
@@ -45,11 +44,11 @@
 00040     \textcolor{comment}{#   UiLogin, ou seja, uma camada de UI nunca existirá sem uma camada}
 00041     \textcolor{comment}{#   de Bus suportando-a.}
 00042     @property
-\hypertarget{LoginUnit_8py_source_l00043}{}\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_abab63bd2085f485ca82494db8eb5f520}{00043}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_af6823ae4c77d340c2341932d8f338753}{bus}(self):
+\hypertarget{LoginUnit_8py_source_l00043}{}\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_afe73a7a4e5feecf81ef4b7594bdefd2e}{00043}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_af6823ae4c77d340c2341932d8f338753}{bus}(self):
 00044         \textcolor{keywordflow}{return} self.\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_a550be8bfdf4cbc495bc966484e867af2}{\_\_bus}
 00045 
 00046     @bus.setter
-\hypertarget{LoginUnit_8py_source_l00047}{}\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_abab63bd2085f485ca82494db8eb5f520}{00047}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_af6823ae4c77d340c2341932d8f338753}{bus}(self, value):
+\hypertarget{LoginUnit_8py_source_l00047}{}\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_a9a0b020515b3929803dcbd7d889e9cf9}{00047}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_af6823ae4c77d340c2341932d8f338753}{bus}(self, value):
 00048         \textcolor{keywordflow}{if} isinstance(value, IfBusLogin):
 00049             self.\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_a550be8bfdf4cbc495bc966484e867af2}{\_\_bus} = value
 00050         \textcolor{keywordflow}{else}:
@@ -58,13 +57,13 @@
 00053 
 00054     \textcolor{comment}{## Método de deleção do objeto que representa a camada de negócio.}
 00055     @bus.deleter
-\hypertarget{LoginUnit_8py_source_l00056}{}\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_abab63bd2085f485ca82494db8eb5f520}{00056}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_af6823ae4c77d340c2341932d8f338753}{bus}(self):
+\hypertarget{LoginUnit_8py_source_l00056}{}\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_afe73a7a4e5feecf81ef4b7594bdefd2e}{00056}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_af6823ae4c77d340c2341932d8f338753}{bus}(self):
 00057         del self.\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_a550be8bfdf4cbc495bc966484e867af2}{\_\_bus}
 00058 
 00059     \textcolor{comment}{## O método principal de qualquer classe de UI (user interface), o método}
 00060     \textcolor{comment}{#   run() permite à Factory dar o controle do programa ao módulo de Login.}
 00061     @abstractmethod
-\hypertarget{LoginUnit_8py_source_l00062}{}\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_ac6250c19afa63158907c6e8b4ff6dbd5}{00062}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_ac6250c19afa63158907c6e8b4ff6dbd5}{run}(self, request): \textcolor{keyword}{pass}
+\hypertarget{LoginUnit_8py_source_l00062}{}\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_a783eccf84b36655d28da48159efd01cb}{00062}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1IfUiLogin_a783eccf84b36655d28da48159efd01cb}{run}(self, request): \textcolor{keyword}{pass}
 00063 
 00064 
 00065 \textcolor{comment}{## Interface para a camada de negócio do módulo de Login.}
@@ -83,7 +82,7 @@
 00078     \textcolor{comment}{#}
 00079     \textcolor{comment}{#   @arg database   Classe do modelo a ser utilizado.}
 00080     @abstractmethod
-\hypertarget{LoginUnit_8py_source_l00081}{}\hyperlink{classLogin_1_1LoginUnit_1_1IfBusLogin_a55078e3d16b3e0557b557aed92fd7c36}{00081}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1IfBusLogin_a55078e3d16b3e0557b557aed92fd7c36}{validate}(self, username, password, database): \textcolor{keyword}{pass}
+\hypertarget{LoginUnit_8py_source_l00081}{}\hyperlink{classLogin_1_1LoginUnit_1_1IfBusLogin_a6945b614a0b0f5ee03c61bcd3982c821}{00081}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1IfBusLogin_a6945b614a0b0f5ee03c61bcd3982c821}{validate}(self, username, password, database): \textcolor{keyword}{pass}
 00082 
 00083 
 00084     \textcolor{comment}{## Método de recuperação de linguagem de sistema.}
@@ -93,14 +92,14 @@
 00088     \textcolor{comment}{#}
 00089     \textcolor{comment}{#   @arg database   Classe do modelo a ser utilizado.}
 00090     @abstractmethod
-\hypertarget{LoginUnit_8py_source_l00091}{}\hyperlink{classLogin_1_1LoginUnit_1_1IfBusLogin_a66e981f9d6fc6251de59568c1de028aa}{00091}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1IfBusLogin_a66e981f9d6fc6251de59568c1de028aa}{getLang}(self, username, database): \textcolor{keyword}{pass}
+\hypertarget{LoginUnit_8py_source_l00091}{}\hyperlink{classLogin_1_1LoginUnit_1_1IfBusLogin_a16592b98a3bf9ab48147eed8b6657874}{00091}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1IfBusLogin_a16592b98a3bf9ab48147eed8b6657874}{getLang}(self, username, database): \textcolor{keyword}{pass}
 00092 
 00093     @property
-\hypertarget{LoginUnit_8py_source_l00094}{}\hyperlink{classLogin_1_1LoginUnit_1_1IfBusLogin_a807b0a5d5bdae58087feb9d810a6538d}{00094}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1IfBusLogin_a53b8075436052b94282021c84a2c3211}{pers}(self):
+\hypertarget{LoginUnit_8py_source_l00094}{}\hyperlink{classLogin_1_1LoginUnit_1_1IfBusLogin_ac72dec0df502cc712d090ef55e2beb56}{00094}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1IfBusLogin_a53b8075436052b94282021c84a2c3211}{pers}(self):
 00095         \textcolor{keywordflow}{return} self.\hyperlink{classLogin_1_1LoginUnit_1_1IfBusLogin_aac72212096e8ac4cbad65a63d1d93221}{\_\_pers}
 00096 
 00097     @pers.setter
-\hypertarget{LoginUnit_8py_source_l00098}{}\hyperlink{classLogin_1_1LoginUnit_1_1IfBusLogin_a807b0a5d5bdae58087feb9d810a6538d}{00098}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1IfBusLogin_a53b8075436052b94282021c84a2c3211}{pers}(self, pers):
+\hypertarget{LoginUnit_8py_source_l00098}{}\hyperlink{classLogin_1_1LoginUnit_1_1IfBusLogin_ae2880a2f2803cd219bda47f32892e7ed}{00098}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1IfBusLogin_a53b8075436052b94282021c84a2c3211}{pers}(self, pers):
 00099         \textcolor{keywordflow}{if} isinstance(value, IfPersLogin):
 00100             self.\hyperlink{classLogin_1_1LoginUnit_1_1IfBusLogin_aac72212096e8ac4cbad65a63d1d93221}{\_\_pers} = pers
 00101         \textcolor{keywordflow}{else}:
@@ -109,11 +108,11 @@
 00104 
 00105     \textcolor{comment}{## Método de deleção do objeto que representa a camada de persistência.}
 00106     @pers.deleter
-\hypertarget{LoginUnit_8py_source_l00107}{}\hyperlink{classLogin_1_1LoginUnit_1_1IfBusLogin_a807b0a5d5bdae58087feb9d810a6538d}{00107}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1IfBusLogin_a53b8075436052b94282021c84a2c3211}{pers}(self):
+\hypertarget{LoginUnit_8py_source_l00107}{}\hyperlink{classLogin_1_1LoginUnit_1_1IfBusLogin_ac72dec0df502cc712d090ef55e2beb56}{00107}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1IfBusLogin_a53b8075436052b94282021c84a2c3211}{pers}(self):
 00108         del self.\hyperlink{classLogin_1_1LoginUnit_1_1IfBusLogin_aac72212096e8ac4cbad65a63d1d93221}{\_\_pers}
 00109 
 00110     \textcolor{comment}{## Força a criação da camada subjacente.}
-\hypertarget{LoginUnit_8py_source_l00111}{}\hyperlink{classLogin_1_1LoginUnit_1_1IfBusLogin_a974c8e8520b02844836d9c7a8e06379b}{00111}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1IfBusLogin_a974c8e8520b02844836d9c7a8e06379b}{\_\_init\_\_}(self, value):
+\hypertarget{LoginUnit_8py_source_l00111}{}\hyperlink{classLogin_1_1LoginUnit_1_1IfBusLogin_a00b6c0e1640297ed24c83bfe1af6c5a5}{00111}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1IfBusLogin_a00b6c0e1640297ed24c83bfe1af6c5a5}{\_\_init\_\_}(self, value):
 00112         \textcolor{keywordflow}{try}:
 \hypertarget{LoginUnit_8py_source_l00113}{}\hyperlink{classLogin_1_1LoginUnit_1_1IfBusLogin_a53b8075436052b94282021c84a2c3211}{00113}             self.\hyperlink{classLogin_1_1LoginUnit_1_1IfBusLogin_a53b8075436052b94282021c84a2c3211}{pers} = value
 00114         \textcolor{keywordflow}{except} TypeError \textcolor{keyword}{as} exc:
@@ -130,7 +129,7 @@
 00125     \textcolor{comment}{## Retorna um dicionário no formato de objeto com os dados do usuário}
 00126     \textcolor{comment}{#   requisitado.}
 00127     @abstractmethod
-\hypertarget{LoginUnit_8py_source_l00128}{}\hyperlink{classLogin_1_1LoginUnit_1_1IfPersLogin_a24648e1c42d0762277b5b7aa641fa575}{00128}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1IfPersLogin_a24648e1c42d0762277b5b7aa641fa575}{select}(self, username, database): \textcolor{keyword}{pass}
+\hypertarget{LoginUnit_8py_source_l00128}{}\hyperlink{classLogin_1_1LoginUnit_1_1IfPersLogin_a2735e0cf328b85f72cbf655f210d17f6}{00128}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1IfPersLogin_a2735e0cf328b85f72cbf655f210d17f6}{select}(self, username, database): \textcolor{keyword}{pass}
 00129 
 00130 
 00131 \textcolor{comment}{## Camada de interface de usuário para o módulo de Login.}
@@ -139,7 +138,7 @@
 00134     \textcolor{comment}{## Método que inicia o módulo de login. }
 00135     \textcolor{comment}{#   Aqui, ocorre a validação de formulário, autenticação de usuário, e}
 00136     \textcolor{comment}{#   redirecionamento para a página de perfil.}
-\hypertarget{LoginUnit_8py_source_l00137}{}\hyperlink{classLogin_1_1LoginUnit_1_1UiLogin_a9cd61a78d5ab0d201051ccf5898f86bc}{00137}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1UiLogin_a9cd61a78d5ab0d201051ccf5898f86bc}{run}(self, request, database):
+\hypertarget{LoginUnit_8py_source_l00137}{}\hyperlink{classLogin_1_1LoginUnit_1_1UiLogin_a7c474f0e88183b48578c70b1781279ef}{00137}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1UiLogin_a7c474f0e88183b48578c70b1781279ef}{run}(self, request, database):
 00138         \textcolor{keywordflow}{if} request.method == \textcolor{stringliteral}{"POST"}:
 00139             login\_form = \hyperlink{classLogin_1_1forms_1_1LoginForm}{LoginForm}(request.POST)
 00140             \textcolor{keywordflow}{try}: 
@@ -198,12 +197,12 @@
 00193 \textcolor{comment}{## Camada de negócio de usuário para o módulo de Login.}
 \hypertarget{LoginUnit_8py_source_l00194}{}\hyperlink{classLogin_1_1LoginUnit_1_1BusLogin}{00194} \textcolor{keyword}{class }\hyperlink{classLogin_1_1LoginUnit_1_1BusLogin}{BusLogin}(\hyperlink{classLogin_1_1LoginUnit_1_1IfBusLogin}{IfBusLogin}):
 00195 
-\hypertarget{LoginUnit_8py_source_l00196}{}\hyperlink{classLogin_1_1LoginUnit_1_1BusLogin_a2301425767b811697ce559801b955a58}{00196}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1BusLogin_a2301425767b811697ce559801b955a58}{validate}(self, username, password, database):
+\hypertarget{LoginUnit_8py_source_l00196}{}\hyperlink{classLogin_1_1LoginUnit_1_1BusLogin_a88b18ffaeaa3a53934aa38338de3b1c0}{00196}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1BusLogin_a88b18ffaeaa3a53934aa38338de3b1c0}{validate}(self, username, password, database):
 00197         upass = self.pers.select(username.value, database)
 00198         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} upass \textcolor{keywordflow}{or} upass[\textcolor{stringliteral}{'password'}] != password.value:
 00199             \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_LOG'}])
 00200 
-\hypertarget{LoginUnit_8py_source_l00201}{}\hyperlink{classLogin_1_1LoginUnit_1_1BusLogin_a23223ddd567bf874e6230efaf4912e98}{00201}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1BusLogin_a23223ddd567bf874e6230efaf4912e98}{getLang}(self, username, database):
+\hypertarget{LoginUnit_8py_source_l00201}{}\hyperlink{classLogin_1_1LoginUnit_1_1BusLogin_a5f4d3b7661b5061dc8a51c55f34ab169}{00201}     \textcolor{keyword}{def }\hyperlink{classLogin_1_1LoginUnit_1_1BusLogin_a5f4d3b7661b5061dc8a51c55f34ab169}{getLang}(self, username, database):
 00202         ulang = self.pers.select(username.value, database)
 00203         \textcolor{keywordflow}{return} ulang[\textcolor{stringliteral}{'language'}]
 00204 
@@ -228,24 +227,24 @@
 00223             username = usr.username
 00224             upass = usr.password
 00225         \textcolor{keywordflow}{else}:
-00226 
-00227             \textcolor{keywordflow}{try}:
-00228                 uid = database.objects.get(value=username, field=\textcolor{stringliteral}{'NAME'})
-00229                 uid = uid.identity
-00230                 upass = database.objects.get(identity=uid, field=\textcolor{stringliteral}{'PASSWORD'})
-00231                 upass = upass.value
-00232             \textcolor{keywordflow}{except} database.DoesNotExist:
-00233                 \textcolor{keywordflow}{return} \textcolor{keyword}{False}
-00234 
-00235             if(database.\_\_name\_\_ == \textcolor{stringliteral}{"Student"} \textcolor{keywordflow}{or} 
-00236                database.\_\_name\_\_ == \textcolor{stringliteral}{"Professor"}):
-00237                 \textcolor{keywordflow}{try}:
-00238                     ulang= database.objects.get(identity=uid, field=\textcolor{stringliteral}{'LANGUAGE'})
-00239                     ulang= ulang.value
-00240                 \textcolor{keywordflow}{except} database.DoesNotExist:
-00241                     \textcolor{keywordflow}{return} \textcolor{keyword}{False}
-00242             \textcolor{keywordflow}{else}:
-00243                 ulang = settings.LANGUAGE\_CODE
+00226             \textcolor{keywordflow}{try}:
+00227                 uid = database.objects.get(value=username, field=\textcolor{stringliteral}{'NAME'})
+00228                 uid = uid.identity
+00229                 upass = database.objects.get(identity=uid, field=\textcolor{stringliteral}{'PASSWORD'})
+00230                 upass = upass.value
+00231             \textcolor{keywordflow}{except} database.DoesNotExist:
+00232                 \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+00233 
+00234             if(database.\_\_name\_\_ == \textcolor{stringliteral}{"Student"} \textcolor{keywordflow}{or} 
+00235                database.\_\_name\_\_ == \textcolor{stringliteral}{"Professor"}):
+00236                 \textcolor{keywordflow}{try}:
+00237                     ulang= database.objects.get(identity=uid, field=\textcolor{stringliteral}{'LANGUAGE'})
+00238                     ulang= ulang.value
+00239                 \textcolor{keywordflow}{except} database.DoesNotExist:
+00240                     \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+00241             \textcolor{keywordflow}{else}:
+00242                 ulang = settings.LANGUAGE\_CODE
+00243 
 00244 
 00245         \textcolor{keywordflow}{return} \{ \textcolor{stringliteral}{'name'}: username, \textcolor{stringliteral}{'password'}: upass, \textcolor{stringliteral}{'language'}: ulang \}
 \end{DoxyCode}

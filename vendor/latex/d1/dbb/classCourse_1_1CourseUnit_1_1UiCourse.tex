@@ -1,7 +1,6 @@
-\hypertarget{classCourse_1_1CourseUnit_1_1UiCourse}{\subsection{Referência da Classe Course.\-Course\-Unit.\-Ui\-Course}
-\label{classCourse_1_1CourseUnit_1_1UiCourse}\index{Course.\-Course\-Unit.\-Ui\-Course@{Course.\-Course\-Unit.\-Ui\-Course}}
-}
-Diagrama de Hierarquia para Course.\-Course\-Unit.\-Ui\-Course\-:\begin{figure}[H]
+\hypertarget{classCourse_1_1CourseUnit_1_1UiCourse}{}\subsection{Referência da Classe Course.\+Course\+Unit.\+Ui\+Course}
+\label{classCourse_1_1CourseUnit_1_1UiCourse}\index{Course.\+Course\+Unit.\+Ui\+Course@{Course.\+Course\+Unit.\+Ui\+Course}}
+Diagrama de Hierarquia para Course.\+Course\+Unit.\+Ui\+Course\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.000000cm]{d1/dbb/classCourse_1_1CourseUnit_1_1UiCourse}
@@ -12,81 +11,101 @@ Diagrama de Hierarquia para Course.\-Course\-Unit.\-Ui\-Course\-:\begin{figure}[
 \item 
 def \hyperlink{classCourse_1_1CourseUnit_1_1UiCourse_aaaf2b8229f2b774f12e719bc0e6f13cb}{run}
 \end{DoxyCompactItemize}
-\subsubsection*{Additional Inherited Members}
+\subsubsection*{Outros membros herdados}
 
 
 \subsubsection{Descrição Detalhada}
 
 
-Definição na linha \hyperlink{CourseUnit_8py_source_l00183}{183} do arquivo \hyperlink{CourseUnit_8py_source}{Course\-Unit.\-py}.
+Definição na linha \hyperlink{CourseUnit_8py_source_l00212}{212} do arquivo \hyperlink{CourseUnit_8py_source}{Course\+Unit.\+py}.
 
 
 
 \subsubsection{Métodos}
-\hypertarget{classCourse_1_1CourseUnit_1_1UiCourse_aaaf2b8229f2b774f12e719bc0e6f13cb}{\index{Course\-::\-Course\-Unit\-::\-Ui\-Course@{Course\-::\-Course\-Unit\-::\-Ui\-Course}!run@{run}}
-\index{run@{run}!Course::CourseUnit::UiCourse@{Course\-::\-Course\-Unit\-::\-Ui\-Course}}
-\paragraph[{run}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\-Course\-Unit.\-Ui\-Course.\-run (
+\hypertarget{classCourse_1_1CourseUnit_1_1UiCourse_aaaf2b8229f2b774f12e719bc0e6f13cb}{}\index{Course\+::\+Course\+Unit\+::\+Ui\+Course@{Course\+::\+Course\+Unit\+::\+Ui\+Course}!run@{run}}
+\index{run@{run}!Course\+::\+Course\+Unit\+::\+Ui\+Course@{Course\+::\+Course\+Unit\+::\+Ui\+Course}}
+\paragraph[{run}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\+Course\+Unit.\+Ui\+Course.\+run (
 \begin{DoxyParamCaption}
 \item[{}]{self, }
 \item[{}]{request, }
 \item[{}]{courseid = {\ttfamily None}}
 \end{DoxyParamCaption}
-)}}\label{classCourse_1_1CourseUnit_1_1UiCourse_aaaf2b8229f2b774f12e719bc0e6f13cb}
+)}\label{classCourse_1_1CourseUnit_1_1UiCourse_aaaf2b8229f2b774f12e719bc0e6f13cb}
 
 
-Definição na linha \hyperlink{CourseUnit_8py_source_l00185}{185} do arquivo \hyperlink{CourseUnit_8py_source}{Course\-Unit.\-py}.
+Definição na linha \hyperlink{CourseUnit_8py_source_l00214}{214} do arquivo \hyperlink{CourseUnit_8py_source}{Course\+Unit.\+py}.
+
+
+
+Referências \hyperlink{namespaceCourse_1_1macros_ac1cf8b3a78128ab6a3bac4f6be9fabbd}{Course.\+macros.\+E\+X\+E\+R\+C\+I\+S\+E\+S\+\_\+\+U\+R\+L}, \hyperlink{namespaceCourse_1_1macros_a9a69c2455c0c121b1c01960629575d7e}{Course.\+macros.\+G\+E\+N\+E\+R\+A\+L\+\_\+\+U\+R\+L} e \hyperlink{namespaceCourse_1_1macros_a4473a418de016b59cce33b13440e469b}{Course.\+macros.\+L\+E\+S\+S\+O\+N\+S\+\_\+\+U\+R\+L}.
 
 
 \begin{DoxyCode}
-\hypertarget{classCourse_1_1CourseUnit_1_1UiCourse_l00185}{}\hyperlink{classCourse_1_1CourseUnit_1_1UiCourse_aaaf2b8229f2b774f12e719bc0e6f13cb}{00185} 
-00186     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1UiCourse_aaaf2b8229f2b774f12e719bc0e6f13cb}{run}(self, request, courseid=None):
-00187         
-00188         user = request.session[\textcolor{stringliteral}{'user'}]
-00189 
-00190         \textcolor{keywordflow}{if} request.method == \textcolor{stringliteral}{"GET"}:
-00191             \textcolor{keywordflow}{if} courseid:
-00192                 \textcolor{keywordflow}{if} courseid \textcolor{keywordflow}{in} map(\textcolor{keyword}{lambda} x: x[\textcolor{stringliteral}{"id"}], user[\textcolor{stringliteral}{"courses"}]):
-00193                     course = self.bus.getCourse(user, courseid)
-00194                     \textcolor{keywordflow}{return} render(request, GENERAL\_URL + \textcolor{stringliteral}{"frame.html"}, 
-00195                         \{\textcolor{stringliteral}{'course'}:course\})
-00196                 \textcolor{keywordflow}{else}:
-00197                     ld = lang.DICT
-00198                     \textcolor{keywordflow}{raise} PermissionDenied(ld[\textcolor{stringliteral}{"EXCEPTION\_403\_STD"}])
-00199         \textcolor{keywordflow}{elif} request.method == \textcolor{stringliteral}{"POST"}:
-00200             lesson\_form = \hyperlink{classCourse_1_1forms_1_1LessonForm}{LessonForm}(request.POST)
-00201             \textcolor{keywordflow}{try}:
-00202                 \textcolor{keywordflow}{if} lesson\_form.is\_valid():
-00203                     lessonid = lesson\_form.cleaned\_data[\textcolor{stringliteral}{'lesson\_id'}]
-00204                     lessonid = lessonid.value
-00205                     slidenum = lesson\_form.cleaned\_data[\textcolor{stringliteral}{'slide\_number'}]
-00206                     slidenum = slidenum.value
-00207 
-00208                     gc = self.bus.getCompleted
-00209 
-00210                     \textcolor{keywordflow}{if} unicode(lessonid) \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} gc(user, \textcolor{stringliteral}{'LOCK'}) \textcolor{keywordflow}{and}\(\backslash\)
-00211                        unicode(lessonid) \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} gc(user, \textcolor{stringliteral}{'LESSON'}):
-00212                             ld = lang.DICT
-00213                             \textcolor{keywordflow}{raise} PermissionDenied(ld[\textcolor{stringliteral}{"EXCEPTION\_403\_STD"}])
-00214                         
-00215 
-00216                     lesson = self.bus.getLesson(user, lessonid)
+\hypertarget{classCourse_1_1CourseUnit_1_1UiCourse_l00214}{}\hyperlink{classCourse_1_1CourseUnit_1_1UiCourse_aaaf2b8229f2b774f12e719bc0e6f13cb}{00214}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1UiCourse_aaaf2b8229f2b774f12e719bc0e6f13cb}{run}(self, request, courseid=None):
+00215         
+00216         user = request.session[\textcolor{stringliteral}{'user'}]
 00217 
-00218                     \textcolor{keywordflow}{if} slidenum >= lesson[\textcolor{stringliteral}{'slides'}]:
-00219                         \textcolor{keywordflow}{raise} PermissionDenied(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_403\_STD"}])
-00220 
-00221                     url = LESSONS\_URL + lesson[\textcolor{stringliteral}{'url'}]
-00222                     url = url + \textcolor{stringliteral}{"/"} + str(slidenum) + \textcolor{stringliteral}{".html"}
-00223                     \textcolor{keywordflow}{return} render(request, url, \{ \textcolor{stringliteral}{'max'}: lesson[\textcolor{stringliteral}{'slides'}] \})
+00218         \textcolor{keywordflow}{if} request.method == \textcolor{stringliteral}{"GET"}:
+00219             \textcolor{keywordflow}{if} courseid:
+00220                 \textcolor{keywordflow}{if} courseid \textcolor{keywordflow}{in} map(\textcolor{keyword}{lambda} x: x[\textcolor{stringliteral}{"id"}], user[\textcolor{stringliteral}{"courses"}]):
+00221                     course = self.bus.getCourse(user, courseid)
+00222                     \textcolor{keywordflow}{return} render(request, \hyperlink{namespaceCourse_1_1macros_a9a69c2455c0c121b1c01960629575d7e}{GENERAL\_URL}(\textcolor{stringliteral}{"frame.html"}), 
+00223                         \{\textcolor{stringliteral}{'course'}:course\})
 00224                 \textcolor{keywordflow}{else}:
-00225                     \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_LES'}])
-00226             \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
-00227                 \textcolor{keywordflow}{return} render(request, GENERAL\_URL + \textcolor{stringliteral}{"assync\_std.html"},
-00228                         \{\textcolor{stringliteral}{'error'}: exc\})
-00229                 
-
+00225                     ld = lang.DICT
+00226                     \textcolor{keywordflow}{raise} PermissionDenied(ld[\textcolor{stringliteral}{"EXCEPTION\_403\_STD"}])
+00227             \textcolor{keywordflow}{else}:   
+00228                 \textcolor{keywordflow}{raise} PermissionDenied(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_403\_STD"}])
+00229 
+00230         \textcolor{keywordflow}{elif} request.method == \textcolor{stringliteral}{"POST"}:
+00231             lesson\_form = \hyperlink{classCourse_1_1forms_1_1LessonForm}{LessonForm}(request.POST)
+00232             \textcolor{keywordflow}{try}:
+00233                 \textcolor{keywordflow}{if} lesson\_form.is\_valid():
+00234                     lessonid = lesson\_form.cleaned\_data[\textcolor{stringliteral}{'lesson\_id'}]
+00235                     lessonid = lessonid.value
+00236 
+00237                     slidenum = lesson\_form.cleaned\_data[\textcolor{stringliteral}{'slide\_number'}]
+00238                     slidenum = slidenum.value
+00239 
+00240                     gc = self.bus.getCompleted
+00241 
+00242                     \textcolor{keywordflow}{if} unicode(lessonid) \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} gc(user, \textcolor{stringliteral}{'LOCK'}) \textcolor{keywordflow}{and}\(\backslash\)
+00243                        unicode(lessonid) \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} gc(user, \textcolor{stringliteral}{'LESSON'}):
+00244                             ld = lang.DICT
+00245                             \textcolor{keywordflow}{raise} PermissionDenied(ld[\textcolor{stringliteral}{"EXCEPTION\_403\_STD"}])
+00246                         
+00247 
+00248                     lesson = self.bus.getLesson(lessonid)
+00249 
+00250                     maxslides = lesson[\textcolor{stringliteral}{'slides'}]+len(lesson[\textcolor{stringliteral}{'exercises'}])
+00251 
+00252                     \textcolor{keywordflow}{if} slidenum >= maxslides \textcolor{keywordflow}{or} slidenum < 0:
+00253                         \textcolor{keywordflow}{raise} PermissionDenied(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_403\_STD"}])
+00254 
+00255                     \textcolor{keywordflow}{if} slidenum < lesson[\textcolor{stringliteral}{'slides'}]:
+00256                         lurl = lesson[\textcolor{stringliteral}{'url'}]
+00257                         url = \hyperlink{namespaceCourse_1_1macros_a4473a418de016b59cce33b13440e469b}{LESSONS\_URL}(lurl + \textcolor{stringliteral}{"/"} + str(slidenum) + \textcolor{stringliteral}{".html"})
+00258 
+00259                         \textcolor{keywordflow}{return} render(request, url, \{ \textcolor{stringliteral}{'max'}: maxslides \})
+00260                     \textcolor{keywordflow}{else}:
+00261                         exercise\_id = slidenum - lesson[\textcolor{stringliteral}{'slides'}]
+00262                         exercise\_url = lesson[\textcolor{stringliteral}{'exercises'}][exercise\_id]
+00263                         url = \hyperlink{namespaceCourse_1_1macros_ac1cf8b3a78128ab6a3bac4f6be9fabbd}{EXERCISES\_URL}(exercise\_url + \textcolor{stringliteral}{".html"})
+00264 
+00265                         exercise=self.bus.createExercise(request, exercise\_url)
+00266 
+00267                         \textcolor{keywordflow}{return} render(request, url, \{ \textcolor{stringliteral}{'max'}: maxslides,
+00268                                                       \textcolor{stringliteral}{'exercise'}: exercise \})
+00269                 \textcolor{keywordflow}{else}:
+00270                     \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_LES'}])
+00271             \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00272                 \textcolor{keywordflow}{return} render(request, \hyperlink{namespaceCourse_1_1macros_a9a69c2455c0c121b1c01960629575d7e}{GENERAL\_URL}(\textcolor{stringliteral}{"assync\_std.html"}),
+00273                         \{\textcolor{stringliteral}{'error'}: exc\})
+00274                 
+00275 
 \end{DoxyCode}
 
 
-A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}
+A documentação para esta classe foi gerada a partir do seguinte arquivo\+:\begin{DoxyCompactItemize}
 \item 
-E\-L\-O/\-Course/\hyperlink{CourseUnit_8py}{Course\-Unit.\-py}\end{DoxyCompactItemize}
+E\+L\+O/\+Course/\hyperlink{CourseUnit_8py}{Course\+Unit.\+py}\end{DoxyCompactItemize}

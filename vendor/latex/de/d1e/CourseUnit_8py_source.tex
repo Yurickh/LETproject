@@ -1,6 +1,5 @@
-\hypertarget{CourseUnit_8py}{\subsection{Course\-Unit.\-py}
-\label{CourseUnit_8py}\index{E\-L\-O/\-Course/\-Course\-Unit.\-py@{E\-L\-O/\-Course/\-Course\-Unit.\-py}}
-}
+\hypertarget{CourseUnit_8py_source}{}\subsection{Course\+Unit.\+py}
+\label{CourseUnit_8py_source}\index{E\+L\+O/\+Course/\+Course\+Unit.\+py@{E\+L\+O/\+Course/\+Course\+Unit.\+py}}
 
 \begin{DoxyCode}
 \hypertarget{CourseUnit_8py_source_l00001}{}\hyperlink{namespaceCourse_1_1CourseUnit}{00001} \textcolor{comment}{#coding: utf-8}
@@ -18,294 +17,416 @@
 00013 \textcolor{comment}{# lição/módulo) se tiver obtido uma pontuação mínima na lição/módulo anterior.}
 00014 
 00015 \textcolor{keyword}{from} abc \textcolor{keyword}{import}*
-00016 
-00017 \textcolor{keyword}{import} \hyperlink{namespaceELO_1_1locale_1_1index}{ELO.locale.index} \textcolor{keyword}{as} lang
-00018 
-00019 \textcolor{keyword}{from} \hyperlink{namespaceELO_1_1models}{ELO.models} \textcolor{keyword}{import} Courses, Module, Lesson, Student
-00020 
-00021 \textcolor{keyword}{from} \hyperlink{namespaceCourse_1_1forms}{Course.forms} \textcolor{keyword}{import} LessonForm
-00022 
-00023 \textcolor{keyword}{from} django.shortcuts \textcolor{keyword}{import} render
-00024 \textcolor{keyword}{from} django.core.exceptions \textcolor{keyword}{import} PermissionDenied
-00025 \textcolor{keyword}{from} django.http \textcolor{keyword}{import} Http404
-00026 \textcolor{keyword}{from} django.forms \textcolor{keyword}{import} ValidationError
-00027 
-00028 \textcolor{comment}{##Macro responsável por armazenar a URL relativa dos templates de lições.}
-\hypertarget{CourseUnit_8py_source_l00029}{}\hyperlink{namespaceCourse_1_1CourseUnit_a5ba3476c382ac640c10e98345fb14a85}{00029} LESSONS\_URL = \textcolor{stringliteral}{'Course/lessons/'}
-00030 \textcolor{comment}{##Macro responsável por armazenar a URL relativa dos templates gerais do curso.}
-\hypertarget{CourseUnit_8py_source_l00031}{}\hyperlink{namespaceCourse_1_1CourseUnit_a3cd710129a2643083c77f1999a514340}{00031} GENERAL\_URL = \textcolor{stringliteral}{'Course/general/'}
-00032 
-00033 \textcolor{comment}{## Interface da camada de Apresentação do módulo de Curso.}
-00034 \textcolor{comment}{#   É responsável pelo devido processamento do frame de curso; seleção de}
-00035 \textcolor{comment}{# curso, módulo, lição e slide; formatação dos templates de exercícios; }
-00036 \textcolor{comment}{# bem como o processamento do primeiro nível da administração dos dados}
-00037 \textcolor{comment}{# submetidos em exercícios.}
-\hypertarget{CourseUnit_8py_source_l00038}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse}{00038} \textcolor{keyword}{class }\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse}{IfUiCourse}:
-00039     \_\_metaclass\_\_ = ABCMeta
-00040 
-00041     \textcolor{comment}{## Força a criação da camada subjacente.}
-\hypertarget{CourseUnit_8py_source_l00042}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a2520bf9924cf4f583820ad9fac468fe2}{00042}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a2520bf9924cf4f583820ad9fac468fe2}{\_\_init\_\_}(self, bus):
-00043         \textcolor{keywordflow}{try}:
-\hypertarget{CourseUnit_8py_source_l00044}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a228fc709b99da3a7e6f5020bd07cee03}{00044}             self.\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a228fc709b99da3a7e6f5020bd07cee03}{bus} = bus
-00045         \textcolor{keywordflow}{except} TypeError \textcolor{keyword}{as} exc:
-00046             del self
-00047             \textcolor{keywordflow}{raise} exc
-00048 
-00049     @property
-\hypertarget{CourseUnit_8py_source_l00050}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a6d3c42a9777fe9dd395d9390aef47903}{00050}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a228fc709b99da3a7e6f5020bd07cee03}{bus}(self):
-00051         \textcolor{keywordflow}{return} self.\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_aa961f0720b3e194f935a29f6cd0bbbd5}{\_\_bus}
-00052 
-00053     @bus.setter
-\hypertarget{CourseUnit_8py_source_l00054}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a6d3c42a9777fe9dd395d9390aef47903}{00054}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a228fc709b99da3a7e6f5020bd07cee03}{bus}(self, value):
-00055         \textcolor{keywordflow}{if} isinstance(value, IfBusCourse):
-00056             self.\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_aa961f0720b3e194f935a29f6cd0bbbd5}{\_\_bus} = value
-00057         \textcolor{keywordflow}{else}:
-00058             \textcolor{keywordflow}{raise} TypeError(\textcolor{stringliteral}{"Expected IfBusCourse instance at UiCourse.\_\_bus. Received "} + str(type(value))
+00016 \textcolor{keyword}{from} random \textcolor{keyword}{import} shuffle
+00017 
+00018 \textcolor{keyword}{import} \hyperlink{namespaceELO_1_1locale_1_1index}{ELO.locale.index} \textcolor{keyword}{as} lang
+00019 
+00020 \textcolor{keyword}{from} \hyperlink{namespaceELO_1_1models}{ELO.models} \textcolor{keyword}{import} Courses, Module, Lesson, Exercise, Student
+00021 
+00022 \textcolor{keyword}{from} \hyperlink{namespaceCourse_1_1forms}{Course.forms} \textcolor{keyword}{import} LessonForm
+00023 \textcolor{keyword}{from} \hyperlink{namespaceCourse_1_1macros}{Course.macros} \textcolor{keyword}{import} LESSONS\_URL, GENERAL\_URL, EXERCISES\_URL, ExerciseType
+00024 
+00025 \textcolor{keyword}{from} django.middleware \textcolor{keyword}{import} csrf
+00026 \textcolor{keyword}{from} django.shortcuts \textcolor{keyword}{import} render
+00027 \textcolor{keyword}{from} django.core.exceptions \textcolor{keyword}{import} PermissionDenied
+00028 \textcolor{keyword}{from} django.http \textcolor{keyword}{import} Http404
+00029 \textcolor{keyword}{from} django.forms \textcolor{keyword}{import} ValidationError
+00030 \textcolor{keyword}{from} django \textcolor{keyword}{import} template
+00031 
+00032 \textcolor{comment}{## Interface da camada de Apresentação do módulo de Curso.}
+00033 \textcolor{comment}{#   É responsável pelo devido processamento do frame de curso; seleção de}
+00034 \textcolor{comment}{# curso, módulo, lição e slide; formatação dos templates de exercícios; }
+00035 \textcolor{comment}{# bem como o processamento do primeiro nível da administração dos dados}
+00036 \textcolor{comment}{# submetidos em exercícios.}
+\hypertarget{CourseUnit_8py_source_l00037}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse}{00037} \textcolor{keyword}{class }\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse}{IfUiCourse}:
+00038     \_\_metaclass\_\_ = ABCMeta
+00039 
+00040     \textcolor{comment}{## Força a criação da camada subjacente.}
+\hypertarget{CourseUnit_8py_source_l00041}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a78517986cfd5598ae312624ec252d2cd}{00041}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a78517986cfd5598ae312624ec252d2cd}{\_\_init\_\_}(self, bus):
+00042         \textcolor{keywordflow}{try}:
+\hypertarget{CourseUnit_8py_source_l00043}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a228fc709b99da3a7e6f5020bd07cee03}{00043}             self.\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a228fc709b99da3a7e6f5020bd07cee03}{bus} = bus
+00044         \textcolor{keywordflow}{except} TypeError \textcolor{keyword}{as} exc:
+00045             del self
+00046             \textcolor{keywordflow}{raise} exc
+00047 
+00048     @property
+\hypertarget{CourseUnit_8py_source_l00049}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_af9f448bf861939bd039faed2f82de324}{00049}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a228fc709b99da3a7e6f5020bd07cee03}{bus}(self):
+00050         \textcolor{keywordflow}{return} self.\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_aa961f0720b3e194f935a29f6cd0bbbd5}{\_\_bus}
+00051 
+00052     @bus.setter
+\hypertarget{CourseUnit_8py_source_l00053}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_aef77e4a900a9eb4e1927ae8de1c439f7}{00053}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a228fc709b99da3a7e6f5020bd07cee03}{bus}(self, value):
+00054         \textcolor{keywordflow}{if} isinstance(value, IfBusCourse):
+00055             self.\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_aa961f0720b3e194f935a29f6cd0bbbd5}{\_\_bus} = value
+00056         \textcolor{keywordflow}{else}:
+00057             \textcolor{keywordflow}{raise} TypeError(\textcolor{stringliteral}{"Expected IfBusCourse instance at UiCourse.\_\_bus. Received "} + str(type(value))
        + \textcolor{stringliteral}{" instead."})
-00059 
-00060     @bus.deleter
-\hypertarget{CourseUnit_8py_source_l00061}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a6d3c42a9777fe9dd395d9390aef47903}{00061}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a228fc709b99da3a7e6f5020bd07cee03}{bus}(self):
-00062         del self.\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_aa961f0720b3e194f935a29f6cd0bbbd5}{\_\_bus}
-00063 
-00064     \textcolor{comment}{## run() é o principal método de qualquer classe de apresentação.}
-00065     \textcolor{comment}{#   Este método permite à Factory (ver MainUnit.py) dar controle}
-00066     \textcolor{comment}{#   do programa para este módulo.}
-00067     \textcolor{comment}{#}
-00068     \textcolor{comment}{#   @arg request    Objeto HttpRequest enviado pela requisição do navegador}
-00069     \textcolor{comment}{#}
-00070     \textcolor{comment}{#   @arg courseid   Identificador do curso.}
-00071     \textcolor{comment}{#                       Deve necessariamente ser um inteiro validado}
-00072     \textcolor{comment}{#                       através do objeto Id (vide BaseUnit.py).}
-00073     @abstractmethod
-\hypertarget{CourseUnit_8py_source_l00074}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a5b174a0ca1e8fec0bb322d518c6b9cbe}{00074}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a5b174a0ca1e8fec0bb322d518c6b9cbe}{run}(self, request, courseid=None): \textcolor{keyword}{pass}
+00058 
+00059     @bus.deleter
+\hypertarget{CourseUnit_8py_source_l00060}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_af9f448bf861939bd039faed2f82de324}{00060}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a228fc709b99da3a7e6f5020bd07cee03}{bus}(self):
+00061         del self.\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_aa961f0720b3e194f935a29f6cd0bbbd5}{\_\_bus}
+00062 
+00063     \textcolor{comment}{## run() é o principal método de qualquer classe de apresentação.}
+00064     \textcolor{comment}{#   Este método permite à Factory (ver MainUnit.py) dar controle}
+00065     \textcolor{comment}{#   do programa para este módulo.}
+00066     \textcolor{comment}{#}
+00067     \textcolor{comment}{#   @arg request    Objeto HttpRequest enviado pela requisição do navegador}
+00068     \textcolor{comment}{#}
+00069     \textcolor{comment}{#   @arg courseid   Identificador do curso.}
+00070     \textcolor{comment}{#                       Deve necessariamente ser um inteiro validado}
+00071     \textcolor{comment}{#                       através do objeto Id (vide BaseUnit.py).}
+00072     @abstractmethod
+\hypertarget{CourseUnit_8py_source_l00073}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a5b174a0ca1e8fec0bb322d518c6b9cbe}{00073}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse_a5b174a0ca1e8fec0bb322d518c6b9cbe}{run}(self, request, courseid=None): \textcolor{keyword}{pass}
+00074 
 00075 
-00076 
-00077 \textcolor{comment}{## Interface da camada de Negócio do módulo de Curso.}
-00078 \textcolor{comment}{#   É responsável pelo processamento inteligente dos dados, validação}
-00079 \textcolor{comment}{# e recuperação de dados.}
-00080 \textcolor{comment}{#   Esta camada é a interface necessária de comunicação entre a camada}
-00081 \textcolor{comment}{# de apresentação - o usuário - e a camada de persistência - o servidor.}
-\hypertarget{CourseUnit_8py_source_l00082}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse}{00082} \textcolor{keyword}{class }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse}{IfBusCourse}:
-00083     \_\_metaclass\_\_ = ABCMeta
-00084 
-00085     \textcolor{comment}{## Garante a criação da camada subjacente.}
-\hypertarget{CourseUnit_8py_source_l00086}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ad2920d0a7dcd1838f1220f644e8244e5}{00086}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ad2920d0a7dcd1838f1220f644e8244e5}{\_\_init\_\_}(self, pers):
-00087         \textcolor{keywordflow}{try}:
-\hypertarget{CourseUnit_8py_source_l00088}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{00088}             self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{pers} = pers
-00089         \textcolor{keywordflow}{except} TypeError \textcolor{keyword}{as} exc:
-00090             del self
-00091             \textcolor{keywordflow}{raise} exc
-00092 
-00093     @property
-\hypertarget{CourseUnit_8py_source_l00094}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_adf5702dec1a99bbb31936b7f1d425a40}{00094}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{pers}(self):
-00095         \textcolor{keywordflow}{return} self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a4d7664514162640c28bda49579b46ef0}{\_\_pers}
-00096     
-00097     @pers.setter
-\hypertarget{CourseUnit_8py_source_l00098}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_adf5702dec1a99bbb31936b7f1d425a40}{00098}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{pers}(self, value):
-00099         \textcolor{keywordflow}{if} isinstance(value, IfPersCourse):
-00100             self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a4d7664514162640c28bda49579b46ef0}{\_\_pers} = value
-00101         \textcolor{keywordflow}{else}:
-00102             \textcolor{keywordflow}{raise} TypeError(\textcolor{stringliteral}{"Expected IfPersCourse instance at BusCourse.\_\_pers. Received "} + str(type(
+00076 \textcolor{comment}{## Interface da camada de Negócio do módulo de Curso.}
+00077 \textcolor{comment}{#   É responsável pelo processamento inteligente dos dados, validação}
+00078 \textcolor{comment}{# e recuperação de dados.}
+00079 \textcolor{comment}{#   Esta camada é a interface necessária de comunicação entre a camada}
+00080 \textcolor{comment}{# de apresentação - o usuário - e a camada de persistência - o servidor.}
+\hypertarget{CourseUnit_8py_source_l00081}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse}{00081} \textcolor{keyword}{class }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse}{IfBusCourse}:
+00082     \_\_metaclass\_\_ = ABCMeta
+00083 
+00084     \textcolor{comment}{## Garante a criação da camada subjacente.}
+\hypertarget{CourseUnit_8py_source_l00085}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a8bcb71202e7d221f7a8cc4265f09158e}{00085}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a8bcb71202e7d221f7a8cc4265f09158e}{\_\_init\_\_}(self, pers):
+00086         \textcolor{keywordflow}{try}:
+\hypertarget{CourseUnit_8py_source_l00087}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{00087}             self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{pers} = pers
+00088         \textcolor{keywordflow}{except} TypeError \textcolor{keyword}{as} exc:
+00089             del self
+00090             \textcolor{keywordflow}{raise} exc
+00091 
+00092     @property
+\hypertarget{CourseUnit_8py_source_l00093}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a7942e9a93e317a21a876f1c0ee851c0d}{00093}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{pers}(self):
+00094         \textcolor{keywordflow}{return} self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a4d7664514162640c28bda49579b46ef0}{\_\_pers}
+00095     
+00096     @pers.setter
+\hypertarget{CourseUnit_8py_source_l00097}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a4fcbdd85c4800dcb00b234bad4ee13f5}{00097}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{pers}(self, value):
+00098         \textcolor{keywordflow}{if} isinstance(value, IfPersCourse):
+00099             self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a4d7664514162640c28bda49579b46ef0}{\_\_pers} = value
+00100         \textcolor{keywordflow}{else}:
+00101             \textcolor{keywordflow}{raise} TypeError(\textcolor{stringliteral}{"Expected IfPersCourse instance at BusCourse.\_\_pers. Received "} + str(type(
       value)) + \textcolor{stringliteral}{"instead."})
-00103 
-00104     @pers.deleter
-\hypertarget{CourseUnit_8py_source_l00105}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_adf5702dec1a99bbb31936b7f1d425a40}{00105}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{pers}(self):
-00106         del self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a4d7664514162640c28bda49579b46ef0}{\_\_pers}
+00102 
+00103     @pers.deleter
+\hypertarget{CourseUnit_8py_source_l00104}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a7942e9a93e317a21a876f1c0ee851c0d}{00104}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ab926ae8fb127b7697e2b63025df09a78}{pers}(self):
+00105         del self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a4d7664514162640c28bda49579b46ef0}{\_\_pers}
+00106 
 00107 
-00108 
-00109     \textcolor{comment}{## Método que recupera uma lista dos módulos ou lições.}
-00110     \textcolor{comment}{#}
-00111     \textcolor{comment}{#   @arg user       Objeto usuário, como no contido no cookie user.}
-00112     \textcolor{comment}{#}
-00113     \textcolor{comment}{#   @arg accesstype String contendo "MODULE", "LOCK" ou "LESSON"}
-00114     \textcolor{comment}{#}
-00115     \textcolor{comment}{#   @return         Lista contendo todas os módulos cadastrados,}
-00116     \textcolor{comment}{#                       lições destravadas ou cadastrados para o}
-00117     \textcolor{comment}{#                       usuário 'user', variando sob o argumento}
-00118     \textcolor{comment}{#                       accesstype.}
-00119     @abstractmethod
-\hypertarget{CourseUnit_8py_source_l00120}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ae83d657f3a281dd8a9ade3e7a9db0659}{00120}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ae83d657f3a281dd8a9ade3e7a9db0659}{getCompleted}(self, user, accesstype): \textcolor{keyword}{pass}
-00121 
-00122     \textcolor{comment}{## Método que recupera um objeto que representa um curso.}
-00123     \textcolor{comment}{#}
-00124     \textcolor{comment}{#   @arg user       Objeto usuário, como no contido no cookie user.}
-00125     \textcolor{comment}{#}
-00126     \textcolor{comment}{#   @arg courseid   Identificador do curso.}
-00127     \textcolor{comment}{#                       Deve ser um inteiro de acordo com o padrão de Id().}
-00128     \textcolor{comment}{#}
-00129     \textcolor{comment}{#   @return         Retorna um objeto curso com os seguintes atributos:}
-00130     \textcolor{comment}{#                       - NAME    : Identifica o nome do curso;}
-00131     \textcolor{comment}{#                       - ID      : Identifica univocamente o curso;}
-00132     \textcolor{comment}{#                       - STUDENTS: Lista de Ids de alunos cadastrados;}
-00133     \textcolor{comment}{#                       - MODULES : Lista de dicionários que representam}
-00134     \textcolor{comment}{#                                       cada um dos módulos.}
-00135     @abstractmethod
-\hypertarget{CourseUnit_8py_source_l00136}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a26af1b8d56c117b45a9ef3d1dcfbd3a9}{00136}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a26af1b8d56c117b45a9ef3d1dcfbd3a9}{getCourse}(self, user, courseid): \textcolor{keyword}{pass}
-00137 
-00138     \textcolor{comment}{## Método que recupera um objeto que representa uma lição.}
-00139     \textcolor{comment}{#}
-00140     \textcolor{comment}{#   @arg user       Objeto usuário, como no contido no cookie user.}
+00108     \textcolor{comment}{## Método que recupera uma lista dos módulos ou lições.}
+00109     \textcolor{comment}{#}
+00110     \textcolor{comment}{#   @arg user       Objeto usuário, como no contido no cookie user.}
+00111     \textcolor{comment}{#}
+00112     \textcolor{comment}{#   @arg accesstype String contendo "MODULE", "LOCK" ou "LESSON"}
+00113     \textcolor{comment}{#}
+00114     \textcolor{comment}{#   @return         Lista contendo todas os módulos cadastrados,}
+00115     \textcolor{comment}{#                       lições destravadas ou cadastrados para o}
+00116     \textcolor{comment}{#                       usuário 'user', variando sob o argumento}
+00117     \textcolor{comment}{#                       accesstype.}
+00118     @abstractmethod
+\hypertarget{CourseUnit_8py_source_l00119}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_af764ac539a72d830490a80e4d70f567a}{00119}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_af764ac539a72d830490a80e4d70f567a}{getCompleted}(self, user, accesstype): \textcolor{keyword}{pass}
+00120 
+00121     \textcolor{comment}{## Método que recupera um objeto que representa um curso.}
+00122     \textcolor{comment}{#}
+00123     \textcolor{comment}{#   @arg user       Objeto usuário, como no contido no cookie user.}
+00124     \textcolor{comment}{#}
+00125     \textcolor{comment}{#   @arg courseid   Identificador do curso.}
+00126     \textcolor{comment}{#                       Deve ser um inteiro de acordo com o padrão de Id().}
+00127     \textcolor{comment}{#}
+00128     \textcolor{comment}{#   @return         Retorna um objeto curso com os seguintes atributos:}
+00129     \textcolor{comment}{#                       - NAME    : Identifica o nome do curso;}
+00130     \textcolor{comment}{#                       - ID      : Identifica univocamente o curso;}
+00131     \textcolor{comment}{#                       - STUDENTS: Lista de Ids de alunos cadastrados;}
+00132     \textcolor{comment}{#                       - MODULES : Lista de dicionários que representam}
+00133     \textcolor{comment}{#                                       cada um dos módulos.}
+00134     @abstractmethod
+\hypertarget{CourseUnit_8py_source_l00135}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a35ae9c09ba977c6f37f97e204ac137cd}{00135}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a35ae9c09ba977c6f37f97e204ac137cd}{getCourse}(self, user, courseid): \textcolor{keyword}{pass}
+00136 
+00137     \textcolor{comment}{## Método que recupera um objeto que representa uma lição.}
+00138     \textcolor{comment}{#}
+00139     \textcolor{comment}{#   @arg lessonid   Identificador do curso.}
+00140     \textcolor{comment}{#                       Deve ser um inteiro de acordo com o padrão de Id().}
 00141     \textcolor{comment}{#}
-00142     \textcolor{comment}{#   @arg lessonid   Identificador do curso.}
-00143     \textcolor{comment}{#                       Deve ser um inteiro de acordo com o padrão de Id().}
-00144     \textcolor{comment}{#}
-00145     \textcolor{comment}{#   @return         Retorna um objeto lição, com os seguintes atributos:}
-00146     \textcolor{comment}{#                       - url       : Caminho para a lição a partir de}
-00147     \textcolor{comment}{#                                     ELO/templates/Course/lessons/;}
-00148     \textcolor{comment}{#                       - name      : Nome da lição;}
-00149     \textcolor{comment}{#                       - slides    : Número de slides da lição em questão;}
-00150     \textcolor{comment}{#                       - exercises : Lista de ids de exercícios que a}
-00151     \textcolor{comment}{#                                       lição possui.}
-00152     @abstractmethod
-\hypertarget{CourseUnit_8py_source_l00153}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a62f1a9a39f82736721c32ffaac16798c}{00153}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a62f1a9a39f82736721c32ffaac16798c}{getLesson}(self, user, lessonid): \textcolor{keyword}{pass}
-00154 
-00155 
-00156 \textcolor{comment}{## Interface da camada de Persistência para o módulo de Curso.}
-00157 \textcolor{comment}{#   Deve ser capaz de acessar de forma transparente o banco de dados.}
-00158 \textcolor{comment}{#   Deve também ser a única forma de acessar tais dados dentro deste módulo.}
-\hypertarget{CourseUnit_8py_source_l00159}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfPersCourse}{00159} \textcolor{keyword}{class }\hyperlink{classCourse_1_1CourseUnit_1_1IfPersCourse}{IfPersCourse}:
-00160 
-00161     \textcolor{comment}{## Método que recupera o Id() de um objeto.}
-00162     \textcolor{comment}{#}
-00163     \textcolor{comment}{#   @arg field  Nome do campo a ser filtrado.}
-00164     \textcolor{comment}{#}
-00165     \textcolor{comment}{#   @arg value  Valor que deve haver no campo.}
-00166     \textcolor{comment}{#}
-00167     \textcolor{comment}{#   @arg db     Objeto do modelo a ser utilizado.}
-00168     \textcolor{comment}{#                   Deve ser importado de ELO.models.}
+00142     \textcolor{comment}{#   @return         Retorna um objeto lição, com os seguintes atributos:}
+00143     \textcolor{comment}{#                       - url       : Caminho para a lição a partir de}
+00144     \textcolor{comment}{#                                     ELO/templates/Course/lessons/;}
+00145     \textcolor{comment}{#                       - name      : Nome da lição;}
+00146     \textcolor{comment}{#                       - slides    : Número de slides da lição em questão;}
+00147     \textcolor{comment}{#                       - exercises : Lista de ids de exercícios que a}
+00148     \textcolor{comment}{#                                       lição possui.}
+00149     @abstractmethod
+\hypertarget{CourseUnit_8py_source_l00150}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a528e12ea84cb348f2c349613ed62f586}{00150}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a528e12ea84cb348f2c349613ed62f586}{getLesson}(self, lessonid): \textcolor{keyword}{pass}
+00151 
+00152     \textcolor{comment}{## Método que cria e formata um objeto que representa um exercício.}
+00153     \textcolor{comment}{#}
+00154     \textcolor{comment}{#   @arg ex\_url     Objeto Link()-compatível que leva ao exercício.}
+00155     \textcolor{comment}{#   }
+00156     \textcolor{comment}{#   @arg request    Objeto request fornecido pelo navegador.}
+00157     \textcolor{comment}{#}
+00158     \textcolor{comment}{#   @return         Retorna um objeto exercício.}
+00159     @abstractmethod
+\hypertarget{CourseUnit_8py_source_l00160}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a1467691a3312e00b43e92c30456d226f}{00160}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a1467691a3312e00b43e92c30456d226f}{createExercise}(self, request, ex\_url): \textcolor{keyword}{pass}
+00161 
+00162     \textcolor{comment}{## Método que corrige um exercício.}
+00163     \textcolor{comment}{#}
+00164     \textcolor{comment}{#   @arg ex\_url     Objeto Link()-compatível que leva ao exercício.}
+00165     \textcolor{comment}{#}
+00166     \textcolor{comment}{#   @arg answer     Resposta fornecida pelo usuário.}
+00167     \textcolor{comment}{#}
+00168     \textcolor{comment}{#   @return         Booleano: true significa certo e false, errado.}
 00169     @abstractmethod
-\hypertarget{CourseUnit_8py_source_l00170}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfPersCourse_addc6cb006b42968019daf0dcdb8bde9b}{00170}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfPersCourse_addc6cb006b42968019daf0dcdb8bde9b}{getid}(self, field, value, db): \textcolor{keyword}{pass}
+\hypertarget{CourseUnit_8py_source_l00170}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a2dab60981cdb691f1b95b5ed4a4022d8}{00170}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_a2dab60981cdb691f1b95b5ed4a4022d8}{correctExercise}(self, ex\_url, answer): \textcolor{keyword}{pass}
 00171 
-00172     \textcolor{comment}{## Realiza uma pesquisa no banco de dados.}
-00173     \textcolor{comment}{#}
-00174     \textcolor{comment}{#   @arg id     Identificador do objeto requisitado.}
-00175     \textcolor{comment}{#                   Pode ser obtido através do método getid().}
-00176     \textcolor{comment}{#   }
-00177     \textcolor{comment}{#   @arg db     Objeto do modelo a ser utilizado.}
-00178     \textcolor{comment}{#                   Deve ser importado de ELO.models.}
-00179     @abstractmethod
-\hypertarget{CourseUnit_8py_source_l00180}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfPersCourse_adcd2e66255b773b6a196bafefdc851e8}{00180}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfPersCourse_adcd2e66255b773b6a196bafefdc851e8}{fetch}(self, id, db): \textcolor{keyword}{pass}
-00181 
-00182 
-\hypertarget{CourseUnit_8py_source_l00183}{}\hyperlink{classCourse_1_1CourseUnit_1_1UiCourse}{00183} \textcolor{keyword}{class }\hyperlink{classCourse_1_1CourseUnit_1_1UiCourse}{UiCourse}(\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse}{IfUiCourse}):
-00184 
-\hypertarget{CourseUnit_8py_source_l00185}{}\hyperlink{classCourse_1_1CourseUnit_1_1UiCourse_aaaf2b8229f2b774f12e719bc0e6f13cb}{00185}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1UiCourse_aaaf2b8229f2b774f12e719bc0e6f13cb}{run}(self, request, courseid=None):
-00186         
-00187         user = request.session[\textcolor{stringliteral}{'user'}]
-00188 
-00189         \textcolor{keywordflow}{if} request.method == \textcolor{stringliteral}{"GET"}:
-00190             \textcolor{keywordflow}{if} courseid:
-00191                 \textcolor{keywordflow}{if} courseid \textcolor{keywordflow}{in} map(\textcolor{keyword}{lambda} x: x[\textcolor{stringliteral}{"id"}], user[\textcolor{stringliteral}{"courses"}]):
-00192                     course = self.bus.getCourse(user, courseid)
-00193                     \textcolor{keywordflow}{return} render(request, GENERAL\_URL + \textcolor{stringliteral}{"frame.html"}, 
-00194                         \{\textcolor{stringliteral}{'course'}:course\})
-00195                 \textcolor{keywordflow}{else}:
-00196                     ld = lang.DICT
-00197                     \textcolor{keywordflow}{raise} PermissionDenied(ld[\textcolor{stringliteral}{"EXCEPTION\_403\_STD"}])
-00198         \textcolor{keywordflow}{elif} request.method == \textcolor{stringliteral}{"POST"}:
-00199             lesson\_form = \hyperlink{classCourse_1_1forms_1_1LessonForm}{LessonForm}(request.POST)
-00200             \textcolor{keywordflow}{try}:
-00201                 \textcolor{keywordflow}{if} lesson\_form.is\_valid():
-00202                     lessonid = lesson\_form.cleaned\_data[\textcolor{stringliteral}{'lesson\_id'}]
-00203                     lessonid = lessonid.value
-00204                     slidenum = lesson\_form.cleaned\_data[\textcolor{stringliteral}{'slide\_number'}]
-00205                     slidenum = slidenum.value
-00206 
-00207                     gc = self.bus.getCompleted
-00208 
-00209                     \textcolor{keywordflow}{if} unicode(lessonid) \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} gc(user, \textcolor{stringliteral}{'LOCK'}) \textcolor{keywordflow}{and}\(\backslash\)
-00210                        unicode(lessonid) \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} gc(user, \textcolor{stringliteral}{'LESSON'}):
-00211                             ld = lang.DICT
-00212                             \textcolor{keywordflow}{raise} PermissionDenied(ld[\textcolor{stringliteral}{"EXCEPTION\_403\_STD"}])
-00213                         
-00214 
-00215                     lesson = self.bus.getLesson(user, lessonid)
-00216 
-00217                     \textcolor{keywordflow}{if} slidenum >= lesson[\textcolor{stringliteral}{'slides'}]:
-00218                         \textcolor{keywordflow}{raise} PermissionDenied(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_403\_STD"}])
-00219 
-00220                     url = LESSONS\_URL + lesson[\textcolor{stringliteral}{'url'}]
-00221                     url = url + \textcolor{stringliteral}{"/"} + str(slidenum) + \textcolor{stringliteral}{".html"}
-00222                     \textcolor{keywordflow}{return} render(request, url, \{ \textcolor{stringliteral}{'max'}: lesson[\textcolor{stringliteral}{'slides'}] \})
-00223                 \textcolor{keywordflow}{else}:
-00224                     \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_LES'}])
-00225             \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
-00226                 \textcolor{keywordflow}{return} render(request, GENERAL\_URL + \textcolor{stringliteral}{"assync\_std.html"},
-00227                         \{\textcolor{stringliteral}{'error'}: exc\})
-00228                 
+00172 
+00173 \textcolor{comment}{## Interface da camada de Persistência para o módulo de Curso.}
+00174 \textcolor{comment}{#   Deve ser capaz de acessar de forma transparente o banco de dados.}
+00175 \textcolor{comment}{#   Deve também ser a única forma de acessar tais dados dentro deste módulo.}
+\hypertarget{CourseUnit_8py_source_l00176}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfPersCourse}{00176} \textcolor{keyword}{class }\hyperlink{classCourse_1_1CourseUnit_1_1IfPersCourse}{IfPersCourse}:
+00177 
+00178     \textcolor{comment}{## Pseudométodo que faz a chamada dos métodos atômicos desta camada.}
+00179     \textcolor{comment}{#}
+00180     \textcolor{comment}{#   @arg    s   self}
+00181     \textcolor{comment}{#}
+00182     \textcolor{comment}{#   @arg    x   field   Nome do campo a ser filtrado.}
+00183     \textcolor{comment}{#}
+00184     \textcolor{comment}{#   @arg    y   value   Valor que deve haver no campo.}
+00185     \textcolor{comment}{#}
+00186     \textcolor{comment}{#   @arg    z   dbase   Objeto do modelo a ser utilizado.}
+00187     \textcolor{comment}{#                           Deve ser importado de ELO.models.}
+\hypertarget{CourseUnit_8py_source_l00188}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfPersCourse_ae7dca869bdb9f9db07ce55bf78991aae}{00188}     retrieve=\textcolor{keyword}{lambda} s,x,y,z: s.fetch(s.getid(x, y, z), z)
+00189 
+00190     \textcolor{comment}{## Método que recupera o Id() de um objeto.}
+00191     \textcolor{comment}{#}
+00192     \textcolor{comment}{#   @arg field  Nome do campo a ser filtrado.}
+00193     \textcolor{comment}{#}
+00194     \textcolor{comment}{#   @arg value  Valor que deve haver no campo.}
+00195     \textcolor{comment}{#}
+00196     \textcolor{comment}{#   @arg db     Objeto do modelo a ser utilizado.}
+00197     \textcolor{comment}{#                   Deve ser importado de ELO.models.}
+00198     @abstractmethod
+\hypertarget{CourseUnit_8py_source_l00199}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfPersCourse_ad7318280b436d4c91b00a14e865317ee}{00199}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfPersCourse_ad7318280b436d4c91b00a14e865317ee}{getid}(self, field, value, db): \textcolor{keyword}{pass}
+00200 
+00201     \textcolor{comment}{## Realiza uma pesquisa no banco de dados.}
+00202     \textcolor{comment}{#}
+00203     \textcolor{comment}{#   @arg id     Identificador do objeto requisitado.}
+00204     \textcolor{comment}{#                   Pode ser obtido através do método getid().}
+00205     \textcolor{comment}{#   }
+00206     \textcolor{comment}{#   @arg db     Objeto do modelo a ser utilizado.}
+00207     \textcolor{comment}{#                   Deve ser importado de ELO.models.}
+00208     @abstractmethod
+\hypertarget{CourseUnit_8py_source_l00209}{}\hyperlink{classCourse_1_1CourseUnit_1_1IfPersCourse_a41c931a6cdf9184ca2aa3cfde7cd706a}{00209}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1IfPersCourse_a41c931a6cdf9184ca2aa3cfde7cd706a}{fetch}(self, id, db): \textcolor{keyword}{pass}
+00210 
+00211 
+\hypertarget{CourseUnit_8py_source_l00212}{}\hyperlink{classCourse_1_1CourseUnit_1_1UiCourse}{00212} \textcolor{keyword}{class }\hyperlink{classCourse_1_1CourseUnit_1_1UiCourse}{UiCourse}(\hyperlink{classCourse_1_1CourseUnit_1_1IfUiCourse}{IfUiCourse}):
+00213 
+\hypertarget{CourseUnit_8py_source_l00214}{}\hyperlink{classCourse_1_1CourseUnit_1_1UiCourse_aaaf2b8229f2b774f12e719bc0e6f13cb}{00214}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1UiCourse_aaaf2b8229f2b774f12e719bc0e6f13cb}{run}(self, request, courseid=None):
+00215         
+00216         user = request.session[\textcolor{stringliteral}{'user'}]
+00217 
+00218         \textcolor{keywordflow}{if} request.method == \textcolor{stringliteral}{"GET"}:
+00219             \textcolor{keywordflow}{if} courseid:
+00220                 \textcolor{keywordflow}{if} courseid \textcolor{keywordflow}{in} map(\textcolor{keyword}{lambda} x: x[\textcolor{stringliteral}{"id"}], user[\textcolor{stringliteral}{"courses"}]):
+00221                     course = self.bus.getCourse(user, courseid)
+00222                     \textcolor{keywordflow}{return} render(request, \hyperlink{namespaceCourse_1_1macros_a9a69c2455c0c121b1c01960629575d7e}{GENERAL\_URL}(\textcolor{stringliteral}{"frame.html"}), 
+00223                         \{\textcolor{stringliteral}{'course'}:course\})
+00224                 \textcolor{keywordflow}{else}:
+00225                     ld = lang.DICT
+00226                     \textcolor{keywordflow}{raise} PermissionDenied(ld[\textcolor{stringliteral}{"EXCEPTION\_403\_STD"}])
+00227             \textcolor{keywordflow}{else}:   
+00228                 \textcolor{keywordflow}{raise} PermissionDenied(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_403\_STD"}])
 00229 
-\hypertarget{CourseUnit_8py_source_l00230}{}\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse}{00230} \textcolor{keyword}{class }\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse}{BusCourse}(\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse}{IfBusCourse}):
-00231 
-00232 
-\hypertarget{CourseUnit_8py_source_l00233}{}\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_ae10471abc4ea6bdaa2e0a6ebc1069889}{00233}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_ae10471abc4ea6bdaa2e0a6ebc1069889}{getCompleted}(self, user, accesstype):
-00234         userid = self.pers.getid(\textcolor{stringliteral}{'NAME'}, user[\textcolor{stringliteral}{'name'}], Student)
-00235         userdata = self.pers.fetch(userid, Student)
+00230         \textcolor{keywordflow}{elif} request.method == \textcolor{stringliteral}{"POST"}:
+00231             lesson\_form = \hyperlink{classCourse_1_1forms_1_1LessonForm}{LessonForm}(request.POST)
+00232             \textcolor{keywordflow}{try}:
+00233                 \textcolor{keywordflow}{if} lesson\_form.is\_valid():
+00234                     lessonid = lesson\_form.cleaned\_data[\textcolor{stringliteral}{'lesson\_id'}]
+00235                     lessonid = lessonid.value
 00236 
-00237         \textcolor{keywordflow}{return} userdata.get(accesstype + \textcolor{stringliteral}{'\_COMPLETED'}, [])
-00238 
-\hypertarget{CourseUnit_8py_source_l00239}{}\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_ac7306e270597d7aac641d956f8e3f31f}{00239}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_ac7306e270597d7aac641d956f8e3f31f}{getCourse}(self, user, courseid):
-00240         compmlist = self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ae83d657f3a281dd8a9ade3e7a9db0659}{getCompleted}(user, \textcolor{stringliteral}{'MODULE'})
-00241         compllist = self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ae83d657f3a281dd8a9ade3e7a9db0659}{getCompleted}(user, \textcolor{stringliteral}{'LESSON'})
-00242         ulocklist = self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ae83d657f3a281dd8a9ade3e7a9db0659}{getCompleted}(user, \textcolor{stringliteral}{'LOCK'})
-00243         coursedata = self.pers.fetch(courseid, Courses)
-00244         modulelist = []
-00245         
-00246         \textcolor{keywordflow}{for} moduleid \textcolor{keywordflow}{in} coursedata[\textcolor{stringliteral}{'MODULE'}]:
-00247             sfm = self.pers.fetch(moduleid, Module)
-00248             modulename = sfm[\textcolor{stringliteral}{'NAME'}][0]
+00237                     slidenum = lesson\_form.cleaned\_data[\textcolor{stringliteral}{'slide\_number'}]
+00238                     slidenum = slidenum.value
+00239 
+00240                     gc = self.bus.getCompleted
+00241 
+00242                     \textcolor{keywordflow}{if} unicode(lessonid) \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} gc(user, \textcolor{stringliteral}{'LOCK'}) \textcolor{keywordflow}{and}\(\backslash\)
+00243                        unicode(lessonid) \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} gc(user, \textcolor{stringliteral}{'LESSON'}):
+00244                             ld = lang.DICT
+00245                             \textcolor{keywordflow}{raise} PermissionDenied(ld[\textcolor{stringliteral}{"EXCEPTION\_403\_STD"}])
+00246                         
+00247 
+00248                     lesson = self.bus.getLesson(lessonid)
 00249 
-00250             lessonlist = []
+00250                     maxslides = lesson[\textcolor{stringliteral}{'slides'}]+len(lesson[\textcolor{stringliteral}{'exercises'}])
 00251 
-00252             \textcolor{keywordflow}{for} lessonid \textcolor{keywordflow}{in} sfm[\textcolor{stringliteral}{'LESSON'}]:
-00253                 lessoname = self.pers.fetch(lessonid, Lesson)[\textcolor{stringliteral}{'NAME'}]
-00254                 lessoncomplete = \textcolor{keyword}{True} \textcolor{keywordflow}{if} lessonid \textcolor{keywordflow}{in} compllist \textcolor{keywordflow}{else} \textcolor{keyword}{False}
-00255                 lessonunlocked = \textcolor{keyword}{True} \textcolor{keywordflow}{if} lessonid \textcolor{keywordflow}{in} ulocklist \textcolor{keywordflow}{else} \textcolor{keyword}{False}
-00256                 lessonlist = lessonlist + [\{\textcolor{stringliteral}{'id'}: lessonid,
-00257                                             \textcolor{stringliteral}{'name'}:lessoname[0],
-00258                                             \textcolor{stringliteral}{'complete'}:lessoncomplete,
-00259                                             \textcolor{stringliteral}{'unlocked'}:lessonunlocked \}]
-00260 
-00261             modulelist = modulelist + [\{\textcolor{stringliteral}{'id'}:       moduleid,
-00262                                         \textcolor{stringliteral}{'name'}:     modulename,
-00263                                         \textcolor{stringliteral}{'lessons'}:  lessonlist,
-00264                                         \textcolor{stringliteral}{'complete'}:\textcolor{keyword}{True} \(\backslash\)
-00265                                             \textcolor{keywordflow}{if} moduleid \textcolor{keywordflow}{in} compmlist \(\backslash\)
-00266                                             \textcolor{keywordflow}{else} \textcolor{keyword}{False}
-00267                                       \}]
-00268         
-00269         coursedata[\textcolor{stringliteral}{'MODULE'}] = sorted(modulelist, key=\textcolor{keyword}{lambda} x: x[\textcolor{stringliteral}{'id'}])
-00270 
-00271         \textcolor{keywordflow}{return} coursedata
-00272 
-\hypertarget{CourseUnit_8py_source_l00273}{}\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_ac7325f4b22028b3885d52d14af3a12cf}{00273}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_ac7325f4b22028b3885d52d14af3a12cf}{getLesson}(self, user, lessonid):
-00274 
-00275         lessondata = self.pers.fetch(lessonid, Lesson)
-00276 
-00277         lesson = \{\}
-00278         lesson[\textcolor{stringliteral}{'url'}] = lessondata[\textcolor{stringliteral}{'LINK'}][0]
-00279         lesson[\textcolor{stringliteral}{'name'}] = lessondata[\textcolor{stringliteral}{'NAME'}][0]
-00280         lesson[\textcolor{stringliteral}{'slides'}] = lessondata[\textcolor{stringliteral}{'SLIDES'}][0]
-00281         lesson[\textcolor{stringliteral}{'exercises'}] = lessondata[\textcolor{stringliteral}{'EXERCISE'}]
-00282 
-00283         \textcolor{keywordflow}{return} lesson
-00284 
-00285 
-\hypertarget{CourseUnit_8py_source_l00286}{}\hyperlink{classCourse_1_1CourseUnit_1_1PersCourse}{00286} \textcolor{keyword}{class }\hyperlink{classCourse_1_1CourseUnit_1_1PersCourse}{PersCourse}(\hyperlink{classCourse_1_1CourseUnit_1_1IfPersCourse}{IfPersCourse}):
-00287 
-\hypertarget{CourseUnit_8py_source_l00288}{}\hyperlink{classCourse_1_1CourseUnit_1_1PersCourse_afd977895923c6be1d49e47b9db2ddf21}{00288}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1PersCourse_afd977895923c6be1d49e47b9db2ddf21}{getid}(self, field, value, db):
-00289         model\_data = db.objects.get(field=field, value=value)
-00290         \textcolor{keywordflow}{return} model\_data.identity
-00291 
-\hypertarget{CourseUnit_8py_source_l00292}{}\hyperlink{classCourse_1_1CourseUnit_1_1PersCourse_a6e682e872daa8d3523015e1b4df76d0f}{00292}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1PersCourse_a6e682e872daa8d3523015e1b4df76d0f}{fetch}(self, id, db):
-00293         model\_data = db.objects.filter(identity=id)
-00294         format\_data = \{\}
-00295 
-00296         \textcolor{comment}{## @for}
-00297         \textcolor{comment}{#   Cria um dicionário de listas, no fomato:}
-00298         \textcolor{comment}{#}
-00299         \textcolor{comment}{#   CAMPO\_NO\_BANCO\_DE\_DADOS => [ VALOR\_1, VALOR\_2 ... VALOR\_N ]}
-00300         \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} model\_data.values():
-00301             format\_data[i[\textcolor{stringliteral}{'field'}]]=format\_data.get(i[\textcolor{stringliteral}{'field'}],[])+[i[\textcolor{stringliteral}{'value'}]]
-00302 
-00303         \textcolor{keywordflow}{return} format\_data
+00252                     \textcolor{keywordflow}{if} slidenum >= maxslides \textcolor{keywordflow}{or} slidenum < 0:
+00253                         \textcolor{keywordflow}{raise} PermissionDenied(lang.DICT[\textcolor{stringliteral}{"EXCEPTION\_403\_STD"}])
+00254 
+00255                     \textcolor{keywordflow}{if} slidenum < lesson[\textcolor{stringliteral}{'slides'}]:
+00256                         lurl = lesson[\textcolor{stringliteral}{'url'}]
+00257                         url = \hyperlink{namespaceCourse_1_1macros_a4473a418de016b59cce33b13440e469b}{LESSONS\_URL}(lurl + \textcolor{stringliteral}{"/"} + str(slidenum) + \textcolor{stringliteral}{".html"})
+00258 
+00259                         \textcolor{keywordflow}{return} render(request, url, \{ \textcolor{stringliteral}{'max'}: maxslides \})
+00260                     \textcolor{keywordflow}{else}:
+00261                         exercise\_id = slidenum - lesson[\textcolor{stringliteral}{'slides'}]
+00262                         exercise\_url = lesson[\textcolor{stringliteral}{'exercises'}][exercise\_id]
+00263                         url = \hyperlink{namespaceCourse_1_1macros_ac1cf8b3a78128ab6a3bac4f6be9fabbd}{EXERCISES\_URL}(exercise\_url + \textcolor{stringliteral}{".html"})
+00264 
+00265                         exercise=self.bus.createExercise(request, exercise\_url)
+00266 
+00267                         \textcolor{keywordflow}{return} render(request, url, \{ \textcolor{stringliteral}{'max'}: maxslides,
+00268                                                       \textcolor{stringliteral}{'exercise'}: exercise \})
+00269                 \textcolor{keywordflow}{else}:
+00270                     \textcolor{keywordflow}{raise} ValueError(lang.DICT[\textcolor{stringliteral}{'EXCEPTION\_INV\_LES'}])
+00271             \textcolor{keywordflow}{except} ValueError \textcolor{keyword}{as} exc:
+00272                 \textcolor{keywordflow}{return} render(request, \hyperlink{namespaceCourse_1_1macros_a9a69c2455c0c121b1c01960629575d7e}{GENERAL\_URL}(\textcolor{stringliteral}{"assync\_std.html"}),
+00273                         \{\textcolor{stringliteral}{'error'}: exc\})
+00274                 
+00275 
+\hypertarget{CourseUnit_8py_source_l00276}{}\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse}{00276} \textcolor{keyword}{class }\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse}{BusCourse}(\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse}{IfBusCourse}):
+00277 
+00278 
+\hypertarget{CourseUnit_8py_source_l00279}{}\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_a204497b0a06654e623c9c294f1ca5e66}{00279}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_a204497b0a06654e623c9c294f1ca5e66}{getCompleted}(self, user, accesstype):
+00280         userdata = self.pers.retrieve(\textcolor{stringliteral}{'NAME'}, user[\textcolor{stringliteral}{'name'}], Student)
+00281 
+00282         \textcolor{keywordflow}{return} userdata.get(accesstype + \textcolor{stringliteral}{'\_COMPLETED'}, [])
+00283 
+\hypertarget{CourseUnit_8py_source_l00284}{}\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_a924028d96b633d7810b60699af5502ee}{00284}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_a924028d96b633d7810b60699af5502ee}{getCourse}(self, user, courseid):
+00285         compmlist = self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_af764ac539a72d830490a80e4d70f567a}{getCompleted}(user, \textcolor{stringliteral}{'MODULE'})
+00286         compllist = self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_af764ac539a72d830490a80e4d70f567a}{getCompleted}(user, \textcolor{stringliteral}{'LESSON'})
+00287         ulocklist = self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_af764ac539a72d830490a80e4d70f567a}{getCompleted}(user, \textcolor{stringliteral}{'LOCK'})
+00288         coursedata = self.pers.fetch(courseid, Courses)
+00289         modulelist = []
+00290         
+00291         \textcolor{keywordflow}{for} moduleid \textcolor{keywordflow}{in} coursedata[\textcolor{stringliteral}{'MODULE'}]:
+00292             sfm = self.pers.fetch(moduleid, Module)
+00293             modulename = sfm[\textcolor{stringliteral}{'NAME'}][0]
+00294 
+00295             lessonlist = []
+00296 
+00297             \textcolor{keywordflow}{for} lessonid \textcolor{keywordflow}{in} sfm[\textcolor{stringliteral}{'LESSON'}]:
+00298                 lessoname = self.pers.fetch(lessonid, Lesson)[\textcolor{stringliteral}{'NAME'}]
+00299                 lessoncomplete = \textcolor{keyword}{True} \textcolor{keywordflow}{if} lessonid \textcolor{keywordflow}{in} compllist \textcolor{keywordflow}{else} \textcolor{keyword}{False}
+00300                 lessonunlocked = \textcolor{keyword}{True} \textcolor{keywordflow}{if} lessonid \textcolor{keywordflow}{in} ulocklist \textcolor{keywordflow}{else} \textcolor{keyword}{False}
+00301                 lessonlist = lessonlist + [\{\textcolor{stringliteral}{'id'}: lessonid,
+00302                                             \textcolor{stringliteral}{'name'}:lessoname[0],
+00303                                             \textcolor{stringliteral}{'complete'}:lessoncomplete,
+00304                                             \textcolor{stringliteral}{'unlocked'}:lessonunlocked \}]
+00305 
+00306             modulelist = modulelist + [\{\textcolor{stringliteral}{'id'}:       moduleid,
+00307                                         \textcolor{stringliteral}{'name'}:     modulename,
+00308                                         \textcolor{stringliteral}{'lessons'}:  lessonlist,
+00309                                         \textcolor{stringliteral}{'complete'}:\textcolor{keyword}{True} \(\backslash\)
+00310                                             \textcolor{keywordflow}{if} moduleid \textcolor{keywordflow}{in} compmlist \(\backslash\)
+00311                                             \textcolor{keywordflow}{else} \textcolor{keyword}{False}
+00312                                       \}]
+00313         
+00314         coursedata[\textcolor{stringliteral}{'MODULE'}] = sorted(modulelist, key=\textcolor{keyword}{lambda} x: x[\textcolor{stringliteral}{'id'}])
+00315 
+00316         \textcolor{keywordflow}{return} coursedata
+00317 
+\hypertarget{CourseUnit_8py_source_l00318}{}\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_adc4fcfde76feb1d6da3cf6bee39583b1}{00318}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_adc4fcfde76feb1d6da3cf6bee39583b1}{getLesson}(self, lessonid):
+00319 
+00320         lessondata = self.pers.fetch(lessonid, Lesson)
+00321 
+00322         lesson = \{\}
+00323         exercises\_url = []
+00324         lesson[\textcolor{stringliteral}{'url'}] = lessondata[\textcolor{stringliteral}{'LINK'}][0]
+00325         lesson[\textcolor{stringliteral}{'name'}] = lessondata[\textcolor{stringliteral}{'NAME'}][0]
+00326         lesson[\textcolor{stringliteral}{'slides'}] = int(lessondata[\textcolor{stringliteral}{'SLIDES'}][0])
+00327 
+00328         \textcolor{keywordflow}{for} e\_id \textcolor{keywordflow}{in} lessondata[\textcolor{stringliteral}{'EXERCISE'}]:
+00329             e\_link = self.pers.fetch(e\_id, Exercise)[\textcolor{stringliteral}{'LINK'}]
+00330             exercises\_url = exercises\_url + e\_link
+00331 
+00332         lesson[\textcolor{stringliteral}{'exercises'}] = exercises\_url
+00333 
+00334         \textcolor{keywordflow}{return} lesson
+00335 
+\hypertarget{CourseUnit_8py_source_l00336}{}\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_a4b9b8ec5eb949d3a1b42aee125b1b90b}{00336}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_a4b9b8ec5eb949d3a1b42aee125b1b90b}{createExercise}(self, request, ex\_url):
+00337 
+00338         ex\_data = self.pers.retrieve(\textcolor{stringliteral}{'LINK'}, ex\_url, Exercise)
+00339 
+00340         exercise = \{\textcolor{stringliteral}{'url'}: ex\_url, 
+00341                     \textcolor{stringliteral}{'type'}: int(ex\_data[\textcolor{stringliteral}{'TYPE'}][0]),
+00342                     \textcolor{stringliteral}{'csrf'}: csrf.get\_token(request)\}
+00343 
+00344         exerciseType = int(ex\_data[\textcolor{stringliteral}{'TYPE'}][0])
+00345 
+00346         \textcolor{keywordflow}{if} exerciseType == ExerciseType.MultipleChoice:
+00347             options = []
+00348             i = \textcolor{stringliteral}{"1"}
+00349             \textcolor{keywordflow}{while} \textcolor{stringliteral}{"ITEM\_"} + i \textcolor{keywordflow}{in} ex\_data:
+00350                 options.append((int(i),ex\_data[\textcolor{stringliteral}{"ITEM\_"} + i][0]))
+00351                 i = str(int(i)+1)
+00352 
+00353             exercise[\textcolor{stringliteral}{'options'}] = options
+00354 
+00355         \textcolor{keywordflow}{elif} exerciseType == ExerciseType.FillTheBlank:
+00356             \textcolor{keywordflow}{pass} \textcolor{comment}{# nothing to do here}
+00357 
+00358         \textcolor{keywordflow}{elif} exerciseType == ExerciseType.Unscramble:
+00359             words = []
+00360             i = \textcolor{stringliteral}{"1"}
+00361             \textcolor{keywordflow}{while} \textcolor{stringliteral}{"WORD\_"} + i \textcolor{keywordflow}{in} ex\_data:
+00362                 words.append((int(i), ex\_data[\textcolor{stringliteral}{"WORD\_"} + i][0]))
+00363                 i = str(int(i)+1)
+00364 
+00365             exercise[\textcolor{stringliteral}{'words'}] = shuffle(words)
+00366 
+00367         \textcolor{keywordflow}{elif} exerciseType == ExerciseType.CrossWords:
+00368             wordList = []
+00369             
+00370             \textcolor{keywordflow}{for} word \textcolor{keywordflow}{in} ex\_data[\textcolor{stringliteral}{"WORD"}]:
+00371                 x,y,d,w = word.split()
+00372                 wordlist.append(\{\textcolor{stringliteral}{'x'}:x,
+00373                                  \textcolor{stringliteral}{'y'}:y,
+00374                                  \textcolor{stringliteral}{'direction'}:d,
+00375                                  \textcolor{stringliteral}{'size'}:str(len(w)),\})
+00376 
+00377             exercise[\textcolor{stringliteral}{'words'}] = wordList
+00378 
+00379         \textcolor{keywordflow}{elif} exerciseType == ExerciseType.DragAndDrop:
+00380             \textcolor{keywordflow}{pass} \textcolor{comment}{# Not sure what to put here yet}
+00381 
+00382         \textcolor{keywordflow}{return} type(\textcolor{stringliteral}{"Exercise"}, (), exercise)
+00383 
+\hypertarget{CourseUnit_8py_source_l00384}{}\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_a3414d888b6ce30bc9cfb3c2b2e78af65}{00384}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_a3414d888b6ce30bc9cfb3c2b2e78af65}{correctExercise}(self, ex\_url, answer):
+00385         
+00386         ex\_data = self.pers.retrieve(\textcolor{stringliteral}{'LINK'}, ex\_url, Exercise)
+00387         exerciseType = int(ex\_data[\textcolor{stringliteral}{'TYPE'}][0])
+00388 
+00389         \textcolor{keywordflow}{if} exerciseType == ExerciseType.MultipleChoice:
+00390             \textcolor{keywordflow}{return} \textcolor{keyword}{True} \textcolor{keywordflow}{if} answer == ex\_data[\textcolor{stringliteral}{'CORRECT'}][0] \textcolor{keywordflow}{else} \textcolor{keyword}{False}
+00391 
+00392         \textcolor{keywordflow}{elif} exerciseType == ExerciseType.FillTheBlank:
+00393             \textcolor{keywordflow}{return} \textcolor{keyword}{True} \textcolor{keywordflow}{if} answer \textcolor{keywordflow}{in} ex\_data[\textcolor{stringliteral}{'CORRECT'}] \textcolor{keywordflow}{else} \textcolor{keyword}{False}
+00394 
+00395         \textcolor{keywordflow}{elif} exerciseType == ExerciseType.Unscramble:
+00396             \textcolor{comment}{## TODO: Verificar corretude}
+00397             \textcolor{keywordflow}{return} \textcolor{keyword}{True} \textcolor{keywordflow}{if} answer == ex\_data[\textcolor{stringliteral}{'CORRECT'}][0] \textcolor{keywordflow}{else} \textcolor{keyword}{False}
+00398 
+00399         \textcolor{keywordflow}{elif} exerciseType == ExerciseType.CrossWords: \textcolor{keywordflow}{pass}
+00400             \textcolor{comment}{# TODO: something}
+00401 
+00402         \textcolor{keywordflow}{elif} exerciseType == ExerciseType.DragAndDrop: \textcolor{keywordflow}{pass}
+00403             \textcolor{comment}{# TODO: Lotsa things}
+00404 
+00405         \textcolor{keywordflow}{else}: \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+00406 
+00407 
+\hypertarget{CourseUnit_8py_source_l00408}{}\hyperlink{classCourse_1_1CourseUnit_1_1PersCourse}{00408} \textcolor{keyword}{class }\hyperlink{classCourse_1_1CourseUnit_1_1PersCourse}{PersCourse}(\hyperlink{classCourse_1_1CourseUnit_1_1IfPersCourse}{IfPersCourse}):
+00409 
+\hypertarget{CourseUnit_8py_source_l00410}{}\hyperlink{classCourse_1_1CourseUnit_1_1PersCourse_acfe23f8591380715d02d815193b30ca5}{00410}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1PersCourse_acfe23f8591380715d02d815193b30ca5}{getid}(self, field, value, db):
+00411         model\_data = db.objects.get(field=field, value=value)
+00412         \textcolor{keywordflow}{return} model\_data.identity
+00413 
+\hypertarget{CourseUnit_8py_source_l00414}{}\hyperlink{classCourse_1_1CourseUnit_1_1PersCourse_ad80c75d03ace40dd77b2e7a8b9964dd9}{00414}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1PersCourse_ad80c75d03ace40dd77b2e7a8b9964dd9}{fetch}(self, id, db):
+00415         model\_data = db.objects.filter(identity=id)
+00416         format\_data = \{\}
+00417 
+00418         \textcolor{comment}{## @for}
+00419         \textcolor{comment}{#   Cria um dicionário de listas, no fomato:}
+00420         \textcolor{comment}{#}
+00421         \textcolor{comment}{#   CAMPO\_NO\_BANCO\_DE\_DADOS => [ VALOR\_1, VALOR\_2 ... VALOR\_N ]}
+00422         \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} model\_data.values():
+00423             format\_data[i[\textcolor{stringliteral}{'field'}]]=format\_data.get(i[\textcolor{stringliteral}{'field'}],[])+[i[\textcolor{stringliteral}{'value'}]]
+00424 
+00425         \textcolor{keywordflow}{return} format\_data
 \end{DoxyCode}

@@ -1,7 +1,6 @@
-\hypertarget{classCourse_1_1CourseUnit_1_1BusCourse}{\subsection{Referência da Classe Course.\-Course\-Unit.\-Bus\-Course}
-\label{classCourse_1_1CourseUnit_1_1BusCourse}\index{Course.\-Course\-Unit.\-Bus\-Course@{Course.\-Course\-Unit.\-Bus\-Course}}
-}
-Diagrama de Hierarquia para Course.\-Course\-Unit.\-Bus\-Course\-:\begin{figure}[H]
+\hypertarget{classCourse_1_1CourseUnit_1_1BusCourse}{}\subsection{Referência da Classe Course.\+Course\+Unit.\+Bus\+Course}
+\label{classCourse_1_1CourseUnit_1_1BusCourse}\index{Course.\+Course\+Unit.\+Bus\+Course@{Course.\+Course\+Unit.\+Bus\+Course}}
+Diagrama de Hierarquia para Course.\+Course\+Unit.\+Bus\+Course\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.000000cm]{d9/d88/classCourse_1_1CourseUnit_1_1BusCourse}
@@ -10,133 +9,241 @@ Diagrama de Hierarquia para Course.\-Course\-Unit.\-Bus\-Course\-:\begin{figure}
 \subsubsection*{Métodos Públicos}
 \begin{DoxyCompactItemize}
 \item 
-def \hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_ae10471abc4ea6bdaa2e0a6ebc1069889}{get\-Completed}
+def \hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_a204497b0a06654e623c9c294f1ca5e66}{get\+Completed} (self, user, accesstype)
 \item 
-def \hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_ac7306e270597d7aac641d956f8e3f31f}{get\-Course}
+def \hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_a924028d96b633d7810b60699af5502ee}{get\+Course} (self, user, courseid)
 \item 
-def \hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_ac7325f4b22028b3885d52d14af3a12cf}{get\-Lesson}
+def \hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_adc4fcfde76feb1d6da3cf6bee39583b1}{get\+Lesson} (self, lessonid)
+\item 
+def \hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_a4b9b8ec5eb949d3a1b42aee125b1b90b}{create\+Exercise} (self, request, ex\+\_\+url)
+\item 
+def \hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_a3414d888b6ce30bc9cfb3c2b2e78af65}{correct\+Exercise} (self, ex\+\_\+url, answer)
 \end{DoxyCompactItemize}
-\subsubsection*{Additional Inherited Members}
+\subsubsection*{Outros membros herdados}
 
 
 \subsubsection{Descrição Detalhada}
 
 
-Definição na linha \hyperlink{CourseUnit_8py_source_l00230}{230} do arquivo \hyperlink{CourseUnit_8py_source}{Course\-Unit.\-py}.
+Definição na linha \hyperlink{CourseUnit_8py_source_l00276}{276} do arquivo \hyperlink{CourseUnit_8py_source}{Course\+Unit.\+py}.
 
 
 
 \subsubsection{Métodos}
-\hypertarget{classCourse_1_1CourseUnit_1_1BusCourse_ae10471abc4ea6bdaa2e0a6ebc1069889}{\index{Course\-::\-Course\-Unit\-::\-Bus\-Course@{Course\-::\-Course\-Unit\-::\-Bus\-Course}!get\-Completed@{get\-Completed}}
-\index{get\-Completed@{get\-Completed}!Course::CourseUnit::BusCourse@{Course\-::\-Course\-Unit\-::\-Bus\-Course}}
-\paragraph[{get\-Completed}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\-Course\-Unit.\-Bus\-Course.\-get\-Completed (
+\hypertarget{classCourse_1_1CourseUnit_1_1BusCourse_a3414d888b6ce30bc9cfb3c2b2e78af65}{}\index{Course\+::\+Course\+Unit\+::\+Bus\+Course@{Course\+::\+Course\+Unit\+::\+Bus\+Course}!correct\+Exercise@{correct\+Exercise}}
+\index{correct\+Exercise@{correct\+Exercise}!Course\+::\+Course\+Unit\+::\+Bus\+Course@{Course\+::\+Course\+Unit\+::\+Bus\+Course}}
+\paragraph[{correct\+Exercise}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\+Course\+Unit.\+Bus\+Course.\+correct\+Exercise (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{ex\+\_\+url, }
+\item[{}]{answer}
+\end{DoxyParamCaption}
+)}\label{classCourse_1_1CourseUnit_1_1BusCourse_a3414d888b6ce30bc9cfb3c2b2e78af65}
+
+
+Definição na linha \hyperlink{CourseUnit_8py_source_l00384}{384} do arquivo \hyperlink{CourseUnit_8py_source}{Course\+Unit.\+py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classCourse_1_1CourseUnit_1_1BusCourse_l00384}{}\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_a3414d888b6ce30bc9cfb3c2b2e78af65}{00384}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_a3414d888b6ce30bc9cfb3c2b2e78af65}{correctExercise}(self, ex\_url, answer):
+00385         
+00386         ex\_data = self.pers.retrieve(\textcolor{stringliteral}{'LINK'}, ex\_url, Exercise)
+00387         exerciseType = int(ex\_data[\textcolor{stringliteral}{'TYPE'}][0])
+00388 
+00389         \textcolor{keywordflow}{if} exerciseType == ExerciseType.MultipleChoice:
+00390             \textcolor{keywordflow}{return} \textcolor{keyword}{True} \textcolor{keywordflow}{if} answer == ex\_data[\textcolor{stringliteral}{'CORRECT'}][0] \textcolor{keywordflow}{else} \textcolor{keyword}{False}
+00391 
+00392         \textcolor{keywordflow}{elif} exerciseType == ExerciseType.FillTheBlank:
+00393             \textcolor{keywordflow}{return} \textcolor{keyword}{True} \textcolor{keywordflow}{if} answer \textcolor{keywordflow}{in} ex\_data[\textcolor{stringliteral}{'CORRECT'}] \textcolor{keywordflow}{else} \textcolor{keyword}{False}
+00394 
+00395         \textcolor{keywordflow}{elif} exerciseType == ExerciseType.Unscramble:
+00396             \textcolor{comment}{## TODO: Verificar corretude}
+00397             \textcolor{keywordflow}{return} \textcolor{keyword}{True} \textcolor{keywordflow}{if} answer == ex\_data[\textcolor{stringliteral}{'CORRECT'}][0] \textcolor{keywordflow}{else} \textcolor{keyword}{False}
+00398 
+00399         \textcolor{keywordflow}{elif} exerciseType == ExerciseType.CrossWords: \textcolor{keywordflow}{pass}
+00400             \textcolor{comment}{# TODO: something}
+00401 
+00402         \textcolor{keywordflow}{elif} exerciseType == ExerciseType.DragAndDrop: \textcolor{keywordflow}{pass}
+00403             \textcolor{comment}{# TODO: Lotsa things}
+00404 
+00405         \textcolor{keywordflow}{else}: \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+00406 
+00407 
+\end{DoxyCode}
+\hypertarget{classCourse_1_1CourseUnit_1_1BusCourse_a4b9b8ec5eb949d3a1b42aee125b1b90b}{}\index{Course\+::\+Course\+Unit\+::\+Bus\+Course@{Course\+::\+Course\+Unit\+::\+Bus\+Course}!create\+Exercise@{create\+Exercise}}
+\index{create\+Exercise@{create\+Exercise}!Course\+::\+Course\+Unit\+::\+Bus\+Course@{Course\+::\+Course\+Unit\+::\+Bus\+Course}}
+\paragraph[{create\+Exercise}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\+Course\+Unit.\+Bus\+Course.\+create\+Exercise (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{request, }
+\item[{}]{ex\+\_\+url}
+\end{DoxyParamCaption}
+)}\label{classCourse_1_1CourseUnit_1_1BusCourse_a4b9b8ec5eb949d3a1b42aee125b1b90b}
+
+
+Definição na linha \hyperlink{CourseUnit_8py_source_l00336}{336} do arquivo \hyperlink{CourseUnit_8py_source}{Course\+Unit.\+py}.
+
+
+\begin{DoxyCode}
+\hypertarget{classCourse_1_1CourseUnit_1_1BusCourse_l00336}{}\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_a4b9b8ec5eb949d3a1b42aee125b1b90b}{00336}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_a4b9b8ec5eb949d3a1b42aee125b1b90b}{createExercise}(self, request, ex\_url):
+00337 
+00338         ex\_data = self.pers.retrieve(\textcolor{stringliteral}{'LINK'}, ex\_url, Exercise)
+00339 
+00340         exercise = \{\textcolor{stringliteral}{'url'}: ex\_url, 
+00341                     \textcolor{stringliteral}{'type'}: int(ex\_data[\textcolor{stringliteral}{'TYPE'}][0]),
+00342                     \textcolor{stringliteral}{'csrf'}: csrf.get\_token(request)\}
+00343 
+00344         exerciseType = int(ex\_data[\textcolor{stringliteral}{'TYPE'}][0])
+00345 
+00346         \textcolor{keywordflow}{if} exerciseType == ExerciseType.MultipleChoice:
+00347             options = []
+00348             i = \textcolor{stringliteral}{"1"}
+00349             \textcolor{keywordflow}{while} \textcolor{stringliteral}{"ITEM\_"} + i \textcolor{keywordflow}{in} ex\_data:
+00350                 options.append((int(i),ex\_data[\textcolor{stringliteral}{"ITEM\_"} + i][0]))
+00351                 i = str(int(i)+1)
+00352 
+00353             exercise[\textcolor{stringliteral}{'options'}] = options
+00354 
+00355         \textcolor{keywordflow}{elif} exerciseType == ExerciseType.FillTheBlank:
+00356             \textcolor{keywordflow}{pass} \textcolor{comment}{# nothing to do here}
+00357 
+00358         \textcolor{keywordflow}{elif} exerciseType == ExerciseType.Unscramble:
+00359             words = []
+00360             i = \textcolor{stringliteral}{"1"}
+00361             \textcolor{keywordflow}{while} \textcolor{stringliteral}{"WORD\_"} + i \textcolor{keywordflow}{in} ex\_data:
+00362                 words.append((int(i), ex\_data[\textcolor{stringliteral}{"WORD\_"} + i][0]))
+00363                 i = str(int(i)+1)
+00364 
+00365             exercise[\textcolor{stringliteral}{'words'}] = shuffle(words)
+00366 
+00367         \textcolor{keywordflow}{elif} exerciseType == ExerciseType.CrossWords:
+00368             wordList = []
+00369             
+00370             \textcolor{keywordflow}{for} word \textcolor{keywordflow}{in} ex\_data[\textcolor{stringliteral}{"WORD"}]:
+00371                 x,y,d,w = word.split()
+00372                 wordlist.append(\{\textcolor{stringliteral}{'x'}:x,
+00373                                  \textcolor{stringliteral}{'y'}:y,
+00374                                  \textcolor{stringliteral}{'direction'}:d,
+00375                                  \textcolor{stringliteral}{'size'}:str(len(w)),\})
+00376 
+00377             exercise[\textcolor{stringliteral}{'words'}] = wordList
+00378 
+00379         \textcolor{keywordflow}{elif} exerciseType == ExerciseType.DragAndDrop:
+00380             \textcolor{keywordflow}{pass} \textcolor{comment}{# Not sure what to put here yet}
+00381 
+00382         \textcolor{keywordflow}{return} type(\textcolor{stringliteral}{"Exercise"}, (), exercise)
+00383 
+\end{DoxyCode}
+\hypertarget{classCourse_1_1CourseUnit_1_1BusCourse_a204497b0a06654e623c9c294f1ca5e66}{}\index{Course\+::\+Course\+Unit\+::\+Bus\+Course@{Course\+::\+Course\+Unit\+::\+Bus\+Course}!get\+Completed@{get\+Completed}}
+\index{get\+Completed@{get\+Completed}!Course\+::\+Course\+Unit\+::\+Bus\+Course@{Course\+::\+Course\+Unit\+::\+Bus\+Course}}
+\paragraph[{get\+Completed}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\+Course\+Unit.\+Bus\+Course.\+get\+Completed (
 \begin{DoxyParamCaption}
 \item[{}]{self, }
 \item[{}]{user, }
 \item[{}]{accesstype}
 \end{DoxyParamCaption}
-)}}\label{classCourse_1_1CourseUnit_1_1BusCourse_ae10471abc4ea6bdaa2e0a6ebc1069889}
+)}\label{classCourse_1_1CourseUnit_1_1BusCourse_a204497b0a06654e623c9c294f1ca5e66}
 
 
-Definição na linha \hyperlink{CourseUnit_8py_source_l00233}{233} do arquivo \hyperlink{CourseUnit_8py_source}{Course\-Unit.\-py}.
+Definição na linha \hyperlink{CourseUnit_8py_source_l00279}{279} do arquivo \hyperlink{CourseUnit_8py_source}{Course\+Unit.\+py}.
 
 
 \begin{DoxyCode}
-\hypertarget{classCourse_1_1CourseUnit_1_1BusCourse_l00233}{}\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_ae10471abc4ea6bdaa2e0a6ebc1069889}{00233} 
-00234     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_ae10471abc4ea6bdaa2e0a6ebc1069889}{getCompleted}(self, user, accesstype):
-00235         userid = self.pers.getid(\textcolor{stringliteral}{'NAME'}, user[\textcolor{stringliteral}{'name'}], Student)
-00236         userdata = self.pers.fetch(userid, Student)
-00237 
-00238         \textcolor{keywordflow}{return} userdata.get(accesstype + \textcolor{stringliteral}{'\_COMPLETED'}, [])
-
+\hypertarget{classCourse_1_1CourseUnit_1_1BusCourse_l00279}{}\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_a204497b0a06654e623c9c294f1ca5e66}{00279}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_a204497b0a06654e623c9c294f1ca5e66}{getCompleted}(self, user, accesstype):
+00280         userdata = self.pers.retrieve(\textcolor{stringliteral}{'NAME'}, user[\textcolor{stringliteral}{'name'}], Student)
+00281 
+00282         \textcolor{keywordflow}{return} userdata.get(accesstype + \textcolor{stringliteral}{'\_COMPLETED'}, [])
+00283 
 \end{DoxyCode}
-\hypertarget{classCourse_1_1CourseUnit_1_1BusCourse_ac7306e270597d7aac641d956f8e3f31f}{\index{Course\-::\-Course\-Unit\-::\-Bus\-Course@{Course\-::\-Course\-Unit\-::\-Bus\-Course}!get\-Course@{get\-Course}}
-\index{get\-Course@{get\-Course}!Course::CourseUnit::BusCourse@{Course\-::\-Course\-Unit\-::\-Bus\-Course}}
-\paragraph[{get\-Course}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\-Course\-Unit.\-Bus\-Course.\-get\-Course (
+\hypertarget{classCourse_1_1CourseUnit_1_1BusCourse_a924028d96b633d7810b60699af5502ee}{}\index{Course\+::\+Course\+Unit\+::\+Bus\+Course@{Course\+::\+Course\+Unit\+::\+Bus\+Course}!get\+Course@{get\+Course}}
+\index{get\+Course@{get\+Course}!Course\+::\+Course\+Unit\+::\+Bus\+Course@{Course\+::\+Course\+Unit\+::\+Bus\+Course}}
+\paragraph[{get\+Course}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\+Course\+Unit.\+Bus\+Course.\+get\+Course (
 \begin{DoxyParamCaption}
 \item[{}]{self, }
 \item[{}]{user, }
 \item[{}]{courseid}
 \end{DoxyParamCaption}
-)}}\label{classCourse_1_1CourseUnit_1_1BusCourse_ac7306e270597d7aac641d956f8e3f31f}
+)}\label{classCourse_1_1CourseUnit_1_1BusCourse_a924028d96b633d7810b60699af5502ee}
 
 
-Definição na linha \hyperlink{CourseUnit_8py_source_l00239}{239} do arquivo \hyperlink{CourseUnit_8py_source}{Course\-Unit.\-py}.
+Definição na linha \hyperlink{CourseUnit_8py_source_l00284}{284} do arquivo \hyperlink{CourseUnit_8py_source}{Course\+Unit.\+py}.
 
 
 
-Referências \hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ae83d657f3a281dd8a9ade3e7a9db0659}{Course.\-Course\-Unit.\-If\-Bus\-Course.\-get\-Completed()}.
+Referências \hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_af764ac539a72d830490a80e4d70f567a}{Course.\+Course\+Unit.\+If\+Bus\+Course.\+get\+Completed()}.
 
 
 \begin{DoxyCode}
-\hypertarget{classCourse_1_1CourseUnit_1_1BusCourse_l00239}{}\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_ac7306e270597d7aac641d956f8e3f31f}{00239} 
-00240     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_ac7306e270597d7aac641d956f8e3f31f}{getCourse}(self, user, courseid):
-00241         compmlist = self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ae83d657f3a281dd8a9ade3e7a9db0659}{getCompleted}(user, \textcolor{stringliteral}{'MODULE'})
-00242         compllist = self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ae83d657f3a281dd8a9ade3e7a9db0659}{getCompleted}(user, \textcolor{stringliteral}{'LESSON'})
-00243         ulocklist = self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_ae83d657f3a281dd8a9ade3e7a9db0659}{getCompleted}(user, \textcolor{stringliteral}{'LOCK'})
-00244         coursedata = self.pers.fetch(courseid, Courses)
-00245         modulelist = []
-00246         
-00247         \textcolor{keywordflow}{for} moduleid \textcolor{keywordflow}{in} coursedata[\textcolor{stringliteral}{'MODULE'}]:
-00248             sfm = self.pers.fetch(moduleid, Module)
-00249             modulename = sfm[\textcolor{stringliteral}{'NAME'}][0]
-00250 
-00251             lessonlist = []
-00252 
-00253             \textcolor{keywordflow}{for} lessonid \textcolor{keywordflow}{in} sfm[\textcolor{stringliteral}{'LESSON'}]:
-00254                 lessoname = self.pers.fetch(lessonid, Lesson)[\textcolor{stringliteral}{'NAME'}]
-00255                 lessoncomplete = \textcolor{keyword}{True} \textcolor{keywordflow}{if} lessonid \textcolor{keywordflow}{in} compllist \textcolor{keywordflow}{else} \textcolor{keyword}{False}
-00256                 lessonunlocked = \textcolor{keyword}{True} \textcolor{keywordflow}{if} lessonid \textcolor{keywordflow}{in} ulocklist \textcolor{keywordflow}{else} \textcolor{keyword}{False}
-00257                 lessonlist = lessonlist + [\{\textcolor{stringliteral}{'id'}: lessonid,
-00258                                             \textcolor{stringliteral}{'name'}:lessoname[0],
-00259                                             \textcolor{stringliteral}{'complete'}:lessoncomplete,
-00260                                             \textcolor{stringliteral}{'unlocked'}:lessonunlocked \}]
-00261 
-00262             modulelist = modulelist + [\{\textcolor{stringliteral}{'id'}:       moduleid,
-00263                                         \textcolor{stringliteral}{'name'}:     modulename,
-00264                                         \textcolor{stringliteral}{'lessons'}:  lessonlist,
-00265                                         \textcolor{stringliteral}{'complete'}:\textcolor{keyword}{True} \(\backslash\)
-00266                                             \textcolor{keywordflow}{if} moduleid \textcolor{keywordflow}{in} compmlist \(\backslash\)
-00267                                             \textcolor{keywordflow}{else} \textcolor{keyword}{False}
-00268                                       \}]
-00269         
-00270         coursedata[\textcolor{stringliteral}{'MODULE'}] = sorted(modulelist, key=\textcolor{keyword}{lambda} x: x[\textcolor{stringliteral}{'id'}])
-00271 
-00272         \textcolor{keywordflow}{return} coursedata
-
+\hypertarget{classCourse_1_1CourseUnit_1_1BusCourse_l00284}{}\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_a924028d96b633d7810b60699af5502ee}{00284}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_a924028d96b633d7810b60699af5502ee}{getCourse}(self, user, courseid):
+00285         compmlist = self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_af764ac539a72d830490a80e4d70f567a}{getCompleted}(user, \textcolor{stringliteral}{'MODULE'})
+00286         compllist = self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_af764ac539a72d830490a80e4d70f567a}{getCompleted}(user, \textcolor{stringliteral}{'LESSON'})
+00287         ulocklist = self.\hyperlink{classCourse_1_1CourseUnit_1_1IfBusCourse_af764ac539a72d830490a80e4d70f567a}{getCompleted}(user, \textcolor{stringliteral}{'LOCK'})
+00288         coursedata = self.pers.fetch(courseid, Courses)
+00289         modulelist = []
+00290         
+00291         \textcolor{keywordflow}{for} moduleid \textcolor{keywordflow}{in} coursedata[\textcolor{stringliteral}{'MODULE'}]:
+00292             sfm = self.pers.fetch(moduleid, Module)
+00293             modulename = sfm[\textcolor{stringliteral}{'NAME'}][0]
+00294 
+00295             lessonlist = []
+00296 
+00297             \textcolor{keywordflow}{for} lessonid \textcolor{keywordflow}{in} sfm[\textcolor{stringliteral}{'LESSON'}]:
+00298                 lessoname = self.pers.fetch(lessonid, Lesson)[\textcolor{stringliteral}{'NAME'}]
+00299                 lessoncomplete = \textcolor{keyword}{True} \textcolor{keywordflow}{if} lessonid \textcolor{keywordflow}{in} compllist \textcolor{keywordflow}{else} \textcolor{keyword}{False}
+00300                 lessonunlocked = \textcolor{keyword}{True} \textcolor{keywordflow}{if} lessonid \textcolor{keywordflow}{in} ulocklist \textcolor{keywordflow}{else} \textcolor{keyword}{False}
+00301                 lessonlist = lessonlist + [\{\textcolor{stringliteral}{'id'}: lessonid,
+00302                                             \textcolor{stringliteral}{'name'}:lessoname[0],
+00303                                             \textcolor{stringliteral}{'complete'}:lessoncomplete,
+00304                                             \textcolor{stringliteral}{'unlocked'}:lessonunlocked \}]
+00305 
+00306             modulelist = modulelist + [\{\textcolor{stringliteral}{'id'}:       moduleid,
+00307                                         \textcolor{stringliteral}{'name'}:     modulename,
+00308                                         \textcolor{stringliteral}{'lessons'}:  lessonlist,
+00309                                         \textcolor{stringliteral}{'complete'}:\textcolor{keyword}{True} \(\backslash\)
+00310                                             \textcolor{keywordflow}{if} moduleid \textcolor{keywordflow}{in} compmlist \(\backslash\)
+00311                                             \textcolor{keywordflow}{else} \textcolor{keyword}{False}
+00312                                       \}]
+00313         
+00314         coursedata[\textcolor{stringliteral}{'MODULE'}] = sorted(modulelist, key=\textcolor{keyword}{lambda} x: x[\textcolor{stringliteral}{'id'}])
+00315 
+00316         \textcolor{keywordflow}{return} coursedata
+00317 
 \end{DoxyCode}
-\hypertarget{classCourse_1_1CourseUnit_1_1BusCourse_ac7325f4b22028b3885d52d14af3a12cf}{\index{Course\-::\-Course\-Unit\-::\-Bus\-Course@{Course\-::\-Course\-Unit\-::\-Bus\-Course}!get\-Lesson@{get\-Lesson}}
-\index{get\-Lesson@{get\-Lesson}!Course::CourseUnit::BusCourse@{Course\-::\-Course\-Unit\-::\-Bus\-Course}}
-\paragraph[{get\-Lesson}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\-Course\-Unit.\-Bus\-Course.\-get\-Lesson (
+\hypertarget{classCourse_1_1CourseUnit_1_1BusCourse_adc4fcfde76feb1d6da3cf6bee39583b1}{}\index{Course\+::\+Course\+Unit\+::\+Bus\+Course@{Course\+::\+Course\+Unit\+::\+Bus\+Course}!get\+Lesson@{get\+Lesson}}
+\index{get\+Lesson@{get\+Lesson}!Course\+::\+Course\+Unit\+::\+Bus\+Course@{Course\+::\+Course\+Unit\+::\+Bus\+Course}}
+\paragraph[{get\+Lesson}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\+Course\+Unit.\+Bus\+Course.\+get\+Lesson (
 \begin{DoxyParamCaption}
 \item[{}]{self, }
-\item[{}]{user, }
 \item[{}]{lessonid}
 \end{DoxyParamCaption}
-)}}\label{classCourse_1_1CourseUnit_1_1BusCourse_ac7325f4b22028b3885d52d14af3a12cf}
+)}\label{classCourse_1_1CourseUnit_1_1BusCourse_adc4fcfde76feb1d6da3cf6bee39583b1}
 
 
-Definição na linha \hyperlink{CourseUnit_8py_source_l00273}{273} do arquivo \hyperlink{CourseUnit_8py_source}{Course\-Unit.\-py}.
+Definição na linha \hyperlink{CourseUnit_8py_source_l00318}{318} do arquivo \hyperlink{CourseUnit_8py_source}{Course\+Unit.\+py}.
 
 
 \begin{DoxyCode}
-\hypertarget{classCourse_1_1CourseUnit_1_1BusCourse_l00273}{}\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_ac7325f4b22028b3885d52d14af3a12cf}{00273} 
-00274     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_ac7325f4b22028b3885d52d14af3a12cf}{getLesson}(self, user, lessonid):
-00275 
-00276         lessondata = self.pers.fetch(lessonid, Lesson)
-00277 
-00278         lesson = \{\}
-00279         lesson[\textcolor{stringliteral}{'url'}] = lessondata[\textcolor{stringliteral}{'LINK'}][0]
-00280         lesson[\textcolor{stringliteral}{'name'}] = lessondata[\textcolor{stringliteral}{'NAME'}][0]
-00281         lesson[\textcolor{stringliteral}{'slides'}] = lessondata[\textcolor{stringliteral}{'SLIDES'}][0]
-00282         lesson[\textcolor{stringliteral}{'exercises'}] = lessondata[\textcolor{stringliteral}{'EXERCISE'}]
-00283 
-00284         \textcolor{keywordflow}{return} lesson
-00285 
-
+\hypertarget{classCourse_1_1CourseUnit_1_1BusCourse_l00318}{}\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_adc4fcfde76feb1d6da3cf6bee39583b1}{00318}     \textcolor{keyword}{def }\hyperlink{classCourse_1_1CourseUnit_1_1BusCourse_adc4fcfde76feb1d6da3cf6bee39583b1}{getLesson}(self, lessonid):
+00319 
+00320         lessondata = self.pers.fetch(lessonid, Lesson)
+00321 
+00322         lesson = \{\}
+00323         exercises\_url = []
+00324         lesson[\textcolor{stringliteral}{'url'}] = lessondata[\textcolor{stringliteral}{'LINK'}][0]
+00325         lesson[\textcolor{stringliteral}{'name'}] = lessondata[\textcolor{stringliteral}{'NAME'}][0]
+00326         lesson[\textcolor{stringliteral}{'slides'}] = int(lessondata[\textcolor{stringliteral}{'SLIDES'}][0])
+00327 
+00328         \textcolor{keywordflow}{for} e\_id \textcolor{keywordflow}{in} lessondata[\textcolor{stringliteral}{'EXERCISE'}]:
+00329             e\_link = self.pers.fetch(e\_id, Exercise)[\textcolor{stringliteral}{'LINK'}]
+00330             exercises\_url = exercises\_url + e\_link
+00331 
+00332         lesson[\textcolor{stringliteral}{'exercises'}] = exercises\_url
+00333 
+00334         \textcolor{keywordflow}{return} lesson
+00335 
 \end{DoxyCode}
 
 
-A documentação para esta classe foi gerada a partir do seguinte arquivo\-:\begin{DoxyCompactItemize}
+A documentação para esta classe foi gerada a partir do seguinte arquivo\+:\begin{DoxyCompactItemize}
 \item 
-E\-L\-O/\-Course/\hyperlink{CourseUnit_8py}{Course\-Unit.\-py}\end{DoxyCompactItemize}
+E\+L\+O/\+Course/\hyperlink{CourseUnit_8py}{Course\+Unit.\+py}\end{DoxyCompactItemize}

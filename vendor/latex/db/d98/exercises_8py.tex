@@ -1,0 +1,34 @@
+\hypertarget{exercises_8py}{}\subsection{Referência do Arquivo E\+L\+O/\+Course/templatetags/exercises.py}
+\label{exercises_8py}\index{E\+L\+O/\+Course/templatetags/exercises.\+py@{E\+L\+O/\+Course/templatetags/exercises.\+py}}
+
+
+Este é o arquivo de cria a template tag \{\% exercise \%\}.  
+
+
+\subsubsection*{Componentes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classCourse_1_1templatetags_1_1exercises_1_1ExerciseToken}{Course.\+templatetags.\+exercises.\+Exercise\+Token}
+\begin{DoxyCompactList}\small\item\em Classe do tipo Node responsável pela renderização da tag \{\% exercise \%\}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespaceCourse_1_1templatetags_1_1exercises}{Course.\+templatetags.\+exercises}
+\end{DoxyCompactItemize}
+\subsubsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceCourse_1_1templatetags_1_1exercises_a8c8aa0687de6cfe821c8acaecafba711}{Course.\+templatetags.\+exercises.\+exercise} (parser, token)
+\begin{DoxyCompactList}\small\item\em Função chamada no momento da inserção do tag no template. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Variáveis}
+\begin{DoxyCompactItemize}
+\item 
+tuple \hyperlink{namespaceCourse_1_1templatetags_1_1exercises_a69bf3f5149bab102a018136707f13e10}{Course.\+templatetags.\+exercises.\+register} = template.\+Library()
+\begin{DoxyCompactList}\small\item\em Variável necessária para inicializar tags e filters dentro do Django. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Descrição Detalhada}
+Ele é responsável por definir o funcionamento e o comportamento da tag perante todas as suas 4 diferentes utilizações. O processo de renderização de um template dentro do Django compreende dois processos; no primeiro, as template e html tags são traduzidas em nodes que, no segundo processo, voltam a se tornar o html correspondente à página final. 
+
+Definição no arquivo \hyperlink{exercises_8py_source}{exercises.\+py}.
+

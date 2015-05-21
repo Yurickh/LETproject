@@ -1,0 +1,114 @@
+\hypertarget{namespaceCourse_1_1templatetags_1_1exercises}{}\subsection{Refência do Namespace Course.\+templatetags.\+exercises}
+\label{namespaceCourse_1_1templatetags_1_1exercises}\index{Course.\+templatetags.\+exercises@{Course.\+templatetags.\+exercises}}
+\subsubsection*{Componentes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classCourse_1_1templatetags_1_1exercises_1_1ExerciseToken}{Exercise\+Token}
+\begin{DoxyCompactList}\small\item\em Classe do tipo Node responsável pela renderização da tag \{\% exercise \%\}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceCourse_1_1templatetags_1_1exercises_a8c8aa0687de6cfe821c8acaecafba711}{exercise} (parser, token)
+\begin{DoxyCompactList}\small\item\em Função chamada no momento da inserção do tag no template. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Variáveis}
+\begin{DoxyCompactItemize}
+\item 
+tuple \hyperlink{namespaceCourse_1_1templatetags_1_1exercises_a69bf3f5149bab102a018136707f13e10}{register} = template.\+Library()
+\begin{DoxyCompactList}\small\item\em Variável necessária para inicializar tags e filters dentro do Django. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Funções}
+\hypertarget{namespaceCourse_1_1templatetags_1_1exercises_a8c8aa0687de6cfe821c8acaecafba711}{}\index{Course\+::templatetags\+::exercises@{Course\+::templatetags\+::exercises}!exercise@{exercise}}
+\index{exercise@{exercise}!Course\+::templatetags\+::exercises@{Course\+::templatetags\+::exercises}}
+\paragraph[{exercise}]{\setlength{\rightskip}{0pt plus 5cm}def Course.\+templatetags.\+exercises.\+exercise (
+\begin{DoxyParamCaption}
+\item[{}]{parser, }
+\item[{}]{token}
+\end{DoxyParamCaption}
+)}\label{namespaceCourse_1_1templatetags_1_1exercises_a8c8aa0687de6cfe821c8acaecafba711}
+Essa função é a responsável por preparar o node do template no momento da compilação do arquivo html. Para mais informações, ler documentação do arquivo \hyperlink{exercises_8py}{exercises.\+py}. No caso da tag \{\% exercise \%\}, ela deve ser responsável por preparar uma form de exercício no template, independentemente do seu tipo. 
+
+Definição na linha \hyperlink{exercises_8py_source_l00031}{31} do arquivo \hyperlink{exercises_8py_source}{exercises.\+py}.
+
+
+\begin{DoxyCode}
+\hypertarget{namespaceCourse_1_1templatetags_1_1exercises_l00031}{}\hyperlink{namespaceCourse_1_1templatetags_1_1exercises_a8c8aa0687de6cfe821c8acaecafba711}{00031} \textcolor{keyword}{def }\hyperlink{namespaceCourse_1_1templatetags_1_1exercises_a8c8aa0687de6cfe821c8acaecafba711}{exercise}(parser, token):
+00032 
+00033     toklist = token.split\_contents()
+00034 
+00035     \textcolor{comment}{## @if}
+00036     \textcolor{comment}{#   Responsável pelo processamento no caso do usuário utilizar a tag}
+00037     \textcolor{comment}{# \{% exercise %\}.}
+00038     \textcolor{comment}{#}
+00039     \textcolor{comment}{#   Nesse caso, a tag não irá passar argumentos adicionais para o Node.}
+00040     \textcolor{comment}{#   Utilize esta tag caso você tenha uma variável no contexto chamada}
+00041     \textcolor{comment}{#   "exercise" (sem aspas) que contenha o objeto retornado pelo método}
+00042     \textcolor{comment}{#   IfBusCourse.createExercise().}
+00043     \textcolor{keywordflow}{if} len(toklist) == 1:
+00044         \textcolor{keywordflow}{return} \hyperlink{classCourse_1_1templatetags_1_1exercises_1_1ExerciseToken}{ExerciseToken}()
+00045 
+00046     \textcolor{comment}{## @if}
+00047     \textcolor{comment}{#   Responsável pelo processamento no caso do usuário utilizar as tags}
+00048     \textcolor{comment}{# \{% exercise arg1 %\} ou \{% exercise "arg1" %\}.}
+00049     \textcolor{comment}{#}
+00050     \textcolor{comment}{#   Nesse caso, a tag passará exatamente um argumento para o Node.}
+00051     \textcolor{comment}{#}
+00052     \textcolor{comment}{#   Utilize a tag \{% exercise arg1 %\} quando arg1 for um objeto no seu}
+00053     \textcolor{comment}{# contexto retornado pelo método IfBusCourse.createExercise().}
+00054     \textcolor{comment}{#}
+00055     \textcolor{comment}{#   Utilize a tag \{% exercise "arg1" %\} quando arg1 for uma string de}
+00056     \textcolor{comment}{# formatação válida.}
+00057     \textcolor{comment}{#   Strings de formatação válidas para essa tag são strings do tipo:}
+00058     \textcolor{comment}{#       *[%\_[*]]}
+00059     \textcolor{comment}{#   Ou seja, são strings simples, ou duas strings separadas pela string}
+00060     \textcolor{comment}{# de escape '%\_'.}
+00061     \textcolor{comment}{#   Essa string de formatação serve para adicionar um anunciado}
+00062     \textcolor{comment}{# dentro da form de exercício. É mais utilizado para exercícios do tipo}
+00063     \textcolor{comment}{# ExerciseType.FillTheBlank. Os campos de input serão inseridos no lugar}
+00064     \textcolor{comment}{# do %\_.}
+00065     \textcolor{keywordflow}{if} len(toklist) == 2:
+00066         \textcolor{keywordflow}{return} ExerciseToken.halfTag(toklist[1])
+00067 
+00068     \textcolor{comment}{## Mensagem de erro para quantidade inapropriada de argumentos para a tag.}
+00069     exc\_msg = lang.DICT[\textcolor{stringliteral}{'TEMPLATE\_TAG\_MA'}] % token.contents.split()[0]
+00070 
+00071     \textcolor{comment}{## @if}
+00072     \textcolor{comment}{#   Responsável pelo processamento no caso do usuário utilizar a tag}
+00073     \textcolor{comment}{# \{% exercise arg1 "arg2" %\}}
+00074     \textcolor{comment}{#}
+00075     \textcolor{comment}{#   Nesse caso, a tag passará exatamente dois argumentos para o Node.}
+00076     \textcolor{comment}{#}
+00077     \textcolor{comment}{#   Utilize esta tag caso arg1 for um objeto no seu contexto retornado pelo}
+00078     \textcolor{comment}{# método IfBusCourse.createExercise() e arg2 for uma string de formatação}
+00079     \textcolor{comment}{# válida.}
+00080     \textcolor{comment}{#   Strings de formatação válidas para essa tag são strings do tipo:}
+00081     \textcolor{comment}{#       *[%\_[*]]}
+00082     \textcolor{comment}{#   Ou seja, são strings simples, ou duas strings separadas pela string}
+00083     \textcolor{comment}{# de escape '%\_'.}
+00084     \textcolor{comment}{#   Essa string de formatação serve para adicionar um anunciado}
+00085     \textcolor{comment}{# dentro da form de exercício. É mais utilizado para exercícios do tipo}
+00086     \textcolor{comment}{# ExerciseType.FillTheBlank. Os campos de input serão inseridos no lugar}
+00087     \textcolor{comment}{# do %\_.}
+00088     \textcolor{keywordflow}{if} len(toklist) == 3:
+00089 
+00090         exerciseName = toklist[1]
+00091         formatString = toklist[2]
+00092 
+00093         \textcolor{keywordflow}{if} formatString[0]!=formatString[-1] \textcolor{keywordflow}{or} formatString \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} [\textcolor{stringliteral}{"'"},\textcolor{stringliteral}{'"'}]:
+00094             \textcolor{keywordflow}{raise} template.TemplateSyntaxError(exc\_msg)
+00095         \textcolor{keywordflow}{else}:
+00096             \textcolor{keywordflow}{return} ExerciseToken.completeTag(exerciseName, formatString[1:-1])
+00097     \textcolor{keywordflow}{else}:
+00098         \textcolor{keywordflow}{raise} template.TemplateSyntaxError(exc\_msg)
+00099 
+\end{DoxyCode}
+
+
+\subsubsection{Variáveis}
+\hypertarget{namespaceCourse_1_1templatetags_1_1exercises_a69bf3f5149bab102a018136707f13e10}{}\index{Course\+::templatetags\+::exercises@{Course\+::templatetags\+::exercises}!register@{register}}
+\index{register@{register}!Course\+::templatetags\+::exercises@{Course\+::templatetags\+::exercises}}
+\paragraph[{register}]{\setlength{\rightskip}{0pt plus 5cm}tuple Course.\+templatetags.\+exercises.\+register = template.\+Library()}\label{namespaceCourse_1_1templatetags_1_1exercises_a69bf3f5149bab102a018136707f13e10}
+
+
+Definição na linha \hyperlink{exercises_8py_source_l00021}{21} do arquivo \hyperlink{exercises_8py_source}{exercises.\+py}.
+

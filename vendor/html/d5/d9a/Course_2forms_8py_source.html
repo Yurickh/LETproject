@@ -3,22 +3,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.6"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
 <title>LETproject: Código-Fonte de ELO/Course/forms.py</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
 <link href="../../navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
 <script type="text/javascript" src="../../navtree.js"></script>
 <script type="text/javascript">
   $(document).ready(initResizable);
   $(window).load(resizeHeight);
 </script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
 <script type="text/javascript">
-  $(document).ready(function() { searchBox.OnSelectItem(0); });
+  $(document).ready(function() { init_search(); });
 </script>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css" />
 </head>
@@ -37,7 +39,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Gerado por Doxygen 1.8.6 -->
+<!-- Gerado por Doxygen 1.8.9.1 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
 </script>
@@ -90,7 +92,7 @@ $(document).ready(function(){initNavTree('d5/d9a/Course_2forms_8py_source.html',
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variáveis</a></div>
+</div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -115,15 +117,56 @@ $(document).ready(function(){initNavTree('d5/d9a/Course_2forms_8py_source.html',
 <div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="../../db/d84/classCourse_1_1forms_1_1LessonForm.html#a0ed8ca8dc81ac7498c83df4a5735ce04">    9</a></span>&#160;    lesson_id = forms.IntegerField(required=<span class="keyword">True</span>)</div>
 <div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="../../db/d84/classCourse_1_1forms_1_1LessonForm.html#ad030e96bd25bff769cce537955b318d1">   10</a></span>&#160;    slide_number = forms.IntegerField(required=<span class="keyword">True</span>)</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="../../db/d84/classCourse_1_1forms_1_1LessonForm.html#ad33e136f4ab11e780c0c1d1267769ab7">   12</a></span>&#160;    <span class="keyword">def </span><a class="code" href="../../db/d84/classCourse_1_1forms_1_1LessonForm.html#ad33e136f4ab11e780c0c1d1267769ab7">clean_lesson_id</a>(self):</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="../../db/d84/classCourse_1_1forms_1_1LessonForm.html#a5e1afca616ce7fc80701a3df092325af">   12</a></span>&#160;    <span class="keyword">def </span><a class="code" href="../../db/d84/classCourse_1_1forms_1_1LessonForm.html#a5e1afca616ce7fc80701a3df092325af">clean_lesson_id</a>(self):</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d7/dca/classELO_1_1BaseUnit_1_1Id.html">Id</a>(self.cleaned_data[<span class="stringliteral">&#39;lesson_id&#39;</span>])</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="../../db/d84/classCourse_1_1forms_1_1LessonForm.html#acc15a807e96d131c1c839ee28da158de">   15</a></span>&#160;    <span class="keyword">def </span><a class="code" href="../../db/d84/classCourse_1_1forms_1_1LessonForm.html#acc15a807e96d131c1c839ee28da158de">clean_slide_number</a>(self):</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="../../db/d84/classCourse_1_1forms_1_1LessonForm.html#ae1d45c4578bfd73ae6b0f0b3f52ce8da">   15</a></span>&#160;    <span class="keyword">def </span><a class="code" href="../../db/d84/classCourse_1_1forms_1_1LessonForm.html#ae1d45c4578bfd73ae6b0f0b3f52ce8da">clean_slide_number</a>(self):</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d7/dca/classELO_1_1BaseUnit_1_1Id.html">Id</a>(self.cleaned_data[<span class="stringliteral">&#39;slide_number&#39;</span>])</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="../../d7/d12/classCourse_1_1forms_1_1MultipleChoiceExercise.html">   18</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d7/d12/classCourse_1_1forms_1_1MultipleChoiceExercise.html">MultipleChoiceExercise</a>(forms.Form):</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="../../d7/d12/classCourse_1_1forms_1_1MultipleChoiceExercise.html#ade3f98a45467f7f977fb82712df21575">   19</a></span>&#160;    options = forms.ChoiceField(widget   = forms.RadioSelect, </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                                required = <span class="keyword">True</span>,</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                                label = <span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="../../d7/d12/classCourse_1_1forms_1_1MultipleChoiceExercise.html#afb5041d90dbba78dff5039cd23fec44b">   23</a></span>&#160;    <span class="keyword">def </span><a class="code" href="../../d7/d12/classCourse_1_1forms_1_1MultipleChoiceExercise.html#afb5041d90dbba78dff5039cd23fec44b">clean_options</a>(self):</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordflow">return</span> dict(self.cleaned_data[<span class="stringliteral">&#39;options&#39;</span>])</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="../../d2/dfe/classCourse_1_1forms_1_1FillTheBlankExercise.html">   26</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d2/dfe/classCourse_1_1forms_1_1FillTheBlankExercise.html">FillTheBlankExercise</a>(forms.Form):</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="../../d2/dfe/classCourse_1_1forms_1_1FillTheBlankExercise.html#a581787b24c05ae5b24bc635b7ae10a41">   27</a></span>&#160;    blank = forms.CharField(required = <span class="keyword">True</span>, label=<span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="../../d2/dfe/classCourse_1_1forms_1_1FillTheBlankExercise.html#afd580feb9780a2776dab839180b9dfc9">   29</a></span>&#160;    <span class="keyword">def </span><a class="code" href="../../d2/dfe/classCourse_1_1forms_1_1FillTheBlankExercise.html#afd580feb9780a2776dab839180b9dfc9">clean_blank</a>(self):</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordflow">return</span> PlainText(self.cleaned_data[<span class="stringliteral">&#39;blank&#39;</span>]).value</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="../../d5/d9e/classCourse_1_1forms_1_1UnscrambleExercise.html">   32</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d5/d9e/classCourse_1_1forms_1_1UnscrambleExercise.html">UnscrambleExercise</a>(forms.Form):</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="../../d5/d9e/classCourse_1_1forms_1_1UnscrambleExercise.html#abff263e494816cb4477ee0f0727d3e65">   33</a></span>&#160;    bloat = forms.CharField(required = <span class="keyword">True</span>, label=<span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="../../d5/d9e/classCourse_1_1forms_1_1UnscrambleExercise.html#affc5b0db18f92e1da41c9adf85bbb69a">   35</a></span>&#160;    <span class="keyword">def </span><a class="code" href="../../d5/d9e/classCourse_1_1forms_1_1UnscrambleExercise.html#affc5b0db18f92e1da41c9adf85bbb69a">clean_bloat</a>(self):</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordflow">return</span> self.cleaned_data[<span class="stringliteral">&#39;bloat&#39;</span>].split()</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="../../d1/dc6/classCourse_1_1forms_1_1CrossWordExercise.html">   38</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d1/dc6/classCourse_1_1forms_1_1CrossWordExercise.html">CrossWordExercise</a>(forms.Form):</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="../../d1/dc6/classCourse_1_1forms_1_1CrossWordExercise.html#aa9c9a8c4547386d9e9d9830289e8bd9e">   39</a></span>&#160;    bloat = forms.CharField(required = <span class="keyword">True</span>, label=<span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="../../d1/dc6/classCourse_1_1forms_1_1CrossWordExercise.html#a2e3c06f2bc9b11dd04df1da8825f777b">   41</a></span>&#160;    <span class="keyword">def </span><a class="code" href="../../d1/dc6/classCourse_1_1forms_1_1CrossWordExercise.html#a2e3c06f2bc9b11dd04df1da8825f777b">clean_bloat</a>(self):</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        wordList = self.cleaned_data[<span class="stringliteral">&#39;bloat&#39;</span>].split(<span class="stringliteral">&#39;_&#39;</span>)</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        retList = []</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">for</span> word <span class="keywordflow">in</span> wordList:</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            x,y,d,w = word.split()</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            retList.append(<span class="stringliteral">&quot; &quot;</span>.join([x,y,d,w]))</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordflow">return</span> retList</div>
+<div class="ttc" id="classCourse_1_1forms_1_1FillTheBlankExercise_html"><div class="ttname"><a href="../../d2/dfe/classCourse_1_1forms_1_1FillTheBlankExercise.html">Course.forms.FillTheBlankExercise</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d9a/Course_2forms_8py_source.html#l00026">forms.py:26</a></div></div>
+<div class="ttc" id="classCourse_1_1forms_1_1UnscrambleExercise_html_affc5b0db18f92e1da41c9adf85bbb69a"><div class="ttname"><a href="../../d5/d9e/classCourse_1_1forms_1_1UnscrambleExercise.html#affc5b0db18f92e1da41c9adf85bbb69a">Course.forms.UnscrambleExercise.clean_bloat</a></div><div class="ttdeci">def clean_bloat(self)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d9a/Course_2forms_8py_source.html#l00035">forms.py:35</a></div></div>
+<div class="ttc" id="classCourse_1_1forms_1_1UnscrambleExercise_html"><div class="ttname"><a href="../../d5/d9e/classCourse_1_1forms_1_1UnscrambleExercise.html">Course.forms.UnscrambleExercise</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d9a/Course_2forms_8py_source.html#l00032">forms.py:32</a></div></div>
+<div class="ttc" id="classCourse_1_1forms_1_1MultipleChoiceExercise_html"><div class="ttname"><a href="../../d7/d12/classCourse_1_1forms_1_1MultipleChoiceExercise.html">Course.forms.MultipleChoiceExercise</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d9a/Course_2forms_8py_source.html#l00018">forms.py:18</a></div></div>
+<div class="ttc" id="classCourse_1_1forms_1_1LessonForm_html_a5e1afca616ce7fc80701a3df092325af"><div class="ttname"><a href="../../db/d84/classCourse_1_1forms_1_1LessonForm.html#a5e1afca616ce7fc80701a3df092325af">Course.forms.LessonForm.clean_lesson_id</a></div><div class="ttdeci">def clean_lesson_id(self)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d9a/Course_2forms_8py_source.html#l00012">forms.py:12</a></div></div>
 <div class="ttc" id="classELO_1_1BaseUnit_1_1Id_html"><div class="ttname"><a href="../../d7/dca/classELO_1_1BaseUnit_1_1Id.html">ELO.BaseUnit.Id</a></div><div class="ttdoc">Classe container de Id. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d4a/BaseUnit_8py_source.html#l00472">BaseUnit.py:472</a></div></div>
-<div class="ttc" id="classCourse_1_1forms_1_1LessonForm_html_ad33e136f4ab11e780c0c1d1267769ab7"><div class="ttname"><a href="../../db/d84/classCourse_1_1forms_1_1LessonForm.html#ad33e136f4ab11e780c0c1d1267769ab7">Course.forms.LessonForm.clean_lesson_id</a></div><div class="ttdeci">def clean_lesson_id</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d9a/Course_2forms_8py_source.html#l00012">forms.py:12</a></div></div>
-<div class="ttc" id="classCourse_1_1forms_1_1LessonForm_html_acc15a807e96d131c1c839ee28da158de"><div class="ttname"><a href="../../db/d84/classCourse_1_1forms_1_1LessonForm.html#acc15a807e96d131c1c839ee28da158de">Course.forms.LessonForm.clean_slide_number</a></div><div class="ttdeci">def clean_slide_number</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d9a/Course_2forms_8py_source.html#l00015">forms.py:15</a></div></div>
+<div class="ttc" id="classCourse_1_1forms_1_1CrossWordExercise_html_a2e3c06f2bc9b11dd04df1da8825f777b"><div class="ttname"><a href="../../d1/dc6/classCourse_1_1forms_1_1CrossWordExercise.html#a2e3c06f2bc9b11dd04df1da8825f777b">Course.forms.CrossWordExercise.clean_bloat</a></div><div class="ttdeci">def clean_bloat(self)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d9a/Course_2forms_8py_source.html#l00041">forms.py:41</a></div></div>
+<div class="ttc" id="classCourse_1_1forms_1_1FillTheBlankExercise_html_afd580feb9780a2776dab839180b9dfc9"><div class="ttname"><a href="../../d2/dfe/classCourse_1_1forms_1_1FillTheBlankExercise.html#afd580feb9780a2776dab839180b9dfc9">Course.forms.FillTheBlankExercise.clean_blank</a></div><div class="ttdeci">def clean_blank(self)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d9a/Course_2forms_8py_source.html#l00029">forms.py:29</a></div></div>
+<div class="ttc" id="classCourse_1_1forms_1_1MultipleChoiceExercise_html_afb5041d90dbba78dff5039cd23fec44b"><div class="ttname"><a href="../../d7/d12/classCourse_1_1forms_1_1MultipleChoiceExercise.html#afb5041d90dbba78dff5039cd23fec44b">Course.forms.MultipleChoiceExercise.clean_options</a></div><div class="ttdeci">def clean_options(self)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d9a/Course_2forms_8py_source.html#l00023">forms.py:23</a></div></div>
+<div class="ttc" id="classCourse_1_1forms_1_1CrossWordExercise_html"><div class="ttname"><a href="../../d1/dc6/classCourse_1_1forms_1_1CrossWordExercise.html">Course.forms.CrossWordExercise</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d9a/Course_2forms_8py_source.html#l00038">forms.py:38</a></div></div>
 <div class="ttc" id="classCourse_1_1forms_1_1LessonForm_html"><div class="ttname"><a href="../../db/d84/classCourse_1_1forms_1_1LessonForm.html">Course.forms.LessonForm</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d9a/Course_2forms_8py_source.html#l00008">forms.py:8</a></div></div>
+<div class="ttc" id="classCourse_1_1forms_1_1LessonForm_html_ae1d45c4578bfd73ae6b0f0b3f52ce8da"><div class="ttname"><a href="../../db/d84/classCourse_1_1forms_1_1LessonForm.html#ae1d45c4578bfd73ae6b0f0b3f52ce8da">Course.forms.LessonForm.clean_slide_number</a></div><div class="ttdeci">def clean_slide_number(self)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d9a/Course_2forms_8py_source.html#l00015">forms.py:15</a></div></div>
 <div class="ttc" id="namespaceELO_1_1BaseUnit_html"><div class="ttname"><a href="../../dc/d21/namespaceELO_1_1BaseUnit.html">ELO.BaseUnit</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d4a/BaseUnit_8py_source.html#l00001">BaseUnit.py:1</a></div></div>
 <div class="ttc" id="namespaceELO_1_1locale_1_1index_html"><div class="ttname"><a href="../../d7/de8/namespaceELO_1_1locale_1_1index.html">ELO.locale.index</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2a/locale_2index_8py_source.html#l00001">index.py:1</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -132,9 +175,9 @@ $(document).ready(function(){initNavTree('d5/d9a/Course_2forms_8py_source.html',
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_56c8f39a95ad3669bc9ec7ac8ec99225.html">ELO</a></li><li class="navelem"><a class="el" href="../../dir_45721cb7e3106fb11c6f10a0f3196440.html">Course</a></li><li class="navelem"><a class="el" href="../../d5/d9a/Course_2forms_8py.html">forms.py</a></li>
-    <li class="footer">Gerado em Domingo, 28 de Dezembro de 2014 13:28:55 para LETproject por
+    <li class="footer">Gerado em Quinta, 21 de Maio de 2015 15:13:31 para LETproject por
     <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>
 </div>
 </body>
