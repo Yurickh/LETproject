@@ -418,6 +418,7 @@ class PersProfile(IfPersProfile):
             ]
 
             sfc = sf('COURSE') # select field courses
+            sfc = sfc if sfc else []
 
             if database is Student:
                 fetchset = fetchset + [     
