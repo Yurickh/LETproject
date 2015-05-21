@@ -21,7 +21,7 @@ from abc import *
 
 import ELO.locale.index as lang
 
-from ELO.models import Student, Professor, Courses
+from ELO.models import Student, Professor, Courses, Tutor
 from Profile.forms import (
     NameForm, 
     PasswordForm,
@@ -430,6 +430,7 @@ class PersProfile(IfPersProfile):
                 ]
 
                 lc = [] # List of courses
+                
                 if sfc:
                     for c in sfc:
                         # Select Field for Modules Completed

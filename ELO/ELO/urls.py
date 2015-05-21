@@ -32,6 +32,8 @@ urlpatterns = patterns('',
 	url(r'^$', factory.runHome, {'entity': 'Student'}),
  	## URL para o login do professor.
 	url(r'^proflogin/?$', factory.runHome, {'entity': 'Professor'}),
+	## URL para o login do monitor.
+	url(r'^tutorlogin/?$', factory.runHome, {'entity': 'Tutor'}),
 	## URL para o login do administrador.
 	url(r'^364fd8cdc3a35a89b7be75bc9d10ebea/?$', 
 		factory.runHome, {'entity': 'Adm'}),
