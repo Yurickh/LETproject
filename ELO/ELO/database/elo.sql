@@ -157,6 +157,7 @@ CREATE TABLE "ELO_student" (
     "field" varchar(32) NOT NULL,
     "value" text NOT NULL
 );
+<<<<<<< HEAD
 
 INSERT INTO "ELO_student" VALUES(1,1,'NAME','Andre');
 INSERT INTO "ELO_student" VALUES(2,1,'PASSWORD','84d1cfd4a1e0aa2dcd7b6754a3624747');
@@ -170,6 +171,8 @@ INSERT INTO "ELO_student" VALUES(8,1,'SEX','M');
 INSERT INTO "ELO_student" VALUES(9,1,'INTEREST','Yurick,você,Abacates');
 INSERT INTO "ELO_student" VALUES(10,1,'LANGUAGE','en');
 INSERT INTO "ELO_student" VALUES(11,1,'COURSE','1');
+=======
+>>>>>>> b2e06c7e8c39657c80856ff4eca1608f3b91795e
 
 INSERT INTO "ELO_student" VALUES(12,1,'MODULE_COMPLETED','2');
 INSERT INTO "ELO_student" VALUES(13,1,'LOCK_COMPLETED','4');
@@ -207,13 +210,24 @@ CREATE TABLE "django_migrations" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMEN
 INSERT INTO "django_migrations" VALUES(1,'contenttypes','0001_initial','2014-10-03 21:10:53.126238');
 INSERT INTO "django_migrations" VALUES(2,'sessions','0001_initial','2014-10-03 21:10:53.222176');
 
+<<<<<<< HEAD
+=======
+CREATE TABLE "ELO_god" (
+    "id" integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "username" varchar(32) NOT NULL,
+    "password" text NOT NULL
+);
+>>>>>>> b2e06c7e8c39657c80856ff4eca1608f3b91795e
 CREATE TABLE "ELO_courses" (
     "id" integer NOT NULL PRIMARY KEY AUTOINCREMENT,
     "identity" integer NOT NULL,
     "field" varchar(32) NOT NULL,
     "value" text NOT NULL
 );
+<<<<<<< HEAD
 
+=======
+>>>>>>> b2e06c7e8c39657c80856ff4eca1608f3b91795e
 INSERT INTO "ELO_courses" VALUES(11,4,'PROFESSOR','Vidal');
 INSERT INTO "ELO_courses" VALUES(12,4,'NAME','Computação');
 INSERT INTO "ELO_courses" VALUES(13,4,'MATRIC','123456789');
@@ -225,6 +239,10 @@ INSERT INTO "ELO_courses" VALUES(3,1,'MODULE','1');
 INSERT INTO "ELO_courses" VALUES(4,1,'NAME','testcourse');
 INSERT INTO "ELO_courses" VALUES(5,1,'EXERCISE','1');
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> b2e06c7e8c39657c80856ff4eca1608f3b91795e
 CREATE TABLE "ELO_module" (
     "id" integer NOT NULL PRIMARY KEY AUTOINCREMENT,
     "identity" integer NOT NULL,
@@ -316,5 +334,6 @@ INSERT INTO "sqlite_sequence" VALUES('ELO_courses',5);
 INSERT INTO "sqlite_sequence" VALUES('ELO_module',9);
 INSERT INTO "sqlite_sequence" VALUES('ELO_lesson',15);
 INSERT INTO "sqlite_sequence" VALUES('ELO_exercise',38);
+INSERT INTO "sqlite_sequence" VALUES('ELO_identities',2);
 CREATE INDEX "django_session_b7b81f0c" ON "django_session" ("expire_date");
 COMMIT;
