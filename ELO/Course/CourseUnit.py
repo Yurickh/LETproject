@@ -377,7 +377,17 @@ class BusCourse(IfBusCourse):
             exercise['words'] = wordList
 
         elif exerciseType == ExerciseType.DragAndDrop:
-            pass # Not sure what to put here yet
+            images = []
+            i = "1"
+
+            while "ITEM_" + i in ex_data:
+                images.append((int(i), ex_data["ITEM_" + i][0]))
+                i = str(int(i)+1)
+
+            shuffle(images)
+
+            exercise['images'] = images
+            exercise['number'] = len(images)
 
         return type("Exercise", (), exercise)
 
@@ -399,8 +409,14 @@ class BusCourse(IfBusCourse):
         elif exerciseType == ExerciseType.CrossWords: pass
             # TODO: something
 
-        elif exerciseType == ExerciseType.DragAndDrop: pass
-            # TODO: Lotsa things
+        elif exerciseType == ExerciseType.DragAndDrop:
+            i = "1"
+
+            while "ITEM_" + i in ex_data:
+                if ex_data["ITEM_" + i] != answer[i]:
+                    return False
+
+            return True
 
         else: return False
 
