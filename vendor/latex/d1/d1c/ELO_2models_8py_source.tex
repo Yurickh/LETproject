@@ -151,29 +151,30 @@
 00141 \textcolor{comment}{#   LINK:       Caminho de arquivo para o html a ser parseado.\(\backslash\)n}
 00142 \textcolor{comment}{#   EXERCISES:  Lista de ínteiros que representam os exercícios associados}
 00143 \textcolor{comment}{#                   à lição correspondente.\(\backslash\)n}
-\hypertarget{ELO_2models_8py_source_l00144}{}\hyperlink{classELO_1_1models_1_1Lesson}{00144} \textcolor{keyword}{class }\hyperlink{classELO_1_1models_1_1Lesson}{Lesson}(models.Model):
-\hypertarget{ELO_2models_8py_source_l00145}{}\hyperlink{classELO_1_1models_1_1Lesson_aa650c6add387eee9e15421717074c0d3}{00145}     identity = models.IntegerField()
-\hypertarget{ELO_2models_8py_source_l00146}{}\hyperlink{classELO_1_1models_1_1Lesson_a1657c9c36e8d9c58d86c272e2339e7b1}{00146}     field = models.CharField(max\_length=32)
-\hypertarget{ELO_2models_8py_source_l00147}{}\hyperlink{classELO_1_1models_1_1Lesson_a27927b9763fb13a9e41b3f826439c600}{00147}     value = models.TextField()
-00148 
-\hypertarget{ELO_2models_8py_source_l00149}{}\hyperlink{classELO_1_1models_1_1Lesson_a3d9f0295dbe1ed5c74668d6c0876f97c}{00149}     \textcolor{keyword}{def }\hyperlink{classELO_1_1models_1_1Lesson_a3d9f0295dbe1ed5c74668d6c0876f97c}{\_\_unicode\_\_}(self):
-00150         \textcolor{keywordflow}{return} \textcolor{stringliteral}{u'%s : %s = %s'} % (str(self.\hyperlink{classELO_1_1models_1_1Lesson_aa650c6add387eee9e15421717074c0d3}{identity}), self.\hyperlink{classELO_1_1models_1_1Lesson_a1657c9c36e8d9c58d86c272e2339e7b1}{field}, self.
+00144 \textcolor{comment}{#   SLIDES:     Número de slides que a lição possui.\(\backslash\)n}
+\hypertarget{ELO_2models_8py_source_l00145}{}\hyperlink{classELO_1_1models_1_1Lesson}{00145} \textcolor{keyword}{class }\hyperlink{classELO_1_1models_1_1Lesson}{Lesson}(models.Model):
+\hypertarget{ELO_2models_8py_source_l00146}{}\hyperlink{classELO_1_1models_1_1Lesson_aa650c6add387eee9e15421717074c0d3}{00146}     identity = models.IntegerField()
+\hypertarget{ELO_2models_8py_source_l00147}{}\hyperlink{classELO_1_1models_1_1Lesson_a1657c9c36e8d9c58d86c272e2339e7b1}{00147}     field = models.CharField(max\_length=32)
+\hypertarget{ELO_2models_8py_source_l00148}{}\hyperlink{classELO_1_1models_1_1Lesson_a27927b9763fb13a9e41b3f826439c600}{00148}     value = models.TextField()
+00149 
+\hypertarget{ELO_2models_8py_source_l00150}{}\hyperlink{classELO_1_1models_1_1Lesson_a3d9f0295dbe1ed5c74668d6c0876f97c}{00150}     \textcolor{keyword}{def }\hyperlink{classELO_1_1models_1_1Lesson_a3d9f0295dbe1ed5c74668d6c0876f97c}{\_\_unicode\_\_}(self):
+00151         \textcolor{keywordflow}{return} \textcolor{stringliteral}{u'%s : %s = %s'} % (str(self.\hyperlink{classELO_1_1models_1_1Lesson_aa650c6add387eee9e15421717074c0d3}{identity}), self.\hyperlink{classELO_1_1models_1_1Lesson_a1657c9c36e8d9c58d86c272e2339e7b1}{field}, self.
       \hyperlink{classELO_1_1models_1_1Lesson_a27927b9763fb13a9e41b3f826439c600}{value})
-00151 
-00152 \textcolor{comment}{## Classe que define o modelo de exercício.}
-00153 \textcolor{comment}{#   Colunas já implementadas:}
-00154 \textcolor{comment}{#}
-00155 \textcolor{comment}{#   ID:         Inteiro que representa univocamente um exercício.\(\backslash\)n}
-00156 \textcolor{comment}{#   LINK:       Caminho de arquivo para o html a ser parseado.\(\backslash\)n}
-00157 \textcolor{comment}{#   EXTYPE:     Tipo de exercicio a ser tratado.\(\backslash\)n}
-00158 \textcolor{comment}{#   EXFORMAT:   Formato do exercício a ser tratado.\(\backslash\)n}
-00159 \textcolor{comment}{#   ITEMS:      Lista de items.\(\backslash\)n}
-\hypertarget{ELO_2models_8py_source_l00160}{}\hyperlink{classELO_1_1models_1_1Exercise}{00160} \textcolor{keyword}{class }\hyperlink{classELO_1_1models_1_1Exercise}{Exercise}(models.Model):
-\hypertarget{ELO_2models_8py_source_l00161}{}\hyperlink{classELO_1_1models_1_1Exercise_a0b63268e129a279de260ad21060a1b55}{00161}     identity = models.IntegerField()
-\hypertarget{ELO_2models_8py_source_l00162}{}\hyperlink{classELO_1_1models_1_1Exercise_a4567f8aa62747a0eabb1c89ab18ec1ce}{00162}     field = models.CharField(max\_length=32)
-\hypertarget{ELO_2models_8py_source_l00163}{}\hyperlink{classELO_1_1models_1_1Exercise_ae4d0d7ecfe0004385c031cbba76f3b4d}{00163}     value = models.TextField()
-00164 
-\hypertarget{ELO_2models_8py_source_l00165}{}\hyperlink{classELO_1_1models_1_1Exercise_af3e991e5610cec815a2c3260ec6aae0b}{00165}     \textcolor{keyword}{def }\hyperlink{classELO_1_1models_1_1Exercise_af3e991e5610cec815a2c3260ec6aae0b}{\_\_unicode\_\_}(self):
-00166         \textcolor{keywordflow}{return} \textcolor{stringliteral}{u'%s : %s = %s'} % (str(self.\hyperlink{classELO_1_1models_1_1Exercise_a0b63268e129a279de260ad21060a1b55}{identity}), self.\hyperlink{classELO_1_1models_1_1Exercise_a4567f8aa62747a0eabb1c89ab18ec1ce}{field}, self.
+00152 
+00153 \textcolor{comment}{## Classe que define o modelo de exercício.}
+00154 \textcolor{comment}{#   Colunas já implementadas:}
+00155 \textcolor{comment}{#}
+00156 \textcolor{comment}{#   ID:         Inteiro que representa univocamente um exercício.\(\backslash\)n}
+00157 \textcolor{comment}{#   LINK:       Caminho de arquivo para o html a ser parseado.\(\backslash\)n}
+00158 \textcolor{comment}{#   EXTYPE:     Tipo de exercicio a ser tratado.\(\backslash\)n}
+00159 \textcolor{comment}{#   EXFORMAT:   Formato do exercício a ser tratado.\(\backslash\)n}
+00160 \textcolor{comment}{#   ITEMS:      Lista de items.\(\backslash\)n}
+\hypertarget{ELO_2models_8py_source_l00161}{}\hyperlink{classELO_1_1models_1_1Exercise}{00161} \textcolor{keyword}{class }\hyperlink{classELO_1_1models_1_1Exercise}{Exercise}(models.Model):
+\hypertarget{ELO_2models_8py_source_l00162}{}\hyperlink{classELO_1_1models_1_1Exercise_a0b63268e129a279de260ad21060a1b55}{00162}     identity = models.IntegerField()
+\hypertarget{ELO_2models_8py_source_l00163}{}\hyperlink{classELO_1_1models_1_1Exercise_a4567f8aa62747a0eabb1c89ab18ec1ce}{00163}     field = models.CharField(max\_length=32)
+\hypertarget{ELO_2models_8py_source_l00164}{}\hyperlink{classELO_1_1models_1_1Exercise_ae4d0d7ecfe0004385c031cbba76f3b4d}{00164}     value = models.TextField()
+00165 
+\hypertarget{ELO_2models_8py_source_l00166}{}\hyperlink{classELO_1_1models_1_1Exercise_af3e991e5610cec815a2c3260ec6aae0b}{00166}     \textcolor{keyword}{def }\hyperlink{classELO_1_1models_1_1Exercise_af3e991e5610cec815a2c3260ec6aae0b}{\_\_unicode\_\_}(self):
+00167         \textcolor{keywordflow}{return} \textcolor{stringliteral}{u'%s : %s = %s'} % (str(self.\hyperlink{classELO_1_1models_1_1Exercise_a0b63268e129a279de260ad21060a1b55}{identity}), self.\hyperlink{classELO_1_1models_1_1Exercise_a4567f8aa62747a0eabb1c89ab18ec1ce}{field}, self.
       \hyperlink{classELO_1_1models_1_1Exercise_ae4d0d7ecfe0004385c031cbba76f3b4d}{value})
 \end{DoxyCode}

@@ -1,22 +1,22 @@
 #coding: utf-8
 
 ## @file urls.py
-#	Arquivo responsável pelo processo de reconhecimento da URL requisitada
-#	e correspondente chamada da função da Factory (ver MainUnit.py).
+#   Arquivo responsável pelo processo de reconhecimento da URL requisitada
+#   e correspondente chamada da função da Factory (ver MainUnit.py).
 #
-#	Cada pattern dentro do urlpatterns deve ter o formato:
+#   Cada pattern dentro do urlpatterns deve ter o formato:
 #
-#		url(r'REGEX', VIEW),
+#       url(r'REGEX', VIEW),
 #
-#	onde REGEX é a expressão regular que será utilizada para identificar
-#	a URL, e VIEW o método correspondente que será chamado para processar
-#	a requisição.
+#   onde REGEX é a expressão regular que será utilizada para identificar
+#   a URL, e VIEW o método correspondente que será chamado para processar
+#   a requisição.
 #
-#	É importante ressaltar que o método view deverá retornar obrigatoriamente
-#	um objeto do tipo HttpResponse.
+#   É importante ressaltar que o método view deverá retornar obrigatoriamente
+#   um objeto do tipo HttpResponse.
 #
-#	Dentro do projeto, todas as views são chamadas de dentro da Factory.
-#	Para mais informações, leia a documentação do MainUnit.py.
+#   Dentro do projeto, todas as views são chamadas de dentro da Factory.
+#   Para mais informações, leia a documentação do MainUnit.py.
 
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -32,6 +32,8 @@ urlpatterns = patterns('',
 	url(r'^$', factory.runHome, {'entity': 'Student'}),
  	## URL para o login do professor.
 	url(r'^proflogin/?$', factory.runHome, {'entity': 'Professor'}),
+	## URL para o login do monitor.
+	url(r'^tutorlogin/?$', factory.runHome, {'entity': 'Tutor'}),
 	## URL para o login do administrador.
 	url(r'^364fd8cdc3a35a89b7be75bc9d10ebea/?$', 
 		factory.runHome, {'entity': 'Adm'}),
@@ -47,25 +49,11 @@ urlpatterns = patterns('',
 	url(r'^logout/?$', factory.runLogout),
 	## URL da pagina de cursos.
 	url(r'^course/(?P<courseid>\d+)/?$', factory.runCourse),
-	## URL da pagina de administracao.
-	url(r'^adm/?$', factory.runAdm),
-	## URL da página assíncrona de edição de estudante, professor ou curso.
-	url(r'^assync/adm-edit/(?P<action>\w{3,7})/(?P<model>\w{3,9})/?$', 
-		factory.runAdm),
-	## URL da página assíncrona que informa os dados de um usuário requisitado.
-	url(r'^assync/adm-info/?$', factory.runAdm),
-	## URL para mostrar assincronamente a edição de um campo de perfil.
-	#	Requisitado pelo Administrador.
-	url(r'^assync/edit-field-adm/(?P<action>\w{3,9})/(?P<model>\w{5,7})/?$', factory.runAdm),
-	## URL da página assíncrona que abre Dialog de inserção de Estudantes e
-	#	Professores em algum determinado curso.
-	url(r'^assync/adm-course/(?P<action>\w{3,7})/(?P<model>\w{5,7})/?$', 
-		factory.runAdm),
-	## URL para mostrar assincronamente a deleção de uma conta.
-	#	Requisitado pelo Administrador.
-	url(r'^assync/adm-del/?$', factory.runAdm),
-	## URL para confirmar alguma ação.
-	url(r'^assync/adm-conf/(?P<action>\w{3,7})/?$', factory.runAdm),
+	url(r'^assync/lesson/?$', factory.runCourse),
+	url(r'^adm/(?P<model>\w{3,25})/(?P<action>\w{0,9})/?$', factory.runAdm),
+	url(r'^adm/(?P<model>\w{3,25})/(?P<username>\w{0,9})/searchacc?$', factory.runAdm),
+	url(r'^adm/(?P<model>\w{3,25})/(?P<username>\w{0,32})/(?P<action>\w{0,9})/?$', factory.runAdm),
+    url(r'^assync/lesson/?$', factory.runCourse),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()

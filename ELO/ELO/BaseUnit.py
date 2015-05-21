@@ -503,7 +503,7 @@ class Id(IfBaseType):
         try: int(value)
         except ValueError: raise ValueError(lang.DICT['EXCEPTION_INV_ID_F'])
 
-        if value < 1:
+        if value < 0:
             raise ValueError(lang.DICT['EXCEPTION_INV_ID_S'])
 
 ## Classe container de linguagem.

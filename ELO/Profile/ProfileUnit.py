@@ -21,7 +21,7 @@ from abc import *
 
 import ELO.locale.index as lang
 
-from ELO.models import Student, Professor, Courses
+from ELO.models import Student, Professor, Courses, Tutor
 from Profile.forms import (
     NameForm, 
     PasswordForm,
@@ -198,8 +198,7 @@ class UiFullProfile(IfUiProfile):
     __viewable = [
                     'email',
                     'campus',
-
-                    'matric'
+                    'matric',
                     ]
 
     def __init__(self, bus):
@@ -332,6 +331,8 @@ class BusProfile(IfBusProfile):
             db = Student
         elif user['type'] == 'Professor':
             db = Professor
+        elif user['type'] == 'Tutor':
+            db = Tutor
 
         fs = self.pers.fetch(user['name'], db)
         fd = dict(fs)
@@ -369,6 +370,8 @@ class BusProfile(IfBusProfile):
                 self.pers.update(user['name'], field, newdata, Student)
             elif user['type'] == 'Professor' and field != 'avatar':
                 self.pers.update(user['name'], field, newdata, Professor)
+            elif user['type'] == 'Tutor' and field != 'avatar':
+                self.pers.update(user['name'], field, newdata, Tutor)
         except ValueError as exc:
             raise ValueError(lang.DICT['EXCEPTION_ERR_DB_U'])
         else:
@@ -426,20 +429,33 @@ class PersProfile(IfPersProfile):
                     ('interests',   sf('INTEREST'))
                 ]
 
-                sfmc = sf('MODULE_COMPLETED') # Set Fetch for modules completed
                 lc = [] # List of courses
                 
-                for c in sfc:
-                    nmod = Courses.objects.filter(identity=c,
-                                                  field='MODULE').count()
+                if sfc:
+                    for c in sfc:
+                        # Select Field for Modules Completed
+                        sfmc = sf('MODULE_COMPLETED')
+                        # Modules contidos neste Course
+                        mods = map(lambda x: x.value, 
+                                   Courses.objects.filter(identity=c,
+                                                          field='MODULE'))
+                        
+                        # Modules Completed for this Course
+                        mcftc = []
 
-                    # Get number of modules completed
-                    sfmc = 1 if not sfmc is list else sfmc.length()
+                        for mc in sfmc:
+                            if mc in mods:
+                                mcftc = mcftc + [mc]
 
-                    cname = Courses.objects.get(identity=c, field='NAME').value
-                    lc = lc + [{'name':cname, 
-                                 'id':c, 
-                                 'completion': sfmc*100/nmod}]
+                        # Get number of modules completed
+                        mcftc = len(mcftc)
+                        # Get number of modules in this course
+                        nmod = len(mods)
+
+                        cname = Courses.objects.get(identity=c, field='NAME').value
+                        lc = lc + [{'name':cname, 
+                                     'id':c, 
+                                     'completion': mcftc*100/nmod}]
 
                 sfc = lc
 

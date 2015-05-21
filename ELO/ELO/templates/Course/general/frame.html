@@ -1,4 +1,4 @@
-{% extends "includes/wrapper.html" %}
+{% extends "includes/wrapper.html" %}first
 {% load staticfiles %}
 
 {% block title %}{{ DICT.ELO_COURSE }}{% endblock %}
@@ -14,10 +14,25 @@
     <div id="left_bar">
         <div id="module_accordion">
         {% for module in course.MODULE %}
-            <h3>{{ module.name }}</h3>
+            <h3><div id=
+                    {% if module.complete %}
+                        "complete"
+                    {% else %}
+                        "incomplete"
+                    {% endif %}>{{ module.name }}</h3>
             <div>
                 {% for lesson in module.lessons %}
-                    {{ lesson }}<br />
+                    <div class="lesson_{{ lesson.id }}" id=
+                    {% if lesson.complete %}
+                        "complete"
+                    {% else %}
+                        {% if lesson.unlocked %}
+                            "unlock"
+                        {% else %}
+                            "incomplete"
+                        {% endif %}
+                    {% endif %}>
+                    {{ lesson.name }}</div>
                 {% endfor %}
             </div>
         {% endfor %}
@@ -27,16 +42,13 @@
         
     </div>
     <div id="container">
-        <center>
-            <div id="lesson_ctn">
-                <img id="bkg_img" src="{{ MEDIA_URL }}images/cham_rel.png"/>
-            </div>
-        </center>
+        {% include 'Course/general/assync_std.html' %}
+        {# #l_info_(lesson number); .(slide number) #}
     </div>
     <div id="bottomer">
         <center>
-                    <button id="c_bt">&lt;</button>
-                    <button id="c_bt">&gt;</button>
+                    <button id="l_bt_b" disabled>&lt;</button>
+                    <button id="l_bt_f" disabled>&gt;</button>
         </center>
     </div>
     <br />

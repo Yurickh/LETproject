@@ -1,14 +1,11 @@
 {% extends "includes/assync_wrapper.html" %}
 {% load staticfiles %}
+{% load exercises %}
 
 {% block body %}
 
     <center><img src="http://nourishingourchildren.files.wordpress.com/2012/01/bricks.jpg" /></center>
 
-    What are Brics made of? {{ form.blank_line }}
+    {% exercise "What are Brics made of?" %}
 
-    {% csrf_token %}
-    <input type="submit" name="{{ ff }}" value="{{ DICT.SUBMIT }}" />
-    </form>
-
-{% endbody %}
+{% endblock %}

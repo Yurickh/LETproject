@@ -109,6 +109,9 @@ $(document).ready(function(){initNavTree('d0/d62/classCourse_1_1CourseUnit_1_1If
 <div class="title">Referência da Classe Course.CourseUnit.IfPersCourse</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Interface da camada de Persistência para o módulo de Curso.  
+ <a href="../../d0/d62/classCourse_1_1CourseUnit_1_1IfPersCourse.html#details">Mais...</a></p>
 <div class="dynheader">
 Diagrama de Hierarquia para Course.CourseUnit.IfPersCourse:</div>
 <div class="dyncontent">
@@ -121,12 +124,17 @@ Diagrama de Hierarquia para Course.CourseUnit.IfPersCourse:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos Públicos</h2></td></tr>
+<tr class="memitem:addc6cb006b42968019daf0dcdb8bde9b"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d62/classCourse_1_1CourseUnit_1_1IfPersCourse.html#addc6cb006b42968019daf0dcdb8bde9b">getid</a></td></tr>
+<tr class="memdesc:addc6cb006b42968019daf0dcdb8bde9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Método que recupera o Id() de um objeto.  <a href="#addc6cb006b42968019daf0dcdb8bde9b">Mais...</a><br/></td></tr>
+<tr class="separator:addc6cb006b42968019daf0dcdb8bde9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adcd2e66255b773b6a196bafefdc851e8"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d62/classCourse_1_1CourseUnit_1_1IfPersCourse.html#adcd2e66255b773b6a196bafefdc851e8">fetch</a></td></tr>
+<tr class="memdesc:adcd2e66255b773b6a196bafefdc851e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Realiza uma pesquisa no banco de dados.  <a href="#adcd2e66255b773b6a196bafefdc851e8">Mais...</a><br/></td></tr>
 <tr class="separator:adcd2e66255b773b6a196bafefdc851e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descrição Detalhada</h2>
-<div class="textblock">
-<p>Definição na linha <a class="el" href="../../de/d1e/CourseUnit_8py_source.html#l00067">67</a> do arquivo <a class="el" href="../../de/d1e/CourseUnit_8py_source.html">CourseUnit.py</a>.</p>
+<div class="textblock"><p>Deve ser capaz de acessar de forma transparente o banco de dados. Deve também ser a única forma de acessar tais dados dentro deste módulo. </p>
+
+<p>Definição na linha <a class="el" href="../../de/d1e/CourseUnit_8py_source.html#l00159">159</a> do arquivo <a class="el" href="../../de/d1e/CourseUnit_8py_source.html">CourseUnit.py</a>.</p>
 </div><h2 class="groupheader">Métodos</h2>
 <a class="anchor" id="adcd2e66255b773b6a196bafefdc851e8"></a>
 <div class="memitem">
@@ -135,6 +143,12 @@ Métodos Públicos</h2></td></tr>
         <tr>
           <td class="memname">def Course.CourseUnit.IfPersCourse.fetch </td>
           <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>id</em>, </td>
         </tr>
@@ -151,13 +165,72 @@ Métodos Públicos</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<ul>
+<li>id Identificador do objeto requisitado. Pode ser obtido através do método <a class="el" href="../../d0/d62/classCourse_1_1CourseUnit_1_1IfPersCourse.html#addc6cb006b42968019daf0dcdb8bde9b" title="Método que recupera o Id() de um objeto. ">getid()</a>.</li>
+</ul>
+<ul>
+<li>db Objeto do modelo a ser utilizado. Deve ser importado de <a class="el" href="../../d8/d93/namespaceELO_1_1models.html">ELO.models</a>. </li>
+</ul>
 
-<p>Definição na linha <a class="el" href="../../de/d1e/CourseUnit_8py_source.html#l00070">70</a> do arquivo <a class="el" href="../../de/d1e/CourseUnit_8py_source.html">CourseUnit.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="../../d0/d62/classCourse_1_1CourseUnit_1_1IfPersCourse.html#adcd2e66255b773b6a196bafefdc851e8">   70</a></span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keyword">def </span><a class="code" href="../../d0/d62/classCourse_1_1CourseUnit_1_1IfPersCourse.html#adcd2e66255b773b6a196bafefdc851e8">fetch</a>(id, db): <span class="keyword">pass</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<p>Definição na linha <a class="el" href="../../de/d1e/CourseUnit_8py_source.html#l00180">180</a> do arquivo <a class="el" href="../../de/d1e/CourseUnit_8py_source.html">CourseUnit.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00180"></a><span class="lineno"><a class="line" href="../../d0/d62/classCourse_1_1CourseUnit_1_1IfPersCourse.html#adcd2e66255b773b6a196bafefdc851e8">  180</a></span>&#160;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keyword">def </span><a class="code" href="../../d0/d62/classCourse_1_1CourseUnit_1_1IfPersCourse.html#adcd2e66255b773b6a196bafefdc851e8">fetch</a>(self, id, db): <span class="keyword">pass</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
 </div>
-<div class="ttc" id="classCourse_1_1CourseUnit_1_1IfPersCourse_html_adcd2e66255b773b6a196bafefdc851e8"><div class="ttname"><a href="../../d0/d62/classCourse_1_1CourseUnit_1_1IfPersCourse.html#adcd2e66255b773b6a196bafefdc851e8">Course.CourseUnit.IfPersCourse.fetch</a></div><div class="ttdeci">def fetch</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d1e/CourseUnit_8py_source.html#l00070">CourseUnit.py:70</a></div></div>
+<div class="ttc" id="classCourse_1_1CourseUnit_1_1IfPersCourse_html_adcd2e66255b773b6a196bafefdc851e8"><div class="ttname"><a href="../../d0/d62/classCourse_1_1CourseUnit_1_1IfPersCourse.html#adcd2e66255b773b6a196bafefdc851e8">Course.CourseUnit.IfPersCourse.fetch</a></div><div class="ttdeci">def fetch</div><div class="ttdoc">Realiza uma pesquisa no banco de dados. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d1e/CourseUnit_8py_source.html#l00180">CourseUnit.py:180</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="addc6cb006b42968019daf0dcdb8bde9b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def Course.CourseUnit.IfPersCourse.getid </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>field</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>db</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<ul>
+<li>field Nome do campo a ser filtrado.</li>
+</ul>
+<ul>
+<li>value Valor que deve haver no campo.</li>
+</ul>
+<ul>
+<li>db Objeto do modelo a ser utilizado. Deve ser importado de <a class="el" href="../../d8/d93/namespaceELO_1_1models.html">ELO.models</a>. </li>
+</ul>
+
+<p>Definição na linha <a class="el" href="../../de/d1e/CourseUnit_8py_source.html#l00170">170</a> do arquivo <a class="el" href="../../de/d1e/CourseUnit_8py_source.html">CourseUnit.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00170"></a><span class="lineno"><a class="line" href="../../d0/d62/classCourse_1_1CourseUnit_1_1IfPersCourse.html#addc6cb006b42968019daf0dcdb8bde9b">  170</a></span>&#160;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keyword">def </span><a class="code" href="../../d0/d62/classCourse_1_1CourseUnit_1_1IfPersCourse.html#addc6cb006b42968019daf0dcdb8bde9b">getid</a>(self, field, value, db): <span class="keyword">pass</span></div>
+</div>
+<div class="ttc" id="classCourse_1_1CourseUnit_1_1IfPersCourse_html_addc6cb006b42968019daf0dcdb8bde9b"><div class="ttname"><a href="../../d0/d62/classCourse_1_1CourseUnit_1_1IfPersCourse.html#addc6cb006b42968019daf0dcdb8bde9b">Course.CourseUnit.IfPersCourse.getid</a></div><div class="ttdeci">def getid</div><div class="ttdoc">Método que recupera o Id() de um objeto. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d1e/CourseUnit_8py_source.html#l00170">CourseUnit.py:170</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -170,7 +243,7 @@ Métodos Públicos</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dd/df0/namespaceCourse.html">Course</a></li><li class="navelem"><a class="el" href="../../df/d57/namespaceCourse_1_1CourseUnit.html">CourseUnit</a></li><li class="navelem"><a class="el" href="../../d0/d62/classCourse_1_1CourseUnit_1_1IfPersCourse.html">IfPersCourse</a></li>
-    <li class="footer">Gerado em Terça, 21 de Outubro de 2014 13:48:47 para LETproject por
+    <li class="footer">Gerado em Domingo, 28 de Dezembro de 2014 13:29:00 para LETproject por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

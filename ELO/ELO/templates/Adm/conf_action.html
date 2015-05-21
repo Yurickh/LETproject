@@ -1,0 +1,22 @@
+{% extends "includes/assync_wrapper.html" %}
+
+{% load staticfiles %}
+
+{% block head %}
+	<script src="{% static 'Adm/script_models.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+	<div id="mod_{{ model }}"></div>
+	{% if conf_form %}
+		<form id="conf_form" action="" method="post">
+		{{ conf }}
+		{% csrf_token %}
+		<input type="submit" value="Confirmar"></input>
+	</form>
+	{% endif %}
+
+	<div id="f_{{ feedback }}"></div>
+
+	<div id="dialog-confirm"></div>
+{% endblock %}

@@ -28,7 +28,7 @@ var NAVTREEINDEX =
 [
 "annotated.html",
 "d5/df1/classELO_1_1EntityUnit_1_1Professor.html#a593a0636e87dcdd9ced2e6b7494a45dc",
-"dd/d1d/classELO_1_1EntityUnit_1_1Student.html#ad58a5d0f4e75b34e6c2b93ac05b59faf"
+"dd/d1d/classELO_1_1EntityUnit_1_1Student.html#a94a418a7120679fe9562583343981046"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

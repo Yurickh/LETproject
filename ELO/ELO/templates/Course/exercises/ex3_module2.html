@@ -2,11 +2,7 @@
 {% load staticfiles %}
 
 {% block body %}
-    <form action="" method="post" id="exercise_form" >
 
-        Everyday I'm {{ form.blank_line }} !<br />
-        {% csrf_token %}
-        <input type="submit" value="{{ DICT.SUBMIT }}" />
-    </form>
+    {% exercise "Everyday I'm %_!" %}
 
 {% endfor %}
