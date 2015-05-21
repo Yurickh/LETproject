@@ -47,3 +47,16 @@ class CrossWordExercise(forms.Form):
             retList.append(" ".join([x,y,d,w]))
 
         return retList
+
+class DragAndDropExercise(forms.Form):
+    bloat = forms.CharField(required = True,label="",widget=forms.HiddenInput)
+    
+    def clean_bloat(self):
+        order = self.cleaned_data['bloat'].split('_')
+        retDict = {}
+
+        for unscrambled in order:
+            num, img = word.split()
+            retDict[num] = img
+
+        return retDict

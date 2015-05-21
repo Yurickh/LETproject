@@ -68,4 +68,27 @@ $(document).ready(function(){
         else
             $(this).attr('disabled', 'disabled');
     });
+
+    // Drag'N'Drop submitter
+
+    $("#dnd_submit").click(function(){
+        //waiting for submission code for any one exercise type
+    });
 });
+
+function dnd_alloWDrop(ev)
+{
+    ev.preventDefault();
+}
+
+function dnd_drag(ev)
+{
+    ev.dataTransfer.setData("text", ev.target.id)
+}
+
+function dnd_drop(ev)
+{
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}
