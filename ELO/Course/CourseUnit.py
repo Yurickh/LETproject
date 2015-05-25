@@ -435,7 +435,7 @@ class BusCourse(IfBusCourse):
 
             return True
 
-        elif exerciseType == ExerciseType.CrossWords: pass
+        elif exerciseType == ExerciseType.CrossWords:
             for ans in ex_data["WORD"]:
                 if not (ans in answer):
                     return False

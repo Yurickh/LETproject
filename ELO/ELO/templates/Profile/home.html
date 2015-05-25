@@ -29,7 +29,7 @@
                 {% for course in user.courses %}
                     <a href="/course/{{ course.id }}/">
                         {{ course.name }}: 
-                        <progress value="{{ course.completion }}" max="100"></progress>
+                        <progress value="{{ course.completion }}" max="{{ course.total }}"></progress>
                     </a>
                 {% endfor %}
             {% endif %}
