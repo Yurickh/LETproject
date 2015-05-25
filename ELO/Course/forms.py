@@ -55,7 +55,7 @@ class DragAndDropExercise(forms.Form):
         order = self.cleaned_data['bloat'].split('_')
         retDict = {}
 
-        for unscrambled in order:
+        for word in order:
             num, img = word.split()
             img = img.split("|")
             retDict[num] = (img[0], img[1])
