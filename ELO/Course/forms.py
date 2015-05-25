@@ -57,6 +57,7 @@ class DragAndDropExercise(forms.Form):
 
         for unscrambled in order:
             num, img = word.split()
-            retDict[num] = img
+            img = img.split("|")
+            retDict[num] = (img[0], img[1])
 
         return retDict

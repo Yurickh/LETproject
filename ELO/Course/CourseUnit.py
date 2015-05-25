@@ -402,16 +402,21 @@ class BusCourse(IfBusCourse):
         #   TYPE: 5
         #   ITEM_k, k natural: k-ésima imagem
         elif exerciseType == ExerciseType.DragAndDrop:
-            images = []
+            left = []
+            right = []
             i = "1"
 
             while "ITEM_" + i in ex_data:
-                images.append((int(i), ex_data["ITEM_" + i][0]))
+                left.append(ex_data["ITEM_" + i][0])
+                right.append(ex_data["ITEM_" + i[1])
+                
                 i = str(int(i)+1)
 
-            shuffle(images)
+            shuffle(right)
+            shuffle(left)
 
-            exercise['images'] = images
+            exercise['left'] = left
+            exercise['right'] = right
             exercise['number'] = len(images)
 
         return type("Exercise", (), exercise)
