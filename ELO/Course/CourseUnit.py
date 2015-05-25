@@ -343,6 +343,11 @@ class BusCourse(IfBusCourse):
 
         exerciseType = int(ex_data['TYPE'][0])
 
+        ## Exercício de Múltipla Escolha.
+        #
+        #   TYPE: 1
+        #   ITEM_k, k natural: nome da k-ésima opção
+        #   CORRECT: k | k é a resposta correta
         if exerciseType == ExerciseType.MultipleChoice:
             options = []
             i = "1"
@@ -352,9 +357,17 @@ class BusCourse(IfBusCourse):
 
             exercise['options'] = options
 
+        ## Exercício de preencher o vazio.
+        #
+        #   TYPE: 2
+        #   CORRECT: uma das possíveis soluções
         elif exerciseType == ExerciseType.FillTheBlank:
             pass # nothing to do here
 
+        ## Exercício de desembaralhar.
+        #
+        #   TYPE: 3
+        #   WORD_k, k natural: k-ésima palavra a ser desembaralhada.
         elif exerciseType == ExerciseType.Unscramble:
             words = []
             i = "1"
@@ -364,6 +377,14 @@ class BusCourse(IfBusCourse):
 
             exercise['words'] = shuffle(words)
 
+        ## Exercício de Palavras-cruzadas.
+        #
+        #   TYPE: 4
+        #   WORD: palavra que pode ser dividida em xydw:
+        #       x: coordenada x da primeira letra da palavra dentro da matriz;
+        #       y: coordenada y da primeira letra da palavra dentro da matriz;
+        #       d: direção em que a palavra cresce ('N', 'S', 'W', 'E');
+        #       w: palavra propriamente dita.
         elif exerciseType == ExerciseType.CrossWords:
             wordList = []
             
@@ -376,6 +397,10 @@ class BusCourse(IfBusCourse):
 
             exercise['words'] = wordList
 
+        ## Exercício de Arrastar e Soltar.
+        #
+        #   TYPE: 5
+        #   ITEM_k, k natural: k-ésima imagem
         elif exerciseType == ExerciseType.DragAndDrop:
             images = []
             i = "1"
@@ -403,15 +428,21 @@ class BusCourse(IfBusCourse):
             return True if answer in ex_data['CORRECT'] else False
 
         elif exerciseType == ExerciseType.Unscramble:
-            ## TODO: Verificar corretude
-            return True if answer == ex_data['CORRECT'][0] else False
+            i = "1"
+            while "WORD_" + i in ex_data:
+                if answer[i] != ex_data["WORD_" + i]:
+                    return False
+
+            return True
 
         elif exerciseType == ExerciseType.CrossWords: pass
-            # TODO: something
+            for ans in ex_data["WORD"]:
+                if not (ans in answer):
+                    return False
+            return True
 
         elif exerciseType == ExerciseType.DragAndDrop:
             i = "1"
-
             while "ITEM_" + i in ex_data:
                 if ex_data["ITEM_" + i] != answer[i]:
                     return False
