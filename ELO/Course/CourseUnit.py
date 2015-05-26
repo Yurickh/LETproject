@@ -211,7 +211,7 @@ class IfPersCourse:
 
 class UiCourse(IfUiCourse):
 
-    def run(self, request, courseid=None):
+    def run(self, request, courseid=None, exerciseType=None):
         
         user = request.session['user']
 
@@ -266,6 +266,13 @@ class UiCourse(IfUiCourse):
 
                         return render(request, url, { 'max': maxslides,
                                                       'exercise': exercise })
+                elif exerciseType == 1:
+                    exercise = MultipleChoiceExercise(request.POST)
+
+                    if exercise.is_valid():
+                        print exercise.cleaned_data['options']
+                        raise ValueError()
+                    else: raise ValueError(lang.DICT['EXCEPTION_INV_EXE'])
                 else:
                     raise ValueError(lang.DICT['EXCEPTION_INV_LES'])
             except ValueError as exc:
@@ -408,7 +415,7 @@ class BusCourse(IfBusCourse):
 
             while "ITEM_" + i in ex_data:
                 left.append(ex_data["ITEM_" + i][0])
-                right.append(ex_data["ITEM_" + i[1])
+                right.append(ex_data["ITEM_" + i][1])
                 
                 i = str(int(i)+1)
 

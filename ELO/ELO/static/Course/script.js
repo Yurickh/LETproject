@@ -69,6 +69,14 @@ $(document).ready(function(){
             $(this).attr('disabled', 'disabled');
     });
 
+    // General submitter
+
+    $("#exer_submit").click(function(ev){
+        ev.preventDefault();
+
+        
+    });
+
     // Drag'N'Drop submitter
 
     $("#dnd_submit").click(function(){
