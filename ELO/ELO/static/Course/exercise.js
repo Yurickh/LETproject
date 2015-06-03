@@ -12,8 +12,6 @@ $("#exercise").submit(function(ev){
     ev.preventDefault();
     serial = $(this).serializeArray();
 
-
-    // Se a pergunta foi respondida
     if(serial[1].name == "options" || serial[1].name == "blank" || serial[1].name == "bloat")
         loadExercise(serial);
     
