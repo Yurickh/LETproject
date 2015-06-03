@@ -16,7 +16,7 @@ $(document).ready(function(){
             });
     }
 
-    // Lesson Listing
+    // Lesson Listing2
 
     $accordion = $("#module_accordion").accordion({
         icons: {    "header": "ui-icon-plus",

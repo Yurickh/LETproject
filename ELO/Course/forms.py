@@ -16,6 +16,7 @@ class LessonForm(forms.Form):
         return Id(self.cleaned_data['slide_number'])
 
 class MultipleChoiceExercise(forms.Form):
+    exercise_id = forms.IntegerField(required=True, widget=forms.HiddenInput)
     options = forms.ChoiceField(widget   = forms.RadioSelect, 
                                 required = True,
                                 label = "")
@@ -24,18 +25,21 @@ class MultipleChoiceExercise(forms.Form):
         return dict(self.cleaned_data['options'])
 
 class FillTheBlankExercise(forms.Form):
+    exercise_id = forms.IntegerField(required=True, widget=forms.HiddenInput)
     blank = forms.CharField(required = True, label="")
 
     def clean_blank(self):
         return PlainText(self.cleaned_data['blank']).value
 
 class UnscrambleExercise(forms.Form):
+    exercise_id = forms.IntegerField(required=True, widget=forms.HiddenInput)
     bloat = forms.CharField(required = True, label="")
 
     def clean_bloat(self):
         return self.cleaned_data['bloat'].split()
 
 class CrossWordExercise(forms.Form):
+    exercise_id = forms.IntegerField(required=True, widget=forms.HiddenInput)
     bloat = forms.CharField(required = True, label="")
 
     def clean_bloat(self):
@@ -49,6 +53,7 @@ class CrossWordExercise(forms.Form):
         return retList
 
 class DragAndDropExercise(forms.Form):
+    exercise_id = forms.IntegerField(required=True, widget=forms.HiddenInput)
     bloat = forms.CharField(required = True,label="",widget=forms.HiddenInput)
     
     def clean_bloat(self):

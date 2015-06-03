@@ -342,11 +342,13 @@ class BusCourse(IfBusCourse):
 
     def createExercise(self, request, ex_url):
 
-        ex_data = self.pers.retrieve('LINK', ex_url, Exercise)
+        ex_id = self.pers.getid('LINK', ex_url, Exercise)
+        ex_data = self.pers.fetch(ex_id, Exercise)
 
         exercise = {'url': ex_url, 
                     'type': int(ex_data['TYPE'][0]),
-                    'csrf': csrf.get_token(request)}
+                    'csrf': csrf.get_token(request),
+                    'id': ex_id}
 
         exerciseType = int(ex_data['TYPE'][0])
 

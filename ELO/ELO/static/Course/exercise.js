@@ -3,9 +3,8 @@ function loadExercise(arr)
     $a = $("#ans");
     $a.load("assync/exercise",
         {
-            'lesson_id': $info.id,
-            'slide_number': $info.slide,
-            'csrfmiddlewaretoken': serial[1].value
+            'exercise_id': $serial[0].value,
+            'csrfmiddlewaretoken': serial[2].value
         });
 }
 
@@ -15,7 +14,7 @@ $("#exercise").submit(function(ev){
 
 
     // Se a pergunta foi respondida
-    if(serial[0].name == "options" || serial[0].name == "blank" || serial[0].name == "bloat")
+    if(serial[1].name == "options" || serial[1].name == "blank" || serial[1].name == "bloat")
         loadExercise(serial);
     
 });

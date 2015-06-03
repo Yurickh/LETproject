@@ -167,6 +167,9 @@ class ExerciseToken(template.Node):
             else:
                 exercise = ''
 
+            if exercise != '':
+                exercise.fields['exercise_id'].initial = exerciseNode.id
+
             return wrapper(exercise,
                                 exerciseNode.csrf,
                                 self.formatString)
