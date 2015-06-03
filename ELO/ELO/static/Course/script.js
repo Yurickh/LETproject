@@ -68,6 +68,8 @@ $(document).ready(function(){
         else
             $(this).attr('disabled', 'disabled');
     });
+
+
 });
 
 function dnd_alloWDrop(ev)
