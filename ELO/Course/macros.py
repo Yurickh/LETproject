@@ -36,7 +36,7 @@ SUBMIT_WRAPPER = \
 
 ## Macro responsável por envolver o HTML fornecido por tags de <form>
 FORM_WRAPPER = lambda x,y,z: \
-    '<form>' + z[0] + " " + str(x) + " " + z[1] + CSRF_WRAPPER(y) + SUBMIT_WRAPPER + '</form>'
+    '<form id="exercise">' + z[0] + " " + str(x) + " " + z[1] + CSRF_WRAPPER(y) + SUBMIT_WRAPPER + '</form>'
 
 ## Macro responsável por envolver o HTML fornecido por tags de <form>, já
 #   deixando pronto para ser criado um exercício do tipo Drag'N'Drop

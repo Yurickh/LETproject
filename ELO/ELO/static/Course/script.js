@@ -68,20 +68,6 @@ $(document).ready(function(){
         else
             $(this).attr('disabled', 'disabled');
     });
-
-    // General submitter
-
-    $("#exer_submit").click(function(ev){
-        ev.preventDefault();
-
-        
-    });
-
-    // Drag'N'Drop submitter
-
-    $("#dnd_submit").click(function(){
-        //waiting for submission code for any one exercise type
-    });
 });
 
 function dnd_alloWDrop(ev)
