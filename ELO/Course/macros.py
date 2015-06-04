@@ -26,6 +26,14 @@ GENERAL_URL = lambda x="": 'Course/general/' + str(x)
 ## Macro responsável por armazenar a URL relativa dos templates de exercícios
 EXERCISES_URL = lambda x="": 'Course/exercises/' + str(x)
 
+## Macro responsável por armazenar a URL relativa ao template de resposta 
+#	correta.
+CORRECT_URL = GENERAL_URL('correct.html')
+
+## Macro responsável por armazenar a URL relativa ao template de resposta
+#	errada.
+WRONG_URL	= GENERAL_URL('wrong.html')
+
 ## Macro responsável por envolver um campo <input> com o código csrf
 CSRF_WRAPPER = lambda x: \
     '<input type="hidden" name="csrfmiddlewaretoken" value="' + str(x) + '" />'

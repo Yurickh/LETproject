@@ -143,8 +143,7 @@ class ExerciseToken(template.Node):
             wrapper = FORM_WRAPPER
 
             if exerciseNode.type == ExerciseType.MultipleChoice:
-                exercise = MultipleChoiceExercise()
-                exercise.fields['options'].choices = exerciseNode.options
+                exercise = MultipleChoiceExercise(exerciseNode.options)()
 
             elif exerciseNode.type == ExerciseType.FillTheBlank:
                 exercise = FillTheBlankExercise()

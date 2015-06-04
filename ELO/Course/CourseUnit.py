@@ -19,8 +19,19 @@ import ELO.locale.index as lang
 
 from ELO.models import Courses, Module, Lesson, Exercise, Student
 
-from Course.forms import LessonForm
-from Course.macros import LESSONS_URL, GENERAL_URL, EXERCISES_URL, ExerciseType
+from Course.macros import ( LESSONS_URL, 
+                            GENERAL_URL, 
+                            EXERCISES_URL, 
+                            CORRECT_URL,
+                            WRONG_URL, 
+                            ExerciseType
+                          )
+
+from Course.forms import (  LessonForm, 
+                            ExerciseForm, 
+                            MultipleChoiceExercise,
+                            FillTheBlankExercise
+                         )
 
 from django.middleware import csrf
 from django.shortcuts import render
@@ -211,7 +222,7 @@ class IfPersCourse:
 
 class UiCourse(IfUiCourse):
 
-    def run(self, request, courseid=None, exerciseType=None):
+    def run(self, request, courseid=None):
         
         user = request.session['user']
 
@@ -229,6 +240,14 @@ class UiCourse(IfUiCourse):
 
         elif request.method == "POST":
             lesson_form = LessonForm(request.POST)
+            
+            # É importante fazer a cópia, para que seja possível
+            # modificá-la na linha abaixo.
+            exercise_form = ExerciseForm(request.POST.copy())
+            
+            # É importante limpar a form, já que a classe mãe não possui
+            # opções válidas.
+            exercise_form.data['options'] = []
             try:
                 if lesson_form.is_valid():
                     lessonid = lesson_form.cleaned_data['lesson_id']
@@ -266,14 +285,18 @@ class UiCourse(IfUiCourse):
 
                         return render(request, url, { 'max': maxslides,
                                                       'exercise': exercise })
-                elif exerciseType == 1:
-                    exercise = MultipleChoiceExercise(request.POST)
+                elif exercise_form.is_valid():
+                    exerciseId = exercise_form.cleaned_data["exercise_id"]
 
-                    if exercise.is_valid():
-                        print exercise.cleaned_data['options']
-                        raise ValueError()
-                    else: raise ValueError(lang.DICT['EXCEPTION_INV_EXE'])
+                    try:
+                        if self.bus.correctExercise(request.POST, exerciseId):
+                            return render(request, CORRECT_URL)
+                        else:
+                            return render(request, WRONG_URL)
+                    except ValueError:
+                        raise ValueError(lang.DICT['EXCEPTION_INV_ANS'])
                 else:
+                    print exercise_form.errors
                     raise ValueError(lang.DICT['EXCEPTION_INV_LES'])
             except ValueError as exc:
                 return render(request, GENERAL_URL("assync_std.html"),
@@ -347,7 +370,7 @@ class BusCourse(IfBusCourse):
 
         exercise = {'url': ex_url, 
                     'type': int(ex_data['TYPE'][0]),
-                    'csrf': csrf.get_token(request),
+                    'csrf': csrf.get_token(request) if request else None,
                     'id': ex_id}
 
         exerciseType = int(ex_data['TYPE'][0])
@@ -430,38 +453,82 @@ class BusCourse(IfBusCourse):
 
         return type("Exercise", (), exercise)
 
-    def correctExercise(self, ex_url, answer):
-        
-        ex_data = self.pers.retrieve('LINK', ex_url, Exercise)
+    def correctExercise(self, request, exid):
+
+        ex_data = self.pers.fetch(exid.value, Exercise)
         exerciseType = int(ex_data['TYPE'][0])
 
         if exerciseType == ExerciseType.MultipleChoice:
-            return True if answer == ex_data['CORRECT'][0] else False
+
+            dummy = self.createExercise(None, ex_data['LINK'][0])
+
+            answer = MultipleChoiceExercise(dummy.options)(request)
+
+            try:
+                if answer.is_valid():
+                    answer = answer.cleaned_data['options']
+                    return True if answer == ex_data['CORRECT'][0] \
+                                else False
+                else:
+                   raise ValueError()
+            except ValueError as exc:
+                print exc
+                raise ValueError()
 
         elif exerciseType == ExerciseType.FillTheBlank:
-            return True if answer in ex_data['CORRECT'] else False
+            
+            answer = FillTheBlankExercise(request)
+
+            if answer.is_valid():
+                answer = answer.cleaned_data['blank']
+                return True if answer in ex_data['CORRECT'] \
+                            else False
+            else:
+                raise ValueError()
 
         elif exerciseType == ExerciseType.Unscramble:
-            i = "1"
-            while "WORD_" + i in ex_data:
-                if answer[i] != ex_data["WORD_" + i]:
-                    return False
 
-            return True
+            answer = UnscrambleExercise(request)
+
+            if answer.is_valid():
+                answer = answer.cleaned_data['bloat']
+                i = "1"
+                while "WORD_" + i in ex_data:
+                    if answer[i] != ex_data["WORD_" + i][0]:
+                        return False
+                return True
+            else:
+                raise ValueError()
 
         elif exerciseType == ExerciseType.CrossWords:
-            for ans in ex_data["WORD"]:
-                if not (ans in answer):
-                    return False
-            return True
+        
+            answer = CrossWordsExercise(request)
+
+            if answer.is_valid():
+                answer = answer.cleaned_data['bloat']
+
+                for ans in ex_data["WORD"]:
+                    if not (ans in answer):
+                        return False
+                return True
+            else:
+                raise ValueError()
 
         elif exerciseType == ExerciseType.DragAndDrop:
-            i = "1"
-            while "ITEM_" + i in ex_data:
-                if ex_data["ITEM_" + i] != answer[i]:
-                    return False
 
-            return True
+            answer = DragAndDropExercise(request)
+
+            if answer.is_valid():
+                answer = answer.cleaned_data['bloat']
+
+                i = "1"
+                while "ITEM_" + i in ex_data:
+                    if ex_data["ITEM_" + i][0] != answer[i]:
+                        return False
+
+                return True
+            else:
+                raise ValueError()
 
         else: return False
 
@@ -469,8 +536,11 @@ class BusCourse(IfBusCourse):
 class PersCourse(IfPersCourse):
 
     def getid(self, field, value, db):
-        model_data = db.objects.get(field=field, value=value)
-        return model_data.identity
+        try:
+            model_data = db.objects.get(field=field, value=value)
+            return model_data.identity
+        except db.DoesNotExist as exc:
+            raise ValueError(exc)
 
     def fetch(self, id, db):
         model_data = db.objects.filter(identity=id)
