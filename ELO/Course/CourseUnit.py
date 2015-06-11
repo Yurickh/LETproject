@@ -12,6 +12,8 @@
 #   O aluno só deve ser capaz de prosseguir no curso (lê-se ir para a próxima
 # lição/módulo) se tiver obtido uma pontuação mínima na lição/módulo anterior.
 
+import sys, traceback
+
 from abc import*
 from random import shuffle
 
@@ -296,7 +298,6 @@ class UiCourse(IfUiCourse):
                     except ValueError:
                         raise ValueError(lang.DICT['EXCEPTION_INV_ANS'])
                 else:
-                    print exercise_form.errors
                     raise ValueError(lang.DICT['EXCEPTION_INV_LES'])
             except ValueError as exc:
                 return render(request, GENERAL_URL("assync_std.html"),
@@ -381,10 +382,10 @@ class BusCourse(IfBusCourse):
         #   ITEM_k, k natural: nome da k-ésima opção
         #   CORRECT: k | k é a resposta correta
         if exerciseType == ExerciseType.MultipleChoice:
-            options = []
+            options = ()
             i = "1"
             while "ITEM_" + i in ex_data:
-                options.append((int(i),ex_data["ITEM_" + i][0]))
+                options = options + ((int(i),ex_data["ITEM_" + i][0],),)
                 i = str(int(i)+1)
 
             exercise['options'] = options
@@ -461,19 +462,14 @@ class BusCourse(IfBusCourse):
         if exerciseType == ExerciseType.MultipleChoice:
 
             dummy = self.createExercise(None, ex_data['LINK'][0])
-
             answer = MultipleChoiceExercise(dummy.options)(request)
 
-            try:
-                if answer.is_valid():
-                    answer = answer.cleaned_data['options']
-                    return True if answer == ex_data['CORRECT'][0] \
-                                else False
-                else:
-                   raise ValueError()
-            except ValueError as exc:
-                print exc
-                raise ValueError()
+            if answer.is_valid():
+                answer = answer.cleaned_data['options']
+                return True if answer == ex_data['CORRECT'][0] \
+                            else False
+            else:
+               raise ValueError()
 
         elif exerciseType == ExerciseType.FillTheBlank:
             

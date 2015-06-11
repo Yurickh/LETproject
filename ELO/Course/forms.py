@@ -32,18 +32,18 @@ class ExerciseForm(forms.Form):
 def MultipleChoiceExercise(options):
 
     def clean_options(self):
-        return dict(self.cleaned_data['options']) #fazer tipo básico!
+        return self.cleaned_data['options'] #fazer tipo básico!
 
     ncfields = {  'options':  forms.ChoiceField(widget   = forms.RadioSelect, 
-                                    required = True,
-                                    label = "",
-                                    choices = options,),
+                                                required = True,
+                                                label    = "",
+                                                choices  = options,),
                 'blank': None,
                 'bloat': None,
                 'clean_options': clean_options,
             }
 
-    return type('MultipleChoiceExercise', (ExerciseForm,), ncfields)
+    return type('MultipleChoiceExercise', (ExerciseForm,forms.BaseForm), ncfields)
 
 class FillTheBlankExercise(ExerciseForm):
     blank = forms.CharField(required = True, label="")
