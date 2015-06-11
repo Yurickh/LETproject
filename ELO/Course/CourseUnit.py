@@ -12,8 +12,6 @@
 #   O aluno só deve ser capaz de prosseguir no curso (lê-se ir para a próxima
 # lição/módulo) se tiver obtido uma pontuação mínima na lição/módulo anterior.
 
-import sys, traceback
-
 from abc import*
 from random import shuffle
 

@@ -43,7 +43,7 @@ def MultipleChoiceExercise(options):
                 'clean_options': clean_options,
             }
 
-    return type('MultipleChoiceExercise', (ExerciseForm,forms.BaseForm), ncfields)
+    return type('MultipleChoiceExercise', (ExerciseForm,), ncfields)
 
 class FillTheBlankExercise(ExerciseForm):
     blank = forms.CharField(required = True, label="")
